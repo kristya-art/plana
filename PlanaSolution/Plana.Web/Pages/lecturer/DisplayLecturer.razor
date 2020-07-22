@@ -1,0 +1,22 @@
+﻿
+@inherits DisplayLecturerBase
+
+    <div class="card m-3" style="min-width: 18rem; max-width: 30.5%;">
+        <div class="card-header">
+            <h3>@Lecturer.FirstName @Lecturer.LastName</h3>
+        </div>
+        <img class="card-img-top imageThumbnail" src="@Lecturer.PhotoPath" />
+
+        @if (ShowFooter)
+        {
+            <div class="card-footer text-center">
+                <a href="@($"lecturerdetails/{Lecturer.LecturerId}")"
+                   class="btn btn-primary m-1">View</a>
+
+                <a href="@($"editlecturer/{Lecturer.LecturerId}")" class="btn btn-primary m-1">Edit</a>
+
+                @*<a href="#" class="btn btn-danger m-1">Delete</a>*@
+                <button type="button" class=" btn btn-danger " @onclick="Soft_delete">Delete</button>
+            </div>
+        }
+    </div>
