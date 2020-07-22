@@ -1,0 +1,5 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'plana.bib.blg'
+[48] biber-darwin:315> INFO - === Sun Apr 12, 2020, 16:55:57
+[219] Utils.pm:209> ERROR - Cannot find control file 'plana.bib.bcf'! - Did latex run successfully on your .tex file before you ran biber?
+[219] Biber.pm:114> INFO - ERRORS: 1
