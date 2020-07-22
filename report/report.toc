@@ -86,6 +86,4 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {10.2}Future Work}{35}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline References}{37}% 
-\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {11}Protocol}{38}% 
