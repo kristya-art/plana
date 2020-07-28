@@ -2,88 +2,34 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Acknowledgements}{4}% 
+\contentsline {section}{\nonumberline Acknowledgements}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Abstract}{4}% 
+\contentsline {section}{\nonumberline Abstract}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Introduction}{4}% 
+\contentsline {section}{\nonumberline Introduction}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Customer Problem Statement}{5}% 
+\contentsline {subsection}{\nonumberline Glossary}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Problem Statement}{5}% 
+\contentsline {subsection}{\nonumberline Setup for Blazor}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Glossary}{6}% 
+\contentsline {section}{\nonumberline Work Plan}{4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}System Requirements}{8}% 
+\contentsline {subsection}{\nonumberline Effort Estimation}{4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Product Backlog and user stories}{8}% 
+\contentsline {subsection}{\nonumberline Scrum}{4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Enumerated Functional Requirements}{9}% 
+\contentsline {subsubsection}{\nonumberline Scrum Roles}{4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Enumerated Non-Functional Requirements}{9}% 
+\contentsline {subsubsection}{\nonumberline Scrum Plan}{4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Functional Requirements Specifications}{10}% 
+\contentsline {subsubsection}{\nonumberline Scrum Artefacts}{5}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Stakeholder Summary}{10}% 
+\contentsline {subsubsection}{\nonumberline Sprints}{5}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Actors and Goals}{10}% 
+\contentsline {section}{\nonumberline Conclusions and Future Work}{8}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Business Process Model and Notation(BPMN)}{11}% 
+\contentsline {subsection}{\nonumberline Conclusions}{8}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Use Cases}{12}% 
+\contentsline {subsection}{\nonumberline Future Work}{8}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline i \& ii. Casual and Fully-Dressed Descriptions}{12}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline iii Use Case Diagram}{17}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Domain Analysis}{18}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Domain model}{18}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline i. Concept Definition}{20}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline ii. Association Definition}{21}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}System Architecture and System Design}{22}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}a. Architecture Styles}{22}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}b. Identifying Subsystems}{22}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}c. Persistence Data Storage}{22}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Hardware Requirements}{23}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Technologies}{23}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Setup for Blazor}{26}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Proof of Concepts}{26}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}Popularity of Blazor}{26}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.2}Testing the Proposed Project Structure with Selected Technologies}{29}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3}Summary of Proof of Concepts}{30}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Work Plan}{30}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Effort Estimation}{30}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Scrum}{30}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Roles}{30}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Plan}{31}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Artefacts}{31}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Sprints}{31}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Conclusions and Future Work}{35}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.1}Conclusions}{35}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.2}Future Work}{35}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}Protocol}{38}% 
+\contentsline {section}{\nonumberline Protocol}{9}% 
