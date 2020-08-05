@@ -1,0 +1,114 @@
+
+aspell -c -t test.tex -d en		//check spelling
+
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{| p{2.5cm}| p{7.5cm} |p{2.5cm}}
+\hline
+\textbf{GGG} & \textbf{HHH}& \textbf{HHH} \\
+\hline
+III                    &              113	& 000\\ \hline
+JJJ                    &              234	& 9999\\ \hline
+KKK                    &              345	& 1111\\ \hline
+\end{tabular}
+\end{center}
+\caption{Caption2}
+\label{table2}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+begin{table}[H]
+    \centering
+    \begin{tabular}{c@{\qquad}lllll}
+   Header \\
+    
+        \toprule
+           &  &  &  &  & \\
+        \midrule
+
+&  &  &  &  & . \\ \hline
+	     &  &  &  &  & . \\ \hline
+	      &  &  &  &  & . \\ \hline
+	       &  &  &  &  & . \\ \hline
+	        &  &  &  &  & . \\ \hline
+	         &  &  &  &  & . \\ \hline
+	          &  &  &  &  & . \\ \hline
+	           &  &  &  &  & . \\ \hline
+	            &  &  &  &  & . \\ \hline
+	             &  &  &  &  & . \\ \hline
+	
+	 
+        \midrule
+    \end{tabular}
+    \caption{Sprint Backlog}
+    \label{tab:typo}
+\end{table}
+
+********************
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{| p{2.5cm}| p{2.5cm} |}
+\hline
+\textbf{GGG} & \textbf{HHH} \\
+\hline
+III                    &              113\\ \hline
+JJJ                    &              234\\ \hline
+KKK                    &              345\\ \hline
+\end{tabular}
+\end{center}
+\caption{Caption2}
+\label{table2}
+\end{table}
+
+
+
+
+***************** figure****************
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm]{blabla.JPG}
+\caption{}
+\label{blabla}
+\end{figure}
+
+*******************list*********************
+\begin{itemize}
+ \item 
+ \item 
+ \item 
+\item 
+ \item 
+ \item 
+\item 
+ \item 
+ \item 
+\item 
+ \item 
+ \item 
+ \end{itemize}
+
+
+*************** table with items**************
+
+
+
+
+
+
+
+
+
+
+
