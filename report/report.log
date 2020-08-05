@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  5 AUG 2020 21:27
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  5 AUG 2020 22:20
 entering extended mode
 **./report.tex
 (report.tex
@@ -1000,13 +1000,24 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count406
 \@quotereset=\count407
-No file report.aux.
+(report.aux
+LaTeX Info: Redefining \rmfamily on input line 7.
+LaTeX Info: Redefining \sffamily on input line 7.
+LaTeX Info: Redefining \ttfamily on input line 7.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 41.
 LaTeX Font Info:    Trying to load font information for OML+jkp on input line 4
 1.
-("C:\Program Files\MiKTeX\tex/latex/kpfonts\omljkp.fd"
+ ("C:\Program Files\MiKTeX\tex/latex/kpfonts\omljkp.fd"
 File: omljkp.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    ... okay on input line 41.
@@ -1075,14 +1086,14 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `report.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'report.bbl' not found.
-
-No file report.bbl.
+Package biblatex Info: ... file 'report.bbl' found.
+ (report.bbl)
 Package biblatex Info: Reference section=0 on input line 41.
 Package biblatex Info: Reference segment=0 on input line 41.
 LaTeX Info: Redefining \rmfamily on input line 41.
 LaTeX Info: Redefining \sffamily on input line 41.
 LaTeX Info: Redefining \ttfamily on input line 41.
+
 
 LaTeX Font Warning: Font shape `TU/lmss/bx/sc' undefined
 (Font)              using `TU/lmss/bx/n' instead on input line 60.
@@ -1118,59 +1129,66 @@ File: ujkpsyc.fd 2006/08/15 v1.0
 ) [1
 
 
-]
-No file report.toc.
+] (report.toc
+LaTeX Info: Redefining \rmfamily on input line 3.
+LaTeX Info: Redefining \sffamily on input line 3.
+LaTeX Info: Redefining \ttfamily on input line 3.
+)
 \tf@toc=\write4
 \openout4 = `report.toc'.
 
+
 [2]
-
-LaTeX Warning: Citation 'eeles2005capturing' on page 3 undefined on input line 
-112.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
 [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 188--195
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--226
 
  []
 
 [4]
-Overfull \hbox (19.50937pt too wide) in paragraph at lines 229--283
+Overfull \hbox (19.50937pt too wide) in paragraph at lines 260--314
  [] 
  []
 
-[5]
-Overfull \hbox (19.50937pt too wide) in paragraph at lines 292--349
+[5] [6]
+Overfull \hbox (19.50937pt too wide) in paragraph at lines 323--380
  [] 
  []
 
-[6]
-Overfull \hbox (19.50937pt too wide) in paragraph at lines 359--416
+[7]
+Overfull \hbox (19.50937pt too wide) in paragraph at lines 390--447
  [] 
  []
 
-[7] [8]
+[8] [9]
+Overfull \hbox (10.41129pt too wide) in paragraph at lines 466--466
+[]\TU/lmr/m/n/10.95 Microsoft.com, \TU/lmr/m/it/10.95 Entity framework core\TU/
+lmr/m/n/10.95 . [Online]. Available: $[][][][][] [] [] [] [][][][] [] [][][][][
+][][][][] []
+ []
 
-LaTeX Warning: Empty bibliography on input line 435.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 566--567
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 587--588
+Underfull \hbox (badness 10000) in paragraph at lines 581--582
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--591
+Underfull \hbox (badness 10000) in paragraph at lines 583--585
 
  []
 
@@ -1208,7 +1226,7 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-[9] (report.aux
+[11] (report.aux
 LaTeX Info: Redefining \rmfamily on input line 7.
 LaTeX Info: Redefining \sffamily on input line 7.
 LaTeX Info: Redefining \ttfamily on input line 7.
@@ -1217,27 +1235,19 @@ LaTeX Info: Redefining \ttfamily on input line 7.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                report
-(biblatex)                and rerun LaTeX afterwards.
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18065 strings out of 414071
- 378195 string characters out of 2898876
- 1269973 words of memory out of 3000000
- 35507 multiletter control sequences out of 15000+200000
- 553968 words of font info for 93 fonts, out of 3000000 for 9000
+ 18100 strings out of 414071
+ 379090 string characters out of 2898876
+ 1272216 words of memory out of 3000000
+ 35533 multiletter control sequences out of 15000+200000
+ 553984 words of font info for 95 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 47i,12n,64p,10603b,3856s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 47i,12n,64p,10603b,4800s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on report.pdf (9 pages).
+Output written on report.pdf (11 pages).

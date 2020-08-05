@@ -10,7 +10,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\nonumberline Glossary}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Setup for Blazor}{3}%
+\contentsline {section}{\nonumberline System Architecture and System Design}{3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline Database and Entity Framework Core}{4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline Modeling types of database relationships}{4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline Creating database}{4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline DbContext ...}{4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline Setup for Blazor}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\nonumberline Work Plan}{4}%
 \defcounter {refsection}{0}\relax 
@@ -18,18 +28,20 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\nonumberline Scrum}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Roles}{4}%
+\contentsline {subsubsection}{\nonumberline Scrum Roles}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Plan}{4}%
+\contentsline {subsubsection}{\nonumberline Scrum Plan}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Scrum Artefacts}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Sprints}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Conclusions and Future Work}{8}%
+\contentsline {section}{\nonumberline Conclusions and Future Work}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Conclusions}{8}%
+\contentsline {subsection}{\nonumberline Conclusions}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Future Work}{8}%
+\contentsline {subsection}{\nonumberline Future Work}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Protocol}{9}%
+\contentsline {section}{\nonumberline References}{10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\nonumberline Protocol}{11}%

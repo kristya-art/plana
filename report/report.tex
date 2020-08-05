@@ -71,7 +71,7 @@
 
 
 
-\section{Acknowledgements}
+\section{Acknowledgments}
 %I would like to thank my project supervisor - Prof. Marcel Pfahrer for his advice and guidance. 
 %I would also like to thank Andrei Herasimau for his corrections and Egger Samuel Sebastian for his advice.
 
@@ -143,9 +143,31 @@
 
 
 \section{System Architecture and System Design}
-In project 2 we have started with describing of System architecture and design. In this work we want go deeper into this topic, which is very important.
+In project 2 we have started with describing of System architecture and design. In this work we want go deeper into this topic, which is very important. \\
+
 
 \subsection{Database and Entity Framework Core}
+Entity Framework Core is an object-relational mapper (O /RM). It is designed to make writing code for accessing a database quick and intuitive.
+There are many good reasons to use EF Core. It supports LINQ queries, change tracking, updates, and schema migrations. EF Core works with many databases, including SQL Database, SQLite, MySQL, PostgreSQL, and Azure Cosmos DB.
+book \cite{efa} \cite{ef}
+
+The PLANA application relational database
+Our database has many types of relationships we can have in EF Core. The types are:
+One-to-many: Lecturer
+Many-to-many:
+One-To-Many Relationship : 
+Lecturer to an Additional Assignment 
+Semester to a Additional Assignment
+Semester to a Module Run 
+Module to a Module Run
+Study Branch to a Module
+Many-To-Many Relationship :
+Lecturers to Semester
+Lecturers to Module
+Lecturers to Module Run
+
+
+
 
 \subsection{Modeling types of database relationships}
 
@@ -186,7 +208,7 @@ To use the Blazor framework it is necessary to install :\\
 \section{Work Plan}
   		\subsection{Effort Estimation}
   		
-  		Project 2  is designed as a 4 ECTS module. This corresponds to a workload of 120 hours. When we are working on a project, we always record our hours of work in an Excel table.
+  		The Bachelor's Thesis  is designed as a 12 ECTS module. This corresponds to a workload of 360 hours. When we are working on a project, we always record our hours of work in an Excel table.
  At the end of the project, we will compare this time with the time allotted for the project. 		
   		
   		
@@ -225,7 +247,7 @@ To use the Blazor framework it is necessary to install :\\
   	    \item Sprint Planning. It includes the scheduling of future tasks.
   	    \item Sprint Retrospective. It includes discussion about what went well and what went wrong, what we should do differently. 
   	    \end{itemize}
-  		\subsubsection{Scrum Artefacts }
+  		\subsubsection{Scrum Artifacts }
   		
   		\subsubsection{Sprints}
   		
