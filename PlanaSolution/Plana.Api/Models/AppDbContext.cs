@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Plana.Models;
 using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Channels;
 
 namespace Plana.Api.Models
 {
@@ -297,11 +299,13 @@ namespace Plana.Api.Models
 
             });
             //many to many relationship , added aditional intermediate table "LecturersModules"
+            /** lecturer* - * module */
             modelBuilder.Entity<Lecturer>()
                 .HasKey(x => x.LecturerId);
 
             modelBuilder.Entity<Module>()
                 .HasKey(x => x.ModuleId);
+
             modelBuilder.Entity<LecturersModules>()
                 .HasKey(x => new { x.ModuleId, x.LecturerId });
             modelBuilder.Entity<LecturersModules>()
@@ -313,22 +317,48 @@ namespace Plana.Api.Models
                .WithMany(e => e.Lecturers)
                .HasForeignKey(x => x.ModuleId);
 
-            //modelBuilder.Entity<LecturersModules>().HasData(
-            //    new LecturersModules
-            //{
-            //        LecturerId = 1,
-            //        ModuleId = 2
-            //    },
-            //     new LecturersModules
-            //     {
-            //         LecturerId = 2,
-            //         ModuleId = 2
-            //     }
+            /** LecturersModuleRuns */
+           
+            modelBuilder.Entity<ModuleRun>()
+                .HasKey(x => x.ModuleRunId);
+
+            modelBuilder.Entity<LecturersModuleRuns>()
+                .HasKey(x => new { x.ModuleRunId, x.LecturerId });
+            modelBuilder.Entity<LecturersModuleRuns>()
+                .HasOne(x => x.Lecturer)
+                .WithMany(m => m.LecturersModuleRuns)
+                .HasForeignKey(x => x.LecturerId);
+            modelBuilder.Entity<LecturersModuleRuns>()
+                .HasOne(x => x.ModuleRun)
+        .WithMany(e => e.LecturersMR)
+        .HasForeignKey(x => x.ModuleRunId);
+
+            /** Lecturer* - * Semesters  */
+
+            modelBuilder.Entity<Semester>()
+                .HasKey(x => x.SemesterId);
+
+            modelBuilder.Entity<LecturersSemesters>()
+                .HasKey(x => new { x.SemesterId, x.LecturerId });
+            modelBuilder.Entity<LecturersSemesters>()
+                .HasOne(x => x.Lecturer)
+                .WithMany(m => m.LecturersSemesters)
+                .HasForeignKey(x => x.LecturerId);
+            modelBuilder.Entity<LecturersSemesters>()
+                .HasOne(x => x.Semester)
+                .WithMany(e => e.LecturersSemesters)
+                .HasForeignKey(x => x.SemesterId);
 
 
-            //    );
+            /** module * - * module run*/
 
-         }
+           
+
+           
+
+           
+
+        }
 
     }
 }

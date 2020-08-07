@@ -10,8 +10,8 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200523214445_Inicial2")]
-    partial class Inicial2
+    [Migration("20200807150933_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,6 +65,9 @@ namespace Plana.Api.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("ActiveTill")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
@@ -72,7 +75,6 @@ namespace Plana.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Gender")
@@ -81,17 +83,16 @@ namespace Plana.Api.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ModuleRunId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Role")
@@ -105,19 +106,19 @@ namespace Plana.Api.Migrations
 
                     b.HasKey("LecturerId");
 
-                    b.HasIndex("ModuleRunId");
-
                     b.ToTable("Lecturers");
 
                     b.HasData(
                         new
                         {
                             LecturerId = 1,
+                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BirthDate = new DateTime(1982, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "johnblack@gmx.ch",
                             FirstName = "John",
                             Gender = 0,
                             IsActive = false,
+                            IsDeleted = false,
                             LastName = "Black",
                             PhotoPath = "images/john.jpg",
                             Role = 0,
@@ -126,11 +127,28 @@ namespace Plana.Api.Migrations
                         new
                         {
                             LecturerId = 2,
+                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BirthDate = new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "manarodriges@gmx.ch",
                             FirstName = "Mana",
                             Gender = 0,
                             IsActive = false,
+                            IsDeleted = false,
+                            LastName = "Rodriges",
+                            PhotoPath = "images/mana.jpg",
+                            Role = 0,
+                            WorkingRate = 0.0
+                        },
+                        new
+                        {
+                            LecturerId = 22,
+                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "manarodriges@gmx.ch",
+                            FirstName = "Manuela",
+                            Gender = 0,
+                            IsActive = false,
+                            IsDeleted = true,
                             LastName = "Rodriges",
                             PhotoPath = "images/mana.jpg",
                             Role = 0,
@@ -139,16 +157,33 @@ namespace Plana.Api.Migrations
                         new
                         {
                             LecturerId = 3,
+                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BirthDate = new DateTime(1983, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "margowhite@gmx.ch",
                             FirstName = "Margo",
                             Gender = 1,
                             IsActive = false,
+                            IsDeleted = false,
                             LastName = "White",
                             PhotoPath = "images/margo.jpg",
                             Role = 0,
                             WorkingRate = 0.0
                         });
+                });
+
+            modelBuilder.Entity("Plana.Models.LecturersModuleRuns", b =>
+                {
+                    b.Property<int>("ModuleRunId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LecturerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ModuleRunId", "LecturerId");
+
+                    b.HasIndex("LecturerId");
+
+                    b.ToTable("LecturersModuleRuns");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersModules", b =>
@@ -166,6 +201,21 @@ namespace Plana.Api.Migrations
                     b.ToTable("LecturersModules");
                 });
 
+            modelBuilder.Entity("Plana.Models.LecturersSemesters", b =>
+                {
+                    b.Property<int>("SemesterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LecturerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SemesterId", "LecturerId");
+
+                    b.HasIndex("LecturerId");
+
+                    b.ToTable("LecturersSemesters");
+                });
+
             modelBuilder.Entity("Plana.Models.Module", b =>
                 {
                     b.Property<int>("ModuleId")
@@ -179,6 +229,9 @@ namespace Plana.Api.Migrations
                     b.Property<int>("LectPerWeek")
                         .HasColumnType("int");
 
+                    b.Property<int?>("StudyBranchId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -186,6 +239,8 @@ namespace Plana.Api.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("ModuleId");
+
+                    b.HasIndex("StudyBranchId");
 
                     b.ToTable("Modules");
 
@@ -311,7 +366,10 @@ namespace Plana.Api.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ModuleId")
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ModuleId")
                         .HasColumnType("int");
 
                     b.Property<double>("ModuleRunRate")
@@ -389,11 +447,19 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("LecturerId");
                 });
 
-            modelBuilder.Entity("Plana.Models.Lecturer", b =>
+            modelBuilder.Entity("Plana.Models.LecturersModuleRuns", b =>
                 {
-                    b.HasOne("Plana.Models.ModuleRun", null)
-                        .WithMany("Lecturers")
-                        .HasForeignKey("ModuleRunId");
+                    b.HasOne("Plana.Models.Lecturer", "Lecturer")
+                        .WithMany("LecturersModuleRuns")
+                        .HasForeignKey("LecturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Plana.Models.ModuleRun", "ModuleRun")
+                        .WithMany("LecturersMR")
+                        .HasForeignKey("ModuleRunId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersModules", b =>
@@ -411,11 +477,35 @@ namespace Plana.Api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Plana.Models.LecturersSemesters", b =>
+                {
+                    b.HasOne("Plana.Models.Lecturer", "Lecturer")
+                        .WithMany("LecturersSemesters")
+                        .HasForeignKey("LecturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Plana.Models.Semester", "Semester")
+                        .WithMany("LecturersSemesters")
+                        .HasForeignKey("SemesterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Plana.Models.Module", b =>
+                {
+                    b.HasOne("Plana.Models.StudyBranch", "StudyBranch")
+                        .WithMany("Modules")
+                        .HasForeignKey("StudyBranchId");
+                });
+
             modelBuilder.Entity("Plana.Models.ModuleRun", b =>
                 {
                     b.HasOne("Plana.Models.Module", "Module")
                         .WithMany("ModuleRuns")
-                        .HasForeignKey("ModuleId");
+                        .HasForeignKey("ModuleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Plana.Models.Semester", "Semester")
                         .WithMany()

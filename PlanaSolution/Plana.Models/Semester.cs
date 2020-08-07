@@ -18,5 +18,7 @@ namespace Plana.Models
         //1-many
         public HashSet<ModuleRun> ModuleRuns = new HashSet<ModuleRun>();
 
+        public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
+
     }
 }

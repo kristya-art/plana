@@ -72,8 +72,8 @@
 
 
 \section{Acknowledgments}
-%I would like to thank my project supervisor - Prof. Marcel Pfahrer for his advice and guidance. 
-%I would also like to thank Andrei Herasimau for his corrections and Egger Samuel Sebastian for his advice.
+%%I would like to thank my project supervisor - Prof. Marcel Pfahrer for his advice and guidance. 
+%%I would also like to thank Andrei Herasimau for his corrections and Egger Samuel Sebastian for his advice.
 
 
 \section{Abstract}
@@ -104,7 +104,26 @@
 
 
 
-	
+\subsection{Acronyms}	
+\begin{table}[h]
+
+%\begin{center}
+\begin{tabular}{ p{2.5cm}| p{9.5cm} }
+\rowcolor{LightCyan}
+\hline
+\textbf{Acronyms} & \textbf{Words} \\
+\hline
+EF                   &   Entity Framework\\ 
+CSS      & Cascading Style Sheet \\ 
+KKK      &              345\\ 
+\end{tabular}
+%\end{center}
+\caption{Caption2}
+\label{table2}
+\end{table}
+
+
+
 \subsection{Glossary}
 \begin{itemize}
 
@@ -123,13 +142,14 @@
 
 \item \textbf{Blazor} is a free and open-source web framework that enables developers to create web apps using C\# and HTML. It is being developed by Microsoft.
 
+\item \textbf{EF Core} 
+
 \item \textbf{HTML} HyperText Markup language
 
-\item \textbf{CSS} Cascading Style Sheets
+
 \item \textbf{SQL} Structured Query Language
 \item \textbf{JS } JavaScript
 \item \textbf{CRUD} Create, read, update and delete
-\item \textbf{EF} Entity framework
 \item \textbf{UI} User Interface
 \item \textbf{API} Application Programming Interface 
 
@@ -147,11 +167,11 @@ In project 2 we have started with describing of System architecture and design. 
 
 
 \subsection{Database and Entity Framework Core}
-Entity Framework Core is an object-relational mapper (O /RM). It is designed to make writing code for accessing a database quick and intuitive.
+Entity Framework(EF) Core is an object-relational mapper (O /RM). It is designed to make writing code for accessing a database quick and intuitive.
 There are many good reasons to use EF Core. It supports LINQ queries, change tracking, updates, and schema migrations. EF Core works with many databases, including SQL Database, SQLite, MySQL, PostgreSQL, and Azure Cosmos DB.
 book \cite{efa} \cite{ef}
 
-The PLANA application relational database
+\subsection{The PLANA app's relational database}
 Our database has many types of relationships we can have in EF Core. The types are:
 One-to-many: Lecturer
 Many-to-many:
@@ -251,19 +271,20 @@ To use the Blazor framework it is necessary to install :\\
   		
   		\subsubsection{Sprints}
   		
-	The sprints covered a one week period. At the end of each sprint, there was a discussion with the supervisor.
-
-In Table 11 is an overview of what was achieved in which sprint.
+%	The sprints covered a one week period. At the end of each sprint, there was a discussion with the supervisor.
+%
+%In Table 11 is an overview of what was achieved in which sprint.
+\textbf{Sprint's Backlog}
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{| p{2.5cm}| p{12cm} |}
+\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
 \hline
 \rowcolor{LightCyan}
-\textbf{Sprint} & \textbf{Goals and Achievements} \\
+\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
 \hline
 
-1                   &             
+1                   &        & & & trtwt      
 \begin{itemize}
 \item 
 \item
@@ -273,7 +294,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
  \end{itemize}\\ \hline
  
-2                &             
+2                &     & & &                
 \begin{itemize}
 \item 
 \item
@@ -281,7 +302,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
 
  \end{itemize}\\ \hline
- 3                 &             
+ 3                 &     & & &                  
 \begin{itemize}
 \item 
 \item
@@ -289,7 +310,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
 
  \end{itemize}\\ \hline
- 4                   &             
+ 4                  &     & & &               
 \begin{itemize}
 
 \item 
@@ -297,7 +318,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 \item
 \end{itemize}\\ \hline
  
-  5              &             
+  5            &     & & &                 
 \begin{itemize}
 
 \item 
@@ -312,7 +333,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
  \end{tabular}
 \end{center}
-\caption{Sprints}
+\caption{Sprint Backlog of Sprints}
 \label{table2}
 \end{table}
 
@@ -320,13 +341,13 @@ In Table 11 is an overview of what was achieved in which sprint.
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{| p{2.5cm}| p{12cm} |}
+\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
 \hline
 \rowcolor{LightCyan}
-\textbf{Sprint} & \textbf{Goals and Achievements} \\
+\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
 \hline
 
-6                &             
+6                &     & & &        
 \begin{itemize}
 \item 
 \item
@@ -335,14 +356,14 @@ In Table 11 is an overview of what was achieved in which sprint.
 
  \end{itemize}\\ \hline
  
-  7                 &             
+  7                &     & & &                 
 \begin{itemize}
 \item 
 \item
 \item
  \end{itemize}\\ \hline
  
-  8                 &             
+  8                 &     & & &                 
 \begin{itemize}
 \item 
 \item
@@ -350,7 +371,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
 \end{itemize}\\ \hline
 
-  9                 &             
+  9                 &     & & &                  
 \begin{itemize}
 \item 
 \item
@@ -358,7 +379,7 @@ In Table 11 is an overview of what was achieved in which sprint.
  
 \end{itemize}\\ \hline
  
-  10                &             
+  10               &     & & &                 
 \begin{itemize}
 \item 
 \item
@@ -367,7 +388,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
  \end{itemize}\\ \hline
  
-  11                &             
+  11                &     & & &                 
 \begin{itemize}
 \item 
 \item
@@ -384,17 +405,15 @@ In Table 11 is an overview of what was achieved in which sprint.
  
  
  \pagebreak
-
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{| p{2.5cm}| p{12cm} |}
+\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
 \hline
 \rowcolor{LightCyan}
-\textbf{Sprint} & \textbf{Goals and Achievements} \\
+\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
 \hline
  
- 
-  12               &             
+  12               &     & & &                  
 \begin{itemize}
 \item 
 \item
@@ -403,7 +422,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
  \end{itemize}\\ \hline
  
-  13                &             
+  13                &     & & &                  
 \begin{itemize}
 \item 
 \item
@@ -411,14 +430,14 @@ In Table 11 is an overview of what was achieved in which sprint.
 
 
  \end{itemize}\\ \hline
-  14                &             
+  14               &     & & &                   
 \begin{itemize}
 \item 
 \item
 \item
 \end{itemize}\\ \hline
  
- 15                 &             
+ 15                 &     & & &                  
 \begin{itemize}
 
 \item 
@@ -427,7 +446,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
 
  \end{itemize}\\ \hline
- 16               &             
+ 16               &     & & &                  
 \begin{itemize}
 \item 
 \item
@@ -435,7 +454,7 @@ In Table 11 is an overview of what was achieved in which sprint.
 
 
  \end{itemize}\\ \hline
- 17               &             
+ 17               &     & & &                   
 \begin{itemize}
 \item 
 \item

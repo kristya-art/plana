@@ -9,10 +9,10 @@ namespace Plana.Models
     
     public class ModuleRun
     {
-        [Key]
+       // [Key]
         public int ModuleRunId { get; set; }
         //'a', 'b', 'p','q'
-        public string Code;
+        public string Code { get; set; }
         //many-1
         public Semester Semester { get; set; }
         //many-1
@@ -23,6 +23,17 @@ namespace Plana.Models
         //1/3, 1/2, 1/4
         public double ModuleRunRate { get; set; }
         //many-many
-        public HashSet<Lecturer> Lecturers {get;set;}
-     }
+       // public HashSet<Lecturer> Lecturers {get;set;}
+      public ICollection<LecturersModuleRuns> LecturersMR { get; set; }
+       
+
+        
+
+
+        public int ModuleId { get; set; } // Foreign key many-to-one
+
+
+
+
+    }
 }

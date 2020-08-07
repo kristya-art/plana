@@ -2,17 +2,21 @@
 \defcounter {refsection}{0}\relax 
 \selectlanguage *{english}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Acknowledgements}{3}%
+\contentsline {section}{\nonumberline Acknowledgments}{3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\nonumberline Abstract}{3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\nonumberline Introduction}{3}%
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline Acronyms}{3}%
+\defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\nonumberline Glossary}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline System Architecture and System Design}{3}%
+\contentsline {section}{\nonumberline System Architecture and System Design}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\nonumberline Database and Entity Framework Core}{4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline The PLANA app's relational database}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\nonumberline Modeling types of database relationships}{4}%
 \defcounter {refsection}{0}\relax 
@@ -26,13 +30,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\nonumberline Effort Estimation}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Scrum}{4}%
+\contentsline {subsection}{\nonumberline Scrum}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Scrum Roles}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Scrum Plan}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Artefacts}{5}%
+\contentsline {subsubsection}{\nonumberline Scrum Artifacts}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline Sprints}{5}%
 \defcounter {refsection}{0}\relax 

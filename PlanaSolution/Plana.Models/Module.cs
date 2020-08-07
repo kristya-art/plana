@@ -19,10 +19,16 @@ namespace Plana.Models
         public int LectPerWeek { get; set; }
         public double TotalHours { get; set; }
       
-        public HashSet<LecturersModules> Lecturers { get; set; }
-
+        public ICollection<LecturersModules> Lecturers { get; set; }
 
         //1-many
-        public List<ModuleRun> ModuleRuns { get; set; }
+        public ICollection<ModuleRun> ModuleRuns { get; set; } //collection navigation property
+
+     //   public int StudyBranchId { get; set; } //foreign key
+        public StudyBranch StudyBranch { get; set; } //reference navigation property
+
+
+       
+        
     }
 }

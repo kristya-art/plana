@@ -25,8 +25,12 @@ namespace Plana.Models
             else { _ = IsActive == false; }
         }
         
-       public HashSet<LecturersModules> Modules { get; set; }
-      
+      // public HashSet<LecturersModules> Modules { get; set; }
+
+        public ICollection<LecturersModules> Modules { get; set; }
+        public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
+        public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
+
      
 
         public override string DisplayData()
