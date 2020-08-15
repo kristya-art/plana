@@ -248,7 +248,7 @@ namespace Plana.Api.Models
                 BirthDate = new DateTime(1976, 04, 11),
                 Gender = Gender.Male,
                 PhotoPath = "images/mana.jpg",
-                IsDeleted = true
+                IsDeleted = false
 
             }) ;
 
@@ -352,13 +352,7 @@ namespace Plana.Api.Models
 
             /** module * - * module run*/
 
-           
-
-           
-
-           
-
-        }
+           }
 
     }
 }

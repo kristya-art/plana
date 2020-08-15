@@ -13,8 +13,8 @@ namespace Plana.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LecturerId { get; set; }
         public string PhotoPath { get; set; }
-
-        public DateTime setActiveDate() { 
+        
+        public DateTime SetActiveDate() { 
             return ActiveTill = new DateTime(2030, 12, 31);
 
         }
