@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GXbuOUYux2oh6VQutt3312bJ9sxOwWBkzvDzCICYtmsSt9yqag9nIAaDLwNss6zrasdxzfm3296ot3tWGlKdXQ==",
+  "dgSpecHash": "Oq39qY1b6SsOFW5e7la1E1iilYe9TgP/2/uDNMf1jd+60gfGE0fMJF2xiGY4fB6krP8vUF5j1Soi6YyCQ64olA==",
   "success": true,
-  "projectFilePath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Api\\Plana.Api.csproj",
+  "projectFilePath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Api\\Plana.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kristya\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\kristya\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

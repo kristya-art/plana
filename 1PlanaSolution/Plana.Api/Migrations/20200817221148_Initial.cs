@@ -159,10 +159,10 @@ namespace Plana.Api.Migrations
                     ModuleRunId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(nullable: true),
-                    SemesterId = table.Column<int>(nullable: true),
                     Place = table.Column<string>(nullable: true),
                     ModuleRunRate = table.Column<double>(nullable: false),
-                    ModuleId = table.Column<int>(nullable: false)
+                    ModuleId = table.Column<int>(nullable: false),
+                    SemesterId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -178,7 +178,7 @@ namespace Plana.Api.Migrations
                         column: x => x.SemesterId,
                         principalTable: "Semesters",
                         principalColumn: "SemesterId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,7 +221,7 @@ namespace Plana.Api.Migrations
                 {
                     { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1982, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "johnblack@gmx.ch", "John", 0, false, false, "Black", null, "images/john.jpg", 0, null, 0.0 },
                     { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "manarodriges@gmx.ch", "Mana", 0, false, false, "Rodriges", null, "images/mana.jpg", 0, null, 0.0 },
-                    { 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "manarodriges@gmx.ch", "Manuela", 0, false, true, "Rodriges", null, "images/mana.jpg", 0, null, 0.0 },
+                    { 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "manarodriges@gmx.ch", "Manuela", 0, false, false, "Rodriges", null, "images/mana.jpg", 0, null, 0.0 },
                     { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1983, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "margowhite@gmx.ch", "Margo", 1, false, false, "White", null, "images/margo.jpg", 0, null, 0.0 }
                 });
 
@@ -254,6 +254,11 @@ namespace Plana.Api.Migrations
                     { 1, "2020-2021 - FS", new DateTime(2021, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { 2, "2021-2022 - HS", new DateTime(2021, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
+
+            migrationBuilder.InsertData(
+                table: "ModuleRuns",
+                columns: new[] { "ModuleRunId", "Code", "ModuleId", "ModuleRunRate", "Place", "SemesterId" },
+                values: new object[] { 2, "p", 12, 0.0, "Bern", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdditionalAssignments_LecturerId",

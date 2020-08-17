@@ -32,7 +32,7 @@ namespace Plana.Models
 
         public int ModuleId { get; set; } // Foreign key many-to-one
 
-
+        public int SemesterId { get; set; } //Foreign key many-to-one
 
 
     }

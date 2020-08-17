@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w35v/e6jDddO/BZbVBu423oKt7SSxZAPmbmcOK5WS3vZyvkxxTPelM3einIBGOo14TqG/RUSiSE/Vt8Pvj0b8g==",
+  "dgSpecHash": "fUPmLFQL9VkVhw+ec1QDT38O3ArZhAQ6IYwx6kyodB5wRwByqy5PzN7RdjZxgZ/HgMEiVFbBeHV2pRQB0VQTmg==",
   "success": true,
-  "projectFilePath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Models\\Plana.Models.csproj",
+  "projectFilePath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kristya\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

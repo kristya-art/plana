@@ -3113,11 +3113,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Models\\Plana.Models.csproj",
+      "projectUniqueName": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj",
       "projectName": "Plana.Models",
-      "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Models\\Plana.Models.csproj",
+      "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj",
       "packagesPath": "C:\\Users\\kristya\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Models\\obj\\",
+      "outputPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

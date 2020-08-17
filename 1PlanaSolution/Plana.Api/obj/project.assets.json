@@ -5377,11 +5377,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Api\\Plana.Api.csproj",
+      "projectUniqueName": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Api\\Plana.Api.csproj",
       "projectName": "Plana.Api",
-      "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Api\\Plana.Api.csproj",
+      "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Api\\Plana.Api.csproj",
       "packagesPath": "C:\\Users\\kristya\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Api\\obj\\",
+      "outputPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5400,8 +5400,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Models\\Plana.Models.csproj": {
-              "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\PlanaSolution\\Plana.Models\\Plana.Models.csproj"
+            "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj": {
+              "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj"
             }
           }
         }

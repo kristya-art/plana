@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200807150933_Initial")]
+    [Migration("20200817221148_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,7 +148,7 @@ namespace Plana.Api.Migrations
                             FirstName = "Manuela",
                             Gender = 0,
                             IsActive = false,
-                            IsDeleted = true,
+                            IsDeleted = false,
                             LastName = "Rodriges",
                             PhotoPath = "images/mana.jpg",
                             Role = 0,
@@ -378,7 +378,7 @@ namespace Plana.Api.Migrations
                     b.Property<string>("Place")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SemesterId")
+                    b.Property<int>("SemesterId")
                         .HasColumnType("int");
 
                     b.HasKey("ModuleRunId");
@@ -388,6 +388,17 @@ namespace Plana.Api.Migrations
                     b.HasIndex("SemesterId");
 
                     b.ToTable("ModuleRuns");
+
+                    b.HasData(
+                        new
+                        {
+                            ModuleRunId = 2,
+                            Code = "p",
+                            ModuleId = 12,
+                            ModuleRunRate = 0.0,
+                            Place = "Bern",
+                            SemesterId = 1
+                        });
                 });
 
             modelBuilder.Entity("Plana.Models.Semester", b =>
@@ -509,7 +520,9 @@ namespace Plana.Api.Migrations
 
                     b.HasOne("Plana.Models.Semester", "Semester")
                         .WithMany()
-                        .HasForeignKey("SemesterId");
+                        .HasForeignKey("SemesterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -218,6 +218,7 @@ namespace Plana.Api.Models
                 LecturerId = 1,
                 FirstName = "John",
                 LastName = "Black",
+                Token = "JOBL",
                 Email = "johnblack@gmx.ch",
                 BirthDate = new DateTime(1982, 04, 11),
                 Gender = Gender.Male,
@@ -226,7 +227,7 @@ namespace Plana.Api.Models
 
 
 
-            }); ;
+            })  ;
         modelBuilder.Entity<Lecturer>().HasData(new Lecturer
         {
             LecturerId = 2,
@@ -251,6 +252,21 @@ namespace Plana.Api.Models
                 IsDeleted = false
 
             }) ;
+
+            
+
+            // data for Module Run
+
+            modelBuilder.Entity<ModuleRun>().HasData(
+              new ModuleRun { ModuleRunId=2, Code = "p" , SemesterId=1, ModuleId =12, Place ="Bern"}
+               );
+
+            base.OnModelCreating(modelBuilder);
+
+
+
+
+
 
             //modelBuilder.Entity<Lecturer>().OwnsOne(e => e.Modules).HasData(new Lecturer
             //{
