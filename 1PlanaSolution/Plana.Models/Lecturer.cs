@@ -36,18 +36,28 @@ namespace Plana.Models
 
           return Token;
         }
-
+        // for many-to-many
         public void AddModuleRun(ModuleRun moduleRun)
         {
-            this.AddModuleRun(moduleRun);
-            moduleRun.AddLecturer(this);
+            LecturersModuleRuns lmr = new LecturersModuleRuns();
+            lmr.Lecturer = this;
+            lmr.ModuleRun = moduleRun;
+            LecturersModuleRuns.Add(lmr);
         }
 
-        public void AddModule(LecturersModules module) {
-            LecturersModules.Add(module);
+        // for many-to-many
+        public void AddModule(Module module) {
+            LecturersModules lm = new LecturersModules();
+            lm.Module = module;
+            lm.Lecturer = this;
+            LecturersModules.Add(lm);
+
+            
         }
+        //for one-to-many
         public void AddAdditionalAssignment(AdditionalAssignment additionalAssignment) {
-            this.AddAdditionalAssignment(additionalAssignment);
+            additionalAssignment.Lecturer = this;
+            AdditionalAssignments.Add(additionalAssignment);
         
         }
 
@@ -57,6 +67,8 @@ namespace Plana.Models
         public ICollection<LecturersModules> LecturersModules { get; set; }
         public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
         public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
+        public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
+
 
         
 

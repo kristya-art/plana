@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plana.Web", "Plana.Web\Plan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plana.Api", "Plana.Api\Plana.Api.csproj", "{BCFCA400-7027-4301-A65E-713E3CF25493}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{7C6F3ED9-3551-4F4E-B656-C48D27685277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestPlana", "UnitTestPlana\UnitTestPlana.csproj", "{056D9C78-40BD-43DC-B72F-F14DCFD69BDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{BCFCA400-7027-4301-A65E-713E3CF25493}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCFCA400-7027-4301-A65E-713E3CF25493}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCFCA400-7027-4301-A65E-713E3CF25493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6F3ED9-3551-4F4E-B656-C48D27685277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6F3ED9-3551-4F4E-B656-C48D27685277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6F3ED9-3551-4F4E-B656-C48D27685277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6F3ED9-3551-4F4E-B656-C48D27685277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{056D9C78-40BD-43DC-B72F-F14DCFD69BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056D9C78-40BD-43DC-B72F-F14DCFD69BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056D9C78-40BD-43DC-B72F-F14DCFD69BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{056D9C78-40BD-43DC-B72F-F14DCFD69BDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

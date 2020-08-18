@@ -62,7 +62,7 @@ namespace Plana.Api.Models
         public async Task<Lecturer> GetLecturer(int lecturerId)
         {
             return await appDbContext.Lecturers
-                 .Include(e=>e.Modules)
+                 .Include(e=>e.LecturersModules)
              
                  .FirstOrDefaultAsync(e => e.LecturerId == lecturerId);
         }
@@ -106,7 +106,7 @@ namespace Plana.Api.Models
                 result.ActiveTill = lecturer.ActiveTill;
                 result.IsActive = lecturer.IsActive;
 
-                result.Modules = lecturer.Modules;//new
+                result.LecturersModules = lecturer.LecturersModules;//new
                 
                
                 await appDbContext.SaveChangesAsync();

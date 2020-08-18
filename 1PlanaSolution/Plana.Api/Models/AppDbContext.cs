@@ -294,10 +294,18 @@ namespace Plana.Api.Models
                 Gender = Gender.Female,
                 PhotoPath = "images/margo.jpg",
                 IsDeleted = false
-
+                
 
 
             });
+
+            modelBuilder.Entity<LecturersModules>().HasData(new LecturersModules
+
+            {
+                LecturerId = 1,
+                ModuleId=1
+            }
+                ) ;
 
             //seed data for Semester
             modelBuilder.Entity<Semester>().HasData(new Semester
