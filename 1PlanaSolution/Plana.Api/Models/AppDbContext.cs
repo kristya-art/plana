@@ -326,7 +326,7 @@ namespace Plana.Api.Models
                 .HasKey(x => new { x.ModuleId, x.LecturerId });
             modelBuilder.Entity<LecturersModules>()
                 .HasOne(x => x.Lecturer)
-                .WithMany(m => m.Modules)
+                .WithMany(m => m.LecturersModules)
                 .HasForeignKey(x => x.LecturerId);
             modelBuilder.Entity<LecturersModules>()
                .HasOne(x => x.Module)

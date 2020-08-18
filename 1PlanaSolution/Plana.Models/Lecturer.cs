@@ -30,13 +30,31 @@ namespace Plana.Models
 
         // get tocken from name and surname
         public string SetTocken() {
-           Token= this.FirstName.Substring(0, 1).ToUpper() + this.LastName.Substring(0, 1).ToUpper();
-            return Token;
-        }
-        
-      // public HashSet<LecturersModules> Modules { get; set; }
+            //  Random random = new Random();
+            // var Num= random.Next(1, 100);
+            Token = this.FirstName.Substring(0, 2).ToUpper() + this.LastName.Substring(0, 2).ToUpper() + BirthDate.Day;
 
-        public ICollection<LecturersModules> Modules { get; set; }
+          return Token;
+        }
+
+        public void AddModuleRun(ModuleRun moduleRun)
+        {
+            this.AddModuleRun(moduleRun);
+            moduleRun.AddLecturer(this);
+        }
+
+        public void AddModule(LecturersModules module) {
+            LecturersModules.Add(module);
+        }
+        public void AddAdditionalAssignment(AdditionalAssignment additionalAssignment) {
+            this.AddAdditionalAssignment(additionalAssignment);
+        
+        }
+
+
+        // public HashSet<LecturersModules> Modules { get; set; }
+
+        public ICollection<LecturersModules> LecturersModules { get; set; }
         public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
         public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
 

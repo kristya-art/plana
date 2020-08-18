@@ -34,6 +34,11 @@ namespace Plana.Models
 
         public int SemesterId { get; set; } //Foreign key many-to-one
 
+        public void AddLecturer(Lecturer Lecturer) {
+            this.AddLecturer(Lecturer);
+            Lecturer.AddModuleRun(this);
+        }
+
 
     }
 }
