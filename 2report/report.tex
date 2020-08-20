@@ -163,7 +163,7 @@ KKK      &              345\\
 
 
 \section{System Architecture and System Design}
-In project 2 we have started with describing of System architecture and design. In this work we want go deeper into this topic, which is very important. \\
+In project 2 we have started with describing of System architecture and design. In this work we want go deeper into this topic. \\
 
 
 \subsection{Database and Entity Framework Core}
@@ -196,9 +196,26 @@ Lecturers to Module Run
 \subsubsection{DbContext ...}
 \subsubsection{Repositories in Entity Framework Core}
 In our project we have created a repository interfaces and implementation classes.\\
-We use IQueryable<T> and IEnumarable<T> interfaces. 
-\citep{core3}
+We use \textbf{IQueryable<T> and IEnumarable<T>} interfaces.
+With IQueryable<T> interface the objects can be queried in more efficient way.\\
+For example: \textbf{public IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;} the ModuleRuns property in the context class returns a DbSet<ModuleRun> object, which implements the IQueryable<T> interface.
+Then we have to  create the Repository Service in the Startup.cs file.\\
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm]{report_img/add_scoped_rep.JPG}
+\caption{Creating Services in Startup.cs File}
+\label{blabla}
+\end{figure}
+
+\cite{core3}
+\subsubsection{Database Migration, Code-First Migration}
+Entity Framework Core makes it possible to generate schema for the database from the data model classes using \textbf{migrations}
+\textbf{dotnet em migrations add Initial} 
+\cite{core3}
+
+\subsubsection{SeedData}
+.. needs to be done
 
 \subsubsection{Delete method in Entity Framework Core}
 By default, Entity Framework Core uses cascade deletes for depend relationships with non-nullable foreign keys. \cite{efa}

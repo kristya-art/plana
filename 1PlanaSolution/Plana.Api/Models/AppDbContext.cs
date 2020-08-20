@@ -332,14 +332,14 @@ namespace Plana.Api.Models
 
             modelBuilder.Entity<LecturersModules>()
                 .HasKey(x => new { x.ModuleId, x.LecturerId });
-            modelBuilder.Entity<LecturersModules>()
-                .HasOne(x => x.Lecturer)
-                .WithMany(m => m.LecturersModules)
-                .HasForeignKey(x => x.LecturerId);
-            modelBuilder.Entity<LecturersModules>()
-               .HasOne(x => x.Module)
-               .WithMany(e => e.Lecturers)
-               .HasForeignKey(x => x.ModuleId);
+            //modelBuilder.Entity<LecturersModules>()
+            //    .HasOne(x => x.Lecturer)
+            //    .WithMany(m => m.LecturersModules)
+            //    .HasForeignKey(x => x.LecturerId);
+            //modelBuilder.Entity<LecturersModules>()
+            //   .HasOne(x => x.Module)
+            //   .WithMany(e => e.Lecturers)
+            //   .HasForeignKey(x => x.ModuleId);
 
             /** LecturersModuleRuns */
            
@@ -348,14 +348,14 @@ namespace Plana.Api.Models
 
             modelBuilder.Entity<LecturersModuleRuns>()
                 .HasKey(x => new { x.ModuleRunId, x.LecturerId });
-            modelBuilder.Entity<LecturersModuleRuns>()
-                .HasOne(x => x.Lecturer)
-                .WithMany(m => m.LecturersModuleRuns)
-                .HasForeignKey(x => x.LecturerId);
-            modelBuilder.Entity<LecturersModuleRuns>()
-                .HasOne(x => x.ModuleRun)
-        .WithMany(e => e.LecturersMR)
-        .HasForeignKey(x => x.ModuleRunId);
+        //    modelBuilder.Entity<LecturersModuleRuns>()
+        //        .HasOne(x => x.Lecturer)
+        //        .WithMany(m => m.LecturersModuleRuns)
+        //        .HasForeignKey(x => x.LecturerId);
+        //    modelBuilder.Entity<LecturersModuleRuns>()
+        //        .HasOne(x => x.ModuleRun)
+        //.WithMany(e => e.LecturersMR)
+        //.HasForeignKey(x => x.ModuleRunId);
 
             /** Lecturer* - * Semesters  */
 
@@ -364,14 +364,14 @@ namespace Plana.Api.Models
 
             modelBuilder.Entity<LecturersSemesters>()
                 .HasKey(x => new { x.SemesterId, x.LecturerId });
-            modelBuilder.Entity<LecturersSemesters>()
-                .HasOne(x => x.Lecturer)
-                .WithMany(m => m.LecturersSemesters)
-                .HasForeignKey(x => x.LecturerId);
-            modelBuilder.Entity<LecturersSemesters>()
-                .HasOne(x => x.Semester)
-                .WithMany(e => e.LecturersSemesters)
-                .HasForeignKey(x => x.SemesterId);
+            //modelBuilder.Entity<LecturersSemesters>()
+            //    .HasOne(x => x.Lecturer)
+            //    .WithMany(m => m.LecturersSemesters)
+            //    .HasForeignKey(x => x.LecturerId);
+            //modelBuilder.Entity<LecturersSemesters>()
+            //    .HasOne(x => x.Semester)
+            //    .WithMany(e => e.LecturersSemesters)
+            //    .HasForeignKey(x => x.SemesterId);
 
 
             /** module * - * module run*/

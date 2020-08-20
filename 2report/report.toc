@@ -22,30 +22,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\nonumberline Creating database}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline DbContext ...}{4}%
+\contentsline {subsubsection}{\nonumberline DbContext ...}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Setup for Blazor}{4}%
+\contentsline {subsubsection}{\nonumberline Repositories in Entity Framework Core}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Work Plan}{4}%
+\contentsline {subsubsection}{\nonumberline Database Migration}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Effort Estimation}{4}%
+\contentsline {subsubsection}{\nonumberline SeedData}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Scrum}{5}%
+\contentsline {subsubsection}{\nonumberline Delete method in Entity Framework Core}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Roles}{5}%
+\contentsline {subsection}{\nonumberline API Controller}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Plan}{5}%
+\contentsline {subsection}{\nonumberline Setup for Blazor}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Artifacts}{5}%
+\contentsline {section}{\nonumberline Work Plan}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Sprints}{5}%
+\contentsline {subsection}{\nonumberline Effort Estimation}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Conclusions and Future Work}{9}%
+\contentsline {subsection}{\nonumberline Scrum}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Conclusions}{9}%
+\contentsline {subsubsection}{\nonumberline Scrum Roles}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Future Work}{9}%
+\contentsline {subsubsection}{\nonumberline Scrum Plan}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline References}{10}%
+\contentsline {subsubsection}{\nonumberline Scrum Artifacts}{7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Protocol}{11}%
+\contentsline {subsubsection}{\nonumberline Sprints}{7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\nonumberline Conclusions and Future Work}{10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline Conclusions}{10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\nonumberline Future Work}{10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\nonumberline References}{11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\nonumberline Protocol}{12}%

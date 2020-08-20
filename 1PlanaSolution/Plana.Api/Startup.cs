@@ -32,6 +32,8 @@ namespace Plana.Api
             options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
             services.AddScoped<ILecturerRepository, LecturerRepository>();
+            services.AddScoped<IModuleRepository, ModuleRepository>();
+            services.AddScoped<IModuleRunRepository, ModuleRunRepository>();
 
             services.AddControllers();
             

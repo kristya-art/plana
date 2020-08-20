@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200817221148_Initial")]
+    [Migration("20200820223419_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,6 +122,7 @@ namespace Plana.Api.Migrations
                             LastName = "Black",
                             PhotoPath = "images/john.jpg",
                             Role = 0,
+                            Token = "JOBL",
                             WorkingRate = 0.0
                         },
                         new
@@ -199,6 +200,13 @@ namespace Plana.Api.Migrations
                     b.HasIndex("LecturerId");
 
                     b.ToTable("LecturersModules");
+
+                    b.HasData(
+                        new
+                        {
+                            ModuleId = 1,
+                            LecturerId = 1
+                        });
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersSemesters", b =>
@@ -454,7 +462,7 @@ namespace Plana.Api.Migrations
             modelBuilder.Entity("Plana.Models.AdditionalAssignment", b =>
                 {
                     b.HasOne("Plana.Models.Lecturer", "Lecturer")
-                        .WithMany()
+                        .WithMany("AdditionalAssignments")
                         .HasForeignKey("LecturerId");
                 });
 
@@ -476,7 +484,7 @@ namespace Plana.Api.Migrations
             modelBuilder.Entity("Plana.Models.LecturersModules", b =>
                 {
                     b.HasOne("Plana.Models.Lecturer", "Lecturer")
-                        .WithMany("Modules")
+                        .WithMany("LecturersModules")
                         .HasForeignKey("LecturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
