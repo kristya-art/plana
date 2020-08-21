@@ -40,12 +40,30 @@ namespace Plana.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        //{
+        //    if (env.IsDevelopment())
+        //    {
+        //        app.UseDeveloperExceptionPage();
+        //    }
+
+        //    app.UseHttpsRedirection();
+
+        //    app.UseRouting();
+
+        //    app.UseAuthorization();
+
+        //    app.UseEndpoints(endpoints =>
+        //    {
+        //        endpoints.MapControllers();
+        //    });
+        //}
+
+        public void Configure(IApplicationBuilder app, AppDbContext context)
         {
-            if (env.IsDevelopment())
-            {
+           
                 app.UseDeveloperExceptionPage();
-            }
+            
 
             app.UseHttpsRedirection();
 
@@ -57,6 +75,7 @@ namespace Plana.Api
             {
                 endpoints.MapControllers();
             });
+            SeedData.SeedDatabase(context);
         }
     }
 }

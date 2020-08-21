@@ -182,7 +182,7 @@ namespace Plana.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LecturersModuleRuns",
+                name: "lecturersModuleRuns",
                 columns: table => new
                 {
                     LecturerId = table.Column<int>(nullable: false),
@@ -190,80 +190,20 @@ namespace Plana.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LecturersModuleRuns", x => new { x.ModuleRunId, x.LecturerId });
+                    table.PrimaryKey("PK_lecturersModuleRuns", x => new { x.ModuleRunId, x.LecturerId });
                     table.ForeignKey(
-                        name: "FK_LecturersModuleRuns_Lecturers_LecturerId",
+                        name: "FK_lecturersModuleRuns_Lecturers_LecturerId",
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
                         principalColumn: "LecturerId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LecturersModuleRuns_ModuleRuns_ModuleRunId",
+                        name: "FK_lecturersModuleRuns_ModuleRuns_ModuleRunId",
                         column: x => x.ModuleRunId,
                         principalTable: "ModuleRuns",
                         principalColumn: "ModuleRunId",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.InsertData(
-                table: "AdditionalAssignments",
-                columns: new[] { "AdditionalAssignmentId", "AAHours", "LecturerId", "Title" },
-                values: new object[,]
-                {
-                    { 1, 0.0, null, "aF&E geplant" },
-                    { 2, 0.0, null, "FB-Pool Abteilung Informatik" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Lecturers",
-                columns: new[] { "LecturerId", "ActiveTill", "BirthDate", "Email", "FirstName", "Gender", "IsActive", "IsDeleted", "LastName", "Password", "PhotoPath", "Role", "Token", "WorkingRate" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1982, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "johnblack@gmx.ch", "John", 0, false, false, "Black", null, "images/john.jpg", 0, "JOBL", 0.0 },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "manarodriges@gmx.ch", "Mana", 0, false, false, "Rodriges", null, "images/mana.jpg", 0, null, 0.0 },
-                    { 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "manarodriges@gmx.ch", "Manuela", 0, false, false, "Rodriges", null, "images/mana.jpg", 0, null, 0.0 },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1983, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "margowhite@gmx.ch", "Margo", 1, false, false, "White", null, "images/margo.jpg", 0, null, 0.0 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Modules",
-                columns: new[] { "ModuleId", "Code", "LectPerWeek", "StudyBranchId", "Title", "TotalHours" },
-                values: new object[,]
-                {
-                    { 14, "", 4, null, "Studienberatung SG I", 200.0 },
-                    { 13, "BTW2201", 4, null, "Datenbanken", 200.0 },
-                    { 12, "BTI1311", 4, null, "Databases (F)", 208.0 },
-                    { 11, "BTI1311", 4, null, "Databases (F)", 208.0 },
-                    { 10, "BTX8082", 4, null, "Software Engineering and Design", 200.0 },
-                    { 9, "BTX8081", 6, null, "Software Engineering and Design", 300.0 },
-                    { 8, "BTI7538", 2, null, "Grundlagen Geoinformationssysteme", 100.0 },
-                    { 5, "BTI7321", 0, null, "Bachelor-Thesis", 0.0 },
-                    { 6, "BTI7293", 8, null, "Smart Data-Driven Application", 516.0 },
-                    { 4, "BTI7272", 8, null, "E-Business and Web", 408.0 },
-                    { 3, "BTI7083", 4, null, "User-Centered Design", 100.0 },
-                    { 2, "BTI7302", 1, null, "Projekt 2", 25.0 },
-                    { 1, "BZG1154", 4, null, "Wahrscheinlichkeitsrechnung und Statistik", 100.0 },
-                    { 7, "BTI7512", 2, null, "Einführung in C#", 109.0 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Semesters",
-                columns: new[] { "SemesterId", "Code", "Date" },
-                values: new object[,]
-                {
-                    { 1, "2020-2021 - FS", new DateTime(2021, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, "2021-2022 - HS", new DateTime(2021, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) }
-                });
-
-            migrationBuilder.InsertData(
-                table: "LecturersModules",
-                columns: new[] { "ModuleId", "LecturerId" },
-                values: new object[] { 1, 1 });
-
-            migrationBuilder.InsertData(
-                table: "ModuleRuns",
-                columns: new[] { "ModuleRunId", "Code", "ModuleId", "ModuleRunRate", "Place", "SemesterId" },
-                values: new object[] { 2, "p", 12, 0.0, "Bern", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdditionalAssignments_LecturerId",
@@ -271,8 +211,8 @@ namespace Plana.Api.Migrations
                 column: "LecturerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LecturersModuleRuns_LecturerId",
-                table: "LecturersModuleRuns",
+                name: "IX_lecturersModuleRuns_LecturerId",
+                table: "lecturersModuleRuns",
                 column: "LecturerId");
 
             migrationBuilder.CreateIndex(
@@ -307,7 +247,7 @@ namespace Plana.Api.Migrations
                 name: "AdditionalAssignments");
 
             migrationBuilder.DropTable(
-                name: "LecturersModuleRuns");
+                name: "lecturersModuleRuns");
 
             migrationBuilder.DropTable(
                 name: "LecturersModules");

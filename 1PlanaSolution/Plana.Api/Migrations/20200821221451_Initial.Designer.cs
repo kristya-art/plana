@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200820223419_Initial")]
+    [Migration("20200821221451_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,20 +42,6 @@ namespace Plana.Api.Migrations
                     b.HasIndex("LecturerId");
 
                     b.ToTable("AdditionalAssignments");
-
-                    b.HasData(
-                        new
-                        {
-                            AdditionalAssignmentId = 1,
-                            AAHours = 0.0,
-                            Title = "aF&E geplant"
-                        },
-                        new
-                        {
-                            AdditionalAssignmentId = 2,
-                            AAHours = 0.0,
-                            Title = "FB-Pool Abteilung Informatik"
-                        });
                 });
 
             modelBuilder.Entity("Plana.Models.Lecturer", b =>
@@ -107,69 +93,6 @@ namespace Plana.Api.Migrations
                     b.HasKey("LecturerId");
 
                     b.ToTable("Lecturers");
-
-                    b.HasData(
-                        new
-                        {
-                            LecturerId = 1,
-                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            BirthDate = new DateTime(1982, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "johnblack@gmx.ch",
-                            FirstName = "John",
-                            Gender = 0,
-                            IsActive = false,
-                            IsDeleted = false,
-                            LastName = "Black",
-                            PhotoPath = "images/john.jpg",
-                            Role = 0,
-                            Token = "JOBL",
-                            WorkingRate = 0.0
-                        },
-                        new
-                        {
-                            LecturerId = 2,
-                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            BirthDate = new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "manarodriges@gmx.ch",
-                            FirstName = "Mana",
-                            Gender = 0,
-                            IsActive = false,
-                            IsDeleted = false,
-                            LastName = "Rodriges",
-                            PhotoPath = "images/mana.jpg",
-                            Role = 0,
-                            WorkingRate = 0.0
-                        },
-                        new
-                        {
-                            LecturerId = 22,
-                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            BirthDate = new DateTime(1976, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "manarodriges@gmx.ch",
-                            FirstName = "Manuela",
-                            Gender = 0,
-                            IsActive = false,
-                            IsDeleted = false,
-                            LastName = "Rodriges",
-                            PhotoPath = "images/mana.jpg",
-                            Role = 0,
-                            WorkingRate = 0.0
-                        },
-                        new
-                        {
-                            LecturerId = 3,
-                            ActiveTill = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            BirthDate = new DateTime(1983, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "margowhite@gmx.ch",
-                            FirstName = "Margo",
-                            Gender = 1,
-                            IsActive = false,
-                            IsDeleted = false,
-                            LastName = "White",
-                            PhotoPath = "images/margo.jpg",
-                            Role = 0,
-                            WorkingRate = 0.0
-                        });
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersModuleRuns", b =>
@@ -184,7 +107,7 @@ namespace Plana.Api.Migrations
 
                     b.HasIndex("LecturerId");
 
-                    b.ToTable("LecturersModuleRuns");
+                    b.ToTable("lecturersModuleRuns");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersModules", b =>
@@ -200,13 +123,6 @@ namespace Plana.Api.Migrations
                     b.HasIndex("LecturerId");
 
                     b.ToTable("LecturersModules");
-
-                    b.HasData(
-                        new
-                        {
-                            ModuleId = 1,
-                            LecturerId = 1
-                        });
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersSemesters", b =>
@@ -251,120 +167,6 @@ namespace Plana.Api.Migrations
                     b.HasIndex("StudyBranchId");
 
                     b.ToTable("Modules");
-
-                    b.HasData(
-                        new
-                        {
-                            ModuleId = 1,
-                            Code = "BZG1154",
-                            LectPerWeek = 4,
-                            Title = "Wahrscheinlichkeitsrechnung und Statistik",
-                            TotalHours = 100.0
-                        },
-                        new
-                        {
-                            ModuleId = 2,
-                            Code = "BTI7302",
-                            LectPerWeek = 1,
-                            Title = "Projekt 2",
-                            TotalHours = 25.0
-                        },
-                        new
-                        {
-                            ModuleId = 3,
-                            Code = "BTI7083",
-                            LectPerWeek = 4,
-                            Title = "User-Centered Design",
-                            TotalHours = 100.0
-                        },
-                        new
-                        {
-                            ModuleId = 4,
-                            Code = "BTI7272",
-                            LectPerWeek = 8,
-                            Title = "E-Business and Web",
-                            TotalHours = 408.0
-                        },
-                        new
-                        {
-                            ModuleId = 5,
-                            Code = "BTI7321",
-                            LectPerWeek = 0,
-                            Title = "Bachelor-Thesis",
-                            TotalHours = 0.0
-                        },
-                        new
-                        {
-                            ModuleId = 6,
-                            Code = "BTI7293",
-                            LectPerWeek = 8,
-                            Title = "Smart Data-Driven Application",
-                            TotalHours = 516.0
-                        },
-                        new
-                        {
-                            ModuleId = 7,
-                            Code = "BTI7512",
-                            LectPerWeek = 2,
-                            Title = "Einführung in C#",
-                            TotalHours = 109.0
-                        },
-                        new
-                        {
-                            ModuleId = 8,
-                            Code = "BTI7538",
-                            LectPerWeek = 2,
-                            Title = "Grundlagen Geoinformationssysteme",
-                            TotalHours = 100.0
-                        },
-                        new
-                        {
-                            ModuleId = 9,
-                            Code = "BTX8081",
-                            LectPerWeek = 6,
-                            Title = "Software Engineering and Design",
-                            TotalHours = 300.0
-                        },
-                        new
-                        {
-                            ModuleId = 10,
-                            Code = "BTX8082",
-                            LectPerWeek = 4,
-                            Title = "Software Engineering and Design",
-                            TotalHours = 200.0
-                        },
-                        new
-                        {
-                            ModuleId = 11,
-                            Code = "BTI1311",
-                            LectPerWeek = 4,
-                            Title = "Databases (F)",
-                            TotalHours = 208.0
-                        },
-                        new
-                        {
-                            ModuleId = 12,
-                            Code = "BTI1311",
-                            LectPerWeek = 4,
-                            Title = "Databases (F)",
-                            TotalHours = 208.0
-                        },
-                        new
-                        {
-                            ModuleId = 13,
-                            Code = "BTW2201",
-                            LectPerWeek = 4,
-                            Title = "Datenbanken",
-                            TotalHours = 200.0
-                        },
-                        new
-                        {
-                            ModuleId = 14,
-                            Code = "",
-                            LectPerWeek = 4,
-                            Title = "Studienberatung SG I",
-                            TotalHours = 200.0
-                        });
                 });
 
             modelBuilder.Entity("Plana.Models.ModuleRun", b =>
@@ -396,17 +198,6 @@ namespace Plana.Api.Migrations
                     b.HasIndex("SemesterId");
 
                     b.ToTable("ModuleRuns");
-
-                    b.HasData(
-                        new
-                        {
-                            ModuleRunId = 2,
-                            Code = "p",
-                            ModuleId = 12,
-                            ModuleRunRate = 0.0,
-                            Place = "Bern",
-                            SemesterId = 1
-                        });
                 });
 
             modelBuilder.Entity("Plana.Models.Semester", b =>
@@ -425,20 +216,6 @@ namespace Plana.Api.Migrations
                     b.HasKey("SemesterId");
 
                     b.ToTable("Semesters");
-
-                    b.HasData(
-                        new
-                        {
-                            SemesterId = 1,
-                            Code = "2020-2021 - FS",
-                            Date = new DateTime(2021, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            SemesterId = 2,
-                            Code = "2021-2022 - HS",
-                            Date = new DateTime(2021, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("Plana.Models.StudyBranch", b =>
