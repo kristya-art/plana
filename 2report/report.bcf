@@ -2186,9 +2186,11 @@
     <bcf:citekey order="1">eeles2005capturing</bcf:citekey>
     <bcf:citekey order="2">efa</bcf:citekey>
     <bcf:citekey order="3">ef</bcf:citekey>
-    <bcf:citekey order="4">core3</bcf:citekey>
-    <bcf:citekey order="5">core3</bcf:citekey>
-    <bcf:citekey order="6">efa</bcf:citekey>
+    <bcf:citekey order="4">efa</bcf:citekey>
+    <bcf:citekey order="5">patrick</bcf:citekey>
+    <bcf:citekey order="6">core3</bcf:citekey>
+    <bcf:citekey order="7">core3</bcf:citekey>
+    <bcf:citekey order="8">efa</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

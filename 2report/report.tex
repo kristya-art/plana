@@ -194,6 +194,55 @@ Lecturers to Module Run
 \subsection{Creating database}
 
 \subsubsection{DbContext ...}
+
+\subsubsection{many-to-many relationship }
+Creating many-to-many relationship is little bit different from the one-to-many and one-to-one.
+We will take as example relation between Lecturer and Module.\\
+
+In EF Core database doesn't directly implement this kind of relationships.
+First we have to create class Lecturer and class Module. Then we have to create one more class, we call it LecturersModules. This class links lecturers to their modules. \\
+At the LecturerModules class there are two properties, LecturerId and ModuleId. There are both - primary keys and foreign keys, known as a composite key.\cite{efa}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm]{report_img/lecturers-modules.JPG}
+\caption{The LecturersModules entity class}
+\label{blabla}
+\end{figure}
+
+ The next step  is adding necessary code to the AppDbContext class.
+The Figure 2 below shows this process. In the OnModelCreating method we have to add \textbf{modelBuilder.Entity<LectuerersModules>().HasKey(x=> new {x.LecturerId, x.ModuleId}};\\
+
+
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm]{report_img/many-to-many.JPG}
+\caption{Adding Entity LecturersModules to the AppDbContext class}
+\label{blabla}
+\end{figure}  
+We need write just this and Entity Framework Core will do the correct implementation that we can see then in the migration files. \cite{patrick}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm]{report_img/Initial.JPG}
+\caption{Initial Migration File}
+\label{blabla}
+\end{figure} 
+
+From Figure 3 we can see that one many-to-many relationship has transformed in two one-to-many and many-to-one relationships.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm]{report_img/many-to-many-tables.JPG}
+\caption{Creating Many-To-Many Relationship}
+\label{blabla}
+\end{figure}
+
+
 \subsubsection{Repositories in Entity Framework Core}
 In our project we have created a repository interfaces and implementation classes.\\
 We use \textbf{IQueryable<T> and IEnumarable<T>} interfaces.

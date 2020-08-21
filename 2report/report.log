@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  19 AUG 2020 20:09
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  21 AUG 2020 02:06
 entering extended mode
 **./report.tex
 (report.tex
@@ -1006,6 +1006,18 @@ LaTeX Info: Redefining \sffamily on input line 7.
 LaTeX Info: Redefining \ttfamily on input line 7.
 
 
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
 LaTeX Warning: Label `table2' multiply defined.
 
 
@@ -1149,71 +1161,122 @@ Underfull \hbox (badness 10000) in paragraph at lines 166--167
  []
 
 
-Overfull \hbox (1.01985pt too wide) in paragraph at lines 198--203
-\TU/lmr/bx/n/10.95 IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;
- \TU/lmr/m/n/10.95 the
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
+
  []
 
-File: images/report_img/add_scoped_rep.JPG Graphic file (type bmp)
-<images/report_img/add_scoped_rep.JPG>
+File: images/report_img/lecturers-modules.JPG Graphic file (type bmp)
+<images/report_img/lecturers-modules.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 206--209
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 209--212
+ [][] 
+ []
+
+[4]
+Overfull \hbox (42.15385pt too wide) in paragraph at lines 214--216
+\TU/lmr/bx/n/10.95 Builder.Entity<LectuerersModules>().HasKey(x=> new x.Lecture
+rId, x.ModuleId\TU/lmr/m/n/10.95 ; 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
+
+ []
+
+File: images/report_img/many-to-many.JPG Graphic file (type bmp)
+<images/report_img/many-to-many.JPG>
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 223--226
  [][] 
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation 'patrick' on page 5 undefined on input line 227.
 
+File: images/report_img/Initial.JPG Graphic file (type bmp)
+<images/report_img/Initial.JPG>
 
-LaTeX Warning: Citation 'core3' on page 4 undefined on input line 211.
-
-
-LaTeX Warning: Citation 'core3' on page 4 undefined on input line 215.
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
-
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 231--234
+ [][] 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 268--275
+File: images/report_img/many-to-many-tables.JPG Graphic file (type bmp)
+<images/report_img/many-to-many-tables.JPG>
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 240--243
+ [][] 
+ []
+
+
+Overfull \hbox (45.91495pt too wide) in paragraph at lines 247--252
+\TU/lmr/bx/n/10.95 text.ModuleRuns; \TU/lmr/m/n/10.95 the ModuleRuns property i
+n the context class returns a DbSet<ModuleRun>
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--252
+
+ []
+
+[6]
+File: images/report_img/add_scoped_rep.JPG Graphic file (type bmp)
+<images/report_img/add_scoped_rep.JPG>
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 255--258
+ [][] 
+ []
+
+
+LaTeX Warning: Citation 'core3' on page 7 undefined on input line 260.
+
+
+LaTeX Warning: Citation 'core3' on page 7 undefined on input line 264.
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
 
-Overfull \hbox (113.61484pt too wide) in paragraph at lines 310--364
- [] 
- []
+Underfull \hbox (badness 10000) in paragraph at lines 317--324
 
-[6] [7]
-Overfull \hbox (113.61484pt too wide) in paragraph at lines 373--430
- [] 
  []
 
 [8]
-Overfull \hbox (113.61484pt too wide) in paragraph at lines 439--495
+Overfull \hbox (113.61484pt too wide) in paragraph at lines 359--413
  [] 
  []
 
 [9] [10]
-Overfull \hbox (10.41129pt too wide) in paragraph at lines 514--514
+Overfull \hbox (113.61484pt too wide) in paragraph at lines 422--479
+ [] 
+ []
+
+[11]
+Overfull \hbox (113.61484pt too wide) in paragraph at lines 488--544
+ [] 
+ []
+
+[12] [13]
+Overfull \hbox (10.41129pt too wide) in paragraph at lines 563--563
 []\TU/lmr/m/n/10.95 Microsoft.com, \TU/lmr/m/it/10.95 Entity framework core\TU/
 lmr/m/n/10.95 . [Online]. Available: $[][][][][] [] [] [] [][][][] [] [][][][][
 ][][][][] []
  []
 
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 608--609
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 657--658
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 629--630
+Underfull \hbox (badness 10000) in paragraph at lines 678--679
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--633
+Underfull \hbox (badness 10000) in paragraph at lines 680--682
 
  []
 
@@ -1251,7 +1314,7 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-[12] (report.aux
+[15] (report.aux
 LaTeX Info: Redefining \rmfamily on input line 7.
 LaTeX Info: Redefining \sffamily on input line 7.
 LaTeX Info: Redefining \ttfamily on input line 7.
@@ -1275,12 +1338,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18112 strings out of 414071
- 379362 string characters out of 2898876
- 1275224 words of memory out of 3000000
- 35539 multiletter control sequences out of 15000+200000
+ 18136 strings out of 414071
+ 380168 string characters out of 2898876
+ 1272237 words of memory out of 3000000
+ 35559 multiletter control sequences out of 15000+200000
  553984 words of font info for 95 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
  47i,12n,64p,10603b,4798s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on report.pdf (12 pages).
+Output written on report.pdf (15 pages).

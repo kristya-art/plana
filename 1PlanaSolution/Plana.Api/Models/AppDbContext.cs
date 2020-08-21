@@ -17,12 +17,19 @@ namespace Plana.Api.Models
         public DbSet<AdditionalAssignment> AdditionalAssignments { get; set; }
         public DbSet<Semester> Semesters { get; set; }
         public DbSet<StudyBranch> StudyBranches { get; set; }
-      //  public DbSet<LecturersModules> lecturersModules { get; set; }
-
+     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lecturer>().HasQueryFilter(p => !p.IsDeleted);
+
+
+            modelBuilder.Entity<LecturersModules>()
+                .HasKey(x => new { x.ModuleId, x.LecturerId });
+
+
+
+
 
             base.OnModelCreating(modelBuilder);
             //seeed module table
@@ -268,22 +275,7 @@ namespace Plana.Api.Models
 
 
 
-            //modelBuilder.Entity<Lecturer>().OwnsOne(e => e.Modules).HasData(new Lecturer
-            //{
-            //    LecturerId = 3,
-            //    FirstName = "Margo",
-            //    LastName = "White",
-            //    Email = "margowhite@gmx.ch",
-            //    BirthDate = new DateTime(1983, 04, 11),
-            //    Gender = Gender.Female,
-            //    PhotoPath = "images/margo.jpg",
-            //    Modules = new HashSet<LecturersModules>() {
-            //            new LecturersModules(){ ModuleId =2},
-            //            new LecturersModules(){ ModuleId =3}
-            //        }
-
-
-            //});
+           
             modelBuilder.Entity<Lecturer>().HasData(new Lecturer
             {
                 LecturerId = 3,
@@ -330,16 +322,8 @@ namespace Plana.Api.Models
             modelBuilder.Entity<Module>()
                 .HasKey(x => x.ModuleId);
 
-            modelBuilder.Entity<LecturersModules>()
-                .HasKey(x => new { x.ModuleId, x.LecturerId });
-            //modelBuilder.Entity<LecturersModules>()
-            //    .HasOne(x => x.Lecturer)
-            //    .WithMany(m => m.LecturersModules)
-            //    .HasForeignKey(x => x.LecturerId);
-            //modelBuilder.Entity<LecturersModules>()
-            //   .HasOne(x => x.Module)
-            //   .WithMany(e => e.Lecturers)
-            //   .HasForeignKey(x => x.ModuleId);
+            
+           
 
             /** LecturersModuleRuns */
            
@@ -348,14 +332,7 @@ namespace Plana.Api.Models
 
             modelBuilder.Entity<LecturersModuleRuns>()
                 .HasKey(x => new { x.ModuleRunId, x.LecturerId });
-        //    modelBuilder.Entity<LecturersModuleRuns>()
-        //        .HasOne(x => x.Lecturer)
-        //        .WithMany(m => m.LecturersModuleRuns)
-        //        .HasForeignKey(x => x.LecturerId);
-        //    modelBuilder.Entity<LecturersModuleRuns>()
-        //        .HasOne(x => x.ModuleRun)
-        //.WithMany(e => e.LecturersMR)
-        //.HasForeignKey(x => x.ModuleRunId);
+        
 
             /** Lecturer* - * Semesters  */
 
@@ -364,14 +341,7 @@ namespace Plana.Api.Models
 
             modelBuilder.Entity<LecturersSemesters>()
                 .HasKey(x => new { x.SemesterId, x.LecturerId });
-            //modelBuilder.Entity<LecturersSemesters>()
-            //    .HasOne(x => x.Lecturer)
-            //    .WithMany(m => m.LecturersSemesters)
-            //    .HasForeignKey(x => x.LecturerId);
-            //modelBuilder.Entity<LecturersSemesters>()
-            //    .HasOne(x => x.Semester)
-            //    .WithMany(e => e.LecturersSemesters)
-            //    .HasForeignKey(x => x.SemesterId);
+            
 
 
             /** module * - * module run*/
