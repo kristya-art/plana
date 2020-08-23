@@ -2,62 +2,72 @@
 \defcounter {refsection}{0}\relax 
 \selectlanguage *{english}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Acknowledgments}{3}%
+\contentsline {section}{\nonumberline Acknowledgments}{3}{section*.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Abstract}{3}%
+\contentsline {section}{\nonumberline Abstract}{3}{section*.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Introduction}{3}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Acronyms}{3}%
+\contentsline {subsection}{\numberline {1.1}Acronyms}{3}{subsection.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Glossary}{3}%
+\contentsline {subsection}{\numberline {1.2}Glossary}{3}{subsection.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline System Architecture and System Design}{4}%
+\contentsline {section}{\numberline {2}System Architecture and System Design}{4}{section.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Database and Entity Framework Core}{4}%
+\contentsline {section}{\numberline {3}Creating the Projects}{4}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline The PLANA app's relational database}{4}%
+\contentsline {subsection}{\numberline {3.1}Structure of Projects and Folders}{4}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Modeling types of database relationships}{4}%
+\contentsline {subsection}{\numberline {3.2}Data Models}{4}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Creating database}{4}%
+\contentsline {subsection}{\numberline {3.3}Entity Framework Core Packages}{4}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline DbContext ...}{4}%
+\contentsline {subsection}{\numberline {3.4}Connection String}{4}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline many-to-many relationship}{4}%
+\contentsline {subsection}{\numberline {3.5}Creating the Database Context Class}{4}{subsection.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Repositories in Entity Framework Core}{7}%
+\contentsline {subsection}{\numberline {3.6}Entity Framework Core Configuration}{4}{subsection.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Database Migration, Code-First Migration}{7}%
+\contentsline {subsection}{\numberline {3.7}Database and Entity Framework Core}{4}{subsection.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline SeedData}{7}%
+\contentsline {subsection}{\numberline {3.8}The PLANA App's Relational Database}{4}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Delete method in Entity Framework Core}{8}%
+\contentsline {subsection}{\numberline {3.9}Modeling Types of Database Relationships}{4}{subsection.3.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline API Controller}{8}%
+\contentsline {subsection}{\numberline {3.10}Creating Database}{4}{subsection.3.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Setup for Blazor}{8}%
+\contentsline {subsection}{\numberline {3.11}Creating a Repository}{4}{subsection.3.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Work Plan}{8}%
+\contentsline {subsubsection}{\nonumberline Creating the Database Migration, Code-First Migration}{5}{subsubsection*.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Effort Estimation}{8}%
+\contentsline {subsection}{\numberline {3.12}Creating Seed Data}{5}{subsection.3.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Scrum}{8}%
+\contentsline {subsubsection}{\nonumberline Configuration of Core Services and Entity Framework}{6}{subsubsection*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Roles}{9}%
+\contentsline {subsection}{\numberline {3.13}Create an Controller}{7}{subsection.3.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Plan}{9}%
+\contentsline {subsubsection}{\nonumberline Many-to-many Relationship}{7}{subsubsection*.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Artifacts}{9}%
+\contentsline {subsection}{\numberline {3.14}Setup for Blazor}{9}{subsection.3.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Sprints}{9}%
+\contentsline {section}{\numberline {4}Work Plan}{9}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Conclusions and Future Work}{13}%
+\contentsline {subsection}{\numberline {4.1}Effort Estimation}{9}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Conclusions}{13}%
+\contentsline {subsection}{\numberline {4.2}Scrum}{9}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\nonumberline Future Work}{13}%
+\contentsline {subsubsection}{\nonumberline Scrum Roles}{10}{subsubsection*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline References}{14}%
+\contentsline {subsubsection}{\nonumberline Scrum Plan}{10}{subsubsection*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Protocol}{15}%
+\contentsline {subsubsection}{\nonumberline Scrum Artifacts}{10}{subsubsection*.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Sprints}{10}{subsubsection*.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Conclusions and Future Work}{10}{section.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}Conclusions}{10}{subsection.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Future Work}{10}{subsection.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Protocol}{11}{section.6}%

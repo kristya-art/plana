@@ -2,6 +2,8 @@
 %%\documentclass{article}
 \documentclass{scrartcl}
 
+
+%\usepackage{tocloft}  new
 \usepackage{cmap}
 \usepackage{booktabs}
 \usepackage{colortbl}
@@ -11,11 +13,14 @@
 \floatstyle{boxed} 
 \restylefloat{figure}
 
+\usepackage{caption}
+
 \usepackage{lipsum}
 
 \usepackage{kpfonts}
 
 \usepackage{polyglossia}
+\usepackage{csquotes}
 \setdefaultlanguage{english}
 %%%%%%%%%%%%%%%% for color
 \usepackage{xcolor, colortbl} 
@@ -33,6 +38,17 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
+%%%% the package and hypersetup below make pdf clickable
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\hypersetup{linktocpage}
+
 
 
 
@@ -48,8 +64,8 @@
 %\includegraphics[width = 60mm]{logo.JPG}
 \end{center}
 \textsc{\small Department of Engineering and Information Technology}\\
-\textsc{\small Bachelor's Thesis (Module ) 20}\\[1cm]
-\textsc{\small Report on  }\\
+\textsc{\small Bachelor's Thesis (BTI7321 ) Autumn Semester 2020/21}\\[1cm]
+%\textsc{\small Report on  }\\
 \textsc{"Planning of the Assignments for Lecturers(PLANA)" Web Application}}
 \date{\today}   %% or \date{01 november 2019}
 \author{\textit{Author: }Kristina \textsc{Shiryagina} (\texttt{kristina.shiryagina@bfh.ch}) \\
@@ -79,7 +95,7 @@
 \section{Abstract}
 
 
-%\setcounter{secnumdepth}{2}
+\setcounter{secnumdepth}{2}  % to make sections without numbers
 
 
 
@@ -164,14 +180,26 @@ KKK      &              345\\
 
 \section{System Architecture and System Design}
 In project 2 we have started with describing of System architecture and design. In this work we want go deeper into this topic. \\
+\section{Creating the Projects}
 
+\subsection{Structure of Projects and Folders}
+
+\subsection{Data Models}
+
+\subsection{Entity Framework Core Packages}
+
+\subsection{Connection String}
+
+\subsection{Creating the Database Context Class}
+
+\subsection{Entity Framework Core Configuration}
 
 \subsection{Database and Entity Framework Core}
 Entity Framework(EF) Core is an object-relational mapper (O /RM). It is designed to make writing code for accessing a database quick and intuitive.
 There are many good reasons to use EF Core. It supports LINQ queries, change tracking, updates, and schema migrations. EF Core works with many databases, including SQL Database, SQLite, MySQL, PostgreSQL, and Azure Cosmos DB.
 book \cite{efa} \cite{ef}
 
-\subsection{The PLANA app's relational database}
+\subsection{The PLANA App's Relational Database}
 Our database has many types of relationships we can have in EF Core. The types are:
 One-to-many: Lecturer
 Many-to-many:
@@ -189,13 +217,68 @@ Lecturers to Module Run
 
 
 
-\subsection{Modeling types of database relationships}
+\subsection{Modeling Types of Database Relationships}
 
-\subsection{Creating database}
+\subsection{Creating Database}
 
-\subsubsection{DbContext ...}
+\subsection{Creating a Repository}
 
-\subsubsection{many-to-many relationship }
+todo: photo of repository
+
+In our project we create a repository interfaces and implementation classes.\\
+We use \textbf{IQueryable<T> and IEnumarable<T>} interfaces.
+With IQueryable<T> interface the objects can be queried in more efficient way.\\
+For example: \textbf{public IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;} the ModuleRuns property in the context class returns a DbSet<ModuleRun> object, which implements the IQueryable<T> interface.
+
+...print screen of ModuleRunRepository
+
+
+
+
+Then we create the Repository Service in the Startup.cs file.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm]{report_img/add_scoped_rep.JPG}
+\caption{Creating Services in Startup.cs File}
+\label{blabla}
+\end{figure}
+
+ 
+
+\cite{core3}
+
+\subsubsection{Creating the Database Migration, Code-First Migration}
+Entity Framework Core makes it possible to generate schema for the database from the data model classes using \textbf{migrations}
+\textbf{dotnet em migrations add Initial} 
+\cite{core3}
+
+
+
+\subsection{Creating Seed Data}
+The seed data is the data that is used to populate the database. For seed data we add class SeedData.cs in the Models folder in Plana.Api project \cite{core3}.
+%\subsubsection{Delete method in Entity Framework Core}
+By default, Entity Framework Core uses cascade deletes for depend relationships with non-nullable foreign keys. \cite{efa} \\
+..add photo of seed class (give it name The contents of the SeedData.cs class \\
+\subsubsection{Configuration of Core Services and Entity Framework}
+
+It is necessary to make changes in Startup.cs class in Plana.Api project - configure Entity Framework Core and set up the services that will be used to access the database \cite{efa}.\\
+The figure below shows all these configurations.
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{%        to center the image
+  \includegraphics[keepaspectratio=true,scale=0.8]{report_img/seed-data-startup.JPG}}
+\captionof{figure}{Startup.cs in the Plana.Api project.Preparing Services and Middleware}
+%\label{visina8}%      only if needed  
+\end{minipage}
+
+
+\subsection{Create an Controller}
+
+
+
+\subsubsection{Many-to-many Relationship }
 Creating many-to-many relationship is little bit different from the one-to-many and one-to-one.
 We will take as example relation between Lecturer and Module.\\
 
@@ -211,8 +294,22 @@ At the LecturerModules class there are two properties, LecturerId and ModuleId. 
 \label{blabla}
 \end{figure}
 
- The next step  is adding necessary code to the AppDbContext class.
-The Figure 2 below shows this process. In the OnModelCreating method we have to add \textbf{modelBuilder.Entity<LectuerersModules>().HasKey(x=> new {x.LecturerId, x.ModuleId}};\\
+ The next step  is adding necessary code to the AppDbContext class. We add 
+ \begin{itemize}
+ \item \textbf{DbSet<Lecturer>} 
+ \item \textbf {DbSet<Module>}
+ \item \textbf{DbSet<LecturersModules>}
+ \end{itemize}
+ 
+ 
+ 
+The Figure 2 below shows this process. In the OnModelCreating method we add
+\begin{itemize}
+\item\textbf{modelBuilder.Entity<LectuerersModules>().HasKey(x=> new {x.LecturerId, x.ModuleId}};
+\end{itemize}
+
+
+ 
 
 
 
@@ -243,36 +340,15 @@ From Figure 3 we can see that one many-to-many relationship has transformed in t
 \end{figure}
 
 
-\subsubsection{Repositories in Entity Framework Core}
-In our project we have created a repository interfaces and implementation classes.\\
-We use \textbf{IQueryable<T> and IEnumarable<T>} interfaces.
-With IQueryable<T> interface the objects can be queried in more efficient way.\\
-For example: \textbf{public IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;} the ModuleRuns property in the context class returns a DbSet<ModuleRun> object, which implements the IQueryable<T> interface.
-Then we have to  create the Repository Service in the Startup.cs file.\\
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=150mm]{report_img/add_scoped_rep.JPG}
-\caption{Creating Services in Startup.cs File}
-\label{blabla}
-\end{figure}
 
-\cite{core3}
-\subsubsection{Database Migration, Code-First Migration}
-Entity Framework Core makes it possible to generate schema for the database from the data model classes using \textbf{migrations}
-\textbf{dotnet em migrations add Initial} 
-\cite{core3}
 
-\subsubsection{SeedData}
-The seed data is the data that is used to populate the database. For seed data we add class SeedData.cs in the Models folder in Plana.Api project.
 
-\cite{core3}
-\subsubsection{Delete method in Entity Framework Core}
-By default, Entity Framework Core uses cascade deletes for depend relationships with non-nullable foreign keys. \cite{efa}
 
-\subsection{API Controller}
 
-//maybe example of some of my controller
+
+
+
 
 
 
@@ -350,202 +426,202 @@ To use the Blazor framework it is necessary to install :\\
   		
   		\subsubsection{Sprints}
   		
-%	The sprints covered a one week period. At the end of each sprint, there was a discussion with the supervisor.
+	The sprints covered a one three-four weeks period. At the end of each sprint, there was a discussion with the supervisor.
 %
 %In Table 11 is an overview of what was achieved in which sprint.
-\textbf{Sprint's Backlog}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
-\hline
-\rowcolor{LightCyan}
-\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
-\hline
-
-1                   &        & & & trtwt      
-\begin{itemize}
-\item 
-\item
-\item
-
-
-
- \end{itemize}\\ \hline
- 
-2                &     & & &                
-\begin{itemize}
-\item 
-\item
-\item
-
-
- \end{itemize}\\ \hline
- 3                 &     & & &                  
-\begin{itemize}
-\item 
-\item
-\item
-
-
- \end{itemize}\\ \hline
- 4                  &     & & &               
-\begin{itemize}
-
-\item 
-\item
-\item
-\end{itemize}\\ \hline
- 
-  5            &     & & &                 
-\begin{itemize}
-
-\item 
-\item
-\item
-
- \end{itemize}\\ \hline
- 
-
- 
- 
-
- \end{tabular}
-\end{center}
-\caption{Sprint Backlog of Sprints}
-\label{table2}
-\end{table}
-
-\pagebreak
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
-\hline
-\rowcolor{LightCyan}
-\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
-\hline
-
-6                &     & & &        
-\begin{itemize}
-\item 
-\item
-\item
-
-
- \end{itemize}\\ \hline
- 
-  7                &     & & &                 
-\begin{itemize}
-\item 
-\item
-\item
- \end{itemize}\\ \hline
- 
-  8                 &     & & &                 
-\begin{itemize}
-\item 
-\item
-\item
-
-\end{itemize}\\ \hline
-
-  9                 &     & & &                  
-\begin{itemize}
-\item 
-\item
-\item
- 
-\end{itemize}\\ \hline
- 
-  10               &     & & &                 
-\begin{itemize}
-\item 
-\item
-\item
-
-
- \end{itemize}\\ \hline
- 
-  11                &     & & &                 
-\begin{itemize}
-\item 
-\item
-\item
-
- \end{itemize}\\ \hline
- 
- 
- \end{tabular}
-\end{center}
-\caption{Sprints}
-\label{table2}
-\end{table}
- 
- 
- \pagebreak
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
-\hline
-\rowcolor{LightCyan}
-\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
-\hline
- 
-  12               &     & & &                  
-\begin{itemize}
-\item 
-\item
-\item
- 
-
- \end{itemize}\\ \hline
- 
-  13                &     & & &                  
-\begin{itemize}
-\item 
-\item
-\item
-
-
- \end{itemize}\\ \hline
-  14               &     & & &                   
-\begin{itemize}
-\item 
-\item
-\item
-\end{itemize}\\ \hline
- 
- 15                 &     & & &                  
-\begin{itemize}
-
-\item 
-\item
-\item
-
-
- \end{itemize}\\ \hline
- 16               &     & & &                  
-\begin{itemize}
-\item 
-\item
-\item
-
-
- \end{itemize}\\ \hline
- 17               &     & & &                   
-\begin{itemize}
-\item 
-\item
-\item
-
- \end{itemize}\\ \hline
- 
-\end{tabular}
-\end{center}
-\caption{Sprints}
-\label{table2}
-\end{table}
+%\textbf{Sprint's Backlog}
+%
+%\begin{table}[H]
+%\begin{center}
+%\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
+%\hline
+%\rowcolor{LightCyan}
+%\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
+%\hline
+%
+%1                   &        & & & trtwt      
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%
+%
+% \end{itemize}\\ \hline
+% 
+%2                &     & & &                
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%
+% \end{itemize}\\ \hline
+% 3                 &     & & &                  
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%
+% \end{itemize}\\ \hline
+% 4                  &     & & &               
+%\begin{itemize}
+%
+%\item 
+%\item
+%\item
+%\end{itemize}\\ \hline
+% 
+%  5            &     & & &                 
+%\begin{itemize}
+%
+%\item 
+%\item
+%\item
+%
+% \end{itemize}\\ \hline
+% 
+%
+% 
+% 
+%
+% \end{tabular}
+%\end{center}
+%\caption{Sprint Backlog of Sprints}
+%\label{table2}
+%\end{table}
+%
+%\pagebreak
+%
+%\begin{table}[H]
+%\begin{center}
+%\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
+%\hline
+%\rowcolor{LightCyan}
+%\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
+%\hline
+%
+%6                &     & & &        
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%
+% \end{itemize}\\ \hline
+% 
+%  7                &     & & &                 
+%\begin{itemize}
+%\item 
+%\item
+%\item
+% \end{itemize}\\ \hline
+% 
+%  8                 &     & & &                 
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%\end{itemize}\\ \hline
+%
+%  9                 &     & & &                  
+%\begin{itemize}
+%\item 
+%\item
+%\item
+% 
+%\end{itemize}\\ \hline
+% 
+%  10               &     & & &                 
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%
+% \end{itemize}\\ \hline
+% 
+%  11                &     & & &                 
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+% \end{itemize}\\ \hline
+% 
+% 
+% \end{tabular}
+%\end{center}
+%\caption{Sprints}
+%\label{table2}
+%\end{table}
+% 
+% 
+% \pagebreak
+%\begin{table}[H]
+%\begin{center}
+%\begin{tabular}{| p{1cm}|p{3cm}|p{7.5cm}|p{2.5cm} |p{2.5cm} |}
+%\hline
+%\rowcolor{LightCyan}
+%\textbf{ID} & \textbf{Task Name} & \textbf{Task Description}  & \textbf{Priority} & \textbf{Status}\\
+%\hline
+% 
+%  12               &     & & &                  
+%\begin{itemize}
+%\item 
+%\item
+%\item
+% 
+%
+% \end{itemize}\\ \hline
+% 
+%  13                &     & & &                  
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%
+% \end{itemize}\\ \hline
+%  14               &     & & &                   
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%\end{itemize}\\ \hline
+% 
+% 15                 &     & & &                  
+%\begin{itemize}
+%
+%\item 
+%\item
+%\item
+%
+%
+% \end{itemize}\\ \hline
+% 16               &     & & &                  
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+%
+% \end{itemize}\\ \hline
+% 17               &     & & &                   
+%\begin{itemize}
+%\item 
+%\item
+%\item
+%
+% \end{itemize}\\ \hline
+% 
+%\end{tabular}
+%\end{center}
+%\caption{Sprints}
+%\label{table2}
+%\end{table}
 
 
 

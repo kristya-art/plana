@@ -18,7 +18,7 @@ namespace Plana.Api.Models
         public DbSet<Semester> Semesters { get; set; }
         public DbSet<StudyBranch> StudyBranches { get; set; }
         public DbSet<LecturersModules> LecturersModules { get; set; }
-     public DbSet<LecturersModuleRuns> lecturersModuleRuns { get; set; }
+     public DbSet<LecturersModuleRuns> LecturersModuleRuns { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

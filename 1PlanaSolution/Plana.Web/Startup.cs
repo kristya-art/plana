@@ -26,9 +26,7 @@ namespace Plana.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddAutoMapper(typeof(LecturerProfile));
-//            services.AddControllers().AddNewtonsoftJson(options =>
-//    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-//);
+
             services.AddHttpClient<ILecturerService,LecturerService>(client =>
                 {
                     client.BaseAddress = new Uri("https://localhost:44399/");

@@ -1,4 +1,5 @@
 ﻿using Plana.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,10 @@ namespace Plana.Api.Models
     {
         Task<IEnumerable<ModuleRun>> Search(string title, string code);
         Task<ModuleRun> GetModuleRun(int moduleRunId);
+        Task<IEnumerable<ModuleRun>> GetModuleRuns();
+        Task<ModuleRun> CreateModuleRun(ModuleRun moduleRun);
+        Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun);
+        Task<Boolean> SoftDeleteModuleRun(int moduleRunId);
 
     }
 }
