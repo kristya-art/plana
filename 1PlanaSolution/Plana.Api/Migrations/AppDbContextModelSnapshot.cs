@@ -105,7 +105,7 @@ namespace Plana.Api.Migrations
 
                     b.HasIndex("LecturerId");
 
-                    b.ToTable("lecturersModuleRuns");
+                    b.ToTable("LecturersModuleRuns");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersModules", b =>

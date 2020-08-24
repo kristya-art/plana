@@ -87,6 +87,8 @@
 
 
 
+
+
 \section{Acknowledgments}
 %%I would like to thank my project supervisor - Prof. Marcel Pfahrer for his advice and guidance. 
 %%I would also like to thank Andrei Herasimau for his corrections and Egger Samuel Sebastian for his advice.
@@ -218,66 +220,6 @@ Lecturers to Module Run
 
 
 \subsection{Modeling Types of Database Relationships}
-
-\subsection{Creating Database}
-
-\subsection{Creating a Repository}
-
-todo: photo of repository
-
-In our project we create a repository interfaces and implementation classes.\\
-We use \textbf{IQueryable<T> and IEnumarable<T>} interfaces.
-With IQueryable<T> interface the objects can be queried in more efficient way.\\
-For example: \textbf{public IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;} the ModuleRuns property in the context class returns a DbSet<ModuleRun> object, which implements the IQueryable<T> interface.
-
-...print screen of ModuleRunRepository
-
-
-
-
-Then we create the Repository Service in the Startup.cs file.\\
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=150mm]{report_img/add_scoped_rep.JPG}
-\caption{Creating Services in Startup.cs File}
-\label{blabla}
-\end{figure}
-
- 
-
-\cite{core3}
-
-\subsubsection{Creating the Database Migration, Code-First Migration}
-Entity Framework Core makes it possible to generate schema for the database from the data model classes using \textbf{migrations}
-\textbf{dotnet em migrations add Initial} 
-\cite{core3}
-
-
-
-\subsection{Creating Seed Data}
-The seed data is the data that is used to populate the database. For seed data we add class SeedData.cs in the Models folder in Plana.Api project \cite{core3}.
-%\subsubsection{Delete method in Entity Framework Core}
-By default, Entity Framework Core uses cascade deletes for depend relationships with non-nullable foreign keys. \cite{efa} \\
-..add photo of seed class (give it name The contents of the SeedData.cs class \\
-\subsubsection{Configuration of Core Services and Entity Framework}
-
-It is necessary to make changes in Startup.cs class in Plana.Api project - configure Entity Framework Core and set up the services that will be used to access the database \cite{efa}.\\
-The figure below shows all these configurations.
-
-\noindent%
-\begin{minipage}{\linewidth}% to keep image and caption on one page
-\makebox[\linewidth]{%        to center the image
-  \includegraphics[keepaspectratio=true,scale=0.8]{report_img/seed-data-startup.JPG}}
-\captionof{figure}{Startup.cs in the Plana.Api project.Preparing Services and Middleware}
-%\label{visina8}%      only if needed  
-\end{minipage}
-
-
-\subsection{Create an Controller}
-
-
-
 \subsubsection{Many-to-many Relationship }
 Creating many-to-many relationship is little bit different from the one-to-many and one-to-one.
 We will take as example relation between Lecturer and Module.\\
@@ -338,6 +280,75 @@ From Figure 3 we can see that one many-to-many relationship has transformed in t
 \caption{Creating Many-To-Many Relationship}
 \label{blabla}
 \end{figure}
+
+
+
+\subsection{Creating Database}
+\newpage
+\subsection{Creating a Repository}
+
+todo: photo of repository
+
+
+
+In our project we create a repository interfaces and implementation classes.\\
+We use \textbf{IQueryable<T> and IEnumarable<T>} interfaces.
+With IQueryable<T> interface the objects can be queried in more efficient way.\\
+For example: \textbf{public IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;} the ModuleRuns property in the context class returns a DbSet<ModuleRun> object, which implements the IQueryable<T> interface.
+
+\noindent                                                                %
+\begin{minipage}{\linewidth}                     
+\makebox[\linewidth]{                                      
+  \includegraphics[keepaspectratio=true,scale=0.9]{report_img/repo-create.JPG}}
+\captionof{figure}{The ModuleRunRepository.cs file in the Plana.Api/Models folder}
+%\label{visina8                                                      }%  only if needed  
+\end{minipage}
+
+
+\newpage
+
+Then we create the Repository Service in the Startup.cs file.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm]{report_img/add_scoped_rep.JPG}
+\caption{Creating Services in Startup.cs File}
+\label{blabla}
+\end{figure}
+
+ 
+
+\cite{core3}
+
+\subsubsection{Creating the Database Migration, Code-First Migration}
+Entity Framework Core makes it possible to generate schema for the database from the data model classes using \textbf{migrations}
+\textbf{dotnet em migrations add Initial} 
+\cite{core3}
+
+
+
+\subsection{Creating Seed Data}
+The seed data is the data that is used to populate the database. For seed data we add class SeedData.cs in the Models folder in Plana.Api project \cite{core3}.
+%\subsubsection{Delete method in Entity Framework Core}
+By default, Entity Framework Core uses cascade deletes for depend relationships with non-nullable foreign keys. \cite{efa} \\
+..add photo of seed class (give it name The contents of the SeedData.cs class \\
+\subsubsection{Configuration of Core Services and Entity Framework}
+
+It is necessary to make changes in Startup.cs class in Plana.Api project - configure Entity Framework Core and set up the services that will be used to access the database \cite{efa}.\\
+The figure below shows all these configurations.
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{%        to center the image
+  \includegraphics[keepaspectratio=true,scale=0.8]{report_img/seed-data-startup.JPG}}
+\captionof{figure}{Startup.cs in the Plana.Api project.Preparing Services and Middleware}
+%\label{visina8}%      only if needed  
+\end{minipage}
+
+
+\subsection{Create an Controller}
+
+
 
 
 

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.6.29) (format=lualatex 2020.8.5)  24 AUG 2020 00:03
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.6.29) (format=lualatex 2020.8.5)  24 AUG 2020 20:45
  restricted system commands enabled.
 **report.tex
 (./report.tex
@@ -1205,8 +1205,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip93
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 48.
-Package hyperref Info: Option `linktocpage' set `true' on input line 49.
+Package hyperref Info: Option `colorlinks' set `true' on input line 49.
+Package hyperref Info: Option `linktocpage' set `true' on input line 50.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'polyglossia' package.
 Package csquotes Info: Adjusting default style.
@@ -1232,58 +1232,58 @@ LaTeX Warning: Label `blabla' multiply defined.
 )
 \openout1 = report.aux
 
-LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 56.
-LaTeX Font Info:    Trying to load font information for OML+jkp on input line 56
+LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 57.
+LaTeX Font Info:    Trying to load font information for OML+jkp on input line 57
 .
  ("C:/Program Files/MiKTeX/tex/latex/kpfonts/omljkp.fd"
 File: omljkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 56.
-LaTeX Font Info:    Trying to load font information for OMS+jkp on input line 56
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 57.
+LaTeX Font Info:    Trying to load font information for OMS+jkp on input line 57
 .
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/omsjkp.fd"
 File: omsjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 56
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 57
 .
 
 ("C:/Program Files/MiKTeX/tex/latex/base/ts1cmr.fd"
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 56.
-LaTeX Font Info:    Trying to load font information for OMX+jkp on input line 56
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 57.
+LaTeX Font Info:    Trying to load font information for OMX+jkp on input line 57
 .
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/omxjkp.fd"
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 57.
 LaTeX Font Info:    Trying to load font information for U+jkpexa on input line 5
-6.
+7.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpexa.fd"
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-Package scrbase Info: activating english \contentsname on input line 56.
-Package scrbase Info: activating english \listfigurename on input line 56.
-Package scrbase Info: activating english \listtablename on input line 56.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+Package scrbase Info: activating english \contentsname on input line 57.
+Package scrbase Info: activating english \listfigurename on input line 57.
+Package scrbase Info: activating english \listtablename on input line 57.
 
 ("C:/Program Files/MiKTeX/tex/context/base/mkii/supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1333,10 +1333,10 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' not found.
 
 No file report.bbl.
-Package biblatex Info: Reference section=0 on input line 56.
-Package biblatex Info: Reference segment=0 on input line 56.
+Package biblatex Info: Reference section=0 on input line 57.
+Package biblatex Info: Reference segment=0 on input line 57.
 \AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring ON on input line 56.
+Package hyperref Info: Link coloring ON on input line 57.
 ("C:/Program Files/MiKTeX/tex/latex/hyperref/nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -1348,9 +1348,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count429
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
 
 (./report.out) (./report.out)
 \@outlinefile=\write4
@@ -1363,7 +1363,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 56.
+(scrartcl)           before \begin{document} on input line 57.
 
 ("C:/Program Files/MiKTeX/tex/latex/bookmark/bookmark.sty"
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
@@ -1375,39 +1375,39 @@ Package auxhook Info: \AddLineBeginMainAux comes a little late,
  168.
 \BKM@id=\count430
 ))
-LaTeX Info: Redefining \rmfamily on input line 56.
-LaTeX Info: Redefining \sffamily on input line 56.
-LaTeX Info: Redefining \ttfamily on input line 56.
+LaTeX Info: Redefining \rmfamily on input line 57.
+LaTeX Info: Redefining \sffamily on input line 57.
+LaTeX Info: Redefining \ttfamily on input line 57.
 
 
 LaTeX Font Warning: Font shape `TU/lmss/bx/sc' undefined
-(Font)              using `TU/lmss/bx/n' instead on input line 75.
+(Font)              using `TU/lmss/bx/n' instead on input line 76.
 
-LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 75
+LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 76
 .
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ot1jkp.fd"
 File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 )
 LaTeX Font Info:    Trying to load font information for U+jkpmia on input line 7
-5.
+6.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpmia.fd"
 File: ujkpmia.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsya on input line 7
-5.
+6.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpsya.fd"
 File: ujkpsya.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsyb on input line 7
-5.
+6.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpsyb.fd"
 File: ujkpsyb.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsyc on input line 7
-5.
+6.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpsyc.fd"
 File: ujkpsyc.fd 2006/08/15 v1.0
@@ -1425,157 +1425,170 @@ LaTeX Info: Redefining \ttfamily on input line 3.
  [2]
 
 LaTeX Warning: Citation 'eeles2005capturing' on page 3 undefined on input line 1
-46.
+49.
 
 [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 4 undefined on input line 199.
+LaTeX Warning: Citation 'efa' on page 4 undefined on input line 202.
 
 
-LaTeX Warning: Citation 'ef' on page 4 undefined on input line 199.
+LaTeX Warning: Citation 'ef' on page 4 undefined on input line 202.
 
 
-Overfull \hbox (7.11903pt too wide) in paragraph at lines 227--231
+Underfull \hbox (badness 10000) in paragraph at lines 224--226
+
+ []
+
+
+LaTeX Warning: Citation 'efa' on page 4 undefined on input line 229.
+
+[4]
+<images/report_img/lecturers-modules.JPG, id=103, 423.08063pt x 219.06844pt>
+File: images/report_img/lecturers-modules.JPG Graphic file (type jpg)
+<use images/report_img/lecturers-modules.JPG>
+Package luatex.def Info: images/report_img/lecturers-modules.JPG  used on input 
+line 234.
+(luatex.def)             Requested size: 426.79134pt x 220.99663pt.
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 234--235
+ [][] 
+ []
+
+<images/report_img/many-to-many.JPG, id=104, 857.45343pt x 339.51843pt>
+File: images/report_img/many-to-many.JPG Graphic file (type jpg)
+<use images/report_img/many-to-many.JPG>
+Package luatex.def Info: images/report_img/many-to-many.JPG  used on input line 
+262.
+(luatex.def)             Requested size: 426.79134pt x 168.99205pt.
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 262--263
+ [][] 
+ []
+
+[5<./images/report_img/lecturers-modules.JPG>]
+
+LaTeX Warning: Citation 'patrick' on page 6 undefined on input line 266.
+
+<images/report_img/Initial.JPG, id=110, 611.28375pt x 313.5464pt>
+File: images/report_img/Initial.JPG Graphic file (type jpg)
+<use images/report_img/Initial.JPG>
+Package luatex.def Info: images/report_img/Initial.JPG  used on input line 270.
+(luatex.def)             Requested size: 426.79134pt x 218.91165pt.
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 270--271
+ [][] 
+ []
+
+<images/report_img/many-to-many-tables.JPG, id=111, 728.7225pt x 348.17578pt>
+File: images/report_img/many-to-many-tables.JPG Graphic file (type jpg)
+<use images/report_img/many-to-many-tables.JPG>
+Package luatex.def Info: images/report_img/many-to-many-tables.JPG  used on inpu
+t line 279.
+(luatex.def)             Requested size: 426.79134pt x 203.9131pt.
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 279--280
+ [][] 
+ []
+
+[6<./images/report_img/many-to-many.JPG><./images/report_img/Initial.JPG>]
+[7<./images/report_img/many-to-many-tables.JPG>]
+Overfull \hbox (7.11903pt too wide) in paragraph at lines 294--298
 \TU/lmr/bx/n/10.95 text.Mod-uleRuns; \TU/lmr/m/n/10.95 the Mod-uleRuns prop-erty
  in the con-text class re-turns a Db-Set<Mod-
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
+<images/report_img/repo-create.JPG, id=123, 505.13719pt x 253.69781pt>
+File: images/report_img/repo-create.JPG Graphic file (type jpg)
+<use images/report_img/repo-create.JPG>
+Package luatex.def Info: images/report_img/repo-create.JPG  used on input line 3
+02.
+(luatex.def)             Requested size: 454.61926pt x 228.32591pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 303.
+See the caption package documentation for explanation.
+
+[8<./images/report_img/repo-create.JPG>]
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
 
  []
 
-<images/report_img/add_scoped_rep.JPG, id=102, 465.61453pt x 315.80484pt>
+<images/report_img/add_scoped_rep.JPG, id=129, 465.61453pt x 315.80484pt>
 File: images/report_img/add_scoped_rep.JPG Graphic file (type jpg)
 <use images/report_img/add_scoped_rep.JPG>
 Package luatex.def Info: images/report_img/add_scoped_rep.JPG  used on input lin
-e 241.
+e 314.
 (luatex.def)             Requested size: 426.79134pt x 289.48384pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 241--242
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 314--315
  [][] 
  []
 
 
-LaTeX Warning: Citation 'core3' on page 5 undefined on input line 248.
+LaTeX Warning: Citation 'core3' on page 9 undefined on input line 321.
 
 
-LaTeX Warning: Citation 'core3' on page 5 undefined on input line 253.
+LaTeX Warning: Citation 'core3' on page 9 undefined on input line 326.
 
 
-LaTeX Warning: Citation 'core3' on page 5 undefined on input line 258.
+LaTeX Warning: Citation 'core3' on page 9 undefined on input line 331.
 
 
-LaTeX Warning: Citation 'efa' on page 5 undefined on input line 260.
+LaTeX Warning: Citation 'efa' on page 9 undefined on input line 333.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--262
+Underfull \hbox (badness 10000) in paragraph at lines 331--335
 
  []
 
-[5<./images/report_img/add_scoped_rep.JPG>]
 
-LaTeX Warning: Citation 'efa' on page 6 undefined on input line 264.
+LaTeX Warning: Citation 'efa' on page 9 undefined on input line 337.
 
-<images/report_img/seed-data-startup.JPG, id=109, 513.04172pt x 496.10344pt>
+[9<./images/report_img/add_scoped_rep.JPG>]
+<images/report_img/seed-data-startup.JPG, id=136, 513.04172pt x 496.10344pt>
 File: images/report_img/seed-data-startup.JPG Graphic file (type jpg)
 <use images/report_img/seed-data-startup.JPG>
 Package luatex.def Info: images/report_img/seed-data-startup.JPG  used on input 
-line 270.
+line 343.
 (luatex.def)             Requested size: 410.43391pt x 396.88329pt.
 
+
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 271.
+(caption)                particular \caption on input line 344.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--283
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
  []
 
-[6<./images/report_img/seed-data-startup.JPG>]
+[10<./images/report_img/seed-data-startup.JPG>]
+Underfull \hbox (badness 10000) in paragraph at lines 405--412
 
-LaTeX Warning: Citation 'efa' on page 7 undefined on input line 286.
-
-<images/report_img/lecturers-modules.JPG, id=116, 423.08063pt x 219.06844pt>
-File: images/report_img/lecturers-modules.JPG Graphic file (type jpg)
-<use images/report_img/lecturers-modules.JPG>
-Package luatex.def Info: images/report_img/lecturers-modules.JPG  used on input 
-line 291.
-(luatex.def)             Requested size: 426.79134pt x 220.99663pt.
-
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 291--292
- [][] 
  []
 
-<images/report_img/many-to-many.JPG, id=117, 857.45343pt x 339.51843pt>
-File: images/report_img/many-to-many.JPG Graphic file (type jpg)
-<use images/report_img/many-to-many.JPG>
-Package luatex.def Info: images/report_img/many-to-many.JPG  used on input line 
-319.
-(luatex.def)             Requested size: 426.79134pt x 168.99205pt.
+[11] [12]
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 319--320
- [][] 
- []
+LaTeX Warning: Empty bibliography on input line 651.
 
-[7<./images/report_img/lecturers-modules.JPG>]
 
-LaTeX Warning: Citation 'patrick' on page 8 undefined on input line 323.
-
-<images/report_img/Initial.JPG, id=124, 611.28375pt x 313.5464pt>
-File: images/report_img/Initial.JPG Graphic file (type jpg)
-<use images/report_img/Initial.JPG>
-Package luatex.def Info: images/report_img/Initial.JPG  used on input line 327.
-(luatex.def)             Requested size: 426.79134pt x 218.91165pt.
-
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 327--328
- [][] 
- []
-
-<images/report_img/many-to-many-tables.JPG, id=125, 728.7225pt x 348.17578pt>
-File: images/report_img/many-to-many-tables.JPG Graphic file (type jpg)
-<use images/report_img/many-to-many-tables.JPG>
-Package luatex.def Info: images/report_img/many-to-many-tables.JPG  used on inpu
-t line 336.
-(luatex.def)             Requested size: 426.79134pt x 203.9131pt.
-
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 336--337
- [][] 
- []
-
-[8<./images/report_img/many-to-many.JPG><./images/report_img/Initial.JPG>]
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
+Underfull \hbox (badness 10000) in paragraph at lines 745--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 393--400
-
- []
-
-[9<./images/report_img/many-to-many-tables.JPG>] [10]
-
-LaTeX Warning: Empty bibliography on input line 639.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 733--734
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 754--755
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 756--758
+Underfull \hbox (badness 10000) in paragraph at lines 768--770
 
  []
 
@@ -1613,16 +1626,16 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 767.
-[11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 767.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 779.
+[13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 779.
  (./report.aux
 LaTeX Info: Redefining \rmfamily on input line 25.
 LaTeX Info: Redefining \sffamily on input line 25.
 LaTeX Info: Redefining \ttfamily on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 767.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 767.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 779.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 779.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1646,13 +1659,13 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 28052 strings out of 480878
+ 28069 strings out of 480878
  100000,1648299 words of node,token memory allocated
  598 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 74 glue_spec,
  7 attribute_list, 1 write nodes
-   avail lists: 1:4,2:1144,3:247,4:166,5:166,6:72,7:2149,8:49,9:237,10:8,11:150
- 44736 multiletter control sequences out of 65536+200000
+   avail lists: 1:4,2:1144,3:247,4:166,5:170,6:72,7:2505,8:52,9:237,10:8,11:158
+ 44741 multiletter control sequences out of 65536+200000
  105 fonts using 9386163 bytes
  47i,11n,77p,10600b,1955s stack positions out of 5000i,500n,10000p,200000b,50000s
 <//?/c:/program files/miktex/fonts/opentype/public/lm/lmroman10-bolditalic.otf><
@@ -1664,9 +1677,9 @@ miktex/fonts/opentype/public/lm/lmromancaps10-regular.otf><//?/c:/program files/
 miktex/fonts/opentype/public/lm/lmroman12-regular.otf><//?/c:/program files/mikt
 ex/fonts/opentype/public/lm/lmroman12-italic.otf><//?/c:/program files/miktex/fo
 nts/opentype/public/lm/lmsans10-bold.otf>
-Output written on report.pdf (11 pages, 915538 bytes).
+Output written on report.pdf (13 pages, 996430 bytes).
 
-PDF statistics: 321 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 131072)
+PDF statistics: 333 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 131072)
  281 words of extra memory for PDF output out of 10000 (max. 100000000)
 

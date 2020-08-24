@@ -182,7 +182,7 @@ namespace Plana.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "lecturersModuleRuns",
+                name: "LecturersModuleRuns",
                 columns: table => new
                 {
                     LecturerId = table.Column<int>(nullable: false),
@@ -190,15 +190,15 @@ namespace Plana.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_lecturersModuleRuns", x => new { x.ModuleRunId, x.LecturerId });
+                    table.PrimaryKey("PK_LecturersModuleRuns", x => new { x.ModuleRunId, x.LecturerId });
                     table.ForeignKey(
-                        name: "FK_lecturersModuleRuns_Lecturers_LecturerId",
+                        name: "FK_LecturersModuleRuns_Lecturers_LecturerId",
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
                         principalColumn: "LecturerId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_lecturersModuleRuns_ModuleRuns_ModuleRunId",
+                        name: "FK_LecturersModuleRuns_ModuleRuns_ModuleRunId",
                         column: x => x.ModuleRunId,
                         principalTable: "ModuleRuns",
                         principalColumn: "ModuleRunId",
@@ -211,8 +211,8 @@ namespace Plana.Api.Migrations
                 column: "LecturerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_lecturersModuleRuns_LecturerId",
-                table: "lecturersModuleRuns",
+                name: "IX_LecturersModuleRuns_LecturerId",
+                table: "LecturersModuleRuns",
                 column: "LecturerId");
 
             migrationBuilder.CreateIndex(
@@ -247,7 +247,7 @@ namespace Plana.Api.Migrations
                 name: "AdditionalAssignments");
 
             migrationBuilder.DropTable(
-                name: "lecturersModuleRuns");
+                name: "LecturersModuleRuns");
 
             migrationBuilder.DropTable(
                 name: "LecturersModules");

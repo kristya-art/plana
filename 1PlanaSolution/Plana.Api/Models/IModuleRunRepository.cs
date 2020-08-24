@@ -8,12 +8,15 @@ namespace Plana.Api.Models
 {
     public interface IModuleRunRepository
     {
-        Task<IEnumerable<ModuleRun>> Search(string title, string code);
+        Task<IEnumerable<ModuleRun>> Search(Semester semester, string code);
         Task<ModuleRun> GetModuleRun(int moduleRunId);
         Task<IEnumerable<ModuleRun>> GetModuleRuns();
         Task<ModuleRun> CreateModuleRun(ModuleRun moduleRun);
         Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun);
         Task<Boolean> SoftDeleteModuleRun(int moduleRunId);
+        Task<Boolean> DeleteModuleRun(int moduleRunId);
+        
+       
 
     }
 }

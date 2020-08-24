@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200821221451_Initial")]
+    [Migration("20200824223541_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,7 @@ namespace Plana.Api.Migrations
 
                     b.HasIndex("LecturerId");
 
-                    b.ToTable("lecturersModuleRuns");
+                    b.ToTable("LecturersModuleRuns");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersModules", b =>

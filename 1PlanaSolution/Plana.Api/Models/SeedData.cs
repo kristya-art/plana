@@ -15,7 +15,8 @@ namespace Plana.Api.Models
         public static void SeedDatabase(AppDbContext context) 
         {
             context.Database.Migrate();
-            if (context.Lecturers.Count() == 0 && context.Modules.Count() == 0 && context.ModuleRuns.Count() == 0) 
+            if (context.Lecturers.Count() == 0 && context.Modules.Count() == 0 && context.ModuleRuns.Count() == 0 && 
+                context.Semesters.Count() ==0) 
             {
                 Module m1 = new Module
                 {
@@ -149,6 +150,8 @@ namespace Plana.Api.Models
                 context.Modules.AddRange(m1, m2, m3, m4,
                     m5, m6, m7, m8, m9, m10, m11, m12, m13);
                 context.SaveChanges();
+
+
                 /**
                  * seed data for lecturersmodules
                  */
@@ -157,6 +160,8 @@ namespace Plana.Api.Models
                     Module = m1
                 };
                 context.SaveChanges();
+
+
 
            //     context.LecturersModules.AddRange(lm1);
                 context.SaveChanges();
@@ -185,6 +190,38 @@ namespace Plana.Api.Models
                 }
 
                 ) ;
+                context.SaveChanges();
+                //seed data for semester 
+
+                
+                 Semester s1 = new Semester
+                {
+                    Code = "2020-2021 - FS",
+                    Date = new DateTime(2021, 02, 15),
+
+                };
+                Semester s2 = new Semester
+                {
+                    Code = "2021-2022 - HS",
+                    Date = new DateTime(2021, 08, 15)
+
+                };
+
+                context.Semesters.AddRange(s1,s2);
+                context.SaveChanges();
+
+                // seed data for module runs
+                ModuleRun mr1 = new ModuleRun
+                {
+                    Semester = s1,
+                    Module = m1,
+                    Code = "p"
+
+
+
+                };
+
+                context.ModuleRuns.AddRange(mr1);
                 context.SaveChanges();
 
 
