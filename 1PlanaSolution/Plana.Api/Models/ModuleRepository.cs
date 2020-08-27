@@ -64,7 +64,7 @@ namespace Plana.Api.Models
             }
             if (code != null)
             {
-                query = query.Where(e => e.Code == code);
+                query = query.Where(e => e.Code.Contains(code));
             }
             return await query.ToListAsync();
         }

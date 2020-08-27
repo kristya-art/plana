@@ -7,6 +7,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using System.Collections;
+using System.Runtime.InteropServices.ComTypes;
+using System.ComponentModel.Design.Serialization;
 
 namespace Plana.Api.Models
 {
@@ -15,22 +17,27 @@ namespace Plana.Api.Models
         public static void SeedDatabase(AppDbContext context) 
         {
             context.Database.Migrate();
-            if (context.Lecturers.Count() == 0 && context.Modules.Count() == 0 && context.ModuleRuns.Count() == 0 && 
-                context.Semesters.Count() ==0) 
+            if (context.Lecturers.Count() == 0 && context.Modules.Count() == 0 && context.ModuleRuns.Count() == 0 &&
+                context.Semesters.Count() == 0)
             {
+                ICollection<ModuleRun> mrcol = new List<ModuleRun>();
+
+            //seed data for muldule
                 Module m1 = new Module
                 {
-                  //  ModuleId = 2,
+                    //  ModuleId = 2,
                     Title = "Projekt 2",
                     Code = "BTI7302",
                     ECTS = 4,
                     LectPerWeek = 1,
-                    TotalHours = 25
+                    TotalHours = 25,
+                    ModuleRuns = mrcol
+
                 };
                 Module m2 = new Module
                 {
 
-                 //   ModuleId = 3,
+                    //   ModuleId = 3,
                     Title = "User-Centered Design",
                     Code = "BTI7083",
                     ECTS = 4,
@@ -39,7 +46,7 @@ namespace Plana.Api.Models
                 };
                 Module m3 = new Module
                 {
-                  //  ModuleId = 4,
+                    //  ModuleId = 4,
                     Title = "E-Business and Web",
                     Code = "BTI7272",
                     ECTS = 8,
@@ -48,7 +55,7 @@ namespace Plana.Api.Models
                 };
                 Module m4 = new Module
                 {
-                   // ModuleId = 5,
+                    // ModuleId = 5,
                     Title = "Bachelor-Thesis",
                     Code = "BTI7321",
                     ECTS = 12,
@@ -57,7 +64,7 @@ namespace Plana.Api.Models
                 };
                 Module m5 = new Module
                 {
-                  //  ModuleId = 6,
+                    //  ModuleId = 6,
                     Title = "Smart Data-Driven Application",
                     Code = "BTI7293",
                     ECTS = 8,
@@ -67,7 +74,7 @@ namespace Plana.Api.Models
 
                 Module m6 = new Module
                 {
-                  //  ModuleId = 7,
+                    //  ModuleId = 7,
                     Title = "Einführung in C#",
                     Code = "BTI7512",
                     ECTS = 2,
@@ -77,7 +84,7 @@ namespace Plana.Api.Models
                 Module m7 =
                 new Module
                 {
-                   // ModuleId = 8,
+                    // ModuleId = 8,
                     Title = "Grundlagen Geoinformationssysteme",
                     Code = "BTI7538",
                     ECTS = 2,
@@ -88,7 +95,7 @@ namespace Plana.Api.Models
                 Module m8 =
                     new Module
                     {
-                      //  ModuleId = 9,
+                        //  ModuleId = 9,
                         Title = "Software Engineering and Design",
                         Code = "BTX8081",
                         ECTS = 8,
@@ -99,7 +106,7 @@ namespace Plana.Api.Models
                 Module m9 =
                     new Module
                     {
-                       // ModuleId = 10,
+                        // ModuleId = 10,
                         Title = "Software Engineering and Design",
                         Code = "BTX8082",
                         ECTS = 4,
@@ -109,7 +116,7 @@ namespace Plana.Api.Models
                 Module m10 =
                    new Module
                    {
-                      // ModuleId = 11,
+                       // ModuleId = 11,
                        Title = "Databases (F)",
                        Code = "BTI1311",
                        ECTS = 4,
@@ -119,7 +126,7 @@ namespace Plana.Api.Models
                 Module m11 =
                      new Module
                      {
-                      //   ModuleId = 12,
+                         //   ModuleId = 12,
                          Title = "Databases (F)",
                          Code = "BTI1311",
                          ECTS = 4,
@@ -129,7 +136,7 @@ namespace Plana.Api.Models
                 Module m12 =
                      new Module
                      {
-                       //  ModuleId = 13,
+                         //  ModuleId = 13,
                          Title = "Datenbanken",
                          Code = "BTW2201",
                          ECTS = 4,
@@ -139,7 +146,7 @@ namespace Plana.Api.Models
                 Module m13 =
                     new Module
                     {
-                       // ModuleId = 14,
+                        // ModuleId = 14,
                         Title = "Studienberatung SG I",
                         Code = "",
                         ECTS = 0,
@@ -155,46 +162,205 @@ namespace Plana.Api.Models
                 /**
                  * seed data for lecturersmodules
                  */
-                LecturersModules lm1 = new LecturersModules
-                {
-                    Module = m1
-                };
+                //LecturersModules lm1 = new LecturersModules
+                //{
+                //    Module = m1
+                //};
+                //context.SaveChanges();
+
+
+
+              
+
+                //ICollection<LecturersModules> iclm = new List<LecturersModules>();
+
+                //iclm.Add(lm1);
+                //context.SaveChanges();
+
+                context.Lecturers.AddRange(
+
+                    new Lecturer
+                    {
+                        //  LecturerId = 3,
+                        FirstName = "Margo",
+                        LastName = "White",
+                        Email = "margowhite@gmx.ch",
+                        BirthDate = new DateTime(1983, 04, 11),
+                        Gender = Gender.Female,
+                        PhotoPath = "images/margo.jpg",
+                        IsDeleted = false,
+                        // LecturersModules = iclm
+                    },
+                     new Lecturer
+                     {
+                         //  LecturerId = 3,
+                         FirstName = "Rosita",
+                         LastName = "Penni",
+                         Email = "rp@gmx.ch",
+                         BirthDate = new DateTime(1982, 02, 01),
+                         Gender = Gender.Female,
+                         PhotoPath = "images/rosita.png",
+                         IsDeleted = false,
+                         // LecturersModules = iclm
+                     },
+                     new Lecturer
+                     {
+                         //  LecturerId = 3,
+                         FirstName = "Masha",
+                         LastName = "Glizina",
+                         Email = "mg@gmx.ch",
+                         BirthDate = new DateTime(1990, 01, 01),
+                         Gender = Gender.Female,
+                         PhotoPath = "images/masha.jpg",
+                         IsDeleted = false,
+                         // LecturersModules = iclm
+                     },
+                     new Lecturer
+                     {
+                         //  LecturerId = 3,
+                         FirstName = "Lolita",
+                         LastName = "Baum",
+                         Email = "lb@gmx.ch",
+                         BirthDate = new DateTime(1975, 06, 07),
+                         Gender = Gender.Female,
+                         PhotoPath = "images/lolita.jpg",
+                         IsDeleted = false,
+                         // LecturersModules = iclm
+                     },
+                     new Lecturer
+                     {
+                         
+                         FirstName = "Bob",
+                         LastName = "Pelle",
+                         Email = "bp@gmx.ch",
+                         BirthDate = new DateTime(1989, 02, 01),
+                         Gender = Gender.Male,
+                         PhotoPath = "images/bob.png",
+                         IsDeleted = false,
+                         
+                     },
+                       new Lecturer
+                       {
+
+                           FirstName = "Bombo",
+                           LastName = "Park",
+                           Email = "bp@gmx.ch",
+                           BirthDate = new DateTime(1988, 08, 15),
+                           Gender = Gender.Male,
+                           PhotoPath = "images/bombo.jpg",
+                           IsDeleted = false,
+
+                       },
+                         new Lecturer
+                         {
+
+                             FirstName = "Christopher",
+                             LastName = "Moser",
+                             Email = "cm@gmx.ch",
+                             BirthDate = new DateTime(1996, 09, 01),
+                             Gender = Gender.Male,
+                             PhotoPath = "images/christopher.png",
+                             IsDeleted = false,
+
+                         },
+                           new Lecturer
+                           {
+
+                               FirstName = "Alic",
+                               LastName = "Boldwin",
+                               Email = "ab@gmx.ch",
+                               BirthDate = new DateTime(1956, 03, 14),
+                               Gender = Gender.Male,
+                               PhotoPath = "images/alic.jpg",
+                               IsDeleted = false,
+
+                           },
+                     new Lecturer
+                     {
+                        
+                         FirstName = "Mihail",
+                         LastName = "Patapovic",
+                         Email = "mp@gmx.ch",
+                         BirthDate = new DateTime(1983, 06, 12),
+                         Gender = Gender.Male,
+                         PhotoPath = "images/mihail.jpg",
+                         IsDeleted = false,
+                         // LecturersModules = iclm
+                     },
+                       new Lecturer
+                       {
+
+                           FirstName = "Kai",
+                           LastName = "Bublik",
+                           Email = "kb@gmx.ch",
+                           BirthDate = new DateTime(1965, 02, 01),
+                           Gender = Gender.Male,
+                           PhotoPath = "images/Kai.jpg",
+                           IsDeleted = false,
+
+                       }
+
+                    );
                 context.SaveChanges();
 
 
 
-           //     context.LecturersModules.AddRange(lm1);
-                context.SaveChanges();
 
-            ICollection<LecturersModules> ic = new List<LecturersModules>();
-            ic.Add(lm1);
-            context.SaveChanges();
 
-            context.Lecturers.AddRange(
-
-                new Lecturer
+                Lecturer l2 = new Lecturer
                 {
-                    //  LecturerId = 3,
-                    FirstName = "Margo",
+                    FirstName = "Mike",
                     LastName = "White",
-                    Email = "margowhite@gmx.ch",
+                    Email = "mikewhite@gmx.ch",
                     BirthDate = new DateTime(1983, 04, 11),
                     Gender = Gender.Female,
-                    PhotoPath = "images/margo.jpg",
+                    PhotoPath = "images/mike.jpg",
                     IsDeleted = false,
-                    LecturersModules = ic
+                   // LecturersModules = iclm
+                };
 
+                // try to make seed data in other way
 
+                var lecturer = new Lecturer
+                {
+                    FirstName = "Michele",
+                    LastName = "Orsi",
+                    Email = "mo@gmx.ch",
+                    BirthDate = new DateTime(1986, 05, 11),
+                    Gender = Gender.Male,
+                    PhotoPath = "images/michele.jpg",
+                    IsDeleted = false,
+                };
+                var module = new Module
+                {
+                    Title = "Computer Science Basics",
+                    Code = "BTI1021",
+                    ECTS = 4,
+                    LectPerWeek = 4,
+                    TotalHours = 200
+                };
 
+                lecturer.LecturersModules = new List<LecturersModules>
+                {
+                    new LecturersModules
+                    {
+                        Lecturer = lecturer,
+                        Module = module
+                    }
+                };
+                //now add this lecturer, with all its relationships, to the database
+                //  context.Lecturers.Add(lecturer);
+                //   context.SaveChanges();
 
-                }
-
-                ) ;
+                context.Lecturers.AddRange(lecturer, l2);
                 context.SaveChanges();
-                //seed data for semester 
+                //   context.Lecturers.Add(l2);
+                //   context.SaveChanges();
 
-                
-                 Semester s1 = new Semester
+
+
+                //seed data for semester 
+                Semester s1 = new Semester
                 {
                     Code = "2020-2021 - FS",
                     Date = new DateTime(2021, 02, 15),
@@ -210,25 +376,23 @@ namespace Plana.Api.Models
                 context.Semesters.AddRange(s1,s2);
                 context.SaveChanges();
 
-                // seed data for module runs
-                ModuleRun mr1 = new ModuleRun
+            
+
+
+                ModuleRun mr2 = new ModuleRun
                 {
-                    Semester = s1,
-                    Module = m1,
-                    Code = "p"
-
-
+                    Code = "a",
+                    ModuleId = context.Modules.Single(s => s.Code == "BTI7302").ModuleId,
+                    SemesterId = context.Semesters.Single(b => b.Code == "2021-2022 - HS").SemesterId
 
                 };
-
-                context.ModuleRuns.AddRange(mr1);
+                context.ModuleRuns.AddRange(mr2);
                 context.SaveChanges();
 
-
+                mrcol.Add(mr2);
+                context.SaveChanges();
 
                
-
-
             }
         
         

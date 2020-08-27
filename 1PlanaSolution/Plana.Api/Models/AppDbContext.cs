@@ -293,28 +293,7 @@ namespace Plana.Api.Models
             //  new ModuleRun { ModuleRunId=2, Code = "p" , SemesterId=1, ModuleId =12, Place ="Bern"}
             //   );
 
-            //base.OnModelCreating(modelBuilder);
-
-
-
-
-
-
-
-            //modelBuilder.Entity<Lecturer>().HasData(new Lecturer
-            //{
-            //    LecturerId = 3,
-            //    FirstName = "Margo",
-            //    LastName = "White",
-            //    Email = "margowhite@gmx.ch",
-            //    BirthDate = new DateTime(1983, 04, 11),
-            //    Gender = Gender.Female,
-            //    PhotoPath = "images/margo.jpg",
-            //    IsDeleted = false
-
-
-
-            //});
+            
 
             //modelBuilder.Entity<LecturersModules>().HasData(new LecturersModules
 

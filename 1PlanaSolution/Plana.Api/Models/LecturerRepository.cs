@@ -17,6 +17,9 @@ namespace Plana.Api.Models
             this.appDbContext = appDbContext;
         }
 
+        public  IEnumerable<Lecturer> Teachers =>
+            appDbContext.Lecturers.Include(m => m.LecturersModules).ThenInclude(mo => mo.Module);
+
         public async Task<Lecturer> AddLecturer(Lecturer lecturer)
         {
             var result = await appDbContext.Lecturers.AddAsync(lecturer);
@@ -69,8 +72,8 @@ namespace Plana.Api.Models
 
         public async Task<IEnumerable<Lecturer>> GetLecturers()
         {
-            return await appDbContext.Lecturers.ToListAsync();
-
+              return await appDbContext.Lecturers.ToListAsync();
+            
         }
 
         public async Task<IEnumerable<Lecturer>> Search(string name, Gender? gender)
@@ -116,6 +119,13 @@ namespace Plana.Api.Models
 
             return null;
                
+        }
+
+        public async Task<IEnumerable<Lecturer>> GetLecturersModules()
+        {
+            return await appDbContext.Lecturers
+                .Include(m => m.LecturersModules)
+                .ThenInclude(mo => mo.Module).ToListAsync();
         }
     }
 }

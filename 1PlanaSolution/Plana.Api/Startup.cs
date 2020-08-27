@@ -25,6 +25,9 @@ namespace Plana.Api
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleRunRepository, ModuleRunRepository>();
             services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
         }
 
         public void Configure(IApplicationBuilder app, AppDbContext context)

@@ -21,25 +21,44 @@ namespace Plana.Api.Controllers
             this.moduleRunRepository = moduleRunRepository;
 
         }
-        [HttpGet("{search}")]
-        public async Task<ActionResult<IEnumerable<ModuleRun>>> Search(Semester semester, string code)
-        {
-            try
-            {
-                var result = await moduleRunRepository.Search(semester, code);
+        //[HttpGet("{search}")]
+        //public async Task<ActionResult<IEnumerable<ModuleRun>>> Search( string name,string code)
+        //{
+        //    try
+        //    {
+        //        var result = await moduleRunRepository.Search(name,code);
 
-                if (result.Any())
-                {
-                    return Ok(result);
-                }
-                return NotFound();
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
-            }
-        }
+        //        if (result.Any())
+        //        {
+        //            return Ok(result);
+        //        }
+        //        return NotFound();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //            "Error retrieving data from database");
+        //    }
+        //}
+        //[HttpGet("{searchfrom}")]
+        //public async Task<ActionResult<IEnumerable<ModuleRun>>> SearchFromModule(string moduleCode)
+        //{
+        //    try
+        //    {
+        //        var result = await moduleRunRepository.SearchFromModule(moduleCode);
+
+        //        if (result.Any())
+        //        {
+        //            return Ok(result);
+        //        }
+        //        return NotFound();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //            "Error retrieving data from database");
+        //    }
+        //}
 
         [HttpGet]
         public async Task<ActionResult> GetModuleRuns()
@@ -54,6 +73,23 @@ namespace Plana.Api.Controllers
                     "Error retrieving data from database");
             }
         }
+        //[HttpGet]
+        //public async Task<ActionResult> GetCustomMRs()
+        //{
+        //    try
+        //    {
+        //        return Ok(await moduleRunRepository.GetCustomated());
+
+
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //               "Error retrieving data from database");
+        //    }
+
+
+        //}
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ModuleRun>> GetModuleRun(int id)
         {

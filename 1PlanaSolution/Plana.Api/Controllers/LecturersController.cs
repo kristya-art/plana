@@ -46,7 +46,7 @@ namespace Plana.Api.Controllers
         {
             try
             {
-                return Ok(await lecturerRepository.GetLecturers());
+                return Ok(await lecturerRepository.GetLecturersModules());
 
             }
             catch (Exception)
@@ -56,6 +56,21 @@ namespace Plana.Api.Controllers
                     "Error retrieving data from database");
             }
         }
+        //[HttpGet]
+        //public async Task<ActionResult> GetLecturers()
+        //{
+        //    try
+        //    {
+        //        return Ok(await lecturerRepository.GetLecturers());
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //            "Error retrieving data from database");
+        //    }
+        //}
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Lecturer>> GetLecturer(int id)
         {

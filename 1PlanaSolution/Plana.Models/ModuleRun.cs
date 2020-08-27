@@ -9,7 +9,8 @@ namespace Plana.Models
     
     public class ModuleRun
     {
-       // [Key]
+       
+      
         public int ModuleRunId { get; set; }
         //'a', 'b', 'p','q'
         public string Code { get; set; }
@@ -34,9 +35,24 @@ namespace Plana.Models
 
         public int SemesterId { get; set; } //Foreign key many-to-one
 
+
+        //public ModuleRun(string code, Module module, Semester semester, ICollection<LecturersModuleRuns> lmr)
+        //{
+        //    Code = code;
+        //    Module = module;
+        //    Semester = semester;
+        //    LecturersMR = lmr;
+            
+        //}
+
         public void AddLecturer(Lecturer Lecturer) {
             this.AddLecturer(Lecturer);
             Lecturer.AddModuleRun(this);
+        }
+
+        public void AddModule(Module Module) {
+            this.AddModule(Module);
+            
         }
 
 

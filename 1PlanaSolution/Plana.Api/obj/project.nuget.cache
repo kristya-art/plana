@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "K0kNHGyaGxMCrUQM6HT4i35OO2AP68mXgAAhp7/KltAz2t062Oa48x/KHjtX5kxBRmihseuVe7dcUYs14lvzJQ==",
+  "dgSpecHash": "ifsa3XXdiHCSZaxWLpwTHAtILl5/oE4PPqhOfMqKxuTEDnkB9UcXw/wE6UEM4SRnPsJxdxjBxZYovZ1Id63s7A==",
   "success": true,
   "projectFilePath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Api\\Plana.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kristya\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
-    "C:\\Users\\kristya\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.7\\microsoft.aspnetcore.jsonpatch.3.1.7.nupkg.sha512",
-    "C:\\Users\\kristya\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.7\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.7.nupkg.sha512",
+    "C:\\Users\\kristya\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
+    "C:\\Users\\kristya\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",
     "C:\\Users\\kristya\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\kristya\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\kristya\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
