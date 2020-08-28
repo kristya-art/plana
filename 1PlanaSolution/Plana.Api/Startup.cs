@@ -24,6 +24,7 @@ namespace Plana.Api
             services.AddScoped<ILecturerRepository, LecturerRepository>();
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleRunRepository, ModuleRunRepository>();
+            services.AddScoped<ILecturersModulesRepository, LecturersModulesRepository>();
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
