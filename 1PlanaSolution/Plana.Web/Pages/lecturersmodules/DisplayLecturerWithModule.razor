@@ -2,7 +2,7 @@
 @inherits DisplayLecturerWithModuleBase
 
 @if (LM == null)
-{ return; }
+{ return ; }
 <table class="table table-sm table-bordered table-striped">
     <thead>
         <tr>
@@ -32,7 +32,17 @@
 </tbody>
 
 </table>
-
+<div class="form-group">
+    <label for"title">Title</label>
+    <select name="title" class="form-control" @bind="SelectedTitle">
+        <option disabled selected>Select Title</option>
+        @foreach (string title in Titles) { 
+            <option value="@title" selected="@(title == SelectedTitle)">
+                @title
+            </option>
+        }
+    </select>
+</div>
 
 
 
@@ -41,7 +51,7 @@
 
     public string GetClass(string title) =>
         SelectedTitle == title ? "bg-info text-white" : "";
-
+    public IEnumerable<string> Titles => LM.Select(m => m.Module).Select(mn => mn.Title);
 
     //[Inject]
     //public ILecturersModulesService lmService { get; set; }
