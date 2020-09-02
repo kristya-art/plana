@@ -2,7 +2,7 @@
 @page "/lecturerdetails/{id}"
 
 
-@inherits LecturerDetailsBase
+@inherits LecturerDetailsBase 
 
 
 <h3>LecturerDetails</h3>
@@ -22,7 +22,8 @@
                     <h4>Lecturer Id :  @Lecturer.LecturerId</h4>
                     <h4>Email : @Lecturer.Email</h4>
                     <h4>Date of Birth : @Lecturer.BirthDate</h4>
-                    @*<h4>Modules: @Lecturer.LecturersModules</h4>*@
+                    <h4>Modules: @Lecturer.LecturersModules</h4>
+                   <h4> Modules: @LecturersModules</h4>
                 @*@foreach (var item in Lecturers) {
 
                     @if (item.LecturersModules != null) { 

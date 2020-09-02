@@ -20,7 +20,7 @@ namespace Plana.Api
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-
+            
             services.AddScoped<ILecturerRepository, LecturerRepository>();
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleRunRepository, ModuleRunRepository>();

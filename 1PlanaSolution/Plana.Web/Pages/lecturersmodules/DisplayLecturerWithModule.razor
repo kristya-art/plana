@@ -1,0 +1,58 @@
+﻿@page "/lectmoduleslist"
+@inherits DisplayLecturerWithModuleBase
+
+@if (LM == null)
+{ return; }
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Module Code</th>
+            <th>Module Title</th>
+        </tr>
+    </thead>
+
+
+
+
+
+
+<tbody>
+    @foreach (var lm in LM)
+    {
+    <tr class="@GetClass(lm.Module.Title)">
+        <td>@lm.Lecturer.LecturerId</td>
+        <td>@lm.Lecturer.FirstName, @lm.Lecturer.LastName </td>
+        <td>@lm.Module.Code</td>
+        <td>@lm.Module.Title</td>
+    </tr>
+
+    }
+</tbody>
+
+</table>
+
+
+
+
+@code {
+    public string SelectedTitle { get; set; }
+
+    public string GetClass(string title) =>
+        SelectedTitle == title ? "bg-info text-white" : "";
+
+
+    //[Inject]
+    //public ILecturersModulesService lmService { get; set; }
+
+
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    LecturersModules = (await lmService.GetLecturersModules()).ToList();
+
+    //}
+    //public IEnumerable<LecturersModules> LecturersModules { get; set; }
+
+}

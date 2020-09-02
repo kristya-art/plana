@@ -430,6 +430,49 @@ in this section I would like to highlight more complex features of coding and da
 \label{blabla}
 \end{figure}
 
+\subsubsection{Blazor Server}
+\subsubsection{Configuring ASP.NET Core for Blazor Server}
+
+\textbf{Call the API from Asp.net Core Blazor}
+
+.. add picture with a blazor page
+
+...write about imports 
+
+... write about registration of http client services 
+
+\noindent                                                                
+\begin{minipage}{\linewidth}                           
+\makebox[\linewidth]{                                        \includegraphics[keepaspectratio=true,scale=0.9]{report_img/blazor/register-http-client}}
+\captionof{figure}{Registration of Http Client Services in Startup File in Plana.Web Project folder}
+\label{visina8                                                      }
+\end{minipage}
+
+
+
+
+
+\noindent                                                                
+\begin{minipage}{\linewidth}                           
+\makebox[\linewidth]{                                      
+  \includegraphics[keepaspectratio=true,scale=0.9]{report_img/add-blazor-service-to-startup}}
+\captionof{figure}{Adding Services and Middleware in the Startup.cs File in the Plana.Web project folder}
+\label{visina8                                                      }
+\end{minipage}
+
+\newpage
+
+When we need to use some data from other folders in a blazor files like Razor files(.razor) all necessary imports we include in the partial class \textbf{ \_Imports.razor} using the \textbf{@using} directives.\\ 
+
+
+\noindent                                                                
+\begin{minipage}{\linewidth}                           
+\makebox[\linewidth]{                                      
+  \includegraphics[keepaspectratio=true,scale=0.9]{report_img/blazor/imports_razor}}
+\captionof{figure}{Adding required namespaces to the \_Imports.razor file in Plana.Web project folder}
+\label{visina8                                                      }
+\end{minipage}
+
 \subsection{Setup for Blazor}
 To use the Blazor framework it is necessary to install :\\
 \begin{itemize}

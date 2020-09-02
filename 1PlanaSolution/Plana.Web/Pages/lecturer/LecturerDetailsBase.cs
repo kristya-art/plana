@@ -13,8 +13,11 @@ namespace Plana.Web.Pages
     {
        
         public Lecturer Lecturer { get; set; } = new Lecturer();
+        
         [Inject]
         public ILecturerService LecturerService { get; set; }
+        [Inject]
+        public ILecturersModulesService LMService { get; set; }
         
 
         [Parameter]
@@ -24,6 +27,7 @@ namespace Plana.Web.Pages
             Id = Id ?? "1";
             Lecturer = await LecturerService.GetLecturer(int.Parse(Id));
             Lecturers = (await LecturerService.GetLecturers()).ToList();
+            LecturersModules = (await LMService.GetLecturersModules()).ToList();
         }
 
         public IEnumerable<Lecturer> Lecturers { get; set; }
