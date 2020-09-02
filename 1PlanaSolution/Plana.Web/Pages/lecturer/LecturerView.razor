@@ -1,0 +1,54 @@
+﻿@page "/lecturerlist"
+@inherits LecturerViewBase
+
+@if (Lecturers == null) { return; }
+<TableTemplate>
+    <Header>
+        <tr><th>ID</th><th>Name</th><th>Module Name</th><th>Module Code</th></tr>
+    </Header>
+    <Body>
+
+
+        @foreach (Lecturer l in Lecturers)
+        {
+
+            <tr class="@GetClass(l.LastName)">
+                <td>@l.LecturerId</td>
+                <td>@l.LastName</td>
+                @foreach (var lm in l.LecturersModules)
+                {
+                <td>@lm.Module.Title</td>
+                <td>@lm.Module.Code</td>
+                }
+            </tr>
+        }
+
+
+
+    </Body>
+
+
+</TableTemplate>
+<div class="form-group">
+    <label for"name">Name</label>
+    <select name="name" class="form-control" @bind="SelectedName">
+        <option disabled selected>Select Name</option>
+
+        @foreach (string name in Names)
+        {
+            <option value="@name" selected="@(name == SelectedName)">
+                @name
+            </option>
+        }
+    </select>
+</div>
+
+@code {
+    public string SelectedName { get; set; }
+    public string GetClass(string name) =>
+       SelectedName == name ? "bg-info text-white" : "";
+
+    public IEnumerable<string> Names => Lecturers.Select(l => l.LastName);
+
+
+}
