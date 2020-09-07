@@ -18,17 +18,41 @@ namespace Plana.Api.Models
         {
             context.Database.Migrate();
             if (context.Lecturers.Count() == 0 && context.Modules.Count() == 0 && context.ModuleRuns.Count() == 0 &&
-                context.Semesters.Count() == 0)
+                context.Semesters.Count() == 0 && context.AdditionalAssignments.Count() ==0)
             {
                 ICollection<ModuleRun> mrcol = new List<ModuleRun>();
+                ICollection<AdditionalAssignment> aacol = new List<AdditionalAssignment>();
 
-            //seed data for muldule
-                Module m1 = new Module
+                //seed data for module
+
+                Module projectAndTraining1 = new Module
+                {
+                    Title = "Project and Training 1",
+                Code = "BTI3001",
+                   ECTS = 6,
+                   LectPerWeek = 8,
+                   TotalHours= 516
+                   
+               };
+                Module projectAndTraining2 = new Module
+               {
+                    Title = "Project and Training 2",
+                    Code = "BTI3011",
+                    ECTS = 6,
+                    LectPerWeek = 8,
+                    TotalHours = 516
+
+
+               };
+               // Module
+              
+
+                Module project2 = new Module
                 {
                     //  ModuleId = 2,
                     Title = "Projekt 2",
                     Code = "BTI7302",
-                    ECTS = 4,
+                    ECTS = 6,
                     LectPerWeek = 1,
                     TotalHours = 25,
                     ModuleRuns = mrcol
@@ -113,7 +137,7 @@ namespace Plana.Api.Models
                         LectPerWeek = 4,
                         TotalHours = 200
                     };
-                Module m10 =
+                Module databases =
                    new Module
                    {
                        // ModuleId = 11,
@@ -123,16 +147,7 @@ namespace Plana.Api.Models
                        LectPerWeek = 4,
                        TotalHours = 208
                    };
-                Module m11 =
-                     new Module
-                     {
-                         //   ModuleId = 12,
-                         Title = "Databases (F)",
-                         Code = "BTI1311",
-                         ECTS = 4,
-                         LectPerWeek = 4,
-                         TotalHours = 208
-                     };
+               
                 Module m12 =
                      new Module
                      {
@@ -143,7 +158,7 @@ namespace Plana.Api.Models
                          LectPerWeek = 4,
                          TotalHours = 200
                      };
-                Module m13 =
+                Module studienBeratung =
                     new Module
                     {
                         // ModuleId = 14,
@@ -154,29 +169,26 @@ namespace Plana.Api.Models
                         TotalHours = 200
                     };
 
-                context.Modules.AddRange(m1, m2, m3, m4,
-                    m5, m6, m7, m8, m9, m10, m11, m12, m13);
+                context.Modules.AddRange(project2, m2, m3, m4,
+                    m5, m6, m7, m8, m9, databases, m12, studienBeratung);
                 context.SaveChanges();
 
+                //seed data for AdditionalAssignments
 
-                /**
-                 * seed data for lecturersmodules
-                 */
-                //LecturersModules lm1 = new LecturersModules
-                //{
-                //    Module = m1
-                //};
-                //context.SaveChanges();
+                AdditionalAssignment a1 = new AdditionalAssignment
+                {
+                    Title = "aF&E",
+                    AAHours = 0
+                };
+                AdditionalAssignment a2 = new AdditionalAssignment
+                {
+                    Title = "FB-Pool Abteilung Informatik",
+                    AAHours = 0
+                };
+                context.AdditionalAssignments.AddRange(a1, a2);
+                context.SaveChanges();
 
-
-
-              
-
-                //ICollection<LecturersModules> iclm = new List<LecturersModules>();
-
-                //iclm.Add(lm1);
-                //context.SaveChanges();
-
+           //seed data for lecturer
                 context.Lecturers.AddRange(
 
                     new Lecturer
@@ -318,6 +330,19 @@ namespace Plana.Api.Models
                     IsDeleted = false,
                    // LecturersModules = iclm
                 };
+                l2.LecturersModules = new List<LecturersModules>
+                {
+                    new LecturersModules
+                    {
+                        Lecturer = l2,
+                        Module = m12
+                    },
+                    new LecturersModules
+                    {
+                       Lecturer = l2,
+                       Module = m6
+                    }
+                };
 
                 // try to make seed data in other way
 
@@ -331,7 +356,7 @@ namespace Plana.Api.Models
                     PhotoPath = "images/michele.jpg",
                     IsDeleted = false,
                 };
-                var module = new Module
+                var csbasics = new Module
                 {
                     Title = "Computer Science Basics",
                     Code = "BTI1021",
@@ -345,9 +370,16 @@ namespace Plana.Api.Models
                     new LecturersModules
                     {
                         Lecturer = lecturer,
-                        Module = module
+                        Module = csbasics
+                    },
+                    new LecturersModules
+                    { 
+                       Lecturer = lecturer,
+                       Module = m6
                     }
                 };
+                aacol.Add(a1);
+                lecturer.AdditionalAssignments = aacol;
                 //now add this lecturer, with all its relationships, to the database
                 //  context.Lecturers.Add(lecturer);
                 //   context.SaveChanges();
@@ -359,7 +391,7 @@ namespace Plana.Api.Models
 
 
 
-                //seed data for semester 
+   //seed data for semester 
                 Semester s1 = new Semester
                 {
                     Code = "2020-2021 - FS",
@@ -368,17 +400,62 @@ namespace Plana.Api.Models
                 };
                 Semester s2 = new Semester
                 {
-                    Code = "2021-2022 - HS",
+                    Code = "2020-2021 - HS",
                     Date = new DateTime(2021, 08, 15)
 
                 };
+                Semester s3 = new Semester
+                {
+                    Code = "2021-2022 - FS",
+                    Date = new DateTime(2021, 02, 15),
 
-                context.Semesters.AddRange(s1,s2);
+                };
+                Semester s4 = new Semester
+                {
+                    Code = "2021-2022 - HS",
+                    Date = new DateTime(2021, 08, 13)
+
+                };
+                s2.ModuleRuns = new HashSet<ModuleRun>
+                {
+                    new ModuleRun
+                    { Code = "a",
+                      Semester = s2,
+                      Module = csbasics,
+                      Place = "Biel"
+                    },
+
+                    new ModuleRun
+                    { 
+                      Code ="b",
+                      Semester = s2,
+                      Module = csbasics,
+                      Place = "Biel"
+                    }
+                };
+                s2.LecturersSemesters = new List<LecturersSemesters>
+                {
+                 new LecturersSemesters
+                 {
+                   Semester =s2,
+                   Lecturer = lecturer
+                 },
+                 new LecturersSemesters
+                 {
+                   Semester = s2,
+                   Lecturer =l2
+                 }
+
+                };
+
+
+
+                context.Semesters.AddRange(s1,s2,s3,s4);
                 context.SaveChanges();
 
             
 
-
+//seed data for module run
                 ModuleRun mr2 = new ModuleRun
                 {
                     Code = "a",

@@ -14,9 +14,13 @@ namespace Plana.Models
         public int LecturerId { get; set; }
         public string PhotoPath { get; set; }
 
-        
-        
-        
+
+        public ICollection<LecturersModules> LecturersModules { get; set; }
+        public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
+        public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
+        public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
+
+
         public DateTime SetActiveDate() { 
             return ActiveTill = new DateTime(2030, 12, 31);
 
@@ -64,11 +68,7 @@ namespace Plana.Models
 
         // public HashSet<LecturersModules> Modules { get; set; }
 
-        public ICollection<LecturersModules> LecturersModules { get; set; }
-        public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
-        public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
-        public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
-
+       
 
         
 
@@ -76,6 +76,8 @@ namespace Plana.Models
         {
             throw new NotImplementedException();
         }
+
+      
     }
     
 }
