@@ -48,12 +48,7 @@ namespace Plana.Api.Models
                  .FirstOrDefaultAsync(e => e.ModuleId == moduleId);
         }
 
-        public async Task<IEnumerable<Module>> GetModules()
-        {
-            return await appDbContext.Modules.ToListAsync();
-
-        }
-
+       
         public async Task<IEnumerable<Module>> Search(string title, string code)
         {
             IQueryable<Module> query = appDbContext.Modules;
@@ -94,5 +89,16 @@ namespace Plana.Api.Models
             return null;
 
         }
+        public async Task<IEnumerable<Module>> GetModules()
+        {
+            //  return await appDbContext.Modules.ToListAsync();
+            return await appDbContext.Modules
+                  .Include(m => m.Lecturers)
+                  .ThenInclude(l => l.Lecturer)
+                  .OrderBy(m => m.Title)
+                  .ToListAsync();
+
+        }
+
     }
 }

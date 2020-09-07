@@ -22,6 +22,9 @@ namespace Plana.Api.Models
             {
                 ICollection<ModuleRun> mrcol = new List<ModuleRun>();
                 ICollection<AdditionalAssignment> aacol = new List<AdditionalAssignment>();
+                ICollection<LecturersModuleRuns> lmrcol = new List<LecturersModuleRuns>();
+
+                LecturersModuleRuns lmr = new LecturersModuleRuns();
 
                 //seed data for module
 
@@ -346,7 +349,7 @@ namespace Plana.Api.Models
 
                 // try to make seed data in other way
 
-                var lecturer = new Lecturer
+                var michele = new Lecturer
                 {
                     FirstName = "Michele",
                     LastName = "Orsi",
@@ -365,26 +368,26 @@ namespace Plana.Api.Models
                     TotalHours = 200
                 };
 
-                lecturer.LecturersModules = new List<LecturersModules>
+                michele.LecturersModules = new List<LecturersModules>
                 {
                     new LecturersModules
                     {
-                        Lecturer = lecturer,
+                        Lecturer = michele,
                         Module = csbasics
                     },
                     new LecturersModules
                     { 
-                       Lecturer = lecturer,
+                       Lecturer = michele,
                        Module = m6
                     }
                 };
                 aacol.Add(a1);
-                lecturer.AdditionalAssignments = aacol;
+                michele.AdditionalAssignments = aacol;
                 //now add this lecturer, with all its relationships, to the database
                 //  context.Lecturers.Add(lecturer);
                 //   context.SaveChanges();
 
-                context.Lecturers.AddRange(lecturer, l2);
+                context.Lecturers.AddRange(michele, l2);
                 context.SaveChanges();
                 //   context.Lecturers.Add(l2);
                 //   context.SaveChanges();
@@ -422,7 +425,9 @@ namespace Plana.Api.Models
                     { Code = "a",
                       Semester = s2,
                       Module = csbasics,
-                      Place = "Biel"
+                      Place = "Biel",
+                      
+                      
                     },
 
                     new ModuleRun
@@ -433,12 +438,18 @@ namespace Plana.Api.Models
                       Place = "Biel"
                     }
                 };
+                lmr.Lecturer = michele;
+                lmrcol.Add(lmr);
+
+                
+                      
+
                 s2.LecturersSemesters = new List<LecturersSemesters>
                 {
                  new LecturersSemesters
                  {
                    Semester =s2,
-                   Lecturer = lecturer
+                   Lecturer = michele
                  },
                  new LecturersSemesters
                  {
@@ -469,8 +480,24 @@ namespace Plana.Api.Models
                 mrcol.Add(mr2);
                 context.SaveChanges();
 
-               
+                ModuleRun project2MR = new ModuleRun
+                {
+                    Module = project2,
+                    Semester = s4,
+                    LecturersMR = lmrcol,
+                    Place = "Biel",
+                    Code = "b"
+
+
+                };
+
+                context.ModuleRuns.Add(project2MR);
+                context.SaveChanges();
+
+
             }
+
+
         
         
         }

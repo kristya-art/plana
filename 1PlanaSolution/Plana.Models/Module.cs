@@ -19,7 +19,7 @@ namespace Plana.Models
         public int LectPerWeek { get; set; }
         public double TotalHours { get; set; }
       
-        public ICollection<LecturersModules> Lecturers { get; set; }
+        public ICollection<LecturersModules> Lecturers{ get; set; }
 
         //1-many
         public ICollection<ModuleRun> ModuleRuns { get; set; } //collection navigation property

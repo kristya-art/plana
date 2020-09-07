@@ -18,16 +18,8 @@ namespace Plana.Api.Models
         {
             this.appDbContext = appDbContext;
         }
-        public IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;
+      //  public IQueryable<ModuleRun> ModuleRuns => appDbContext.ModuleRuns;
 
-
-
-        //public async Task<ModuleRun> CreateModuleRun(ModuleRun moduleRun)
-        //{
-        //    var result = await appDbContext.ModuleRuns.AddAsync(moduleRun);
-        //    await appDbContext.SaveChangesAsync();
-        //    return result.Entity;
-        //}
 
         public async Task<ModuleRun> CreateModuleRun(ModuleRun moduleRun )
         {
@@ -75,7 +67,13 @@ namespace Plana.Api.Models
 
         public async Task<IEnumerable<ModuleRun>> GetModuleRuns()
         {
-            return  ModuleRuns;
+            return await appDbContext.ModuleRuns
+                .Include(m => m.Module)
+                .Include(m => m.LecturersMR)
+                .ThenInclude(lmr => lmr.Lecturer)
+                .Include(m => m.Semester)
+                .OrderBy(m => m.Module.Title)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<ModuleRun>> Search(string name,string code)
