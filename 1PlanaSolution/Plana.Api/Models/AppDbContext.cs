@@ -24,6 +24,7 @@ namespace Plana.Api.Models
         {
             modelBuilder.Entity<Lecturer>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<Module>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<ModuleRun>().HasQueryFilter(p => !p.IsDeleted);
 
 
             modelBuilder.Entity<LecturersModules>()
@@ -35,6 +36,9 @@ namespace Plana.Api.Models
 
             modelBuilder.Entity<Module>()
                 .HasKey(x => x.ModuleId);
+
+            modelBuilder.Entity<StudyBranch>()
+                .HasKey(x => x.StudyBranchId);
 
 
 
@@ -55,6 +59,8 @@ namespace Plana.Api.Models
 
             modelBuilder.Entity<LecturersSemesters>()
                 .HasKey(x => new { x.SemesterId, x.LecturerId });
+
+
 
 
             //base.OnModelCreating(modelBuilder);

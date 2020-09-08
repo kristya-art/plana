@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
 namespace Plana.Models
 {
-    public class StudyBranch
+    public class StudyBranch : ISoftDelete
     {
         [Key]
         public int StudyBranchId { get; set; }
@@ -13,6 +14,8 @@ namespace Plana.Models
         public ICollection<Module> Modules { get; set; }
         public string Code { get; set; }
         public string Title { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }
 /**

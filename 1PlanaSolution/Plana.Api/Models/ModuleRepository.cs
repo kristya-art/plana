@@ -22,7 +22,7 @@ namespace Plana.Api.Models
 
         public async Task<Module> AddModule(Module module)
         {
-            module.IsDeleted = false;
+           // module.IsDeleted = false;
             var result = await appDbContext.Modules.AddAsync(module);
             
             await appDbContext.SaveChangesAsync();

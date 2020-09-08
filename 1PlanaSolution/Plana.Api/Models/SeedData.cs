@@ -203,7 +203,7 @@ namespace Plana.Api.Models
                         BirthDate = new DateTime(1983, 04, 11),
                         Gender = Gender.Female,
                         PhotoPath = "images/margo.jpg",
-                        IsDeleted = false,
+                        IsDeleted = false,                  //better take it away 
                         // LecturersModules = iclm
                     },
                      new Lecturer

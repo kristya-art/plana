@@ -29,29 +29,9 @@ namespace Plana.Api.Models
             return result.Entity;
         }
 
-        public Task<bool> DeleteModuleRun(int moduleRunId)
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public Task<IEnumerable<ModuleRun>> GetCustomated()
-        {
-            throw new NotImplementedException();
-        }
-
-        //public async Task<IEnumerable<ModuleRun>> GetCustomated()
-        //{
-        //    var result = ModuleRuns
-        //         .Include(i => i.Code)
-        //         .Include(i => i.Module.Code)
-        //         .Include(i => i.Module.Title)
-        //         .Include(i => i.Semester.Code)
-        //         .Include(i => i.Semester.Date)
-        //         .ToListAsync();
-
-        //    return await result;
-
-        //}
+       
 
         public async Task<ModuleRun> GetModuleRun(int moduleRunId)
         {
@@ -76,36 +56,7 @@ namespace Plana.Api.Models
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<ModuleRun>> Search(string name,string code)
-        {
-            IQueryable<ModuleRun> query = appDbContext.ModuleRuns;
-            if (!string.IsNullOrEmpty(name))
-            {
-                query = query.Where(e => e.Module.Title.Contains(name));
-            }
-           
-            if (!string.IsNullOrEmpty(code))
-            {
-                query = query.Where(e => e.Code.Contains(code));
-            }
-            return await query.ToListAsync();
-        }
-        //public async Task<IEnumerable<ModuleRun>> SearchFromModule(string moduleCode)
-        //{
-
-        //    IQueryable<ModuleRun> query = appDbContext.ModuleRuns;
-        //    // IQueryable<Module> help = appDbContext.Modules;
-        //    query.Include(c => c.Module);
-        //    if (!string.IsNullOrEmpty(moduleCode))
-        //    {
-
-
-
-        //        query = query.Where(e => e.Module.Code == moduleCode);
-        //    }
-
-        //    return await query.ToListAsync();
-        //}
+      
 
 
 
@@ -115,6 +66,7 @@ namespace Plana.Api.Models
                 .FirstOrDefaultAsync(e => e.ModuleRunId == moduleRun.ModuleRunId);
             if (result != null)
             {
+                
                 result.Code = moduleRun.Code;
                 result.Semester = moduleRun.Semester;
                 result.Module = moduleRun.Module;
@@ -149,7 +101,52 @@ namespace Plana.Api.Models
 
            }
 
+        public async Task<bool> DeleteModuleRun(int moduleRunId)
+        {
+            var result = await appDbContext.ModuleRuns
+                 .FirstOrDefaultAsync(e => e.ModuleRunId == moduleRunId);
+            if (result != null)
+            {
+                appDbContext.ModuleRuns.Remove(result);
+                await appDbContext.SaveChangesAsync();
 
-
+                return true;
+            }
+            return false;
         }
+
+        public async Task<IEnumerable<ModuleRun>> Search(string name, string code)
+        {
+            IQueryable<ModuleRun> query = appDbContext.ModuleRuns;
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(e => e.Module.Title.Contains(name));
+            }
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                query = query.Where(e => e.Code.Contains(code));
+            }
+            return await query.ToListAsync();
+        }
+        //public async Task<IEnumerable<ModuleRun>> SearchFromModule(string moduleCode)
+        //{
+
+        //    IQueryable<ModuleRun> query = appDbContext.ModuleRuns;
+        //    // IQueryable<Module> help = appDbContext.Modules;
+        //    query.Include(c => c.Module);
+        //    if (!string.IsNullOrEmpty(moduleCode))
+        //    {
+
+
+
+        //        query = query.Where(e => e.Module.Code == moduleCode);
+        //    }
+
+        //    return await query.ToListAsync();
+        //}
+
+
+
     }
+}
