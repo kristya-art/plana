@@ -13,7 +13,7 @@ namespace Plana.Models
         //public DateTime ActiveTill = new DateTime(2030, 12, 31);
         public DateTime ActiveTill { get; set; }
        
-        public bool IsDeleted { get; set; }
+       // public bool IsDeleted { get; set; }
         
 
        public int CalculateAge()

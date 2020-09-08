@@ -108,10 +108,6 @@ namespace Plana.Api.Models
         //}
 
 
-        public Task<bool> SoftDeleteModuleRun(int moduleRunId)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun)
         {
@@ -134,6 +130,26 @@ namespace Plana.Api.Models
             return null;
         }
 
-       
+        public async Task<Boolean> SoftDeleteModuleRun(int moduleRunId)
+        {
+
+            var result = await appDbContext.ModuleRuns
+                  .FirstOrDefaultAsync(e => e.ModuleRunId == moduleRunId);
+            if (result != null)
+            {
+                result.IsDeleted = true;
+                result.DeletedAt = DateTime.Now.Date;
+
+                appDbContext.ModuleRuns.Update(result);
+                await appDbContext.SaveChangesAsync();
+
+                return true;
+            }
+            return false;
+
+           }
+
+
+
+        }
     }
-}

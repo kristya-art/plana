@@ -6,20 +6,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plana.Models
 {
-    public class Lecturer : Employee
+    public class Lecturer : Employee, ISoftDelete
     {
         [Key]
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LecturerId { get; set; }
         public string PhotoPath { get; set; }
-
+        public DateTime? DeletedAt { get; set; }
+        public bool IsDeleted { get; set; }
 
         public ICollection<LecturersModules> LecturersModules { get; set; }
         public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
         public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
-
+        
 
         public DateTime SetActiveDate() { 
             return ActiveTill = new DateTime(2030, 12, 31);

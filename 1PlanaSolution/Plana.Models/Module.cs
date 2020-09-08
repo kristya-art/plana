@@ -9,7 +9,7 @@ namespace Plana.Models
     /*
      * example of ensure data: BZG1154, Wahrscheinlichkeitsrechnung und Statistik, 4
      */
-    public class Module
+    public class Module : ISoftDelete
     {
         [Key]
         public int ModuleId { get; set; }
@@ -26,9 +26,7 @@ namespace Plana.Models
 
      //   public int StudyBranchId { get; set; } //foreign key
         public StudyBranch StudyBranch { get; set; } //reference navigation property
-
-
-       
-        
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

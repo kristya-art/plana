@@ -1,6 +1,7 @@
 ﻿using Castle.Core.Internal;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Plana.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,9 @@ namespace Plana.Api.Models
 
         public async Task<Module> AddModule(Module module)
         {
+            module.IsDeleted = false;
             var result = await appDbContext.Modules.AddAsync(module);
+            
             await appDbContext.SaveChangesAsync();
             return result.Entity;
         }
@@ -97,6 +100,25 @@ namespace Plana.Api.Models
                   .ThenInclude(l => l.Lecturer)
                   .OrderBy(m => m.Title)
                   .ToListAsync();
+
+        }
+
+        public async Task<Boolean> SoftDeleteModule(int moduleId)
+        {
+
+            var result = await appDbContext.Modules
+                  .FirstOrDefaultAsync(e => e.ModuleId == moduleId);
+            if (result != null)
+            {
+                result.IsDeleted = true;
+                result.DeletedAt = DateTime.Now.Date;
+
+                appDbContext.Modules.Update(result);
+                await appDbContext.SaveChangesAsync();
+
+                return true;
+            }
+            return false;
 
         }
 

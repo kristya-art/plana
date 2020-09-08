@@ -24,8 +24,9 @@ namespace Plana.Api.Migrations
                     WorkingRate = table.Column<double>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
                     ActiveTill = table.Column<DateTime>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    PhotoPath = table.Column<string>(nullable: true)
+                    PhotoPath = table.Column<string>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,7 +40,9 @@ namespace Plana.Api.Migrations
                     SemesterId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,7 +118,9 @@ namespace Plana.Api.Migrations
                     Code = table.Column<string>(nullable: true),
                     LectPerWeek = table.Column<int>(nullable: false),
                     TotalHours = table.Column<double>(nullable: false),
-                    StudyBranchId = table.Column<int>(nullable: true)
+                    StudyBranchId = table.Column<int>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -162,7 +167,9 @@ namespace Plana.Api.Migrations
                     Place = table.Column<string>(nullable: true),
                     ModuleRunRate = table.Column<double>(nullable: false),
                     ModuleId = table.Column<int>(nullable: false),
-                    SemesterId = table.Column<int>(nullable: false)
+                    SemesterId = table.Column<int>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

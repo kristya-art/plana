@@ -23,6 +23,7 @@ namespace Plana.Api.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lecturer>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<Module>().HasQueryFilter(p => !p.IsDeleted);
 
 
             modelBuilder.Entity<LecturersModules>()

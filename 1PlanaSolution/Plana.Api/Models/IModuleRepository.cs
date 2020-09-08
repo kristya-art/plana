@@ -1,4 +1,5 @@
 ﻿using Plana.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,5 +12,6 @@ namespace Plana.Api.Models
         Task<Module> DeleteModule(int moduleId);
         Task<Module> UpdateModule(Module module);
         Task<Module> AddModule(Module module);
+        Task<Boolean> SoftDeleteModule(int moduleId);
     }
 }

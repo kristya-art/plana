@@ -9,7 +9,7 @@ namespace Plana.Models
     /*
      *  example of ensureTermData: 2021-2022 - HS, 2015, 08 ;     2020-2021 - FS, 2016, 02
      */
-   public class Semester
+   public class Semester : ISoftDelete
     {
         [Key]
         public int SemesterId { get; set; }
@@ -19,6 +19,7 @@ namespace Plana.Models
         public HashSet<ModuleRun> ModuleRuns = new HashSet<ModuleRun>();
 
         public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
-
+        public bool IsDeleted { get; set ; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

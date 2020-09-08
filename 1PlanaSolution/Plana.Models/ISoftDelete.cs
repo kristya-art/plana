@@ -7,6 +7,6 @@ namespace Plana.Models
     {
         bool IsDeleted { get; set; }
         
-       DateTime Delete_Date { get; set; }
+       DateTime? DeletedAt{ get; set; }
     }
 }

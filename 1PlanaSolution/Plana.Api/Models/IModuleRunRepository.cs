@@ -15,9 +15,9 @@ namespace Plana.Api.Models
         Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun);
         Task<Boolean> SoftDeleteModuleRun(int moduleRunId);
         Task<Boolean> DeleteModuleRun(int moduleRunId);
-    //    Task<IEnumerable<ModuleRun>> SearchFromModule(string moduleCode);
-      //  Task<IEnumerable<ModuleRun>> GetCustomated();
-       
+        
+
+
 
     }
 }

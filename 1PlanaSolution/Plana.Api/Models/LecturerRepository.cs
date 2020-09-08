@@ -22,7 +22,9 @@ namespace Plana.Api.Models
 
         public async Task<Lecturer> AddLecturer(Lecturer lecturer)
         {
+            lecturer.SetTocken();
             var result = await appDbContext.Lecturers.AddAsync(lecturer);
+            
            
             await appDbContext.SaveChangesAsync();
             return result.Entity;
@@ -51,6 +53,8 @@ namespace Plana.Api.Models
             if (result != null)
             {
                 result.IsDeleted = true;
+                result.DeletedAt = DateTime.Now.Date;
+                
 
                 appDbContext.Lecturers.Update(result);
                 await appDbContext.SaveChangesAsync();
@@ -99,8 +103,8 @@ namespace Plana.Api.Models
             {
                 result.FirstName = lecturer.FirstName;
                 result.LastName = lecturer.LastName;
-                
-                result.Token = lecturer.SetTocken();
+
+                result.Token = lecturer.Token;
                 result.Email = lecturer.Email;
                 //result.Password = lecturer.Password
                 result.BirthDate = lecturer.BirthDate;

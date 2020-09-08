@@ -7,7 +7,7 @@ using System.Text;
 namespace Plana.Models
 {
     
-    public class ModuleRun
+    public class ModuleRun : ISoftDelete
     {
        
       
@@ -34,6 +34,8 @@ namespace Plana.Models
         public int ModuleId { get; set; } // Foreign key many-to-one
 
         public int SemesterId { get; set; } //Foreign key many-to-one
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get;set; }
 
 
         //public ModuleRun(string code, Module module, Semester semester, ICollection<LecturersModuleRuns> lmr)
@@ -42,7 +44,7 @@ namespace Plana.Models
         //    Module = module;
         //    Semester = semester;
         //    LecturersMR = lmr;
-            
+
         //}
 
         public void AddLecturer(Lecturer Lecturer) {
