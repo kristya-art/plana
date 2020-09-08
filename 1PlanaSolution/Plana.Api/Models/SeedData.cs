@@ -26,7 +26,7 @@ namespace Plana.Api.Models
 
                 LecturersModuleRuns lmr = new LecturersModuleRuns();
 
-                //seed data for module
+     //seed data for module
 
                 Module projectAndTraining1 = new Module
                 {
@@ -176,7 +176,7 @@ namespace Plana.Api.Models
                     m5, m6, m7, m8, m9, databases, m12, studienBeratung);
                 context.SaveChanges();
 
-                //seed data for AdditionalAssignments
+     //seed data for AdditionalAssignments
 
                 AdditionalAssignment a1 = new AdditionalAssignment
                 {
@@ -191,7 +191,7 @@ namespace Plana.Api.Models
                 context.AdditionalAssignments.AddRange(a1, a2);
                 context.SaveChanges();
 
-           //seed data for lecturer
+    //seed data for lecturer
                 context.Lecturers.AddRange(
 
                     new Lecturer
@@ -347,7 +347,7 @@ namespace Plana.Api.Models
                     }
                 };
 
-                // try to make seed data in other way
+                // try to make seed data in other way => works!
 
                 var michele = new Lecturer
                 {
@@ -383,14 +383,11 @@ namespace Plana.Api.Models
                 };
                 aacol.Add(a1);
                 michele.AdditionalAssignments = aacol;
-                //now add this lecturer, with all its relationships, to the database
-                //  context.Lecturers.Add(lecturer);
-                //   context.SaveChanges();
+               
 
                 context.Lecturers.AddRange(michele, l2);
                 context.SaveChanges();
-                //   context.Lecturers.Add(l2);
-                //   context.SaveChanges();
+              
 
 
 
@@ -494,12 +491,29 @@ namespace Plana.Api.Models
                 context.ModuleRuns.Add(project2MR);
                 context.SaveChanges();
 
+                //seed data for StudyBranch
+                StudyBranch it = new StudyBranch
+                {
+                    Code = "TI",
+                    Title = "Information Technology",
+                    Modules = new List<Module> 
+                    {
+                      project2, m2, m3, m4,
+                      m5, m6, m7, m8, m9, 
+                      databases, m12,csbasics,
+                      studienBeratung
+                     }
+                };
+
+                context.StudyBranches.Add(it);
+                context.SaveChanges();
+
+
+
 
             }
 
 
-        
-        
         }
     }
 }
