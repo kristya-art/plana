@@ -87,7 +87,7 @@ namespace Plana.Api.Controllers
                 }
                var createdLecturer= await lecturerRepository.AddLecturer(lecturer);
 
-                return CreatedAtAction(nameof(GetLecturer),new { id= createdLecturer.LecturerId},createdLecturer);
+                return CreatedAtAction(nameof(GetLecturer),new { id= createdLecturer.Id},createdLecturer);
                 
 
             }
@@ -105,11 +105,11 @@ namespace Plana.Api.Controllers
             try
             {
                
-                var updateLecturer = await lecturerRepository.GetLecturer(lecturer.LecturerId);
+                var updateLecturer = await lecturerRepository.GetLecturer(lecturer.Id);
 
                 if (updateLecturer == null)
                 {
-                    return NotFound($"Lecturer with id = {lecturer.LecturerId} not found");
+                    return NotFound($"Lecturer with id = {lecturer.Id} not found");
                 }
                 return await lecturerRepository.UpdateLecturer(lecturer);
             }

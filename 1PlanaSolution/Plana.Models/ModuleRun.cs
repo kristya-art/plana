@@ -22,7 +22,7 @@ namespace Plana.Models
         //Biel, Bern
         public string Place { get; set; }
         //1/3, 1/2, 1/4
-        public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
+        //public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
         //many-many
        // public HashSet<Lecturer> Lecturers {get;set;}
       public ICollection<LecturersModuleRuns> LecturersMR { get; set; }

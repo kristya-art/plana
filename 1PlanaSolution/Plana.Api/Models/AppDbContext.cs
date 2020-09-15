@@ -30,10 +30,6 @@ namespace Plana.Api.Models
             modelBuilder.Entity<LecturersModules>()
                 .HasKey(x => new { x.ModuleId, x.LecturerId });
 
-
-            modelBuilder.Entity<Lecturer>()
-               .HasKey(x => x.LecturerId);
-
             modelBuilder.Entity<Module>()
                 .HasKey(x => x.ModuleId);
 

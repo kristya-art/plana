@@ -58,7 +58,7 @@ namespace Plana.Web.Pages
 
             Lecturer result = null;
 
-            if (Lecturer.LecturerId != 0)
+            if (Lecturer.Id != 0)
             {
                 result = await LecturerService.UpdateLecturer(Lecturer);
             }
@@ -74,7 +74,7 @@ namespace Plana.Web.Pages
 
         protected async Task Delete_Click()
         {
-            await LecturerService.DeleteLecturer(Lecturer.LecturerId);
+            await LecturerService.DeleteLecturer(Lecturer.Id);
             
             NavigationManager.NavigateTo("/");
         }

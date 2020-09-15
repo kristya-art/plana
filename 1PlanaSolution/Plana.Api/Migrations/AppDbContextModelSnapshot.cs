@@ -32,6 +32,9 @@ namespace Plana.Api.Migrations
                     b.Property<int?>("LecturerId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SemesterId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -39,12 +42,14 @@ namespace Plana.Api.Migrations
 
                     b.HasIndex("LecturerId");
 
+                    b.HasIndex("SemesterId");
+
                     b.ToTable("AdditionalAssignments");
                 });
 
             modelBuilder.Entity("Plana.Models.Lecturer", b =>
                 {
-                    b.Property<int>("LecturerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -91,7 +96,7 @@ namespace Plana.Api.Migrations
                     b.Property<double>("WorkingRate")
                         .HasColumnType("float");
 
-                    b.HasKey("LecturerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Lecturers");
                 });
@@ -102,6 +107,9 @@ namespace Plana.Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("LecturerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Lessons")
                         .HasColumnType("int");
 
                     b.HasKey("ModuleRunId", "LecturerId");
@@ -195,9 +203,6 @@ namespace Plana.Api.Migrations
                     b.Property<int>("ModuleId")
                         .HasColumnType("int");
 
-                    b.Property<double>("ModuleRunRate")
-                        .HasColumnType("float");
-
                     b.Property<string>("Place")
                         .HasColumnType("nvarchar(max)");
 
@@ -247,6 +252,12 @@ namespace Plana.Api.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -260,6 +271,10 @@ namespace Plana.Api.Migrations
                     b.HasOne("Plana.Models.Lecturer", "Lecturer")
                         .WithMany("AdditionalAssignments")
                         .HasForeignKey("LecturerId");
+
+                    b.HasOne("Plana.Models.Semester", "Semester")
+                        .WithMany("AdditionalAssignments")
+                        .HasForeignKey("SemesterId");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturersModuleRuns", b =>

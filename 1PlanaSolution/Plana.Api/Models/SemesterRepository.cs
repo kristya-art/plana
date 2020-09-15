@@ -7,5 +7,6 @@ namespace Plana.Api.Models
 {
     public class SemesterRepository
     {
+
     }
 }

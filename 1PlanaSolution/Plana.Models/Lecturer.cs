@@ -8,10 +8,6 @@ namespace Plana.Models
 {
     public class Lecturer : Employee, ISoftDelete
     {
-        [Key]
-        [ScaffoldColumn(false)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int LecturerId { get; set; }
         public string PhotoPath { get; set; }
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; }
@@ -34,9 +30,8 @@ namespace Plana.Models
         }
 
         // get tocken from name and surname
-        public string SetTocken() {
-            //  Random random = new Random();
-            // var Num= random.Next(1, 100);
+        public string SetToken() {
+            
             Token = this.FirstName.Substring(0, 2).ToUpper() + this.LastName.Substring(0, 2).ToUpper() + BirthDate.Day;
 
           return Token;

@@ -19,8 +19,8 @@ namespace Plana.Web.Pages
         public NavigationManager NavigationManager { get; set; }
 
         protected async Task Soft_delete() {
-            await LecturerService.DeleteLecturer(Lecturer.LecturerId);
-            await OnLecturerDeleted.InvokeAsync(Lecturer.LecturerId);
+            await LecturerService.DeleteLecturer(Lecturer.Id);
+            await OnLecturerDeleted.InvokeAsync(Lecturer.Id);
             //NavigationManager.NavigateTo("/",true);
         }
 

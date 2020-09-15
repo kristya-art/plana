@@ -181,7 +181,8 @@ namespace Plana.Api.Models
                 AdditionalAssignment a1 = new AdditionalAssignment
                 {
                     Title = "aF&E",
-                    AAHours = 0
+                    AAHours = 0,
+                    
                 };
                 AdditionalAssignment a2 = new AdditionalAssignment
                 {
@@ -396,12 +397,16 @@ namespace Plana.Api.Models
                 {
                     Code = "2020-2021 - FS",
                     Date = new DateTime(2021, 02, 15),
+                    AdditionalAssignments = aacol
 
                 };
                 Semester s2 = new Semester
                 {
                     Code = "2020-2021 - HS",
-                    Date = new DateTime(2021, 08, 15)
+                    Date = new DateTime(2021, 08, 15),
+                    AdditionalAssignments = new List<AdditionalAssignment> {
+                        new AdditionalAssignment { Title = "newAdditionalAssigment1", AAHours = 0} ,
+                        new AdditionalAssignment { Title = "newAddtitonalAssigment2", AAHours = 0} }
 
                 };
                 Semester s3 = new Semester

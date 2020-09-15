@@ -19,7 +19,7 @@
                     <img class="card-img-top" src="@Lecturer.PhotoPath" />
                     
 
-                    <h4>Lecturer Id :  @Lecturer.LecturerId</h4>
+                    <h4>Lecturer Id :  @Lecturer.Id</h4>
                     <h4>Email : @Lecturer.Email</h4>
                     <h4>Date of Birth : @Lecturer.BirthDate</h4>
                     <h4>Modules: @Lecturer.LecturersModules</h4>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-footer text-center">
                     <a href="#" class="btn btn-primary">Back</a>
-                    <a href="@($"editlecturer/{Lecturer.LecturerId}")" class="btn btn-primary m-1">Edit</a>
+                    <a href="@($"editlecturer/{Lecturer.Id}")" class="btn btn-primary m-1">Edit</a>
 
                     <a href="#" class="btn btn-danger">Delete</a>
                 </div>

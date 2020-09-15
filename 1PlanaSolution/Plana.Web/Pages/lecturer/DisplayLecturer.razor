@@ -10,10 +10,10 @@
         @if (ShowFooter)
         {
             <div class="card-footer text-center">
-                <a href="@($"lecturerdetails/{Lecturer.LecturerId}")"
+                <a href="@($"lecturerdetails/{Lecturer.Id}")"
                    class="btn btn-primary m-1">View</a>
 
-                <a href="@($"editlecturer/{Lecturer.LecturerId}")" class="btn btn-primary m-1">Edit</a>
+                <a href="@($"editlecturer/{Lecturer.Id}")" class="btn btn-primary m-1">Edit</a>
 
                 @*<a href="#" class="btn btn-danger m-1">Delete</a>*@
                 <button type="button" class=" btn btn-danger " @onclick="Soft_delete">Delete</button>

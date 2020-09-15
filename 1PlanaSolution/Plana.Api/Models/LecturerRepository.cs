@@ -22,7 +22,7 @@ namespace Plana.Api.Models
 
         public async Task<Lecturer> AddLecturer(Lecturer lecturer)
         {
-            lecturer.SetTocken();
+            lecturer.SetToken();
             var result = await appDbContext.Lecturers.AddAsync(lecturer);
             
            
@@ -32,10 +32,7 @@ namespace Plana.Api.Models
         
         public async Task<Lecturer> GetLecturer(int lecturerId)
         {
-            return await appDbContext.Lecturers
-               //  .Include(e=>e.LecturersModules)
-             
-                 .FirstOrDefaultAsync(e => e.LecturerId == lecturerId);
+            return await appDbContext.Lecturers.FindAsync(lecturerId);
         }
 
         public async Task<IEnumerable<Lecturer>> GetLecturers()
@@ -48,8 +45,7 @@ namespace Plana.Api.Models
 
         public async Task<Lecturer> UpdateLecturer(Lecturer lecturer)
         {
-            var result = await appDbContext.Lecturers
-                .FirstOrDefaultAsync(e => e.LecturerId == lecturer.LecturerId);
+            var result = await GetLecturer(lecturer.Id);
             if (result != null)
             {
                 result.FirstName = lecturer.FirstName;
@@ -92,8 +88,7 @@ namespace Plana.Api.Models
         /**  soft delete */
         public async Task<Boolean> SoftDeleteLecturer(int lecturerId)
         {
-            var result = await appDbContext.Lecturers
-                .FirstOrDefaultAsync(e => e.LecturerId == lecturerId);
+            var result = await GetLecturer(lecturerId);
             if (result != null)
             {
                 result.IsDeleted = true;
@@ -113,8 +108,7 @@ namespace Plana.Api.Models
         /** completely delete*/
         public async Task<Boolean> DeleteLecturer(int lecturerId)
         {
-            var result = await appDbContext.Lecturers
-                 .FirstOrDefaultAsync(e => e.LecturerId == lecturerId);
+            var result = await GetLecturer(lecturerId);
             if (result != null)
             {
                 appDbContext.Lecturers.Remove(result);

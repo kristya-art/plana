@@ -11,7 +11,7 @@ namespace Plana.Api.Migrations
                 name: "Lecturers",
                 columns: table => new
                 {
-                    LecturerId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
@@ -30,7 +30,7 @@ namespace Plana.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lecturers", x => x.LecturerId);
+                    table.PrimaryKey("PK_Lecturers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,7 +56,9 @@ namespace Plana.Api.Migrations
                     StudyBranchId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,7 +73,8 @@ namespace Plana.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     AAHours = table.Column<double>(nullable: false),
-                    LecturerId = table.Column<int>(nullable: true)
+                    LecturerId = table.Column<int>(nullable: true),
+                    SemesterId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -80,7 +83,13 @@ namespace Plana.Api.Migrations
                         name: "FK_AdditionalAssignments_Lecturers_LecturerId",
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
-                        principalColumn: "LecturerId",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AdditionalAssignments_Semesters_SemesterId",
+                        column: x => x.SemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "SemesterId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -98,7 +107,7 @@ namespace Plana.Api.Migrations
                         name: "FK_LecturersSemesters_Lecturers_LecturerId",
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
-                        principalColumn: "LecturerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LecturersSemesters_Semesters_SemesterId",
@@ -147,7 +156,7 @@ namespace Plana.Api.Migrations
                         name: "FK_LecturersModules_Lecturers_LecturerId",
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
-                        principalColumn: "LecturerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LecturersModules_Modules_ModuleId",
@@ -165,7 +174,6 @@ namespace Plana.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(nullable: true),
                     Place = table.Column<string>(nullable: true),
-                    ModuleRunRate = table.Column<double>(nullable: false),
                     ModuleId = table.Column<int>(nullable: false),
                     SemesterId = table.Column<int>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
@@ -193,7 +201,8 @@ namespace Plana.Api.Migrations
                 columns: table => new
                 {
                     LecturerId = table.Column<int>(nullable: false),
-                    ModuleRunId = table.Column<int>(nullable: false)
+                    ModuleRunId = table.Column<int>(nullable: false),
+                    Lessons = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,7 +211,7 @@ namespace Plana.Api.Migrations
                         name: "FK_LecturersModuleRuns_Lecturers_LecturerId",
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
-                        principalColumn: "LecturerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LecturersModuleRuns_ModuleRuns_ModuleRunId",
@@ -216,6 +225,11 @@ namespace Plana.Api.Migrations
                 name: "IX_AdditionalAssignments_LecturerId",
                 table: "AdditionalAssignments",
                 column: "LecturerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdditionalAssignments_SemesterId",
+                table: "AdditionalAssignments",
+                column: "SemesterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LecturersModuleRuns_LecturerId",
