@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Plana.Api.Models;
+using Plana.Api.Repositories;
+using Plana.Models;
 
 namespace Plana.Api
 {
@@ -25,6 +27,9 @@ namespace Plana.Api
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleRunRepository, ModuleRunRepository>();
             services.AddScoped<ILecturersModulesRepository, LecturersModulesRepository>();
+            services.AddScoped<ISemesterRepository, SemesterRepository>();
+            services.AddScoped<IStudyBranchRepository, StudyBranchRepository>();
+            services.AddScoped<IAdditionalAssignmentRepository, AdditionalAssignmentRepository>();
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

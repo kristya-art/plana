@@ -74,7 +74,9 @@ namespace Plana.Api.Migrations
                     Title = table.Column<string>(nullable: true),
                     AAHours = table.Column<double>(nullable: false),
                     LecturerId = table.Column<int>(nullable: true),
-                    SemesterId = table.Column<int>(nullable: true)
+                    SemesterId = table.Column<int>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
