@@ -86,6 +86,13 @@ using Plana.Web.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\_Imports.razor"
+using MatBlazor;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class LecturerList : LecturerListBase
     {

@@ -1,92 +1,99 @@
 ﻿@page "/editlecturer/{id}"
 @page "/editlecturer"
+@using MatBlazor;
 
 
 
 @inherits EditLecturerBase
 
-    <EditForm Model="@EditLecturerModel" OnValidSubmit="HandleValidSubmit">
-         <DataAnnotationsValidator />
-        <h3>@PageHeaderText</h3>
-        <hr />
-        <ValidationSummary />
-        <div class="form-group row">
-            <label for="firstname" class="col-sm-2 col-form-label">
-                First Name
-            </label>
-            <div class="col-sm-10">
-                <InputText id="firstName" class="form-control" placeholder="First Name"
-                           @bind-Value="EditLecturerModel.FirstName" />
-                   <ValidationMessage For="@(() => EditLecturerModel.FirstName)" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="lastname" class="col-sm-2 col-form-label">
-                Last Name
-            </label>
-            <div class="col-sm-10">
-                <InputText id="lastName" class="form-control" placeholder="Last Name"
-                           @bind-Value="EditLecturerModel.LastName" />
-                 <ValidationMessage For="@(() => EditLecturerModel.LastName)" />
-
-            </div>
-        </div>
-
-
-        <div class="form-group row">
-            <label for="dateOfBirth" class="col-sm-2 col-form-label">
-                Birthday
-            </label>
-            <div class="col-sm-10">
-                <InputDate id="birthDate" class="form-control" placeholder="Birthday"
-                           @bind-Value="EditLecturerModel.BirthDate" />
-            </div>
-        </div>
+<EditForm Model="@EditLecturerModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <h3>@PageHeaderText</h3>
+    <hr />
+    <ValidationSummary />
+    <div class="form-group row">
+        <label for="firstname" class="col-sm-2 col-form-label">
+            First Name
+        </label>
         <div class="col-sm-10">
-            <InputText id="token" class="form-control" placeholder="Token"
-                       @bind-Value="EditLecturerModel.Token" />
-            <ValidationMessage For="@(() => EditLecturerModel.Token)" />
+            <InputText id="firstName" class="form-control" placeholder="First Name"
+                       @bind-Value="EditLecturerModel.FirstName" />
+            <ValidationMessage For="@(() => EditLecturerModel.FirstName)" />
         </div>
-
-        <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">
-                Email
-            </label>
-            <div class="col-sm-10">
-                <InputText id="email" class="form-control" placeholder="Email"
-                           @bind-Value="EditLecturerModel.Email" />
-                  <ValidationMessage For="@(() => EditLecturerModel.Email)" />
-
-            </div>
-
-
+    </div>
+    <div class="form-group row">
+        <label for="lastname" class="col-sm-2 col-form-label">
+            Last Name
+        </label>
+        <div class="col-sm-10">
+            <InputText id="lastName" class="form-control" placeholder="Last Name"
+                       @bind-Value="EditLecturerModel.LastName" />
+            <ValidationMessage For="@(() => EditLecturerModel.LastName)" />
 
         </div>
-        <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">
-                Email Confirmation
-            </label>
+    </div>
 
-            <div class="col-sm-10">
-                <InputText id="email" class="form-control" placeholder="ConfirmEmail"
-                           @bind-Value="EditLecturerModel.ConfirmEmail" />
-                <ValidationMessage For="@(() => EditLecturerModel.ConfirmEmail)" />
-            </div>
+
+    <div class="form-group row">
+        <label for="dateOfBirth" class="col-sm-2 col-form-label">
+            Birthday
+        </label>
+        <div class="col-sm-10">
+            <InputDate id="birthDate" class="form-control" placeholder="Birthday"
+                       @bind-Value="EditLecturerModel.BirthDate" />
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <InputText id="token" class="form-control" placeholder="Token"
+                   @bind-Value="EditLecturerModel.Token" />
+        <ValidationMessage For="@(() => EditLecturerModel.Token)" />
+    </div>
+
+    <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">
+            Email
+        </label>
+        <div class="col-sm-10">
+            <InputText id="email" class="form-control" placeholder="Email"
+                       @bind-Value="EditLecturerModel.Email" />
+            <ValidationMessage For="@(() => EditLecturerModel.Email)" />
+
         </div>
 
-        <div class="form-group row">
-            <label for="activeTill" class="col-sm-2 col-form-label">
-                Last active date
-            </label>
 
-            <div class="col-sm-10">
-                <InputDate id="activeTill" class="form-control" placeholder="ActiveTill"
-                           @bind-Value="EditLecturerModel.ActiveTill" />
-            </div>
+
+    </div>
+    <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">
+            Email Confirmation
+        </label>
+
+        <div class="col-sm-10">
+            <InputText id="email" class="form-control" placeholder="ConfirmEmail"
+                       @bind-Value="EditLecturerModel.ConfirmEmail" />
+            <ValidationMessage For="@(() => EditLecturerModel.ConfirmEmail)" />
         </div>
+    </div>
 
+    <div class="form-group row">
+        <label for="activeTill" class="col-sm-2 col-form-label">
+            Last active date
+        </label>
 
-        <div class="form-group row">
+        <div class="col-sm-10">
+            <InputDate id="activeTill" class="form-control" placeholder="ActiveTill"
+                       @bind-Value="EditLecturerModel.ActiveTill" />
+        </div>
+    </div>
+    @*<div>
+            <MatCheckbox @bind-Value="EditLecturerModel.IsActive" Label="@(getLabel(checked1))">Active</MatCheckbox>
+        </div>*@
+    <div>
+        Active<br />
+        <MatCheckbox @bind-Value="EditLecturerModel.IsActive" Label="@(ChangeLabel(EditLecturerModel.IsActive))"></MatCheckbox>
+    </div>
+
+    @*<div class="form-group row">
             <label for="isActive" class="col-sm-2 col-form-label">
                 Active
             </label>
@@ -96,13 +103,36 @@
                 <InputCheckbox id="isActive" class="form-control" placeholder="IsActive"
                                @bind-Value="EditLecturerModel.IsActive" />
             </div>
-        </div>
+        </div>*@
 
 
 
-        <button class="btn btn-primary" type="submit">Submit</button>
-        <button class="btn btn-danger" type="button" @onclick="Delete_Click">Delete</button>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-danger" type="button" @onclick="Delete_Click">Delete</button>
 
 
 
-    </EditForm>
+</EditForm>
+
+@code
+{
+    bool checked1 = true;
+    bool checked2 = false;
+
+    string labelName1 = "setActive";
+    string labelName2 = "Disable";
+    string getLabel(bool val)
+    {
+        return !val ? "Check me!" : "Uncheck me?";
+    }
+
+    string ChangeLabel(bool val)
+    {
+        return !val ? labelName1 : labelName2;
+    }
+    string changeLable(bool val)
+    {
+        if (val) { return labelName2; }
+        return labelName1;
+    }
+}

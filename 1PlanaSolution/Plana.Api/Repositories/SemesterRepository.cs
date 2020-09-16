@@ -71,5 +71,10 @@ namespace Plana.Api.Models
         {
             throw new NotImplementedException();
         }
+
+        public Task<IEnumerable<Semester>> Search(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

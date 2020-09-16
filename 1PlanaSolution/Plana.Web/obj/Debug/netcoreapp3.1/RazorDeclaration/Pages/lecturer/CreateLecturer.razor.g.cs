@@ -77,6 +77,13 @@ using Plana.Web.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 12 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\_Imports.razor"
+using MatBlazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 43 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\CreateLecturer.razor"
 using Plana.Web.Services;
 

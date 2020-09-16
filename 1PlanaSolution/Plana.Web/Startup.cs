@@ -1,5 +1,7 @@
 using System;
+using System.Net.Http;
 using AutoMapper;
+using EmbeddedBlazorContent;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plana.Web.Models;
 using Plana.Web.Services;
+
 
 namespace Plana.Web
 {
@@ -27,6 +30,8 @@ namespace Plana.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddAutoMapper(typeof(LecturerProfile));
+            services.AddScoped<HttpClient>();
+           
 
             services.AddHttpClient<ILecturerService,LecturerService>(client =>
                 {
@@ -56,6 +61,8 @@ namespace Plana.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseEmbeddedBlazorContent(typeof(MatBlazor.BaseMatComponent).Assembly);
 
             app.UseEndpoints(endpoints =>
             {

@@ -115,6 +115,14 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "EmbeddedBlazorContent": {
+              "target": "Package",
+              "version": "[1.10.0, )"
+            },
+            "MatBlazor": {
+              "target": "Package",
+              "version": "[2.4.3, )"
+            },
             "Microsoft.AspNetCore.Blazor.HttpClient": {
               "target": "Package",
               "version": "[3.2.0-preview3.20168.3, )"

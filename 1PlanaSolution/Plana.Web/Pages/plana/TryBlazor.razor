@@ -1,34 +1,22 @@
 ﻿@page "/plana"
-@*@using System.Net.Http*@
-@*@inject HttpClient Http*@
+@using MatBlazor
+
+
+<div class="mat-layout-grid mat-layout-grid-align-right" style="max-width: 800px;">
+    <div class="mat-layout-grid-inner">
+        <div class="mat-layout-grid-cell"></div>
+        <div class="mat-layout-grid-cell"></div>
+        <div class="mat-layout-grid-cell"></div>
+    </div>
+</div>
 
 
 
-<table class="table table-sm table-bordered table-striped">
-    <thread>
-        <tr>
-            <th>ID</th><th>Name</th>Module Code<th></th>Module Title<th></th><th></th>
-        </tr>
-    </thread>
-</table>
-
-@*@foreach (var p in lecturersModules) { 
-    <td>@p.LecturerId</td>
-    <td>@p.Lecturer.LastName, @p.Lecturer.FirstName</td>
-    <td>@p.Module.Code, @p.Module.Title</td>
-
-
-}*@
-
-
-@*@code {
+@code {
 
    
-    private IEnumerable<LecturersModules> lecturersModules;
-
-    protected override async Task OnInitializedAsync() =>
-    lecturersModules = await Http.GetJsonAsync<LecturersModules[]>("api/lecturersmodules");
+   
 
 
 
-}*@
+}

@@ -16,6 +16,7 @@ namespace Plana.Api.Models
 
         Task<Boolean> SoftDeleteSemester(int semesterId);
         Task<Boolean> DeleteSemester(int semesterId);
+        Task<IEnumerable<Semester>> Search(string name);
 
 
 

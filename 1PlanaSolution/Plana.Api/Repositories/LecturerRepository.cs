@@ -61,8 +61,7 @@ namespace Plana.Api.Models
                 result.IsActive = lecturer.IsActive;
 
                 result.LecturersModules = lecturer.LecturersModules;//new
-                
-               
+              //  appDbContext.Lecturers.Update(result);
                 await appDbContext.SaveChangesAsync();
 
                 return result;
