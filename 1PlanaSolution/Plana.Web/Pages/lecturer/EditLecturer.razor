@@ -116,23 +116,15 @@
 
 @code
 {
-    bool checked1 = true;
-    bool checked2 = false;
+    
 
     string labelName1 = "setActive";
     string labelName2 = "Disable";
-    string getLabel(bool val)
-    {
-        return !val ? "Check me!" : "Uncheck me?";
-    }
+   
 
     string ChangeLabel(bool val)
     {
         return !val ? labelName1 : labelName2;
     }
-    string changeLable(bool val)
-    {
-        if (val) { return labelName2; }
-        return labelName1;
-    }
+   
 }
