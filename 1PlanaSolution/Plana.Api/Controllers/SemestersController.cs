@@ -11,12 +11,12 @@ namespace Plana.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SemesterController : ControllerBase
+    public class SemestersController : ControllerBase
     {
 
         private readonly ISemesterRepository semesterRepository;
 
-        public SemesterController(ISemesterRepository semesterRepository)
+        public SemestersController(ISemesterRepository semesterRepository)
         {
             this.semesterRepository = semesterRepository;
         }

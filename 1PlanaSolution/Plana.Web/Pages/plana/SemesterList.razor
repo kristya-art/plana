@@ -1,19 +1,49 @@
 ﻿@page "/semester"
 @using MatBlazor
 
-
+@if (semesters == null)
+{ return; }
 <MatButton>Add</MatButton>
 <MatButton Outlined="true" Disabled="false">Outlined</MatButton>
 
 
+<MatTable Items="@semesters" class="mat-elevation-z5"
+          
+          FilterByColumnName="Name">
+    <MatTableHeader>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Date</th>
 
-
-
-
-    @code
+    </MatTableHeader>
+    <MatTableRow>
+        @foreach (var semester in semesters)
         {
-        
+            <td>@semester.SemesterId</td>
+            <td>@semester.Code</td>
+            <td>@semester.Date</td>
 
 
 
+        }
+    </MatTableRow>
+
+</MatTable>
+
+
+
+@code
+        {
+
+    [Inject]
+    public ISemesterService semesterService { get; set; }
+
+    public IEnumerable<Semester> semesters { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        semesters = (await semesterService.GetSemesters()).ToList();
     }
+
+
+}
