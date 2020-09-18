@@ -15,7 +15,7 @@ namespace Plana.Api.Repositories
         Task<AdditionalAssignment> CreateAdditionalAssignment(AdditionalAssignment additionalAssignment);
        
         Task<Boolean> DeleteAdditionalAssignment(int additionalAssignmentId);
-        Task<AdditionalAssignment> UpdateLecturer(AdditionalAssignment additionalAssignment);
+        Task<AdditionalAssignment> UpdateAdditionalAssignment(AdditionalAssignment additionalAssignment);
         Task<Boolean> SoftDeleteAdditionalAssignment(int additionalAssignmentId);
        
 

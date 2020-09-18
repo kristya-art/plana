@@ -54,7 +54,7 @@ namespace Plana.Api.Repositories
             return false;
         }
 
-        public async Task<AdditionalAssignment> UpdateLecturer(AdditionalAssignment additionalAssignment)
+        public async Task<AdditionalAssignment> UpdateAdditionalAssignment(AdditionalAssignment additionalAssignment)
         {
             var result = await context.AdditionalAssignments.FindAsync(additionalAssignment.AdditionalAssignmentId);
             if (result != null) {
