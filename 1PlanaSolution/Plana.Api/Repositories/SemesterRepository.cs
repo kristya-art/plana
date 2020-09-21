@@ -32,7 +32,16 @@ namespace Plana.Api.Models
 
         public async Task<IEnumerable<Semester>> GetSemesters()
         {
-            return await context.Semesters.ToListAsync();
+            //  return await context.Semesters.ToListAsync();
+            return await context.Semesters
+                   .Include(i => i.ModuleRuns)
+                  .Include(l => l.LecturersSemesters)
+                  .ThenInclude(m => m.Lecturer)
+                  .Include(i => i.AdditionalAssignments)
+                 
+                  //.OrderBy(n => n.Date)
+                  .ToListAsync();
+
         }
 
        

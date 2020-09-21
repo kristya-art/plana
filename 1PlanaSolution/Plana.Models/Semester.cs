@@ -16,7 +16,7 @@ namespace Plana.Models
         public string Code { get; set; }
         public DateTime Date { get; set; }
         //1-many
-        public HashSet<ModuleRun> ModuleRuns = new HashSet<ModuleRun>();
+        public ICollection<ModuleRun> ModuleRuns { get; set; }
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
         public ICollection<LecturersSemesters> LecturersSemesters { get; set; }

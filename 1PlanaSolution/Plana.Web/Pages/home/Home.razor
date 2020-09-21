@@ -1,0 +1,67 @@
+﻿@page "/home"
+@using MatBlazor;
+<h2>Wellcome to PLANA</h2>
+
+
+
+<style>
+    .app-fab--absolute {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+    }
+</style>
+@if (Semesters == null)
+{ return; }
+<MatFAB Class="@(isAbsolute ? "app-fab--absolute" : "")" Icon="@MatIconNames.Favorite" Label="Absolute Position" OnClick="@(_ => GoToAbsolute())"></MatFAB>
+
+<MatFAB Icon="@MatIconNames.Favorite"></MatFAB>
+
+<MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites"></MatFAB>
+
+<MatFAB Label="Custom Icon">
+    <MatIcon>favorite</MatIcon>
+</MatFAB>
+
+<MatFAB Icon="@MatIconNames.Favorite" Label="Mini" Mini="true"></MatFAB>
+
+@foreach (var semester in Semesters) { 
+
+    <MatFAB Icon="@MatIconNames.Favorite" Label="@semester.Code"> 
+    <a href="@($"/editsemester/{semester.SemesterId}")">Plan</a>
+    </MatFAB>
+}
+
+
+
+@code
+        {
+    
+
+    [Inject]
+    public ISemesterService semesterService { get; set; }
+
+    public string Id { get; set; }
+    public IEnumerable<Semester> Semesters { get; set; }
+    public Semester Semester { get; set; }
+
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        Id = Id ?? "1";
+        Semesters = (await semesterService.GetSemesters()).ToList();
+        Semester = (await semesterService.GetSemester(int.Parse(Id)));
+
+
+
+  }
+
+    bool isAbsolute = false;
+
+    void GoToAbsolute()
+    {
+        isAbsolute = !isAbsolute;
+    }
+
+}

@@ -1,0 +1,42 @@
+﻿@page "/editsemester/{Id}"
+@page "/editsemester"
+@using MatBlazor;
+
+
+<h2> Plan of semesters</h2>
+@if (Semesters == null) { return; }
+<h2>
+   @Semester.Code
+</h2>
+
+
+<MatButton  OnClick="BackHome">Back</MatButton>
+
+@code {
+    [Inject]
+    public ISemesterService semesterService { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
+    public IEnumerable<Semester> Semesters { get; set; }
+    public Semester Semester { get; set; }
+
+    [Inject]
+    NavigationManager navM { get; set; }
+
+    public void BackHome()
+    {
+        navM.NavigateTo("/home");
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Id = Id ?? "1";
+        Semesters = (await semesterService.GetSemesters()).ToList();
+        Semester = (await semesterService.GetSemester(int.Parse(Id)));
+
+
+
+    }
+}
