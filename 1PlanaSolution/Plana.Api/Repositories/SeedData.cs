@@ -192,136 +192,136 @@ namespace Plana.Api.Models
                 context.AdditionalAssignments.AddRange(a1, a2);
                 context.SaveChanges();
 
-    //seed data for lecturer
-                context.Lecturers.AddRange(
+                //seed data for lecturer
+               
 
-                    new Lecturer
-                    {
-                        //  LecturerId = 3,
-                        FirstName = "Margo",
-                        LastName = "White",
-                        Email = "margowhite@gmx.ch",
-                        BirthDate = new DateTime(1983, 04, 11),
-                        Gender = Gender.Female,
-                        PhotoPath = "images/margo.jpg",
-                        IsDeleted = false,                  //better take it away 
-                        // LecturersModules = iclm
-                    },
-                     new Lecturer
-                     {
-                         //  LecturerId = 3,
-                         FirstName = "Rosita",
-                         LastName = "Penni",
-                         Email = "rp@gmx.ch",
-                         BirthDate = new DateTime(1982, 02, 01),
-                         Gender = Gender.Female,
-                         PhotoPath = "images/rosita.png",
-                         IsDeleted = false,
-                         // LecturersModules = iclm
-                     },
-                     new Lecturer
-                     {
-                         //  LecturerId = 3,
-                         FirstName = "Masha",
-                         LastName = "Glizina",
-                         Email = "mg@gmx.ch",
-                         BirthDate = new DateTime(1990, 01, 01),
-                         Gender = Gender.Female,
-                         PhotoPath = "images/masha.jpg",
-                         IsDeleted = false,
-                         // LecturersModules = iclm
-                     },
-                     new Lecturer
-                     {
-                         //  LecturerId = 3,
-                         FirstName = "Lolita",
-                         LastName = "Baum",
-                         Email = "lb@gmx.ch",
-                         BirthDate = new DateTime(1975, 06, 07),
-                         Gender = Gender.Female,
-                         PhotoPath = "images/lolita.jpg",
-                         IsDeleted = false,
-                         // LecturersModules = iclm
-                     },
-                     new Lecturer
-                     {
-                         
-                         FirstName = "Bob",
-                         LastName = "Pelle",
-                         Email = "bp@gmx.ch",
-                         BirthDate = new DateTime(1989, 02, 01),
-                         Gender = Gender.Male,
-                         PhotoPath = "images/bob.png",
-                         IsDeleted = false,
-                         
-                     },
-                       new Lecturer
-                       {
+                Lecturer margo = new Lecturer
+                {
 
-                           FirstName = "Bombo",
-                           LastName = "Park",
-                           Email = "bp@gmx.ch",
-                           BirthDate = new DateTime(1988, 08, 15),
-                           Gender = Gender.Male,
-                           PhotoPath = "images/bombo.jpg",
-                           IsDeleted = false,
+                    FirstName = "Margo",
+                    LastName = "White",
+                    Email = "margowhite@gmx.ch",
+                    BirthDate = new DateTime(1983, 04, 11),
+                    Gender = Gender.Female,
+                    PhotoPath = "images/margo.jpg",
+                    IsDeleted = false,                  //better take it away 
+                                                        // LecturersModules = iclm
+                };
+                Lecturer rosita = new Lecturer
+                {
 
-                       },
-                         new Lecturer
-                         {
+                    FirstName = "Rosita",
+                    LastName = "Penni",
+                    Email = "rp@gmx.ch",
+                    BirthDate = new DateTime(1982, 02, 01),
+                    Gender = Gender.Female,
+                    PhotoPath = "images/rosita.png",
+                    IsDeleted = false,
+                    // LecturersModules = iclm
+                };
+                Lecturer masha = new Lecturer
+                {
 
-                             FirstName = "Christopher",
-                             LastName = "Moser",
-                             Email = "cm@gmx.ch",
-                             BirthDate = new DateTime(1996, 09, 01),
-                             Gender = Gender.Male,
-                             PhotoPath = "images/christopher.png",
-                             IsDeleted = false,
+                    FirstName = "Masha",
+                    LastName = "Glizina",
+                    Email = "mg@gmx.ch",
+                    BirthDate = new DateTime(1990, 01, 01),
+                    Gender = Gender.Female,
+                    PhotoPath = "images/masha.jpg",
+                    IsDeleted = false,
+                   
+                };
+                Lecturer lolita = new Lecturer
+                {
 
-                         },
-                           new Lecturer
-                           {
+                    FirstName = "Lolita",
+                    LastName = "Baum",
+                    Email = "lb@gmx.ch",
+                    BirthDate = new DateTime(1975, 06, 07),
+                    Gender = Gender.Female,
+                    PhotoPath = "images/lolita.jpg",
+                    IsDeleted = false,
 
-                               FirstName = "Alic",
-                               LastName = "Boldwin",
-                               Email = "ab@gmx.ch",
-                               BirthDate = new DateTime(1956, 03, 14),
-                               Gender = Gender.Male,
-                               PhotoPath = "images/alic.jpg",
-                               IsDeleted = false,
+                };
+                Lecturer bob = new Lecturer
+                {
 
-                           },
-                     new Lecturer
-                     {
-                        
-                         FirstName = "Mihail",
-                         LastName = "Patapovic",
-                         Email = "mp@gmx.ch",
-                         BirthDate = new DateTime(1983, 06, 12),
-                         Gender = Gender.Male,
-                         PhotoPath = "images/mihail.jpg",
-                         IsDeleted = false,
-                         // LecturersModules = iclm
-                     },
-                       new Lecturer
-                       {
+                    FirstName = "Bob",
+                    LastName = "Pelle",
+                    Email = "bp@gmx.ch",
+                    BirthDate = new DateTime(1989, 02, 01),
+                    Gender = Gender.Male,
+                    PhotoPath = "images/bob.png",
+                    IsDeleted = false,
 
-                           FirstName = "Kai",
-                           LastName = "Bublik",
-                           Email = "kb@gmx.ch",
-                           BirthDate = new DateTime(1965, 02, 01),
-                           Gender = Gender.Male,
-                           PhotoPath = "images/Kai.jpg",
-                           IsDeleted = false,
+                };
+                Lecturer bombo = new Lecturer
+                {
 
-                       }
+                    FirstName = "Bombo",
+                    LastName = "Park",
+                    Email = "bp@gmx.ch",
+                    BirthDate = new DateTime(1988, 08, 15),
+                    Gender = Gender.Male,
+                    PhotoPath = "images/bombo.jpg",
+                    IsDeleted = false,
 
-                    );
+                };
+                Lecturer chris = new Lecturer
+                {
+
+                    FirstName = "Christopher",
+                    LastName = "Moser",
+                    Email = "cm@gmx.ch",
+                    BirthDate = new DateTime(1996, 09, 01),
+                    Gender = Gender.Male,
+                    PhotoPath = "images/christopher.png",
+                    IsDeleted = false,
+
+                };
+                Lecturer alic = new Lecturer
+                {
+
+                    FirstName = "Alic",
+                    LastName = "Boldwin",
+                    Email = "ab@gmx.ch",
+                    BirthDate = new DateTime(1956, 03, 14),
+                    Gender = Gender.Male,
+                    PhotoPath = "images/alic.jpg",
+                    IsDeleted = false,
+
+                };
+                Lecturer misha = new Lecturer
+                {
+
+                    FirstName = "Mihail",
+                    LastName = "Patapovic",
+                    Email = "mp@gmx.ch",
+                    BirthDate = new DateTime(1983, 06, 12),
+                    Gender = Gender.Male,
+                    PhotoPath = "images/mihail.jpg",
+                    IsDeleted = false,
+                   
+                };
+                Lecturer kai = new Lecturer
+                {
+
+                    FirstName = "Kai",
+                    LastName = "Bublik",
+                    Email = "kb@gmx.ch",
+                    BirthDate = new DateTime(1965, 02, 01),
+                    Gender = Gender.Male,
+                    PhotoPath = "images/Kai.jpg",
+                    IsDeleted = false,
+
+                };
+
+                context.Lecturers.AddRange(margo, misha, kai, rosita, alic, chris, bombo, bob, masha);
                 context.SaveChanges();
 
 
 
-
+                
 
                 Lecturer l2 = new Lecturer
                 {
@@ -397,7 +397,15 @@ namespace Plana.Api.Models
                 {
                     Code = "2020-2021 - FS",
                     Date = new DateTime(2021, 02, 15),
-                    AdditionalAssignments = aacol
+                    AdditionalAssignments = aacol,
+                    LecturersSemesters = new List<LecturersSemesters>
+                    { 
+                       new LecturersSemesters{Lecturer= masha},
+                       new LecturersSemesters{Lecturer= misha}
+
+                    }
+
+                    
 
                 };
                 Semester s2 = new Semester
@@ -406,20 +414,37 @@ namespace Plana.Api.Models
                     Date = new DateTime(2021, 08, 15),
                     AdditionalAssignments = new List<AdditionalAssignment> {
                         new AdditionalAssignment { Title = "newAdditionalAssigment1", AAHours = 0} ,
-                        new AdditionalAssignment { Title = "newAddtitonalAssigment2", AAHours = 0} }
+                        new AdditionalAssignment { Title = "newAddtitonalAssigment2", AAHours = 0} },
+                     LecturersSemesters = new List<LecturersSemesters>
+                    {
+                       new LecturersSemesters{Lecturer= margo},
+                       new LecturersSemesters{Lecturer= alic}
+
+                    }
 
                 };
                 Semester s3 = new Semester
                 {
                     Code = "2021-2022 - FS",
                     Date = new DateTime(2021, 02, 15),
+                    LecturersSemesters = new List<LecturersSemesters>
+                    {
+                       new LecturersSemesters{Lecturer= rosita},
+                       new LecturersSemesters{Lecturer= kai}
+
+                    }
 
                 };
                 Semester s4 = new Semester
                 {
                     Code = "2021-2022 - HS",
-                    Date = new DateTime(2021, 08, 13)
+                    Date = new DateTime(2021, 08, 13),
+                      LecturersSemesters = new List<LecturersSemesters>
+                    {
+                       new LecturersSemesters{Lecturer= margo},
+                       new LecturersSemesters{Lecturer= alic}
 
+                    }
                 };
                 s2.ModuleRuns = new HashSet<ModuleRun>
                 {
@@ -428,6 +453,11 @@ namespace Plana.Api.Models
                       Semester = s2,
                       Module = csbasics,
                       Place = "Biel",
+                      LecturersMR = new List<LecturersModuleRuns>
+                      { 
+                       new LecturersModuleRuns{ Lecturer = michele},
+                       new LecturersModuleRuns{ Lecturer = l2}
+                      }
                       
                       
                     },
@@ -437,7 +467,13 @@ namespace Plana.Api.Models
                       Code ="b",
                       Semester = s2,
                       Module = csbasics,
-                      Place = "Biel"
+                      Place = "Biel",
+                       LecturersMR = new List<LecturersModuleRuns>
+                      {
+                       new LecturersModuleRuns{ Lecturer = michele},
+                       new LecturersModuleRuns{ Lecturer = l2}
+                      }
+
                     }
                 };
                 lmr.Lecturer = michele;
@@ -466,9 +502,35 @@ namespace Plana.Api.Models
                 context.Semesters.AddRange(s1,s2,s3,s4);
                 context.SaveChanges();
 
-            
 
-//seed data for module run
+
+                //seed data for module run
+                ModuleRun p_ucd = new ModuleRun
+                {
+                    Code = "p",
+                    Module = m2,
+                    Semester = s3
+                };
+                ModuleRun q_ucd = new ModuleRun
+                {
+                    Code = "q",
+                    Module = m2,
+                    Semester = s1
+                };
+
+                ModuleRun c = new ModuleRun
+                { 
+                    Code="a",
+                   Module = m6,
+                   Semester =s2,
+                   LecturersMR = new List<LecturersModuleRuns> { 
+                   
+                   new LecturersModuleRuns{ Lecturer =misha}
+                   }
+
+                };
+
+
                 ModuleRun mr2 = new ModuleRun
                 {
                     Code = "a",
@@ -493,7 +555,7 @@ namespace Plana.Api.Models
 
                 };
 
-                context.ModuleRuns.Add(project2MR);
+                context.ModuleRuns.AddRange(project2MR, c,q_ucd,p_ucd);
                 context.SaveChanges();
 
                 //seed data for StudyBranch

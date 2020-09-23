@@ -63,28 +63,48 @@
 
         </MatTableHeader>
         <MatTableRow>
-            <td>@context.Code</td>
-            
+
+
 
             @if (Semester.ModuleRuns == null) { return; }
             @foreach (var moduleRun in Semester.ModuleRuns)
-                {
-                
+            {
+
                 <td>@moduleRun.Module.Code</td>
                 <td>@moduleRun.Module.Title</td>
                 <td>@moduleRun.Code</td>
                 <td>@moduleRun.Place</td>
                 <td>@moduleRun.Module.TotalHours</td>
+                <MatTable Items="@moduleRun.LecturersMR">
 
-                @if (moduleRun.LecturersMR == null) { return; }
-                @foreach (var moduleRunLecturer in moduleRun.LecturersMR)
-                    {
+                    <MatTableHeader>
+                        <th>First Name</th>
+                    </MatTableHeader>
+                    <MatTableRow Context="lecturer">
+                        @foreach (var mr in moduleRun.LecturersMR)
+                        { 
+                            <td>@mr.Lecturer.FirstName</td>
+                        }
+                    </MatTableRow>
+                </MatTable>
+                @*@if (moduleRun.LecturersMR == null) { return; }*@
 
-                    <td>@moduleRunLecturer.Lecturer.LastName, @moduleRunLecturer.Lecturer.FirstName</td>
-                    <td>@moduleRunLecturer.ModuleRun.Module.TotalHours</td>
-                    <td>@moduleRunLecturer.Lessons</td>
-                    }
+                @*@foreach (var mr in moduleRun.LecturersMR) { 
+                    
+                    
+                    <td>@mr.Lecturer.FirstName</td>
+                    <td>200</td>
+                    <td>@mr.Lessons</td>
+                    <td></td>
+
+                    
+
+            }*@
+
+                @foreach (var aa in Semester.AdditionalAssignments) { 
+                            <td>@aa.AAHours</td>
                 }
+
 
 
             }

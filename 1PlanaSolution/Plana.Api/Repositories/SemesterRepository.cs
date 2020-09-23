@@ -39,6 +39,10 @@ namespace Plana.Api.Models
             }
            var result = await context.Semesters
                 .Include(e => e.ModuleRuns)
+               
+                .ThenInclude(mr=>mr.LecturersMR)
+                .ThenInclude(l=>l.Lecturer)
+                .Include(e => e.ModuleRuns)
                 .ThenInclude(mr=>mr.Module)
                 .Include(e=>e.LecturersSemesters)
                 .ThenInclude(l=>l.Lecturer)

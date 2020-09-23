@@ -38,23 +38,8 @@ namespace Plana.Models
         public DateTime? DeletedAt { get;set; }
 
 
-        //public ModuleRun(string code, Module module, Semester semester, ICollection<LecturersModuleRuns> lmr)
-        //{
-        //    Code = code;
-        //    Module = module;
-        //    Semester = semester;
-        //    LecturersMR = lmr;
+        
 
-        //}
-
-        public void AddLecturer(Lecturer Lecturer) {
-            this.AddLecturer(Lecturer);
-            Lecturer.AddModuleRun(this);
-        }
-
-        public void AddModule(Module Module) {
-            this.AddModule(Module);
-            
-        }
+      
  }
 }

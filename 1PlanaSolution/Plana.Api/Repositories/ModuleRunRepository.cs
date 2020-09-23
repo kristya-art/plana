@@ -36,14 +36,13 @@ namespace Plana.Api.Models
         public async Task<ModuleRun> GetModuleRun(int moduleRunId)
         {
             return await appDbContext.ModuleRuns
+                .Include(m=>m.LecturersMR)
+                .ThenInclude(lmr=>lmr.Lecturer)
+                .Include(m=>m.Semester)
+                .Include(m=>m.Module)
            .FirstOrDefaultAsync(e => e.ModuleRunId == moduleRunId);
 
-
-
-
-
-
-        }
+ }
 
         public async Task<IEnumerable<ModuleRun>> GetModuleRuns()
         {
