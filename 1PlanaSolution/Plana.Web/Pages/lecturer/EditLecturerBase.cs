@@ -42,7 +42,7 @@ namespace Plana.Web.Pages
                 Lecturer = new Lecturer
                 {
                     // LecturerId = 1,
-                    BirthDate = DateTime.Now,
+                   // BirthDate = DateTime.Now,
                     PhotoPath = "images/nopic.jpg",
                     ActiveTill = DateTime.Now
                     

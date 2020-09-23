@@ -1,6 +1,6 @@
 ﻿@page "/home"
 @using MatBlazor;
-<h2>Wellcome to PLANA</h2>
+<h2>Welcome to PLANA</h2>
 
 
 
@@ -11,32 +11,48 @@
         right: 1rem;
     }
 </style>
+
+@*<MatFAB Class="@(isAbsolute ? "app-fab--absolute" : "")" Icon="@MatIconNames.Favorite" Label="Absolute Position" OnClick="@(_ => GoToAbsolute())"></MatFAB>
+
+    <MatFAB Icon="@MatIconNames.Favorite"></MatFAB>
+
+    <MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites"></MatFAB>
+
+    <MatFAB Label="Custom Icon">
+        <MatIcon>favorite</MatIcon>
+    </MatFAB>*@
+
 @if (Semesters == null)
 { return; }
-<MatFAB Class="@(isAbsolute ? "app-fab--absolute" : "")" Icon="@MatIconNames.Favorite" Label="Absolute Position" OnClick="@(_ => GoToAbsolute())"></MatFAB>
-
-<MatFAB Icon="@MatIconNames.Favorite"></MatFAB>
-
-<MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites"></MatFAB>
-
-<MatFAB Label="Custom Icon">
-    <MatIcon>favorite</MatIcon>
-</MatFAB>
+ 
+<MatButton Outlined="true" @onclick="@(e=>OpenDialog(false))">Add Semester</MatButton>
 
 <MatFAB Icon="@MatIconNames.Favorite" Label="Mini" Mini="true"></MatFAB>
 
-@foreach (var semester in Semesters) { 
+@foreach (var semester in Semesters)
+{
 
-    <MatFAB Icon="@MatIconNames.Favorite" Label="@semester.Code"> 
-    <a href="@($"/editsemester/{semester.SemesterId}")">Plan</a>
+    <MatFAB Icon="@MatIconNames.Add" Label="@semester.Code">
+        <a href="@($"/editsemester/{semester.SemesterId}")">Plan for</a>
     </MatFAB>
-}
 
+}
+<MatFAB Icon="@MatIconNames.Add" Label="">
+    <a href="@($"/createsemester")">Add </a>
+</MatFAB>
+
+<MatDialog @bind-IsOpen="dialogIsOpen">
+    <MatDialogTitle>Add / Edit Semester</MatDialogTitle> 
+</MatDialog>
 
 
 @code
         {
-    
+    #region variables
+    bool _isEdit = false;
+    bool dialogIsOpen = false;
+
+    #endregion
 
     [Inject]
     public ISemesterService semesterService { get; set; }
@@ -45,7 +61,7 @@
     public IEnumerable<Semester> Semesters { get; set; }
     public Semester Semester { get; set; }
 
-    
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -55,7 +71,7 @@
 
 
 
-  }
+    }
 
     bool isAbsolute = false;
 
@@ -63,5 +79,15 @@
     {
         isAbsolute = !isAbsolute;
     }
+
+
+    #region Dialog Box methods
+    private void OpenDialog(bool isEdit)
+    {
+        _isEdit = isEdit;
+        if (!_isEdit) Semester = new Semester();
+        dialogIsOpen = true;
+    }
+    #endregion
 
 }

@@ -24,10 +24,33 @@ namespace Plana.Api.Models
 
        
 
-        public async Task<Semester> GetSemester(int semesterId)
+        public async Task<Semester> GetSemester(int? semesterId)
         {
 
-            return await context.Semesters.FindAsync(semesterId);
+            //return await context.Semesters
+
+            //    //.Include(e => e.ModuleRuns)
+            //    //.Include(e => e.LecturersSemesters)
+
+            //   .FindAsync(semesterId);
+            if (semesterId == null)
+            {
+                return NotFound();
+            }
+           var result = await context.Semesters
+                .Include(e => e.ModuleRuns)
+                .ThenInclude(mr=>mr.Module)
+                .Include(e=>e.LecturersSemesters)
+                .ThenInclude(l=>l.Lecturer)
+
+                .Include(e=>e.AdditionalAssignments)
+                .FirstOrDefaultAsync(e => e.SemesterId == semesterId);
+            return result;
+        }
+
+        private Semester NotFound()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Semester>> GetSemesters()
@@ -35,7 +58,10 @@ namespace Plana.Api.Models
             //  return await context.Semesters.ToListAsync();
             return await context.Semesters
                    .Include(i => i.ModuleRuns)
-                  .Include(l => l.LecturersSemesters)
+                  
+                   
+                   
+                  .Include( i=> i.LecturersSemesters)
                   .ThenInclude(m => m.Lecturer)
                   .Include(i => i.AdditionalAssignments)
                  
