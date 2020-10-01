@@ -1,4 +1,4 @@
-﻿@page "/editsemester/{Id}"
+﻿@*@page "/editsemester/{Id}"*@
 @page "/editsemester"
 @using MatBlazor;
 
@@ -32,7 +32,7 @@
     <label for="code">Code</label>
     <InputText id="code" @bind-Value="Semester.Code" />
     @if (Semester.ModuleRuns == null) { return; }
-    
+
     @foreach (var MR in Semester.ModuleRuns)
     {
         <label for="id">place</label>
@@ -42,7 +42,6 @@
 
 <MatButton Outlined="true" @onclick="@(e=>openModules())">Modules view</MatButton>
 
-@*<MatButoon Raised="true" @onclick="@(e=>showPlanforLecturers())" title="Edit Lecturers Plan"></MatButoon>*@
 
 @if (showModuleRunTable)
 {
@@ -50,64 +49,70 @@
               FilterByColumnName="Module-Title">
         <MatTableHeader>
 
-            <th>Module</th>
-            <th>Module-Title</th>
-            <th>Group</th>
-            <th>Place</th>
-            <th>Total Hours</th>
-            <th>Lecturer</th>
-            <th>Hours for concrete lecturer</th>
-            <th>Lect/Week-AS</th>
-            <th>Lect/Week-SS</th>
+    <th>Module</th>
+    <th>Module-Title</th>
+    <th>Group</th>
+    <th>Place</th>
+    <th>Total Hours</th>
+    <th>Lecturer</th>
+    <th>Hours for concrete lecturer</th>
+    <th>Actions</th>
+    @*<th>Lect/Week-AS</th>
+        <th>Lect/Week-SS</th>*@
 
 
-        </MatTableHeader>
+    </MatTableHeader>
         <MatTableRow>
 
 
+    @*<EditForm  Model="@Semester" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />*@
 
-            @if (Semester.ModuleRuns == null) { return; }
-            @foreach (var moduleRun in Semester.ModuleRuns)
+        @if (Semester.ModuleRuns == null) { return; }
+        
+
+            <td>@context.Code</td>
+
+            <td>@context.Module.Code</td>
+        @*<td><InputText id="Code" @bind-Value="Semester.Code"></InputText></td>*@
+
+            <td>
+                <p>
+                    <MatTextField @bind-Value="@context.Code" Label="@context.Code" Outlined="true"></MatTextField>
+                </p>
+
+            </td><td>@context.Module.Title</td>
+
+            <td>@context.Place</td>
+            <td>@context.Module.TotalHours</td>
+            @foreach (var mr in context.LecturersMR)
             {
+                @*<td>@mr.Lecturer.FirstName</td>*@
 
-                <td>@moduleRun.Module.Code</td>
-                <td>@moduleRun.Module.Title</td>
-                <td>@moduleRun.Code</td>
-                <td>@moduleRun.Place</td>
-                <td>@moduleRun.Module.TotalHours</td>
-                <MatTable Items="@moduleRun.LecturersMR">
+                <p>
+                    <MatTextField @bind-Value="mr.Lecturer.FirstName" Label="@mr.Lecturer.FirstName" Outlined="true"></MatTextField>
+                    <MatButton Raised="true" Icon="add" title="Add lecturer"></MatButton>
 
-                    <MatTableHeader>
-                        <th>First Name</th>
-                    </MatTableHeader>
-                    <MatTableRow Context="lecturer">
-                        @foreach (var mr in moduleRun.LecturersMR)
-                        { 
-                            <td>@mr.Lecturer.FirstName</td>
-                        }
-                    </MatTableRow>
-                </MatTable>
-                @*@if (moduleRun.LecturersMR == null) { return; }*@
-
-                @*@foreach (var mr in moduleRun.LecturersMR) { 
-                    
-                    
-                    <td>@mr.Lecturer.FirstName</td>
-                    <td>200</td>
-                    <td>@mr.Lessons</td>
-                    <td></td>
-
-                    
-
-            }*@
-
-                @foreach (var aa in Semester.AdditionalAssignments) { 
-                            <td>@aa.AAHours</td>
-                }
-
-
-
+                </p>
             }
+
+            <td>
+                <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="edit" title="Edit plan"></MatButton>
+                <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
+                <form>
+                    <MatButton type="submit" name="HandleValieSubmit" @onclick="HandleValidSubmit">OK</MatButton>
+                </form>
+            </td>
+        
+    @*</EditForm>*@
+
+    @foreach (var aa in Semester.AdditionalAssignments)
+    {
+        <td>@aa.AAHours</td>
+    }
+
+
+
 
 
         </MatTableRow>
@@ -115,7 +120,9 @@
 
 }
 <MatButton OnClick="BackHome">Back</MatButton>
-
+<p>
+    <MatTextField @bind-Value="@Semester.Code" Label="Standard" Outlined="true"></MatTextField>
+</p>
 @code {
     #region Variables
     bool dialogIsOpen = false;
@@ -134,7 +141,11 @@
     }
     public bool openModules()
     {
-        return showModuleRunTable = true;
+        if (showModuleRunTable == false)
+        {
+            return showModuleRunTable = true;
+        }
+        return showModuleRunTable = false;
     }
 
     #endregion
@@ -152,5 +163,5 @@
 
 
 
-    //}
+ 
 }

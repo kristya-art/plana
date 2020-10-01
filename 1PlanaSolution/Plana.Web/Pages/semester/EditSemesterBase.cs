@@ -20,17 +20,18 @@ namespace Plana.Web.Pages.semester
         public IModuleRunService ModuleRunService { get; set; }
         [Inject]
         public ILecturerService LecturerService { get; set; }
-        
+
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        public string PageHeaderText {get;set;}
+        public string PageHeaderText { get; set; }
 
-        
+
 
         public Semester Semester { get; set; }
         public List<Semester> Semesters { get; set; }
         public ModuleRun ModuleRun { get; set; }
+        
         public List<ModuleRun> ModuleRuns { get; set; }
 
         public Lecturer Lecturer { get; set; }
@@ -66,6 +67,7 @@ namespace Plana.Web.Pages.semester
             Semesters =( await SemesterService.GetSemesters()).ToList();
             //Lecturers = (await LecturerService.GetLecturers()).ToList();
             //ModuleRuns = ( await ModuleRunService.GetModuleRuns()).ToList(); 
+            
 
             
         }
@@ -81,10 +83,10 @@ namespace Plana.Web.Pages.semester
             {
                 result = await SemesterService.CreateSemester(Semester);
             }
-            if (result != null)
-            {
-                NavigationManager.NavigateTo("/home");
-            }
+            //if (result != null)
+            //{
+            //    NavigationManager.NavigateTo("/home");
+            //}
 
         
         }

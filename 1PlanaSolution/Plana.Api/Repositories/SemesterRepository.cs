@@ -81,10 +81,11 @@ namespace Plana.Api.Models
             var result = await GetSemester(semester.SemesterId);
             if (result != null)
             {
-                result.Code = result.Code;
-                result.Date = result.Date;
+                result.Code = semester.Code;
+                result.Date = semester.Date;
+                
                
-
+                
                 await context.SaveChangesAsync();
                 return result;
 
