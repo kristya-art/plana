@@ -13,6 +13,8 @@ namespace Plana.Api.Models
     public class ModuleRunRepository : IModuleRunRepository
     {
         private readonly AppDbContext appDbContext;
+        private readonly LecturerRepository lrep;
+        private readonly SemesterRepository srep;
 
         public ModuleRunRepository(AppDbContext appDbContext)
         {
@@ -55,32 +57,37 @@ namespace Plana.Api.Models
                 .ToListAsync();
         }
 
-      
-
 
 
         public async Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun)
         {
             var result = await appDbContext.ModuleRuns
-                .FirstOrDefaultAsync(e => e.ModuleRunId == moduleRun.ModuleRunId);
+                .FirstOrDefaultAsync(e=>e.ModuleRunId==moduleRun.ModuleRunId);
             if (result != null)
             {
-                
                 result.Code = moduleRun.Code;
-                result.Semester = moduleRun.Semester;
-                result.Module = moduleRun.Module;
                 result.LecturersMR = moduleRun.LecturersMR;
+              
+                result.Module = moduleRun.Module;
+               
+                result.ModuleId = moduleRun.ModuleId;
+               
+                result.Place = moduleRun.Place;
+                result.Semester = moduleRun.Semester;
+                
+                result.SemesterId = moduleRun.SemesterId;
 
-                //todo: need to complete with other attributes
-
+               
                 await appDbContext.SaveChangesAsync();
 
                 return result;
             
             }
             return null;
+        
         }
 
+       
         public async Task<Boolean> SoftDeleteModuleRun(int moduleRunId)
         {
 

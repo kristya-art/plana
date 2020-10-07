@@ -8,6 +8,7 @@ using Plana.Web.Services;
 using Plana.Models;
 using Microsoft.Extensions.Logging;
 using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 
 namespace Plana.Web.Pages.semester
 {
@@ -30,7 +31,9 @@ namespace Plana.Web.Pages.semester
 
         public Semester Semester { get; set; }
         public List<Semester> Semesters { get; set; }
-        public ModuleRun ModuleRun { get; set; }
+        public ModuleRun ModuleRun { get; set; } = new ModuleRun();
+       
+        
         
         public List<ModuleRun> ModuleRuns { get; set; }
 
@@ -55,18 +58,21 @@ namespace Plana.Web.Pages.semester
             {
                 PageHeaderText = "Edit Semester";
                 Semester = await SemesterService.GetSemester(int.Parse(Id));
+                
 
             }
             else
             {
                 PageHeaderText = "Create Semester";
                 Semester = new Semester { };
+                ModuleRun = new ModuleRun { };
                
             
             }
             Semesters =( await SemesterService.GetSemesters()).ToList();
+            
             //Lecturers = (await LecturerService.GetLecturers()).ToList();
-            //ModuleRuns = ( await ModuleRunService.GetModuleRuns()).ToList(); 
+           ModuleRuns = ( await ModuleRunService.GetModuleRuns()).ToList(); 
             
 
             
@@ -90,6 +96,19 @@ namespace Plana.Web.Pages.semester
 
         
         }
+        protected async Task UpdateMR()
+        {
+            ModuleRun result = null;
+
+            if (ModuleRun.ModuleRunId != 0)
+            {
+                
+               result= await ModuleRunService.UpdateModuleRun(ModuleRun);
+            }
+            else { result= await ModuleRunService.CreateModuleRun(ModuleRun); }
+        }
+
+
 
 
 

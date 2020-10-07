@@ -14,11 +14,21 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class ModuleRunsController : ControllerBase
     {
-        private readonly IModuleRunRepository moduleRunRepository;
+        private readonly IModuleRunRepository moduleRunRep;
+        private readonly IModuleRepository moduleRep;
+        private readonly ISemesterRepository semesterRep;
+        private readonly ILecturerRepository lecturerRep;
 
-        public ModuleRunsController(IModuleRunRepository moduleRunRepository)
+        public ModuleRunsController(IModuleRunRepository moduleRunRepository,
+                                IModuleRepository moduleRepository,
+                                ISemesterRepository semesterRepository,
+                                ILecturerRepository lecturerRepository)
         {
-            this.moduleRunRepository = moduleRunRepository;
+            this.moduleRunRep = moduleRunRepository;
+            this.moduleRep = moduleRepository;
+            this.semesterRep = semesterRepository;
+            this.lecturerRep = lecturerRepository;
+
 
         }
         //[HttpGet("{search}")]
@@ -65,7 +75,7 @@ namespace Plana.Api.Controllers
         {
             try
             {
-                return Ok(await moduleRunRepository.GetModuleRuns());
+                return Ok(await moduleRunRep.GetModuleRuns());
             }
             catch (Exception)
             {
@@ -95,7 +105,7 @@ namespace Plana.Api.Controllers
         {
             try
             {
-                var result = await moduleRunRepository.GetModuleRun(id);
+                var result = await moduleRunRep.GetModuleRun(id);
                 if (result == null)
                 {
                     return NotFound();
@@ -120,7 +130,9 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-                var createdModuleRun = await moduleRunRepository.CreateModuleRun(mr);
+                var createdModuleRun = await moduleRunRep.CreateModuleRun(mr);
+                //await moduleRep.UpdateModule(mr.Module);
+                //await semesterRep.UpdateSemester(mr.Semester);
 
                 return CreatedAtAction(nameof(GetModuleRun), new { id = createdModuleRun.ModuleRunId }, createdModuleRun);
 
@@ -140,19 +152,22 @@ namespace Plana.Api.Controllers
             try
             {
                 
-                var updatedModuleRun = await moduleRunRepository.GetModuleRun(moduleRun.ModuleRunId);
+                var updatedModuleRun = await moduleRunRep.GetModuleRun(moduleRun.ModuleRunId);
                 if (updatedModuleRun == null)
                 {
                     return NotFound($"Module run with id = {moduleRun.ModuleRunId } not found!");
                 }
-                return await moduleRunRepository.UpdateModuleRun(moduleRun);
+                return await moduleRunRep.UpdateModuleRun(moduleRun);
+                //await moduleRep.UpdateModule(moduleRun.Module);
+                //await semesterRep.UpdateSemester(moduleRun.Semester);
+                //return StatusCode(StatusCodes.Status200OK, "Is ok");
 
             }
             catch (Exception)
             {
 
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                "Error udating database");
+                "Error updating database");
             }
         }
         

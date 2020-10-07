@@ -15,9 +15,9 @@ namespace Plana.Web.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<Semester> CreateModuleRun(ModuleRun moduleRun)
+        public async Task<ModuleRun> CreateModuleRun(ModuleRun newModuleRun)
         {
-            throw new NotImplementedException();
+            return await httpClient.PostJsonAsync<ModuleRun>("api/moduleruns",newModuleRun);
         }
 
         public async Task<ModuleRun> GetModuleRun(int id)

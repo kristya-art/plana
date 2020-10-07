@@ -173,7 +173,7 @@ namespace Plana.Api.Models
                     };
 
                 context.Modules.AddRange(project2, m2, m3, m4,
-                    m5, m6, m7, m8, m9, databases, m12, studienBeratung);
+                    m5, m6, m7, m8, m9, databases, m12, studienBeratung,projectAndTraining1,projectAndTraining2);
                 context.SaveChanges();
 
      //seed data for AdditionalAssignments
@@ -460,6 +460,14 @@ namespace Plana.Api.Models
                       }
                       
                       
+                    },
+                    new ModuleRun
+                    { 
+                      Code = "q",
+                      Semester = s3,
+                      Place = "Bern",
+                      Module = projectAndTraining1
+
                     },
 
                     new ModuleRun

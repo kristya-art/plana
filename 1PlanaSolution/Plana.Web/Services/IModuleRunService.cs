@@ -14,7 +14,7 @@ namespace Plana.Web.Services
         Task<IEnumerable<ModuleRun>> GetModuleRuns();
         Task<ModuleRun> GetModuleRun(int id);
         Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun);
-        Task<Semester> CreateModuleRun(ModuleRun moduleRun);
+        Task<ModuleRun> CreateModuleRun(ModuleRun newModuleRun);
         Task SoftDeleteModuleRun(int id);
     }
 }

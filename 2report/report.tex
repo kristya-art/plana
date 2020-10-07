@@ -2,6 +2,7 @@
 %%\documentclass{article}
 \documentclass{scrartcl}
 
+%"First you tell 'em what you're going to tell 'em. Then you tell 'em. Then you tell 'em what you've told 'em."
 
 %\usepackage{tocloft}  new
 \usepackage{cmap}
@@ -103,8 +104,20 @@
 
 \section{Introduction}
 
+The aim of this work is to develop a web based information system that enables assignment planning for lecturers in our school at the Department of Technology and Computer Science.
+The challenge we face is to create effective planning by involving the teachers themselves in this process. We decided to make a web application that will meet all the requirements and will be created using suitable modern technologies. Technologies such as ASP.NET Core Blazor Server with Entity Framework Core (EFCore) and MS SQL (Microsoft Structured Query Language) for the database were chosen. ASP.NET Core Blazor is a new framework that is gaining popularity. Interestingly, thanks to it, it becomes possible to do the entire application in C\# without using JavaScript.\\
 
-
+In project 2, we created a prototype. In this work, the system will be detailed and expanded. In particular, the following goals are pursued:
+\begin{itemize}
+\item \textbf{Involvement of teachers in the planning process.}
+Teachers are able to create and manage their own medium- and long-term deployment plans.
+\item \textbf{Grouping of lecturers.} It should be possible to schedule several lecturers for the same module.
+   \begin{itemize}
+   \item Teachers who join a group can independently manage their assignments related to their common module.
+   \item Each teacher can make a group with another lecturers.
+   \end{itemize}
+ \item \textbf{Grouping of the modules.} The group of lecturers can  choose the group of modules and set themselves to it. This can be done in the form of a proposal for the definitive plan, which is then approved by the person responsible for the planning.
+\end{itemize}
 
 
 
@@ -120,7 +133,7 @@
 %Your problem statement should be based on your project proposal, revised and improved as necessary.
 %*\
 
-
+\pagebreak
 
 \subsection{Acronyms}	
 \begin{table}[h]
@@ -224,9 +237,203 @@ The foundation of the project organization was Scrum.
   		\subsubsection{Scrum Artifacts }
   		
   		\subsubsection{Sprints}
+%%%%  		System requirements
+\section{System Requirements}
+
+
+\subsection{Product Backlog and user stories}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+\hline
+\rowcolor{LightCyan}
+ \textbf{Epic} & \textbf{User Story}  & \textbf{Acceptance Criteria} \\
+\hline
+
+
+As a Lecturer I want to be able to create
+and manage my own medium and long-term assignment plans so that it will be  possible a mutual development of the main assignment plan. &
+
+ As a Lecturer, I want to see the list of modules for concrete semester, so that I can choose the modules I want to plan in my own plan. &
+ 
+  User is able to:            
+\begin{itemize}
+\item have his own plan page
+\item navigate to his own plan page
+\item able to see the module list
+\end{itemize}                                                            \\ \hline
+
+%   the same epic
+ &
+As a Lecturer, I want to be able to add the modules to my assignment plan I want to teach in specific semester or remove  it from my plan so that I can participate in the main planning by making a suggestions or requests.                  &
+
+ User is able to:            
+\begin{itemize}
+\item have his own plan page
+\item navigate to his own plan page
+\item able to select a module and set himself to it
+\item able to remove himself from the module he has added himself
+\item able modify a data of his own planning 
+\end{itemize}                                         \\ \hline
+
+
+
+% the same epic 
+&
+As a Lecturer, I want to be able to manage my plan, so I can modify my plan as I like. &
+
+ User is able to:            
+\begin{itemize}
+\item have his own plan page
+\item navigate to his own plan page
+\item able to select a module and set himself to it
+\item able to remove himself from the module he has added himself
+\item able modify a data of his own planning 
+\end{itemize}                                                                 \\ \hline
+
+
+
+
+
+
+
+  \end{tabular}
+\end{center}
+\caption{Product Backlog}
+\label{table2}
+\end{table}
+
+\pagebreak
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+\hline
+\rowcolor{LightCyan}
+ \textbf{Epic} & \textbf{User Story}  & \textbf{Acceptance Criteria} \\
+\hline
+   
+ As a Study Director, I want to be able to make group of lecturers and attach it to a specific module,and also make group of modules so this will increase planning flexibility . As a Study Director, I want to be able to attach a specific group of modules to a specific group of teachers so that further joint planning of these modules will be easier &
+ 
+As a Study Director, I want to see teachers' suggestions for group work and also their proposal for the selected modules so that it will be easier to approve specific groups. &
+          
+  User is able to:            
+\begin{itemize}
+\item open the main planning matrix with suggestions for group work and teacher suggestions for teaching modules.
+\item manage matrix page, making the necessary adjustments
+
+\end{itemize}                                                                 \\ \hline
+
+ &
+ As a Study Director, I want to be able to make groups of lecturers in the assignment plan. &
+ 
+   User is able to:            
+\begin{itemize}
+\item open the main planning page
+\item select list of teachers
+\item select several teachers and save them as a group.
+\item open module view and attach a specific group of lecturers to a specific module.
+
+\end{itemize}                                                                 \\ \hline
+
+ &
+ As a Study Director, I want to be able to make groups of modules in the assignment plan. &
+ 
+   User is able to:            
+\begin{itemize}
+\item open the main planning page
+\item select list of modules
+\item select several modules and save them as a group.
+\end{itemize}       \\ \hline
+
+ &
+ As a Study Director, I want to be able attach lecturer or group of lecturers to the specific module in the assignment plan. &
+ 
+   User is able to:            
+\begin{itemize}
+\item open the main planning page
+\item select list of modules 
+\item click add lecturer button or add group of lecturer button
+\item select lecturer or group of lecturer and save it
+
+
+\end{itemize}                                                             
+
+  
+\end{tabular}
+\end{center}
+\caption{Product Backlog}
+\label{table2}
+\end{table}
+
+\pagebreak                                                            
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+\hline
+\rowcolor{LightCyan}
+ \textbf{Epic} & \textbf{User Story}  & \textbf{Acceptance Criteria} \\
+\hline
+
+&
+ As a Study Director, I want to be able attach a group of lecturers to the group of modules in the assignment plan. &
+ 
+   User is able to:            
+\begin{itemize}
+\item open the main planning page
+\item select list of modules 
+\item select a specific group of modules
+\item click add group of lecturer button
+\item select group of lecturer and save it
+
+
+\end{itemize}                                                                 \\ \hline
+
+&
+ 
+ As a Lecturer, I can join a group with another lecturers, so that we can use a system as a group. &
+ 
+   User is able to:            
+\begin{itemize}
+\item
+\item
+
+
+\end{itemize}                                                                 \\ \hline
+
+&
+ 
+ As a Lecturer, who joins a group, I want to be able to independently manage the tasks related to the common module &
+ 
+   User is able to:            
+\begin{itemize}
+\item
+\item
+
+
+\end{itemize}                                                                 \\ \hline
+
+ \end{tabular}
+\end{center}
+\caption{Product Backlog}
+\label{table2}
+\end{table}
+
+
+
+ 
+\subsection{Functional Requirements}
+
 
 \section{System Architecture and System Design}
 In project 2 we have started with describing of System architecture and design. In this work we want go deeper into this topic. \\
+
+\section{Domain Analysis}
+
+\section{Technologies}
+
+%%%implementation
 \section{Creating the Projects}
 
 \subsection{Structure of Projects and Folders}
@@ -539,7 +746,7 @@ To use the Blazor framework it is necessary to install :\\
 
 
 
-\section{Work Plan}
+%\section{Work Plan}
   		
   		
 	The sprints covered a one three-four weeks period. At the end of each sprint, there was a discussion with the supervisor.
@@ -739,14 +946,24 @@ To use the Blazor framework it is necessary to install :\\
 %\label{table2}
 %\end{table}
 
+\section{Testing}
 
-
-\section{Conclusions and Future Work}
+\section{Summary}
 %   \subsubsection{Summary}
 \subsection{Conclusions}
-   
-    	\subsection{Future Work		}
-    	
+\subsection{Future Work}
+\subsection{Lessons Learned}
+
+\section{List of illustrations}
+\section{Contents of the table}
+\section{Appendix}
+\section{Declaration of Authorship}
+I hereby certify that I composed this work completely unaided, and without the use of any other sources or resources other than those specified in the bibliography. All text sections not of my authorship are cited as quotations, and accompanied by an exact reference to their origin.\\
+\\
+Place, date:\\
+\\
+
+Signature:
 
 
 \newpage

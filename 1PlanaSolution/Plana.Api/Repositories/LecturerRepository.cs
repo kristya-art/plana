@@ -61,7 +61,6 @@ namespace Plana.Api.Models
                 result.IsActive = lecturer.IsActive;
 
                 result.LecturersModules = lecturer.LecturersModules;//new
-                                                                   
                 result.AdditionalAssignments = lecturer.AdditionalAssignments;//new
                 result.LecturersModuleRuns = lecturer.LecturersModuleRuns;
 

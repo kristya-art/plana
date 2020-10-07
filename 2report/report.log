@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.6.29) (format=lualatex 2020.8.5)  29 AUG 2020 01:20
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.6.29) (format=lualatex 2020.8.5)  8 OCT 2020 01:17
  restricted system commands enabled.
 **report.tex
 (./report.tex
@@ -817,7 +817,7 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 
-Package array Warning: Redefining primitive column b on input line 32.
+Package array Warning: Redefining primitive column b on input line 33.
 
 ("C:/Program Files/MiKTeX/tex/latex/biblatex/biblatex.sty"
 Package: biblatex 2019/12/01 v3.14 programmable bibliographies (PK/MW)
@@ -1205,112 +1205,68 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip93
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 49.
-Package hyperref Info: Option `linktocpage' set `true' on input line 50.
+Package hyperref Info: Option `colorlinks' set `true' on input line 50.
+Package hyperref Info: Option `linktocpage' set `true' on input line 51.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'polyglossia' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'american'.
 
-(./report.aux
-LaTeX Info: Redefining \rmfamily on input line 25.
-LaTeX Info: Redefining \sffamily on input line 25.
-LaTeX Info: Redefining \ttfamily on input line 25.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `visina8 ' multiply defined.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `visina8 ' multiply defined.
-
-
-LaTeX Warning: Label `blabla' multiply defined.
-
-
-LaTeX Warning: Label `visina8 ' multiply defined.
-
-
-LaTeX Warning: Label `visina8 ' multiply defined.
-
-
-LaTeX Warning: Label `visina8 ' multiply defined.
-
-)
+(./report.aux)
 \openout1 = report.aux
 
-LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 57.
-LaTeX Font Info:    Trying to load font information for OML+jkp on input line 57
+LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 58.
+LaTeX Font Info:    Trying to load font information for OML+jkp on input line 58
 .
  ("C:/Program Files/MiKTeX/tex/latex/kpfonts/omljkp.fd"
 File: omljkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 57.
-LaTeX Font Info:    Trying to load font information for OMS+jkp on input line 57
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 58.
+LaTeX Font Info:    Trying to load font information for OMS+jkp on input line 58
 .
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/omsjkp.fd"
 File: omsjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 57
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 58.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 58
 .
 
 ("C:/Program Files/MiKTeX/tex/latex/base/ts1cmr.fd"
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 57.
-LaTeX Font Info:    Trying to load font information for OMX+jkp on input line 57
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 58.
+LaTeX Font Info:    Trying to load font information for OMX+jkp on input line 58
 .
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/omxjkp.fd"
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 58.
 LaTeX Font Info:    Trying to load font information for U+jkpexa on input line 5
-7.
+8.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpexa.fd"
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-Package scrbase Info: activating english \contentsname on input line 57.
-Package scrbase Info: activating english \listfigurename on input line 57.
-Package scrbase Info: activating english \listtablename on input line 57.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+Package scrbase Info: activating english \contentsname on input line 58.
+Package scrbase Info: activating english \listfigurename on input line 58.
+Package scrbase Info: activating english \listtablename on input line 58.
 
 ("C:/Program Files/MiKTeX/tex/context/base/mkii/supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1360,10 +1316,10 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' not found.
 
 No file report.bbl.
-Package biblatex Info: Reference section=0 on input line 57.
-Package biblatex Info: Reference segment=0 on input line 57.
+Package biblatex Info: Reference section=0 on input line 58.
+Package biblatex Info: Reference segment=0 on input line 58.
 \AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring ON on input line 57.
+Package hyperref Info: Link coloring ON on input line 58.
 ("C:/Program Files/MiKTeX/tex/latex/hyperref/nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -1375,9 +1331,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count429
 )
-LaTeX Info: Redefining \ref on input line 57.
-LaTeX Info: Redefining \pageref on input line 57.
-LaTeX Info: Redefining \nameref on input line 57.
+LaTeX Info: Redefining \ref on input line 58.
+LaTeX Info: Redefining \pageref on input line 58.
+LaTeX Info: Redefining \nameref on input line 58.
 
 (./report.out) (./report.out)
 \@outlinefile=\write4
@@ -1390,7 +1346,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 57.
+(scrartcl)           before \begin{document} on input line 58.
 
 ("C:/Program Files/MiKTeX/tex/latex/bookmark/bookmark.sty"
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
@@ -1402,370 +1358,463 @@ Package auxhook Info: \AddLineBeginMainAux comes a little late,
  168.
 \BKM@id=\count430
 ))
-LaTeX Info: Redefining \rmfamily on input line 57.
-LaTeX Info: Redefining \sffamily on input line 57.
-LaTeX Info: Redefining \ttfamily on input line 57.
+LaTeX Info: Redefining \rmfamily on input line 58.
+LaTeX Info: Redefining \sffamily on input line 58.
+LaTeX Info: Redefining \ttfamily on input line 58.
 
 
 LaTeX Font Warning: Font shape `TU/lmss/bx/sc' undefined
-(Font)              using `TU/lmss/bx/n' instead on input line 76.
+(Font)              using `TU/lmss/bx/n' instead on input line 77.
 
-LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 76
+LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 77
 .
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ot1jkp.fd"
 File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 )
 LaTeX Font Info:    Trying to load font information for U+jkpmia on input line 7
-6.
+7.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpmia.fd"
 File: ujkpmia.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsya on input line 7
-6.
+7.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpsya.fd"
 File: ujkpsya.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsyb on input line 7
-6.
+7.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpsyb.fd"
 File: ujkpsyb.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsyc on input line 7
-6.
+7.
 
 ("C:/Program Files/MiKTeX/tex/latex/kpfonts/ujkpsyc.fd"
 File: ujkpsyc.fd 2006/08/15 v1.0
 ) [1
 
 
-{C:/Users/kristya/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (./report.toc
-LaTeX Info: Redefining \rmfamily on input line 3.
-LaTeX Info: Redefining \sffamily on input line 3.
-LaTeX Info: Redefining \ttfamily on input line 3.
-)
+{C:/Users/kristya/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+
+Package hyperref Warning: old toc file detected, not used; run LaTeX again.
+
 \tf@toc=\write5
 
 \openout5 = report.toc
- [2] [3]
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
-LaTeX Warning: Citation 'eeles2005capturing' on page 4 undefined on input line 1
-49.
+ []
 
-[4
+[3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
+
+LaTeX Warning: Citation 'eeles2005capturing' on page 4 undefined on input line 1
+62.
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 206--213
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 5 undefined on input line 202.
+Underfull \hbox (badness 7944) in paragraph at lines 254--255
+\TU/lmr/m/n/10.95 to be able to cre-
+ []
 
 
-LaTeX Warning: Citation 'ef' on page 5 undefined on input line 202.
+Underfull \hbox (badness 4543) in paragraph at lines 254--255
+\TU/lmr/m/n/10.95 ate and man-age my
+ []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--226
+Overfull \hbox (17.683pt too wide) in paragraph at lines 247--301
+ [] 
+ []
+
+[5] [6]
+Overfull \vbox (97.36414pt too high) has occurred while \output is active []
+
+
+[7]
+Underfull \hbox (badness 2245) in paragraph at lines 316--316
+\TU/lmr/m/n/10.95 will in-crease plan-ning
+ []
+
+
+Underfull \hbox (badness 3471) in paragraph at lines 322--323
+[]\TU/lmr/m/n/10.95 open the main plan-
+ []
+
+
+Underfull \hbox (badness 5878) in paragraph at lines 323--324
+[]\TU/lmr/m/n/10.95 man-age ma-trix page,
+ []
+
+
+Underfull \hbox (badness 4072) in paragraph at lines 323--324
+\TU/lmr/m/n/10.95 mak-ing the nec-es-sary
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 334--335
+[]\TU/lmr/m/n/10.95 se-lect sev-eral teach-ers
+ []
+
+
+Underfull \hbox (badness 3229) in paragraph at lines 334--335
+\TU/lmr/m/n/10.95 and save them as a
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 346--347
+[]\TU/lmr/m/n/10.95 se-lect sev-eral mod-ules
+ []
+
+
+Underfull \hbox (badness 3229) in paragraph at lines 346--347
+\TU/lmr/m/n/10.95 and save them as a
+ []
+
+
+Overfull \hbox (17.683pt too wide) in paragraph at lines 310--364
+ [] 
+ []
+
+
+Overfull \vbox (167.3999pt too high) has occurred while \output is active []
+
+
+[8]
+Overfull \hbox (17.683pt too wide) in paragraph at lines 373--418
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 5 undefined on input line 229.
+LaTeX Warning: Citation 'efa' on page 9 undefined on input line 454.
 
-[5]
-<images/report_img/lecturers-modules.JPG, id=114, 423.08063pt x 219.06844pt>
+
+LaTeX Warning: Citation 'ef' on page 9 undefined on input line 454.
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 476--478
+
+ []
+
+
+LaTeX Warning: Citation 'efa' on page 10 undefined on input line 481.
+
+<images/report_img/lecturers-modules.JPG, id=74, 423.08063pt x 219.06844pt>
 File: images/report_img/lecturers-modules.JPG Graphic file (type jpg)
 <use images/report_img/lecturers-modules.JPG>
 Package luatex.def Info: images/report_img/lecturers-modules.JPG  used on input 
-line 234.
+line 486.
 (luatex.def)             Requested size: 426.79134pt x 220.99663pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 234--235
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 486--487
  [][] 
  []
 
-<images/report_img/many-to-many.JPG, id=115, 857.45343pt x 339.51843pt>
+[10]
+<images/report_img/many-to-many.JPG, id=93, 857.45343pt x 339.51843pt>
 File: images/report_img/many-to-many.JPG Graphic file (type jpg)
 <use images/report_img/many-to-many.JPG>
 Package luatex.def Info: images/report_img/many-to-many.JPG  used on input line 
-262.
+514.
 (luatex.def)             Requested size: 426.79134pt x 168.99205pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 262--263
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 514--515
  [][] 
  []
 
-[6<./images/report_img/lecturers-modules.JPG>]
 
-LaTeX Warning: Citation 'patrick' on page 7 undefined on input line 266.
+LaTeX Warning: Citation 'patrick' on page 11 undefined on input line 518.
 
-<images/report_img/Initial.JPG, id=121, 611.28375pt x 313.5464pt>
+[11<./images/report_img/lecturers-modules.JPG><./images/report_img/many-to-many.
+JPG>]
+<images/report_img/Initial.JPG, id=101, 611.28375pt x 313.5464pt>
 File: images/report_img/Initial.JPG Graphic file (type jpg)
 <use images/report_img/Initial.JPG>
-Package luatex.def Info: images/report_img/Initial.JPG  used on input line 270.
+Package luatex.def Info: images/report_img/Initial.JPG  used on input line 522.
 (luatex.def)             Requested size: 426.79134pt x 218.91165pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 270--271
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 522--523
  [][] 
  []
 
-<images/report_img/many-to-many-tables.JPG, id=122, 728.7225pt x 348.17578pt>
+<images/report_img/many-to-many-tables.JPG, id=102, 728.7225pt x 348.17578pt>
 File: images/report_img/many-to-many-tables.JPG Graphic file (type jpg)
 <use images/report_img/many-to-many-tables.JPG>
 Package luatex.def Info: images/report_img/many-to-many-tables.JPG  used on inpu
-t line 279.
+t line 531.
 (luatex.def)             Requested size: 426.79134pt x 203.9131pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 279--280
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 531--532
  [][] 
  []
 
-[7<./images/report_img/many-to-many.JPG><./images/report_img/Initial.JPG>]
-[8<./images/report_img/many-to-many-tables.JPG>]
-Overfull \hbox (7.11903pt too wide) in paragraph at lines 294--298
+[12<./images/report_img/Initial.JPG><./images/report_img/many-to-many-tables.JPG
+>]
+Overfull \hbox (7.11903pt too wide) in paragraph at lines 546--550
 \TU/lmr/bx/n/10.95 text.Mod-uleRuns; \TU/lmr/m/n/10.95 the Mod-uleRuns prop-erty
  in the con-text class re-turns a Db-Set<Mod-
  []
 
-<images/report_img/repo-create.JPG, id=134, 505.13719pt x 253.69781pt>
+<images/report_img/repo-create.JPG, id=110, 505.13719pt x 253.69781pt>
 File: images/report_img/repo-create.JPG Graphic file (type jpg)
 <use images/report_img/repo-create.JPG>
-Package luatex.def Info: images/report_img/repo-create.JPG  used on input line 3
-02.
+Package luatex.def Info: images/report_img/repo-create.JPG  used on input line 5
+54.
 (luatex.def)             Requested size: 454.61926pt x 228.32591pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 303.
+(caption)                particular \caption on input line 555.
 See the caption package documentation for explanation.
 
-[9<./images/report_img/repo-create.JPG>]
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
+[13<./images/report_img/repo-create.JPG>]
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
 
  []
 
-<images/report_img/add_scoped_rep.JPG, id=140, 465.61453pt x 315.80484pt>
+<images/report_img/add_scoped_rep.JPG, id=117, 465.61453pt x 315.80484pt>
 File: images/report_img/add_scoped_rep.JPG Graphic file (type jpg)
 <use images/report_img/add_scoped_rep.JPG>
 Package luatex.def Info: images/report_img/add_scoped_rep.JPG  used on input lin
-e 314.
+e 566.
 (luatex.def)             Requested size: 426.79134pt x 289.48384pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 314--315
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 566--567
  [][] 
  []
 
 
-LaTeX Warning: Citation 'core3' on page 10 undefined on input line 321.
+LaTeX Warning: Citation 'core3' on page 14 undefined on input line 573.
 
 
-LaTeX Warning: Citation 'core3' on page 10 undefined on input line 326.
+LaTeX Warning: Citation 'core3' on page 14 undefined on input line 578.
 
 
-LaTeX Warning: Citation 'core3' on page 10 undefined on input line 331.
+LaTeX Warning: Citation 'core3' on page 14 undefined on input line 583.
 
 
-LaTeX Warning: Citation 'efa' on page 10 undefined on input line 333.
+LaTeX Warning: Citation 'efa' on page 14 undefined on input line 585.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--335
+Underfull \hbox (badness 10000) in paragraph at lines 583--587
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 10 undefined on input line 337.
+LaTeX Warning: Citation 'efa' on page 14 undefined on input line 589.
 
-[10<./images/report_img/add_scoped_rep.JPG>]
-<images/report_img/seed-data-startup.JPG, id=147, 513.04172pt x 496.10344pt>
+[14<./images/report_img/add_scoped_rep.JPG>]
+<images/report_img/seed-data-startup.JPG, id=126, 513.04172pt x 496.10344pt>
 File: images/report_img/seed-data-startup.JPG Graphic file (type jpg)
 <use images/report_img/seed-data-startup.JPG>
 Package luatex.def Info: images/report_img/seed-data-startup.JPG  used on input 
-line 343.
+line 595.
 (luatex.def)             Requested size: 410.43391pt x 396.88329pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 344.
+(caption)                particular \caption on input line 596.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
 
  []
 
-<images/report_img/complex_data_problem/repository_get_lecturers.jpg, id=148, 54
+<images/report_img/complex_data_problem/repository_get_lecturers.jpg, id=127, 54
 3.53062pt x 101.62968pt>
 File: images/report_img/complex_data_problem/repository_get_lecturers.jpg Graphi
 c file (type jpg)
 <use images/report_img/complex_data_problem/repository_get_lecturers.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/repository_get_l
-ecturers.jpg  used on input line 376.
+ecturers.jpg  used on input line 628.
 (luatex.def)             Requested size: 489.17303pt x 91.46585pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 377.
+(caption)                particular \caption on input line 629.
 See the caption package documentation for explanation.
 
-<images/report_img/complex_data_problem/michele_module_null.jpg, id=149, 937.251
+<images/report_img/complex_data_problem/michele_module_null.jpg, id=128, 937.251
 56pt x 83.5622pt>
 File: images/report_img/complex_data_problem/michele_module_null.jpg Graphic fil
 e (type jpg)
 <use images/report_img/complex_data_problem/michele_module_null.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/michele_module_n
-ull.jpg  used on input line 385.
+ull.jpg  used on input line 637.
 (luatex.def)             Requested size: 426.79134pt x 38.05145pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 385--386
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 637--638
  [][] 
  []
 
-[11<./images/report_img/seed-data-startup.JPG>]
+[15<./images/report_img/seed-data-startup.JPG>]
 <images/report_img/complex_data_problem/repository_get_lecturers_modules.jpg, id
-=158, 596.60391pt x 94.85437pt>
+=139, 596.60391pt x 94.85437pt>
 File: images/report_img/complex_data_problem/repository_get_lecturers_modules.jp
 g Graphic file (type jpg)
 <use images/report_img/complex_data_problem/repository_get_lecturers_modules.jpg
 >
 Package luatex.def Info: images/report_img/complex_data_problem/repository_get_l
-ecturers_modules.jpg  used on input line 393.
+ecturers_modules.jpg  used on input line 645.
 (luatex.def)             Requested size: 536.93857pt x 85.36813pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 394.
+(caption)                particular \caption on input line 646.
 See the caption package documentation for explanation.
 
-<images/report_img/complex_data_problem/json_problem.jpg, id=159, 957.9539pt x 3
+<images/report_img/complex_data_problem/json_problem.jpg, id=140, 957.9539pt x 3
 03.00703pt>
 File: images/report_img/complex_data_problem/json_problem.jpg Graphic file (type
  jpg)
 <use images/report_img/complex_data_problem/json_problem.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/json_problem.jpg
-  used on input line 403.
+  used on input line 655.
 (luatex.def)             Requested size: 426.79134pt x 134.99721pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 403--404
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 655--656
  [][] 
  []
 
-<images/report_img/complex_data_problem/install_newtonsoft_json.jpg, id=160, 483
+<images/report_img/complex_data_problem/install_newtonsoft_json.jpg, id=141, 483
 .30562pt x 51.56766pt>
 File: images/report_img/complex_data_problem/install_newtonsoft_json.jpg Graphic
  file (type jpg)
 <use images/report_img/complex_data_problem/install_newtonsoft_json.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/install_newtonso
-ft_json.jpg  used on input line 410.
+ft_json.jpg  used on input line 662.
 (luatex.def)             Requested size: 426.79134pt x 45.53938pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 410--411
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 662--663
  [][] 
  []
 
-<images/report_img/complex_data_problem/startup_add_newtonsoft.jpg, id=161, 554.
+<images/report_img/complex_data_problem/startup_add_newtonsoft.jpg, id=142, 554.
 07pt x 282.68109pt>
 File: images/report_img/complex_data_problem/startup_add_newtonsoft.jpg Graphic 
 file (type jpg)
 <use images/report_img/complex_data_problem/startup_add_newtonsoft.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/startup_add_newt
-onsoft.jpg  used on input line 418.
+onsoft.jpg  used on input line 670.
 (luatex.def)             Requested size: 498.6584pt x 254.41061pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 419.
+(caption)                particular \caption on input line 671.
 See the caption package documentation for explanation.
 
-<images/report_img/complex_data_problem/michele_module_ok.jpg, id=162, 943.65047
+<images/report_img/complex_data_problem/michele_module_ok.jpg, id=143, 943.65047
 pt x 105.39375pt>
 File: images/report_img/complex_data_problem/michele_module_ok.jpg Graphic file 
 (type jpg)
 <use images/report_img/complex_data_problem/michele_module_ok.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/michele_module_o
-k.jpg  used on input line 428.
+k.jpg  used on input line 680.
 (luatex.def)             Requested size: 426.79134pt x 47.66797pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 428--429
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 680--681
  [][] 
  []
 
-[12<./images/report_img/complex_data_problem/repository_get_lecturers.jpg><./ima
+[16<./images/report_img/complex_data_problem/repository_get_lecturers.jpg><./ima
 ges/report_img/complex_data_problem/michele_module_null.jpg><./images/report_img
 /complex_data_problem/repository_get_lecturers_modules.jpg><./images/report_img/
 complex_data_problem/json_problem.jpg><./images/report_img/complex_data_problem/
 install_newtonsoft_json.jpg>]
-<images/report_img/blazor/register-http-client.jpg, id=172, 578.5364pt x 364.361
+<images/report_img/blazor/register-http-client.jpg, id=153, 578.5364pt x 364.361
 25pt>
 File: images/report_img/blazor/register-http-client.jpg Graphic file (type jpg)
 <use images/report_img/blazor/register-http-client.jpg>
 Package luatex.def Info: images/report_img/blazor/register-http-client.jpg  used
- on input line 446.
+ on input line 698.
 (luatex.def)             Requested size: 520.67795pt x 327.92209pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 447.
+(caption)                particular \caption on input line 699.
 See the caption package documentation for explanation.
 
-[13<./images/report_img/complex_data_problem/startup_add_newtonsoft.jpg><./image
+[17<./images/report_img/complex_data_problem/startup_add_newtonsoft.jpg><./image
 s/report_img/complex_data_problem/michele_module_ok.jpg>]
-<images/report_img/add-blazor-service-to-startup.jpg, id=181, 605.63765pt x 501.
+<images/report_img/add-blazor-service-to-startup.jpg, id=164, 605.63765pt x 501.
 37312pt>
 File: images/report_img/add-blazor-service-to-startup.jpg Graphic file (type jpg
 )
 <use images/report_img/add-blazor-service-to-startup.jpg>
 Package luatex.def Info: images/report_img/add-blazor-service-to-startup.jpg  us
-ed on input line 458.
+ed on input line 710.
 (luatex.def)             Requested size: 545.06885pt x 451.23163pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 459.
+(caption)                particular \caption on input line 711.
 See the caption package documentation for explanation.
 
-[14<./images/report_img/blazor/register-http-client.jpg>] [15<./images/report_im
+[18<./images/report_img/blazor/register-http-client.jpg>] [19<./images/report_im
 g/add-blazor-service-to-startup.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 465--466
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
 
  []
 
-<images/report_img/blazor/imports_razor.jpg, id=192, 441.90094pt x 175.40532pt>
+<images/report_img/blazor/imports_razor.jpg, id=175, 441.90094pt x 175.40532pt>
 File: images/report_img/blazor/imports_razor.jpg Graphic file (type jpg)
 <use images/report_img/blazor/imports_razor.jpg>
 Package luatex.def Info: images/report_img/blazor/imports_razor.jpg  used on inp
-ut line 471.
+ut line 723.
 (luatex.def)             Requested size: 397.70717pt x 157.86331pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 472.
+(caption)                particular \caption on input line 724.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
+Underfull \hbox (badness 10000) in paragraph at lines 729--730
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 508--515
-
- []
-
-[16<./images/report_img/blazor/imports_razor.jpg>] [17]
-
-LaTeX Warning: Empty bibliography on input line 754.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 848--849
+Underfull \hbox (badness 10000) in paragraph at lines 961--965
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 869--870
+Underfull \hbox (badness 10000) in paragraph at lines 961--965
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 871--873
+Underfull \hbox (badness 10000) in paragraph at lines 961--965
+
+ []
+
+[20<./images/report_img/blazor/imports_razor.jpg>] [21]
+
+LaTeX Warning: Empty bibliography on input line 973.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1067--1068
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1089
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1090--1092
 
  []
 
@@ -1803,16 +1852,16 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 882.
-[18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 882.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1101.
+[22]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1101.
  (./report.aux
 LaTeX Info: Redefining \rmfamily on input line 25.
 LaTeX Info: Redefining \sffamily on input line 25.
 LaTeX Info: Redefining \ttfamily on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 882.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 882.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1101.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1101.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1823,7 +1872,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -1836,16 +1885,15 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 28384 strings out of 480878
+ 28408 strings out of 480878
  100000,1648299 words of node,token memory allocated
- 598 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 74 glue_spec,
+ 583 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 71 glue_spec,
  7 attribute_list, 1 write nodes
-   avail lists: 1:4,2:1228,3:267,4:178,5:157,6:78,7:2242,8:49,9:255,10:11,11:158
-
- 44825 multiletter control sequences out of 65536+200000
+   avail lists: 1:5,2:676,3:213,4:80,5:277,6:50,7:4053,8:49,9:312,10:12,11:204
+ 44836 multiletter control sequences out of 65536+200000
  105 fonts using 9386163 bytes
- 47i,11n,77p,10600b,1955s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 47i,12n,77p,10600b,1699s stack positions out of 5000i,500n,10000p,200000b,50000s
 <//?/c:/program files/miktex/fonts/opentype/public/lm/lmroman10-bolditalic.otf><
 //?/c:/program files/miktex/fonts/opentype/public/lm/lmmono10-regular.otf><//?/c
 :/program files/miktex/fonts/opentype/public/lm/lmroman10-bold.otf><//?/c:/progr
@@ -1855,9 +1903,9 @@ miktex/fonts/opentype/public/lm/lmromancaps10-regular.otf><//?/c:/program files/
 miktex/fonts/opentype/public/lm/lmroman12-regular.otf><//?/c:/program files/mikt
 ex/fonts/opentype/public/lm/lmroman12-italic.otf><//?/c:/program files/miktex/fo
 nts/opentype/public/lm/lmsans10-bold.otf>
-Output written on report.pdf (18 pages, 2096961 bytes).
+Output written on report.pdf (22 pages, 2104228 bytes).
 
-PDF statistics: 391 PDF objects out of 1000 (max. 8388607)
- 88 named destinations out of 1000 (max. 131072)
- 305 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 416 PDF objects out of 1000 (max. 8388607)
+ 106 named destinations out of 1000 (max. 131072)
+ 393 words of extra memory for PDF output out of 10000 (max. 100000000)
 

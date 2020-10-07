@@ -2,78 +2,100 @@
 \defcounter {refsection}{0}\relax 
 \selectlanguage *{english}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Acknowledgments}{4}{section*.3}%
+\contentsline {section}{\nonumberline Acknowledgments}{3}{section*.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\nonumberline Abstract}{4}{section*.5}%
+\contentsline {section}{\nonumberline Abstract}{3}{section*.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.1}Acronyms}{4}{subsection.1.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2}Glossary}{4}{subsection.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}System Architecture and System Design}{5}{section.2}%
+\contentsline {section}{\numberline {2}Project Management}{5}{section.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Creating the Projects}{5}{section.3}%
+\contentsline {subsection}{\numberline {2.1}Effort Estimation}{5}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Structure of Projects and Folders}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {2.2}Scrum}{5}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Data Models}{5}{subsection.3.2}%
+\contentsline {subsubsection}{\nonumberline Scrum Roles}{5}{subsubsection*.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Entity Framework Core Packages}{5}{subsection.3.3}%
+\contentsline {subsubsection}{\nonumberline Scrum Plan}{5}{subsubsection*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Connection String}{5}{subsection.3.4}%
+\contentsline {subsubsection}{\nonumberline Scrum Artifacts}{7}{subsubsection*.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}Creating the Database Context Class}{5}{subsection.3.5}%
+\contentsline {subsubsection}{\nonumberline Sprints}{7}{subsubsection*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6}Entity Framework Core Configuration}{5}{subsection.3.6}%
+\contentsline {section}{\numberline {3}System Requirements}{7}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7}Database and Entity Framework Core}{5}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.1}Product Backlog and user stories}{7}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8}The PLANA App's Relational Database}{5}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.2}Functional Requirements}{9}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9}Modeling Types of Database Relationships}{5}{subsection.3.9}%
+\contentsline {section}{\numberline {4}System Architecture and System Design}{9}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Many-to-many Relationship}{5}{subsubsection*.8}%
+\contentsline {section}{\numberline {5}Domain Analysis}{10}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.10}Creating Database}{8}{subsection.3.10}%
+\contentsline {section}{\numberline {6}Technologies}{10}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.11}Creating a Repository}{9}{subsection.3.11}%
+\contentsline {section}{\numberline {7}Creating the Projects}{10}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Creating the Database Migration, Code-First Migration}{10}{subsubsection*.10}%
+\contentsline {subsection}{\numberline {7.1}Structure of Projects and Folders}{10}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.12}Creating Seed Data}{10}{subsection.3.12}%
+\contentsline {subsection}{\numberline {7.2}Data Models}{10}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Configuration of Core Services and Entity Framework}{11}{subsubsection*.12}%
+\contentsline {subsection}{\numberline {7.3}Entity Framework Core Packages}{10}{subsection.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.13}Create an Controller}{11}{subsection.3.13}%
+\contentsline {subsection}{\numberline {7.4}Connection String}{10}{subsection.7.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Complex Data Model}{11}{subsubsection*.14}%
+\contentsline {subsection}{\numberline {7.5}Creating the Database Context Class}{10}{subsection.7.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Blazor Server}{13}{subsubsection*.16}%
+\contentsline {subsection}{\numberline {7.6}Entity Framework Core Configuration}{10}{subsection.7.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Configuring ASP.NET Core for Blazor Server}{13}{subsubsection*.18}%
+\contentsline {subsection}{\numberline {7.7}Database and Entity Framework Core}{10}{subsection.7.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.14}Setup for Blazor}{16}{subsection.3.14}%
+\contentsline {subsection}{\numberline {7.8}The PLANA App's Relational Database}{10}{subsection.7.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Work Plan}{16}{section.4}%
+\contentsline {subsection}{\numberline {7.9}Modeling Types of Database Relationships}{10}{subsection.7.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Effort Estimation}{16}{subsection.4.1}%
+\contentsline {subsubsection}{\nonumberline Many-to-many Relationship}{10}{subsubsection*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Scrum}{16}{subsection.4.2}%
+\contentsline {subsection}{\numberline {7.10}Creating Database}{12}{subsection.7.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Roles}{17}{subsubsection*.20}%
+\contentsline {subsection}{\numberline {7.11}Creating a Repository}{13}{subsection.7.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Plan}{17}{subsubsection*.22}%
+\contentsline {subsubsection}{\nonumberline Creating the Database Migration, Code-First Migration}{14}{subsubsection*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Scrum Artifacts}{17}{subsubsection*.24}%
+\contentsline {subsection}{\numberline {7.12}Creating Seed Data}{14}{subsection.7.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Sprints}{17}{subsubsection*.26}%
+\contentsline {subsubsection}{\nonumberline Configuration of Core Services and Entity Framework}{15}{subsubsection*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Conclusions and Future Work}{17}{section.5}%
+\contentsline {subsection}{\numberline {7.13}Create an Controller}{15}{subsection.7.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Conclusions}{17}{subsection.5.1}%
+\contentsline {subsubsection}{\nonumberline Complex Data Model}{15}{subsubsection*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Future Work}{17}{subsection.5.2}%
+\contentsline {subsubsection}{\nonumberline Blazor Server}{17}{subsubsection*.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Protocol}{18}{section.6}%
+\contentsline {subsubsection}{\nonumberline Configuring ASP.NET Core for Blazor Server}{17}{subsubsection*.29}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.14}Setup for Blazor}{20}{subsection.7.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Testing}{21}{section.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}Summary}{21}{section.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.1}Conclusions}{21}{subsection.9.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2}Future Work}{21}{subsection.9.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.3}Lessons Learned}{21}{subsection.9.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}List of illustrations}{21}{section.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11}Contents of the table}{21}{section.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12}Appendix}{21}{section.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {13}Declaration of Authorship}{21}{section.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {14}Protocol}{22}{section.14}%

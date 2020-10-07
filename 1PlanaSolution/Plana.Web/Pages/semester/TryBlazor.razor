@@ -13,16 +13,9 @@
 <EditForm Model="@Semester" OnValidSubmit="HandleValidSubmit">
     <label for="code">Code</label>
     <InputText id="code" @bind-Value="Semester.Code" />
-
     <label for="date">Semester Date</label>
-    @*<InputText id="date" @bind-Value="Semester.Date.ToString()"/>*@
-    @if (Semester.ModuleRuns == null) { return; }
+    <InputDate id="date" @bind-Value="Semester.Date" />
 
-    @foreach (var MR in Semester.ModuleRuns)
-    {
-        <label for="id">place</label>
-        <InputText id="place" @bind-Value="MR.Place" />
-    }
     <button class="btn btn-primary" type="submit">Submit</button>
 
 </EditForm>
@@ -34,7 +27,7 @@
     {
 
         <MatTable Items="@Semester.ModuleRuns" class="mat-elevation-z5"
-                  FilterByColumnName="Module-Title">
+                  FilterByColumnName="Module-Title" >
             <MatTableHeader>
 
                 <th>Module</th>
@@ -61,7 +54,7 @@
         <td><MatTextField @bind-Value="mr.Place"></MatTextField></td>
 
         }*@
-
+                <td><MatTextField @bind-Value="Semester.Code"></MatTextField></td>
                 <td><MatTextField @bind-Value="context.Module.Code"></MatTextField></td>
                 <td><MatTextField @bind-Value="context.Module.Title"></MatTextField></td>
                 <td><MatTextField @bind-Value="context.Code"></MatTextField></td>
@@ -83,9 +76,10 @@
                         }
 
                 </td>
-                <td><MatButton type="submit" name="HandleValieSubmit" @onclick="HandleValidSubmit">OK</MatButton></td>
+                @*<td><MatButton type="submit" name="UpdateMR" @onclick="@(e=>UpdateMR(context))">OK</MatButton></td>*@
+                <td><MatButton type="submit" name="UpdateMR" @onclick="e=>ModuleRunService.UpdateModuleRun(context)">OK</MatButton></td>
 
-
+                <td><MatButton Type="submit" name="HandleValidSubmit" @onclick="HandleValidSubmit">semester-update-test</MatButton></td>
 
 
 
@@ -117,6 +111,10 @@
 
     bool showModuleRunTable = false;
 
+    #endregion
+
+    #region
+    
     #endregion
 
     #region dialog box methods

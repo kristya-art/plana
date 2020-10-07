@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200923200408_Initial")]
+    [Migration("20201002185008_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
