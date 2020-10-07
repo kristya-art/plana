@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.6.29) (format=lualatex 2020.8.5)  8 OCT 2020 01:17
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.6.29) (format=lualatex 2020.8.5)  8 OCT 2020 01:55
  restricted system commands enabled.
 **report.tex
 (./report.tex
@@ -1212,7 +1212,60 @@ Package csquotes Info: ... found 'polyglossia' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'american'.
 
-(./report.aux)
+(./report.aux
+LaTeX Info: Redefining \rmfamily on input line 25.
+LaTeX Info: Redefining \sffamily on input line 25.
+LaTeX Info: Redefining \ttfamily on input line 25.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+)
 \openout1 = report.aux
 
 LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 58.
@@ -1397,28 +1450,49 @@ File: ujkpsyc.fd 2006/08/15 v1.0
 ) [1
 
 
-{C:/Users/kristya/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
+{C:/Users/kristya/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (./report.toc
+LaTeX Info: Redefining \rmfamily on input line 3.
+LaTeX Info: Redefining \sffamily on input line 3.
+LaTeX Info: Redefining \ttfamily on input line 3.
+ [2])
 \tf@toc=\write5
 
 \openout5 = report.toc
-[2]
+ [3]
 Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
  []
 
-[3
+[4
 
 ]
 
-LaTeX Warning: Citation 'eeles2005capturing' on page 4 undefined on input line 1
+LaTeX Warning: Citation 'eeles2005capturing' on page 5 undefined on input line 1
 62.
 
-[4]
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 206--213
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--250
+[]|
+ []
+
+
+Overfull \hbox (11.39662pt too wide) in paragraph at lines 250--250
+\TU/lmr/bx/n/10.95 User
+ []
+
+
+Overfull \hbox (15.79854pt too wide) in paragraph at lines 250--250
+\TU/lmr/bx/n/10.95 Story
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--250
+[]|\TU/lmr/bx/n/10.95 User Story
  []
 
 
@@ -1432,389 +1506,654 @@ Underfull \hbox (badness 4543) in paragraph at lines 254--255
  []
 
 
-Overfull \hbox (17.683pt too wide) in paragraph at lines 247--301
+Underfull \hbox (badness 1997) in paragraph at lines 258--258
+\TU/lmr/m/n/10.95 for con-crete semester,
+ []
+
+
+Underfull \hbox (badness 8132) in paragraph at lines 263--264
+[]\TU/lmr/m/n/10.95 nav-i-gate to his
+ []
+
+
+Underfull \hbox (badness 3019) in paragraph at lines 264--265
+[]\TU/lmr/m/n/10.95 able to see the
+ []
+
+
+Underfull \hbox (badness 3029) in paragraph at lines 270--270
+[]|\TU/lmr/m/n/10.95 add mod-ules to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--270
+\TU/lmr/m/n/10.95 own as-sign-ment
+ []
+
+
+Underfull \hbox (badness 8132) in paragraph at lines 277--278
+[]\TU/lmr/m/n/10.95 nav-i-gate to his
+ []
+
+
+Underfull \hbox (badness 1902) in paragraph at lines 278--279
+[]\TU/lmr/m/n/10.95 able to se-lect a
+ []
+
+
+Underfull \hbox (badness 4595) in paragraph at lines 278--279
+\TU/lmr/m/n/10.95 mod-ule and set
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+[]\TU/lmr/m/n/10.95 able to re-move
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 279--280
+\TU/lmr/m/n/10.95 him-self from the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+\TU/lmr/m/n/10.95 mod-ule he has
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
+[]\TU/lmr/m/n/10.95 able mod-ify a
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 280--281
+\TU/lmr/m/n/10.95 data of his own
+ []
+
+
+Underfull \hbox (badness 8132) in paragraph at lines 295--296
+[]\TU/lmr/m/n/10.95 nav-i-gate to his
+ []
+
+
+Underfull \hbox (badness 1902) in paragraph at lines 296--297
+[]\TU/lmr/m/n/10.95 able to se-lect a
+ []
+
+
+Underfull \hbox (badness 4595) in paragraph at lines 296--297
+\TU/lmr/m/n/10.95 mod-ule and set
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+[]\TU/lmr/m/n/10.95 able to re-move
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 297--298
+\TU/lmr/m/n/10.95 him-self from the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+\TU/lmr/m/n/10.95 mod-ule he has
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+[]\TU/lmr/m/n/10.95 able mod-ify a
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 298--299
+\TU/lmr/m/n/10.95 data of his own
+ []
+
+
+Overfull \hbox (85.1621pt too wide) in paragraph at lines 247--308
  [] 
  []
 
-[5] [6]
-Overfull \vbox (97.36414pt too high) has occurred while \output is active []
+[6] [7]
+Overfull \vbox (260.3642pt too high) has occurred while \output is active []
 
 
-[7]
-Underfull \hbox (badness 2245) in paragraph at lines 316--316
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 319--319
+[]|
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 319--319
+[]|\TU/lmr/bx/n/10.95 User Story
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 322--322
 \TU/lmr/m/n/10.95 will in-crease plan-ning
  []
 
 
-Underfull \hbox (badness 3471) in paragraph at lines 322--323
-[]\TU/lmr/m/n/10.95 open the main plan-
+Underfull \hbox (badness 2088) in paragraph at lines 324--324
+[]|\TU/lmr/m/n/10.95 see the re-quests
  []
 
 
-Underfull \hbox (badness 5878) in paragraph at lines 323--324
-[]\TU/lmr/m/n/10.95 man-age ma-trix page,
+Underfull \hbox (badness 1694) in paragraph at lines 325--325
+[]|\TU/lmr/m/n/10.95 As a Study Di-rec-tor,
  []
 
 
-Underfull \hbox (badness 4072) in paragraph at lines 323--324
-\TU/lmr/m/n/10.95 mak-ing the nec-es-sary
+Underfull \hbox (badness 3803) in paragraph at lines 325--325
+\TU/lmr/m/n/10.95 sug-ges-tions for group
  []
 
 
-Underfull \hbox (badness 2285) in paragraph at lines 334--335
-[]\TU/lmr/m/n/10.95 se-lect sev-eral teach-ers
+Underfull \hbox (badness 1242) in paragraph at lines 325--325
+\TU/lmr/m/n/10.95 posal for the se-lected
  []
 
 
-Underfull \hbox (badness 3229) in paragraph at lines 334--335
-\TU/lmr/m/n/10.95 and save them as a
+Underfull \hbox (badness 3312) in paragraph at lines 325--325
+\TU/lmr/m/n/10.95 be eas-ier to ap-prove
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 346--347
-[]\TU/lmr/m/n/10.95 se-lect sev-eral mod-ules
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
+[]\TU/lmr/m/n/10.95 open the main
  []
 
 
-Underfull \hbox (badness 3229) in paragraph at lines 346--347
-\TU/lmr/m/n/10.95 and save them as a
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
+\TU/lmr/m/n/10.95 plan-ning ma-trix
  []
 
 
-Overfull \hbox (17.683pt too wide) in paragraph at lines 310--364
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
+\TU/lmr/m/n/10.95 with sug-ges-
+ []
+
+
+Underfull \hbox (badness 7558) in paragraph at lines 329--330
+\TU/lmr/m/n/10.95 tions for group
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
+\TU/lmr/m/n/10.95 sug-ges-tions for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
+[]\TU/lmr/m/n/10.95 man-age ma-trix
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
+\TU/lmr/m/n/10.95 page, mak-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
+\TU/lmr/m/n/10.95 the nec-es-sary
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 336--336
+[]|\TU/lmr/m/n/10.95 makes groups of
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 337--337
+\TU/lmr/m/n/10.95 groups of lec-tur-ers in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--342
+[]\TU/lmr/m/n/10.95 open the main
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+[]\TU/lmr/m/n/10.95 se-lect sev-eral
+ []
+
+
+Underfull \hbox (badness 4096) in paragraph at lines 350--350
+[]|\TU/lmr/m/n/10.95 make groups of
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 351--351
+\TU/lmr/m/n/10.95 groups of mod-ules in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
+[]\TU/lmr/m/n/10.95 open the main
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
+[]\TU/lmr/m/n/10.95 se-lect sev-eral
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--362
+[]|\TU/lmr/m/n/10.95 at-tach lec-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--362
+\TU/lmr/m/n/10.95 turer/group
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 363--363
+[]|\TU/lmr/m/n/10.95 As a Study Di-rec-tor,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+[]\TU/lmr/m/n/10.95 open the main
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
+\TU/lmr/m/n/10.95 but-ton or add
+ []
+
+
+Overfull \hbox (85.1621pt too wide) in paragraph at lines 317--377
  [] 
  []
 
 
-Overfull \vbox (167.3999pt too high) has occurred while \output is active []
+Overfull \vbox (262.59995pt too high) has occurred while \output is active []
 
-
-[8]
-Overfull \hbox (17.683pt too wide) in paragraph at lines 373--418
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 430--431
-
- []
-
-
-LaTeX Warning: Citation 'efa' on page 9 undefined on input line 454.
-
-
-LaTeX Warning: Citation 'ef' on page 9 undefined on input line 454.
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 476--478
+Underfull \hbox (badness 10000) in paragraph at lines 388--388
+[]|
+ []
+
+
+Overfull \hbox (11.39662pt too wide) in paragraph at lines 388--388
+\TU/lmr/bx/n/10.95 User
+ []
+
+
+Overfull \hbox (15.79854pt too wide) in paragraph at lines 388--388
+\TU/lmr/bx/n/10.95 Story
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--388
+[]|\TU/lmr/bx/n/10.95 User Story
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
+[]\TU/lmr/m/n/10.95 open the main
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 399--400
+[]\TU/lmr/m/n/10.95 se-lect a spe-cific
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 407--407
+\TU/lmr/m/n/10.95 a group with an-other
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 421--421
+\TU/lmr/m/n/10.95 able to in-de-pen-dently
+ []
+
+
+Underfull \hbox (badness 1755) in paragraph at lines 421--421
+\TU/lmr/m/n/10.95 man-age the tasks re-
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 421--421
+\TU/lmr/m/n/10.95 lated to the com-mon
+ []
+
+
+Overfull \hbox (85.1621pt too wide) in paragraph at lines 386--434
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 10 undefined on input line 481.
+LaTeX Warning: Citation 'efa' on page 10 undefined on input line 470.
 
-<images/report_img/lecturers-modules.JPG, id=74, 423.08063pt x 219.06844pt>
+
+LaTeX Warning: Citation 'ef' on page 10 undefined on input line 470.
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 492--494
+
+ []
+
+
+LaTeX Warning: Citation 'efa' on page 11 undefined on input line 497.
+
+<images/report_img/lecturers-modules.JPG, id=162, 423.08063pt x 219.06844pt>
 File: images/report_img/lecturers-modules.JPG Graphic file (type jpg)
 <use images/report_img/lecturers-modules.JPG>
 Package luatex.def Info: images/report_img/lecturers-modules.JPG  used on input 
-line 486.
+line 502.
 (luatex.def)             Requested size: 426.79134pt x 220.99663pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 486--487
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 502--503
  [][] 
  []
 
-[10]
-<images/report_img/many-to-many.JPG, id=93, 857.45343pt x 339.51843pt>
+[11]
+<images/report_img/many-to-many.JPG, id=169, 857.45343pt x 339.51843pt>
 File: images/report_img/many-to-many.JPG Graphic file (type jpg)
 <use images/report_img/many-to-many.JPG>
 Package luatex.def Info: images/report_img/many-to-many.JPG  used on input line 
-514.
+530.
 (luatex.def)             Requested size: 426.79134pt x 168.99205pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 514--515
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 530--531
  [][] 
  []
 
 
-LaTeX Warning: Citation 'patrick' on page 11 undefined on input line 518.
+LaTeX Warning: Citation 'patrick' on page 12 undefined on input line 534.
 
-[11<./images/report_img/lecturers-modules.JPG><./images/report_img/many-to-many.
+[12<./images/report_img/lecturers-modules.JPG><./images/report_img/many-to-many.
 JPG>]
-<images/report_img/Initial.JPG, id=101, 611.28375pt x 313.5464pt>
+<images/report_img/Initial.JPG, id=176, 611.28375pt x 313.5464pt>
 File: images/report_img/Initial.JPG Graphic file (type jpg)
 <use images/report_img/Initial.JPG>
-Package luatex.def Info: images/report_img/Initial.JPG  used on input line 522.
+Package luatex.def Info: images/report_img/Initial.JPG  used on input line 538.
 (luatex.def)             Requested size: 426.79134pt x 218.91165pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 522--523
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 538--539
  [][] 
  []
 
-<images/report_img/many-to-many-tables.JPG, id=102, 728.7225pt x 348.17578pt>
+<images/report_img/many-to-many-tables.JPG, id=177, 728.7225pt x 348.17578pt>
 File: images/report_img/many-to-many-tables.JPG Graphic file (type jpg)
 <use images/report_img/many-to-many-tables.JPG>
 Package luatex.def Info: images/report_img/many-to-many-tables.JPG  used on inpu
-t line 531.
+t line 547.
 (luatex.def)             Requested size: 426.79134pt x 203.9131pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 531--532
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 547--548
  [][] 
  []
 
-[12<./images/report_img/Initial.JPG><./images/report_img/many-to-many-tables.JPG
+[13<./images/report_img/Initial.JPG><./images/report_img/many-to-many-tables.JPG
 >]
-Overfull \hbox (7.11903pt too wide) in paragraph at lines 546--550
+Overfull \hbox (7.11903pt too wide) in paragraph at lines 562--566
 \TU/lmr/bx/n/10.95 text.Mod-uleRuns; \TU/lmr/m/n/10.95 the Mod-uleRuns prop-erty
  in the con-text class re-turns a Db-Set<Mod-
  []
 
-<images/report_img/repo-create.JPG, id=110, 505.13719pt x 253.69781pt>
+<images/report_img/repo-create.JPG, id=184, 505.13719pt x 253.69781pt>
 File: images/report_img/repo-create.JPG Graphic file (type jpg)
 <use images/report_img/repo-create.JPG>
 Package luatex.def Info: images/report_img/repo-create.JPG  used on input line 5
-54.
+70.
 (luatex.def)             Requested size: 454.61926pt x 228.32591pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 555.
+(caption)                particular \caption on input line 571.
 See the caption package documentation for explanation.
 
-[13<./images/report_img/repo-create.JPG>]
-Underfull \hbox (badness 10000) in paragraph at lines 562--563
+[14<./images/report_img/repo-create.JPG>]
+Underfull \hbox (badness 10000) in paragraph at lines 578--579
 
  []
 
-<images/report_img/add_scoped_rep.JPG, id=117, 465.61453pt x 315.80484pt>
+<images/report_img/add_scoped_rep.JPG, id=190, 465.61453pt x 315.80484pt>
 File: images/report_img/add_scoped_rep.JPG Graphic file (type jpg)
 <use images/report_img/add_scoped_rep.JPG>
 Package luatex.def Info: images/report_img/add_scoped_rep.JPG  used on input lin
-e 566.
+e 582.
 (luatex.def)             Requested size: 426.79134pt x 289.48384pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 566--567
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 582--583
  [][] 
  []
 
 
-LaTeX Warning: Citation 'core3' on page 14 undefined on input line 573.
+LaTeX Warning: Citation 'core3' on page 15 undefined on input line 589.
 
 
-LaTeX Warning: Citation 'core3' on page 14 undefined on input line 578.
+LaTeX Warning: Citation 'core3' on page 15 undefined on input line 594.
 
 
-LaTeX Warning: Citation 'core3' on page 14 undefined on input line 583.
+LaTeX Warning: Citation 'core3' on page 15 undefined on input line 599.
 
 
-LaTeX Warning: Citation 'efa' on page 14 undefined on input line 585.
+LaTeX Warning: Citation 'efa' on page 15 undefined on input line 601.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 583--587
+Underfull \hbox (badness 10000) in paragraph at lines 599--603
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 14 undefined on input line 589.
+LaTeX Warning: Citation 'efa' on page 15 undefined on input line 605.
 
-[14<./images/report_img/add_scoped_rep.JPG>]
-<images/report_img/seed-data-startup.JPG, id=126, 513.04172pt x 496.10344pt>
+[15<./images/report_img/add_scoped_rep.JPG>]
+<images/report_img/seed-data-startup.JPG, id=197, 513.04172pt x 496.10344pt>
 File: images/report_img/seed-data-startup.JPG Graphic file (type jpg)
 <use images/report_img/seed-data-startup.JPG>
 Package luatex.def Info: images/report_img/seed-data-startup.JPG  used on input 
-line 595.
+line 611.
 (luatex.def)             Requested size: 410.43391pt x 396.88329pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 596.
+(caption)                particular \caption on input line 612.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 623--624
+Underfull \hbox (badness 10000) in paragraph at lines 639--640
 
  []
 
-<images/report_img/complex_data_problem/repository_get_lecturers.jpg, id=127, 54
+<images/report_img/complex_data_problem/repository_get_lecturers.jpg, id=198, 54
 3.53062pt x 101.62968pt>
 File: images/report_img/complex_data_problem/repository_get_lecturers.jpg Graphi
 c file (type jpg)
 <use images/report_img/complex_data_problem/repository_get_lecturers.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/repository_get_l
-ecturers.jpg  used on input line 628.
+ecturers.jpg  used on input line 644.
 (luatex.def)             Requested size: 489.17303pt x 91.46585pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 629.
+(caption)                particular \caption on input line 645.
 See the caption package documentation for explanation.
 
-<images/report_img/complex_data_problem/michele_module_null.jpg, id=128, 937.251
+<images/report_img/complex_data_problem/michele_module_null.jpg, id=199, 937.251
 56pt x 83.5622pt>
 File: images/report_img/complex_data_problem/michele_module_null.jpg Graphic fil
 e (type jpg)
 <use images/report_img/complex_data_problem/michele_module_null.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/michele_module_n
-ull.jpg  used on input line 637.
+ull.jpg  used on input line 653.
 (luatex.def)             Requested size: 426.79134pt x 38.05145pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 637--638
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 653--654
  [][] 
  []
 
-[15<./images/report_img/seed-data-startup.JPG>]
+[16<./images/report_img/seed-data-startup.JPG>]
 <images/report_img/complex_data_problem/repository_get_lecturers_modules.jpg, id
-=139, 596.60391pt x 94.85437pt>
+=207, 596.60391pt x 94.85437pt>
 File: images/report_img/complex_data_problem/repository_get_lecturers_modules.jp
 g Graphic file (type jpg)
 <use images/report_img/complex_data_problem/repository_get_lecturers_modules.jpg
 >
 Package luatex.def Info: images/report_img/complex_data_problem/repository_get_l
-ecturers_modules.jpg  used on input line 645.
+ecturers_modules.jpg  used on input line 661.
 (luatex.def)             Requested size: 536.93857pt x 85.36813pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 646.
+(caption)                particular \caption on input line 662.
 See the caption package documentation for explanation.
 
-<images/report_img/complex_data_problem/json_problem.jpg, id=140, 957.9539pt x 3
+<images/report_img/complex_data_problem/json_problem.jpg, id=208, 957.9539pt x 3
 03.00703pt>
 File: images/report_img/complex_data_problem/json_problem.jpg Graphic file (type
  jpg)
 <use images/report_img/complex_data_problem/json_problem.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/json_problem.jpg
-  used on input line 655.
+  used on input line 671.
 (luatex.def)             Requested size: 426.79134pt x 134.99721pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 655--656
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 671--672
  [][] 
  []
 
-<images/report_img/complex_data_problem/install_newtonsoft_json.jpg, id=141, 483
+<images/report_img/complex_data_problem/install_newtonsoft_json.jpg, id=209, 483
 .30562pt x 51.56766pt>
 File: images/report_img/complex_data_problem/install_newtonsoft_json.jpg Graphic
  file (type jpg)
 <use images/report_img/complex_data_problem/install_newtonsoft_json.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/install_newtonso
-ft_json.jpg  used on input line 662.
+ft_json.jpg  used on input line 678.
 (luatex.def)             Requested size: 426.79134pt x 45.53938pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 662--663
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 678--679
  [][] 
  []
 
-<images/report_img/complex_data_problem/startup_add_newtonsoft.jpg, id=142, 554.
+<images/report_img/complex_data_problem/startup_add_newtonsoft.jpg, id=210, 554.
 07pt x 282.68109pt>
 File: images/report_img/complex_data_problem/startup_add_newtonsoft.jpg Graphic 
 file (type jpg)
 <use images/report_img/complex_data_problem/startup_add_newtonsoft.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/startup_add_newt
-onsoft.jpg  used on input line 670.
+onsoft.jpg  used on input line 686.
 (luatex.def)             Requested size: 498.6584pt x 254.41061pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 671.
+(caption)                particular \caption on input line 687.
 See the caption package documentation for explanation.
 
-<images/report_img/complex_data_problem/michele_module_ok.jpg, id=143, 943.65047
+<images/report_img/complex_data_problem/michele_module_ok.jpg, id=211, 943.65047
 pt x 105.39375pt>
 File: images/report_img/complex_data_problem/michele_module_ok.jpg Graphic file 
 (type jpg)
 <use images/report_img/complex_data_problem/michele_module_ok.jpg>
 Package luatex.def Info: images/report_img/complex_data_problem/michele_module_o
-k.jpg  used on input line 680.
+k.jpg  used on input line 696.
 (luatex.def)             Requested size: 426.79134pt x 47.66797pt.
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 680--681
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 696--697
  [][] 
  []
 
-[16<./images/report_img/complex_data_problem/repository_get_lecturers.jpg><./ima
+[17<./images/report_img/complex_data_problem/repository_get_lecturers.jpg><./ima
 ges/report_img/complex_data_problem/michele_module_null.jpg><./images/report_img
 /complex_data_problem/repository_get_lecturers_modules.jpg><./images/report_img/
 complex_data_problem/json_problem.jpg><./images/report_img/complex_data_problem/
 install_newtonsoft_json.jpg>]
-<images/report_img/blazor/register-http-client.jpg, id=153, 578.5364pt x 364.361
+<images/report_img/blazor/register-http-client.jpg, id=221, 578.5364pt x 364.361
 25pt>
 File: images/report_img/blazor/register-http-client.jpg Graphic file (type jpg)
 <use images/report_img/blazor/register-http-client.jpg>
 Package luatex.def Info: images/report_img/blazor/register-http-client.jpg  used
- on input line 698.
+ on input line 714.
 (luatex.def)             Requested size: 520.67795pt x 327.92209pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 699.
+(caption)                particular \caption on input line 715.
 See the caption package documentation for explanation.
 
-[17<./images/report_img/complex_data_problem/startup_add_newtonsoft.jpg><./image
+[18<./images/report_img/complex_data_problem/startup_add_newtonsoft.jpg><./image
 s/report_img/complex_data_problem/michele_module_ok.jpg>]
-<images/report_img/add-blazor-service-to-startup.jpg, id=164, 605.63765pt x 501.
+<images/report_img/add-blazor-service-to-startup.jpg, id=230, 605.63765pt x 501.
 37312pt>
 File: images/report_img/add-blazor-service-to-startup.jpg Graphic file (type jpg
 )
 <use images/report_img/add-blazor-service-to-startup.jpg>
 Package luatex.def Info: images/report_img/add-blazor-service-to-startup.jpg  us
-ed on input line 710.
+ed on input line 726.
 (luatex.def)             Requested size: 545.06885pt x 451.23163pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 711.
+(caption)                particular \caption on input line 727.
 See the caption package documentation for explanation.
 
-[18<./images/report_img/blazor/register-http-client.jpg>] [19<./images/report_im
+[19<./images/report_img/blazor/register-http-client.jpg>] [20<./images/report_im
 g/add-blazor-service-to-startup.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 717--718
+Underfull \hbox (badness 10000) in paragraph at lines 733--734
 
  []
 
-<images/report_img/blazor/imports_razor.jpg, id=175, 441.90094pt x 175.40532pt>
+<images/report_img/blazor/imports_razor.jpg, id=241, 441.90094pt x 175.40532pt>
 File: images/report_img/blazor/imports_razor.jpg Graphic file (type jpg)
 <use images/report_img/blazor/imports_razor.jpg>
 Package luatex.def Info: images/report_img/blazor/imports_razor.jpg  used on inp
-ut line 723.
+ut line 739.
 (luatex.def)             Requested size: 397.70717pt x 157.86331pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 724.
+(caption)                particular \caption on input line 740.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 729--730
+Underfull \hbox (badness 10000) in paragraph at lines 745--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--965
+Underfull \hbox (badness 10000) in paragraph at lines 977--981
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--965
+Underfull \hbox (badness 10000) in paragraph at lines 977--981
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--965
+Underfull \hbox (badness 10000) in paragraph at lines 977--981
 
  []
 
-[20<./images/report_img/blazor/imports_razor.jpg>] [21]
+[21<./images/report_img/blazor/imports_razor.jpg>] [22]
 
-LaTeX Warning: Empty bibliography on input line 973.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1067--1068
-
- []
+LaTeX Warning: Empty bibliography on input line 989.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1089
+Underfull \hbox (badness 10000) in paragraph at lines 1083--1084
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1090--1092
+Underfull \hbox (badness 10000) in paragraph at lines 1104--1105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1120--1121
 
  []
 
@@ -1852,16 +2191,16 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1101.
-[22]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1101.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1130.
+[23]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1130.
  (./report.aux
 LaTeX Info: Redefining \rmfamily on input line 25.
 LaTeX Info: Redefining \sffamily on input line 25.
 LaTeX Info: Redefining \ttfamily on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1101.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1101.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1130.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1130.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1872,7 +2211,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -1885,15 +2224,16 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 28408 strings out of 480878
+ 28415 strings out of 480878
  100000,1648299 words of node,token memory allocated
- 583 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 71 glue_spec,
+ 598 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 74 glue_spec,
  7 attribute_list, 1 write nodes
-   avail lists: 1:5,2:676,3:213,4:80,5:277,6:50,7:4053,8:49,9:312,10:12,11:204
- 44836 multiletter control sequences out of 65536+200000
+   avail lists: 1:4,2:1183,3:253,4:172,5:289,6:74,7:4226,8:49,9:397,10:12,11:209
+
+ 44837 multiletter control sequences out of 65536+200000
  105 fonts using 9386163 bytes
- 47i,12n,77p,10600b,1699s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 47i,12n,77p,10600b,2153s stack positions out of 5000i,500n,10000p,200000b,50000s
 <//?/c:/program files/miktex/fonts/opentype/public/lm/lmroman10-bolditalic.otf><
 //?/c:/program files/miktex/fonts/opentype/public/lm/lmmono10-regular.otf><//?/c
 :/program files/miktex/fonts/opentype/public/lm/lmroman10-bold.otf><//?/c:/progr
@@ -1903,9 +2243,9 @@ miktex/fonts/opentype/public/lm/lmromancaps10-regular.otf><//?/c:/program files/
 miktex/fonts/opentype/public/lm/lmroman12-regular.otf><//?/c:/program files/mikt
 ex/fonts/opentype/public/lm/lmroman12-italic.otf><//?/c:/program files/miktex/fo
 nts/opentype/public/lm/lmsans10-bold.otf>
-Output written on report.pdf (22 pages, 2104228 bytes).
+Output written on report.pdf (23 pages, 2118108 bytes).
 
-PDF statistics: 416 PDF objects out of 1000 (max. 8388607)
- 106 named destinations out of 1000 (max. 131072)
+PDF statistics: 471 PDF objects out of 1000 (max. 8388607)
+ 107 named destinations out of 1000 (max. 131072)
  393 words of extra memory for PDF output out of 10000 (max. 100000000)
 
