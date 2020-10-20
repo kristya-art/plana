@@ -4,7 +4,9 @@
 
 %"First you tell 'em what you're going to tell 'em. Then you tell 'em. Then you tell 'em what you've told 'em."
 
-%\usepackage{tocloft}  new
+
+%\usepackage[table]{xcolor}%10/20
+%\arrayrulecolor{blue} %10/20
 \usepackage{cmap}
 \usepackage{booktabs}
 \usepackage{colortbl}
@@ -103,25 +105,47 @@
 
 
 \section{Introduction}
-
-The aim of this work is to develop a web based information system that enables assignment planning for lecturers in our school at the Department of Technology and Computer Science.
-The challenge we face is to create effective planning by involving the teachers themselves in this process. We decided to make a web application that will meet all the requirements and will be created using suitable modern technologies. Technologies such as ASP.NET Core Blazor Server with Entity Framework Core (EFCore) and MS SQL (Microsoft Structured Query Language) for the database were chosen. ASP.NET Core Blazor is a new framework that is gaining popularity. Interestingly, thanks to it, it becomes possible to do the entire application in C\# without using JavaScript.\\
-
-In project 2, we created a prototype. In this work, the system will be detailed and expanded. In particular, the following goals are pursued:
+At our school at the Department of Technology and Computer Science, actual teacher assignment planning is done using Microsoft Excel tool.
+This plan is handled by one responsible person.
+The modern world with the rapid growth of new technologies makes it possible to improve various systems, giving them more and more possibilities, automating many functions and saving a lot of time.
+This work aims to develop an information system that enables assignment planning for lecturers. But unlike the existing system, it should have the following criteria:
 \begin{itemize}
-\item \textbf{Involvement of lecturers in the planning process.}
-Lecturers are able to create and manage their own medium- and long-term deployment plans.
-\item \textbf{Grouping of lecturers.} It should be possible to schedule several lecturers for the same module.
-   \begin{itemize}
-   \item Teachers who join a group can independently manage their assignments related to their common module.
-   \item Each teacher can make a group with another lecturers.
-   \end{itemize}
- \item \textbf{Grouping of the modules.} The group of lecturers can  choose the group of modules and set themselves to it. This can be done in the form of a proposal for the definitive plan, which is then approved by the person responsible for the planning.
+\item the teachers themselves should be involved in the planning process
+\item increased planning flexibility
 \end{itemize}
 
 
-This work is a continuation of a project that was completed last semester, In which we have prepared the necessary environment for this project. 
-In this work, first we will explain how 	the project was organized and how we used a SCRUM to manage it, then we  carry out an additional analysis of the system in connection with the expansion of the system requirements. We will make changes to the domain analysis. We will expand the topic System Architecture and System Design. And then we will cover the topics Project Implementation and Testing.
+
+
+Users of this system are the \textbf{study director} and \textbf{teachers}. Such planning implies collaborative work.
+The planning process involves the input of specific data for specific user-defined views for each user and time limits set by the system. 
+
+ All of these requirements need a more suitable system than Excel.
+In the previous project, we compared \textbf{Microsoft Excel} and \textbf{Web Application} according to several criteria. And we concluded that the web application meets the requirements of the conceived system. The web application is designed to involve \textbf{many users}, it can have a  database that gives us \textbf{consistency of the data}. Also, the data is much \textbf{safer} in a database. The web application gives the best \textbf{overview} of the entire system. Comparing \textbf{desktop application} with \textbf{web application} web application wins in:
+\begin{itemize}
+\item it is accessible anywhere
+\item no update needed 
+\item costs less 
+\end{itemize} 
+ We decided to make a web application that will meet all the requirements and will be created using suitable modern technologies. Technologies such as ASP.NET Core Blazor Server with Entity Framework Core (EFCore) and MS SQL (Microsoft Structured Query Language) for the database were chosen. ASP.NET Core Blazor is a new framework that is gaining popularity. Interestingly, thanks to it, it becomes possible to do the entire application in C\# without using JavaScript.\\
+This work is a continuation of a project that was completed last semester, In which we have prepared the necessary environment for this project.
+In project 2, we created a prototype. In this work, the system will be detailed and expanded. In particular, the following goals are pursued:
+\begin{itemize}
+\item \textbf{Involvement of lecturers in the planning process.}
+Lecturers can create their medium- and long-term plans in form of requests and proposal for the definite plan, which is then approved by the person responsible for the planning.
+\item \textbf{Manage planning data.} Each teacher can manage his assignments.
+\item \textbf{Grouping of lecturers.} It should be possible to schedule several lecturers for the same module.
+   \begin{itemize}
+   \item Teachers who join a group can independently manage their assignments related to their common module.
+   \item Each teacher can make a group with other lecturers.
+   \end{itemize}
+ \item \textbf{Grouping of the modules.} The group of lecturers can choose the group of modules and set themselves to it. This can be done in the form of a proposal for the definitive plan, which is then approved by the person responsible for the planning.
+\end{itemize}
+
+
+ 
+In this work, first, we will explain how the project was organized and how we used a SCRUM to manage it, then we carry out an additional analysis of the system in connection with the expansion of the system requirements. We will make changes to the domain analysis. We will expand the topic of System Architecture and System Design. And then we will cover the topics Project Implementation and Testing.
+
 
 
 
@@ -256,7 +280,7 @@ The foundation of the project organization was Scrum.
 
 
 As a Lecturer I want to be able to create
-and manage my own medium and long-term assignment plans so that it will be  possible a mutual development of the main assignment plan. &
+ my own medium and long-term assignment plans in form of requests and proposal for the definite plan and manage it so that it will be  possible a mutual development of the main assignment plan. &
 01 &
 list modules &
  As a Lecturer, I want to see the list of modules for concrete semester, so that I can choose the modules I want to plan in my own plan. &
@@ -323,9 +347,9 @@ As a Lecturer, I want to be able to manage my plan, so I can modify my plan as I
  \textbf{Epic} &\textbf{ ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria} \\
 \hline
    
- As a Study Director, I want to be able to make group of lecturers and attach it to a specific module,and also make group of modules so this will increase planning flexibility . As a Study Director, I want to be able to attach a specific group of modules to a specific group of teachers so that further joint planning of these modules will be easier &
+ As a Study Director, I want to be able to make group of lecturers and attach it to a specific module, and also make group of modules so this will increase planning flexibility . As a Study Director, I want to be able to attach a specific group of modules to a specific group of teachers so that further joint planning of these modules will be easier &
 04 &
-see the requests for the groups and for the modules &
+See the requests for the groups and for the modules &
 As a Study Director, I want to see teachers' suggestions for group work and also their proposal for the selected modules so that it will be easier to approve specific groups. &
           
   User is able to:            
@@ -337,7 +361,7 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 
  &
  05&
- makes groups of lecturers&
+ Makes groups of lecturers&
  As a Study Director, I want to be able to make groups of lecturers in the assignment plan. &
  
    User is able to:            
@@ -351,7 +375,7 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 
  &
  06&
- make groups of modules&
+ Make groups of modules&
  As a Study Director, I want to be able to make groups of modules in the assignment plan. &
  
    User is able to:            
@@ -363,7 +387,7 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 
  &
  07&
- attach lecturer/group of lecturers to the module&
+ Attach lecturer/group of lecturers to the module&
  As a Study Director, I want to be able attach lecturer or group of lecturers to the specific module in the assignment plan. &
  
    User is able to:            
@@ -501,6 +525,90 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 In project 2 we have started with describing of System architecture and design. In this work we want go deeper into this topic. \\
 
 \section{Domain Analysis}
+\subsection{Domain Model}
+The domain model (Figure 1) shows us the important concept classes, associations and
+multiplicities between them. The model made in the previous project is shown in black. And other colors show new concepts and associations associated with new tasks.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm]{uml/domain-b.JPG}
+\caption{Domain Model for PLANA}
+\label{blabla}
+\end{figure}
+
+In the definition of concepts, new concepts, associations between them and other concepts are highlighted in blue.
+
+	    \subsubsection{i. Concept Definition}
+	    
+	    \begin{itemize}
+	    \item Concept class \textbf{Lecturer} models a person who teaches in a school.
+	     \item Concept class \textbf{Study Branch} models a conceptual subdivision of subjects that form a study programme.
+	      \item Concept class \textbf{Module} models a set of independent units that form a course at the school.
+	       \item Concept class \textbf{Module Run } models executions of a course in different languages.
+	       	      \item Concept class \textbf{Additional Assignment} models a set of independent units that form an additional task for the assignment's plan for the lecturer.
+  \item Concept class \textbf{Semester} models the periods in the year, during which the lecturer is present in the school.
+  \item Concept class \textbf{\textcolor{blue}{ LecturerGroup}} models   group of teachers who will jointly participate in one or more modules.
+   \item Concept class \textbf{\textcolor{blue}{ModuleGroup }}  models
+   several modules collected in groups for further effective use.
+     \item Concept class \textbf{\textcolor{blue}{LecturerSubGroup }} models subdivision of the main group of teachers to carry out the module in different student groups.
+     
+	         
+	    \end{itemize}
+
+
+ \subsubsection{ii. Association Definition}
+	    \begin{table}[H]
+\begin{center}
+\begin{tabular}{| p{6.5cm}| p{6.5cm} |p{2.5cm}|}
+
+\hline
+\rowcolor{LightCyan}
+\textbf{Concept Pair} & \textbf{Association Definition}& \textbf{Association Name} \\
+\hline
+Lecturer -> Module Run                    &    Lecturer can teach zero or        more Module Runs . Each Module Run can be taught by  one or more Lecturers 	& teaches\\ \hline
+
+Semester -> Module Run                    &      Semester can include zero or more Module Runs  .    	& includes\\ \hline
+
+Semester -> Additional Assignment     &     Semester can include zero or more Additional Assignments      & includes\\ \hline
+
+Lecturer -> Additional Assignment                    &    Lecturer can have zero or more Additional Assignments 	& has\\ \hline
+
+Lecturer -> Module                    &             Lecturer can manage zero or more Modules. A module can be managed by one or more Lecturers	& manages\\ \hline
+
+Module -> Module Run                    &    Module is executed as many
+as there are module runs or not executed at all.
+A Module run is executed for one Module.& executes \\ \hline
+
+Study Branch -> Module                    &   Each Study Branch has many modules. These modules belong to exactly one study branch.  & has\\ \hline
+  Semester -> Lecturer                  &      In each Semester, there are many lecturers that are teaching, and these teachers are teaching in more than one Semester       & includes\\ \hline
+ 
+
+ 
+\textbf{\textcolor{blue}{ LecturerGroup -> Module}}  & 
+ Each Module can have maximal one LecturerGroup. LecturerGroup can refer to multiple Modules. &  refer to\\ \hline
+ 
+ \textbf{\textcolor{blue}{ Lecturer -> LecturerGroup}}  & 
+ Each Lecturer can belongs to zero or more group. 
+ Each LecturerGroup must consist of two or more lecturers. &  belongs to\\ \hline
+ 
+  \textbf{\textcolor{blue}{  LecturerGroup -> LecturerSubGroup}}  & 
+ Each LecturerGroup can have from zero to many LecturerSubGroups.
+ LecturerSubGroup can refer to exactly one LecturerGroup &  has\\ \hline
+ 
+\textbf{\textcolor{blue}{LecturerSubGroup -> ModuleRun}}  &  Each LecturerSubGroup can teach zero to many Module Run.A Module Run can be taught by zero or several LecturerSubGroup.
+ & teaches\\ \hline
+
+\textbf{\textcolor{blue}{Module -> ModuleGroup}}  &  
+A Module can belong to zero or one ModuleGroup. ModuleGroup can have from two to many Modules. & belongs to\\ \hline
+
+\textbf{\textcolor{blue}{LecturerGroup -> ModuleGroup}}  &  A LecturerGroup can manage exactly one ModuleGroup. A ModuleGroup can have zero to many LecturerGroup.
+. & manages\\ \hline
+\end{tabular}
+\end{center}
+\caption{Association Definition}
+\label{table2}
+\end{table}
+
 
 \section{Technologies}
 
@@ -669,7 +777,7 @@ The figure below shows all these configurations.
 \end{minipage}
 
 
-\subsection{Create an Controller}
+\subsection{Create a Controller}
 
 
 
@@ -1172,12 +1280,28 @@ Future goals are:
 \end{itemize}	
 Lessons learned\\
 
-Next Meeting: 22.10.20\\
+Next Meeting: 21.10.20\\
 
 
 \****
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\textbf{\textit{Report from 21.10.20  }}\\
+Plan\\
+Future goals are: 
+\begin{itemize}
+
+
+	\item 
+	\item 
+\end{itemize}	
+Lessons learned\\
+
+Next Meeting: 05.11.20\\
+
+
+\****
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
