@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  20 OCT 2020 23:10
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  25 OCT 2020 00:45
 entering extended mode
 **./report.tex
 (report.tex
@@ -112,6 +112,13 @@ Package tocbasic Info: babel extension for `lot' omitted
 Class scrartcl Info: Redefining `\numberline' on input line 6251.
 \bibindent=\dimen134
 )
+("C:\Program Files\MiKTeX\tex/latex/multirow\multirow.sty"
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip63
+\multirow@cntb=\count172
+\multirow@dima=\skip64
+\bigstrutjot=\dimen135
+)
 ("C:\Program Files\MiKTeX\tex/latex/cmap\cmap.sty"
 Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
 
@@ -120,35 +127,35 @@ Package cmap Warning: pdftex not detected - exiting.
 
 ) ("C:\Program Files\MiKTeX\tex/latex/booktabs\booktabs.sty"
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen135
-\lightrulewidth=\dimen136
-\cmidrulewidth=\dimen137
-\belowrulesep=\dimen138
-\belowbottomsep=\dimen139
-\aboverulesep=\dimen140
-\abovetopsep=\dimen141
-\cmidrulesep=\dimen142
-\cmidrulekern=\dimen143
-\defaultaddspace=\dimen144
-\@cmidla=\count172
-\@cmidlb=\count173
-\@aboverulesep=\dimen145
-\@belowrulesep=\dimen146
-\@thisruleclass=\count174
-\@lastruleclass=\count175
-\@thisrulewidth=\dimen147
+\heavyrulewidth=\dimen136
+\lightrulewidth=\dimen137
+\cmidrulewidth=\dimen138
+\belowrulesep=\dimen139
+\belowbottomsep=\dimen140
+\aboverulesep=\dimen141
+\abovetopsep=\dimen142
+\cmidrulesep=\dimen143
+\cmidrulekern=\dimen144
+\defaultaddspace=\dimen145
+\@cmidla=\count173
+\@cmidlb=\count174
+\@aboverulesep=\dimen146
+\@belowrulesep=\dimen147
+\@thisruleclass=\count175
+\@lastruleclass=\count176
+\@thisrulewidth=\dimen148
 )
 ("C:\Program Files\MiKTeX\tex/latex/colortbl\colortbl.sty"
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 
 ("C:\Program Files\MiKTeX\tex/latex/tools\array.sty"
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
-\col@sep=\dimen148
+\col@sep=\dimen149
 \ar@mcellbox=\box47
-\extrarowheight=\dimen149
+\extrarowheight=\dimen150
 \NC@list=\toks16
-\extratabsurround=\skip63
-\backup@length=\skip64
+\extratabsurround=\skip65
+\backup@length=\skip66
 \ar@cellbox=\box48
 )
 ("C:\Program Files\MiKTeX\tex/latex/graphics\color.sty"
@@ -163,14 +170,7 @@ Package color Info: Driver file: xetex.def on input line 147.
 File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
 ))
 \everycr=\toks17
-\minrowclearance=\skip65
-)
-("C:\Program Files\MiKTeX\tex/latex/multirow\multirow.sty"
-Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip66
-\multirow@cntb=\count176
-\multirow@dima=\skip67
-\bigstrutjot=\dimen150
+\minrowclearance=\skip67
 )
 ("C:\Program Files\MiKTeX\tex/latex/subfloat\subfloat.sty"
 Package: subfloat 2003/08/21 version 2.14
@@ -745,7 +745,7 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 
-Package array Warning: Redefining primitive column b on input line 35.
+Package array Warning: Redefining primitive column b on input line 36.
 
 ("C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty"
 Package: biblatex 2019/12/01 v3.14 programmable bibliographies (PK/MW)
@@ -1135,8 +1135,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip93
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 52.
-Package hyperref Info: Option `linktocpage' set `true' on input line 53.
+Package hyperref Info: Option `colorlinks' set `true' on input line 53.
+Package hyperref Info: Option `linktocpage' set `true' on input line 54.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'polyglossia' package.
 Package csquotes Info: Adjusting default style.
@@ -1146,61 +1146,122 @@ Package csquotes Info: Redefining alias 'default' -> 'american'.
 LaTeX Info: Redefining \rmfamily on input line 24.
 LaTeX Info: Redefining \sffamily on input line 24.
 LaTeX Info: Redefining \ttfamily on input line 24.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `table2' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `blabla' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
+
+LaTeX Warning: Label `visina8 ' multiply defined.
+
 )
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 60.
+LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 61.
 LaTeX Font Info:    Trying to load font information for OML+jkp on input line 6
-0.
+1.
  ("C:\Program Files\MiKTeX\tex/latex/kpfonts\omljkp.fd"
 File: omljkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 61.
 LaTeX Font Info:    Trying to load font information for OMS+jkp on input line 6
-0.
+1.
 
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\omsjkp.fd"
 File: omsjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 6
-0.
+1.
 
 ("C:\Program Files\MiKTeX\tex/latex/base\ts1cmr.fd"
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 61.
 LaTeX Font Info:    Trying to load font information for OMX+jkp on input line 6
-0.
+1.
 
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\omxjkp.fd"
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 61.
 LaTeX Font Info:    Trying to load font information for U+jkpexa on input line 
-60.
+61.
 
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\ujkpexa.fd"
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-Package scrbase Info: activating english \contentsname on input line 60.
-Package scrbase Info: activating english \listfigurename on input line 60.
-Package scrbase Info: activating english \listtablename on input line 60.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+Package scrbase Info: activating english \contentsname on input line 61.
+Package scrbase Info: activating english \listfigurename on input line 61.
+Package scrbase Info: activating english \listtablename on input line 61.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -1231,10 +1292,10 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' not found.
 
 No file report.bbl.
-Package biblatex Info: Reference section=0 on input line 60.
-Package biblatex Info: Reference segment=0 on input line 60.
+Package biblatex Info: Reference section=0 on input line 61.
+Package biblatex Info: Reference segment=0 on input line 61.
 \AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring ON on input line 60.
+Package hyperref Info: Link coloring ON on input line 61.
 ("C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -1246,9 +1307,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count426
 )
-LaTeX Info: Redefining \ref on input line 60.
-LaTeX Info: Redefining \pageref on input line 60.
-LaTeX Info: Redefining \nameref on input line 60.
+LaTeX Info: Redefining \ref on input line 61.
+LaTeX Info: Redefining \pageref on input line 61.
+LaTeX Info: Redefining \nameref on input line 61.
 
 (report.out) (report.out)
 \@outlinefile=\write4
@@ -1261,7 +1322,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 60.
+(scrartcl)           before \begin{document} on input line 61.
 
 ("C:\Program Files\MiKTeX\tex/latex/bookmark\bookmark.sty"
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
@@ -1270,39 +1331,39 @@ Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
 File: bkm-dvipdfm.def 2019/12/03 v1.28 bookmark driver for dvipdfm (HO)
 \BKM@id=\count427
 ))
-LaTeX Info: Redefining \rmfamily on input line 60.
-LaTeX Info: Redefining \sffamily on input line 60.
-LaTeX Info: Redefining \ttfamily on input line 60.
+LaTeX Info: Redefining \rmfamily on input line 61.
+LaTeX Info: Redefining \sffamily on input line 61.
+LaTeX Info: Redefining \ttfamily on input line 61.
 
 
 LaTeX Font Warning: Font shape `TU/lmss/bx/sc' undefined
-(Font)              using `TU/lmss/bx/n' instead on input line 79.
+(Font)              using `TU/lmss/bx/n' instead on input line 80.
 
-LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 7
-9.
+LaTeX Font Info:    Trying to load font information for OT1+jkp on input line 8
+0.
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\ot1jkp.fd"
 File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 )
 LaTeX Font Info:    Trying to load font information for U+jkpmia on input line 
-79.
+80.
 
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\ujkpmia.fd"
 File: ujkpmia.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsya on input line 
-79.
+80.
 
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\ujkpsya.fd"
 File: ujkpsya.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsyb on input line 
-79.
+80.
 
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\ujkpsyb.fd"
 File: ujkpsyb.fd 2006/08/15 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+jkpsyc on input line 
-79.
+80.
 
 ("C:\Program Files\MiKTeX\tex/latex/kpfonts\ujkpsyc.fd"
 File: ujkpsyc.fd 2006/08/15 v1.0
@@ -1327,459 +1388,274 @@ LaTeX Info: Redefining \ttfamily on input line 3.
 ] [5]
 
 LaTeX Warning: Citation 'eeles2005capturing' on page 6 undefined on input line 
-190.
+191.
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 234--241
+Underfull \hbox (badness 10000) in paragraph at lines 235--242
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--278
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 []|
  []
 
 
-Overfull \hbox (11.39662pt too wide) in paragraph at lines 278--278
+Overfull \hbox (11.39662pt too wide) in paragraph at lines 304--304
 \TU/lmr/bx/n/10.95 User
  []
 
 
-Overfull \hbox (15.79852pt too wide) in paragraph at lines 278--278
+Overfull \hbox (15.79852pt too wide) in paragraph at lines 304--304
 \TU/lmr/bx/n/10.95 Story
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--278
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 286--286
-\TU/lmr/m/n/10.95 for concrete semester,
- []
-
-
-Underfull \hbox (badness 8132) in paragraph at lines 291--292
-[]\TU/lmr/m/n/10.95 navigate to his
- []
-
-
-Underfull \hbox (badness 3019) in paragraph at lines 292--293
-[]\TU/lmr/m/n/10.95 able to see the
- []
-
-
-Underfull \hbox (badness 3029) in paragraph at lines 298--298
+Underfull \hbox (badness 3029) in paragraph at lines 324--324
 []|\TU/lmr/m/n/10.95 add modules to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 298--298
+Underfull \hbox (badness 10000) in paragraph at lines 324--324
 \TU/lmr/m/n/10.95 own assignment
  []
 
 
-Underfull \hbox (badness 8132) in paragraph at lines 305--306
-[]\TU/lmr/m/n/10.95 navigate to his
- []
-
-
-Underfull \hbox (badness 1902) in paragraph at lines 306--307
-[]\TU/lmr/m/n/10.95 able to select a
- []
-
-
-Underfull \hbox (badness 4595) in paragraph at lines 306--307
-\TU/lmr/m/n/10.95 module and set
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
-[]\TU/lmr/m/n/10.95 able to remove
- []
-
-
-Underfull \hbox (badness 1005) in paragraph at lines 307--308
-\TU/lmr/m/n/10.95 himself from the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
-\TU/lmr/m/n/10.95 module he has
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 308--309
-[]\TU/lmr/m/n/10.95 able modify a
- []
-
-
-Underfull \hbox (badness 1270) in paragraph at lines 308--309
-\TU/lmr/m/n/10.95 data of his own
- []
-
-
-Underfull \hbox (badness 8132) in paragraph at lines 323--324
-[]\TU/lmr/m/n/10.95 navigate to his
- []
-
-
-Underfull \hbox (badness 1902) in paragraph at lines 324--325
-[]\TU/lmr/m/n/10.95 able to select a
- []
-
-
-Underfull \hbox (badness 4595) in paragraph at lines 324--325
-\TU/lmr/m/n/10.95 module and set
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
-[]\TU/lmr/m/n/10.95 able to remove
- []
-
-
-Underfull \hbox (badness 1005) in paragraph at lines 325--326
-\TU/lmr/m/n/10.95 himself from the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
-\TU/lmr/m/n/10.95 module he has
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
-[]\TU/lmr/m/n/10.95 able modify a
- []
-
-
-Underfull \hbox (badness 1270) in paragraph at lines 326--327
-\TU/lmr/m/n/10.95 data of his own
- []
-
-
-Overfull \hbox (85.1621pt too wide) in paragraph at lines 275--336
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 292--362
  [] 
  []
 
-[7] [8]
-Overfull \vbox (274.1642pt too high) has occurred while \output is active []
+[8]
+Overfull \vbox (86.9198pt too high) has occurred while \output is active []
 
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 347--347
+Underfull \hbox (badness 10000) in paragraph at lines 380--380
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 383--383
 []|
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--347
+Underfull \hbox (badness 10000) in paragraph at lines 383--383
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 350--350
-\TU/lmr/m/n/10.95 will increase planning
- []
-
-
-Underfull \hbox (badness 1163) in paragraph at lines 352--352
+Underfull \hbox (badness 1163) in paragraph at lines 388--388
 []|\TU/lmr/m/n/10.95 See the requests
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 353--353
-[]|\TU/lmr/m/n/10.95 As a Study Director,
+Underfull \hbox (badness 1275) in paragraph at lines 389--389
+[]|\TU/lmr/m/n/10.95 As a Study Director, I want
  []
 
 
-Underfull \hbox (badness 3803) in paragraph at lines 353--353
-\TU/lmr/m/n/10.95 suggestions for group
+Underfull \hbox (badness 2065) in paragraph at lines 393--394
+[]\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 353--353
-\TU/lmr/m/n/10.95 posal for the selected
+Underfull \hbox (badness 2302) in paragraph at lines 393--394
+\TU/lmr/m/n/10.95 group work and teacher
  []
 
 
-Underfull \hbox (badness 3312) in paragraph at lines 353--353
-\TU/lmr/m/n/10.95 be easier to approve
+Underfull \hbox (badness 7151) in paragraph at lines 393--394
+\TU/lmr/m/n/10.95 suggestions for teaching
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
-[]\TU/lmr/m/n/10.95 open the main
+Underfull \hbox (badness 2065) in paragraph at lines 405--406
+[]\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
-\TU/lmr/m/n/10.95 planning matrix
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
-\TU/lmr/m/n/10.95 with sugges-
- []
-
-
-Underfull \hbox (badness 7558) in paragraph at lines 357--358
-\TU/lmr/m/n/10.95 tions for group
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
-\TU/lmr/m/n/10.95 suggestions for
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
-[]\TU/lmr/m/n/10.95 manage matrix
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
-\TU/lmr/m/n/10.95 page, making
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
-\TU/lmr/m/n/10.95 the necessary
- []
-
-
-Underfull \hbox (badness 1137) in paragraph at lines 365--365
-\TU/lmr/m/n/10.95 groups of lecturers in
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
-[]\TU/lmr/m/n/10.95 open the main
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
-[]\TU/lmr/m/n/10.95 select several
- []
-
-
-Underfull \hbox (badness 3260) in paragraph at lines 378--378
+Underfull \hbox (badness 3260) in paragraph at lines 414--414
 []|\TU/lmr/m/n/10.95 Make groups of
  []
 
 
-Underfull \hbox (badness 1629) in paragraph at lines 379--379
-\TU/lmr/m/n/10.95 groups of modules in
+Underfull \hbox (badness 2065) in paragraph at lines 419--420
+[]\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
-[]\TU/lmr/m/n/10.95 open the main
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
-[]\TU/lmr/m/n/10.95 select several
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 390--390
+Underfull \hbox (badness 10000) in paragraph at lines 426--426
 []|\TU/lmr/m/n/10.95 Attach lec-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--390
+Underfull \hbox (badness 10000) in paragraph at lines 426--426
 \TU/lmr/m/n/10.95 turer/group of
  []
 
 
-Underfull \hbox (badness 3780) in paragraph at lines 390--390
+Underfull \hbox (badness 3780) in paragraph at lines 426--426
 \TU/lmr/m/n/10.95 lecturers to the
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 391--391
-[]|\TU/lmr/m/n/10.95 As a Study Director,
+Underfull \hbox (badness 2065) in paragraph at lines 431--432
+[]\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--396
-[]\TU/lmr/m/n/10.95 open the main
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
-\TU/lmr/m/n/10.95 button or add
- []
-
-
-Overfull \hbox (85.1621pt too wide) in paragraph at lines 345--405
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 372--441
  [] 
  []
 
 
-Overfull \vbox (262.59995pt too high) has occurred while \output is active []
+Overfull \vbox (168.51982pt too high) has occurred while \output is active []
 
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 416--416
+Underfull \hbox (badness 10000) in paragraph at lines 452--452
 []|
  []
 
 
-Overfull \hbox (11.39662pt too wide) in paragraph at lines 416--416
+Overfull \hbox (11.39662pt too wide) in paragraph at lines 452--452
 \TU/lmr/bx/n/10.95 User
  []
 
 
-Overfull \hbox (15.79852pt too wide) in paragraph at lines 416--416
+Overfull \hbox (15.79852pt too wide) in paragraph at lines 452--452
 \TU/lmr/bx/n/10.95 Story
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--416
+Underfull \hbox (badness 10000) in paragraph at lines 452--452
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
-[]\TU/lmr/m/n/10.95 open the main
+Underfull \hbox (badness 2065) in paragraph at lines 462--463
+[]\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 427--428
-[]\TU/lmr/m/n/10.95 select a specific
- []
-
-
-Underfull \hbox (badness 1092) in paragraph at lines 435--435
-\TU/lmr/m/n/10.95 a group with another
- []
-
-
-Underfull \hbox (badness 2103) in paragraph at lines 449--449
-\TU/lmr/m/n/10.95 able to independently
- []
-
-
-Underfull \hbox (badness 1755) in paragraph at lines 449--449
-\TU/lmr/m/n/10.95 manage the tasks re-
- []
-
-
-Underfull \hbox (badness 1694) in paragraph at lines 449--449
-\TU/lmr/m/n/10.95 lated to the common
- []
-
-
-Overfull \hbox (85.1621pt too wide) in paragraph at lines 414--462
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 450--472
  [] 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 473--473
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 493--493
 []|
  []
 
 
-Overfull \hbox (11.39662pt too wide) in paragraph at lines 473--473
+Overfull \hbox (11.39662pt too wide) in paragraph at lines 493--493
 \TU/lmr/bx/n/10.95 User
  []
 
 
-Overfull \hbox (15.79852pt too wide) in paragraph at lines 473--473
+Overfull \hbox (15.79852pt too wide) in paragraph at lines 493--493
 \TU/lmr/bx/n/10.95 Story
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--473
+Underfull \hbox (badness 10000) in paragraph at lines 493--493
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--478
-\TU/lmr/m/n/10.95 can manage assign-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 478--478
-\TU/lmr/m/n/10.95 ments independently
- []
-
-
-Overfull \hbox (85.1621pt too wide) in paragraph at lines 471--513
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 482--510
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--526
+Underfull \hbox (badness 10000) in paragraph at lines 619--620
 
  []
 
 File: images/uml/domain-b.JPG Graphic file (type bmp)
 <images/uml/domain-b.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 534--535
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 628--629
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 566--567
+File: images/uml/domain-b2.JPG Graphic file (type bmp)
+<images/uml/domain-b2.JPG>
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 639--640
+ [][] 
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 671--672
 []|\TU/lmr/bx/n/10.95 Association
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 570--570
+Underfull \hbox (badness 1142) in paragraph at lines 675--675
 []|\TU/lmr/m/n/10.95 Semester can include zero or more
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 576--576
+Underfull \hbox (badness 1122) in paragraph at lines 681--681
 []|\TU/lmr/m/n/10.95 Lecturer can manage zero or more
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--598
+Underfull \hbox (badness 10000) in paragraph at lines 703--703
 []|[]\TU/lmr/bx/n/10.95 LecturerSubGroup -> Mod-
  []
 
 
-Overfull \hbox (60.3621pt too wide) in paragraph at lines 562--607
+Overfull \hbox (60.3621pt too wide) in paragraph at lines 667--715
  [] 
  []
 
-[13] [14]
-Overfull \vbox (101.9993pt too high) has occurred while \output is active []
+[14] [15]
+Overfull \vbox (156.7993pt too high) has occurred while \output is active []
 
 
-[15]
+[16]
 
-LaTeX Warning: Citation 'efa' on page 16 undefined on input line 633.
-
-
-LaTeX Warning: Citation 'ef' on page 16 undefined on input line 633.
+LaTeX Warning: Citation 'efa' on page 17 undefined on input line 741.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 655--657
+LaTeX Warning: Citation 'ef' on page 17 undefined on input line 741.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 763--765
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 16 undefined on input line 660.
+LaTeX Warning: Citation 'efa' on page 17 undefined on input line 768.
 
 File: images/report_img/lecturers-modules.JPG Graphic file (type bmp)
 <images/report_img/lecturers-modules.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 665--666
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 773--774
  [][] 
  []
 
-[16]
-Overfull \hbox (33.03395pt too wide) in paragraph at lines 681--682
+[17]
+Overfull \hbox (33.03395pt too wide) in paragraph at lines 789--790
 []\TU/lmr/bx/n/10.95 modelBuilder.Entity<LectuerersModules>().HasKey(x=> new x.
 LecturerId,
  []
@@ -1787,30 +1663,30 @@ LecturerId,
 File: images/report_img/many-to-many.JPG Graphic file (type bmp)
 <images/report_img/many-to-many.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 693--694
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 801--802
  [][] 
  []
 
 
-LaTeX Warning: Citation 'patrick' on page 17 undefined on input line 697.
+LaTeX Warning: Citation 'patrick' on page 18 undefined on input line 805.
 
-[17]
+[18]
 File: images/report_img/Initial.JPG Graphic file (type bmp)
 <images/report_img/Initial.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 701--702
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 809--810
  [][] 
  []
 
 File: images/report_img/many-to-many-tables.JPG Graphic file (type bmp)
 <images/report_img/many-to-many-tables.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 710--711
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 818--819
  [][] 
  []
 
-[18]
-Overfull \hbox (45.91495pt too wide) in paragraph at lines 725--729
+[19]
+Overfull \hbox (45.91495pt too wide) in paragraph at lines 833--837
 \TU/lmr/bx/n/10.95 text.ModuleRuns; \TU/lmr/m/n/10.95 the ModuleRuns property i
 n the context class returns a DbSet<ModuleRun>
  []
@@ -1819,52 +1695,52 @@ File: images/report_img/repo-create.JPG Graphic file (type bmp)
 <images/report_img/repo-create.JPG>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 734.
+(caption)                particular \caption on input line 842.
 See the caption package documentation for explanation.
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 849--850
 
  []
 
 File: images/report_img/add_scoped_rep.JPG Graphic file (type bmp)
 <images/report_img/add_scoped_rep.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 745--746
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 853--854
  [][] 
  []
 
 
-LaTeX Warning: Citation 'core3' on page 20 undefined on input line 752.
+LaTeX Warning: Citation 'core3' on page 21 undefined on input line 860.
 
 
-LaTeX Warning: Citation 'core3' on page 20 undefined on input line 757.
+LaTeX Warning: Citation 'core3' on page 21 undefined on input line 865.
 
 
-LaTeX Warning: Citation 'core3' on page 20 undefined on input line 762.
+LaTeX Warning: Citation 'core3' on page 21 undefined on input line 870.
 
 
-LaTeX Warning: Citation 'efa' on page 20 undefined on input line 764.
+LaTeX Warning: Citation 'efa' on page 21 undefined on input line 872.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 762--766
+Underfull \hbox (badness 10000) in paragraph at lines 870--874
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 20 undefined on input line 768.
+LaTeX Warning: Citation 'efa' on page 21 undefined on input line 876.
 
-[20]
+[21]
 File: images/report_img/seed-data-startup.JPG Graphic file (type bmp)
 <images/report_img/seed-data-startup.JPG>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 775.
+(caption)                particular \caption on input line 883.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 802--803
+Underfull \hbox (badness 10000) in paragraph at lines 910--911
 
  []
 
@@ -1873,32 +1749,32 @@ ic file (type bmp)
 <images/report_img/complex_data_problem/repository_get_lecturers.jpg>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 808.
+(caption)                particular \caption on input line 916.
 See the caption package documentation for explanation.
 
 File: images/report_img/complex_data_problem/michele_module_null.jpg Graphic fi
 le (type bmp)
 <images/report_img/complex_data_problem/michele_module_null.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 816--817
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 924--925
  [][] 
  []
 
-[21]
+[22]
 File: images/report_img/complex_data_problem/repository_get_lecturers_modules.j
 pg Graphic file (type bmp)
 <images/report_img/complex_data_problem/repository_get_lecturers_modules.jpg>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 825.
+(caption)                particular \caption on input line 933.
 See the caption package documentation for explanation.
 
 File: images/report_img/complex_data_problem/json_problem.jpg Graphic file (typ
 e bmp)
 <images/report_img/complex_data_problem/json_problem.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 834--835
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 942--943
  [][] 
  []
 
@@ -1906,7 +1782,7 @@ File: images/report_img/complex_data_problem/install_newtonsoft_json.jpg Graphi
 c file (type bmp)
 <images/report_img/complex_data_problem/install_newtonsoft_json.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 841--842
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 949--950
  [][] 
  []
 
@@ -1915,39 +1791,39 @@ File: images/report_img/complex_data_problem/startup_add_newtonsoft.jpg Graphic
 <images/report_img/complex_data_problem/startup_add_newtonsoft.jpg>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 850.
+(caption)                particular \caption on input line 958.
 See the caption package documentation for explanation.
 
 File: images/report_img/complex_data_problem/michele_module_ok.jpg Graphic file
  (type bmp)
 <images/report_img/complex_data_problem/michele_module_ok.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 859--860
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 967--968
  [][] 
  []
 
-[22]
+[23]
 File: images/report_img/blazor/register-http-client.jpg Graphic file (type bmp)
 
 <images/report_img/blazor/register-http-client.jpg>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 878.
+(caption)                particular \caption on input line 986.
 See the caption package documentation for explanation.
 
-[23]
+[24]
 File: images/report_img/add-blazor-service-to-startup.jpg Graphic file (type bm
 p)
 <images/report_img/add-blazor-service-to-startup.jpg>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 890.
+(caption)                particular \caption on input line 998.
 See the caption package documentation for explanation.
 
-[24] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 896--897
+[25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 1004--1005
 
  []
 
@@ -1955,60 +1831,60 @@ File: images/report_img/blazor/imports_razor.jpg Graphic file (type bmp)
 <images/report_img/blazor/imports_razor.jpg>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 903.
+(caption)                particular \caption on input line 1011.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 908--909
+Underfull \hbox (badness 10000) in paragraph at lines 1016--1017
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1140--1144
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1252
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1140--1144
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1252
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1140--1144
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1252
 
  []
 
-[26] [27]
+[27] [28]
 
-LaTeX Warning: Empty bibliography on input line 1152.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
-
- []
+LaTeX Warning: Empty bibliography on input line 1260.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1267--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1354--1355
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1281--1282
+Underfull \hbox (badness 10000) in paragraph at lines 1375--1376
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1283--1284
+Underfull \hbox (badness 10000) in paragraph at lines 1389--1390
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1298--1299
+Underfull \hbox (badness 10000) in paragraph at lines 1391--1392
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1300--1301
+Underfull \hbox (badness 10000) in paragraph at lines 1406--1407
+
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 1414--1415
 
  []
 
@@ -2046,16 +1922,16 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1309.
-[28] [29]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1309.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1423.
+[30]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1423.
  (report.aux
 LaTeX Info: Redefining \rmfamily on input line 24.
 LaTeX Info: Redefining \sffamily on input line 24.
 LaTeX Info: Redefining \ttfamily on input line 24.
 )
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1309.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1309.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1423.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1423.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -2067,7 +1943,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -2079,12 +1955,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27059 strings out of 414071
- 522209 string characters out of 2898876
- 1417065 words of memory out of 3000000
- 44370 multiletter control sequences out of 15000+200000
+ 27066 strings out of 414071
+ 522361 string characters out of 2898876
+ 1415448 words of memory out of 3000000
+ 44376 multiletter control sequences out of 15000+200000
  554328 words of font info for 94 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
  47i,12n,77p,10603b,3971s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on report.pdf (29 pages).
+Output written on report.pdf (30 pages).

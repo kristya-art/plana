@@ -4,6 +4,7 @@
 
 %"First you tell 'em what you're going to tell 'em. Then you tell 'em. Then you tell 'em what you've told 'em."
 
+\usepackage{multirow} % 24/10
 
 %\usepackage[table]{xcolor}%10/20
 %\arrayrulecolor{blue} %10/20
@@ -240,7 +241,7 @@ The foundation of the project organization was Scrum.
  	    Adaptation: The team asks constant questions about the progress of work, whether we are on the right way. Depending on this, we can adapt an existing product.		 \\
  	    
  	    At the beginning of the project, we have discussed and estimated all the work that needs to be done. 
- 	    Meetings between supervisor and developer are weekly and sometimes bi-weekly.
+ 	    Meetings between supervisor and developer are bi-weekly and sometimes weekly.
  	    Each meeting includes a discussion about what has been achieved 
  	    since the tasks have been assigned, what can be improved, and scheduling of future tasks.
  	    
@@ -270,17 +271,42 @@ The foundation of the project organization was Scrum.
 
 
 \subsection{Product Backlog and User Stories}
+
+\begin{table}[ht]
+\caption{Multi-column table}
+\begin{center}
+\begin{tabular}{cc}
+    \hline
+    \multicolumn{2}{c}{Multi-column}\\
+    X&X\\
+    \hline
+\end{tabular}
+\end{center}
+\label{tab:multicol}
+\end{table}
+
+
+
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|p{4cm}|p{0.5cm} |p{3cm}|p{4cm}|p{4cm}|}
+\begin{tabular}{|p{0.5cm} |p{3cm}|p{5.5cm}|p{5.5cm}|}
 \hline
 \rowcolor{LightCyan}
- \textbf{Epic} &\textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria} \\
+\multicolumn{4}{|c|}{Epic} \\
 \hline
-
-
+   \multicolumn{4}{|c|}{\begin{minipage}[t]{1\columnwidth}%
 As a Lecturer I want to be able to create
- my own medium and long-term assignment plans in form of requests and proposal for the definite plan and manage it so that it will be  possible a mutual development of the main assignment plan. &
+ my own medium and long-term assignment plans in form of requests and proposal for the definite plan and manage it so that it will be  possible a mutual development of the main assignment plan. 
+ \\
+ %
+\end{minipage}}\\ \hline
+\rowcolor{LightCyan}
+ \textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria} \\
+ 
+\hline
+  
+
+
 01 &
 list modules &
  As a Lecturer, I want to see the list of modules for concrete semester, so that I can choose the modules I want to plan in my own plan. &
@@ -293,9 +319,9 @@ list modules &
 \end{itemize}                                                            \\ \hline
 
 %   the same epic
- &
+ 
  02&
- add modules to own assignment plan&
+ add modules to his/her assignment plan&
  
 As a Lecturer, I want to be able to add the modules to my assignment plan I want to teach in specific semester or remove  it from my plan so that I can participate in the main planning by making a suggestions or requests.                  &
 
@@ -311,7 +337,7 @@ As a Lecturer, I want to be able to add the modules to my assignment plan I want
 
 
 % the same epic 
-&
+
 03&
 manage own plan&
 
@@ -342,15 +368,25 @@ As a Lecturer, I want to be able to manage my plan, so I can modify my plan as I
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|p{4cm}|p{0.5cm} |p{3cm}|p{4cm}|p{4cm}|}\hline
-\rowcolor{LightCyan}
- \textbf{Epic} &\textbf{ ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria} \\
+
+\begin{tabular}{|p{0.5cm} |p{3cm}|p{5.5cm}|p{5.5cm}|}\hline
+ \rowcolor{Gray}
+\multicolumn{4}{|c|}{\textbf{Epic}} \\
 \hline
-   
- As a Study Director, I want to be able to make group of lecturers and attach it to a specific module, and also make group of modules so this will increase planning flexibility . As a Study Director, I want to be able to attach a specific group of modules to a specific group of teachers so that further joint planning of these modules will be easier &
+   \multicolumn{4}{|c|}{\begin{minipage}[t]{1\columnwidth}%
+As a Study Director, I want to be able to make group of lecturers and attach it to a specific module, and also make group of modules so this will increase planning flexibility. As a Study Director, I want to be able to attach a specific group of modules to a specific group of teachers so that further joint planning of these modules will be easier 
+\\
+ %
+\end{minipage}}\\ \hline  
+\rowcolor{LightCyan}
+
+ \textbf{ ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria} \\
+\hline
+
+
 04 &
 See the requests for the groups and for the modules &
-As a Study Director, I want to see teachers' suggestions for group work and also their proposal for the selected modules so that it will be easier to approve specific groups. &
+As a Study Director, I want to see teachers suggestions for group work and also their proposal for the selected modules so that it will be easier to approve specific groups. &
           
   User is able to:            
 \begin{itemize}
@@ -359,7 +395,7 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 
 \end{itemize}                                                                 \\ \hline
 
- &
+ 
  05&
  Makes groups of lecturers&
  As a Study Director, I want to be able to make groups of lecturers in the assignment plan. &
@@ -373,7 +409,7 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 
 \end{itemize}                                                                 \\ \hline
 
- &
+ 
  06&
  Make groups of modules&
  As a Study Director, I want to be able to make groups of modules in the assignment plan. &
@@ -385,7 +421,7 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 \item select several modules and save them as a group.
 \end{itemize}       \\ \hline
 
- &
+ 
  07&
  Attach lecturer/group of lecturers to the module&
  As a Study Director, I want to be able attach lecturer or group of lecturers to the specific module in the assignment plan. &
@@ -411,11 +447,12 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|p{4cm}|p{0.5cm} |p{3cm}|p{4cm}|p{4cm}|}\hline
+\begin{tabular}{|p{0.5cm} |p{3cm}|p{5.5cm}|p{5.5cm}|}\hline
 \rowcolor{LightCyan}
- \textbf{Epic} &\textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria}  \\
+ \textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria} 
+ \\
 \hline
-&
+
 &
 &
  As a Study Director, I want to be able attach a group of lecturers to the group of modules in the assignment plan. &
@@ -429,36 +466,9 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 \item select group of lecturer and save it
 
 
-\end{itemize}                                                                 \\ \hline
-
- 
- As a Lecturer, I can join a group with another lecturers, so that we can use a system as a group. &
- &
-&
-&
-   User is able to:            
-\begin{itemize}
-\item
-\item
-
-
-\end{itemize}                                                                 \\ \hline
-
-
- 
- As a Lecturer, who joins a group, I want to be able to independently manage the tasks related to the common module &
- &
-&
-&
-   User is able to:            
-\begin{itemize}
-\item
-\item
-
-
-\end{itemize}                                                                 \\ \hline
-
- \end{tabular}
+\end{itemize}                                                                
+ \\ \hline
+  \end{tabular}
 \end{center}
 \caption{Product Backlog}
 \label{table2}
@@ -466,41 +476,28 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 
 \pagebreak
 
+
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|p{4cm}|p{0.5cm} |p{3cm}|p{4cm}|p{4cm}|}\hline
-\rowcolor{LightCyan}
- \textbf{Epic} &\textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria}  \\
+\begin{tabular}{|p{0.5cm} |p{3cm}|p{5.5cm}|p{5.5cm}|}\hline
+\rowcolor{Gray}
+\multicolumn{4}{|c|}{\textbf{Epic}} \\
 \hline
-&
-&
-&
- As a Lecturer and the member of the group, I want to be able build a subgroup with another Lecturer/s so that we can manage assignments independently from another lecturers in this group. &
- 
-   User is able to:            
-\begin{itemize}
-\item
+   \multicolumn{4}{|c|}{\begin{minipage}[t]{1\columnwidth}%
+As a Lecturer, who joins a group, I want to be able to independently manage the tasks related to the common module.
+\\
+%
+\end{minipage}}\\ \hline 
 
-\end{itemize}                                                                 \\ \hline
-
- a group. &
- &
-&
-&
-   User is able to:            
-\begin{itemize}
-\item
-\item
-
-
-\end{itemize}                                                                 \\ \hline
-
+ \rowcolor{LightCyan}
+ \textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria}  \\
+\hline
 
  
-  module &
+  &
  &
 &
-&
+
    User is able to:            
 \begin{itemize}
 \item
@@ -514,6 +511,103 @@ As a Study Director, I want to see teachers' suggestions for group work and also
 \caption{Product Backlog}
 \label{table2}
 \end{table}
+
+ 
+%\begin{table}[H]
+%\begin{center}
+%\begin{tabular}{|p{0.5cm} |p{3cm}|p{5.5cm}|p{5.5cm}|}\hline 
+% 
+%\rowcolor{Gray}
+%\multicolumn{4}{|c|}{\textbf{Epic}} \\
+%\hline
+%   \multicolumn{4}{|c|}{\begin{minipage}[t]{1.0\columnwidth}%
+%As a Lecturer, I can join a group with another lecturers, so that we can use a system as a group.                                                 
+%\\
+% %
+%\end{minipage}}\\ \hline
+%
+% \rowcolor{LightCyan}
+% \textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria}  \\
+%\hline
+%  &
+% &
+%&
+%
+%   User is able to:            
+%\begin{itemize}
+%\item
+%\item
+%
+%
+%\end{itemize}                                                                 \\ \hline
+%
+%
+%
+% \end{tabular}
+%\end{center}
+%\caption{Product Backlog}
+%\label{table2}
+%\end{table}
+%
+
+
+%
+%\pagebreak
+%
+%\begin{table}[H]
+%\begin{center}
+%\begin{tabular}{|p{0.5cm} |p{3cm}|p{4cm}|p{4cm}|}\hline
+%\rowcolor{LightCyan}
+%\multicolumn{4}{|c|}{Epic} \\
+%\hline
+%   \multicolumn{4}{|c|}{\begin{minipage}[t]{1\columnwidth}% As a Lecturer and the member of the group, I want to be able build a subgroup with another Lecturer/s so that we can manage assignments independently from another lecturers in this group.
+% %
+%\end{minipage}}\\ \hline
+%\rowcolor{LightCyan}
+% \textbf{ User Story ID} &\textbf{User Story Name} &\textbf{User Story}  & \textbf{Acceptance Criteria}  \\
+%\hline
+%
+%&
+%&
+% &
+% 
+%   User is able to:            
+%\begin{itemize}
+%\item
+%
+%\end{itemize}                                                                 \\ \hline
+%
+%  &
+% &
+%&
+%
+%   User is able to:            
+%\begin{itemize}
+%\item
+%\item
+%
+%
+%\end{itemize}                                                                 \\ \hline
+%
+%
+% 
+%  module &
+% &
+%&
+%
+%   User is able to:            
+%\begin{itemize}
+%\item
+%\item
+%
+%
+%\end{itemize}                                                                 \\ \hline
+%
+% \end{tabular}
+%\end{center}
+%\caption{Product Backlog}
+%\label{table2}
+%\end{table}
 
 
 
@@ -529,9 +623,20 @@ In project 2 we have started with describing of System architecture and design. 
 The domain model (Figure 1) shows us the important concept classes, associations and
 multiplicities between them. The model made in the previous project is shown in black. And other colors show new concepts and associations associated with new tasks.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{uml/domain-b.JPG}
+\caption{Domain Model for PLANA}
+\label{blabla}
+\end{figure}
+
+In the domain model (Figure 2) we added small changes.
+When analyzing graphic concepts and the domain model, we found that it is necessary to add associations between the teacher and the teacher subgroup, since they are directly related. 
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm]{uml/domain-b2.JPG}
 \caption{Domain Model for PLANA}
 \label{blabla}
 \end{figure}
@@ -603,6 +708,9 @@ A Module can belong to zero or one ModuleGroup. ModuleGroup can have from two to
 
 \textbf{\textcolor{blue}{LecturerGroup -> ModuleGroup}}  &  A LecturerGroup can manage exactly one ModuleGroup. A ModuleGroup can have zero to many LecturerGroup.
 . & manages\\ \hline
+
+\textbf{\textcolor{blue}{Lecturer -> LecturerSubGroup}}  &  Lecturers can build zero or many LecturerSubGroups. LecturerSubGroup can contain from one to many Lecturers in it.
+. & build\\ \hline
 \end{tabular}
 \end{center}
 \caption{Association Definition}
@@ -1250,7 +1358,7 @@ Agenda
 \begin{itemize}
   	\item Demo and Discuss Deliverable(Demo)
   	\item Planning next Goals(Plan)
-  	\item Lessons learned (Lessons)
+  	\item Retrospective
   	\item Date, time of the next meeting(next meeting)
  \end{itemize} 	
 
@@ -1264,7 +1372,7 @@ Future goals are:
 	\item 
 	\item 
 \end{itemize}	
-Lessons learned\\
+Retrospective\\
 
 Next Meeting: 08.09.20\\
 \**** \\
@@ -1278,26 +1386,32 @@ Future goals are:
 	\item 
 	\item 
 \end{itemize}	
-Lessons learned\\
-
+Retrospective\\
+ 
 Next Meeting: 21.10.20\\
 
 
 \****
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{\textit{Report from 21.10.20  }}\\
+\textbf{\textit{Report from 21.10.20(13:30)  }}\\
 Plan\\
 Future goals are: 
 \begin{itemize}
-
-
-	\item 
-	\item 
+    \item Implementation. Add new concept classes into the application. 
+  	\item  Implementation. Start implementation of graphic concepts we've made.
+	\item Make Study director plan view concept with less elements.
+	\item Put UI concepts to the report.
 \end{itemize}	
-Lessons learned\\
+Retrospective\\
+\begin{itemize}
+\item In graphical concept i have choice between semester view and year view, but for planning is more important year view.
+\item Actual state of planing view for study director looks little bit heavy because of many elements in it, would be better to minimize some staffs. In implementation we can manipulate view hiding some part of them. 
 
-Next Meeting: 05.11.20\\
+\item Additional Assignments have a category, description and number of hours.
+
+\end{itemize}
+Next Meeting: 04.11.20 (13:30)\\
 
 
 \****
