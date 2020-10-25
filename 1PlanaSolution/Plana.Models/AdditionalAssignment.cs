@@ -10,6 +10,7 @@ namespace Plana.Models
         [Key]
         public int AdditionalAssignmentId { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public double AAHours { get; set; }
         public Lecturer Lecturer { get; set; }
         public Semester Semester { get; set; }

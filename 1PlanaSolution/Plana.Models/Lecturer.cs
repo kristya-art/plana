@@ -16,6 +16,10 @@ namespace Plana.Models
         public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
         public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
+
+        public ICollection<LecturerModuleGroup> LecturerMG { get; set; }
+        public ICollection<LecturerLecturerGroup> LectuererLG { get; set; }
+        public ICollection<LecturerLecturerSubGroup> LecturerSubGroups { get; set; }
         
 
         public DateTime SetActiveDate() { 

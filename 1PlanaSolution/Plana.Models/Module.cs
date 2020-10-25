@@ -18,7 +18,10 @@ namespace Plana.Models
         public int ECTS;
         public int LectPerWeek { get; set; }
         public double TotalHours { get; set; }
-      
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
+        public ModuleGroup ModuleGroup { get; set; }
+        public LecturerGroup LecturerGroup { get; set; }
         public ICollection<LecturersModules> Lecturers{ get; set; }
 
         //1-many
@@ -26,7 +29,6 @@ namespace Plana.Models
 
      //   public int StudyBranchId { get; set; } //foreign key
         public StudyBranch StudyBranch { get; set; } //reference navigation property
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedAt { get; set; }
+       
     }
 }
