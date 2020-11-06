@@ -40,68 +40,68 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline i. Concept Definition}{14}{subsubsection*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline ii. Association Definition}{16}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline ii. Association Definition}{17}{subsubsection*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Technologies}{17}{section.6}%
+\contentsline {section}{\numberline {6}Technologies}{18}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Creating the Projects}{17}{section.7}%
+\contentsline {section}{\numberline {7}Creating the Projects}{18}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Structure of Projects and Folders}{17}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.1}Structure of Projects and Folders}{18}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Data Models}{17}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.2}Data Models}{18}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.3}Entity Framework Core Packages}{17}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.3}Entity Framework Core Packages}{18}{subsection.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.4}Connection String}{17}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.4}Connection String}{18}{subsection.7.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.5}Creating the Database Context Class}{17}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.5}Creating the Database Context Class}{18}{subsection.7.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.6}Entity Framework Core Configuration}{17}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.6}Entity Framework Core Configuration}{18}{subsection.7.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.7}Database and Entity Framework Core}{17}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.7}Database and Entity Framework Core}{18}{subsection.7.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.8}The PLANA App's Relational Database}{17}{subsection.7.8}%
+\contentsline {subsection}{\numberline {7.8}The PLANA App's Relational Database}{18}{subsection.7.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.9}Modeling Types of Database Relationships}{17}{subsection.7.9}%
+\contentsline {subsection}{\numberline {7.9}Modeling Types of Database Relationships}{18}{subsection.7.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Many-to-many Relationship}{17}{subsubsection*.26}%
+\contentsline {subsubsection}{\nonumberline Many-to-many Relationship}{18}{subsubsection*.26}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.10}Creating Database}{19}{subsection.7.10}%
+\contentsline {subsection}{\numberline {7.10}Creating Database}{20}{subsection.7.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.11}Creating a Repository}{20}{subsection.7.11}%
+\contentsline {subsection}{\numberline {7.11}Creating a Repository}{21}{subsection.7.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Creating the Database Migration, Code-First Migration}{21}{subsubsection*.28}%
+\contentsline {subsubsection}{\nonumberline Creating the Database Migration, Code-First Migration}{22}{subsubsection*.28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.12}Creating Seed Data}{21}{subsection.7.12}%
+\contentsline {subsection}{\numberline {7.12}Creating Seed Data}{22}{subsection.7.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Configuration of Core Services and Entity Framework}{22}{subsubsection*.30}%
+\contentsline {subsubsection}{\nonumberline Configuration of Core Services and Entity Framework}{23}{subsubsection*.30}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.13}Create a Controller}{22}{subsection.7.13}%
+\contentsline {subsection}{\numberline {7.13}Create a Controller}{23}{subsection.7.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Complex Data Model}{22}{subsubsection*.32}%
+\contentsline {subsubsection}{\nonumberline Complex Data Model}{23}{subsubsection*.32}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Blazor Server}{24}{subsubsection*.34}%
+\contentsline {subsubsection}{\nonumberline Blazor Server}{25}{subsubsection*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Configuring ASP.NET Core for Blazor Server}{24}{subsubsection*.36}%
+\contentsline {subsubsection}{\nonumberline Configuring ASP.NET Core for Blazor Server}{25}{subsubsection*.36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.14}Setup for Blazor}{27}{subsection.7.14}%
+\contentsline {subsection}{\numberline {7.14}Setup for Blazor}{28}{subsection.7.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Testing}{28}{section.8}%
+\contentsline {section}{\numberline {8}Testing}{29}{section.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Summary}{28}{section.9}%
+\contentsline {section}{\numberline {9}Summary}{29}{section.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Conclusions}{28}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.1}Conclusions}{29}{subsection.9.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Future Work}{28}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.2}Future Work}{29}{subsection.9.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.3}Lessons Learned}{28}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.3}Lessons Learned}{29}{subsection.9.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}List of illustrations}{28}{section.10}%
+\contentsline {section}{\numberline {10}List of illustrations}{29}{section.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}Contents of the table}{28}{section.11}%
+\contentsline {section}{\numberline {11}Contents of the table}{29}{section.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}Appendix}{28}{section.12}%
+\contentsline {section}{\numberline {12}Appendix}{29}{section.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {13}Declaration of Authorship}{28}{section.13}%
+\contentsline {section}{\numberline {13}Declaration of Authorship}{29}{section.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {14}Protocol}{29}{section.14}%
+\contentsline {section}{\numberline {14}Protocol}{30}{section.14}%

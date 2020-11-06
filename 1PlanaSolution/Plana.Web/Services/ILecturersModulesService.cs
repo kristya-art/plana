@@ -8,7 +8,7 @@ namespace Plana.Web.Services
 {
     public interface ILecturersModulesService
     {
-        Task<IEnumerable<LecturersModules>> GetLecturersModules();
+        Task<IEnumerable<LecturerModule>> GetLecturersModules();
     }
 
 }

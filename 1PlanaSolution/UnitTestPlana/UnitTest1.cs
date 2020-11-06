@@ -23,7 +23,7 @@ namespace UnitTestPlana
 
         [TestMethod]
         public void LecturerAddModule() {
-            LecturersModules lm = new LecturersModules();
+            LecturerModule lm = new LecturerModule();
             Module m = new Module();
             Lecturer l = new Lecturer();
              lm.Module = m;

@@ -27,20 +27,15 @@ namespace Plana.Models
         //public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
         //many-many
         // public HashSet<Lecturer> Lecturers {get;set;}
-        public ICollection<LecturersModuleRuns> LecturersMR { get; set; }
+        public ICollection<LecturerModuleRun> LecturersMR { get; set; }
        
-        public ICollection<ModuleRunLecturerSubGroup> ModuleRunLSG { get; set; }
-        
-
-
         public int ModuleId { get; set; } // Foreign key many-to-one
 
         public int SemesterId { get; set; } //Foreign key many-to-one
+        
+        public ModuleGroup ModuleGroup { get; set; }
        
 
 
-        
-
-      
- }
+    }
 }

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  25 OCT 2020 00:45
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.6.29) (preloaded format=xelatex 2020.8.5)  4 NOV 2020 15:11
 entering extended mode
 **./report.tex
 (report.tex
@@ -1163,6 +1163,9 @@ LaTeX Warning: Label `table2' multiply defined.
 LaTeX Warning: Label `blabla' multiply defined.
 
 
+LaTeX Warning: Label `blabla' multiply defined.
+
+
 LaTeX Warning: Label `table2' multiply defined.
 
 
@@ -1396,126 +1399,112 @@ Underfull \hbox (badness 10000) in paragraph at lines 235--242
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 302--302
+Underfull \hbox (badness 10000) in paragraph at lines 305--305
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--304
-[]|
- []
-
-
-Overfull \hbox (11.39662pt too wide) in paragraph at lines 304--304
-\TU/lmr/bx/n/10.95 User
- []
-
-
-Overfull \hbox (15.79852pt too wide) in paragraph at lines 304--304
-\TU/lmr/bx/n/10.95 Story
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--304
+Underfull \hbox (badness 10000) in paragraph at lines 307--307
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 324--324
+Underfull \hbox (badness 3029) in paragraph at lines 327--327
 []|\TU/lmr/m/n/10.95 add modules to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
-\TU/lmr/m/n/10.95 own assignment
+Underfull \hbox (badness 10000) in paragraph at lines 327--327
+\TU/lmr/m/n/10.95 my assignment
  []
 
 
-Overfull \hbox (44.30933pt too wide) in paragraph at lines 292--362
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 295--364
  [] 
  []
 
-[8]
-Overfull \vbox (86.9198pt too high) has occurred while \output is active []
-
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 380--380
+[8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--383
+Underfull \hbox (badness 10000) in paragraph at lines 385--385
 []|
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--383
+Underfull \hbox (badness 10000) in paragraph at lines 385--385
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 388--388
+Underfull \hbox (badness 1163) in paragraph at lines 390--390
 []|\TU/lmr/m/n/10.95 See the requests
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 389--389
+Underfull \hbox (badness 1275) in paragraph at lines 391--391
 []|\TU/lmr/m/n/10.95 As a Study Director, I want
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 393--394
+Underfull \hbox (badness 2065) in paragraph at lines 395--396
 []\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 393--394
+Underfull \hbox (badness 2302) in paragraph at lines 395--396
 \TU/lmr/m/n/10.95 group work and teacher
  []
 
 
-Underfull \hbox (badness 7151) in paragraph at lines 393--394
+Underfull \hbox (badness 7151) in paragraph at lines 395--396
 \TU/lmr/m/n/10.95 suggestions for teaching
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 405--406
-[]\TU/lmr/m/n/10.95 open the main planning
- []
-
-
-Underfull \hbox (badness 3260) in paragraph at lines 414--414
+Underfull \hbox (badness 3260) in paragraph at lines 402--402
 []|\TU/lmr/m/n/10.95 Make groups of
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 419--420
+Underfull \hbox (badness 2065) in paragraph at lines 407--408
 []\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--426
+Underfull \hbox (badness 3260) in paragraph at lines 416--416
+[]|\TU/lmr/m/n/10.95 Make groups of
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 421--422
+[]\TU/lmr/m/n/10.95 open the main planning
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--428
 []|\TU/lmr/m/n/10.95 Attach lec-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--426
+Underfull \hbox (badness 10000) in paragraph at lines 428--428
 \TU/lmr/m/n/10.95 turer/group of
  []
 
 
-Underfull \hbox (badness 3780) in paragraph at lines 426--426
+Underfull \hbox (badness 3780) in paragraph at lines 428--428
 \TU/lmr/m/n/10.95 lecturers to the
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 431--432
+Underfull \hbox (badness 2065) in paragraph at lines 433--434
 []\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Overfull \hbox (44.30933pt too wide) in paragraph at lines 372--441
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 374--443
  [] 
  []
 
@@ -1524,74 +1513,64 @@ Overfull \vbox (168.51982pt too high) has occurred while \output is active []
 
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 452--452
+Underfull \hbox (badness 10000) in paragraph at lines 454--454
 []|
  []
 
 
-Overfull \hbox (11.39662pt too wide) in paragraph at lines 452--452
-\TU/lmr/bx/n/10.95 User
- []
-
-
-Overfull \hbox (15.79852pt too wide) in paragraph at lines 452--452
-\TU/lmr/bx/n/10.95 Story
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 452--452
+Underfull \hbox (badness 10000) in paragraph at lines 454--454
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 462--463
+Underfull \hbox (badness 3780) in paragraph at lines 459--460
+\TU/lmr/m/n/10.95 lecturers to the
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 464--465
 []\TU/lmr/m/n/10.95 open the main planning
  []
 
 
-Overfull \hbox (44.30933pt too wide) in paragraph at lines 450--472
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 452--474
  [] 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 490--490
+Underfull \hbox (badness 10000) in paragraph at lines 492--492
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--493
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
 []|
  []
 
 
-Overfull \hbox (11.39662pt too wide) in paragraph at lines 493--493
-\TU/lmr/bx/n/10.95 User
- []
-
-
-Overfull \hbox (15.79852pt too wide) in paragraph at lines 493--493
-\TU/lmr/bx/n/10.95 Story
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 493--493
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
 []|\TU/lmr/bx/n/10.95 User Story
  []
 
 
-Overfull \hbox (44.30933pt too wide) in paragraph at lines 482--510
+Underfull \hbox (badness 1178) in paragraph at lines 499--500
+[]|\TU/lmr/m/n/10.95 Manage common
+ []
+
+
+Overfull \hbox (44.30933pt too wide) in paragraph at lines 484--512
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 619--620
+Underfull \hbox (badness 10000) in paragraph at lines 622--623
 
  []
 
 File: images/uml/domain-b.JPG Graphic file (type bmp)
 <images/uml/domain-b.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 628--629
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 631--632
  [][] 
  []
 
@@ -1599,63 +1578,70 @@ Overfull \hbox (8.53578pt too wide) in paragraph at lines 628--629
 File: images/uml/domain-b2.JPG Graphic file (type bmp)
 <images/uml/domain-b2.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 639--640
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 642--643
  [][] 
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 671--672
+File: images/uml/domain-b3.JPG Graphic file (type bmp)
+<images/uml/domain-b3.JPG>
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 651--652
+ [][] 
+ []
+
+[13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 683--684
 []|\TU/lmr/bx/n/10.95 Association
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 675--675
+Underfull \hbox (badness 1142) in paragraph at lines 687--687
 []|\TU/lmr/m/n/10.95 Semester can include zero or more
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 681--681
+Underfull \hbox (badness 1122) in paragraph at lines 693--693
 []|\TU/lmr/m/n/10.95 Lecturer can manage zero or more
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--703
+Underfull \hbox (badness 10000) in paragraph at lines 715--715
 []|[]\TU/lmr/bx/n/10.95 LecturerSubGroup -> Mod-
  []
 
 
-Overfull \hbox (60.3621pt too wide) in paragraph at lines 667--715
+Overfull \hbox (60.3621pt too wide) in paragraph at lines 679--727
  [] 
  []
 
-[14] [15]
+[15] [16]
 Overfull \vbox (156.7993pt too high) has occurred while \output is active []
 
 
-[16]
+[17]
 
-LaTeX Warning: Citation 'efa' on page 17 undefined on input line 741.
-
-
-LaTeX Warning: Citation 'ef' on page 17 undefined on input line 741.
+LaTeX Warning: Citation 'efa' on page 18 undefined on input line 753.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 763--765
+LaTeX Warning: Citation 'ef' on page 18 undefined on input line 753.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 775--777
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 17 undefined on input line 768.
+LaTeX Warning: Citation 'efa' on page 18 undefined on input line 780.
 
 File: images/report_img/lecturers-modules.JPG Graphic file (type bmp)
 <images/report_img/lecturers-modules.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 773--774
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 785--786
  [][] 
  []
 
-[17]
-Overfull \hbox (33.03395pt too wide) in paragraph at lines 789--790
+[18]
+Overfull \hbox (33.03395pt too wide) in paragraph at lines 801--802
 []\TU/lmr/bx/n/10.95 modelBuilder.Entity<LectuerersModules>().HasKey(x=> new x.
 LecturerId,
  []
@@ -1663,30 +1649,30 @@ LecturerId,
 File: images/report_img/many-to-many.JPG Graphic file (type bmp)
 <images/report_img/many-to-many.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 801--802
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 813--814
  [][] 
  []
 
 
-LaTeX Warning: Citation 'patrick' on page 18 undefined on input line 805.
+LaTeX Warning: Citation 'patrick' on page 19 undefined on input line 817.
 
-[18]
+[19]
 File: images/report_img/Initial.JPG Graphic file (type bmp)
 <images/report_img/Initial.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 809--810
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 821--822
  [][] 
  []
 
 File: images/report_img/many-to-many-tables.JPG Graphic file (type bmp)
 <images/report_img/many-to-many-tables.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 818--819
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 830--831
  [][] 
  []
 
-[19]
-Overfull \hbox (45.91495pt too wide) in paragraph at lines 833--837
+[20]
+Overfull \hbox (45.91495pt too wide) in paragraph at lines 845--849
 \TU/lmr/bx/n/10.95 text.ModuleRuns; \TU/lmr/m/n/10.95 the ModuleRuns property i
 n the context class returns a DbSet<ModuleRun>
  []
@@ -1695,52 +1681,52 @@ File: images/report_img/repo-create.JPG Graphic file (type bmp)
 <images/report_img/repo-create.JPG>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 842.
+(caption)                particular \caption on input line 854.
 See the caption package documentation for explanation.
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 849--850
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 861--862
 
  []
 
 File: images/report_img/add_scoped_rep.JPG Graphic file (type bmp)
 <images/report_img/add_scoped_rep.JPG>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 853--854
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 865--866
  [][] 
  []
 
 
-LaTeX Warning: Citation 'core3' on page 21 undefined on input line 860.
+LaTeX Warning: Citation 'core3' on page 22 undefined on input line 872.
 
 
-LaTeX Warning: Citation 'core3' on page 21 undefined on input line 865.
+LaTeX Warning: Citation 'core3' on page 22 undefined on input line 877.
 
 
-LaTeX Warning: Citation 'core3' on page 21 undefined on input line 870.
+LaTeX Warning: Citation 'core3' on page 22 undefined on input line 882.
 
 
-LaTeX Warning: Citation 'efa' on page 21 undefined on input line 872.
+LaTeX Warning: Citation 'efa' on page 22 undefined on input line 884.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 870--874
+Underfull \hbox (badness 10000) in paragraph at lines 882--886
 
  []
 
 
-LaTeX Warning: Citation 'efa' on page 21 undefined on input line 876.
+LaTeX Warning: Citation 'efa' on page 22 undefined on input line 888.
 
-[21]
+[22]
 File: images/report_img/seed-data-startup.JPG Graphic file (type bmp)
 <images/report_img/seed-data-startup.JPG>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 883.
+(caption)                particular \caption on input line 895.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 910--911
+Underfull \hbox (badness 10000) in paragraph at lines 922--923
 
  []
 
@@ -1749,32 +1735,32 @@ ic file (type bmp)
 <images/report_img/complex_data_problem/repository_get_lecturers.jpg>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 916.
+(caption)                particular \caption on input line 928.
 See the caption package documentation for explanation.
 
 File: images/report_img/complex_data_problem/michele_module_null.jpg Graphic fi
 le (type bmp)
 <images/report_img/complex_data_problem/michele_module_null.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 924--925
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 936--937
  [][] 
  []
 
-[22]
+[23]
 File: images/report_img/complex_data_problem/repository_get_lecturers_modules.j
 pg Graphic file (type bmp)
 <images/report_img/complex_data_problem/repository_get_lecturers_modules.jpg>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 933.
+(caption)                particular \caption on input line 945.
 See the caption package documentation for explanation.
 
 File: images/report_img/complex_data_problem/json_problem.jpg Graphic file (typ
 e bmp)
 <images/report_img/complex_data_problem/json_problem.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 942--943
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 954--955
  [][] 
  []
 
@@ -1782,7 +1768,7 @@ File: images/report_img/complex_data_problem/install_newtonsoft_json.jpg Graphi
 c file (type bmp)
 <images/report_img/complex_data_problem/install_newtonsoft_json.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 949--950
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 961--962
  [][] 
  []
 
@@ -1791,39 +1777,39 @@ File: images/report_img/complex_data_problem/startup_add_newtonsoft.jpg Graphic
 <images/report_img/complex_data_problem/startup_add_newtonsoft.jpg>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 958.
+(caption)                particular \caption on input line 970.
 See the caption package documentation for explanation.
 
 File: images/report_img/complex_data_problem/michele_module_ok.jpg Graphic file
  (type bmp)
 <images/report_img/complex_data_problem/michele_module_ok.jpg>
 
-Overfull \hbox (8.53578pt too wide) in paragraph at lines 967--968
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 979--980
  [][] 
  []
 
-[23]
+[24]
 File: images/report_img/blazor/register-http-client.jpg Graphic file (type bmp)
 
 <images/report_img/blazor/register-http-client.jpg>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 986.
+(caption)                particular \caption on input line 998.
 See the caption package documentation for explanation.
 
-[24]
+[25]
 File: images/report_img/add-blazor-service-to-startup.jpg Graphic file (type bm
 p)
 <images/report_img/add-blazor-service-to-startup.jpg>
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 998.
+(caption)                particular \caption on input line 1010.
 See the caption package documentation for explanation.
 
-[25] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 1004--1005
+[26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 1016--1017
 
  []
 
@@ -1831,60 +1817,90 @@ File: images/report_img/blazor/imports_razor.jpg Graphic file (type bmp)
 <images/report_img/blazor/imports_razor.jpg>
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1011.
+(caption)                particular \caption on input line 1023.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1016--1017
+Underfull \hbox (badness 10000) in paragraph at lines 1028--1029
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1248--1252
+Underfull \hbox (badness 10000) in paragraph at lines 1260--1264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1248--1252
+Underfull \hbox (badness 10000) in paragraph at lines 1260--1264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1248--1252
+Underfull \hbox (badness 10000) in paragraph at lines 1260--1264
 
  []
 
-[27] [28]
+[28] [29]
 
-LaTeX Warning: Empty bibliography on input line 1260.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1354--1355
-
- []
+LaTeX Warning: Empty bibliography on input line 1272.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1375--1376
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1389--1390
+Underfull \hbox (badness 10000) in paragraph at lines 1387--1388
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1391--1392
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1402
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1406--1407
+Underfull \hbox (badness 10000) in paragraph at lines 1403--1404
 
  []
 
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 1414--1415
+
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1419
+
+ []
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 1426--1427
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1448--1449
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1454--1455
+
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 1465--1466
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1470--1471
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1481--1482
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1486--1487
 
  []
 
@@ -1922,16 +1938,16 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1423.
-[30]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1423.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1489.
+[32]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1489.
  (report.aux
 LaTeX Info: Redefining \rmfamily on input line 24.
 LaTeX Info: Redefining \sffamily on input line 24.
 LaTeX Info: Redefining \ttfamily on input line 24.
 )
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1423.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1423.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1489.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1489.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -1955,12 +1971,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27066 strings out of 414071
- 522361 string characters out of 2898876
- 1415448 words of memory out of 3000000
- 44376 multiletter control sequences out of 15000+200000
+ 27072 strings out of 414071
+ 522499 string characters out of 2898876
+ 1413448 words of memory out of 3000000
+ 44381 multiletter control sequences out of 15000+200000
  554328 words of font info for 94 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
  47i,12n,77p,10603b,3971s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on report.pdf (30 pages).
+Output written on report.pdf (32 pages).

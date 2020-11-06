@@ -14,9 +14,9 @@ namespace Plana.Models
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
 
-        public ICollection<Module> Modules { get; set; }
-        public ICollection<LecturerGroup> LecturerGroups {get;set;}
-       
+        public ICollection<ModuleRun> ModuleRuns { get; set; }
+        public LecturerGroupModuleGroup Lecturer_ModuleGroup { get; set; }
+
         public ICollection<LecturerModuleGroup> LecturerMG { get; set; }
 
     }

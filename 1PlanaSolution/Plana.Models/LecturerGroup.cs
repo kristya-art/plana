@@ -12,8 +12,7 @@ namespace Plana.Models
         public bool IsDeleted { get; set; }
 
         public ICollection<LecturerLecturerGroup> LecturerLG { get; set; }
-        public ModuleGroup ModuleGroup { get; set; }
-        public ICollection<Module> Modules { get; set; }
-        public ICollection<LecturerSubGroup> LecturerSubGroups { get; set; }
+        public LecturerGroupModuleGroup Lecturer_ModuleGroup { get; set; }
+        
     }
 }

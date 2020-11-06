@@ -20,9 +20,7 @@ namespace Plana.Models
         public double TotalHours { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
-        public ModuleGroup ModuleGroup { get; set; }
-        public LecturerGroup LecturerGroup { get; set; }
-        public ICollection<LecturersModules> Lecturers{ get; set; }
+        public ICollection<LecturerModule> Lecturers{ get; set; }
 
         //1-many
         public ICollection<ModuleRun> ModuleRuns { get; set; } //collection navigation property

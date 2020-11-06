@@ -19,7 +19,7 @@ namespace Plana.Models
         public ICollection<ModuleRun> ModuleRuns { get; set; }
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
-        public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
+        public ICollection<LecturerSemester> LecturersSemesters { get; set; }
         public bool IsDeleted { get; set ; }
         public DateTime? DeletedAt { get; set; }
     }

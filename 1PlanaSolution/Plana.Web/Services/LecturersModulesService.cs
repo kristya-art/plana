@@ -15,9 +15,9 @@ namespace Plana.Web.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<IEnumerable<LecturersModules>> GetLecturersModules()
+        public async Task<IEnumerable<LecturerModule>> GetLecturersModules()
         {
-            return await httpClient.GetJsonAsync<LecturersModules[]>("api/lecturersmodules");
+            return await httpClient.GetJsonAsync<LecturerModule[]>("api/lecturersmodules");
         }
     }
 }

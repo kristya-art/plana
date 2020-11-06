@@ -31,7 +31,7 @@ namespace Plana.Web.Pages
         }
 
         public IEnumerable<Lecturer> Lecturers { get; set; }
-        public IEnumerable<LecturersModules> LecturersModules { get; set; }
+        public IEnumerable<LecturerModule> LecturersModules { get; set; }
         public bool ShowFooter { get; set; } = true;
 
         //protected override async Task OnInitializedAsync()

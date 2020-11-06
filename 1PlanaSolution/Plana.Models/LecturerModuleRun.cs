@@ -2,7 +2,7 @@
 
 namespace Plana.Models
 {
-    public class LecturersModuleRuns
+    public class LecturerModuleRun
     {
 
         public int LecturerId { get; set; }

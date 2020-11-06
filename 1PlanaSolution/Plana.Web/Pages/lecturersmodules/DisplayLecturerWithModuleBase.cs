@@ -13,7 +13,7 @@ namespace Plana.Web.Pages.lecturersmodules
     {
         [Inject]
         public ILecturersModulesService LecturersModulesService { get; set; }
-        public IEnumerable<LecturersModules> LM { get; set; }
+        public IEnumerable<LecturerModule> LM { get; set; }
 
 
         protected override async Task OnInitializedAsync()

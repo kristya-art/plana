@@ -3,10 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Plana.Api.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "LecturerGroups",
+                columns: table => new
+                {
+                    LecturerGroupId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LecturerGroups", x => x.LecturerGroupId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Lecturers",
                 columns: table => new
@@ -81,25 +96,51 @@ namespace Plana.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LecturerGroups",
+                name: "LecturerLG",
                 columns: table => new
                 {
+                    LecturerId = table.Column<int>(nullable: false),
                     LecturerGroupId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    ModuleGroupId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LecturerGroups", x => x.LecturerGroupId);
+                    table.PrimaryKey("PK_LecturerLG", x => new { x.LecturerId, x.LecturerGroupId });
                     table.ForeignKey(
-                        name: "FK_LecturerGroups_ModuleGroups_ModuleGroupId",
+                        name: "FK_LecturerLG_LecturerGroups_LecturerGroupId",
+                        column: x => x.LecturerGroupId,
+                        principalTable: "LecturerGroups",
+                        principalColumn: "LecturerGroupId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LecturerLG_Lecturers_LecturerId",
+                        column: x => x.LecturerId,
+                        principalTable: "Lecturers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LecturerGroupModuleGroup",
+                columns: table => new
+                {
+                    LecturerGroupId = table.Column<int>(nullable: false),
+                    ModuleGroupId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LecturerGroupModuleGroup", x => new { x.LecturerGroupId, x.ModuleGroupId });
+                    table.ForeignKey(
+                        name: "FK_LecturerGroupModuleGroup_LecturerGroups_LecturerGroupId",
+                        column: x => x.LecturerGroupId,
+                        principalTable: "LecturerGroups",
+                        principalColumn: "LecturerGroupId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LecturerGroupModuleGroup_ModuleGroups_ModuleGroupId",
                         column: x => x.ModuleGroupId,
                         principalTable: "ModuleGroups",
                         principalColumn: "ModuleGroupId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,7 +199,7 @@ namespace Plana.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LecturersSemesters",
+                name: "LecturerSemester",
                 columns: table => new
                 {
                     LecturerId = table.Column<int>(nullable: false),
@@ -166,65 +207,19 @@ namespace Plana.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LecturersSemesters", x => new { x.SemesterId, x.LecturerId });
+                    table.PrimaryKey("PK_LecturerSemester", x => new { x.SemesterId, x.LecturerId });
                     table.ForeignKey(
-                        name: "FK_LecturersSemesters_Lecturers_LecturerId",
+                        name: "FK_LecturerSemester_Lecturers_LecturerId",
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LecturersSemesters_Semesters_SemesterId",
+                        name: "FK_LecturerSemester_Semesters_SemesterId",
                         column: x => x.SemesterId,
                         principalTable: "Semesters",
                         principalColumn: "SemesterId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LecturerLG",
-                columns: table => new
-                {
-                    LecturerId = table.Column<int>(nullable: false),
-                    LecturerGroupId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LecturerLG", x => new { x.LecturerId, x.LecturerGroupId });
-                    table.ForeignKey(
-                        name: "FK_LecturerLG_LecturerGroups_LecturerGroupId",
-                        column: x => x.LecturerGroupId,
-                        principalTable: "LecturerGroups",
-                        principalColumn: "LecturerGroupId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_LecturerLG_Lecturers_LecturerId",
-                        column: x => x.LecturerId,
-                        principalTable: "Lecturers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LecturerSubGroups",
-                columns: table => new
-                {
-                    LecturerSubGroupId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    LecturerGroupId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LecturerSubGroups", x => x.LecturerSubGroupId);
-                    table.ForeignKey(
-                        name: "FK_LecturerSubGroups_LecturerGroups_LecturerGroupId",
-                        column: x => x.LecturerGroupId,
-                        principalTable: "LecturerGroups",
-                        principalColumn: "LecturerGroupId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -239,55 +234,17 @@ namespace Plana.Api.Migrations
                     TotalHours = table.Column<double>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedAt = table.Column<DateTime>(nullable: true),
-                    ModuleGroupId = table.Column<int>(nullable: true),
-                    LecturerGroupId = table.Column<int>(nullable: true),
                     StudyBranchId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Modules", x => x.ModuleId);
                     table.ForeignKey(
-                        name: "FK_Modules_LecturerGroups_LecturerGroupId",
-                        column: x => x.LecturerGroupId,
-                        principalTable: "LecturerGroups",
-                        principalColumn: "LecturerGroupId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Modules_ModuleGroups_ModuleGroupId",
-                        column: x => x.ModuleGroupId,
-                        principalTable: "ModuleGroups",
-                        principalColumn: "ModuleGroupId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Modules_StudyBranches_StudyBranchId",
                         column: x => x.StudyBranchId,
                         principalTable: "StudyBranches",
                         principalColumn: "StudyBranchId",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LecturerLSG",
-                columns: table => new
-                {
-                    LecturerId = table.Column<int>(nullable: false),
-                    LecturerSubGroupId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LecturerLSG", x => new { x.LecturerId, x.LecturerSubGroupId });
-                    table.ForeignKey(
-                        name: "FK_LecturerLSG_Lecturers_LecturerId",
-                        column: x => x.LecturerId,
-                        principalTable: "Lecturers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_LecturerLSG_LecturerSubGroups_LecturerSubGroupId",
-                        column: x => x.LecturerSubGroupId,
-                        principalTable: "LecturerSubGroups",
-                        principalColumn: "LecturerSubGroupId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -325,11 +282,18 @@ namespace Plana.Api.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     ModuleId = table.Column<int>(nullable: false),
-                    SemesterId = table.Column<int>(nullable: false)
+                    SemesterId = table.Column<int>(nullable: false),
+                    ModuleGroupId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ModuleRuns", x => x.ModuleRunId);
+                    table.ForeignKey(
+                        name: "FK_ModuleRuns_ModuleGroups_ModuleGroupId",
+                        column: x => x.ModuleGroupId,
+                        principalTable: "ModuleGroups",
+                        principalColumn: "ModuleGroupId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ModuleRuns_Modules_ModuleId",
                         column: x => x.ModuleId,
@@ -369,30 +333,6 @@ namespace Plana.Api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ModuleRunLSG",
-                columns: table => new
-                {
-                    ModuleRunId = table.Column<int>(nullable: false),
-                    LecturerSubGroupId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ModuleRunLSG", x => new { x.ModuleRunId, x.LecturerSubGroupId });
-                    table.ForeignKey(
-                        name: "FK_ModuleRunLSG_LecturerSubGroups_LecturerSubGroupId",
-                        column: x => x.LecturerSubGroupId,
-                        principalTable: "LecturerSubGroups",
-                        principalColumn: "LecturerSubGroupId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ModuleRunLSG_ModuleRuns_ModuleRunId",
-                        column: x => x.ModuleRunId,
-                        principalTable: "ModuleRuns",
-                        principalColumn: "ModuleRunId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AdditionalAssignments_LecturerId",
                 table: "AdditionalAssignments",
@@ -404,9 +344,16 @@ namespace Plana.Api.Migrations
                 column: "SemesterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LecturerGroups_ModuleGroupId",
-                table: "LecturerGroups",
-                column: "ModuleGroupId");
+                name: "IX_LecturerGroupModuleGroup_LecturerGroupId",
+                table: "LecturerGroupModuleGroup",
+                column: "LecturerGroupId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LecturerGroupModuleGroup_ModuleGroupId",
+                table: "LecturerGroupModuleGroup",
+                column: "ModuleGroupId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_LecturerLG_LecturerGroupId",
@@ -414,14 +361,14 @@ namespace Plana.Api.Migrations
                 column: "LecturerGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LecturerLSG_LecturerSubGroupId",
-                table: "LecturerLSG",
-                column: "LecturerSubGroupId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_LecturerMG_ModuleGroupId",
                 table: "LecturerMG",
                 column: "ModuleGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LecturerSemester_LecturerId",
+                table: "LecturerSemester",
+                column: "LecturerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LecturersModuleRuns_LecturerId",
@@ -434,19 +381,9 @@ namespace Plana.Api.Migrations
                 column: "LecturerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LecturersSemesters_LecturerId",
-                table: "LecturersSemesters",
-                column: "LecturerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LecturerSubGroups_LecturerGroupId",
-                table: "LecturerSubGroups",
-                column: "LecturerGroupId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ModuleRunLSG_LecturerSubGroupId",
-                table: "ModuleRunLSG",
-                column: "LecturerSubGroupId");
+                name: "IX_ModuleRuns_ModuleGroupId",
+                table: "ModuleRuns",
+                column: "ModuleGroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ModuleRuns_ModuleId",
@@ -457,16 +394,6 @@ namespace Plana.Api.Migrations
                 name: "IX_ModuleRuns_SemesterId",
                 table: "ModuleRuns",
                 column: "SemesterId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Modules_LecturerGroupId",
-                table: "Modules",
-                column: "LecturerGroupId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Modules_ModuleGroupId",
-                table: "Modules",
-                column: "ModuleGroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Modules_StudyBranchId",
@@ -480,13 +407,16 @@ namespace Plana.Api.Migrations
                 name: "AdditionalAssignments");
 
             migrationBuilder.DropTable(
+                name: "LecturerGroupModuleGroup");
+
+            migrationBuilder.DropTable(
                 name: "LecturerLG");
 
             migrationBuilder.DropTable(
-                name: "LecturerLSG");
+                name: "LecturerMG");
 
             migrationBuilder.DropTable(
-                name: "LecturerMG");
+                name: "LecturerSemester");
 
             migrationBuilder.DropTable(
                 name: "LecturersModuleRuns");
@@ -495,19 +425,16 @@ namespace Plana.Api.Migrations
                 name: "LecturersModules");
 
             migrationBuilder.DropTable(
-                name: "LecturersSemesters");
+                name: "LecturerGroups");
 
             migrationBuilder.DropTable(
-                name: "ModuleRunLSG");
+                name: "ModuleRuns");
 
             migrationBuilder.DropTable(
                 name: "Lecturers");
 
             migrationBuilder.DropTable(
-                name: "LecturerSubGroups");
-
-            migrationBuilder.DropTable(
-                name: "ModuleRuns");
+                name: "ModuleGroups");
 
             migrationBuilder.DropTable(
                 name: "Modules");
@@ -516,13 +443,7 @@ namespace Plana.Api.Migrations
                 name: "Semesters");
 
             migrationBuilder.DropTable(
-                name: "LecturerGroups");
-
-            migrationBuilder.DropTable(
                 name: "StudyBranches");
-
-            migrationBuilder.DropTable(
-                name: "ModuleGroups");
         }
     }
 }

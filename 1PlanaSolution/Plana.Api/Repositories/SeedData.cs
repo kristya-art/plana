@@ -22,9 +22,9 @@ namespace Plana.Api.Models
             {
                 ICollection<ModuleRun> mrcol = new List<ModuleRun>();
                 ICollection<AdditionalAssignment> aacol = new List<AdditionalAssignment>();
-                ICollection<LecturersModuleRuns> lmrcol = new List<LecturersModuleRuns>();
+                ICollection<LecturerModuleRun> lmrcol = new List<LecturerModuleRun>();
 
-                LecturersModuleRuns lmr = new LecturersModuleRuns();
+                LecturerModuleRun lmr = new LecturerModuleRun();
 
      //seed data for module
 
@@ -334,14 +334,14 @@ namespace Plana.Api.Models
                     IsDeleted = false,
                    // LecturersModules = iclm
                 };
-                l2.LecturersModules = new List<LecturersModules>
+                l2.LecturersModules = new List<LecturerModule>
                 {
-                    new LecturersModules
+                    new LecturerModule
                     {
                         Lecturer = l2,
                         Module = m12
                     },
-                    new LecturersModules
+                    new LecturerModule
                     {
                        Lecturer = l2,
                        Module = m6
@@ -369,14 +369,14 @@ namespace Plana.Api.Models
                     TotalHours = 200
                 };
 
-                michele.LecturersModules = new List<LecturersModules>
+                michele.LecturersModules = new List<LecturerModule>
                 {
-                    new LecturersModules
+                    new LecturerModule
                     {
                         Lecturer = michele,
                         Module = csbasics
                     },
-                    new LecturersModules
+                    new LecturerModule
                     { 
                        Lecturer = michele,
                        Module = m6
@@ -398,10 +398,10 @@ namespace Plana.Api.Models
                     Code = "2020-2021 - FS",
                     Date = new DateTime(2021, 02, 15),
                     AdditionalAssignments = aacol,
-                    LecturersSemesters = new List<LecturersSemesters>
+                    LecturersSemesters = new List<LecturerSemester>
                     { 
-                       new LecturersSemesters{Lecturer= masha},
-                       new LecturersSemesters{Lecturer= misha}
+                       new LecturerSemester{Lecturer= masha},
+                       new LecturerSemester{Lecturer= misha}
 
                     }
 
@@ -415,10 +415,10 @@ namespace Plana.Api.Models
                     AdditionalAssignments = new List<AdditionalAssignment> {
                         new AdditionalAssignment { Title = "newAdditionalAssigment1", AAHours = 0} ,
                         new AdditionalAssignment { Title = "newAddtitonalAssigment2", AAHours = 0} },
-                     LecturersSemesters = new List<LecturersSemesters>
+                     LecturersSemesters = new List<LecturerSemester>
                     {
-                       new LecturersSemesters{Lecturer= margo},
-                       new LecturersSemesters{Lecturer= alic}
+                       new LecturerSemester{Lecturer= margo},
+                       new LecturerSemester{Lecturer= alic}
 
                     }
 
@@ -427,10 +427,10 @@ namespace Plana.Api.Models
                 {
                     Code = "2021-2022 - FS",
                     Date = new DateTime(2021, 02, 15),
-                    LecturersSemesters = new List<LecturersSemesters>
+                    LecturersSemesters = new List<LecturerSemester>
                     {
-                       new LecturersSemesters{Lecturer= rosita},
-                       new LecturersSemesters{Lecturer= kai}
+                       new LecturerSemester{Lecturer= rosita},
+                       new LecturerSemester{Lecturer= kai}
 
                     }
 
@@ -439,10 +439,10 @@ namespace Plana.Api.Models
                 {
                     Code = "2021-2022 - HS",
                     Date = new DateTime(2021, 08, 13),
-                      LecturersSemesters = new List<LecturersSemesters>
+                      LecturersSemesters = new List<LecturerSemester>
                     {
-                       new LecturersSemesters{Lecturer= margo},
-                       new LecturersSemesters{Lecturer= alic}
+                       new LecturerSemester{Lecturer= margo},
+                       new LecturerSemester{Lecturer= alic}
 
                     }
                 };
@@ -453,10 +453,10 @@ namespace Plana.Api.Models
                       Semester = s2,
                       Module = csbasics,
                       Place = "Biel",
-                      LecturersMR = new List<LecturersModuleRuns>
+                      LecturersMR = new List<LecturerModuleRun>
                       { 
-                       new LecturersModuleRuns{ Lecturer = michele},
-                       new LecturersModuleRuns{ Lecturer = l2}
+                       new LecturerModuleRun{ Lecturer = michele},
+                       new LecturerModuleRun{ Lecturer = l2}
                       }
                       
                       
@@ -476,10 +476,10 @@ namespace Plana.Api.Models
                       Semester = s2,
                       Module = csbasics,
                       Place = "Biel",
-                       LecturersMR = new List<LecturersModuleRuns>
+                       LecturersMR = new List<LecturerModuleRun>
                       {
-                       new LecturersModuleRuns{ Lecturer = michele},
-                       new LecturersModuleRuns{ Lecturer = l2}
+                       new LecturerModuleRun{ Lecturer = michele},
+                       new LecturerModuleRun{ Lecturer = l2}
                       }
 
                     }
@@ -490,14 +490,14 @@ namespace Plana.Api.Models
                 
                       
 
-                s2.LecturersSemesters = new List<LecturersSemesters>
+                s2.LecturersSemesters = new List<LecturerSemester>
                 {
-                 new LecturersSemesters
+                 new LecturerSemester
                  {
                    Semester =s2,
                    Lecturer = michele
                  },
-                 new LecturersSemesters
+                 new LecturerSemester
                  {
                    Semester = s2,
                    Lecturer =l2
@@ -531,9 +531,9 @@ namespace Plana.Api.Models
                     Code="a",
                    Module = m6,
                    Semester =s2,
-                   LecturersMR = new List<LecturersModuleRuns> { 
+                   LecturersMR = new List<LecturerModuleRun> { 
                    
-                   new LecturersModuleRuns{ Lecturer =misha}
+                   new LecturerModuleRun{ Lecturer =misha}
                    }
 
                 };

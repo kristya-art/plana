@@ -15,15 +15,15 @@ namespace Plana.Api.Models
             this.context = appDbContext;
         }
 
-        public IEnumerable<LecturersModules> LecturersModules =>
+        public IEnumerable<LecturerModule> LecturersModules =>
             context.LecturersModules.Include(l => l.Lecturer)
             .Include(m => m.Module);
-        public Task<LecturersModules> CreateLecturersModules(Lecturer lectuer, Module module)
+        public Task<LecturerModule> CreateLecturersModules(Lecturer lectuer, Module module)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<LecturersModules>> GetAll()
+        public async Task<IEnumerable<LecturerModule>> GetAll()
         {
             return await context.LecturersModules
                   .Include(l => l.Lecturer)
@@ -32,7 +32,7 @@ namespace Plana.Api.Models
 
         }
 
-        public Task<LecturersModules> UpdateLecturersModules(int lecturerId, int moduleId)
+        public Task<LecturerModule> UpdateLecturersModules(int lecturerId, int moduleId)
         {
             throw new NotImplementedException();
         }

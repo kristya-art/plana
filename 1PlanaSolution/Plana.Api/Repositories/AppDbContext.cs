@@ -17,14 +17,11 @@ namespace Plana.Api.Models
         public DbSet<AdditionalAssignment> AdditionalAssignments { get; set; }
         public DbSet<Semester> Semesters { get; set; }
         public DbSet<StudyBranch> StudyBranches { get; set; }
-        public DbSet<LecturersModules> LecturersModules { get; set; }
-        public DbSet<LecturersModuleRuns> LecturersModuleRuns { get; set; }
+        public DbSet<LecturerModule> LecturersModules { get; set; }
+        public DbSet<LecturerModuleRun> LecturersModuleRuns { get; set; }
         
         public DbSet<LecturerGroup> LecturerGroups { get; set; }
-        public DbSet<LecturerSubGroup> LecturerSubGroups { get; set; }
-        public DbSet<ModuleRunLecturerSubGroup> ModuleRunLSG { get; set; }
         public DbSet<LecturerLecturerGroup> LecturerLG { get; set; }
-        public DbSet<LecturerLecturerSubGroup> LecturerLSG { get; set; }
         public DbSet<LecturerModuleGroup> LecturerMG { get; set; }
 
 
@@ -38,7 +35,7 @@ namespace Plana.Api.Models
             modelBuilder.Entity<ModuleRun>().HasQueryFilter(p => !p.IsDeleted);
 
 
-            modelBuilder.Entity<LecturersModules>()
+            modelBuilder.Entity<LecturerModule>()
                 .HasKey(x => new { x.ModuleId, x.LecturerId });
 
             modelBuilder.Entity<Module>()
@@ -50,9 +47,6 @@ namespace Plana.Api.Models
             modelBuilder.Entity<LecturerGroup>()
                 .HasKey(x=> x.LecturerGroupId);
 
-            modelBuilder.Entity<LecturerSubGroup>()
-                .HasKey(x => x.LecturerSubGroupId);
-
             modelBuilder.Entity<ModuleGroup>()
                 .HasKey(x => x.ModuleGroupId);
 
@@ -63,7 +57,7 @@ namespace Plana.Api.Models
             modelBuilder.Entity<ModuleRun>()
                 .HasKey(x => x.ModuleRunId);
 
-            modelBuilder.Entity<LecturersModuleRuns>()
+            modelBuilder.Entity<LecturerModuleRun>()
                 .HasKey(x => new { x.ModuleRunId, x.LecturerId });
 
 
@@ -72,33 +66,25 @@ namespace Plana.Api.Models
             modelBuilder.Entity<Semester>()
                 .HasKey(x => x.SemesterId);
 
-            modelBuilder.Entity<LecturersSemesters>()
+            modelBuilder.Entity<LecturerSemester>()
                 .HasKey(x => new { x.SemesterId, x.LecturerId });
 
-            /** ModuleRun - LecturerSubGroup*/
 
-            modelBuilder.Entity<ModuleRunLecturerSubGroup>()
-                .HasKey(x => new { x.ModuleRunId, x.LecturerSubGroupId });
-
-            /** Lecturer - LecturerGroup*/
+              /** Lecturer - LecturerGroup*/
 
             modelBuilder.Entity<LecturerLecturerGroup>()
                  .HasKey(x => new { x.LecturerId, x.LecturerGroupId });
 
 
-            /** Lecturer - LecturerSubGroup**/
-            modelBuilder.Entity<LecturerLecturerSubGroup>()
-                  .HasKey(x => new { x.LecturerId, x.LecturerSubGroupId });
-
-            /** LecturerModuleGroup **/
+             /** LecturerModuleGroup **/
             modelBuilder.Entity<LecturerModuleGroup>()
                  .HasKey(x => new { x.LecturerId, x.ModuleGroupId });
 
+            /** LecturerGroupModuleGroup */
+            modelBuilder.Entity<LecturerGroupModuleGroup>()
+                .HasKey(x => new { x.LecturerGroupId, x.ModuleGroupId });
 
-
-
-
-    }
+         }
 
     }
 }

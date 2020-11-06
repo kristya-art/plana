@@ -1,9 +1,20 @@
 25-Oct
+****************Aditional Assignments
 Studien Beratung is a AA ?
-
 1 full example of additional assignment
-
 Who will add additional assignment to the plan?
-
-
 Maybe ask a print of AA , so I can put it in my application
+
+
+************************
+What way I should choose to implement application:
+1. 1st study director makes a plan , then lecturer sees the plan and add more assignments like bachelor
+thesis and adds the hours to assignments wherer he works in the group.
+Like I see a lecturer can add just bachelor thesis, not many other modules, cuz if study director takes
+the plan from last year and copy it , then almost all modules already in the planning 
+2. Or he first makes his plan and send it to the study director. And then study director accept it or not
+
+Who starts first this process? 
+
+
+

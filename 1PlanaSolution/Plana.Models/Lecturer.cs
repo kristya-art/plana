@@ -12,14 +12,13 @@ namespace Plana.Models
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; }
 
-        public ICollection<LecturersModules> LecturersModules { get; set; }
-        public ICollection<LecturersModuleRuns> LecturersModuleRuns { get; set; }
-        public ICollection<LecturersSemesters> LecturersSemesters { get; set; }
+        public ICollection<LecturerModule> LecturersModules { get; set; }
+        public ICollection<LecturerModuleRun> LecturersModuleRuns { get; set; }
+        public ICollection<LecturerSemester> LecturersSemesters { get; set; }
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
         public ICollection<LecturerModuleGroup> LecturerMG { get; set; }
         public ICollection<LecturerLecturerGroup> LectuererLG { get; set; }
-        public ICollection<LecturerLecturerSubGroup> LecturerSubGroups { get; set; }
         
 
         public DateTime SetActiveDate() { 
@@ -43,7 +42,7 @@ namespace Plana.Models
         // for many-to-many
         public void AddModuleRun(ModuleRun moduleRun)
         {
-            LecturersModuleRuns lmr = new LecturersModuleRuns();
+            LecturerModuleRun lmr = new LecturerModuleRun();
             lmr.Lecturer = this;
             lmr.ModuleRun = moduleRun;
             LecturersModuleRuns.Add(lmr);
@@ -51,7 +50,7 @@ namespace Plana.Models
 
         // for many-to-many
         public void AddModule(Module module) {
-            LecturersModules lm = new LecturersModules();
+            LecturerModule lm = new LecturerModule();
             lm.Module = module;
             lm.Lecturer = this;
             LecturersModules.Add(lm);

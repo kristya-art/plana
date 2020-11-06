@@ -10,8 +10,8 @@ namespace Plana.Api.Models
     {
        
 
-        Task<IEnumerable<LecturersModules>> GetAll();
-        Task<LecturersModules> UpdateLecturersModules(int lecturerId, int moduleId);
-        Task<LecturersModules> CreateLecturersModules(Lecturer lectuer, Module module);
+        Task<IEnumerable<LecturerModule>> GetAll();
+        Task<LecturerModule> UpdateLecturersModules(int lecturerId, int moduleId);
+        Task<LecturerModule> CreateLecturersModules(Lecturer lectuer, Module module);
     }
 }
