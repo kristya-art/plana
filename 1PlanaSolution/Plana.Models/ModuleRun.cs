@@ -23,6 +23,7 @@ namespace Plana.Models
         public string Place { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
+        public bool Editable { get; set; }
         //1/3, 1/2, 1/4
         //public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
         //many-many

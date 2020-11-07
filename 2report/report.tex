@@ -1,7 +1,7 @@
 
 %%\documentclass{article}
 \documentclass{scrartcl}
-
+%\documentclass[openany]{book}
 %"First you tell 'em what you're going to tell 'em. Then you tell 'em. Then you tell 'em what you've told 'em."
 
 \usepackage{multirow} % 24/10
@@ -63,18 +63,24 @@
 \begin{titlepage}
 
 
-\title{\textsc{\LARGE Bern University of Applied Sciences | BFH }\\[1cm]
+\title{
+\textsc{\LARGE Bern University of Applied Sciences | BFH }\\[0.5cm]
 \begin{center}
 %\includegraphics[width = 60mm]{logo.JPG}
 \end{center}
 \textsc{\small Department of Engineering and Information Technology}\\
 \textsc{\small Bachelor's Thesis (BTI7321 ) Autumn Semester 2020/21}\\[1cm]
+
 %\textsc{\small Report on  }\\
-\textsc{"Planning of the Assignments for Lecturers(PLANA)" Web Application}}
+
+\textsc{\LARGE "Planning of the Assignments for Lecturers(PLANA)"  Web Application} \\[0.5cm]
+ \includegraphics[width = 40mm]{logo/logo.jpg}\\[2ex]}
+
 \date{\today}   %% or \date{01 november 2019}
 \author{\textit{Author: }Kristina \textsc{Shiryagina} (\texttt{kristina.shiryagina@bfh.ch}) \\
  \textit{Supervisor: } Prof. Marcel \textsc{Pfahrer}  (\texttt{marcel.pfahrer@bfh.ch})\\
  \textit{Expert: } Dr. Federico \textsc {Flueckiger}   \\
+
  }
 \maketitle	
 
@@ -112,21 +118,45 @@ The modern world with the rapid growth of new technologies makes it possible to 
 This work aims to develop an information system that enables assignment planning for lecturers. But unlike the existing system, it should have the following criteria:
 \begin{itemize}
 \item the teachers themselves should be involved in the planning process
+\item the ability of create groups of modules and groups of teachers
 \item increased planning flexibility
 \end{itemize}
+An innovative type of this work is \textbf{product development.} Product development describes the process of creating product. 
+Previous project  and this work include all phases of creation: an analysis of new trends in technology, study of what the client wants,  and idea how to create product based on selected technologies and concepts. As well as product implementation and testing. \cite{innovation}
+The  degree of novelty in this work includes:
+\begin{itemize}
+\item establishing successful ideas such as: 
+    \begin{itemize}
+    \item Involving teachers in the planning process, which reduces planning time and makes the process easier
+    \item Creation of groups of teachers and modules, making it easier to coordinate planning
+    \end{itemize}
+ \item creation of a specific solution -  product that includes great advantages over the existing product. These advantage are:
+    \begin{itemize}
+        \item possibility of collaborative work. That is, all system actors can actively participate in the planning process.
+        \item consistency of the data
+        \item better overview of the entire system
+        \item accessibility anywhere, etc.
+    \end{itemize}
+\end{itemize}
 
+Below we will describe in details which model of the system can offer us such opportunities.
 
-
-
-Users of this system are the \textbf{study director} and \textbf{teachers}. Such planning implies collaborative work.
 The planning process involves the input of specific data for specific user-defined views for each user and time limits set by the system. 
 
- All of these requirements need a more suitable system than Excel.
-In the previous project, we compared \textbf{Microsoft Excel} and \textbf{Web Application} according to several criteria. And we concluded that the web application meets the requirements of the conceived system. The web application is designed to involve \textbf{many users}, it can have a  database that gives us \textbf{consistency of the data}. Also, the data is much \textbf{safer} in a database. The web application gives the best \textbf{overview} of the entire system. Comparing \textbf{desktop application} with \textbf{web application} web application wins in:
+ All of these requirements need a more suitable system than Microsoft Excel.
+In the previous project, we compared \textbf{Microsoft Excel} and \textbf{Web Application} according to several criteria. And we concluded that the web application meets the requirements of the conceived system. 
 \begin{itemize}
-\item it is accessible anywhere
-\item no update needed 
-\item costs less 
+    \item The web application is designed to involve \textbf{many users}, 
+    \item it can have a  database that gives us  \textbf{consistency of the data}. 
+    \item Also, the data is much \textbf{safer} in a database.  
+    \item The web application gives the best \textbf{overview} of the entire system.
+\end{itemize}
+
+Comparing \textbf{Desktop Application} with \textbf{Web Application} web application wins in:
+\begin{itemize}
+\item it is \textbf{accessible anywhere}
+\item \textbf{no update needed }
+\item \textbf{costs less} 
 \end{itemize} 
  We decided to make a web application that will meet all the requirements and will be created using suitable modern technologies. Technologies such as ASP.NET Core Blazor Server with Entity Framework Core (EFCore) and MS SQL (Microsoft Structured Query Language) for the database were chosen. ASP.NET Core Blazor is a new framework that is gaining popularity. Interestingly, thanks to it, it becomes possible to do the entire application in C\# without using JavaScript.\\
 This work is a continuation of a project that was completed last semester, In which we have prepared the necessary environment for this project.
@@ -204,7 +234,7 @@ KKK      &              345\\
 
 \item \textbf{EF Core} 
 
-\item \textbf{HTML} HyperText Markup language
+\item \textbf{HTML} Hyper Text Markup language
 
 
 \item \textbf{SQL} Structured Query Language
@@ -659,21 +689,18 @@ In the definition of concepts, new concepts, associations between them and other
 	    
 	    \begin{itemize}
 	    \item Concept class \textbf{Lecturer} models a person who teaches in a school.
-	     \item Concept class \textbf{Study Branch} models a conceptual subdivision of subjects that form a study programme.
+	     \item Concept class \textbf{Study Branch} models a conceptual subdivision of subjects that form a study program.
 	      \item Concept class \textbf{Module} models a set of independent units that form a course at the school.
 	       \item Concept class \textbf{Module Run } models executions of a course in different languages.
-	       	      \item Concept class \textbf{Additional Assignment} models a set of independent units that form an additional task for the assignment's plan for the lecturer.
+	       	      \item Concept class \textbf{Additional Assignment} models a set of independent units that form an additional task for the assignment's plan for the lecturer. There are several types of the Additional Assignments. For example, teaching, research. Each teacher can plan his Additional Assignment and manage it. 
   \item Concept class \textbf{Semester} models the periods in the year, during which the lecturer is present in the school.
   \item Concept class \textbf{\textcolor{blue}{ LecturerGroup}} models   group of teachers who will jointly participate in one or more modules.
    \item Concept class \textbf{\textcolor{blue}{ModuleGroup }}  models
    several modules collected in groups for further effective use.
-     \item Concept class \textbf{\textcolor{blue}{LecturerSubGroup }} models subdivision of the main group of teachers to carry out the module in different student groups.
-     
-	         
-	    \end{itemize}
-
-
- \subsubsection{ii. Association Definition}
+   \end{itemize} 
+   
+   
+\subsubsection{ii. Association Definition}
 	    \begin{table}[H]
 \begin{center}
 \begin{tabular}{| p{6.5cm}| p{6.5cm} |p{2.5cm}|}
@@ -701,28 +728,26 @@ Study Branch -> Module                    &   Each Study Branch has many modules
  
 
  
-\textbf{\textcolor{blue}{ LecturerGroup -> Module}}  & 
- Each Module can have maximal one LecturerGroup. LecturerGroup can refer to multiple Modules. &  refer to\\ \hline
+
  
  \textbf{\textcolor{blue}{ Lecturer -> LecturerGroup}}  & 
- Each Lecturer can belongs to zero or more group. 
- Each LecturerGroup must consist of two or more lecturers. &  belongs to\\ \hline
+ Each Lecturer build  zero or multiple groups. 
+ Each LecturerGroup must consist of two or more lecturers. & \textcolor{blue}{build}\\ \hline
  
-  \textbf{\textcolor{blue}{  LecturerGroup -> LecturerSubGroup}}  & 
- Each LecturerGroup can have from zero to many LecturerSubGroups.
- LecturerSubGroup can refer to exactly one LecturerGroup &  has\\ \hline
+  \textbf{\textcolor{blue}{  LecturerGroup -> ModuleRun}}  & 
+ Each LecturerGroup can have from zero to many ModuleRuns.
+ Each ModuleRun can be teached by zero or multiple LecturerGroup &  \textcolor{blue}{teaches} \\ \hline
  
-\textbf{\textcolor{blue}{LecturerSubGroup -> ModuleRun}}  &  Each LecturerSubGroup can teach zero to many Module Run.A Module Run can be taught by zero or several LecturerSubGroup.
- & teaches\\ \hline
 
-\textbf{\textcolor{blue}{Module -> ModuleGroup}}  &  
-A Module can belong to zero or one ModuleGroup. ModuleGroup can have from two to many Modules. & belongs to\\ \hline
 
-\textbf{\textcolor{blue}{LecturerGroup -> ModuleGroup}}  &  A LecturerGroup can manage exactly one ModuleGroup. A ModuleGroup can have zero to many LecturerGroup.
-. & manages\\ \hline
+\textbf{\textcolor{blue}{ModuleRun -> ModuleGroup}}  &  
+A ModuleRun can belong to zero or one ModuleGroup. ModuleGroup can have from two to many ModuleRuns. &\textcolor{blue}{belongs to} \\ \hline
 
-\textbf{\textcolor{blue}{Lecturer -> LecturerSubGroup}}  &  Lecturers can build zero or many LecturerSubGroups. LecturerSubGroup can contain from one to many Lecturers in it.
-. & build\\ \hline
+\textbf{\textcolor{blue}{LecturerGroup -> ModuleGroup}}  &  A LecturerGroup can teach zero or multiple ModuleGroups. A ModuleGroup can have zero to many LecturerGroup.
+. &\textcolor{blue}{teaches} \\ \hline
+
+\textbf{\textcolor{blue}{Lecturer -> ModuleGroup}}  &  Each Lecturer can take a part in teaching zero or many ModuleGroups. ModuleGroup can be teached by  one or many Lecturers .
+& \textcolor{blue}{takes part in teaching} \\ \hline
 \end{tabular}
 \end{center}
 \caption{Association Definition}

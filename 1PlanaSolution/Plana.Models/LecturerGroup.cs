@@ -13,6 +13,7 @@ namespace Plana.Models
 
         public ICollection<LecturerLecturerGroup> LecturerLG { get; set; }
         public LecturerGroupModuleGroup Lecturer_ModuleGroup { get; set; }
+        public ICollection<LecturerGroup> LecturerSubGroups { get; set; }
         
     }
 }
