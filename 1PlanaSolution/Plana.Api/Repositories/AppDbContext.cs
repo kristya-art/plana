@@ -21,11 +21,13 @@ namespace Plana.Api.Models
         public DbSet<LecturerModuleRun> LecturersModuleRuns { get; set; }
         
         public DbSet<LecturerGroup> LecturerGroups { get; set; }
-        public DbSet<LecturerLecturerGroup> LecturerLG { get; set; }
-        public DbSet<LecturerModuleGroup> LecturerMG { get; set; }
+        public DbSet<LecturerLecturerGroup> LecturerLecturerGroups { get; set; }
+        public DbSet<LecturerModuleGroup> LecturerModuleGroups { get; set; }
+        public DbSet<LecturerGroupModuleGroup> LecturerGroupModuleGroups { get; set; }
 
 
         public DbSet<ModuleGroup> ModuleGroups { get; set; }
+        public DbSet<LecturerSemester> LecturerSemesters { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

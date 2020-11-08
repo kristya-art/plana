@@ -60,6 +60,8 @@ namespace Plana.Api.Repositories
             if (result != null) {
                 result.Title = additionalAssignment.Title;
                 result.AAHours = additionalAssignment.AAHours;
+                result.Description = additionalAssignment.Description;
+                // have to put also category after db-update
                 
                 await context.SaveChangesAsync();
                 return result;

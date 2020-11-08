@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Plana.Models
 {
-    enum AditionalAssignmentsCategory
+    public enum AdditionalAssignmentCategory
     {
         Vorschung,
         Lehre

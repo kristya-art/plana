@@ -26,6 +26,9 @@ namespace Plana.Api.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AACategory")
+                        .HasColumnType("int");
+
                     b.Property<double>("AAHours")
                         .HasColumnType("float");
 
@@ -123,10 +126,15 @@ namespace Plana.Api.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("LecturerGroupId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("LecturerGroupId");
+
+                    b.HasIndex("LecturerGroupId1");
 
                     b.ToTable("LecturerGroups");
                 });
@@ -147,7 +155,7 @@ namespace Plana.Api.Migrations
                     b.HasIndex("ModuleGroupId")
                         .IsUnique();
 
-                    b.ToTable("LecturerGroupModuleGroup");
+                    b.ToTable("LecturerGroupModuleGroups");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerLecturerGroup", b =>
@@ -162,7 +170,7 @@ namespace Plana.Api.Migrations
 
                     b.HasIndex("LecturerGroupId");
 
-                    b.ToTable("LecturerLG");
+                    b.ToTable("LecturerLecturerGroups");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerModule", b =>
@@ -192,7 +200,7 @@ namespace Plana.Api.Migrations
 
                     b.HasIndex("ModuleGroupId");
 
-                    b.ToTable("LecturerMG");
+                    b.ToTable("LecturerModuleGroups");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerModuleRun", b =>
@@ -225,7 +233,7 @@ namespace Plana.Api.Migrations
 
                     b.HasIndex("LecturerId");
 
-                    b.ToTable("LecturerSemester");
+                    b.ToTable("LecturerSemesters");
                 });
 
             modelBuilder.Entity("Plana.Models.Module", b =>
@@ -296,6 +304,9 @@ namespace Plana.Api.Migrations
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("Editable")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -382,6 +393,13 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("SemesterId");
                 });
 
+            modelBuilder.Entity("Plana.Models.LecturerGroup", b =>
+                {
+                    b.HasOne("Plana.Models.LecturerGroup", null)
+                        .WithMany("LecturerSubGroups")
+                        .HasForeignKey("LecturerGroupId1");
+                });
+
             modelBuilder.Entity("Plana.Models.LecturerGroupModuleGroup", b =>
                 {
                     b.HasOne("Plana.Models.LecturerGroup", "LecturerGroup")
@@ -391,7 +409,7 @@ namespace Plana.Api.Migrations
                         .IsRequired();
 
                     b.HasOne("Plana.Models.ModuleGroup", "ModuleGroup")
-                        .WithOne("Lecturer_ModuleGroup")
+                        .WithOne("LecturerGroupModuleGroup")
                         .HasForeignKey("Plana.Models.LecturerGroupModuleGroup", "ModuleGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -436,7 +454,7 @@ namespace Plana.Api.Migrations
                         .IsRequired();
 
                     b.HasOne("Plana.Models.ModuleGroup", "ModuleGroup")
-                        .WithMany("LecturerMG")
+                        .WithMany("LecturerModuleGroup")
                         .HasForeignKey("ModuleGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

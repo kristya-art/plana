@@ -16,5 +16,6 @@ namespace Plana.Models
         public Semester Semester { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
+        public AdditionalAssignmentCategory AACategory { get; set; }
     }
 }
