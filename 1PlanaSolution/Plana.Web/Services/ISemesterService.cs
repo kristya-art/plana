@@ -14,7 +14,7 @@ namespace Plana.Web.Services
         /// </summary>
         Task<IEnumerable<Semester>> GetSemesters();
         Task<Semester> GetSemester(int id);
-        Task<Semester> UpdateSemester(Semester semester);
+        Task UpdateSemester(Semester semester);
         Task<Semester> CreateSemester(Semester semester);
         Task SoftDeleteSemester(int id);
        

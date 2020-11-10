@@ -42,9 +42,9 @@ namespace Plana.Web.Services
             //await http.DeleteAsync($"api/semester/{id}");
         }
 
-        public async Task<Semester> UpdateSemester(Semester semester)
+        public async Task UpdateSemester(Semester semester)
         {
-            return await http.PutJsonAsync<Semester>("api/semester",semester);
+            await http.PutJsonAsync("api/semester", semester);
         }
 
 

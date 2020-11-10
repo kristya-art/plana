@@ -83,7 +83,7 @@ namespace Plana.Web.Pages.semester
             Semester result = null;
             if (Semester.SemesterId != 0)
             {
-                result = await SemesterService.UpdateSemester(Semester);
+                await SemesterService.UpdateSemester(Semester);
             }
             else
             {

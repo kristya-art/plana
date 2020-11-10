@@ -109,13 +109,13 @@ namespace Plana.Api.Controllers
                      "Error retrieving data from the database");
             }
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSemester(int id, Semester semester)
+        [HttpPut]
+        public async Task<IActionResult> UpdateSemester( Semester semester)
         {
-            if (id != semester.SemesterId)
-            {
-                return BadRequest();
-            }
+            //if (id != semester.SemesterId)
+            //{
+            //    return BadRequest();
+            //}
             if (semester.ModuleRuns != null)
             {
                 foreach (var mr in semester.ModuleRuns)
