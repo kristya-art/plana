@@ -112,10 +112,13 @@ namespace Plana.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateSemester( Semester semester)
         {
-            //if (id != semester.SemesterId)
-            //{
-            //    return BadRequest();
-            //}
+            if (!_context.Semesters.Contains(semester))
+
+            {
+                return NotFound($"Semester with id = {semester.SemesterId} not found");
+            }
+
+            if (GetSemester(semester.SemesterId) == null) { return BadRequest(); }
             if (semester.ModuleRuns != null)
             {
                 foreach (var mr in semester.ModuleRuns)
