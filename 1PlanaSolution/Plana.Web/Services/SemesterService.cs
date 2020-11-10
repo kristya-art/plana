@@ -23,28 +23,28 @@ namespace Plana.Web.Services
         /// <returns></returns>
         public async Task<Semester> CreateSemester(Semester semester)
         {
-            return await http.PostJsonAsync<Semester>("api/semesters",semester);
+            return await http.PostJsonAsync<Semester>("api/semester",semester);
         }
 
         public async Task<Semester> GetSemester(int id)
         {
-            return await http.GetJsonAsync<Semester>($"api/semesters/{id}");
+            return await http.GetJsonAsync<Semester>($"api/semester/{id}");
         }
 
         public async Task<IEnumerable<Semester>> GetSemesters()
         {
-            return await http.GetJsonAsync<Semester[]>("api/semesters");
+            return await http.GetJsonAsync<Semester[]>("api/semester");
         }
 
         public  Task SoftDeleteSemester(int id)
         {
             throw new NotImplementedException();
-            //await http.DeleteAsync($"api/semesters/{id}");
+            //await http.DeleteAsync($"api/semester/{id}");
         }
 
         public async Task<Semester> UpdateSemester(Semester semester)
         {
-            return await http.PutJsonAsync<Semester>("api/semesters",semester);
+            return await http.PutJsonAsync<Semester>("api/semester",semester);
         }
 
 

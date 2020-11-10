@@ -61,8 +61,7 @@ namespace Plana.Api.Models
 
         public async Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun)
         {
-            var result = await appDbContext.ModuleRuns
-                .FirstOrDefaultAsync(e=>e.ModuleRunId==moduleRun.ModuleRunId);
+            var result = await GetModuleRun(moduleRun.ModuleRunId);
             if (result != null)
             {
                 result.Code = moduleRun.Code;
@@ -76,7 +75,7 @@ namespace Plana.Api.Models
                 result.Semester = moduleRun.Semester;
                 
                 result.SemesterId = moduleRun.SemesterId;
-
+                result.ModuleGroup = moduleRun.ModuleGroup;
                
                 await appDbContext.SaveChangesAsync();
 

@@ -6,19 +6,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Plana.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Plana.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SemestersController : ControllerBase
+    public class SemesterController : ControllerBase
     {
-
+        private readonly AppDbContext _context;
         private readonly ISemesterRepository semesterRepository;
 
-        public SemestersController(ISemesterRepository semesterRepository)
+        public SemesterController( AppDbContext _context, ISemesterRepository semesterRepository)
         {
             this.semesterRepository = semesterRepository;
+            this._context = _context;
         }
 
 
@@ -107,27 +109,93 @@ namespace Plana.Api.Controllers
                      "Error retrieving data from the database");
             }
         }
-        [HttpPut()]
-        public async Task<ActionResult<Semester>> UpdateSemester(Semester semester)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSemester(int id, Semester semester)
         {
+            if (id != semester.SemesterId)
+            {
+                return BadRequest();
+            }
+            if (semester.ModuleRuns != null)
+            {
+                foreach (var mr in semester.ModuleRuns)
+                {
+
+                    _context.Entry(mr).State = EntityState.Modified;
+                }
+            }
+            if (semester.AdditionalAssignments != null)
+            {
+                foreach (var aa in semester.AdditionalAssignments)
+                {
+                    _context.Entry(aa).State = EntityState.Modified;
+                }
+            }
+
+            if (semester.LecturersSemesters != null) {
+                
+                foreach (var ls in semester.LecturersSemesters)
+                {
+
+                    _context.Entry(ls).State = EntityState.Modified;
+                    if (ls.Lecturer != null)
+                    {
+                        _context.Entry(ls.Lecturer).State = EntityState.Modified;
+                    }
+                    if (ls.Semester != null)
+                    {
+                        _context.Entry(ls.Semester).State = EntityState.Modified;
+                    }
+                   
+                }
+            }
+            _context.Entry(semester).State = EntityState.Modified;
+           
             try
             {
-
-                var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
-
-                if (updateSemester == null)
-                {
-                    return NotFound($"Semester with id = {semester.SemesterId} not found");
-                }
-                return await semesterRepository.UpdateSemester(semester);
+                await _context.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (DbUpdateConcurrencyException)
             {
 
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                "Error udating database");
+                if (semester == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                
+                }
             }
+
+            return NoContent();
+        
         }
+       
+
+
+
+        //public async Task<ActionResult<Semester>> UpdateSemester(Semester semester)
+        //{
+        //    try
+        //    {
+
+        //        var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
+
+        //        if (updateSemester == null)
+        //        {
+        //            return NotFound($"Semester with id = {semester.SemesterId} not found");
+        //        }
+        //        return await semesterRepository.UpdateSemester(semester);
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //        "Error udating database");
+        //    }
+        //}
 
         /** soft deletion */
         [HttpDelete("{id:int}")]

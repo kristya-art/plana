@@ -12,14 +12,14 @@ namespace Plana.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ModuleRunsController : ControllerBase
+    public class ModuleRunController : ControllerBase
     {
         private readonly IModuleRunRepository moduleRunRep;
         private readonly IModuleRepository moduleRep;
         private readonly ISemesterRepository semesterRep;
         private readonly ILecturerRepository lecturerRep;
 
-        public ModuleRunsController(IModuleRunRepository moduleRunRepository,
+        public ModuleRunController(IModuleRunRepository moduleRunRepository,
                                 IModuleRepository moduleRepository,
                                 ISemesterRepository semesterRepository,
                                 ILecturerRepository lecturerRepository)

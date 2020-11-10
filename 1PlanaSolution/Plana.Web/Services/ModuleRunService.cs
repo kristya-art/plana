@@ -17,29 +17,29 @@ namespace Plana.Web.Services
         }
         public async Task<ModuleRun> CreateModuleRun(ModuleRun newModuleRun)
         {
-            return await httpClient.PostJsonAsync<ModuleRun>("api/moduleruns",newModuleRun);
+            return await httpClient.PostJsonAsync<ModuleRun>("api/modulerun",newModuleRun);
         }
 
         public async Task<ModuleRun> GetModuleRun(int id)
         {
-            return await httpClient.GetJsonAsync<ModuleRun>($"api/moduleruns/{id}");
+            return await httpClient.GetJsonAsync<ModuleRun>($"api/modulerun/{id}");
         }
 
         public async  Task<IEnumerable<ModuleRun>> GetModuleRuns()
         {
-            return await httpClient.GetJsonAsync<ModuleRun[]>("api/moduleruns");
+            return await httpClient.GetJsonAsync<ModuleRun[]>("api/modulerun");
         }
 
         public  Task SoftDeleteModuleRun(int id)
         {
             throw new NotImplementedException();
-           // await httpClient.DeleteAsync($"api/moduleruns/{id}");
+           // await httpClient.DeleteAsync($"api/modulerun/{id}");
 
         }
 
         public async Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun)
         {
-            return await httpClient.PutJsonAsync<ModuleRun>("api/moduleruns", moduleRun);
+            return await httpClient.PutJsonAsync<ModuleRun>("api/modulerun", moduleRun);
 
         }
     }

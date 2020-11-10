@@ -23,13 +23,24 @@ namespace Plana.Api
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             
-            services.AddScoped<ILecturerRepository, LecturerRepository>();
+            
             services.AddScoped<IModuleRepository, ModuleRepository>();
+            services.AddScoped<IModuleGroupRepository, ModuleGroupRepository>();
             services.AddScoped<IModuleRunRepository, ModuleRunRepository>();
-            services.AddScoped<ILecturersModulesRepository, LecturersModulesRepository>();
+            
             services.AddScoped<ISemesterRepository, SemesterRepository>();
             services.AddScoped<IStudyBranchRepository, StudyBranchRepository>();
             services.AddScoped<IAdditionalAssignmentRepository, AdditionalAssignmentRepository>();
+
+            services.AddScoped<ILecturersModulesRepository, LecturersModulesRepository>();
+            services.AddScoped<ILecturerSemesterRepository, LecturerSemesterRepository>();
+            services.AddScoped<ILecturerRepository, LecturerRepository>();
+            services.AddScoped<ILecturerGroupModuleGroupRepository, LecturerGroupModuleGroupRepository>();
+            services.AddScoped<ILecturerGroupRepository, LecturerGroupRepository>();
+            services.AddScoped<ILecturerLecturerGroupRepository, LecturerLecturerGroupRepository>();
+            services.AddScoped<ILecturerModuleGroupRepository, LecturerModuleGroupRepository>();
+            services.AddScoped<ILecturerModuleRunRepository, LecturerModuleRunRepository>();
+
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

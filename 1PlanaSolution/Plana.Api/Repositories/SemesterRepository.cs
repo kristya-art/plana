@@ -76,22 +76,25 @@ namespace Plana.Api.Models
 
        
 
-        public async Task<Semester> UpdateSemester(Semester semester)
-        {
-            var result = await GetSemester(semester.SemesterId);
-            if (result != null)
-            {
-                result.Code = semester.Code;
-                result.Date = semester.Date;
+        //public async Task<Semester> UpdateSemester(Semester semester)
+        //{
+        //    var result = await GetSemester(semester.SemesterId);
+        //    if (result != null)
+        //    {
+        //        result.Code = semester.Code;
+        //        result.Date = semester.Date;
+        //        result.LecturersSemesters = semester.LecturersSemesters;
+        //        result.ModuleRuns = semester.ModuleRuns;
                 
                
                 
-                await context.SaveChangesAsync();
-                return result;
+        //        await context.SaveChangesAsync();
+        //        return result;
 
-              }
-            return null;
-        }
+        //      }
+        //    return null;
+        //}
+
         public async Task<bool> SoftDeleteSemester(int semesterId)
         {
             var result = await GetSemester(semesterId);

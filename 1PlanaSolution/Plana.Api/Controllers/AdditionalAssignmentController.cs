@@ -12,10 +12,10 @@ namespace Plana.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdditionalAssignmentsController : ControllerBase
+    public class AdditionalAssignmentController : ControllerBase
     {
         private readonly IAdditionalAssignmentRepository aaRep;
-        public AdditionalAssignmentsController(IAdditionalAssignmentRepository aaRep)
+        public AdditionalAssignmentController(IAdditionalAssignmentRepository aaRep)
         {
             this.aaRep= aaRep;
         }

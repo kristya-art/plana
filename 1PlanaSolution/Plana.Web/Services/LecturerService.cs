@@ -22,34 +22,34 @@ namespace Plana.Web.Services
 
         //public async  Task<Lecturer> GetLecturer(int id)
         //{
-        //    return await httpClient.GetJsonAsync<Lecturer>($"api/lecturers/{id}");
+        //    return await httpClient.GetJsonAsync<Lecturer>($"api/lecturer/{id}");
 
         //}
         public async Task<Lecturer> GetLecturer(int id)
         {
-            return await httpClient.GetJsonAsync<Lecturer>($"api/lecturers/{id}");
+            return await httpClient.GetJsonAsync<Lecturer>($"api/lecturer/{id}");
         }
 
 
         public async Task<IEnumerable<Lecturer>> GetLecturers()
         {
-            return await httpClient.GetJsonAsync<Lecturer[]>("api/lecturers");
+            return await httpClient.GetJsonAsync<Lecturer[]>("api/lecturer");
         }
 
        
         public async Task<Lecturer> UpdateLecturer(Lecturer lecturer)
         {
-          return await httpClient.PutJsonAsync<Lecturer>("api/lecturers", lecturer);
+          return await httpClient.PutJsonAsync<Lecturer>("api/lecturer", lecturer);
         }
 
         public async Task<Lecturer> CreateLecturer(Lecturer newLecturer)
         {
-            return await httpClient.PostJsonAsync<Lecturer>("api/lecturers", newLecturer);
+            return await httpClient.PostJsonAsync<Lecturer>("api/lecturer", newLecturer);
         }
 
         public async Task DeleteLecturer(int id)
         {
-             await httpClient.DeleteAsync($"api/lecturers/{id}");
+             await httpClient.DeleteAsync($"api/lecturer/{id}");
         }
        
     }

@@ -11,10 +11,10 @@ namespace Plana.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LecturersController : ControllerBase
+    public class LecturerController : ControllerBase
     {
         private readonly ILecturerRepository lecturerRepository;
-        public LecturersController(ILecturerRepository lecturerRepository)
+        public LecturerController(ILecturerRepository lecturerRepository)
         {
             this.lecturerRepository = lecturerRepository;
         }
