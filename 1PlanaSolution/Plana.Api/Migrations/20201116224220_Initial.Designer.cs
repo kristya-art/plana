@@ -10,8 +10,8 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201108234650_initial")]
-    partial class initial
+    [Migration("20201116224220_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -336,6 +336,76 @@ namespace Plana.Api.Migrations
                     b.ToTable("ModuleRuns");
                 });
 
+            modelBuilder.Entity("Plana.Models.Plan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AutumnSemesterId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExpiredDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFixed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsModifyable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OfficialPublishDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SpringSemesterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Year")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AutumnSemesterId");
+
+                    b.HasIndex("SpringSemesterId");
+
+                    b.ToTable("Plans");
+                });
+
+            modelBuilder.Entity("Plana.Models.PlanLecturer", b =>
+                {
+                    b.Property<int>("PlanId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LecturerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AnnualTarget")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BalanceAccumulated")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BalanceActual")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BalanceLastYear")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlanId", "LecturerId");
+
+                    b.HasIndex("LecturerId");
+
+                    b.ToTable("PlanLecturers");
+                });
+
             modelBuilder.Entity("Plana.Models.Semester", b =>
                 {
                     b.Property<int>("SemesterId")
@@ -514,6 +584,32 @@ namespace Plana.Api.Migrations
                     b.HasOne("Plana.Models.Semester", "Semester")
                         .WithMany("ModuleRuns")
                         .HasForeignKey("SemesterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Plana.Models.Plan", b =>
+                {
+                    b.HasOne("Plana.Models.Semester", "AutumnSemester")
+                        .WithMany()
+                        .HasForeignKey("AutumnSemesterId");
+
+                    b.HasOne("Plana.Models.Semester", "SpringSemester")
+                        .WithMany()
+                        .HasForeignKey("SpringSemesterId");
+                });
+
+            modelBuilder.Entity("Plana.Models.PlanLecturer", b =>
+                {
+                    b.HasOne("Plana.Models.Lecturer", "Lecturer")
+                        .WithMany("PlanLecturers")
+                        .HasForeignKey("LecturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Plana.Models.Plan", "Plan")
+                        .WithMany("PlanLecturers")
+                        .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

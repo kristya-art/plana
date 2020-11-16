@@ -22,7 +22,7 @@ namespace Plana.Api.Controllers
             this.semesterRepository = semesterRepository;
             this._context = _context;
         }
-
+        
 
 
         /// <summary>
@@ -109,76 +109,43 @@ namespace Plana.Api.Controllers
                      "Error retrieving data from the database");
             }
         }
+
+        //example-pseudo-code
+        //[HttpPut]
+        //public async Task<IActionResult> UpdateSemester(SemesterDto semesterDto)
+        //{
+        //    var semester = _context.Semesters.FindAsync(semesterDto.Id);
+        //    if(semester == null)
+        //    {
+        //        throw NotFound("...")
+        //    }
+
+        //    // Map dto to model
+        //    semester.Name = semesterDto.Name;
+        //    // ...
+
+        //    await _context.SaveChangesAsync(semester);
+        //}
         [HttpPut]
-        public async Task<IActionResult> UpdateSemester( Semester semester)
-        {
-            if (!_context.Semesters.Contains(semester))
-
+        public async Task<IActionResult> UpdateSemester(Semester semester) {
+            var result =  await _context.Semesters.FindAsync(semester.SemesterId);
+            if (semester == null)
             {
-                return NotFound($"Semester with id = {semester.SemesterId} not found");
+                return NotFound("...");
             }
+            result.Code = semester.Code;
+            result.Date = semester.Date;
+            result.AdditionalAssignments = semester.AdditionalAssignments;
+            result.LecturersSemesters = semester.LecturersSemesters;
+            result.ModuleRuns = semester.ModuleRuns;
+            await _context.SaveChangesAsync();
+            return Ok(result);
 
-            if (GetSemester(semester.SemesterId) == null) { return BadRequest(); }
-            if (semester.ModuleRuns != null)
-            {
-                foreach (var mr in semester.ModuleRuns)
-                {
-
-                    _context.Entry(mr).State = EntityState.Modified;
-                }
-            }
-            if (semester.AdditionalAssignments != null)
-            {
-                foreach (var aa in semester.AdditionalAssignments)
-                {
-                    _context.Entry(aa).State = EntityState.Modified;
-                }
-            }
-
-            if (semester.LecturersSemesters != null) {
-                
-                foreach (var ls in semester.LecturersSemesters)
-                {
-
-                    _context.Entry(ls).State = EntityState.Modified;
-                    if (ls.Lecturer != null)
-                    {
-                        _context.Entry(ls.Lecturer).State = EntityState.Modified;
-                    }
-                    if (ls.Semester != null)
-                    {
-                        _context.Entry(ls.Semester).State = EntityState.Modified;
-                    }
-                   
-                }
-            }
-            _context.Entry(semester).State = EntityState.Modified;
-           
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-
-                if (semester == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                
-                }
-            }
-
-            return NoContent();
+            
         
         }
-       
 
-
-
+        //[HttpPut()]
         //public async Task<ActionResult<Semester>> UpdateSemester(Semester semester)
         //{
         //    try
@@ -223,3 +190,7 @@ namespace Plana.Api.Controllers
         }
     }
 }
+
+/**  System.InvalidOperationException: A second operation started on this context before a previous operation completed. 
+ * This is usually caused by different threads using the same instance of DbContext. For more information
+ * on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.*/

@@ -19,6 +19,7 @@ namespace Plana.Models
 
         public ICollection<LecturerModuleGroup> LecturerMG { get; set; }
         public ICollection<LecturerLecturerGroup> LectuererLG { get; set; }
+        public ICollection<PlanLecturer> PlanLecturers { get; set; }
         
 
         public DateTime SetActiveDate() { 

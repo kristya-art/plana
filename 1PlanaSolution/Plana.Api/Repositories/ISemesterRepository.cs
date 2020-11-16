@@ -11,7 +11,7 @@ namespace Plana.Api.Models
         Task<IEnumerable<Semester>> GetSemesters();
         Task<Semester> GetSemester(int? semesterId);
 
-       // Task<Semester> UpdateSemester(Semester semester);
+        Task<Semester> UpdateSemester(Semester semester);
         Task<Semester> CreateSemester(Semester semester);
 
         Task<Boolean> SoftDeleteSemester(int semesterId);

@@ -37,15 +37,15 @@ namespace Plana.Api.Models
             {
                 return NotFound();
             }
-           var result = await context.Semesters
-                .Include(e => e.ModuleRuns)
-               
-                .ThenInclude(mr=>mr.LecturersMR)
-                .ThenInclude(l=>l.Lecturer)
-                .Include(e => e.ModuleRuns)
-                .ThenInclude(mr=>mr.Module)
-                .Include(e=>e.LecturersSemesters)
-                .ThenInclude(l=>l.Lecturer)
+            var result = await context.Semesters
+                 .Include(e => e.ModuleRuns)
+                      .ThenInclude(mr => mr.LecturersMR)
+                          .ThenInclude(l => l.Lecturer)
+                 .Include(e => e.ModuleRuns)
+                 .ThenInclude(mr => mr.Module)
+                 .AsNoTracking()
+               // .Include(e=>e.LecturersSemesters)
+              //  .ThenInclude(l=>l.Lecturer)
 
                 .Include(e=>e.AdditionalAssignments)
                 .FirstOrDefaultAsync(e => e.SemesterId == semesterId);
@@ -74,26 +74,32 @@ namespace Plana.Api.Models
 
         }
 
-       
 
-        //public async Task<Semester> UpdateSemester(Semester semester)
-        //{
-        //    var result = await GetSemester(semester.SemesterId);
-        //    if (result != null)
-        //    {
-        //        result.Code = semester.Code;
-        //        result.Date = semester.Date;
-        //        result.LecturersSemesters = semester.LecturersSemesters;
-        //        result.ModuleRuns = semester.ModuleRuns;
-                
-               
-                
-        //        await context.SaveChangesAsync();
-        //        return result;
 
-        //      }
-        //    return null;
-        //}
+        public async Task<Semester> UpdateSemester(Semester semester)
+        {
+            var result = await GetSemester(semester.SemesterId);
+            if (result != null)
+            {
+               // context.Entry(result.Code).State = EntityState.Modified;
+                result.Code = semester.Code;
+                result.Date = semester.Date;
+                result.LecturersSemesters = semester.LecturersSemesters;
+                foreach (var ls in semester.LecturersSemesters)
+                {
+                    context.Entry(ls).State = EntityState.Modified;
+                }
+                result.ModuleRuns = semester.ModuleRuns;
+                
+
+
+
+                await context.SaveChangesAsync();
+                return result;
+
+            }
+            return null;
+        }
 
         public async Task<bool> SoftDeleteSemester(int semesterId)
         {

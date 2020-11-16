@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plana.Models
 {
@@ -22,5 +22,11 @@ namespace Plana.Models
         public ICollection<LecturerSemester> LecturersSemesters { get; set; }
         public bool IsDeleted { get; set ; }
         public DateTime? DeletedAt { get; set; }
+      
+       
+        //public string getYear(Semester semester) {
+        //    return Plan.Year;
+        
+        //}
     }
 }

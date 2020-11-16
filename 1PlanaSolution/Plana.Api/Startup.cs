@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Plana.Api.Models;
 using Plana.Api.Repositories;
 using Plana.Models;
+using System;
 
 namespace Plana.Api
 {
@@ -22,8 +23,12 @@ namespace Plana.Api
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-            
-            
+
+            //  services.AddDbContext<AppDbContext>(ServiceLifetime.Transient); // new
+          //  services.AddTransient<Func<AppDbContext>>(options => () => options.GetService<AppDbContext>());
+
+
+
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleGroupRepository, ModuleGroupRepository>();
             services.AddScoped<IModuleRunRepository, ModuleRunRepository>();

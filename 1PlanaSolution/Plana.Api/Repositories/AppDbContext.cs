@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Plana.Models;
 using System;
+using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
 
@@ -19,7 +20,7 @@ namespace Plana.Api.Models
         public DbSet<StudyBranch> StudyBranches { get; set; }
         public DbSet<LecturerModule> LecturersModules { get; set; }
         public DbSet<LecturerModuleRun> LecturersModuleRuns { get; set; }
-        
+
         public DbSet<LecturerGroup> LecturerGroups { get; set; }
         public DbSet<LecturerLecturerGroup> LecturerLecturerGroups { get; set; }
         public DbSet<LecturerModuleGroup> LecturerModuleGroups { get; set; }
@@ -28,6 +29,9 @@ namespace Plana.Api.Models
 
         public DbSet<ModuleGroup> ModuleGroups { get; set; }
         public DbSet<LecturerSemester> LecturerSemesters { get; set; }
+
+        public DbSet<Plan> Plans { get; set; }
+        public DbSet<PlanLecturer> PlanLecturers {get;set;}
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -86,7 +90,24 @@ namespace Plana.Api.Models
             modelBuilder.Entity<LecturerGroupModuleGroup>()
                 .HasKey(x => new { x.LecturerGroupId, x.ModuleGroupId });
 
-         }
+            /**PlanLecturers*/
+            modelBuilder.Entity<PlanLecturer>()
+                .HasKey(x => new { x.PlanId, x.LecturerId });
+
+
+            /** other relationships */
+            //modelBuilder.Entity<Plan>()
+            //    .HasKey(x => x.Id);
+
+           
+
+
+
+
+
+
+
+        }
 
     }
 }

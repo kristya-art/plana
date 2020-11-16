@@ -59,10 +59,15 @@ namespace Plana.Api.Models
                 result.PhotoPath = lecturer.PhotoPath;
                 result.ActiveTill = lecturer.ActiveTill;
                 result.IsActive = lecturer.IsActive;
+                result.WorkingRate = lecturer.WorkingRate;
+
+
 
                 result.LecturersModules = lecturer.LecturersModules;//new
+                appDbContext.Entry(result.LecturersModules).State = EntityState.Modified;
                 result.AdditionalAssignments = lecturer.AdditionalAssignments;//new
                 result.LecturersModuleRuns = lecturer.LecturersModuleRuns;
+                appDbContext.Entry(result.LecturersModuleRuns).State = EntityState.Modified;
 
                 await appDbContext.SaveChangesAsync();
 

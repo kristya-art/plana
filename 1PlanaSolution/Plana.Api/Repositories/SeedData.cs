@@ -583,8 +583,41 @@ namespace Plana.Api.Models
                 context.StudyBranches.Add(it);
                 context.SaveChanges();
 
+                //seed data for plan
 
+                Plan plan20_21 = new Plan
+                {
+                    Year = "2023-2024",
+                    AutumnSemester = new Semester()
+                    {
+                        Code = "2023-2024 - HS",
+                        Date = new DateTime(2021, 08, 13),
+                        LecturersSemesters = new List<LecturerSemester>
+                        {
+                            new LecturerSemester { Lecturer = margo },
+                            new LecturerSemester { Lecturer = alic }
 
+                        }
+                    },
+                    
+
+                SpringSemester = new Semester()
+                {
+                    Code = "2024 - FS",
+                    Date = new DateTime(2021, 08, 13),
+                    LecturersSemesters = new List<LecturerSemester>
+                    {
+                       new LecturerSemester{Lecturer= margo},
+                       new LecturerSemester{Lecturer= alic}
+
+                    }
+                }
+            };
+                    
+                
+
+                context.Plans.Add(plan20_21);
+                context.SaveChanges();
 
             }
 

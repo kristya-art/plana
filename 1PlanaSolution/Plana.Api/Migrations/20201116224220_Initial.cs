@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Plana.Api.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -231,6 +231,39 @@ namespace Plana.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Plans",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsFixed = table.Column<bool>(nullable: false),
+                    IsModifyable = table.Column<bool>(nullable: false),
+                    Year = table.Column<string>(nullable: true),
+                    ExpiredDate = table.Column<string>(nullable: true),
+                    OfficialPublishDate = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    AutumnSemesterId = table.Column<int>(nullable: true),
+                    SpringSemesterId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plans", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Plans_Semesters_AutumnSemesterId",
+                        column: x => x.AutumnSemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "SemesterId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Plans_Semesters_SpringSemesterId",
+                        column: x => x.SpringSemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "SemesterId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Modules",
                 columns: table => new
                 {
@@ -253,6 +286,34 @@ namespace Plana.Api.Migrations
                         principalTable: "StudyBranches",
                         principalColumn: "StudyBranchId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlanLecturers",
+                columns: table => new
+                {
+                    LecturerId = table.Column<int>(nullable: false),
+                    PlanId = table.Column<int>(nullable: false),
+                    AnnualTarget = table.Column<int>(nullable: false),
+                    BalanceActual = table.Column<int>(nullable: false),
+                    BalanceLastYear = table.Column<int>(nullable: false),
+                    BalanceAccumulated = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlanLecturers", x => new { x.PlanId, x.LecturerId });
+                    table.ForeignKey(
+                        name: "FK_PlanLecturers_Lecturers_LecturerId",
+                        column: x => x.LecturerId,
+                        principalTable: "Lecturers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PlanLecturers_Plans_PlanId",
+                        column: x => x.PlanId,
+                        principalTable: "Plans",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -413,6 +474,21 @@ namespace Plana.Api.Migrations
                 name: "IX_Modules_StudyBranchId",
                 table: "Modules",
                 column: "StudyBranchId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PlanLecturers_LecturerId",
+                table: "PlanLecturers",
+                column: "LecturerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Plans_AutumnSemesterId",
+                table: "Plans",
+                column: "AutumnSemesterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Plans_SpringSemesterId",
+                table: "Plans",
+                column: "SpringSemesterId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -439,6 +515,9 @@ namespace Plana.Api.Migrations
                 name: "LecturersModules");
 
             migrationBuilder.DropTable(
+                name: "PlanLecturers");
+
+            migrationBuilder.DropTable(
                 name: "LecturerGroups");
 
             migrationBuilder.DropTable(
@@ -446,6 +525,9 @@ namespace Plana.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Lecturers");
+
+            migrationBuilder.DropTable(
+                name: "Plans");
 
             migrationBuilder.DropTable(
                 name: "ModuleGroups");
