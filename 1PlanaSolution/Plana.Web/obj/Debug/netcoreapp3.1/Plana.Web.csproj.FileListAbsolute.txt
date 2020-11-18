@@ -210,3 +210,4 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\semester\EditSemester.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\semester\SemesterList.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\semester\TryBlazor.razor.g.cs
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Plana.Web.csprojAssemblyReference.cache

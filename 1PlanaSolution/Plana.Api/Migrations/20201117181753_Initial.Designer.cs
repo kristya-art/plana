@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201116224220_Initial")]
+    [Migration("20201117181753_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -372,9 +372,13 @@ namespace Plana.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AutumnSemesterId");
+                    b.HasIndex("AutumnSemesterId")
+                        .IsUnique()
+                        .HasFilter("[AutumnSemesterId] IS NOT NULL");
 
-                    b.HasIndex("SpringSemesterId");
+                    b.HasIndex("SpringSemesterId")
+                        .IsUnique()
+                        .HasFilter("[SpringSemesterId] IS NOT NULL");
 
                     b.ToTable("Plans");
                 });
@@ -456,11 +460,11 @@ namespace Plana.Api.Migrations
 
             modelBuilder.Entity("Plana.Models.AdditionalAssignment", b =>
                 {
-                    b.HasOne("Plana.Models.Lecturer", "Lecturer")
+                    b.HasOne("Plana.Models.Lecturer", null)
                         .WithMany("AdditionalAssignments")
                         .HasForeignKey("LecturerId");
 
-                    b.HasOne("Plana.Models.Semester", "Semester")
+                    b.HasOne("Plana.Models.Semester", null)
                         .WithMany("AdditionalAssignments")
                         .HasForeignKey("SemesterId");
                 });
@@ -576,7 +580,7 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("ModuleGroupId");
 
                     b.HasOne("Plana.Models.Module", "Module")
-                        .WithMany("ModuleRuns")
+                        .WithMany()
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -591,12 +595,12 @@ namespace Plana.Api.Migrations
             modelBuilder.Entity("Plana.Models.Plan", b =>
                 {
                     b.HasOne("Plana.Models.Semester", "AutumnSemester")
-                        .WithMany()
-                        .HasForeignKey("AutumnSemesterId");
+                        .WithOne()
+                        .HasForeignKey("Plana.Models.Plan", "AutumnSemesterId");
 
                     b.HasOne("Plana.Models.Semester", "SpringSemester")
-                        .WithMany()
-                        .HasForeignKey("SpringSemesterId");
+                        .WithOne()
+                        .HasForeignKey("Plana.Models.Plan", "SpringSemesterId");
                 });
 
             modelBuilder.Entity("Plana.Models.PlanLecturer", b =>

@@ -17,9 +17,9 @@ namespace Plana.Models
         public ICollection<LecturerSemester> LecturersSemesters { get; set; }
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
-        public ICollection<LecturerModuleGroup> LecturerMG { get; set; }
-        public ICollection<LecturerLecturerGroup> LectuererLG { get; set; }
-        public ICollection<PlanLecturer> PlanLecturers { get; set; }
+        public virtual ICollection<LecturerModuleGroup> LecturerMG { get; set; }
+        public virtual ICollection<LecturerLecturerGroup> LectuererLG { get; set; }
+        public virtual ICollection<PlanLecturer> PlanLecturers { get; set; }
         
 
         public DateTime SetActiveDate() { 
@@ -58,12 +58,7 @@ namespace Plana.Models
 
             
         }
-        //for one-to-many
-        public void AddAdditionalAssignment(AdditionalAssignment additionalAssignment) {
-            additionalAssignment.Lecturer = this;
-            AdditionalAssignments.Add(additionalAssignment);
         
-        }
 
 
         // public HashSet<LecturersModules> Modules { get; set; }

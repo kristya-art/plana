@@ -58,7 +58,7 @@ namespace Plana.Api.Models
                     ECTS = 6,
                     LectPerWeek = 1,
                     TotalHours = 25,
-                    ModuleRuns = mrcol
+                    
 
                 };
                 Module m2 = new Module

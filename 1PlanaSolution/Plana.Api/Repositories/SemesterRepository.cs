@@ -41,6 +41,7 @@ namespace Plana.Api.Models
                  .Include(e => e.ModuleRuns)
                       .ThenInclude(mr => mr.LecturersMR)
                           .ThenInclude(l => l.Lecturer)
+                          .AsNoTracking()
                  .Include(e => e.ModuleRuns)
                  .ThenInclude(mr => mr.Module)
                  .AsNoTracking()
@@ -48,6 +49,7 @@ namespace Plana.Api.Models
               //  .ThenInclude(l=>l.Lecturer)
 
                 .Include(e=>e.AdditionalAssignments)
+               
                 .FirstOrDefaultAsync(e => e.SemesterId == semesterId);
             return result;
         }
@@ -62,12 +64,16 @@ namespace Plana.Api.Models
             //  return await context.Semesters.ToListAsync();
             return await context.Semesters
                    .Include(i => i.ModuleRuns)
+                   
                   
                    
                    
                   .Include( i=> i.LecturersSemesters)
                   .ThenInclude(m => m.Lecturer)
+                  .AsNoTracking()
                   .Include(i => i.AdditionalAssignments)
+                  .AsNoTracking()
+
                  
                   //.OrderBy(n => n.Date)
                   .ToListAsync();

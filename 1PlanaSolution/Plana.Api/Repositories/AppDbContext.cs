@@ -96,10 +96,23 @@ namespace Plana.Api.Models
 
 
             /** other relationships */
-            //modelBuilder.Entity<Plan>()
-            //    .HasKey(x => x.Id);
+            /** Plan ---> Semesters *one ---> one (unidirectional)*/
+            modelBuilder.Entity<Plan>()
+                 .HasOne(p => p.AutumnSemester)
+                 .WithOne();
 
-           
+            modelBuilder.Entity<Plan>()
+                 .HasOne(p => p.SpringSemester)
+                 .WithOne();
+
+            /** moduleRuns --> Module * many ---->one*/
+            modelBuilder.Entity<ModuleRun>()
+                .HasOne(m => m.Module)
+                .WithMany();
+
+
+
+
 
 
 

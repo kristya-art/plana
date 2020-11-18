@@ -79,7 +79,7 @@ namespace Plana.Api.Models
                 result.LectPerWeek = module.LectPerWeek;
                 result.TotalHours = module.TotalHours;
                 result.Lecturers = module.Lecturers;
-                result.ModuleRuns = module.ModuleRuns;
+                
 
         
                 

@@ -11,9 +11,9 @@ namespace Plana.Models
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; }
 
-        public ICollection<LecturerLecturerGroup> LecturerLG { get; set; }
-        public LecturerGroupModuleGroup Lecturer_ModuleGroup { get; set; }
-        public ICollection<LecturerGroup> LecturerSubGroups { get; set; }
+        public virtual ICollection<LecturerLecturerGroup> LecturerLG { get; set; }
+        public virtual LecturerGroupModuleGroup Lecturer_ModuleGroup { get; set; }
+        public virtual ICollection<LecturerGroup> LecturerSubGroups { get; set; }
         
     }
 }

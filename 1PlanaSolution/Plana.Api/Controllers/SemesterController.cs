@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Plana.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Plana.Api.Controllers
 {
@@ -22,9 +23,17 @@ namespace Plana.Api.Controllers
             this.semesterRepository = semesterRepository;
             this._context = _context;
         }
-        
 
-
+        [HttpGet]
+        public async Task<ActionResult<List<Semester>>> Get()
+        {
+            return await _context.Semesters.ToListAsync();
+        }
+        [HttpGet("{id}", Name = "GetPerson")]
+        public async Task<ActionResult<Semester>> Get(int id)
+        {
+            return await _context.Semesters.FirstOrDefaultAsync(x => x.SemesterId == id);
+        }
         /// <summary>
         /// crud for Semester
         /// </summary>
@@ -86,30 +95,37 @@ namespace Plana.Api.Controllers
                     "Error retrieving data from the database");
             }
         }
+        //[HttpPost]
+        //public async Task<ActionResult<Semester>> CreateSemester(Semester semester)
+        //{
+        //    try
+        //    {
+        //        if (semester == null)
+        //        {
+        //            return BadRequest();
+        //        }
+        //        var createdSemester = await semesterRepository.CreateSemester(semester);
+
+        //        return CreatedAtAction(nameof(GetSemester), new { id = createdSemester.SemesterId }, createdSemester);
+
+
+        //    }
+        //    catch (Exception)
+
+        //    {
+
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //             "Error retrieving data from the database");
+        //    }
+        //}
         [HttpPost]
-        public async Task<ActionResult<Semester>> CreateSemester(Semester semester)
+        public async Task<ActionResult<Semester>> PostSemester(Semester semester)
         {
-            try
-            {
-                if (semester == null)
-                {
-                    return BadRequest();
-                }
-                var createdSemester = await semesterRepository.CreateSemester(semester);
+            _context.Semesters.Add(semester);
+            await _context.SaveChangesAsync();
 
-                return CreatedAtAction(nameof(GetSemester), new { id = createdSemester.SemesterId }, createdSemester);
-
-
-            }
-            catch (Exception)
-
-            {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from the database");
-            }
+            return CreatedAtAction(nameof(GetSemester), new { id = semester.SemesterId }, semester);
         }
-
         //example-pseudo-code
         //[HttpPut]
         //public async Task<IActionResult> UpdateSemester(SemesterDto semesterDto)
@@ -138,6 +154,7 @@ namespace Plana.Api.Controllers
             result.AdditionalAssignments = semester.AdditionalAssignments;
             result.LecturersSemesters = semester.LecturersSemesters;
             result.ModuleRuns = semester.ModuleRuns;
+
             await _context.SaveChangesAsync();
             return Ok(result);
 

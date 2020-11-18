@@ -183,11 +183,11 @@ namespace Plana.Api.Migrations
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     AAHours = table.Column<double>(nullable: false),
-                    LecturerId = table.Column<int>(nullable: true),
-                    SemesterId = table.Column<int>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedAt = table.Column<DateTime>(nullable: true),
-                    AACategory = table.Column<int>(nullable: false)
+                    AACategory = table.Column<int>(nullable: false),
+                    LecturerId = table.Column<int>(nullable: true),
+                    SemesterId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -483,12 +483,16 @@ namespace Plana.Api.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Plans_AutumnSemesterId",
                 table: "Plans",
-                column: "AutumnSemesterId");
+                column: "AutumnSemesterId",
+                unique: true,
+                filter: "[AutumnSemesterId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Plans_SpringSemesterId",
                 table: "Plans",
-                column: "SpringSemesterId");
+                column: "SpringSemesterId",
+                unique: true,
+                filter: "[SpringSemesterId] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
