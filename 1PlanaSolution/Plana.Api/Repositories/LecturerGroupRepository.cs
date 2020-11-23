@@ -32,7 +32,7 @@ namespace Plana.Api.Repositories
         public async Task<IEnumerable<LecturerGroup>> GetLecturerGroups()
         {
             return await context.LecturerGroups
-                .Include(i => i.LecturerLG)
+                .Include(i => i.LecturerLecturerGroup)
                 .ThenInclude(l => l.Lecturer)
                 .ToListAsync();
         }
@@ -69,9 +69,9 @@ namespace Plana.Api.Repositories
             if (result != null)
             {
                 result.Title = lecturerGroup.Title;
-                result.LecturerLG = lecturerGroup.LecturerLG;
+                result.LecturerLecturerGroup = lecturerGroup.LecturerLecturerGroup;
                 result.LecturerSubGroups = lecturerGroup.LecturerSubGroups;
-                result.Lecturer_ModuleGroup = lecturerGroup.Lecturer_ModuleGroup;
+                result.LecturerGroupModuleGroup = lecturerGroup.LecturerGroupModuleGroup;
 
                 await context.SaveChangesAsync();
 

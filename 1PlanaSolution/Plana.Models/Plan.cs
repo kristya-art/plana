@@ -19,10 +19,16 @@ namespace Plana.Models
         public DateTime? DeletedAt { get; set; }
         // public ICollection<Plan> MyPlan { get; set; }
         public ICollection<PlanLecturer> PlanLecturers { get; set; }
+        /// <summary>
+        /// below is the inverse property data annotation
+        /// could be done also with 
+        /// public int AutumnSemesterId {get;set;}
+        /// public Semester AutumnSemester {get;set;}
+        /// </summary>
         [ForeignKey("AutumnSemesterId")]
-        public virtual Semester AutumnSemester { get; set; }
+        public Semester AutumnSemester { get; set; }
         [ForeignKey("SpringSemesterId")]
-        public virtual Semester SpringSemester { get; set; }
+        public Semester SpringSemester { get; set; }
 
     }
 }

@@ -34,12 +34,16 @@ namespace Plana.Api.Models
         public DbSet<PlanLecturer> PlanLecturers {get;set;}
 
 
+       
+      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lecturer>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<Module>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<ModuleRun>().HasQueryFilter(p => !p.IsDeleted);
 
+            modelBuilder.Entity<Lecturer>()
+                .HasKey(x => new { x.Id });
 
             modelBuilder.Entity<LecturerModule>()
                 .HasKey(x => new { x.ModuleId, x.LecturerId });
@@ -56,7 +60,9 @@ namespace Plana.Api.Models
             modelBuilder.Entity<ModuleGroup>()
                 .HasKey(x => x.ModuleGroupId);
 
-
+            /// <summary>
+            /// many-to-many configuration
+            /// </summary>
 
             /** LecturersModuleRuns */
 
@@ -94,9 +100,89 @@ namespace Plana.Api.Models
             modelBuilder.Entity<PlanLecturer>()
                 .HasKey(x => new { x.PlanId, x.LecturerId });
 
+           
+            //-------------------------------------------------
+            /** LecturersModuleRuns */
+            modelBuilder.Entity<Lecturer>()
+                .HasMany(x => x.LecturersModuleRuns)
+                .WithOne(xt => xt.Lecturer)
+                .HasForeignKey(xt => xt.LecturerId);
 
+            modelBuilder.Entity<ModuleRun>()
+               .HasMany(x => x.LecturersMR)
+               .WithOne(xt => xt.ModuleRun)
+               .HasForeignKey(xt => xt.ModuleRunId);
+
+
+
+
+            /** Lecturer* - * Semesters  */
+
+            modelBuilder.Entity<Semester>()
+                .HasKey(x => x.SemesterId);
+
+            modelBuilder.Entity<Lecturer>()
+               .HasMany(x => x.LecturersSemesters)
+               .WithOne(xt => xt.Lecturer)
+               .HasForeignKey(xt => xt.LecturerId);
+
+            modelBuilder.Entity<Semester>()
+               .HasMany(x => x.LecturersSemesters)
+               .WithOne(xt => xt.Semester)
+               .HasForeignKey(xt => xt.SemesterId);
+
+
+            /** Lecturer - LecturerGroup*/
+
+            modelBuilder.Entity<Lecturer>()
+               .HasMany(x => x.LecturerLecturerGroup)
+               .WithOne(xt => xt.Lecturer)
+               .HasForeignKey(xt => xt.LecturerId);
+
+            modelBuilder.Entity<LecturerGroup>()
+               .HasMany(x => x.LecturerLecturerGroup)
+               .WithOne(xt => xt.LecturerGroup)
+               .HasForeignKey(xt => xt.LecturerGroupId);
+
+
+            /** LecturerModuleGroup **/
+            modelBuilder.Entity<Lecturer>()
+                .HasMany(x => x.LecturerModuleGroup)
+                .WithOne(xt => xt.Lecturer)
+                .HasForeignKey(xt => xt.LecturerId);
+
+            modelBuilder.Entity<ModuleGroup>()
+               .HasMany(x => x.LecturerModuleGroup)
+               .WithOne(xt => xt.ModuleGroup)
+               .HasForeignKey(xt => xt.ModuleGroupId);
+
+            /** LecturerGroupModuleGroup */
+            modelBuilder.Entity<LecturerGroup>()
+                .HasMany(x=>x.LecturerGroupModuleGroup)
+                .WithOne(xt => xt.LecturerGroup)
+                .HasForeignKey(xt => xt.LecturerGroupId);
+
+            modelBuilder.Entity<ModuleGroup>()
+               .HasMany(x => x.LecturerGroupModuleGroup)
+               .WithOne(xt => xt.ModuleGroup)
+               .HasForeignKey(xt => xt.ModuleGroupId);
+
+            /**PlanLecturers*/
+           
+
+            modelBuilder.Entity<Plan>()
+                            .HasMany(x => x.PlanLecturers)
+                            .WithOne(xt => xt.Plan)
+                            .HasForeignKey(xt => xt.PlanId);
+
+            modelBuilder.Entity<Lecturer>()
+               .HasMany(x => x.PlanLecturers)
+               .WithOne(xt => xt.Lecturer)
+               .HasForeignKey(xt => xt.LecturerId);
+            //------------------------------------------------
             /** other relationships */
             /** Plan ---> Semesters *one ---> one (unidirectional)*/
+
             modelBuilder.Entity<Plan>()
                  .HasOne(p => p.AutumnSemester)
                  .WithOne();

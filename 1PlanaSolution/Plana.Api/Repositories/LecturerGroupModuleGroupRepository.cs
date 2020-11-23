@@ -35,7 +35,7 @@ namespace Plana.Api.Repositories
         {
             return await context.LecturerGroupModuleGroups
                 .Include(i=>i.LecturerGroup)
-                .ThenInclude(l=>l.LecturerLG).ThenInclude(le=>le.Lecturer)
+                .ThenInclude(l=>l.LecturerLecturerGroup).ThenInclude(le=>le.Lecturer)
                 .Include(i => i.ModuleGroup).ThenInclude(m=>m.ModuleRuns)
                 .ToListAsync();
         }

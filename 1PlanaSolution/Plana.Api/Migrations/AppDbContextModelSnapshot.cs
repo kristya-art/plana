@@ -149,11 +149,7 @@ namespace Plana.Api.Migrations
 
                     b.HasKey("LecturerGroupId", "ModuleGroupId");
 
-                    b.HasIndex("LecturerGroupId")
-                        .IsUnique();
-
-                    b.HasIndex("ModuleGroupId")
-                        .IsUnique();
+                    b.HasIndex("ModuleGroupId");
 
                     b.ToTable("LecturerGroupModuleGroups");
                 });
@@ -477,14 +473,14 @@ namespace Plana.Api.Migrations
             modelBuilder.Entity("Plana.Models.LecturerGroupModuleGroup", b =>
                 {
                     b.HasOne("Plana.Models.LecturerGroup", "LecturerGroup")
-                        .WithOne("Lecturer_ModuleGroup")
-                        .HasForeignKey("Plana.Models.LecturerGroupModuleGroup", "LecturerGroupId")
+                        .WithMany("LecturerGroupModuleGroup")
+                        .HasForeignKey("LecturerGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Plana.Models.ModuleGroup", "ModuleGroup")
-                        .WithOne("LecturerGroupModuleGroup")
-                        .HasForeignKey("Plana.Models.LecturerGroupModuleGroup", "ModuleGroupId")
+                        .WithMany("LecturerGroupModuleGroup")
+                        .HasForeignKey("ModuleGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -492,13 +488,13 @@ namespace Plana.Api.Migrations
             modelBuilder.Entity("Plana.Models.LecturerLecturerGroup", b =>
                 {
                     b.HasOne("Plana.Models.LecturerGroup", "LecturerGroup")
-                        .WithMany("LecturerLG")
+                        .WithMany("LecturerLecturerGroup")
                         .HasForeignKey("LecturerGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Plana.Models.Lecturer", "Lecturer")
-                        .WithMany("LectuererLG")
+                        .WithMany("LecturerLecturerGroup")
                         .HasForeignKey("LecturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -522,7 +518,7 @@ namespace Plana.Api.Migrations
             modelBuilder.Entity("Plana.Models.LecturerModuleGroup", b =>
                 {
                     b.HasOne("Plana.Models.Lecturer", "Lecturer")
-                        .WithMany("LecturerMG")
+                        .WithMany("LecturerModuleGroup")
                         .HasForeignKey("LecturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -566,7 +562,7 @@ namespace Plana.Api.Migrations
 
             modelBuilder.Entity("Plana.Models.Module", b =>
                 {
-                    b.HasOne("Plana.Models.StudyBranch", "StudyBranch")
+                    b.HasOne("Plana.Models.StudyBranch", null)
                         .WithMany("Modules")
                         .HasForeignKey("StudyBranchId");
                 });

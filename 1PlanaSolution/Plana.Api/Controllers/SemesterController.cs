@@ -60,21 +60,21 @@ namespace Plana.Api.Controllers
         //}
 
 
-        [HttpGet]
-        public async Task<ActionResult> GetSemesters()
-        {
-            try
-            {
-                return Ok(await semesterRepository.GetSemesters());
+        //[HttpGet]
+        //public async Task<ActionResult> GetSemesters()
+        //{
+        //    try
+        //    {
+        //        return Ok(await semesterRepository.GetSemesters());
 
-            }
-            catch (Exception)
-            {
+        //    }
+        //    catch (Exception)
+        //    {
 
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
-            }
-        }
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //            "Error retrieving data from database");
+        //    }
+        //}
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Semester>> GetSemester(int id)

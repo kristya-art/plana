@@ -12,8 +12,8 @@ namespace Plana.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public double AAHours { get; set; }
-       // public Lecturer Lecturer { get; set; }
-      //  public Semester Semester { get; set; }
+         public int? LecturerId { get; set; } //foreign key one-to-many
+         public int?  SemesterId { get; set; } //foreign key one-to-many
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
         public AdditionalAssignmentCategory AACategory { get; set; }
