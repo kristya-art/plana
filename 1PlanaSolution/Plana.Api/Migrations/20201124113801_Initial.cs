@@ -384,7 +384,9 @@ namespace Plana.Api.Migrations
                 {
                     LecturerId = table.Column<int>(nullable: false),
                     ModuleRunId = table.Column<int>(nullable: false),
-                    Lessons = table.Column<int>(nullable: false)
+                    Lessons = table.Column<int>(nullable: false),
+                    Hours = table.Column<int>(nullable: false),
+                    Notes = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Plana.Api.Models;
 using Plana.Api.Repositories;
+using Plana.Api.Services;
 using Plana.Models;
 using System;
 
@@ -45,6 +46,8 @@ namespace Plana.Api
             services.AddScoped<ILecturerLecturerGroupRepository, LecturerLecturerGroupRepository>();
             services.AddScoped<ILecturerModuleGroupRepository, LecturerModuleGroupRepository>();
             services.AddScoped<ILecturerModuleRunRepository, LecturerModuleRunRepository>();
+
+            services.AddScoped<IPlanService, PlanService>();
 
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>

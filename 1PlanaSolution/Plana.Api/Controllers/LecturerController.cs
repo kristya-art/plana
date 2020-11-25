@@ -117,7 +117,7 @@ namespace Plana.Api.Controllers
             {
 
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                "Error udating database");
+                "Error updating database");
             }
         }
 

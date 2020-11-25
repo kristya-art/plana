@@ -15,13 +15,17 @@ namespace Plana.Models
         public int SemesterId { get; set; }
         public string Code { get; set; }
         public DateTime Date { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
+        
+        //relationship
+
         //1-many
         public ICollection<ModuleRun> ModuleRuns { get; set; }
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
         public ICollection<LecturerSemester> LecturersSemesters { get; set; }
-        public bool IsDeleted { get; set ; }
-        public DateTime? DeletedAt { get; set; }
+       
       
        
         //public string getYear(Semester semester) {

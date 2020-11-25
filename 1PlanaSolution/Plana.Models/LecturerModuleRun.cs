@@ -15,6 +15,8 @@ namespace Plana.Models
 
         public int ModuleRunId { get; set; }
         public ModuleRun ModuleRun { get; set; }
+        public int Hours { get; set; }
+        public string Notes { get; set; }
 
     }
 }

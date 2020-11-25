@@ -585,7 +585,7 @@ namespace Plana.Api.Models
 
                 //seed data for plan
 
-                Plan plan20_21 = new Plan
+                Plan plan23_24 = new Plan
                 {
                     Year = "2023-2024",
                     AutumnSemester = new Semester()
@@ -613,10 +613,19 @@ namespace Plana.Api.Models
                     }
                 }
             };
+                Plan plan24_25 = new Plan
+                {
+                    Year = "2024-2025",
+                   
                     
-                
 
-                context.Plans.Add(plan20_21);
+
+                 };
+
+
+
+                context.Plans.Add(plan23_24);
+                context.Plans.Add(plan24_25);
                 context.SaveChanges();
 
             }

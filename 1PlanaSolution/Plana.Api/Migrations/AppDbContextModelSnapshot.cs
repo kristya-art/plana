@@ -207,8 +207,14 @@ namespace Plana.Api.Migrations
                     b.Property<int>("LecturerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Hours")
+                        .HasColumnType("int");
+
                     b.Property<int>("Lessons")
                         .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ModuleRunId", "LecturerId");
 

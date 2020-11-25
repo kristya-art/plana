@@ -74,7 +74,7 @@ namespace Plana.Api.Models
                 result.Place = moduleRun.Place;
                 result.Semester = moduleRun.Semester;
                 
-                result.SemesterId = moduleRun.SemesterId;
+               
                 result.ModuleGroup = moduleRun.ModuleGroup;
                
                 await appDbContext.SaveChangesAsync();

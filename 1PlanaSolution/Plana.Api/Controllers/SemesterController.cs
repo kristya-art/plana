@@ -142,50 +142,50 @@ namespace Plana.Api.Controllers
 
         //    await _context.SaveChangesAsync(semester);
         //}
-        [HttpPut]
-        public async Task<IActionResult> UpdateSemester(Semester semester) {
-            var result =  await _context.Semesters.FindAsync(semester.SemesterId);
-            if (semester == null)
-            {
-                return NotFound("...");
-            }
-            result.Code = semester.Code;
-            result.Date = semester.Date;
-            result.AdditionalAssignments = semester.AdditionalAssignments;
-            result.LecturersSemesters = semester.LecturersSemesters;
-            result.ModuleRuns = semester.ModuleRuns;
+        //[HttpPut]
+        //public async Task<IActionResult> UpdateSemester(Semester semester) {
+        //    var result =  await _context.Semesters.FindAsync(semester.SemesterId);
+        //    if (semester == null)
+        //    {
+        //        return NotFound("...");
+        //    }
+        //    result.Code = semester.Code;
+        //    result.Date = semester.Date;
+        //    result.AdditionalAssignments = semester.AdditionalAssignments;
+        //    result.LecturersSemesters = semester.LecturersSemesters;
+        //    result.ModuleRuns = semester.ModuleRuns;
 
-            await _context.SaveChangesAsync();
-            return Ok(result);
+        //    await _context.SaveChangesAsync();
+        //    return Ok(result);
 
             
         
+      //  }
+
+    [HttpPut]
+    public async Task<ActionResult<Semester>> UpdateSemester(Semester semester)
+    {
+        try
+        {
+
+            var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
+
+            if (updateSemester == null)
+            {
+                return NotFound($"Semester with id = {semester.SemesterId} not found");
+            }
+            return await semesterRepository.UpdateSemester(semester);
         }
+        catch (Exception)
+        {
 
-        //[HttpPut()]
-        //public async Task<ActionResult<Semester>> UpdateSemester(Semester semester)
-        //{
-        //    try
-        //    {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+            "Error updating database");
+        }
+    }
 
-        //        var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
-
-        //        if (updateSemester == null)
-        //        {
-        //            return NotFound($"Semester with id = {semester.SemesterId} not found");
-        //        }
-        //        return await semesterRepository.UpdateSemester(semester);
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //        "Error udating database");
-        //    }
-        //}
-
-        /** soft deletion */
-        [HttpDelete("{id:int}")]
+    /** soft deletion */
+    [HttpDelete("{id:int}")]
         public async Task<ActionResult<Boolean>> SoftDeleteSemester(int id)
         {
             try

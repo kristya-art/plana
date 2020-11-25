@@ -41,10 +41,10 @@ namespace Plana.Api.Models
                  .Include(e => e.ModuleRuns)
                       .ThenInclude(mr => mr.LecturersMR)
                           .ThenInclude(l => l.Lecturer)
-                          .AsNoTracking()
+                          
                  .Include(e => e.ModuleRuns)
                  .ThenInclude(mr => mr.Module)
-                 .AsNoTracking()
+                 
                // .Include(e=>e.LecturersSemesters)
               //  .ThenInclude(l=>l.Lecturer)
 
@@ -70,11 +70,10 @@ namespace Plana.Api.Models
                    
                   .Include( i=> i.LecturersSemesters)
                   .ThenInclude(m => m.Lecturer)
-                  .AsNoTracking()
                   .Include(i => i.AdditionalAssignments)
-                  .AsNoTracking()
 
-                 
+
+
                   //.OrderBy(n => n.Date)
                   .ToListAsync();
 
@@ -87,15 +86,13 @@ namespace Plana.Api.Models
             var result = await GetSemester(semester.SemesterId);
             if (result != null)
             {
-               // context.Entry(result.Code).State = EntityState.Modified;
+               
                 result.Code = semester.Code;
                 result.Date = semester.Date;
                 result.LecturersSemesters = semester.LecturersSemesters;
-                foreach (var ls in semester.LecturersSemesters)
-                {
-                    context.Entry(ls).State = EntityState.Modified;
-                }
+               
                 result.ModuleRuns = semester.ModuleRuns;
+                result.AdditionalAssignments = semester.AdditionalAssignments;
                 
 
 
@@ -107,7 +104,7 @@ namespace Plana.Api.Models
             return null;
         }
 
-        public async Task<bool> SoftDeleteSemester(int semesterId)
+        public async Task<Boolean> SoftDeleteSemester(int semesterId)
         {
             var result = await GetSemester(semesterId);
             if (result != null)

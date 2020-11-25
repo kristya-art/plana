@@ -1,152 +1,97 @@
-﻿//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
-//using Plana.Api.Models;
-//using Plana.Api.Repositories;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using Plana.Models;
-//using Microsoft.AspNetCore.Mvc.Formatters.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Plana.Api.Services;
+using Plana.Models;
 
-//namespace Plana.Api.Controllers
-//{
-//    [Route("api/[controller]")]
-//    [ApiController]
-//    public class PlanController : ControllerBase
-//    {
-//        private readonly ILecturerRepository lecturerRepository;
-//        private readonly IModuleRepository moduleRepository;
-//        private readonly IModuleRunRepository moduleRunRepository;
-//        private readonly IAdditionalAssignmentRepository additionalAssignmentRepository;
-//        private readonly ISemesterRepository semesterRepository;
-//        private readonly IStudyBranchRepository studyBranchRepository;
-//        private readonly ILecturerGroupRepository lecturerGroupRep;
-//        private readonly ILecturerLecturerGroupRepository lecturerLecturerGroupRep;
-//        private readonly ILecturerGroupModuleGroupRepository lecturerGroupModuleGroupRep;
-//        private readonly ILecturerModuleGroupRepository lecturerModuleGroupRep;
-//        private readonly  ILecturerModuleRunRepository lecturerModuleRunRepository;
-//        private readonly  IModuleGroupRepository moduleGroupRepository;
-//        private readonly ILecturerSemesterRepository lecturerSemesterRep;
+namespace Plana.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PlanController : ControllerBase
+    {
+        private readonly IPlanService _planService;
+        public PlanController(IPlanService planService) {
 
-//        public PlanController(ILecturerRepository lecturerRepository,
-//                              ILecturerGroupRepository lecturerGroupRep,
-//                              ILecturerLecturerGroupRepository lecturerLecturerGroupRep,
-//                              ILecturerGroupModuleGroupRepository lecturerGroupModuleGroupRep,
-//                              ILecturerModuleGroupRepository lecturerModuleGroupRep,
-//                              ILecturerModuleRunRepository lecturerModuleRunRepository,
-//                              IModuleGroupRepository moduleGroupRepository,
-                              
-                                
-//                               IModuleRunRepository moduleRunRepository,
-//                                IAdditionalAssignmentRepository additionalAssignmentRepository,
-//                                ISemesterRepository semesterRepository,
-//                                ILecturerSemesterRepository lecturerSemesterRep,
-//                                IStudyBranchRepository studyBranchRepository)
-//        {
+            _planService = planService;
+        }
 
+        [HttpGet]
+        public async Task<ActionResult> GetPlans()
+        {
+            try
+            {
+                return Ok(await _planService.GetAllPlans());
+            }
+            catch (Exception)
+            {
 
-//            this.lecturerSemesterRep = lecturerSemesterRep;
-//           this.lecturerGroupRep = lecturerGroupRep;
-//           this.lecturerLecturerGroupRep= lecturerLecturerGroupRep;
-//           this.lecturerGroupModuleGroupRep= lecturerGroupModuleGroupRep;
-//           this.lecturerModuleGroupRep=lecturerModuleGroupRep;
-//           this.lecturerModuleRunRepository= lecturerModuleRunRepository;
-//           this.moduleGroupRepository= moduleGroupRepository;
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from database");
+            }
+        }
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Plan>> GetPlan(int id)
+        {
+            try
+            {
+                var result = await _planService.GetPlan(id);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return result;
+            }
+            catch (Exception)
+            {
 
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult<Plan>> CreatePlan(Plan plan)
+        {
+            try
+            {
+                if (plan == null)
+                {
+                    return BadRequest();
+                }
+                var createdPlan = await _planService.AddPlan(plan);
+                return CreatedAtAction(nameof(GetPlan), new { id = createdPlan.Id }, createdPlan);
+            }
+            catch (Exception)
+            {
 
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
+        
+        }
+        [HttpPut()]
+        public async Task<ActionResult<Plan>> UpdatePlan(Plan plan)
+        {
+            try
+            {
+                var updatedPlan = await _planService.GetPlan(plan.Id);
+                if (updatedPlan == null)
+                {
+                    return NotFound($"Plan with id = {plan.Id} not found");
+                }
 
-//            this.lecturerRepository = lecturerRepository;
-            
-//            this.moduleRunRepository = moduleRunRepository;
-//            this.semesterRepository = semesterRepository;
-//            this.studyBranchRepository = studyBranchRepository;
-//            this.additionalAssignmentRepository = additionalAssignmentRepository;
-//        }
-//        // get methods for all necessary data
+                return await _planService.UpdatePlan(plan);
+            }
+            catch (Exception)
+            {
 
-//        [HttpGet("{id:int}")]
-//        public async Task<ActionResult<Semester>> GetSemesterPlan(int id)
-//        {
-//            try
-//            {
-//                var result = await semesterRepository.GetSemester(id);
-//                if (result == null)
-//                {
-//                    return NotFound();
-//                }
-//                return result;
-//            }
-//            catch (Exception)
-//            {
-
-//                return StatusCode(StatusCodes.Status500InternalServerError,
-//                    "Error retrieving data from the database");
-//            }
-//        }
-
-//        [HttpPut()]
-//        public async Task<ActionResult<Semester>> UpdatePlan(Semester semester)
-//        {
-//            try
-//            {
-
-//                var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
-
-//                if (updateSemester == null)
-//                {
-//                    return NotFound($"Semester with id = {semester.SemesterId} not found");
-//                }
-//                foreach (var ls in semester.LecturersSemesters)
-//                {
-
-//                    await lecturerSemesterRep.UpdateLecturerSemester(ls);
-//                }
-
-//                foreach (var aa in semester.AdditionalAssignments)
-//                {
-//                    await additionalAssignmentRepository.UpdateAdditionalAssignment(aa);
-//                }
-
-//                foreach (var mr in semester.ModuleRuns)
-//                {
-//                    await moduleRunRepository.UpdateModuleRun(mr);
-//                }
-
-               
-//                return await semesterRepository.UpdateSemester(semester);
-                
-//            }
-//            catch (Exception)
-//            {
-
-//                return StatusCode(StatusCodes.Status500InternalServerError,
-//                "Error updating database");
-//            }
-//        }
-//        [HttpGet]
-//        public async Task<ActionResult> GetSemesterPlans()
-//        {
-//            try
-//            {
-//                return Ok(await semesterRepository.GetSemesters());
-
-//            }
-//            catch (Exception)
-//            {
-
-//                return StatusCode(StatusCodes.Status500InternalServerError,
-//                    "Error retrieving data from database");
-//            }
-//        }
-
-//    }
-
-
-
-
-
-
-
-    
-//}
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error updating database");
+            }
+        
+        }
+    }
+}
