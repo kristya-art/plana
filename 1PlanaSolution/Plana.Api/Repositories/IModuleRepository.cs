@@ -13,5 +13,6 @@ namespace Plana.Api.Models
         Task<Module> UpdateModule(Module module);
         Task<Module> AddModule(Module module);
         Task<Boolean> SoftDeleteModule(int moduleId);
+        Task<IEnumerable<Module>> GetModules();
     }
 }

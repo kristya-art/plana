@@ -162,19 +162,19 @@ namespace Plana.Api.Controllers
         
       //  }
 
-    [HttpPut]
+    [HttpPut()]
     public async Task<ActionResult<Semester>> UpdateSemester(Semester semester)
     {
         try
         {
+                var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
+                if (updateSemester == null)
+                {
+                    return NotFound($"Semester with id = {semester.SemesterId} not found");
+                }
 
-            var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
-
-            if (updateSemester == null)
-            {
-                return NotFound($"Semester with id = {semester.SemesterId} not found");
-            }
-            return await semesterRepository.UpdateSemester(semester);
+                return await semesterRepository.UpdateSemester(semester);
+            
         }
         catch (Exception)
         {

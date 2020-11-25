@@ -86,22 +86,18 @@ namespace Plana.Api.Models
             var result = await GetSemester(semester.SemesterId);
             if (result != null)
             {
-               
                 result.Code = semester.Code;
                 result.Date = semester.Date;
                 result.LecturersSemesters = semester.LecturersSemesters;
-               
                 result.ModuleRuns = semester.ModuleRuns;
                 result.AdditionalAssignments = semester.AdditionalAssignments;
-                
-
-
 
                 await context.SaveChangesAsync();
-                return result;
 
+                return result;
             }
             return null;
+        
         }
 
         public async Task<Boolean> SoftDeleteSemester(int semesterId)
