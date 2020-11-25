@@ -95,37 +95,37 @@ namespace Plana.Api.Controllers
                     "Error retrieving data from the database");
             }
         }
-        //[HttpPost]
-        //public async Task<ActionResult<Semester>> CreateSemester(Semester semester)
-        //{
-        //    try
-        //    {
-        //        if (semester == null)
-        //        {
-        //            return BadRequest();
-        //        }
-        //        var createdSemester = await semesterRepository.CreateSemester(semester);
-
-        //        return CreatedAtAction(nameof(GetSemester), new { id = createdSemester.SemesterId }, createdSemester);
-
-
-        //    }
-        //    catch (Exception)
-
-        //    {
-
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error retrieving data from the database");
-        //    }
-        //}
         [HttpPost]
-        public async Task<ActionResult<Semester>> PostSemester(Semester semester)
+        public async Task<ActionResult<Semester>> CreateSemester(Semester semester)
         {
-            _context.Semesters.Add(semester);
-            await _context.SaveChangesAsync();
+            try
+            {
+                if (semester == null)
+                {
+                    return BadRequest();
+                }
+                var createdSemester = await semesterRepository.CreateSemester(semester);
 
-            return CreatedAtAction(nameof(GetSemester), new { id = semester.SemesterId }, semester);
+                return CreatedAtAction(nameof(GetSemester), new { id = createdSemester.SemesterId }, createdSemester);
+
+
+            }
+            catch (Exception)
+
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Error retrieving data from the database");
+            }
         }
+        //[HttpPost]
+        //public async Task<ActionResult<Semester>> PostSemester(Semester semester)
+        //{
+        //    _context.Semesters.Add(semester);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction(nameof(GetSemester), new { id = semester.SemesterId }, semester);
+        //}
         //example-pseudo-code
         //[HttpPut]
         //public async Task<IActionResult> UpdateSemester(SemesterDto semesterDto)
@@ -142,50 +142,52 @@ namespace Plana.Api.Controllers
 
         //    await _context.SaveChangesAsync(semester);
         //}
-        //[HttpPut]
-        //public async Task<IActionResult> UpdateSemester(Semester semester) {
-        //    var result =  await _context.Semesters.FindAsync(semester.SemesterId);
-        //    if (semester == null)
+        [HttpPut]
+        public async Task<IActionResult> UpdateSemester(Semester semester)
+        {
+            var result = await _context.Semesters.FindAsync(semester.SemesterId);
+            if (semester == null)
+            {
+                return NotFound("...");
+            }
+            result.Code = semester.Code;
+            result.Date = semester.Date;
+            result.AdditionalAssignments = semester.AdditionalAssignments;
+            result.LecturersSemesters = semester.LecturersSemesters;
+            result.ModuleRuns = semester.ModuleRuns;
+
+            await _context.SaveChangesAsync();
+            return Ok(result);
+
+
+
+        }
+
+        //[HttpPut()]
+        //public async Task<ActionResult> UpdateSemester(Semester semester)
+        //{
+        //    try
         //    {
-        //        return NotFound("...");
+        //            var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
+        //            if (updateSemester == null)
+        //            {
+        //                return NotFound($"Semester with id = {semester.SemesterId} not found");
+        //            }
+
+        //            await semesterRepository.UpdateSemester(semester);
+        //            return Ok(updateSemester);
+
         //    }
-        //    result.Code = semester.Code;
-        //    result.Date = semester.Date;
-        //    result.AdditionalAssignments = semester.AdditionalAssignments;
-        //    result.LecturersSemesters = semester.LecturersSemesters;
-        //    result.ModuleRuns = semester.ModuleRuns;
+        //    catch (Exception)
+        //    {
 
-        //    await _context.SaveChangesAsync();
-        //    return Ok(result);
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //        "Error updating database");
+        //    }
+        //}
 
-            
-        
-      //  }
-
-    [HttpPut()]
-    public async Task<ActionResult<Semester>> UpdateSemester(Semester semester)
-    {
-        try
-        {
-                var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
-                if (updateSemester == null)
-                {
-                    return NotFound($"Semester with id = {semester.SemesterId} not found");
-                }
-
-                return await semesterRepository.UpdateSemester(semester);
-            
-        }
-        catch (Exception)
-        {
-
-            return StatusCode(StatusCodes.Status500InternalServerError,
-            "Error updating database");
-        }
-    }
-
-    /** soft deletion */
-    [HttpDelete("{id:int}")]
+        /** soft deletion */
+        [HttpDelete("{id:int}")]
         public async Task<ActionResult<Boolean>> SoftDeleteSemester(int id)
         {
             try

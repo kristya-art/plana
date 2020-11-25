@@ -46,7 +46,7 @@ namespace Plana.Api.Models
         public async Task<Lecturer> UpdateLecturer(Lecturer lecturer)
         {
             var result = await GetLecturer(lecturer.Id);
-            if (result != null)
+            if (result != null) 
             {
                 result.FirstName = lecturer.FirstName;
                 result.LastName = lecturer.LastName;
@@ -64,17 +64,17 @@ namespace Plana.Api.Models
 
 
                 result.LecturersModules = lecturer.LecturersModules;//new
-                appDbContext.Entry(result.LecturersModules).State = EntityState.Modified;
+               // appDbContext.Entry(result.LecturersModules).State = EntityState.Modified;
                 result.AdditionalAssignments = lecturer.AdditionalAssignments;//new
                 result.LecturersModuleRuns = lecturer.LecturersModuleRuns;
-                appDbContext.Entry(result.LecturersModuleRuns).State = EntityState.Modified;
+               // appDbContext.Entry(result.LecturersModuleRuns).State = EntityState.Modified;
 
                 await appDbContext.SaveChangesAsync();
 
                 return result;
             }
 
-            return null;
+              return null;
                
         }
 
