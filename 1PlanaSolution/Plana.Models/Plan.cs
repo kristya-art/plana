@@ -25,9 +25,14 @@ namespace Plana.Models
         /// public int AutumnSemesterId {get;set;}
         /// public Semester AutumnSemester {get;set;}
         /// </summary>
+        
         [ForeignKey("AutumnSemesterId")]
+        
         public Semester AutumnSemester { get; set; }
+
+        
         [ForeignKey("SpringSemesterId")]
+       
         public Semester SpringSemester { get; set; }
 
     }

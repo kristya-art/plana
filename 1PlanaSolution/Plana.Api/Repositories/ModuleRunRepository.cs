@@ -40,8 +40,8 @@ namespace Plana.Api.Models
             return await appDbContext.ModuleRuns
                 .Include(m=>m.LecturersMR)
                 .ThenInclude(lmr=>lmr.Lecturer)
-                .Include(m=>m.Semester)
-                .Include(m=>m.Module)
+             //   .Include(m=>m.Semester)
+             //   .Include(m=>m.Module)
            .FirstOrDefaultAsync(e => e.ModuleRunId == moduleRunId);
 
  }
@@ -52,7 +52,6 @@ namespace Plana.Api.Models
                 .Include(m => m.Module)
                 .Include(m => m.LecturersMR)
                 .ThenInclude(lmr => lmr.Lecturer)
-                .Include(m => m.Semester)
                 .OrderBy(m => m.Module.Title)
                 .ToListAsync();
         }
@@ -69,10 +68,10 @@ namespace Plana.Api.Models
               
                 result.Module = moduleRun.Module;
                
-                result.ModuleId = moduleRun.ModuleId;
+             //   result.ModuleId = moduleRun.ModuleId;
                
                 result.Place = moduleRun.Place;
-                result.Semester = moduleRun.Semester;
+                result.SemesterId = moduleRun.SemesterId;
                 
                
                 result.ModuleGroup = moduleRun.ModuleGroup;

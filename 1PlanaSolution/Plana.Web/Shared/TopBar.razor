@@ -1,0 +1,143 @@
+﻿<h3>TopBar</h3>
+<div class="topnav" id="topnav" style="position: relative;top: 0px;">
+    
+    <div style="overflow:auto;">
+        <div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:46px">
+            <div class="logo-image  w3-right" >
+                <img src="/images/logo.png" class="img-fluid" href="/home">
+
+            </div>
+            @*<div class="w3-right" style="width:100%;overflow:hidden;height:46px;">*@
+                <div class="navbar-toggler w3-left" @onclick="ToggleNavMenu">
+                    <span class="navbar-toggler-icon">
+                        <img src="/images/toggler.JPG" class="img-fluid" />
+                    </span>
+                @*</div>*@
+            </div>
+        </div>
+    </div>
+
+
+    <div class="@openVerticalMenu" style="width:55%" @onclick="ToggleNavMenu">
+        <div class="vertical-menu">
+            <ul class="nav flex-column">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> List of Lecturers
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="/home">
+                        <span class="" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+                </ul>
+                @*<a href="#" class="active">Home</a>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>*@
+        </div>
+    </div>
+</div>
+@code {
+    private bool verticalMenu = true;
+
+    private string openVerticalMenu => verticalMenu?  "collapse":null;
+
+    private void ToggleNavMenu()
+    {
+        verticalMenu = !verticalMenu;
+    }
+}
+<style>
+    .topnav {
+        position: relative;
+        background-color: #f2f2f2;
+        width: 100%;
+        letter-spacing:1px;
+    }
+    .w3-bar {
+        width:100%;
+        overflow:hidden;
+    }
+
+    .w3-right {
+     float: right!important;
+    }
+    .w3-left {
+        float:left!important;
+    }
+    /*               sider **/
+    .vertical-menu {
+        width: 200px;
+        float: left;
+        position: sticky;
+    }
+    
+
+        .vertical-menu a {
+            background-color: #eee;
+            color: black;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+        }
+
+           /* .vertical-menu a:hover {
+                background-color: #ccc;
+            }*/
+
+            .vertical-menu a.active {
+                background-color: white;
+                color: white;
+            }
+    .navbar-toggler-icon {
+        width: 46px;
+        height: 46px;
+       
+        overflow: hidden;
+      /*  margin-top: -20px;*/
+
+    }
+   .vertical-menu .oi {
+        width: 2rem;
+        font-size: 1.1rem;
+        vertical-align: text-top;
+        top: -2px;
+    }
+
+    .vertical-menu .nav-item {
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+    }
+
+        .vertical-menu .nav-item:first-of-type {
+            padding-top: 1rem;
+        }
+
+        .vertical-menu .nav-item:last-of-type {
+            padding-bottom: 1rem;
+        }
+
+        .vertical-menu .nav-item a {
+            color: #d7d7d7;
+            border-radius: 4px;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            line-height: 3rem;
+        }
+
+            .vertical-menu .nav-item a.active {
+                /* background-color: rgba(255,255,255,0.25);
+                color: white;*/
+                color: #FFD700;
+            }
+
+            .vertical-menu .nav-item a:hover {
+                background-color: #fff;
+                color: #43427d;
+            }
+    
+</style>

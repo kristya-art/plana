@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201124113801_Initial")]
+    [Migration("20201126200138_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -587,7 +587,7 @@ namespace Plana.Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Plana.Models.Semester", "Semester")
+                    b.HasOne("Plana.Models.Semester", null)
                         .WithMany("ModuleRuns")
                         .HasForeignKey("SemesterId")
                         .OnDelete(DeleteBehavior.Cascade)

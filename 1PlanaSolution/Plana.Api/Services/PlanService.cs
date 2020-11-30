@@ -56,40 +56,40 @@ namespace Plana.Api.Services
 
 
 
-        public async Task<Plan> UpdatePlan(Plan plan)
-        {
-            var result = await GetPlan(plan.Id);
-            if (result != null)
-            {
-                result.Year = plan.Year;
-                result.ExpiredDate = plan.ExpiredDate;
-                result.IsFixed = plan.IsFixed;
-                result.OfficialPublishDate = plan.OfficialPublishDate;
-                result.PlanLecturers = plan.PlanLecturers;
+        //public async Task<Plan> UpdatePlan(Plan plan)
+        //{
+        //    var result = await GetPlan(plan.Id);
+        //    if (result != null)
+        //    {
+        //        result.Year = plan.Year;
+        //        result.ExpiredDate = plan.ExpiredDate;
+        //        result.IsFixed = plan.IsFixed;
+        //        result.OfficialPublishDate = plan.OfficialPublishDate;
+        //        result.PlanLecturers = plan.PlanLecturers;
 
-                result.AutumnSemester = plan.AutumnSemester;
-                result.SpringSemester = plan.SpringSemester;
-                if (plan.SpringSemester != null)
-                {
-                    await _semesterRepository.UpdateSemester(plan.SpringSemester);
-                }
-                if (plan.AutumnSemester != null)
-                {
-                    await _semesterRepository.UpdateSemester(plan.AutumnSemester);
-                }
+        //        result.AutumnSemester = plan.AutumnSemester;
+        //        result.SpringSemester = plan.SpringSemester;
+        //        if (plan.SpringSemester != null)
+        //        {
+        //            await _semesterRepository.UpdateSemester(plan.SpringSemester);
+        //        }
+        //        if (plan.AutumnSemester != null)
+        //        {
+        //            await _semesterRepository.UpdateSemester(plan.AutumnSemester);
+        //        }
                 //result.SpringSemester.LecturersSemesters = plan.SpringSemester.LecturersSemesters;
                 //result.AutumnSemester.LecturersSemesters = plan.AutumnSemester.LecturersSemesters;
 
 
                 
 
-                await _context.SaveChangesAsync();
+        //        await _context.SaveChangesAsync();
 
-                return result;
-            }
-            return null;
+        //        return result;
+        //    }
+        //    return null;
 
-        }
+        //}
 
 
         public void AddSemester(Semester semester) {
@@ -97,6 +97,11 @@ namespace Plana.Api.Services
               
             
             }
+        }
+
+        public Task<Plan> UpdatePlan(Plan plan)
+        {
+            throw new NotImplementedException();
         }
     }
 }

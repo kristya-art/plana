@@ -15,7 +15,7 @@ namespace Plana.Models
         //'a', 'b', 'p','q'
         public string Code { get; set; }
         //many-1
-        public Semester Semester { get; set; }
+    //    public Semester Semester { get; set; }
         //many-1
         public Module Module { get; set; }
         

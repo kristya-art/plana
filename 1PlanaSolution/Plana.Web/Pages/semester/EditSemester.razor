@@ -12,8 +12,8 @@
                 <MatAppBarTitle>Plan for @Semester.Code</MatAppBarTitle>
             </MatAppBarSection>
             <MatAppBarSection Align="@MatAppBarSectionAlign.End">-->
-                @*<MatIconButton Icon="favorite"></MatIconButton>*@
-                <!--<MatButton Outlined="true" @onclick="@(e=>openModules())">Modules view</MatButton>
+@*<MatIconButton Icon="favorite"></MatIconButton>*@
+<!--<MatButton Outlined="true" @onclick="@(e=>openModules())">Modules view</MatButton>
 
             </MatAppBarSection>
         </MatAppBarRow>
@@ -28,57 +28,58 @@
 <h2>
     @Semester.Code
 </h2>
-<EditForm Model="@Semester">
-    <label for="code">Code</label>
-    <InputText id="code" @bind-Value="Semester.Code" />
-    @if (Semester.ModuleRuns == null) { return; }
 
-    @foreach (var MR in Semester.ModuleRuns)
-    {
-        <label for="id">place</label>
-        <InputText id="place" @bind-Value="MR.Place" />
-    }
-</EditForm>
+    <EditForm  Model="@Semester">
+        <label for="code">Code</label>
+        <InputText id="code" @bind-Value="Semester.Code" />
+        @if (Semester.ModuleRuns == null) { return; }
+
+        @foreach (var MR in Semester.ModuleRuns)
+        {
+            <label for="id">place</label>
+            <InputText id="place" @bind-Value="MR.Place" />
+        }
+    </EditForm>
 
 <MatButton Outlined="true" @onclick="@(e=>openModules())">Modules view</MatButton>
 
 
 @if (showModuleRunTable)
 {
-    <MatTable Items="@Semester.ModuleRuns" class="mat-elevation-z5"
+    <MatTable  Items="@Semester.ModuleRuns" class="mat-elevation-z5"
               FilterByColumnName="Module-Title">
         <MatTableHeader>
 
-    <th>Module</th>
-    <th>Module-Title</th>
-    <th>Group</th>
-    <th>Place</th>
-    <th>Total Hours</th>
-    <th>Lecturer</th>
-    <th>Hours for concrete lecturer</th>
-    <th>Actions</th>
-    @*<th>Lect/Week-AS</th>
-        <th>Lect/Week-SS</th>*@
+            <th>Module</th>
+            <th>Module-Title</th>
+            <th>Group</th>
+            <th>Place</th>
+            <th>Total Hours</th>
+            <th>Lecturer</th>
+            <th>Hours for concrete lecturer</th>
+            <th>Actions</th>
+            @*<th>Lect/Week-AS</th>
+                <th>Lect/Week-SS</th>*@
 
 
-    </MatTableHeader>
+        </MatTableHeader>
         <MatTableRow>
 
 
-    @*<EditForm  Model="@Semester" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator />*@
+            @*<EditForm  Model="@Semester" OnValidSubmit="HandleValidSubmit">
+                <DataAnnotationsValidator />*@
 
-        @if (Semester.ModuleRuns == null) { return; }
-        
+            @if (Semester.ModuleRuns == null) { return; }
+
 
             <td>@context.Code</td>
 
             <td>@context.Module.Code</td>
-        @*<td><InputText id="Code" @bind-Value="Semester.Code"></InputText></td>*@
+            @*<td><InputText id="Code" @bind-Value="Semester.Code"></InputText></td>*@
 
             <td>
                 <p>
-                    <MatTextField @bind-Value="@context.Code" Label="@context.Code" Outlined="true"></MatTextField>
+                    <MatTextField Style="width:50px;" @bind-Value="@context.Code" Label="@context.Code" Outlined="true"></MatTextField>
                 </p>
 
             </td><td>@context.Module.Title</td>
@@ -86,7 +87,7 @@
             <td>@context.Place</td>
             <td>@context.Module.TotalHours</td>
             @foreach (var mr in context.LecturersMR)
-            {
+                {
                 @*<td>@mr.Lecturer.FirstName</td>*@
 
                 <p>
@@ -94,7 +95,7 @@
                     <MatButton Raised="true" Icon="add" title="Add lecturer"></MatButton>
 
                 </p>
-            }
+                }
 
             <td>
                 <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="edit" title="Edit plan"></MatButton>
@@ -103,13 +104,13 @@
                     <MatButton type="submit" name="HandleValieSubmit" @onclick="HandleValidSubmit">OK</MatButton>
                 </form>
             </td>
-        
-    @*</EditForm>*@
 
-    @foreach (var aa in Semester.AdditionalAssignments)
-    {
-        <td>@aa.AAHours</td>
-    }
+            @*</EditForm>*@
+
+            @foreach (var aa in Semester.AdditionalAssignments)
+                {
+                <td>@aa.AAHours</td>
+                }
 
 
 
@@ -163,5 +164,11 @@
 
 
 
- 
 }
+<style>
+    .editForm {
+        color: powderblue;
+        width: 100px;
+    }
+   
+</style>

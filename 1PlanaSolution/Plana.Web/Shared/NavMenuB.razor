@@ -1,0 +1,27 @@
+﻿
+<MatList>
+    @*<p>
+        assignment plan for
+    </p>*@
+    <p>
+        @*<MatSelectItem Style="position:center;" Class="my-item-class" @bind-Value="@value1" Items="@year_values"></MatSelectItem>*@
+        <MatSelectItem  Class="my-item-class" @bind-Value="@value1" Items="@year_values"></MatSelectItem>
+    </p>
+</MatList>
+
+@code {
+    string value1 = "2020-2021";
+
+    string[] year_values = new[]
+    {
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+    };
+}
+<style>
+    .my-item-class {
+        width:100%;
+       text-align:center;
+    }
+</style>

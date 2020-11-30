@@ -585,7 +585,7 @@ namespace Plana.Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Plana.Models.Semester", "Semester")
+                    b.HasOne("Plana.Models.Semester", null)
                         .WithMany("ModuleRuns")
                         .HasForeignKey("SemesterId")
                         .OnDelete(DeleteBehavior.Cascade)

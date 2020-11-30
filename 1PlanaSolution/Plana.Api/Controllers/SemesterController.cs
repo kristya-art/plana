@@ -118,14 +118,7 @@ namespace Plana.Api.Controllers
                      "Error retrieving data from the database");
             }
         }
-        //[HttpPost]
-        //public async Task<ActionResult<Semester>> PostSemester(Semester semester)
-        //{
-        //    _context.Semesters.Add(semester);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction(nameof(GetSemester), new { id = semester.SemesterId }, semester);
-        //}
+        
         //example-pseudo-code
         //[HttpPut]
         //public async Task<IActionResult> UpdateSemester(SemesterDto semesterDto)
@@ -209,7 +202,3 @@ namespace Plana.Api.Controllers
         }
     }
 }
-
-/**  System.InvalidOperationException: A second operation started on this context before a previous operation completed. 
- * This is usually caused by different threads using the same instance of DbContext. For more information
- * on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.*/

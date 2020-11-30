@@ -36,14 +36,14 @@ namespace Plana.Api.BizLogic
            
 
         };
-            if (plandto.PlanLecturers != null)
-            { createdPlan.PlanLecturers = plandto.PlanLecturers; }
-            if (plandto.AutumnSemester != null) {
-                createdPlan.AutumnSemester = plandto.AutumnSemester;
-            }
-            if (plandto.SpringSemester != null) {
-                createdPlan.SpringSemester = plandto.SpringSemester;
-            }
+            //if (plandto.PlanLecturers != null)
+            //{ createdPlan.PlanLecturers = plandto.PlanLecturers; }
+            //if (plandto.AutumnSemester != null) {
+            //    createdPlan.AutumnSemester = plandto.AutumnSemester;
+            //}
+            //if (plandto.SpringSemester != null) {
+            //    createdPlan.SpringSemester = plandto.SpringSemester;
+            //}
 
             if (!HasErrors)
                 _context.Plans.Add(createdPlan);

@@ -450,7 +450,7 @@ namespace Plana.Api.Models
                 {
                     new ModuleRun
                     { Code = "a",
-                      Semester = s2,
+                      SemesterId = s2.SemesterId,
                       Module = csbasics,
                       Place = "Biel",
                       LecturersMR = new List<LecturerModuleRun>
@@ -464,7 +464,7 @@ namespace Plana.Api.Models
                     new ModuleRun
                     { 
                       Code = "q",
-                      Semester = s3,
+                      SemesterId = s3.SemesterId,
                       Place = "Bern",
                       Module = projectAndTraining1
 
@@ -473,7 +473,7 @@ namespace Plana.Api.Models
                     new ModuleRun
                     { 
                       Code ="b",
-                      Semester = s2,
+                      SemesterId = s2.SemesterId,
                       Module = csbasics,
                       Place = "Biel",
                        LecturersMR = new List<LecturerModuleRun>
@@ -517,20 +517,20 @@ namespace Plana.Api.Models
                 {
                     Code = "p",
                     Module = m2,
-                    Semester = s3
+                    SemesterId = s3.SemesterId
                 };
                 ModuleRun q_ucd = new ModuleRun
                 {
                     Code = "q",
                     Module = m2,
-                    Semester = s1
+                    SemesterId = s1.SemesterId
                 };
 
                 ModuleRun c = new ModuleRun
                 { 
                     Code="a",
                    Module = m6,
-                   Semester =s2,
+                   SemesterId =s2.SemesterId,
                    LecturersMR = new List<LecturerModuleRun> { 
                    
                    new LecturerModuleRun{ Lecturer =misha}
@@ -555,7 +555,7 @@ namespace Plana.Api.Models
                 ModuleRun project2MR = new ModuleRun
                 {
                     Module = project2,
-                    Semester = s4,
+                    SemesterId = s4.SemesterId,
                     LecturersMR = lmrcol,
                     Place = "Biel",
                     Code = "b"
@@ -584,35 +584,40 @@ namespace Plana.Api.Models
                 context.SaveChanges();
 
                 //seed data for plan
-
-                Plan plan23_24 = new Plan
+                Semester as_21_24 = new Semester()
                 {
-                    Year = "2023-2024",
-                    AutumnSemester = new Semester()
-                    {
-                        Code = "2023-2024 - HS",
-                        Date = new DateTime(2021, 08, 13),
-                        LecturersSemesters = new List<LecturerSemester>
+                    Code = "2023-2024 - HS",
+                    Date = new DateTime(2021, 08, 13),
+                    LecturersSemesters = new List<LecturerSemester>
                         {
                             new LecturerSemester { Lecturer = margo },
                             new LecturerSemester { Lecturer = alic }
 
                         }
-                    },
-                    
-
-                SpringSemester = new Semester()
+                };
+                Semester ss_24 = new Semester()
                 {
                     Code = "2024 - FS",
-                    Date = new DateTime(2021, 08, 13),
+                    Date = new DateTime(2024, 08, 13),
                     LecturersSemesters = new List<LecturerSemester>
                     {
                        new LecturerSemester{Lecturer= margo},
                        new LecturerSemester{Lecturer= alic}
 
                     }
-                }
+                
             };
+
+
+                Plan plan23_24 = new Plan
+                {
+                    Year = "2023-2024",
+                    AutumnSemester= as_21_24,
+
+
+                    SpringSemester = ss_24
+                };
+
                 Plan plan24_25 = new Plan
                 {
                     Year = "2024-2025",
@@ -620,7 +625,7 @@ namespace Plana.Api.Models
                     
 
 
-                 };
+               };
 
 
 
