@@ -1,0 +1,59 @@
+﻿@page "/search"
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<form method="get">
+   
+    <div id="inputWrapper">
+        <input id="input" type="search" autocomplete="off"
+               placeholder="Search ..."  asp-for="SearchTerm"/>
+        <div id="cont" >
+            <button id="search-button"><img src="/images/search.png" style="        height: 24px;
+        width: 24px; color:aqua" /></button>
+        </div>
+       @*<div id="imageContainer" style="background-color:transparent;">
+            <img src="/images/search.png" style="        height: 24px;
+        width: 24px;"  />
+        </div>*@
+        
+    </div>
+        
+   
+</form>
+
+@code {
+    public string SearchTerm { get; set; }
+}
+<style>
+
+
+    #input {
+        background-color: var(--search-box-bg, white);
+        border: none;
+        border-radius: calc(0.5 * var(--ntp-realbox-height));
+        color: var(--search-box-text);
+        font-size: 16px;
+        height: 100%;
+        outline: none;
+        padding-inline-end: 40px;
+        padding-inline-start: 52px;
+        position: relative;
+        width: 100%;
+        padding: 6px;
+        margin-top: 8px;
+    }
+
+   
+    #inputWrapper #cont  {
+        height: 100%;
+        left: 330px;
+        position: absolute;
+        top: 12px;
+        border: none;
+        border-radius: calc(0.5 * var(--ntp-realbox-height));
+    }
+    #inputWrapper #cont #search-button {
+        border: none;
+        color:aqua
+    }
+
+</style>
