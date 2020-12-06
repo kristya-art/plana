@@ -1,0 +1,38 @@
+﻿@page "/customSelect"
+
+<EditForm Model="@Plan">
+    <div class="form-group row">
+        <label for="year" class="col-form-label">
+            Plan for
+        </label>
+        <div class="col-sm-10">
+            <InputSelect id="plan" @bind-Value="Plan.Year" class="form-control">
+                @foreach (var plan in Plans)
+                { 
+                   <option value="@plan.Id">@plan.Year</option>
+                }
+            </InputSelect>
+            
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+    [Inject]
+    public IPlanService PlanService { get; set; }
+
+    public Plan Plan { get; set; } = new Plan();
+
+    public List<Plan> Plans = new List<Plan>();
+
+    //[Parameter]
+    //public string Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Plan = await PlanService.GetPlan(1);
+
+        Plans = (await PlanService.GetPlans()).ToList();
+    }
+}

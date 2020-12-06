@@ -12,11 +12,27 @@
         <div class="search" style="overflow:hidden;height:60px">
             <Plana.Web.Pages.template_components.Search />
         </div>
+        <div class="matList" style="overflow:hidden;height:60px">
+            <MatList>
+                @*<p>
+                assignment plan for
+            </p>*@
+                <p>
+                    @*<MatSelectItem Style="position:center;" Class="my-item-class" @bind-Value="@value1" Items="@year_values"></MatSelectItem>*@
+                    <MatSelectItem Class="my-item-class" @bind-Value="@value1" Items="@year_values"></MatSelectItem>
+                </p>
+            </MatList>
+        </div>
+
         <div class="avatar w3-right">
-            <img src="/images/avatar.png" class="img-fluid" href="/myaccount" @onclick="@navigateToMyAccount" />
+            <a href="/myaccount">
+                <img src="/images/avatar.png" class="img-fluid" />
+            </a>
         </div>
         <div class="logo-image  w3-right">
-            <img src="/images/logo.png" class="img-fluid" href="/home">
+            <a href="/home">
+                <img src="/images/logo.png" class="img-fluid" />
+            </a>
 
 
         </div>
@@ -86,6 +102,16 @@
         navigationManager.NavigateTo("/myAccount", true);
 
     }
+    #endregion
+    #region mat select item
+    string value1 = "2020-2021";
+
+    string[] year_values = new[]
+    {
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+    };
     #endregion
 }
 <style>
@@ -188,7 +214,12 @@
         color: rgba(0,0,0,.87);
         display: flex;
         font-size: 16px;
+       
     }
+    .matList {
+
+    }
+    
     /*button style*/
     .btn-group button {
 
@@ -237,6 +268,11 @@
         /* position: fixed;*/
     }
 
-   
+   /**  mat select item*/
+    .my-item-class {
+        width: 100%;
+        text-align: center;
+    }
+
 
 </style>
