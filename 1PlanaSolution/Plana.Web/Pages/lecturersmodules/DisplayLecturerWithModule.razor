@@ -53,16 +53,5 @@
         SelectedTitle == title ? "bg-info text-white" : "";
     public IEnumerable<string> Titles => LM.Select(m => m.Module).Select(mn => mn.Title);
 
-    //[Inject]
-    //public ILecturersModulesService lmService { get; set; }
-
-
-
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    LecturersModules = (await lmService.GetLecturersModules()).ToList();
-
-    //}
-    //public IEnumerable<LecturersModules> LecturersModules { get; set; }
 
 }

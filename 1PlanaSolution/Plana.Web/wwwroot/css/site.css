@@ -210,23 +210,15 @@ img {
 .topnav .logo-image {
     width: 75px;
     height: 59px;
+    left:0;
     /*border-radius: 50%;*/
     overflow: hidden;
-    margin-right: 30px;
-   /* margin-top: -20px;*/
+/*    margin-right: 30px;
+*/    margin-top: -45px;
    /* position: fixed;*/
    /* right: 10px;*/
 }
-/*.top-row .logo-image {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    overflow: hidden;*/
-   /* margin-top: -20px;*/
-   /*position: fixed;
-    right:10px;
-    
-}*/
+
 
 
 /****************              vertical menu            */
