@@ -1,0 +1,68 @@
+﻿@page "/editplan/{id}"
+@page "/editplan"
+@using MatBlazor;
+@using Plana.Models;
+@using Plana.Web.Pages.plan.study_director
+<h3>EditPlan</h3>
+
+<EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
+    <div class="form-group row">
+
+        <InputText id="year" @bind-Value="Plan.Year" />
+       
+
+        @*<div class="col-sm-5">
+            <InputText id="semesterCode" @bind-Value="Plan.SpringSemester.Code" class="form-control">
+               
+            </InputText>
+        </div>*@
+    </div>
+
+
+
+</EditForm>
+
+@code {
+    [Inject]
+    public IPlanService PlanService { get; set; }
+
+    public Plan Plan { get; set; } = new Plan();
+
+    public List<Plan> Plans { get; set; } = new List<Plan>();
+
+    [Parameter]
+    public string Id { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        int.TryParse(Id, out int planId);
+
+        if (planId != 0)
+        {
+            Plan = await PlanService.GetPlan(int.Parse(Id));
+        }
+
+        else {
+            Plan = new Plan { };
+
+
+
+        }
+        Plans = (await PlanService.GetPlans()).ToList();
+
+    }
+
+    protected async Task HandleValidSubmit()
+    {
+        Plan result = null;
+        if (Plan.Id != 0)
+        {
+            await PlanService.UpdatePlan(Plan);
+        }
+        else
+        {
+            result = await PlanService.CreatePlan(Plan);
+        }
+
+    }
+}

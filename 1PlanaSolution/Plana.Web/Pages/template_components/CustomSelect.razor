@@ -1,38 +1,83 @@
 ﻿@page "/customSelect"
 
-<EditForm Model="@Plan">
-    <div class="form-group row">
-        <label for="year" class="col-form-label">
-            Plan for
-        </label>
-        <div class="col-sm-10">
-            <InputSelect id="plan" @bind-Value="Plan.Year" class="form-control">
-                @foreach (var plan in Plans)
-                { 
-                   <option value="@plan.Id">@plan.Year</option>
-                }
-            </InputSelect>
-            
-        </div>
-    </div>
-</EditForm>
+@*<EditForm Model="@Plan">*@
+@if (Plans == null)
+{ return; }
+<select class="form-control" @bind="SelectedPlan.Id">
+
+    @foreach (var plan in Plans)
+    {
+
+        <option value="@plan.Id">
+            @plan.Year
+
+            @*<a href="@($"/editplan/{plan.Id}")">@plan.Year</a>*@
+
+        </option>
+    }
+   </select>
+
+
+
+<MatFAB Icon="@MatIconNames.Add" Label="@SelectedPlan.Year">
+
+    <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
+</MatFAB>
+
+@if (Plans == null)
+{ return; }
+
+@foreach (var plan in Plans)
+{
+    <MatFAB Icon="@MatIconNames.Add" Label="@plan.Year">
+
+        <a href="@($"/editplan/{plan.Id}")">@plan.Year</a>
+    </MatFAB>
+
+}
 
 
 @code {
+   
+    [Inject]
+    public NavigationManager NavManager { get; set; }
     [Inject]
     public IPlanService PlanService { get; set; }
-
+    [Parameter]
     public Plan Plan { get; set; } = new Plan();
+    public Plan SelectedPlan { get; set; } = new Plan();
+    public List<Plan> Plans { get; set; }
 
-    public List<Plan> Plans = new List<Plan>();
 
-    //[Parameter]
-    //public string Id { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    public string Id { get; set; }
+
+    protected async override Task OnInitializedAsync()
     {
-        Plan = await PlanService.GetPlan(1);
 
+        //Id = Id ?? "1";
         Plans = (await PlanService.GetPlans()).ToList();
+        //Plan = (await PlanService.GetPlan(int.Parse(Id)));
+        //Id = Plan.Id.ToString();
+        //Plan = (await PlanService.GetPlan(int.Parse(Id)));
     }
+    //#region method
+    public void NavigateToModulesPlanPage()
+    {
+        string Id = Plan.Id.ToString();
+        NavManager.NavigateTo($"/editplan/{Id}", true);
+    }
+
+    //#endregion
+
+    
 }
+
+<style>
+    .customS {
+        display: table-cell;
+        vertical-align: middle;
+        height: 50px;
+        border: 1px solid #354496;
+    }
+</style>

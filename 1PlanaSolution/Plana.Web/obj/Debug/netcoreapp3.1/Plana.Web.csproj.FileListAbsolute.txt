@@ -219,9 +219,7 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Shared\TopBar.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\template_components\Search.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\template_components\Search.razor.g.cs
-C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\plan\study_director\Sd_modulesPlan.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\template_components\SdNavBar.razor.g.cs
-C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\plan\study_director\Sd_modulesPlan.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\template_components\SdNavBar.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\plan\study_director\Sd_lecturersPlan.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\plan\study_director\Sd_lecturersPlan.razor.g.cs
@@ -229,3 +227,5 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\plan\study_director\Sd_make_new_plan.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\template_components\CustomSelect.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\template_components\CustomSelect.razor.g.cs
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\plan\study_director\EditPlan.razor.g.cs
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\plan\study_director\EditPlan.razor.g.cs
