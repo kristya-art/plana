@@ -4,26 +4,6 @@
 
 @inherits EditSemesterBase
 @if (Semesters == null || Semester == null) { return; }
-<!--<MatAppBarContainer>
-    <MatAppBar Fixed="true">
-        <MatAppBarRow>
-            <MatAppBarSection>
-                <MatIconButton Icon="menu"></MatIconButton>
-                <MatAppBarTitle>Plan for @Semester.Code</MatAppBarTitle>
-            </MatAppBarSection>
-            <MatAppBarSection Align="@MatAppBarSectionAlign.End">-->
-@*<MatIconButton Icon="favorite"></MatIconButton>*@
-<!--<MatButton Outlined="true" @onclick="@(e=>openModules())">Modules view</MatButton>
-
-            </MatAppBarSection>
-        </MatAppBarRow>
-    </MatAppBar>
-
-    <MatAppBarContent>
-        Content
-    </MatAppBarContent>
-</MatAppBarContainer>-->
-
 
 <h2>
     @Semester.Code
@@ -70,8 +50,6 @@
                 <DataAnnotationsValidator />*@
 
             @if (Semester.ModuleRuns == null) { return; }
-
-
             <td>@context.Code</td>
 
             <td>@context.Module.Code</td>

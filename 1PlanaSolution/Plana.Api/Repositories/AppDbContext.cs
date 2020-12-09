@@ -33,6 +33,8 @@ namespace Plana.Api.Models
         public DbSet<Plan> Plans { get; set; }
         public DbSet<PlanLecturer> PlanLecturers {get;set;}
 
+        public DbSet<ModuleRunLecturerGroup> ModuleRunLecturerGroups { get; set; }
+
 
        
       
@@ -101,10 +103,13 @@ namespace Plana.Api.Models
             /**PlanLecturers*/
             modelBuilder.Entity<PlanLecturer>()
                 .HasKey(x => new { x.PlanId, x.LecturerId });
+            /** LecturerModuleGroup **/
+            modelBuilder.Entity<ModuleRunLecturerGroup>()
+                .HasKey(x => new { x.ModuleRunId, x.LecturerGroupId });
 
-           
             //-------------------------------------------------
             /** LecturersModuleRuns */
+
             modelBuilder.Entity<Lecturer>()
                 .HasMany(x => x.LecturersModuleRuns)
                 .WithOne(xt => xt.Lecturer)
@@ -181,7 +186,21 @@ namespace Plana.Api.Models
                .HasMany(x => x.PlanLecturers)
                .WithOne(xt => xt.Lecturer)
                .HasForeignKey(xt => xt.LecturerId);
-            //------------------------------------------------
+
+            /**ModuleRunLecturerGroup*/
+
+
+            modelBuilder.Entity<ModuleRun>()
+                           .HasMany(x => x.ModuleRunLecturerGroups)
+                           .WithOne(xt => xt.ModuleRun)
+                           .HasForeignKey(xt => xt.ModuleRunId);
+
+            modelBuilder.Entity<LecturerGroup>()
+               .HasMany(x => x.ModuleRunLecturerGroups)
+               .WithOne(xt => xt.LecturerGroup)
+               .HasForeignKey(xt => xt.LecturerGroupId);
+
+            //------------------------------- ----------------
             /** other relationships */
             /** Plan ---> Semesters *one ---> one (unidirectional)*/
 

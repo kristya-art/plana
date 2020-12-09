@@ -7,13 +7,9 @@
 
     @foreach (var plan in Plans)
     {
-
-        <option value="@plan.Id">
+      <option value="@plan.Id">
             @plan.Year
-
-            @*<a href="@($"/editplan/{plan.Id}")">@plan.Year</a>*@
-
-        </option>
+      </option>
     }
    </select>
 

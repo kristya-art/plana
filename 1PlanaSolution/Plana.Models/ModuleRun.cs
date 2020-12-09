@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plana.Api.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -27,16 +28,17 @@ namespace Plana.Models
         //1/3, 1/2, 1/4
         //public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
         //many-many
-        // public HashSet<Lecturer> Lecturers {get;set;}
-        public ICollection<LecturerModuleRun> LecturersMR { get; set; }
+         public ICollection<LecturerModuleRun> LecturersMR { get; set; }
        
         public int ModuleId { get; set; } // Foreign key many-to-one
 
         public int SemesterId { get; set; } //Foreign key many-to-one
         
         public ModuleGroup ModuleGroup { get; set; }
-       
 
+
+        public ICollection<ModuleRunLecturerGroup> ModuleRunLecturerGroups { get; set; }
+       
 
     }
 }

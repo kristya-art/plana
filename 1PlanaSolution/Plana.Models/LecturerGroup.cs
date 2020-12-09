@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plana.Api.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,6 +16,7 @@ namespace Plana.Models
         public  ICollection<LecturerGroupModuleGroup> LecturerGroupModuleGroup { get; set; }
        //[parent]
         public ICollection<LecturerGroup> LecturerSubGroups { get; set; }
-        
+        public ICollection<ModuleRunLecturerGroup> ModuleRunLecturerGroups { get; set; }
+
     }
 }

@@ -457,6 +457,7 @@ namespace Plana.Api.Models
                       { 
                        new LecturerModuleRun{ Lecturer = michele},
                        new LecturerModuleRun{ Lecturer = l2}
+                       
                       }
                       
                       

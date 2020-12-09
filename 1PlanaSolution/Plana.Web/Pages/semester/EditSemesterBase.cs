@@ -43,7 +43,7 @@ namespace Plana.Web.Pages.semester
 
         /// <summary>
         /// 
-        /// Id will be pass in the URL. This property will automatically receive 
+        /// Id will be pass in the URL. This property will automatically receive it
         /// </summary>
         [Parameter]
         public string Id { get; set; }

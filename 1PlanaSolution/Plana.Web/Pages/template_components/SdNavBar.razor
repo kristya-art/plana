@@ -12,17 +12,7 @@
         <div class="search" style="overflow:hidden;height:60px">
             <Plana.Web.Pages.template_components.Search />
         </div>
-        <div class="matList" style="overflow:hidden;height:60px">
-            <MatList>
-                @*<p>
-                assignment plan for
-            </p>*@
-                <p>
-                    @*<MatSelectItem Style="position:center;" Class="my-item-class" @bind-Value="@value1" Items="@year_values"></MatSelectItem>*@
-                    <MatSelectItem Class="my-item-class" @bind-Value="@value1" Items="@year_values"></MatSelectItem>
-                </p>
-            </MatList>
-        </div>
+       @*here shall be  the select drop-down  *@
 
         <div class="avatar w3-right">
             <a href="/myaccount">
@@ -103,16 +93,7 @@
 
     }
     #endregion
-    #region mat select item
-    string value1 = "2020-2021";
-
-    string[] year_values = new[]
-    {
-      "2020-2021",
-      "2021-2022",
-      "2022-2023",
-    };
-    #endregion
+    
 }
 <style>
     .topnav {
