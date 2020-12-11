@@ -40,17 +40,48 @@ namespace Plana.Api.Services
         public async Task<IEnumerable<Plan>> GetAllPlans()
         {
            return await _context.Plans
-                   .Include(x => x.AutumnSemester)
+                   //.Include(x => x.AutumnSemester)
+                   .Include(x=>x.Semesters)
                    .ThenInclude(xa => xa.ModuleRuns)
-                   .Include(x => x.SpringSemester)
-                   .ThenInclude(xs => xs.ModuleRuns)
+                   //.Include(x => x.SpringSemester)
+                   //.ThenInclude(xs => xs.ModuleRuns)
 
                 .ToListAsync();
         }
 
-        public async Task<Plan> GetPlan(int planId)
+        public async Task<Plan> GetPlan(int? planId)
         {
-            return await _context.Plans.FindAsync(planId);
+            if (planId == null)
+            {
+                return NotFound();
+            }
+             
+          var result = await _context.Plans
+                 //.Include(e => e.AutumnSemester)
+                 .Include(e=>e.Semesters)
+                     .ThenInclude(s => s.ModuleRuns)
+                         .ThenInclude(mr => mr.LecturersMR)
+                             .ThenInclude(l => l.Lecturer)
+                .Include(e=>e.Semesters)
+                    .ThenInclude(s=>s.ModuleRuns)
+                        .ThenInclude(m=>m.Module)
+                .Include(e=>e.Semesters)
+                  .ThenInclude(a=>a.AdditionalAssignments)
+                 //.Include(e => e.SpringSemester)
+                 // .ThenInclude(s => s.ModuleRuns)
+                 //        .ThenInclude(mr => mr.LecturersMR)
+                 //            .ThenInclude(l => l.Lecturer)
+                 .Include(e => e.PlanLecturers)
+
+               .FirstOrDefaultAsync(e => e.Id == planId);
+            return result;
+
+            // return await _context.Plans.FindAsync(planId);
+        }
+
+        private Plan NotFound()
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -77,11 +108,11 @@ namespace Plana.Api.Services
         //        {
         //            await _semesterRepository.UpdateSemester(plan.AutumnSemester);
         //        }
-                //result.SpringSemester.LecturersSemesters = plan.SpringSemester.LecturersSemesters;
-                //result.AutumnSemester.LecturersSemesters = plan.AutumnSemester.LecturersSemesters;
+        //result.SpringSemester.LecturersSemesters = plan.SpringSemester.LecturersSemesters;
+        //result.AutumnSemester.LecturersSemesters = plan.AutumnSemester.LecturersSemesters;
 
 
-                
+
 
         //        await _context.SaveChangesAsync();
 

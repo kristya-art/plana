@@ -27,13 +27,7 @@ namespace Plana.Api.Models
         public async Task<Semester> GetSemester(int? semesterId)
         {
 
-            //return await context.Semesters
-
-            //    //.Include(e => e.ModuleRuns)
-            //    //.Include(e => e.LecturersSemesters)
-
-            //   .FindAsync(semesterId);
-            if (semesterId == null)
+         if (semesterId == null)
             {
                 return NotFound();
             }

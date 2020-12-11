@@ -27,10 +27,11 @@ namespace Plana.Web.Pages.plan.study_director
         public List<Plan> Plans { get; set; }
         public List<Semester> Semesters{ get; set; }
         public ModuleRun ModuleRun { get; set; } = new ModuleRun();
-        public Semester AutumnSemester { get; set; }
-        public Semester SpringSemester { get; set; } 
+        //public Semester AutumnSemester { get; set; }
+        //public Semester SpringSemester { get; set; }
 
-        public List<ModuleRun> ModuleRuns { get; set; } 
+        public List<ModuleRun> ModuleRuns { get; set; } = new List<ModuleRun>();
+       
 
         public Lecturer Lecturer { get; set; } 
         public List<Lecturer> Lecturers { get; set; }
@@ -50,9 +51,10 @@ namespace Plana.Web.Pages.plan.study_director
             if (planId != 0)
             {
                 Plan = await PlanService.GetPlan(int.Parse(Id));
-                AutumnSemester = Plan.AutumnSemester;
-                SpringSemester = Plan.SpringSemester;
+                //AutumnSemester = Plan.AutumnSemester;
+                //SpringSemester = Plan.SpringSemester;
                 
+               
                 
             }
 
@@ -61,8 +63,8 @@ namespace Plana.Web.Pages.plan.study_director
                 Plan = new Plan { };
                 Semester = new Semester { };
                 ModuleRun = new ModuleRun { };
-                AutumnSemester = new Semester { };
-                SpringSemester = new Semester { };
+                //AutumnSemester = new Semester { };
+                //SpringSemester = new Semester { };
                 
 
 
@@ -78,14 +80,14 @@ namespace Plana.Web.Pages.plan.study_director
             Plan result = null;
             if (Plan.Id != 0)
             {
-                if (AutumnSemester.SemesterId != 0)
-                {
-                    await SemesterService.UpdateSemester(AutumnSemester);
-                }
-                if (SpringSemester.SemesterId != 0)
-                {
-                    await SemesterService.UpdateSemester(SpringSemester);
-                }
+                //if (AutumnSemester.SemesterId != 0)
+                //{
+                //    await SemesterService.UpdateSemester(AutumnSemester);
+                //}
+                //if (SpringSemester.SemesterId != 0)
+                //{
+                //    await SemesterService.UpdateSemester(SpringSemester);
+                //}
                 await PlanService.UpdatePlan(Plan);
                 
             }
@@ -108,6 +110,17 @@ namespace Plana.Web.Pages.plan.study_director
         //    else { result = await SemesterService.CreateSemester(Semester); }
         //}
 
+        protected async Task UpdateMR()
+        {
+            ModuleRun result = null;
+
+            if (ModuleRun.ModuleRunId != 0)
+            {
+
+                result = await ModuleRunService.UpdateModuleRun(ModuleRun);
+            }
+            else { result = await ModuleRunService.CreateModuleRun(ModuleRun); }
+        }
 
 
     }

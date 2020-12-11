@@ -1,130 +1,201 @@
 ﻿@page "/editplan/{id}"
 @page "/editplan"
 @using MatBlazor;
-@using Plana.Models;
+@*@using Plana.Models;*@
 @using Plana.Web.Pages.plan.study_director;
 
 @inherits EditPlanBase
-@if (Plan == null || Plans==null) { return; }
-    @*@if (Plan.AutumnSemester == null) { return; }
-     @if (Plan.AutumnSemester.ModuleRuns == null) { return; }*@
+@if (Plan == null || Plans == null) { return; }
+@*@if (Plan.AutumnSemester == null) { return; }
+    @if (Plan.AutumnSemester.ModuleRuns == null) { return; }*@
 
 
-        <h3>EditPlan</h3>
+<h3>EditPlan</h3>
 
-        <EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
-            <div class="form-group row">
+<EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
+    <div class="form-group row">
 
-                <InputText id="year" @bind-Value="Plan.Year" />
-            </div>
-        </EditForm>
-        @*table*@
-        @*@if(showModulesPlanTable)*@
+        <InputText id="year" @bind-Value="Plan.Year" />
+    </div>
 
 
 
-        @*<MatTable Items="@Plan" Class="mat-elevation-z3"
-                  FilterByColumnName="Module-Title">
-            <MatTableHeader>*@
-                <th></th>
-                @*<th>Semester</th>
-                <th>Module</th>
-                <th>Module Title</th>
-                <th>Module-Group</th>
-                <th>Place</th>
-                <th>Module Total Hours</th>
-                <th>Lecturers Group</th>
-                <th>Lecturers</th>
-                <th>Set Lecturers hours</th>
-                <th>Actions</th>
-                <th>notes</th>*@
-
-            @*</MatTableHeader>
-            <MatTableRow>*@
-                <td></td>
-                <!--@if (Plan.AutumnSemester != null)
-                        {
-                    <td>@Plan.AutumnSemester.Code</td>
-                    @if (Plan.AutumnSemester.ModuleRuns != null)
-                            {
-                        @foreach (var MR in Plan.AutumnSemester.ModuleRuns)
-                        {
-                        <td>@MR.Module.Code</td>
-                        <td>@MR.Module.Title</td>
-                        <td>@MR.ModuleGroup</td>
-                        <td>@MR.Place</td>
-                        <td>@MR.Module.TotalHours</td>-->
-
-                        @*<td>@MR.ModuleRunLecturerGroups</td>*@
-                        <!--}
-                        @foreach (var lmr in LecturerModuleRun)
-                                {
-                            <p>
-                                <MatTextField @bind-Value="lmr.Lecturer.FirstName" Label="@lmr.Lecturer.FirstName" Outlined="true"></MatTextField>
-                                <MatButton Raised="true" Icon="add" title="Add lecturer"></MatButton>
-
-                            </p>
-                            <td>@lmr.Hours</td>
-                                }
-                            }
-                        }
-                <td>
-                    <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="edit" title="Edit plan"></MatButton>
-                    <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
-                    <form>
-                        <MatButton type="submit" name="HandleValieSubmit" @onclick="HandleValidSubmit">OK</MatButton>
-                    </form>
-                </td>
-                <td>
-                </td>-->
-
-            @*</MatTableRow>
 
 
-        </MatTable>*@
-    
-   
-    @code {
-        //[Inject]
-        //public IPlanService PlanService { get; set; }
+    table
+    @*@if(showModulesPlanTable)*@
 
-        //public Plan Plan { get; set; } = new Plan();
-
-        //public List<Plan> Plans { get; set; } = new List<Plan>();
-
-        //[Parameter]
-        //public string Id { get; set; }
-
-        //protected async override Task OnInitializedAsync()
-        //{
-        //    int.TryParse(Id, out int planId);
-
-        //    if (planId != 0)
-        //    {
-        //        Plan = await PlanService.GetPlan(int.Parse(Id));
-        //    }
-
-        //    else {
-        //        Plan = new Plan { };
+</EditForm>
 
 
+<!--<MatTable Items="@Plan.PlanLecturers" class="mat-elevation-z3"
+          FilterByColumnName="Module-Title">
+    <MatTableHeader>
+        <th>SemesterId</th>
+        <th>Semester</th>
+        <th style="width:100%; height:20%;">Details</th>-->
+@*<th>Module</th>
+    <th>Module Title</th>
+    <th>Module-Group</th>
+    <th>Place</th>
+    <th>Module Total Hours</th>
+    <th>Lecturers Group</th>
+    <th>Lecturers</th>
+    <th>Set Lecturers hours</th>
+    <th>Actions</th>
+    <th>notes</th>*@
 
-        //    }
-        //    Plans = (await PlanService.GetPlans()).ToList();
-
-        //}
-
-        //protected async Task HandleValidSubmit()
-        //{
-        //    Plan result = null;
-        //    if (Plan.Id != 0)
-        //    {
-        //        await PlanService.UpdatePlan(Plan);
-        //    }
-        //    else
-        //    {
-        //        result = await PlanService.CreatePlan(Plan);
-        //    }
-
-        //}
+<!--</MatTableHeader>
+<MatTableRow Context="context2">
+    @if (Plan.PlanLecturers != null)
+    {
+        <td>@context2.Lecturer.FirstName</td>
+        <td>@context2.Lecturer.BirthDate</td>
     }
+</MatTableRow>-->
+@*<MatTableRow>
+        <td></td>
+        @if (Plan.AutumnSemester != null)
+        {
+            <td>@Plan.AutumnSemester.Code</td>
+            @if (Plan.AutumnSemester.ModuleRuns != null)
+            {
+                @foreach (var MR in Plan.AutumnSemester.ModuleRuns)
+                {
+                    <td>@MR.Module.Code</td>
+                    <td>@MR.Module.Title</td>
+                    <td>@MR.ModuleGroup</td>
+                    <td>@MR.Place</td>
+                    <td>@MR.Module.TotalHours</td>
+
+                    <td>@MR.ModuleRunLecturerGroups</td>
+
+                    @foreach (var lmr in MR.LecturersMR)
+                    {
+                        <p>
+                            <MatTextField @bind-Value="lmr.Lecturer.FirstName" Label="@lmr.Lecturer.FirstName" Outlined="true"></MatTextField>
+                            <MatButton Raised="true" Icon="add" title="Add lecturer"></MatButton>
+
+                        </p>
+                        <td>@lmr.Hours</td>
+                    }
+                }
+            }
+        }
+        <td>
+            <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="edit" title="Edit plan"></MatButton>
+            <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
+            <form>
+                <MatButton type="submit" name="HandleValieSubmit" @onclick="HandleValidSubmit">OK</MatButton>
+            </form>
+        </td>
+        <td>
+        </td>
+
+    </MatTableRow>*@
+
+
+<!--</MatTable>-->
+
+@if (Plan == null)
+{
+    <text>Loading...</text>
+}
+else
+{
+
+    @*<table class="table" itemscope="@Plan" itemid="@Plan.Id">*@
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Id</th>
+                <th>Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a class="btn btn-success">Edit</a>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+                <td>@Plan.Id</td>
+                <td>@Plan.Year</td>
+                @if (Plan.PlanLecturers != null)
+                {
+                    @foreach (var pl in Plan.PlanLecturers)
+                    {
+                        
+                        <td>@pl.Lecturer.Role</td>
+                    }
+                }
+            </tr>
+            @if (Plan.Semesters != null)
+            {
+                @foreach (var s in Plan.Semesters)
+                {
+                    foreach (var mr in s.ModuleRuns)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn btn-success">Edit</a>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                            <td>@mr.ModuleRunId</td>
+                            <td>@mr.Code</td>
+                        </tr>
+                        <tr></tr>
+                        <tr></tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    //[Inject]
+    //public IPlanService PlanService { get; set; }
+
+    //public Plan Plan { get; set; } = new Plan();
+
+    //public List<Plan> Plans { get; set; } = new List<Plan>();
+
+    //[Parameter]
+    //public string Id { get; set; }
+
+    //protected async override Task OnInitializedAsync()
+    //{
+    //    int.TryParse(Id, out int planId);
+
+    //    if (planId != 0)
+    //    {
+    //        Plan = await PlanService.GetPlan(int.Parse(Id));
+    //    }
+
+    //    else
+    //    {
+    //        Plan = new Plan { };
+
+
+
+    //    }
+    //    Plans = (await PlanService.GetPlans()).ToList();
+
+    //}
+
+    //protected async Task HandleValidSubmit()
+    //{
+    //    Plan result = null;
+    //    if (Plan.Id != 0)
+    //    {
+    //        await PlanService.UpdatePlan(Plan);
+    //    }
+    //    else
+    //    {
+    //        result = await PlanService.CreatePlan(Plan);
+    //    }
+
+    //}
+}

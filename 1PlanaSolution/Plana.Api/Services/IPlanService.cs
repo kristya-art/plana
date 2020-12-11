@@ -11,7 +11,7 @@ namespace Plana.Api.Services
         Task<IEnumerable<Plan>> GetAllPlans();
         Task<Plan> AddPlan(Plan plan);
         Task<Plan> UpdatePlan(Plan plan);
-        Task<Plan> GetPlan(int planId);
+        Task<Plan> GetPlan(int? planId);
 
     }
 }
