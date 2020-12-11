@@ -108,48 +108,99 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th></th>
-                <th>Id</th>
-                <th>Code</th>
+                
+                
+                <th>Semester</th>
+                <th>Module</th>
+                <th >Module Title</th>
+                <th>Module-Group</th>
+                <th>Place</th>
+                <th>Module Total Hours</th>
+                <th>Lecturers Group</th>
+                <th>Lecturers</th>
+                <th>Set Lecturers hours</th>
+                <th>Actions</th>
+                <th>notes</th>
             </tr>
+            
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <a class="btn btn-success">Edit</a>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-                <td>@Plan.Id</td>
-                <td>@Plan.Year</td>
-                @if (Plan.PlanLecturers != null)
-                {
-                    @foreach (var pl in Plan.PlanLecturers)
-                    {
-                        
-                        <td>@pl.Lecturer.Role</td>
-                    }
-                }
-            </tr>
+
             @if (Plan.Semesters != null)
             {
-                @foreach (var s in Plan.Semesters)
+            <tr></tr>
+
+                @foreach (var sem in Plan.Semesters)
                 {
-                    foreach (var mr in s.ModuleRuns)
-                    {
-                        <tr>
-                            <td>
-                                <a class="btn btn-success">Edit</a>
-                                <button class="btn btn-danger">Delete</button>
-                            </td>
-                            <td>@mr.ModuleRunId</td>
-                            <td>@mr.Code</td>
-                        </tr>
-                        <tr></tr>
-                        <tr></tr>
+                <tr>
+                <td>@sem.Code</td>
+                @if (sem.ModuleRuns != null)
+                   {
+                    @foreach (var mr in sem.ModuleRuns)
+                      {
+
+                        <td>@mr.Module.Code</td>
+                        <td>@mr.Module.Title</td>
+                        <td>@mr.ModuleGroup</td>
+                        <td>@mr.Place</td>
+                        <td>@mr.Module.TotalHours</td>
+
+                      }
+                
                     }
+                    </tr>
                 }
+            
             }
-        </tbody>
+                @**@
+                @*@if (Plan.Semesters != null)
+            {
+            <tr>
+                @foreach (var sem in Plan.Semesters)
+                {
+                    <td>@sem.Code</td>
+
+                    @if (sem.ModuleRuns != null)
+                    {
+                        @foreach (var mr in sem.ModuleRuns)
+                        {
+                            <td>@mr.Module.Code</td>
+                            <td>@mr.Module.Title</td>
+                            <td>@mr.ModuleGroup</td>
+                            <td>@mr.Place</td>
+                            <td>@mr.Module.TotalHours</td>
+                                 @if (mr.ModuleRunLecturerGroups != null)
+                                 {
+                                     @foreach (var lg in mr.ModuleRunLecturerGroups)
+                                     {
+                                       <td>@lg.LecturerGroup.Title</td>
+                                     }
+                                 }
+
+                                 @if (mr.LecturersMR != null)
+                                 {
+                                  @foreach (var lmr in mr.LecturersMR)
+                                    {
+                                      <td>@lmr.Lecturer.FirstName</td>
+                                     <td>@lmr.Hours</td>
+                                    }
+                                 }
+            <td>
+                <a class="btn btn-success">Edit</a>
+                <button class="btn btn-danger">Delete</button>
+            </td>
+            <td><text>notes</text></td>
+
+                        }
+                    }
+
+
+
+                }
+            </tr>
+            *@
+
+            </tbody>
     </table>
 }
 
@@ -199,3 +250,30 @@ else
 
     //}
 }
+<style>
+    .table {
+        font-family: 'ArialMT', 'Arial';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 13px;
+        letter-spacing: normal;
+        color: #333333;
+        vertical-align: none;
+        text-align: center;
+        line-height: normal;
+        text-transform: none;
+    }
+    .table th {
+        padding: 2px;
+       
+    }
+    .table tr {
+
+    }
+   .table  td {
+        text-align: center;
+    }
+    .table tr:hover {
+        background-color: #ddd;
+    }
+</style>
