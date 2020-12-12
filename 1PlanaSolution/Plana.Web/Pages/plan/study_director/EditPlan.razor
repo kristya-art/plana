@@ -4,6 +4,8 @@
 @*@using Plana.Models;*@
 @using Plana.Web.Pages.plan.study_director;
 
+@inject IJSRuntime js
+
 @inherits EditPlanBase
 @if (Plan == null || Plans == null) { return; }
 @*@if (Plan.AutumnSemester == null) { return; }
@@ -138,53 +140,63 @@ else
                     {
                         @foreach (var mr in sem.ModuleRuns)
                         {
-                            <tr>
-                                <td>@sem.GetAbbreviation()</td>
+            <tr>
+                <td>@sem.GetAbbreviation()</td>
 
-                                <td>@mr.Module.Code</td>
-                                <td>@mr.Module.Title</td>
-                                <td>@mr.ModuleGroup</td>
-                                <td>@mr.Place</td>
-                                <td>@mr.Module.TotalHours</td>
-                                @if (mr.ModuleRunLecturerGroups != null)
-                                {
-                                    <td>
-                                        @foreach (var lg in mr.ModuleRunLecturerGroups)
-                                        {
-                                            <p> @lg.LecturerGroup.Title</p>
-                                         }
-                                                
-                                    </td>
-                                }
-                                @if (mr.LecturersMR != null)
-                                {
-                                    <td>
-                                        @foreach (var lm in mr.LecturersMR)
-                                        {
-                                            <p> @lm.Lecturer.FirstName</p>
+                <td contenteditable='false'>@mr.Module.Code</td>
+                <td>@mr.Module.Title</td>
+                <td>@mr.ModuleGroup</td>
+                <td>@mr.Place</td>
+                <td>@mr.Module.TotalHours</td>
+                <td>
+                    <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                    @if (mr.ModuleRunLecturerGroups != null)
+                    {
+
+                        @foreach (var lg in mr.ModuleRunLecturerGroups)
+                        {
+                            <p style="white-space:nowrap;">
+                                @lg.LecturerGroup.Title
+                                <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                            </p>
+                        }
+                    }
+                    </td>
+                
+                    @if (mr.LecturersMR != null)
+                    {
+                        <td style="white-space:nowrap;">
+                            <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                            @foreach (var lm in mr.LecturersMR)
+                            {
+                                <p style="white-space:nowrap;">
+                                    @lm.Lecturer.SetToken()
+                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                </p>
 
 
-                                        }
-                                    </td>
-                                    <td>
-                                        @foreach (var lm in mr.LecturersMR)
-                                        {
+                            }
 
-                                            <p> @lm.Hours</p>
+                        </td>
+                        <td contenteditable='true'>
+                            @foreach (var lm in mr.LecturersMR)
+                            {
 
-                                        }
-                                    </td>
-                                }
-                                <td>
-                                    <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="edit" title="Edit plan"></MatButton>
-                                    <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
+                                <p contenteditable='true'> @lm.Hours</p>
 
-                                </td>
-                                <td><textarea>notes</textarea></td>
-                                
+                            }
+                        </td>
+                    }
+                    <td style="white-space:nowrap;">
+                        <button  class="btn" disabled id="edit-btn" @onclick="HandleValidSubmit">edit</button>
+                        <button class="btn" hidden id="save-btn" @onclick="HandleValidSubmit">save</button>
 
-                                
-                            </tr>
+                     </td>
+                    <td><textarea>...</textarea></td>
+
+
+
+                </tr>
                         }
 
                     }
@@ -274,4 +286,26 @@ else
     .table tr:hover {
         background-color: #efeacf;
     }
+
+
+    .btn {
+        background-color: white;
+        border: none;
+        
+        padding: 6px 8px;
+        font-size: 11px;
+        cursor: pointer;
+    }
+    #del {
+        color: #d24141;
+    }
+    #add {
+        color: #1919aa
+    
+    }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: #b2acb2;
+        }
 </style>
