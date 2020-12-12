@@ -40,6 +40,8 @@ namespace Plana.Web.Pages.plan.study_director
         /// </summary>
         [Parameter]
         public string Id { get; set; }
+        //List<Semester> SemesterList { get; set; }
+
         /// <summary>
         /// inside this method we call the rest api and retrieve a data
         /// </summary>
@@ -53,8 +55,8 @@ namespace Plana.Web.Pages.plan.study_director
                 Plan = await PlanService.GetPlan(int.Parse(Id));
                 //AutumnSemester = Plan.AutumnSemester;
                 //SpringSemester = Plan.SpringSemester;
-                
-               
+
+                Semesters = new List<Semester> { Plan.AutumnSemester, Plan.SpringSemester };
                 
             }
 

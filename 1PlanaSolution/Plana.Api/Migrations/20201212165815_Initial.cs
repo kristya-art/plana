@@ -71,22 +71,19 @@ namespace Plana.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Plans",
+                name: "Semesters",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    SemesterId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsFixed = table.Column<bool>(nullable: false),
-                    IsModifyable = table.Column<bool>(nullable: false),
-                    Year = table.Column<string>(nullable: true),
-                    ExpiredDate = table.Column<string>(nullable: true),
-                    OfficialPublishDate = table.Column<string>(nullable: true),
+                    Code = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Plans", x => x.Id);
+                    table.PrimaryKey("PK_Semesters", x => x.SemesterId);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,82 +175,6 @@ namespace Plana.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlanLecturers",
-                columns: table => new
-                {
-                    LecturerId = table.Column<int>(nullable: false),
-                    PlanId = table.Column<int>(nullable: false),
-                    AnnualTarget = table.Column<int>(nullable: false),
-                    BalanceActual = table.Column<int>(nullable: false),
-                    BalanceLastYear = table.Column<int>(nullable: false),
-                    BalanceAccumulated = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PlanLecturers", x => new { x.PlanId, x.LecturerId });
-                    table.ForeignKey(
-                        name: "FK_PlanLecturers_Lecturers_LecturerId",
-                        column: x => x.LecturerId,
-                        principalTable: "Lecturers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PlanLecturers_Plans_PlanId",
-                        column: x => x.PlanId,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Semesters",
-                columns: table => new
-                {
-                    SemesterId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    PlanId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Semesters", x => x.SemesterId);
-                    table.ForeignKey(
-                        name: "FK_Semesters_Plans_PlanId",
-                        column: x => x.PlanId,
-                        principalTable: "Plans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Modules",
-                columns: table => new
-                {
-                    ModuleId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    Code = table.Column<string>(nullable: true),
-                    LectPerWeek = table.Column<int>(nullable: false),
-                    TotalHours = table.Column<double>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    StudyBranchId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Modules", x => x.ModuleId);
-                    table.ForeignKey(
-                        name: "FK_Modules_StudyBranches_StudyBranchId",
-                        column: x => x.StudyBranchId,
-                        principalTable: "StudyBranches",
-                        principalColumn: "StudyBranchId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AdditionalAssignments",
                 columns: table => new
                 {
@@ -306,6 +227,92 @@ namespace Plana.Api.Migrations
                         column: x => x.SemesterId,
                         principalTable: "Semesters",
                         principalColumn: "SemesterId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Plans",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsFixed = table.Column<bool>(nullable: false),
+                    IsModifyable = table.Column<bool>(nullable: false),
+                    Year = table.Column<string>(nullable: true),
+                    ExpiredDate = table.Column<string>(nullable: true),
+                    OfficialPublishDate = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    AutumnSemesterId = table.Column<int>(nullable: true),
+                    SpringSemesterId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plans", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Plans_Semesters_AutumnSemesterId",
+                        column: x => x.AutumnSemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "SemesterId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Plans_Semesters_SpringSemesterId",
+                        column: x => x.SpringSemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "SemesterId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Modules",
+                columns: table => new
+                {
+                    ModuleId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
+                    Code = table.Column<string>(nullable: true),
+                    LectPerWeek = table.Column<int>(nullable: false),
+                    TotalHours = table.Column<double>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    StudyBranchId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Modules", x => x.ModuleId);
+                    table.ForeignKey(
+                        name: "FK_Modules_StudyBranches_StudyBranchId",
+                        column: x => x.StudyBranchId,
+                        principalTable: "StudyBranches",
+                        principalColumn: "StudyBranchId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlanLecturers",
+                columns: table => new
+                {
+                    LecturerId = table.Column<int>(nullable: false),
+                    PlanId = table.Column<int>(nullable: false),
+                    AnnualTarget = table.Column<int>(nullable: false),
+                    BalanceActual = table.Column<int>(nullable: false),
+                    BalanceLastYear = table.Column<int>(nullable: false),
+                    BalanceAccumulated = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlanLecturers", x => new { x.PlanId, x.LecturerId });
+                    table.ForeignKey(
+                        name: "FK_PlanLecturers_Lecturers_LecturerId",
+                        column: x => x.LecturerId,
+                        principalTable: "Lecturers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PlanLecturers_Plans_PlanId",
+                        column: x => x.PlanId,
+                        principalTable: "Plans",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -498,9 +505,18 @@ namespace Plana.Api.Migrations
                 column: "LecturerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Semesters_PlanId",
-                table: "Semesters",
-                column: "PlanId");
+                name: "IX_Plans_AutumnSemesterId",
+                table: "Plans",
+                column: "AutumnSemesterId",
+                unique: true,
+                filter: "[AutumnSemesterId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Plans_SpringSemesterId",
+                table: "Plans",
+                column: "SpringSemesterId",
+                unique: true,
+                filter: "[SpringSemesterId] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -542,6 +558,9 @@ namespace Plana.Api.Migrations
                 name: "Lecturers");
 
             migrationBuilder.DropTable(
+                name: "Plans");
+
+            migrationBuilder.DropTable(
                 name: "ModuleGroups");
 
             migrationBuilder.DropTable(
@@ -552,9 +571,6 @@ namespace Plana.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "StudyBranches");
-
-            migrationBuilder.DropTable(
-                name: "Plans");
         }
     }
 }

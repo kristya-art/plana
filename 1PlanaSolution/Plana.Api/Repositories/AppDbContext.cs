@@ -204,13 +204,13 @@ namespace Plana.Api.Models
             /** other relationships */
             /** Plan ---> Semesters *one ---> one (unidirectional)*/
 
-            //modelBuilder.Entity<Plan>()
-            //     .HasOne(p => p.AutumnSemester)
-            //     .WithOne();
+            modelBuilder.Entity<Plan>()
+                 .HasOne(p => p.AutumnSemester)
+                 .WithOne();
 
-            //modelBuilder.Entity<Plan>()
-            //     .HasOne(p => p.SpringSemester)
-            //     .WithOne();
+            modelBuilder.Entity<Plan>()
+                 .HasOne(p => p.SpringSemester)
+                 .WithOne();
 
             /** moduleRuns --> Module * many ---->one*/
             modelBuilder.Entity<ModuleRun>()

@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201211155357_Initial")]
+    [Migration("20201212165815_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -360,6 +360,9 @@ namespace Plana.Api.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AutumnSemesterId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
@@ -378,10 +381,21 @@ namespace Plana.Api.Migrations
                     b.Property<string>("OfficialPublishDate")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SpringSemesterId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Year")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AutumnSemesterId")
+                        .IsUnique()
+                        .HasFilter("[AutumnSemesterId] IS NOT NULL");
+
+                    b.HasIndex("SpringSemesterId")
+                        .IsUnique()
+                        .HasFilter("[SpringSemesterId] IS NOT NULL");
 
                     b.ToTable("Plans");
                 });
@@ -432,12 +446,7 @@ namespace Plana.Api.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("PlanId")
-                        .HasColumnType("int");
-
                     b.HasKey("SemesterId");
-
-                    b.HasIndex("PlanId");
 
                     b.ToTable("Semesters");
                 });
@@ -615,6 +624,17 @@ namespace Plana.Api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Plana.Models.Plan", b =>
+                {
+                    b.HasOne("Plana.Models.Semester", "AutumnSemester")
+                        .WithOne()
+                        .HasForeignKey("Plana.Models.Plan", "AutumnSemesterId");
+
+                    b.HasOne("Plana.Models.Semester", "SpringSemester")
+                        .WithOne()
+                        .HasForeignKey("Plana.Models.Plan", "SpringSemesterId");
+                });
+
             modelBuilder.Entity("Plana.Models.PlanLecturer", b =>
                 {
                     b.HasOne("Plana.Models.Lecturer", "Lecturer")
@@ -628,13 +648,6 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Plana.Models.Semester", b =>
-                {
-                    b.HasOne("Plana.Models.Plan", null)
-                        .WithMany("Semesters")
-                        .HasForeignKey("PlanId");
                 });
 #pragma warning restore 612, 618
         }

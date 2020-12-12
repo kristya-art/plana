@@ -67,12 +67,12 @@
             @foreach (var mr in context.LecturersMR)
                 {
                 @*<td>@mr.Lecturer.FirstName</td>*@
-
+            <td>
                 <p>
                     <MatTextField @bind-Value="mr.Lecturer.FirstName" Label="@mr.Lecturer.FirstName" Outlined="true"></MatTextField>
                     <MatButton Raised="true" Icon="add" title="Add lecturer"></MatButton>
 
-                </p>
+                </p> </td>
                 }
 
             <td>

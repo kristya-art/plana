@@ -787,29 +787,29 @@ namespace Plana.Api.Models
                 context.SaveChanges();
 
                 //seed data for plan
-               
-              
-               
+
+
+
 
 
                 Plan plan23_24 = new Plan
                 {
                     Year = "2023-2024",
-                 Semesters=   new List<Semester> { as_23_24,ss_24}
-                    //AutumnSemester= as_23_24,
-
-
-                    //SpringSemester = ss_24
+                    AutumnSemester = as_23_24,
+                    SpringSemester = ss_24
+                 //Semesters=   new List<Semester> { as_23_24,ss_24}
+                    
                 };
 
                 Plan plan24_25 = new Plan
                 {
                     Year = "2024-2025",
-                   
-                    
+                    AutumnSemester = as_24_25,
+                    SpringSemester = ss_25
 
 
-               };
+
+                };
 
 
 

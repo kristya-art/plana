@@ -40,11 +40,11 @@ namespace Plana.Api.Services
         public async Task<IEnumerable<Plan>> GetAllPlans()
         {
            return await _context.Plans
-                   //.Include(x => x.AutumnSemester)
-                   .Include(x=>x.Semesters)
+                   .Include(x => x.AutumnSemester)
+                   //.Include(x=>x.Semesters)
                    .ThenInclude(xa => xa.ModuleRuns)
-                   //.Include(x => x.SpringSemester)
-                   //.ThenInclude(xs => xs.ModuleRuns)
+                   .Include(x => x.SpringSemester)
+                  .ThenInclude(xs => xs.ModuleRuns)
 
                 .ToListAsync();
         }
@@ -57,20 +57,34 @@ namespace Plana.Api.Services
             }
              
           var result = await _context.Plans
-                 //.Include(e => e.AutumnSemester)
-                 .Include(e=>e.Semesters)
+                 .Include(e => e.AutumnSemester)
+                 //.Include(e=>e.Semesters)
                      .ThenInclude(s => s.ModuleRuns)
                          .ThenInclude(mr => mr.LecturersMR)
                              .ThenInclude(l => l.Lecturer)
-                .Include(e=>e.Semesters)
+                //.Include(e=>e.Semesters)
+                .Include(e=>e.AutumnSemester)
                     .ThenInclude(s=>s.ModuleRuns)
                         .ThenInclude(m=>m.Module)
-                .Include(e=>e.Semesters)
+                .Include(e=>e.AutumnSemester)
+                //.Include(e=>e.Semesters)
                   .ThenInclude(a=>a.AdditionalAssignments)
-                 //.Include(e => e.SpringSemester)
-                 // .ThenInclude(s => s.ModuleRuns)
-                 //        .ThenInclude(mr => mr.LecturersMR)
-                 //            .ThenInclude(l => l.Lecturer)
+
+ .Include(e => e.SpringSemester)
+                     //.Include(e=>e.Semesters)
+                     .ThenInclude(s => s.ModuleRuns)
+                         .ThenInclude(mr => mr.LecturersMR)
+                             .ThenInclude(l => l.Lecturer)
+                //.Include(e=>e.Semesters)
+                .Include(e => e.SpringSemester)
+                    .ThenInclude(s => s.ModuleRuns)
+                        .ThenInclude(m => m.Module)
+                .Include(e => e.SpringSemester)
+                  //.Include(e=>e.Semesters)
+                  .ThenInclude(a => a.AdditionalAssignments)
+
+
+
                  .Include(e => e.PlanLecturers)
 
                .FirstOrDefaultAsync(e => e.Id == planId);

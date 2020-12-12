@@ -25,12 +25,17 @@ namespace Plana.Models
         public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
         public ICollection<LecturerSemester> LecturersSemesters { get; set; }
-       
-      
-       
-        //public string getYear(Semester semester) {
-        //    return Plan.Year;
+
+        /// <summary>
+        /// method to take last 2 letters from the semester code "HS or FS"
+        /// </summary>
+        /// <returns></returns>
+        public string GetAbbreviation() {
+            var last2= Code.Substring(Code.Length - 2);
+            return last2;
         
-        //}
+        }
+       
+        
     }
 }
