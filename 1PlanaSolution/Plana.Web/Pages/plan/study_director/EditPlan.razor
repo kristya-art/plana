@@ -13,7 +13,7 @@
 
 
 <h3>EditPlan</h3>
-
+<button class="btn btn-primary" @onclick="CallJSMethod">show</button>
 <EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
     <div class="form-group row">
 
@@ -141,6 +141,16 @@ else
                         @foreach (var mr in sem.ModuleRuns)
                         {
                             <tr>
+                                <td>
+
+                                    <button>
+                                        @mr.Module.Title
+                                    </button>
+
+                                </td>
+                            </tr>
+
+                            <tr>
                                 <td>@sem.GetAbbreviation()</td>
 
                                 <td contenteditable='false'>@mr.Module.Code</td>
@@ -204,8 +214,9 @@ else
                                             lots of data that exceeds the dimensions
                                         </div>
                                     </td>*@
-                               
+
                             </tr>
+
                         }
 
                     }
@@ -219,6 +230,8 @@ else
 
         </tbody>
     </table>
+
+
 
 
 
@@ -249,7 +262,12 @@ else
     <button>Click Me</button>
 </div>
 
-<br/>
+<br />
+<p>Clicked: <span class="click-count">0</span></p>
+
+<br />
+
+@* other test *@
 
 
 
@@ -262,7 +280,17 @@ else
     {
         await js.InvokeVoidAsync("renderjQueryComponents");
         base.OnAfterRender(firstRender);
+
     }
+
+    private async Task CallJSMethod()
+    {
+
+        //await JS.InvokeVoidAsync("CollapseTableRow");
+        await js.InvokeVoidAsync("GetName");
+
+    }
+
 
 
     //[Inject]
@@ -337,7 +365,7 @@ else
         }
 
         .table tr:hover {
-            background-color: #efeacf;
+            background-color: #f3eff3;
         }
 
 
