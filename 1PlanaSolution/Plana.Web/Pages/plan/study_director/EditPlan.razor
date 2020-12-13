@@ -110,11 +110,11 @@ else
     <table class="table">
         <thead>
             <tr>
-                
-                
+
+
                 <th>Semester</th>
                 <th>Module</th>
-                <th >Module Title</th>
+                <th>Module Title</th>
                 <th>Module-Group</th>
                 <th>Place</th>
                 <th>Module Total Hours</th>
@@ -124,7 +124,7 @@ else
                 <th>Actions</th>
                 <th>notes</th>
             </tr>
-            
+
         </thead>
         <tbody>
 
@@ -140,81 +140,131 @@ else
                     {
                         @foreach (var mr in sem.ModuleRuns)
                         {
-            <tr>
-                <td>@sem.GetAbbreviation()</td>
+                            <tr>
+                                <td>@sem.GetAbbreviation()</td>
 
-                <td contenteditable='false'>@mr.Module.Code</td>
-                <td>@mr.Module.Title</td>
-                <td>@mr.ModuleGroup</td>
-                <td>@mr.Place</td>
-                <td>@mr.Module.TotalHours</td>
-                <td>
-                    <button class="btn" id="add"><i class="fa fa-plus"></i></button>
-                    @if (mr.ModuleRunLecturerGroups != null)
-                    {
+                                <td contenteditable='false'>@mr.Module.Code</td>
+                                <td>@mr.Module.Title</td>
+                                <td>@mr.ModuleGroup</td>
+                                <td>@mr.Place</td>
+                                <td>@mr.Module.TotalHours</td>
+                                <td>
 
-                        @foreach (var lg in mr.ModuleRunLecturerGroups)
-                        {
-                            <p style="white-space:nowrap;">
-                                @lg.LecturerGroup.Title
-                                <button class="btn" id="del"><i class="fa fa-close"></i></button>
-                            </p>
-                        }
-                    }
-                    </td>
-                
-                    @if (mr.LecturersMR != null)
-                    {
-                        <td style="white-space:nowrap;">
-                            <button class="btn" id="add"><i class="fa fa-plus"></i></button>
-                            @foreach (var lm in mr.LecturersMR)
-                            {
-                                <p style="white-space:nowrap;">
-                                    @lm.Lecturer.SetToken()
-                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
-                                </p>
+                                    @if (mr.ModuleRunLecturerGroups != null)
+                                    {
 
+                                        @foreach (var lg in mr.ModuleRunLecturerGroups)
+                                        {
+                                            <p style="white-space:nowrap;">
+                                                @lg.LecturerGroup.Title
+                                                <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                            </p>
+                                        }
+                                    }
+                                    <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                </td>
 
-                            }
+                                @if (mr.LecturersMR != null)
+                                {
 
-                        </td>
-                        <td contenteditable='true'>
-                            @foreach (var lm in mr.LecturersMR)
-                            {
+                                    <td style="white-space:nowrap;">
 
-                                <p contenteditable='true'> @lm.Hours</p>
-
-                            }
-                        </td>
-                    }
-                    <td style="white-space:nowrap;">
-                        <button  class="btn" disabled id="edit-btn" @onclick="HandleValidSubmit">edit</button>
-                        <button class="btn" hidden id="save-btn" @onclick="HandleValidSubmit">save</button>
-
-                     </td>
-                    <td><textarea>...</textarea></td>
+                                        <div id="scroll">
+                                            @foreach (var lm in mr.LecturersMR)
+                                            {
+                                                <p style="white-space:nowrap;">
+                                                    @lm.Lecturer.SetToken() | @lm.Hours
+                                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                                </p>
 
 
+                                            }
+                                            <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </td>
+                                    <td contenteditable='true'>
+                                        @foreach (var lm in mr.LecturersMR)
+                                        {
 
-                </tr>
+                                            <p contenteditable='true'> @lm.Hours</p>
+
+                                        }
+                                    </td>
+                                }
+                                <td style="white-space:nowrap;">
+                                    <button class="btn" disabled id="edit-btn" @onclick="HandleValidSubmit">edit</button>
+                                    <button class="btn" hidden id="save-btn" @onclick="HandleValidSubmit">save</button>
+
+                                </td>
+                                <td><textarea>...</textarea></td>
+
+                                @*in case of making row large*@
+                                @*<td width="500" height="300">
+                                        <div style="width: 500px; height: 300px; overflow: auto">
+                                            lots of data that exceeds the dimensions
+                                        </div>
+                                    </td>*@
+                               
+                            </tr>
                         }
 
                     }
 
                     @*<a class="btn btn-success">Edit</a>
-                    <button class="btn btn-danger">Delete</button>*@
+                        <button class="btn btn-danger">Delete</button>*@
 
 
                 }
             }
 
-                </tbody>
+        </tbody>
     </table>
 
 
+
 }
+@**test js*@
+<div id="accordion">
+    <h3>Asp.net</h3>
+    <div>
+        <p>
+            Microsoft ASP.NET is a set of technologies....
+        </p>
+    </div>
+    <h3>Asp.NET.MVC</h3>
+    <div>
+        <p>
+            Microsoft ASP.NET is a set of technologies....
+        </p>
+    </div>
+    <h3>JavaScript</h3>
+    <div>
+        <p>
+            Microsoft ASP.NET is a set of technologies....
+        </p>
+    </div>
+</div>
+
+<div class="jquery-btn">
+    <button>Click Me</button>
+</div>
+
+<br/>
+
+
+
 @code {
-   
+    /// <summary>
+    /// js code for button
+    /// </summary>
+
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        await js.InvokeVoidAsync("renderjQueryComponents");
+        base.OnAfterRender(firstRender);
+    }
+
+
     //[Inject]
     //public IPlanService PlanService { get; set; }
 
@@ -259,6 +309,7 @@ else
 
     //}
 }
+
 <style>
     .table {
         font-family: 'ArialMT', 'Arial';
@@ -272,40 +323,48 @@ else
         line-height: normal;
         text-transform: none;
     }
+
         .table th {
             /*padding: 2px;*/
             text-align: left;
-            
         }
-    .table tr {
 
-    }
-   .table  td {
-        text-align: center;
-    }
-    .table tr:hover {
-        background-color: #efeacf;
-    }
+        .table tr {
+        }
+
+        .table td {
+            text-align: center;
+        }
+
+        .table tr:hover {
+            background-color: #efeacf;
+        }
 
 
     .btn {
         background-color: white;
         border: none;
-        
-        padding: 6px 8px;
-        font-size: 11px;
+        padding: 3px 4px;
+        font-size: 9px;
         cursor: pointer;
     }
+
     #del {
         color: #d24141;
     }
+
     #add {
         color: #1919aa
-    
     }
 
-        /* Darker background on mouse-over */
-        .btn:hover {
-            background-color: #b2acb2;
-        }
+    /* Darker background on mouse-over */
+    .btn:hover {
+        background-color: #b2acb2;
+    }
+
+    #scroll td {
+        width: 500px;
+        height: 300px;
+        overflow: auto;
+    }
 </style>
