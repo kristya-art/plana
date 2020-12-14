@@ -144,7 +144,7 @@ else
                                 <td>
 
                                     <button>
-                                        @mr.Module.Title
+                                      @mr.Module.Title
                                     </button>
 
                                 </td>
@@ -184,7 +184,7 @@ else
                                             {
                                                 <p style="white-space:nowrap;">
                                                     @lm.Lecturer.SetToken() | @lm.Hours
-                                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                                    <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
                                                 </p>
 
 
@@ -201,9 +201,11 @@ else
                                         }
                                     </td>
                                 }
-                                <td style="white-space:nowrap;">
-                                    <button class="btn" disabled id="edit-btn" @onclick="HandleValidSubmit">edit</button>
-                                    <button class="btn" hidden id="save-btn" @onclick="HandleValidSubmit">save</button>
+                                <td style="white-space:nowrap;" @onclick="CallJSMethod2">
+                                    <button class="btn"  id="edit-btn">edit</button>
+                                    <button class="btn" id="save-btn" @onclick="HandleValidSubmit">save</button>
+                                    <button class="btn" id="delete-btn">delete module</button>
+                                    <button class="btn" id="cancel-btn">cancel</button>
 
                                 </td>
                                 <td><textarea>...</textarea></td>
@@ -290,7 +292,14 @@ else
         await js.InvokeVoidAsync("GetName");
 
     }
+    private async Task CallJSMethod2()
+    {
+        await js.InvokeVoidAsync("SetButtonsVisible");
+    }
 
+    public void EditEvent() {
+
+    }
 
 
     //[Inject]
@@ -384,7 +393,9 @@ else
     #add {
         color: #1919aa
     }
-
+     #delete-btn, #save-btn, #cancel-btn {
+        display:none;
+    }
     /* Darker background on mouse-over */
     .btn:hover {
         background-color: #b2acb2;

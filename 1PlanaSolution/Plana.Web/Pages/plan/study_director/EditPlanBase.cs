@@ -83,14 +83,14 @@ namespace Plana.Web.Pages.plan.study_director
             Plan result = null;
             if (Plan.Id != 0)
             {
-                //if (AutumnSemester.SemesterId != 0)
-                //{
-                //    await SemesterService.UpdateSemester(AutumnSemester);
-                //}
-                //if (SpringSemester.SemesterId != 0)
-                //{
-                //    await SemesterService.UpdateSemester(SpringSemester);
-                //}
+                if (Plan.AutumnSemester.SemesterId != 0)
+                {
+                   await SemesterService.UpdateSemester(Plan.AutumnSemester);
+                }
+                if (Plan.SpringSemester.SemesterId != 0)
+                {
+                   await SemesterService.UpdateSemester(Plan.SpringSemester);
+                }
                 await PlanService.UpdatePlan(Plan);
                 
             }

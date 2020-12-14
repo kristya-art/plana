@@ -13,22 +13,30 @@ function renderjQueryComponents() {
 }
 
 
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-function CollapseTableRow() {
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-}
-
 function GetName() {
     alert("Name");
 }
+
+function SetButtonsVisible() {
+    $('#edit-btn').click(function (){
+        $(this).hide();
+        $(this).siblings('#save-btn, #delete-btn, #cancel-btn ').show();
+    });
+    $('#save-btn').click(function () {
+        $(this).hide();
+        $(this).siblings('#delete-btn,#cancel-btn').hide();
+        $(this).siblings('#edit-btn').show();
+    });
+}
+
+
+
+$('#edit-btn').click(function () {
+    $(this).hide();
+    $(this).siblings('#save-btn, #delete-btn, #cancel-btn ').show();
+});
+$('#save-btn').click(function () {
+    $(this).hide();
+    $(this).siblings('#delete-btn,#cancel-btn').hide();
+    $(this).siblings('#edit-btn').show();
+});
