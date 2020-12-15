@@ -45,6 +45,8 @@ namespace Plana.Api.Repositories
                 result.Lecturer = lecturerModuleRun.Lecturer;
                 result.ModuleRun = lecturerModuleRun.ModuleRun;
                 result.Lessons = lecturerModuleRun.Lessons;
+                result.Hours = lecturerModuleRun.Hours;
+                result.Notes = lecturerModuleRun.Notes;
                 await context.SaveChangesAsync();
 
                 return result;

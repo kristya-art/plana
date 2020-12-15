@@ -143,7 +143,7 @@ else
                             <tr>
                                 <td>
 
-                                    <button>
+                                    <button contenteditable="true">
                                       @mr.Module.Title
                                     </button>
 
@@ -153,7 +153,7 @@ else
                             <tr>
                                 <td>@sem.GetAbbreviation()</td>
 
-                                <td contenteditable='false'>@mr.Module.Code</td>
+                                <td contenteditable='true'>@mr.Module.Code</td>
                                 <td>@mr.Module.Title</td>
                                 <td>@mr.ModuleGroup</td>
                                 <td>@mr.Place</td>
@@ -274,6 +274,7 @@ else
 
 
 @code {
+   
     /// <summary>
     /// js code for button
     /// </summary>

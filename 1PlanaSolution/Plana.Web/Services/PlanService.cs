@@ -37,7 +37,7 @@ namespace Plana.Web.Services
 
         public async Task UpdatePlan(Plan plan)
         {
-           await http.PutJsonAsync<Plan>("api/plan", plan);
+            await http.PutJsonAsync("api/plan", plan);
         }
     }
 }

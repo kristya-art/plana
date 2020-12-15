@@ -144,9 +144,35 @@ namespace Plana.Api.Services
             }
         }
 
-        public Task<Plan> UpdatePlan(Plan plan)
+        public async Task<Plan> UpdatePlan(Plan plan)
         {
-            throw new NotImplementedException();
+            var result = await GetPlan(plan.Id);
+            if (result != null)
+            {
+                result.Year = plan.Year;
+                if (plan.SpringSemester != null)
+                {
+                    result.SpringSemester = plan.SpringSemester;
+                    await _semesterRepository.UpdateSemester(result.SpringSemester);
+                }
+                if (plan.AutumnSemester != null) { 
+                result.AutumnSemester = plan.AutumnSemester;
+                await _semesterRepository.UpdateSemester(result.AutumnSemester); }
+                if (plan.PlanLecturers != null)
+                {
+                    result.PlanLecturers = plan.PlanLecturers;
+                }
+                result.OfficialPublishDate = plan.OfficialPublishDate;
+                result.IsModifyable = plan.IsModifyable;
+                result.IsFixed = plan.IsFixed;
+
+              
+               
+                await _context.SaveChangesAsync();
+
+                return result;
+            }
+            return null;
         }
     }
 }

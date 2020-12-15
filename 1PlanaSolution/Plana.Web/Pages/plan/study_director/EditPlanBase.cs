@@ -28,8 +28,8 @@ namespace Plana.Web.Pages.plan.study_director
         public List<Plan> Plans { get; set; }
         public List<Semester> Semesters{ get; set; }
         public ModuleRun ModuleRun { get; set; } = new ModuleRun();
-        //public Semester AutumnSemester { get; set; }
-        //public Semester SpringSemester { get; set; }
+        public Semester AutumnSemester { get; set; }
+        public Semester SpringSemester { get; set; }
 
         public List<ModuleRun> ModuleRuns { get; set; } = new List<ModuleRun>();
        
@@ -41,8 +41,8 @@ namespace Plana.Web.Pages.plan.study_director
         /// </summary>
         [Parameter]
         public string Id { get; set; }
-        //List<Semester> SemesterList { get; set; }
-
+       
+       
         /// <summary>
         /// inside this method we call the rest api and retrieve a data
         /// </summary>
@@ -54,11 +54,12 @@ namespace Plana.Web.Pages.plan.study_director
             if (planId != 0)
             {
                 Plan = await PlanService.GetPlan(int.Parse(Id));
-                //AutumnSemester = Plan.AutumnSemester;
-                //SpringSemester = Plan.SpringSemester;
+                AutumnSemester = Plan.AutumnSemester;
+                SpringSemester = Plan.SpringSemester;
 
                 Semesters = new List<Semester> { Plan.AutumnSemester, Plan.SpringSemester };
-                
+               
+
             }
 
             else
@@ -69,7 +70,7 @@ namespace Plana.Web.Pages.plan.study_director
                 //AutumnSemester = new Semester { };
                 //SpringSemester = new Semester { };
                 
-
+                
 
             }
             Plans = (await PlanService.GetPlans()).ToList();
@@ -78,40 +79,19 @@ namespace Plana.Web.Pages.plan.study_director
 
         }
 
-        protected async Task HandleValidSubmit()
+       
+
+        protected async Task UpdateSemester()
         {
-            Plan result = null;
-            if (Plan.Id != 0)
-            {
-                if (Plan.AutumnSemester.SemesterId != 0)
-                {
-                   await SemesterService.UpdateSemester(Plan.AutumnSemester);
-                }
-                if (Plan.SpringSemester.SemesterId != 0)
-                {
-                   await SemesterService.UpdateSemester(Plan.SpringSemester);
-                }
-                await PlanService.UpdatePlan(Plan);
+            if (Semesters != null) {
+
+                foreach (var Sem in Semesters) {
+
+                  await  SemesterService.UpdateSemester(Sem);
                 
+                }
             }
-            else
-            {
-                result = await PlanService.CreatePlan(Plan);
-            }
-
         }
-
-        //protected async Task UpdateSemester()
-        //{
-        //    Semester result = null;
-
-        //    if (Semester.SemesterId != 0)
-        //    {
-
-        //        result = await SemesterService.UpdateSemester(Semester);
-        //    }
-        //    else { result = await SemesterService.CreateSemester(Semester); }
-        //}
 
         protected async Task UpdateMR()
         {
@@ -123,6 +103,25 @@ namespace Plana.Web.Pages.plan.study_director
                 result = await ModuleRunService.UpdateModuleRun(ModuleRun);
             }
             else { result = await ModuleRunService.CreateModuleRun(ModuleRun); }
+        }
+
+        protected async Task HandleValidSubmit()
+        {
+            Plan result = null;
+            if (Semester.SemesterId != 0)
+            {
+                //await UpdateSemester();
+                //await UpdateMR();
+
+                //await PlanService.UpdatePlan(Plan);
+                await SemesterService.UpdateSemester(AutumnSemester);
+                await SemesterService.UpdateSemester(SpringSemester);
+            }
+            //else
+            //{
+            //    result = await PlanService.CreatePlan(Plan);
+            //}
+
         }
 
 

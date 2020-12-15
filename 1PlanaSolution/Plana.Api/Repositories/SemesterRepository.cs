@@ -77,7 +77,9 @@ namespace Plana.Api.Models
 
         public async Task<Semester> UpdateSemester(Semester semester)
         {
-            var result = await GetSemester(semester.SemesterId);
+            
+           var result = await GetSemester(semester.SemesterId);
+          
             if (result != null)
             {
                 result.Code = semester.Code;
