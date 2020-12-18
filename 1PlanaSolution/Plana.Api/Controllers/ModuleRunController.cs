@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Plana.Api.Models;
+using Plana.Api.Repositories;
+using Plana.Api.Services;
 using Plana.Models;
 using System;
 using System.Collections.Generic;
@@ -18,16 +20,22 @@ namespace Plana.Api.Controllers
         private readonly IModuleRepository moduleRep;
         private readonly ISemesterRepository semesterRep;
         private readonly ILecturerRepository lecturerRep;
+        private readonly IModuleRunService moduleRunService;
+        private readonly ILecturerModuleRunRepository lecturerModuleRunRepository;
 
         public ModuleRunController(IModuleRunRepository moduleRunRepository,
                                 IModuleRepository moduleRepository,
                                 ISemesterRepository semesterRepository,
-                                ILecturerRepository lecturerRepository)
+                                ILecturerRepository lecturerRepository,
+                                IModuleRunService moduleRunService,
+                                ILecturerModuleRunRepository lecturerModuleRunRepository)
         {
             this.moduleRunRep = moduleRunRepository;
             this.moduleRep = moduleRepository;
             this.semesterRep = semesterRepository;
             this.lecturerRep = lecturerRepository;
+            this.moduleRunService = moduleRunService;
+            this.lecturerModuleRunRepository = lecturerModuleRunRepository;
 
 
         }
@@ -146,21 +154,47 @@ namespace Plana.Api.Controllers
             }
         }
 
+        //[HttpPut()]
+        //public async Task<ActionResult<ModuleRun>> UpdateModuleRun(ModuleRun moduleRun)
+        //{
+        //    try
+        //    {
+
+        //        var updatedModuleRun = await moduleRunRep.GetModuleRun(moduleRun.ModuleRunId);
+        //        if (updatedModuleRun == null)
+        //        {
+        //            return NotFound($"Module run with id = {moduleRun.ModuleRunId } not found!");
+        //        }
+        //        return await moduleRunRep.UpdateModuleRun(moduleRun);
+        //        //await moduleRep.UpdateModule(moduleRun.Module);
+        //        //await semesterRep.UpdateSemester(moduleRun.Semester);
+        //        //return StatusCode(StatusCodes.Status200OK, "Is ok");
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //        "Error updating database");
+        //    }
+        //}
+
         [HttpPut()]
         public async Task<ActionResult<ModuleRun>> UpdateModuleRun(ModuleRun moduleRun)
         {
             try
             {
-                
+
                 var updatedModuleRun = await moduleRunRep.GetModuleRun(moduleRun.ModuleRunId);
                 if (updatedModuleRun == null)
                 {
                     return NotFound($"Module run with id = {moduleRun.ModuleRunId } not found!");
                 }
-                return await moduleRunRep.UpdateModuleRun(moduleRun);
-                //await moduleRep.UpdateModule(moduleRun.Module);
-                //await semesterRep.UpdateSemester(moduleRun.Semester);
-                //return StatusCode(StatusCodes.Status200OK, "Is ok");
+
+                //return await moduleRunRep.UpdateModuleRun(moduleRun);
+               return  await moduleRunService.SaveModuleRun(moduleRun);
+             
+
 
             }
             catch (Exception)
@@ -170,7 +204,7 @@ namespace Plana.Api.Controllers
                 "Error updating database");
             }
         }
-        
+
 
     }
 }

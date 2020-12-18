@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Plana.Api.BizLogic;
 using Plana.Api.Models;
+using Plana.Api.Repositories;
 using Plana.Models;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,14 @@ namespace Plana.Api.Services
     {
         private readonly AppDbContext _context;
         private readonly ISemesterRepository _semesterRepository;
-        private readonly CreatePlanAction _action;
+        
         
         public PlanService(AppDbContext context, 
-                           ISemesterRepository semesterRepository)
+                           ISemesterRepository semesterRepository )
         {
-            _context = context;
-            _semesterRepository = semesterRepository;
+                _context = context;
+                _semesterRepository = semesterRepository;
+               
 
         }
       
@@ -101,40 +103,6 @@ namespace Plana.Api.Services
 
 
 
-        //public async Task<Plan> UpdatePlan(Plan plan)
-        //{
-        //    var result = await GetPlan(plan.Id);
-        //    if (result != null)
-        //    {
-        //        result.Year = plan.Year;
-        //        result.ExpiredDate = plan.ExpiredDate;
-        //        result.IsFixed = plan.IsFixed;
-        //        result.OfficialPublishDate = plan.OfficialPublishDate;
-        //        result.PlanLecturers = plan.PlanLecturers;
-
-        //        result.AutumnSemester = plan.AutumnSemester;
-        //        result.SpringSemester = plan.SpringSemester;
-        //        if (plan.SpringSemester != null)
-        //        {
-        //            await _semesterRepository.UpdateSemester(plan.SpringSemester);
-        //        }
-        //        if (plan.AutumnSemester != null)
-        //        {
-        //            await _semesterRepository.UpdateSemester(plan.AutumnSemester);
-        //        }
-        //result.SpringSemester.LecturersSemesters = plan.SpringSemester.LecturersSemesters;
-        //result.AutumnSemester.LecturersSemesters = plan.AutumnSemester.LecturersSemesters;
-
-
-
-
-        //        await _context.SaveChangesAsync();
-
-        //        return result;
-        //    }
-        //    return null;
-
-        //}
 
 
         public void AddSemester(Semester semester) {
@@ -155,9 +123,11 @@ namespace Plana.Api.Services
                     result.SpringSemester = plan.SpringSemester;
                     await _semesterRepository.UpdateSemester(result.SpringSemester);
                 }
-                if (plan.AutumnSemester != null) { 
-                result.AutumnSemester = plan.AutumnSemester;
-                await _semesterRepository.UpdateSemester(result.AutumnSemester); }
+                if (plan.AutumnSemester != null)
+                {
+                    result.AutumnSemester = plan.AutumnSemester;
+                    await _semesterRepository.UpdateSemester(result.AutumnSemester);
+                }
                 if (plan.PlanLecturers != null)
                 {
                     result.PlanLecturers = plan.PlanLecturers;
@@ -166,13 +136,15 @@ namespace Plana.Api.Services
                 result.IsModifyable = plan.IsModifyable;
                 result.IsFixed = plan.IsFixed;
 
-              
-               
+
+
                 await _context.SaveChangesAsync();
 
                 return result;
             }
             return null;
         }
+
+
     }
 }

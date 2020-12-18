@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Plana.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
+using Plana.Api.Repositories;
 
 namespace Plana.Api.Controllers
 {
@@ -17,11 +18,16 @@ namespace Plana.Api.Controllers
     {
         private readonly AppDbContext _context;
         private readonly ISemesterRepository semesterRepository;
+        private readonly IModuleRunRepository moduleRunRepository;
+        private readonly ILecturerModuleRunRepository lecturerModuleRunRepository;
 
-        public SemesterController( AppDbContext _context, ISemesterRepository semesterRepository)
+        public SemesterController( AppDbContext _context, ISemesterRepository semesterRepository,
+                                    IModuleRunRepository moduleRunRepository,ILecturerModuleRunRepository lecturerModuleRunRepository)
         {
             this.semesterRepository = semesterRepository;
             this._context = _context;
+            this.lecturerModuleRunRepository = lecturerModuleRunRepository;
+            this.moduleRunRepository = moduleRunRepository;
         }
 
         [HttpGet]
@@ -149,6 +155,16 @@ namespace Plana.Api.Controllers
             result.LecturersSemesters = semester.LecturersSemesters;
             result.ModuleRuns = semester.ModuleRuns;
 
+            foreach (var MR in result.ModuleRuns)
+            {
+               await moduleRunRepository.UpdateModuleRun(MR);
+                foreach (var lmr in MR.LecturersMR)
+                {
+                    await lecturerModuleRunRepository.UpdateLecturerModuleRun(lmr);
+                }
+            }
+
+            
             await _context.SaveChangesAsync();
             return Ok(result);
 

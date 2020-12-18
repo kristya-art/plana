@@ -9,9 +9,12 @@ namespace Plana.Api.Repositories
     public interface ILecturerModuleRunRepository
     {
         Task<IEnumerable<LecturerModuleRun>> GetLecturerModuleRuns();
-        Task<LecturerModuleRun> GetLecturerModuleRun(int lecturerModuleRunId);
+       
         Task<LecturerModuleRun> AddLecturerModuleRun(LecturerModuleRun lecturerModuleRun);
         Task<LecturerModuleRun> UpdateLecturerModuleRun(LecturerModuleRun lecturerModuleRun);
+        Task<LecturerModuleRun> GetById(params object[] keyValues);
+        Task<LecturerModuleRun> GetLecturerModuleRun(int id, int id2);
+
 
         //Task<IEnumerable<LecturerModuleRun>> Search(string name);
 

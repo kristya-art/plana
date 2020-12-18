@@ -58,6 +58,7 @@ namespace Plana.Web.Pages.plan.study_director
                 SpringSemester = Plan.SpringSemester;
 
                 Semesters = new List<Semester> { Plan.AutumnSemester, Plan.SpringSemester };
+                
                
 
             }
@@ -93,17 +94,18 @@ namespace Plana.Web.Pages.plan.study_director
             }
         }
 
-        protected async Task UpdateMR()
-        {
-            ModuleRun result = null;
 
-            if (ModuleRun.ModuleRunId != 0)
-            {
+        //protected async Task UpdateMR()
+        //{
+        //    ModuleRun result = null;
 
-                result = await ModuleRunService.UpdateModuleRun(ModuleRun);
-            }
-            else { result = await ModuleRunService.CreateModuleRun(ModuleRun); }
-        }
+        //    if (ModuleRun.ModuleRunId != 0)
+        //    {
+
+        //        result = await ModuleRunService.UpdateModuleRun(ModuleRun);
+        //    }
+        //    else { result = await ModuleRunService.CreateModuleRun(ModuleRun); }
+        //}
 
         protected async Task HandleValidSubmit()
         {
@@ -117,6 +119,10 @@ namespace Plana.Web.Pages.plan.study_director
                 await SemesterService.UpdateSemester(AutumnSemester);
                 await SemesterService.UpdateSemester(SpringSemester);
             }
+
+            //if (Plan.Id != 0) {
+            //    await PlanService.UpdatePlan(Plan);
+            //}
             //else
             //{
             //    result = await PlanService.CreatePlan(Plan);

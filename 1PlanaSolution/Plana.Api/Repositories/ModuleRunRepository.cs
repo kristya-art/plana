@@ -64,16 +64,28 @@ namespace Plana.Api.Models
             if (result != null)
             {
                 result.Code = moduleRun.Code;
-                result.LecturersMR = moduleRun.LecturersMR;
+                //result.LecturersMR = moduleRun.LecturersMR;
+               
               
                 result.Module = moduleRun.Module;
                
              //   result.ModuleId = moduleRun.ModuleId;
                
                 result.Place = moduleRun.Place;
+
+                foreach (var LMR in moduleRun.LecturersMR) {
+                    if (!result.LecturersMR.Contains(LMR))
+                    {
+                        result.LecturersMR.Add(new LecturerModuleRun { LecturerId = LMR.LecturerId, ModuleRunId = LMR.ModuleRunId });
+                    }
+                    
+                }
+
+                //result.LecturersMR = moduleRun.LecturersMR;
+
+                //result.ModuleRunLecturerGroups = moduleRun.ModuleRunLecturerGroups;
                 result.SemesterId = moduleRun.SemesterId;
-                
-               
+
                 result.ModuleGroup = moduleRun.ModuleGroup;
                
                 await appDbContext.SaveChangesAsync();
@@ -149,8 +161,6 @@ namespace Plana.Api.Models
 
         //    return await query.ToListAsync();
         //}
-
-
 
     }
 }

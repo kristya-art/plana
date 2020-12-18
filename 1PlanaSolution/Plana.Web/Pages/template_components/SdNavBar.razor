@@ -13,7 +13,9 @@
             <Plana.Web.Pages.template_components.Search />
         </div>
        @*here shall be  the select drop-down  *@
-
+    <div class="selectYear" >
+        <Plana.Web.Pages.template_components.CustomSelect />
+    </div>
         <div class="avatar w3-right">
             <a href="/myaccount">
                 <img src="/images/avatar.png" class="img-fluid" />
@@ -197,6 +199,7 @@
         font-size: 16px;
        
     }
+    
     .matList {
 
     }
@@ -253,6 +256,19 @@
     .my-item-class {
         width: 100%;
         text-align: center;
+    }
+    /** dropdown select*/
+    .selectYear {
+    
+        border-width: 0px;
+        position: absolute;
+        left: 399px;
+        top: 41px;
+        width: 177px;
+        height: 37px;
+        display: flex;
+        color: #000000;
+        text-align: left;
     }
 
 

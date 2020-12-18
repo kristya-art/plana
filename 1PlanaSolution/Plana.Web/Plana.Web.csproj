@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Plana.Models\Plana.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\plan\navMenus\" />
+  </ItemGroup>
+
 </Project>

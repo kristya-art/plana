@@ -12,7 +12,7 @@
     @if (Plan.AutumnSemester.ModuleRuns == null) { return; }*@
 
 
-<h3>EditPlan</h3>
+<Plana.Web.Pages.template_components.SdNavBar />
 <button class="btn btn-primary" @onclick="CallJSMethod">show</button>
 <EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
     <div class="form-group row">
@@ -135,9 +135,11 @@ else
                 @foreach (var sem in Semesters)
                 {
 
-
-                    @if (sem.ModuleRuns != null)
-                    {
+                    @*flix it , the problem is that when the sem == null, program is break up*@
+                    @if (sem.ModuleRuns == null) { return; }
+                     
+                   
+                      @if (sem.ModuleRuns == null) { return; }
                         @foreach (var mr in sem.ModuleRuns)
                         {
                             <tr>
@@ -156,8 +158,8 @@ else
                                 <td contenteditable='true'>@mr.Module.Code</td>
                                 <td>@mr.Module.Title</td>
                                 <td>@mr.ModuleGroup</td>
-                                <td>@mr.Place</td>
-                                <td>@mr.Module.TotalHours</td>
+                                <td contenteditable="true">@mr.Place</td>
+                                <td contenteditable="true">@mr.Module.TotalHours</td>
                                 <td>
 
                                     @if (mr.ModuleRunLecturerGroups != null)
@@ -201,13 +203,16 @@ else
                                         }
                                     </td>
                                 }
-                                <td style="white-space:nowrap;" @onclick="CallJSMethod2">
-                                    <button class="btn"  id="edit-btn">edit</button>
-                                    <button class="btn" id="save-btn" @onclick="HandleValidSubmit">save</button>
-                                    <button class="btn" id="delete-btn">delete module</button>
-                                    <button class="btn" id="cancel-btn">cancel</button>
+                            <td style="white-space:nowrap;" @onclick="CallJSMethod2">
+                                <button class="btn" id="edit-btn">edit</button>
+                                <button class="btn" id="save-btn">save lecturerModuleRun</button>
+                                <button class="btn" id="save-btn">save</button>
+                                <button class="btn" id="delete-btn">delete module</button>
+                                <button class="btn" id="cancel-btn">cancel</button>
+                                <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
 
-                                </td>
+
+                            </td>
                                 <td><textarea>...</textarea></td>
 
                                 @*in case of making row large*@
@@ -221,15 +226,15 @@ else
 
                         }
 
-                    }
+                     }
 
                     @*<a class="btn btn-success">Edit</a>
                         <button class="btn btn-danger">Delete</button>*@
 
 
                 }
-            }
-
+          
+}
         </tbody>
     </table>
 
@@ -274,6 +279,9 @@ else
 
 
 @code {
+
+    
+    
    
     /// <summary>
     /// js code for button

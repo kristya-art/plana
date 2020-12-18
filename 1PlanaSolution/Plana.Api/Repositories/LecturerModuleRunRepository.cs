@@ -27,9 +27,10 @@ namespace Plana.Api.Repositories
             return result.Entity;
         }
 
-        public async Task<LecturerModuleRun> GetLecturerModuleRun(int lecturerModuleRunId)
+        public async Task<LecturerModuleRun> GetLecturerModuleRun(int lecturerId, int moduleRunId)
         {
-            return await context.LecturersModuleRuns.FindAsync(lecturerModuleRunId);
+           
+            return  await context.LecturersModuleRuns.FindAsync(lecturerId, moduleRunId);
         }
 
         public async Task<IEnumerable<LecturerModuleRun>> GetLecturerModuleRuns()
@@ -39,11 +40,13 @@ namespace Plana.Api.Repositories
 
         public async Task<LecturerModuleRun> UpdateLecturerModuleRun(LecturerModuleRun lecturerModuleRun)
         {
-            var result = await GetLecturerModuleRun(lecturerModuleRun.LecturerId);
+            var result = await GetLecturerModuleRun(lecturerModuleRun.LecturerId,lecturerModuleRun.ModuleRunId);
             if (result != null)
-            { 
-                result.Lecturer = lecturerModuleRun.Lecturer;
-                result.ModuleRun = lecturerModuleRun.ModuleRun;
+            {
+                //result.Lecturer = lecturerModuleRun.Lecturer;
+                //result.ModuleRun = lecturerModuleRun.ModuleRun;
+                result.LecturerId = lecturerModuleRun.LecturerId;
+                result.ModuleRunId = lecturerModuleRun.ModuleRunId;
                 result.Lessons = lecturerModuleRun.Lessons;
                 result.Hours = lecturerModuleRun.Hours;
                 result.Notes = lecturerModuleRun.Notes;
@@ -54,5 +57,11 @@ namespace Plana.Api.Repositories
 
             return null;
         }
+
+        public async Task<LecturerModuleRun> GetById(params object[] keyValues) {
+            return await context.LecturersModuleRuns.FindAsync(keyValues);
+        }
+
+       
     }
 }

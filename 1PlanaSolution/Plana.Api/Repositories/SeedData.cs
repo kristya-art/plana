@@ -810,11 +810,16 @@ namespace Plana.Api.Models
 
 
                 };
+                Plan plan20_21 = new Plan
+                {
+                    Year = "2020-2021",
 
+                };
 
 
                 context.Plans.Add(plan23_24);
                 context.Plans.Add(plan24_25);
+                context.Plans.Add(plan20_21);
                 context.SaveChanges();
 
             }
