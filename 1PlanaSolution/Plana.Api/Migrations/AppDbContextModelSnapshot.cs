@@ -364,8 +364,8 @@ namespace Plana.Api.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ExpiredDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("ExpiredDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -376,8 +376,8 @@ namespace Plana.Api.Migrations
                     b.Property<bool>("IsModifyable")
                         .HasColumnType("bit");
 
-                    b.Property<string>("OfficialPublishDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("OfficialPublishDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("SpringSemesterId")
                         .HasColumnType("int");

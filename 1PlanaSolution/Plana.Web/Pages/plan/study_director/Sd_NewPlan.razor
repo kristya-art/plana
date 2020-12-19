@@ -1,6 +1,7 @@
 ﻿@page "/sd_NewPlan"
 @using MatBlazor;
 
+
 <Plana.Web.Pages.template_components.SdNavBar />
 
 <MatButton Outlined="true" @onclick="@(e=>OpenDialog(false))">Add Plan</MatButton>
@@ -10,25 +11,53 @@
 
    <MatDialog  @bind-IsOpen="dialogIsOpen">
         <MatDialogTitle>Add Plan</MatDialogTitle>
-        <MatDialogContent >
+        <MatDialogContent>
             <div class="form-field">
                 <label>Plan Year:</label>
                 <div>
                     <InputText @bind-Value="@plan.Year" />
-                    @*<InputText @bind-Value="@plan.AutumnSemester.Code"/>*@
                 </div>
             </div>
-            
-                @*<EditForm  Model="@Asemester" OnValidSubmit="@CreateASemester">
-                    <div class="form-field">
-                        <label>Autumn Semester Code:</label>
-                        <div>
-                            <InputText @bind-Value="@Asemester.Code" />
-                        </div>
-                    </div>
+            <div class="form-field">
+                <label>Publish Date:</label>
+                <div>
+                    <InputDate placeholder="Publish Date" @bind-Value="@plan.OfficialPublishDate" />
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Expired Date:</label>
+                <div>
+                    <InputDate placeholder="Expired Date" @bind-Value="@plan.ExpiredDate" />
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Set plan Fix:</label>
+                <div>
+                    <MatCheckbox @bind-Value="@plan.IsFixed"></MatCheckbox>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Autumn Semester code:</label>
+                <div>
+                    <InputText @bind-Value="@plan.AutumnSemester.Code"/>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Spring Semester code:</label>
+                <div>
+                    <InputText @bind-Value="@plan.SpringSemester.Code"/>
+                </div>
+            </div>
+            @*<EditForm  Model="@Asemester" OnValidSubmit="@CreateASemester">
+            <div class="form-field">
+                <label>Autumn Semester Code:</label>
+                <div>
+                    <InputText @bind-Value="@Asemester.Code" />
+                </div>
+            </div>
 
-                </EditForm>*@
-            
+        </EditForm>*@
+
             @* <MatTextField Label="Plan Year" @bind-Value="@plan.Year"></MatTextField>
         <MatTextField Label="Plan isFixed" @bind-Value="@plan.IsFixed"></MatTextField>
         <MatTextField Label="Autumn Semester" @bind-Value="@plan.AutumnSemester.Code"></MatTextField>
@@ -45,17 +74,16 @@
 <MatButton Raised="true" @onclick="@(e=>OpenDialog(true))" Icon="edit" title="Edit Employee"></MatButton>
 @*<MatButton Raised="true" @onclick="DeleteEmployee" Icon="restore_from_trash" title="Delete Employee"></MatButton>*@
 @code {
-    //[Inject]
-    // public IPlanService planService;
 
-
+    Plan selectedPlan = null;
+    Plan tempPlan = null;
+    bool _isDelete = false;
     bool dialogIsOpen = false;
     bool _isEdit = false;
 
     bool snackBar = false;
 
-    Plan selectedPlan = null;
-    //Plan plan = new Plan();
+
 
 
 
@@ -78,6 +106,11 @@
     private void CloseDialog()
     {
         dialogIsOpen = false;
+        if (selectedPlan != null)
+        {
+            plan = selectedPlan;
+            //this.EditPlan(selectedPlan);
+        }
     }
     #endregion
 
@@ -88,21 +121,29 @@
 
     Plan plan = new Plan();
 
-    async Task Create()
-    {
-        plan = await PlanService.CreatePlan(plan);
-    }
+
+
 
     Semester Ssemester = new Semester();
 
-    async Task CreateSSemester()
-    {
-        Ssemester = await SemesterService.CreateSemester(Ssemester);
-    }
+    //async Task CreateSSemester()
+    //{
+    //    Ssemester = await SemesterService.CreateSemester(Ssemester);
+    //}
     Semester Asemester = new Semester();
 
-    async Task CreateASemester()
+    //async Task CreateASemester()
+    //{
+    //    Asemester = await SemesterService.CreateSemester(Asemester);
+    //}
+
+    async Task Create()
     {
-        Asemester = await SemesterService.CreateSemester(Asemester);
+        //Ssemester = await SemesterService.CreateSemester(Ssemester);
+        //Asemester = await SemesterService.CreateSemester(Asemester);
+        plan.SpringSemester = Ssemester;
+        plan.AutumnSemester = Asemester;
+        plan = await PlanService.CreatePlan(plan);
+        dialogIsOpen = false;
     }
 }

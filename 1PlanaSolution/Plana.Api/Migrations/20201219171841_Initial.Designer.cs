@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201217015552_Initial")]
+    [Migration("20201219171841_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -366,8 +366,8 @@ namespace Plana.Api.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ExpiredDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("ExpiredDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -378,8 +378,8 @@ namespace Plana.Api.Migrations
                     b.Property<bool>("IsModifyable")
                         .HasColumnType("bit");
 
-                    b.Property<string>("OfficialPublishDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("OfficialPublishDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("SpringSemesterId")
                         .HasColumnType("int");

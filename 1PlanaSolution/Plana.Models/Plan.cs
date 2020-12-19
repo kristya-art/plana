@@ -13,8 +13,8 @@ namespace Plana.Models
         public bool IsFixed { get; set; }
         public bool IsModifyable { get; set; }
         public string Year { get; set; }
-        public string ExpiredDate { get; set; }
-        public string OfficialPublishDate { get; set; }
+        public DateTime? ExpiredDate { get; set; }
+        public DateTime? OfficialPublishDate { get; set; }
 
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
@@ -30,12 +30,13 @@ namespace Plana.Models
         [ForeignKey("AutumnSemesterId")]
         //public int AutumnSemesterId { get; set; }
 
-        public Semester AutumnSemester { get; set; }
+        public Semester AutumnSemester { get; set; } = new Semester();
         [ForeignKey("SpringSemesterId")]
         //public int SpringSemesterId { get; set; }
-        public Semester SpringSemester { get; set; }
-       
-       
+        public Semester SpringSemester { get; set; } = new Semester();
+
+        
+
         //public List<Semester> Semesters { get; set; } = new List<Semester>();
     }
 }

@@ -30,7 +30,8 @@ namespace Plana.Api.Services
 
         public async Task<Plan> AddPlan(Plan plan)
         {
-            
+            //Semester Ssemester = new Semester();
+            //Semester Fsemester = new Semester();
             var result = await _context.Plans.AddAsync(plan);
             await _context.SaveChangesAsync();
 
