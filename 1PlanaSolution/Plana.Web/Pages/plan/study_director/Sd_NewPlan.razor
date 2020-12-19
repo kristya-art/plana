@@ -1,0 +1,108 @@
+﻿@page "/sd_NewPlan"
+@using MatBlazor;
+
+<Plana.Web.Pages.template_components.SdNavBar />
+
+<MatButton Outlined="true" @onclick="@(e=>OpenDialog(false))">Add Plan</MatButton>
+<hr />
+<EditForm Model="@plan" OnValidSubmit="@Create">
+
+
+   <MatDialog  @bind-IsOpen="dialogIsOpen">
+        <MatDialogTitle>Add Plan</MatDialogTitle>
+        <MatDialogContent >
+            <div class="form-field">
+                <label>Plan Year:</label>
+                <div>
+                    <InputText @bind-Value="@plan.Year" />
+                    @*<InputText @bind-Value="@plan.AutumnSemester.Code"/>*@
+                </div>
+            </div>
+            
+                @*<EditForm  Model="@Asemester" OnValidSubmit="@CreateASemester">
+                    <div class="form-field">
+                        <label>Autumn Semester Code:</label>
+                        <div>
+                            <InputText @bind-Value="@Asemester.Code" />
+                        </div>
+                    </div>
+
+                </EditForm>*@
+            
+            @* <MatTextField Label="Plan Year" @bind-Value="@plan.Year"></MatTextField>
+        <MatTextField Label="Plan isFixed" @bind-Value="@plan.IsFixed"></MatTextField>
+        <MatTextField Label="Autumn Semester" @bind-Value="@plan.AutumnSemester.Code"></MatTextField>
+        <MatTextField Label="Spring Semester" @bind-Value="@plan.SpringSemester.Code"></MatTextField>
+            *@
+
+        </MatDialogContent>
+            <button type="submit" class="btn-btn-success">
+                Create Plan
+            </button>
+        </MatDialog>
+</EditForm>
+
+<MatButton Raised="true" @onclick="@(e=>OpenDialog(true))" Icon="edit" title="Edit Employee"></MatButton>
+@*<MatButton Raised="true" @onclick="DeleteEmployee" Icon="restore_from_trash" title="Delete Employee"></MatButton>*@
+@code {
+    //[Inject]
+    // public IPlanService planService;
+
+
+    bool dialogIsOpen = false;
+    bool _isEdit = false;
+
+    bool snackBar = false;
+
+    Plan selectedPlan = null;
+    //Plan plan = new Plan();
+
+
+
+    #region Methods
+
+    #endregion
+
+    #region Dialog Box Methods
+    private void OpenDialog(bool isEdit)
+    {
+        _isEdit = isEdit;
+        //if (!_isEdit) plan = new Plan();
+        dialogIsOpen = true;
+    }
+    private void okCklick()
+    {
+        dialogIsOpen = false;
+
+    }
+    private void CloseDialog()
+    {
+        dialogIsOpen = false;
+    }
+    #endregion
+
+    [Inject]
+    public IPlanService PlanService { get; set; }
+    [Inject]
+    public ISemesterService SemesterService { get; set; }
+
+    Plan plan = new Plan();
+
+    async Task Create()
+    {
+        plan = await PlanService.CreatePlan(plan);
+    }
+
+    Semester Ssemester = new Semester();
+
+    async Task CreateSSemester()
+    {
+        Ssemester = await SemesterService.CreateSemester(Ssemester);
+    }
+    Semester Asemester = new Semester();
+
+    async Task CreateASemester()
+    {
+        Asemester = await SemesterService.CreateSemester(Asemester);
+    }
+}

@@ -1,4 +1,10 @@
 ﻿@page "/sd_navbar"
+@using MatBlazor;
+@using Plana.Web.Pages.plan.study_director;
+
+@inherits EditPlanBase
+
+
 <h3>Assignment plan for </h3>
 <div class="topnav" id="topnav" style="position: relative;top: 0px;">
 
@@ -12,10 +18,10 @@
         <div class="search" style="overflow:hidden;height:60px">
             <Plana.Web.Pages.template_components.Search />
         </div>
-       @*here shall be  the select drop-down  *@
-    <div class="selectYear" >
-        <Plana.Web.Pages.template_components.CustomSelect />
-    </div>
+        @*here shall be  the select drop-down  *@
+        <div class="selectYear">
+            <Plana.Web.Pages.template_components.CustomSelect />
+        </div>
         <div class="avatar w3-right">
             <a href="/myaccount">
                 <img src="/images/avatar.png" class="img-fluid" />
@@ -31,23 +37,38 @@
         <div class="btn-group">
             <button @onclick="@navigateToModulesPlan">Modules Plan </button>
             <button @onclick="@navigateToLecturersPlan">Lecturers Plan</button>
+            <button @onclick="@(e=>OpenDialog(false))">Make new Plan</button>
         </div>
 
-        @*<div class="w3-bar w3-left" style="width:100%;overflow:hidden;height:60px">
-
-
-
-
-        </div>*@
     </div>
+    @*dialog for make new plan*@
+    <!--<MatButton Outlined="true" @onclick="@(e=>OpenDialog(false))">Add Employee</MatButton>
+    <hr />
+    <MatDialog @bind-IsOpen="dialogIsOpen">
+        <MatDialogTitle>Add Plan</MatDialogTitle>
+        <MatDialogContent>-->
+            @*@if(planNew == null)*@
+            <!--{
+            <MatTextField Label="Plan Year" @bind-Value="@planNew.Year"></MatTextField>
+            <MatTextField Label="Plan isFixed" @bind-Value="@planNew.IsFixed"></MatTextField>
+            <MatTextField Label="Autumn Semester" @bind-Value="@planNew.AutumnSemester.Code"></MatTextField>
+            <MatTextField Label="Spring Semester" @bind-Value="@planNew.SpringSemester.Code"></MatTextField>
+            }
+        </MatDialogContent>
+        <MatDialogActions>
+            <MatButton OnClick="okClick">Add</MatButton>
+            <MatButton OnClick="CloseDialog">Close</MatButton>
+
+        </MatDialogActions>
+    </MatDialog>-->
     
-   
+
 
     <div class="@openVerticalMenu" style="width:55%" @onclick="ToggleNavMenu">
         <div class="vertical-menu">
             <ul class="nav flex-column">
                 <li class="nav-item px-3">
-                    <NavLink class="nav-link" href="/sd_make_new_plan" Match="NavLinkMatch.All">
+                    <NavLink class="nav-link" href="/sd_NewPlan" Match="NavLinkMatch.All">
                         <span class="oi oi-home" aria-hidden="true"></span> Make new plan
                     </NavLink>
                 </li>
@@ -80,8 +101,9 @@
     }
     #region button methods
 
-    protected  void navigateToModulesPlan() {
-        navigationManager.NavigateTo("/sd_modulesPlan",true);
+    protected void navigateToModulesPlan()
+    {
+        navigationManager.NavigateTo("/sd_modulesPlan", true);
 
     }
     protected void navigateToLecturersPlan()
@@ -95,7 +117,57 @@
 
     }
     #endregion
-    
+
+    /** make new plan*/
+    public IPlanService TPlanService { get; set; }
+
+    Plan planNew = new Plan();
+    Plan selectedPlan = null;
+    Plan tempPlan = null;
+    bool dialogIsOpen = false;
+    bool _isEdit = false;
+
+    bool snackBar = false;
+    //List<Plan> Plans = PlanService.GetPlans().ToList();
+
+
+
+
+
+
+
+
+
+
+    #region Methods
+
+    #endregion
+
+    #region Dialog Box Methods
+    private void OpenDialog(bool isEdit)
+    {
+        //_isEdit = isEdit;
+        //if (!_isEdit) plan = new Plan();
+        planNew = new Plan();
+        dialogIsOpen = true;
+    }
+    private async void okClick()
+    {
+        dialogIsOpen = false;
+        await this.HandleValidSubmit();
+    }
+    private void CloseDialog()
+    {
+        dialogIsOpen = false;
+        if (selectedPlan != null)
+        {
+            planNew = selectedPlan;
+
+        }
+    }
+    #endregion
+
+
 }
 <style>
     .topnav {
@@ -103,7 +175,7 @@
         background-color: #f2f2f2;
         /*width: 80%;*/
         letter-spacing: 1px;
-        height:100px;
+        height: 100px;
     }
 
     .w3-bar {
@@ -197,16 +269,13 @@
         color: rgba(0,0,0,.87);
         display: flex;
         font-size: 16px;
-       
     }
-    
-    .matList {
 
+    .matList {
     }
-    
+
     /*button style*/
     .btn-group button {
-
         background-color: #f2f2f2; /* Green background */
         border: 1px solid rgb(26, 79, 238); /* Green border */
         color: #333333; /* White text */
@@ -220,7 +289,7 @@
         margin: 4px 8px;
         width: 140px;
         height: 40px;
-        position:center;
+        position: center;
     }
 
         .btn-group button:not(:last-child) {
@@ -237,8 +306,7 @@
     /* Add a background color on hover */
     .btn-group button:hover {
         /*background-color:azure;*/
-        color:goldenrod;
-
+        color: goldenrod;
     }
 
     /*avatar*/
@@ -248,18 +316,16 @@
         /*border-radius: 50%;*/
         overflow: hidden;
         margin-top: -45px;
-        
         /* position: fixed;*/
     }
 
-   /**  mat select item*/
+    /**  mat select item*/
     .my-item-class {
         width: 100%;
         text-align: center;
     }
     /** dropdown select*/
     .selectYear {
-    
         border-width: 0px;
         position: absolute;
         left: 399px;
@@ -270,6 +336,4 @@
         color: #000000;
         text-align: left;
     }
-
-
 </style>

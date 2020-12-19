@@ -120,13 +120,14 @@ namespace Plana.Web.Pages.plan.study_director
                 await SemesterService.UpdateSemester(SpringSemester);
             }
 
-            //if (Plan.Id != 0) {
-            //    await PlanService.UpdatePlan(Plan);
-            //}
-            //else
-            //{
-            //    result = await PlanService.CreatePlan(Plan);
-            //}
+            if (Plan.Id != 0)
+            {
+                await PlanService.UpdatePlan(Plan);
+            }
+            else
+            {
+                result = await PlanService.CreatePlan(Plan);
+            }
 
         }
 

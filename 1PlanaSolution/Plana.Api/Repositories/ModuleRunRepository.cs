@@ -64,6 +64,7 @@ namespace Plana.Api.Models
             if (result != null)
             {
                 result.Code = moduleRun.Code;
+
                 //result.LecturersMR = moduleRun.LecturersMR;
                
               
