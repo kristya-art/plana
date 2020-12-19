@@ -40,7 +40,7 @@ namespace Plana.Api.Repositories
 
         public async Task<LecturerModuleRun> UpdateLecturerModuleRun(LecturerModuleRun lecturerModuleRun)
         {
-            var result = await GetLecturerModuleRun(lecturerModuleRun.LecturerId,lecturerModuleRun.ModuleRunId);
+            var result = await context.LecturersModuleRuns.FindAsync(lecturerModuleRun.ModuleRunId, lecturerModuleRun.LecturerId);
             if (result != null)
             {
                 //result.Lecturer = lecturerModuleRun.Lecturer;

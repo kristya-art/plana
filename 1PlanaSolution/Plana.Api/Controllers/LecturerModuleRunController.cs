@@ -24,10 +24,12 @@ namespace Plana.Api.Controllers
         [HttpPut()]
         public async Task<ActionResult<LecturerModuleRun>> UpdateLecturerModuleRun(LecturerModuleRun lecturerModuleRun)
         {
+            int id = lecturerModuleRun.LecturerId;
+            int id2 = lecturerModuleRun.ModuleRunId;
             try
             {
 
-                var updatedLecturerModuleRun = await _lecturerModuleRunRepository.GetLecturerModuleRun(lecturerModuleRun.LecturerId, lecturerModuleRun.ModuleRunId);
+                var updatedLecturerModuleRun = await _lecturerModuleRunRepository.GetLecturerModuleRun(id2, id);
                 if (updatedLecturerModuleRun == null)
                 {
                     return NotFound($"LecturerModuleRun with id = {lecturerModuleRun.LecturerId}and id = {lecturerModuleRun.ModuleRunId} not found!");
@@ -62,18 +64,16 @@ namespace Plana.Api.Controllers
                     "Error retrieving data from database");
             }
         }
-        ///
+        
         /// Example of multiple parameters
         ///   [HttpGet("empId={empId}&startDate={startDate}&endDate={endDate}")]
         ///    public IEnumerable<Validate> Get(int empId, string startDate, string endDate) { }
 
         //[HttpGet("{id:int}/{id2:int}")]   
-        //api/lecturerModuleRun
-
-        //[HttpGet("byId")]
+        
         //[HttpGet]
         //[HttpGet("id={id}&id2={id2}")] //  ==>{router}/empId=1&startDate=2020-20-20&endDate=2020-20-20 (postman)
-        [HttpGet("{id}/{id2}")]    //https://localhost:44399/api/lecturerModuleRun/1/6
+         [HttpGet("{id}/{id2}")]    //https://localhost:44399/api/lecturerModuleRun/1/6
         public async Task<ActionResult<LecturerModuleRun>> GetLecturerModuleRun(int id, int id2)
         {
             try
