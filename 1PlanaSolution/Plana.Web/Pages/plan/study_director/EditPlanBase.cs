@@ -22,6 +22,8 @@ namespace Plana.Web.Pages.plan.study_director
         public NavigationManager NavigationManager { get; set; }
         [Inject]
         public ILecturerService LecturerService { get; set; }
+       // [Inject]
+        
 
         public Plan Plan { get; set; } 
         public Semester Semester { get; set; } = new Semester();
@@ -32,6 +34,7 @@ namespace Plana.Web.Pages.plan.study_director
         public Semester SpringSemester { get; set; }
 
         public List<ModuleRun> ModuleRuns { get; set; } = new List<ModuleRun>();
+        public List<Module> Modules { get; set; } = new List<Module>();
        
 
         public Lecturer Lecturer { get; set; } 
@@ -129,6 +132,10 @@ namespace Plana.Web.Pages.plan.study_director
                 result = await PlanService.CreatePlan(Plan);
             }
 
+        }
+
+        protected async Task AddNewModule() {
+            await ModuleRunService.CreateModuleRun(ModuleRun);
         }
 
 

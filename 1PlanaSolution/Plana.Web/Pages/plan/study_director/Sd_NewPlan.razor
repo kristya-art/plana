@@ -11,7 +11,7 @@
 
    <MatDialog  @bind-IsOpen="dialogIsOpen">
         <MatDialogTitle>Add Plan</MatDialogTitle>
-        <MatDialogContent>
+        <MatDialogContent Style="width: 500px;right:50px">
             <div class="form-field">
                 <label>Plan Year:</label>
                 <div>
@@ -39,13 +39,13 @@
             <div class="form-field">
                 <label>Autumn Semester code:</label>
                 <div>
-                    <InputText @bind-Value="@plan.AutumnSemester.Code"/>
+                    <InputText @bind-Value="@plan.AutumnSemester.Code" />
                 </div>
             </div>
             <div class="form-field">
                 <label>Spring Semester code:</label>
                 <div>
-                    <InputText @bind-Value="@plan.SpringSemester.Code"/>
+                    <InputText @bind-Value="@plan.SpringSemester.Code" />
                 </div>
             </div>
             @*<EditForm  Model="@Asemester" OnValidSubmit="@CreateASemester">

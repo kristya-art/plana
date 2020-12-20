@@ -11,16 +11,19 @@
 @*@if (Plan.AutumnSemester == null) { return; }
     @if (Plan.AutumnSemester.ModuleRuns == null) { return; }*@
 
-
+<button @onclick="@(e=>OpenDialog(false))">show last year plan</button>
 <Plana.Web.Pages.template_components.SdNavBar />
+
+<button id="addNewModule" @onclick="@AddNewModule"></button>
+
 <button class="btn btn-primary" @onclick="CallJSMethod">show</button>
 <EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
-    <div class="form-group row">
+    <div class="form-group row">    
 
         <InputText id="year" @bind-Value="Plan.Year" />
     </div>
 
-
+    @*<InputDate id="publish date" @bind-Value="Plan.OfficialPublishDate"/>*@
 
 
 
@@ -234,7 +237,7 @@ else
 
                 }
           
-}
+
         </tbody>
     </table>
 
@@ -243,6 +246,161 @@ else
 
 
 }
+@*dialog for last year plan *@
+<MatDialog @bind-IsOpen="dialogIsOpen">
+    <MatDialogTitle>Add Plan</MatDialogTitle>
+    <MatDialogContent Style="width: 750px;right:50px">
+        @if (Plan == null)
+        {
+            <text>Loading...</text>
+        }
+        else
+        {
+
+            @*<table class="table" itemscope="@Plan" itemid="@Plan.Id">*@
+            <table class="table">
+                <thead>
+                    <tr>
+
+
+                        <th>Semester</th>
+                        <th>Module</th>
+                        <th>Module Title</th>
+                        <th>Module-Group</th>
+                        <th>Place</th>
+                        <th>Module Total Hours</th>
+                        <th>Lecturers Group</th>
+                        <th>Lecturers</th>
+                        <th>Set Lecturers hours</th>
+                        <th>Actions</th>
+                        <th>notes</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    @if (Semesters != null)
+                    {
+
+
+                        @foreach (var sem in Semesters)
+                        {
+
+                            @*flix it , the problem is that when the sem == null, program is break up*@
+                            @if (sem.ModuleRuns == null) { return; }
+
+
+                            @if (sem.ModuleRuns == null) { return; }
+                            @foreach (var mr in sem.ModuleRuns)
+                            {
+                                <tr>
+                                    <td>
+
+                                        <button contenteditable="true">
+                                            @mr.Module.Title
+                                        </button>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>@sem.GetAbbreviation()</td>
+
+                                    <td contenteditable='true'>@mr.Module.Code</td>
+                                    <td>@mr.Module.Title</td>
+                                    <td>@mr.ModuleGroup</td>
+                                    <td contenteditable="true">@mr.Place</td>
+                                    <td contenteditable="true">@mr.Module.TotalHours</td>
+                                    <td>
+
+                                        @if (mr.ModuleRunLecturerGroups != null)
+                                        {
+
+                                            @foreach (var lg in mr.ModuleRunLecturerGroups)
+                                            {
+                                                <p style="white-space:nowrap;">
+                                                    @lg.LecturerGroup.Title
+                                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                                </p>
+                                            }
+                                        }
+                                        <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                    </td>
+
+                                    @if (mr.LecturersMR != null)
+                                    {
+
+                                        <td style="white-space:nowrap;">
+
+                                            <div id="scroll">
+                                                @foreach (var lm in mr.LecturersMR)
+                                                {
+                                                    <p style="white-space:nowrap;">
+                                                        @lm.Lecturer.SetToken() | @lm.Hours
+                                                        <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
+                                                    </p>
+
+
+                                                }
+                                                <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td contenteditable='true'>
+                                            @foreach (var lm in mr.LecturersMR)
+                                            {
+
+                                                <p contenteditable='true'> @lm.Hours</p>
+
+                                            }
+                                        </td>
+                                    }
+                                    <td style="white-space:nowrap;" @onclick="CallJSMethod2">
+                                        <button class="btn" id="edit-btn">edit</button>
+                                        <button class="btn" id="save-btn">save lecturerModuleRun</button>
+                                        <button class="btn" id="save-btn">save</button>
+                                        <button class="btn" id="delete-btn">delete module</button>
+                                        <button class="btn" id="cancel-btn">cancel</button>
+                                        <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
+
+
+                                    </td>
+                                    <td><textarea>...</textarea></td>
+
+                                    @*in case of making row large*@
+                                    @*<td width="500" height="300">
+                                        <div style="width: 500px; height: 300px; overflow: auto">
+                                            lots of data that exceeds the dimensions
+                                        </div>
+                                    </td>*@
+
+                                </tr>
+
+                            }
+
+                        }
+
+                        @*<a class="btn btn-success">Edit</a>
+                        <button class="btn btn-danger">Delete</button>*@
+
+
+                    }
+
+                    
+                </tbody>
+            </table>
+
+
+
+
+
+        }
+
+    </MatDialogContent>
+    <button type="submit" class="btn-btn-success">
+        Create Plan
+    </button>
+</MatDialog>
+
 @**test js*@
 <div id="accordion">
     <h3>Asp.net</h3>
@@ -280,9 +438,9 @@ else
 
 @code {
 
-    
-    
-   
+
+
+
     /// <summary>
     /// js code for button
     /// </summary>
@@ -310,6 +468,30 @@ else
 
     }
 
+    #region Last Year Plan
+
+    #endregion
+    #region Dialog Box Methods for Last Year Plan
+    bool _isDelete = false;
+    bool dialogIsOpen = false;
+    bool _isEdit = false;
+    private void OpenDialog(bool isEdit)
+    {
+       
+        //if (!_isEdit) plan = new Plan();
+        dialogIsOpen = true;
+    }
+    private void okCklick()
+    {
+        dialogIsOpen = false;
+
+    }
+    private void CloseDialog()
+    {
+        dialogIsOpen = false;
+        
+    }
+    #endregion
 
     //[Inject]
     //public IPlanService PlanService { get; set; }
