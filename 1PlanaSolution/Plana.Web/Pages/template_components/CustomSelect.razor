@@ -18,7 +18,7 @@
             @*<a href="@($"/editplan/{SelectedPlan.Id}")">show plan</a>*@
 
         </button>
-        <button>show last year plan</button>
+        @*<button>show last year plan</button>*@
     </div>
 </form>
 
@@ -37,8 +37,9 @@
     public IPlanService PlanService { get; set; }
     [Parameter]
     public Plan Plan { get; set; } = new Plan();
+    [Parameter]
     public Plan SelectedPlan { get; set; } = new Plan();
-    public Plan SelectePlanForShow { get; set; } = new Plan();
+    //public Plan SelectePlanForShow { get; set; } = new Plan();
     public List<Plan> Plans { get; set; }
 
 

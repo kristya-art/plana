@@ -23,20 +23,22 @@ namespace Plana.Web.Pages.plan.study_director
         [Inject]
         public ILecturerService LecturerService { get; set; }
        // [Inject]
-        
+        [Inject]
+        public IModuleService ModuleService { get; set; }
 
         public Plan Plan { get; set; } 
         public Semester Semester { get; set; } = new Semester();
         public List<Plan> Plans { get; set; }
-        public List<Semester> Semesters{ get; set; }
+        public List<Semester> Semesters { get; set; } = new List<Semester>();
         public ModuleRun ModuleRun { get; set; } = new ModuleRun();
         public Semester AutumnSemester { get; set; }
         public Semester SpringSemester { get; set; }
+        public Module Module { get; set; } = new Module();
 
         public List<ModuleRun> ModuleRuns { get; set; } = new List<ModuleRun>();
         public List<Module> Modules { get; set; } = new List<Module>();
        
-
+       
         public Lecturer Lecturer { get; set; } 
         public List<Lecturer> Lecturers { get; set; }
         /// <summary>
@@ -44,7 +46,11 @@ namespace Plana.Web.Pages.plan.study_director
         /// </summary>
         [Parameter]
         public string Id { get; set; }
+       public string SemesterId { get; set; }
+        public string ModuleId { get; set;}
        
+
+        
        
         /// <summary>
         /// inside this method we call the rest api and retrieve a data
@@ -60,9 +66,10 @@ namespace Plana.Web.Pages.plan.study_director
                 AutumnSemester = Plan.AutumnSemester;
                 SpringSemester = Plan.SpringSemester;
 
-                Semesters = new List<Semester> { Plan.AutumnSemester, Plan.SpringSemester };
-                
-               
+                Semesters = new List<Semester> { AutumnSemester, SpringSemester };
+
+                SemesterId = Semester.SemesterId.ToString();
+                ModuleId = Module.ModuleId.ToString();
 
             }
 
@@ -70,7 +77,9 @@ namespace Plana.Web.Pages.plan.study_director
             {
                 Plan = new Plan { };
                 Semester = new Semester { };
+                Module = new Module { };
                 ModuleRun = new ModuleRun { };
+
                 //AutumnSemester = new Semester { };
                 //SpringSemester = new Semester { };
                 
@@ -80,6 +89,7 @@ namespace Plana.Web.Pages.plan.study_director
             Plans = (await PlanService.GetPlans()).ToList();
             //Semesters = (await SemesterService.GetSemesters()).ToList();
             ModuleRuns = (await ModuleRunService.GetModuleRuns()).ToList();
+            Modules = (await ModuleService.GetModules()).ToList();
 
         }
 
@@ -135,6 +145,7 @@ namespace Plana.Web.Pages.plan.study_director
         }
 
         protected async Task AddNewModule() {
+            
             await ModuleRunService.CreateModuleRun(ModuleRun);
         }
 

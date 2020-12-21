@@ -223,3 +223,82 @@ img {
 
 /****************              vertical menu            */
 
+/***** button group */
+.btn-group button {
+    background-color: #f2f2f2; /* background */
+    border: 1px solid rgb(26, 79, 238); /* border */
+    color: #333333; /*  text */
+    display: flex;
+    font-size: 16px;
+    font-family: 'ArialMT', 'Arial';
+    padding: 10px 5px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    border-radius: 12px;
+    margin: 4px 8px;
+    width: 140px;
+    height: 40px;
+    position: center;
+}
+
+    .btn-group button a, btn-link {
+        color: #333333
+    }
+
+        .btn-group button a:hover, btn-link:hover {
+            color: goldenrod
+        }
+
+    .btn-group button:not(:last-child) {
+        border-right: none; /* Prevent double borders */
+    }
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*button -> right*/
+.btn-groupR button {
+    background-color: #f2f2f2; /* background */
+    border: 1px solid rgb(120, 24, 119); /* border */
+    color: #333333; /*  text */
+    display: flex;
+    font-size: 13px;
+    font-family: 'ArialMT', 'Arial';
+    padding: 10px 5px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: right; /* Float the buttons side by side */
+    border-radius: 12px;
+    border-style: dashed;
+    margin: 4px 8px;
+    width: 140px;
+    height: 70px;
+    position: center;
+   
+    top:150px;
+}
+
+.btn-groupR button a, btn-link {
+    color: #333333
+}
+
+    .btn-groupR button p:hover a:hover, btn-link:hover {
+        color: #b01151
+    }
+
+.btn-groupR button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-groupR:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.btn-bar {
+    top:150px;
+}

@@ -4,7 +4,7 @@
 
 <Plana.Web.Pages.template_components.SdNavBar />
 
-<MatButton Outlined="true" @onclick="@(e=>OpenDialog(false))">Add Plan</MatButton>
+<MatButton Outlined="true" @onclick="@(e=>OpenDialog(false))">Add new Plan</MatButton>
 <hr />
 <EditForm Model="@plan" OnValidSubmit="@Create">
 
@@ -25,6 +25,12 @@
                 </div>
             </div>
             <div class="form-field">
+                <label>Share with Professors Date:</label>
+                <div>
+                    <InputDate placeholder="Share Date" @bind-Value="@plan.PublishDateForProfessors" />
+                </div>
+            </div>
+            <div class="form-field">
                 <label>Expired Date:</label>
                 <div>
                     <InputDate placeholder="Expired Date" @bind-Value="@plan.ExpiredDate" />
@@ -39,13 +45,13 @@
             <div class="form-field">
                 <label>Autumn Semester code:</label>
                 <div>
-                    <InputText @bind-Value="@plan.AutumnSemester.Code" />
+                    <InputText @bind-Value="@Asemester.Code" />
                 </div>
             </div>
             <div class="form-field">
                 <label>Spring Semester code:</label>
                 <div>
-                    <InputText @bind-Value="@plan.SpringSemester.Code" />
+                    <InputText @bind-Value="@Ssemester.Code" />
                 </div>
             </div>
             @*<EditForm  Model="@Asemester" OnValidSubmit="@CreateASemester">
@@ -118,19 +124,21 @@
     public IPlanService PlanService { get; set; }
     [Inject]
     public ISemesterService SemesterService { get; set; }
+    [Inject]
+    public NavigationManager NavManager { get; set; }
 
-    Plan plan = new Plan();
+    Plan plan{ get; set; } = new Plan();
 
 
 
 
-    Semester Ssemester = new Semester();
+    Semester Ssemester{ get; set; } = new Semester();
 
     //async Task CreateSSemester()
     //{
     //    Ssemester = await SemesterService.CreateSemester(Ssemester);
     //}
-    Semester Asemester = new Semester();
+    Semester Asemester { get; set; } = new Semester();
 
     //async Task CreateASemester()
     //{
@@ -139,11 +147,18 @@
 
     async Task Create()
     {
-        //Ssemester = await SemesterService.CreateSemester(Ssemester);
-        //Asemester = await SemesterService.CreateSemester(Asemester);
+
+
+
         plan.SpringSemester = Ssemester;
+
         plan.AutumnSemester = Asemester;
+
+
         plan = await PlanService.CreatePlan(plan);
+        //await SemesterService.UpdateSemester(plan.SpringSemester);
+        //await SemesterService.UpdateSemester(plan.AutumnSemester);
+        NavManager.NavigateTo($"/editplan/{plan.Id}", true);
         dialogIsOpen = false;
     }
 }

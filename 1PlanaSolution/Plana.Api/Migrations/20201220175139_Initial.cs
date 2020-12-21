@@ -241,6 +241,7 @@ namespace Plana.Api.Migrations
                     Year = table.Column<string>(nullable: true),
                     ExpiredDate = table.Column<DateTime>(nullable: true),
                     OfficialPublishDate = table.Column<DateTime>(nullable: true),
+                    PublishDateForProfessors = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     AutumnSemesterId = table.Column<int>(nullable: true),

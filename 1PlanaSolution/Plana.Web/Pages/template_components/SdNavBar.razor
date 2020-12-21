@@ -5,7 +5,7 @@
 @inherits EditPlanBase
 
 
-<h3>Assignment plan for </h3>
+
 <div class="topnav" id="topnav" style="position: relative;top: 0px;">
 
     <div style="overflow:auto;">
@@ -20,6 +20,7 @@
         </div>
         @*here shall be  the select drop-down  *@
         <div class="selectYear">
+           
             <Plana.Web.Pages.template_components.CustomSelect />
         </div>
         <div class="avatar w3-right">
@@ -34,11 +35,11 @@
 
 
         </div>
-        <div class="btn-group">
+        @*<div class="btn-group">
             <button @onclick="@navigateToModulesPlan">Modules Plan</button>
             <button @onclick="@navigateToLecturersPlan">Lecturers Plan</button>
             <button @onclick="@(e=>OpenDialog(false))">Make new Plan</button>
-        </div>
+        </div>*@
 
     </div>
     @*dialog for make new plan*@

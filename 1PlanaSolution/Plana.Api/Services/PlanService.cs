@@ -136,6 +136,7 @@ namespace Plana.Api.Services
                 result.OfficialPublishDate = plan.OfficialPublishDate;
                 result.IsModifyable = plan.IsModifyable;
                 result.IsFixed = plan.IsFixed;
+                result.PublishDateForProfessors = plan.PublishDateForProfessors;
 
 
 

@@ -14,7 +14,9 @@ namespace Plana.Models
         public bool IsModifyable { get; set; }
         public string Year { get; set; }
         public DateTime? ExpiredDate { get; set; }
+        
         public DateTime? OfficialPublishDate { get; set; }
+        public DateTime? PublishDateForProfessors { get; set; }
 
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
@@ -35,7 +37,7 @@ namespace Plana.Models
         //public int SpringSemesterId { get; set; }
         public Semester SpringSemester { get; set; } = new Semester();
 
-        
+       
 
         //public List<Semester> Semesters { get; set; } = new List<Semester>();
     }

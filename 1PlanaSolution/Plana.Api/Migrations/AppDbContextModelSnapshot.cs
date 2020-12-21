@@ -379,6 +379,9 @@ namespace Plana.Api.Migrations
                     b.Property<DateTime?>("OfficialPublishDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("PublishDateForProfessors")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("SpringSemesterId")
                         .HasColumnType("int");
 

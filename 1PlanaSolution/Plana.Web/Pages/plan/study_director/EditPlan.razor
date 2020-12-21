@@ -11,96 +11,42 @@
 @*@if (Plan.AutumnSemester == null) { return; }
     @if (Plan.AutumnSemester.ModuleRuns == null) { return; }*@
 
-<button @onclick="@(e=>OpenDialog(false))">show last year plan</button>
+
+<!--<div>-->
+    @*Edit form for Plan*@
+    <!--<EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
+        <div class="form-group row">
+
+            <InputText id="year" @bind-Value="Plan.Year" />
+        </div>-->
+
+        @*<InputDate id="publish date" @bind-Value="Plan.OfficialPublishDate"/>*@
+
+
+
+       
+        @*@if(showModulesPlanTable)*@
+
+    <!--</EditForm>
+</div>-->
+
 <Plana.Web.Pages.template_components.SdNavBar />
 
-<button id="addNewModule" @onclick="@AddNewModule"></button>
-
-<button class="btn btn-primary" @onclick="CallJSMethod">show</button>
-<EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
-    <div class="form-group row">    
-
-        <InputText id="year" @bind-Value="Plan.Year" />
+    <div class="btn-group">
+        <button id="addNewModule" @onclick="@(e=>OpenModuleDialog(false))" style="float: right;">Add Module</button>
+        <button @onclick="@(e=>OpenDialog(false))" style="float: right;">last year plan</button>
     </div>
 
-    @*<InputDate id="publish date" @bind-Value="Plan.OfficialPublishDate"/>*@
+    <div class="btn-groupR">
+        <button>Share with professors on @Plan.PublishDateForProfessors </button>
+        <button>Official publish on @Plan.OfficialPublishDate</button>
+
+    </div>
+
+    @*<button class="btn btn-primary" @onclick="CallJSMethod">show</button>*@
 
 
-
-    table
-    @*@if(showModulesPlanTable)*@
-
-</EditForm>
-
-
-<!--<MatTable Items="@Plan.PlanLecturers" class="mat-elevation-z3"
-          FilterByColumnName="Module-Title">
-    <MatTableHeader>
-        <th>SemesterId</th>
-        <th>Semester</th>
-        <th style="width:100%; height:20%;">Details</th>-->
-@*<th>Module</th>
-    <th>Module Title</th>
-    <th>Module-Group</th>
-    <th>Place</th>
-    <th>Module Total Hours</th>
-    <th>Lecturers Group</th>
-    <th>Lecturers</th>
-    <th>Set Lecturers hours</th>
-    <th>Actions</th>
-    <th>notes</th>*@
-
-<!--</MatTableHeader>
-<MatTableRow Context="context2">
-    @if (Plan.PlanLecturers != null)
-    {
-        <td>@context2.Lecturer.FirstName</td>
-        <td>@context2.Lecturer.BirthDate</td>
-    }
-</MatTableRow>-->
-@*<MatTableRow>
-        <td></td>
-        @if (Plan.AutumnSemester != null)
-        {
-            <td>@Plan.AutumnSemester.Code</td>
-            @if (Plan.AutumnSemester.ModuleRuns != null)
-            {
-                @foreach (var MR in Plan.AutumnSemester.ModuleRuns)
-                {
-                    <td>@MR.Module.Code</td>
-                    <td>@MR.Module.Title</td>
-                    <td>@MR.ModuleGroup</td>
-                    <td>@MR.Place</td>
-                    <td>@MR.Module.TotalHours</td>
-
-                    <td>@MR.ModuleRunLecturerGroups</td>
-
-                    @foreach (var lmr in MR.LecturersMR)
-                    {
-                        <p>
-                            <MatTextField @bind-Value="lmr.Lecturer.FirstName" Label="@lmr.Lecturer.FirstName" Outlined="true"></MatTextField>
-                            <MatButton Raised="true" Icon="add" title="Add lecturer"></MatButton>
-
-                        </p>
-                        <td>@lmr.Hours</td>
-                    }
-                }
-            }
-        }
-        <td>
-            <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="edit" title="Edit plan"></MatButton>
-            <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
-            <form>
-                <MatButton type="submit" name="HandleValidSubmit" @onclick="HandleValidSubmit">OK</MatButton>
-            </form>
-        </td>
-        <td>
-        </td>
-
-    </MatTableRow>*@
-
-
-<!--</MatTable>-->
+@*Modules Table*@
 
 @if (Plan == null)
 {
@@ -140,72 +86,72 @@ else
 
                     @*flix it , the problem is that when the sem == null, program is break up*@
                     @if (sem.ModuleRuns == null) { return; }
-                     
-                   
-                      @if (sem.ModuleRuns == null) { return; }
-                        @foreach (var mr in sem.ModuleRuns)
-                        {
-                            <tr>
-                                <td>
 
-                                    <button contenteditable="true">
-                                      @mr.Module.Title
-                                    </button>
 
-                                </td>
-                            </tr>
+                    @if (sem.ModuleRuns == null) { return; }
+                    @foreach (var mr in sem.ModuleRuns)
+                    {
+                        <tr>
+                            <td>
 
-                            <tr>
-                                <td>@sem.GetAbbreviation()</td>
+                                <button contenteditable="true">
+                                    @mr.Module.Title
+                                </button>
 
-                                <td contenteditable='true'>@mr.Module.Code</td>
-                                <td>@mr.Module.Title</td>
-                                <td>@mr.ModuleGroup</td>
-                                <td contenteditable="true">@mr.Place</td>
-                                <td contenteditable="true">@mr.Module.TotalHours</td>
-                                <td>
+                            </td>
+                        </tr>
 
-                                    @if (mr.ModuleRunLecturerGroups != null)
-                                    {
+                        <tr>
+                            <td>@sem.GetAbbreviation()</td>
 
-                                        @foreach (var lg in mr.ModuleRunLecturerGroups)
-                                        {
-                                            <p style="white-space:nowrap;">
-                                                @lg.LecturerGroup.Title
-                                                <button class="btn" id="del"><i class="fa fa-close"></i></button>
-                                            </p>
-                                        }
-                                    }
-                                    <button class="btn" id="add"><i class="fa fa-plus"></i></button>
-                                </td>
+                            <td contenteditable='true'>@mr.Module.Code</td>
+                            <td>@mr.Module.Title</td>
+                            <td>@mr.ModuleGroup</td>
+                            <td contenteditable="true">@mr.Place</td>
+                            <td contenteditable="true">@mr.Module.TotalHours</td>
+                            <td>
 
-                                @if (mr.LecturersMR != null)
+                                @if (mr.ModuleRunLecturerGroups != null)
                                 {
 
-                                    <td style="white-space:nowrap;">
+                                    @foreach (var lg in mr.ModuleRunLecturerGroups)
+                                    {
+                                        <p style="white-space:nowrap;">
+                                            @lg.LecturerGroup.Title
+                                            <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                        </p>
+                                    }
+                                }
+                                <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                            </td>
 
-                                        <div id="scroll">
-                                            @foreach (var lm in mr.LecturersMR)
-                                            {
-                                                <p style="white-space:nowrap;">
-                                                    @lm.Lecturer.SetToken() | @lm.Hours
-                                                    <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
-                                                </p>
+                            @if (mr.LecturersMR != null)
+                            {
 
+                                <td style="white-space:nowrap;">
 
-                                            }
-                                            <button class="btn" id="add"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td contenteditable='true'>
+                                    <div id="scroll">
                                         @foreach (var lm in mr.LecturersMR)
                                         {
+                                            <p style="white-space:nowrap;">
+                                                @lm.Lecturer.SetToken() | @lm.Hours
+                                                <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
+                                            </p>
 
-                                            <p contenteditable='true'> @lm.Hours</p>
 
                                         }
-                                    </td>
-                                }
+                                        <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td contenteditable='true'>
+                                    @foreach (var lm in mr.LecturersMR)
+                                    {
+
+                                        <p contenteditable='true'> @lm.Hours</p>
+
+                                    }
+                                </td>
+                            }
                             <td style="white-space:nowrap;" @onclick="CallJSMethod2">
                                 <button class="btn" id="edit-btn">edit</button>
                                 <button class="btn" id="save-btn">save lecturerModuleRun</button>
@@ -216,27 +162,27 @@ else
 
 
                             </td>
-                                <td><textarea>...</textarea></td>
+                            <td><textarea>...</textarea></td>
 
-                                @*in case of making row large*@
-                                @*<td width="500" height="300">
-                                        <div style="width: 500px; height: 300px; overflow: auto">
-                                            lots of data that exceeds the dimensions
-                                        </div>
-                                    </td>*@
+                            @*in case of making row large*@
+                            @*<td width="500" height="300">
+                                    <div style="width: 500px; height: 300px; overflow: auto">
+                                        lots of data that exceeds the dimensions
+                                    </div>
+                                </td>*@
 
-                            </tr>
+                        </tr>
 
-                        }
-
-                     }
-
-                    @*<a class="btn btn-success">Edit</a>
-                        <button class="btn btn-danger">Delete</button>*@
-
+                    }
 
                 }
-          
+
+                @*<a class="btn btn-success">Edit</a>
+                    <button class="btn btn-danger">Delete</button>*@
+
+
+            }
+
 
         </tbody>
     </table>
@@ -368,10 +314,10 @@ else
 
                                     @*in case of making row large*@
                                     @*<td width="500" height="300">
-                                        <div style="width: 500px; height: 300px; overflow: auto">
-                                            lots of data that exceeds the dimensions
-                                        </div>
-                                    </td>*@
+                                            <div style="width: 500px; height: 300px; overflow: auto">
+                                                lots of data that exceeds the dimensions
+                                            </div>
+                                        </td>*@
 
                                 </tr>
 
@@ -380,12 +326,12 @@ else
                         }
 
                         @*<a class="btn btn-success">Edit</a>
-                        <button class="btn btn-danger">Delete</button>*@
+                            <button class="btn btn-danger">Delete</button>*@
 
 
                     }
 
-                    
+
                 </tbody>
             </table>
 
@@ -397,204 +343,230 @@ else
 
     </MatDialogContent>
     <button type="submit" class="btn-btn-success">
-        Create Plan
+        Copy to actual
     </button>
 </MatDialog>
 
+
+@*Dialog for the making a new module*@
+<EditForm Model="@ModuleRun" OnInvalidSubmit="@CreateModule">
+    <MatDialog @bind-IsOpen="moduledialogIsOpen">
+        <MatDialogTitle>Add Module</MatDialogTitle>
+        <MatDialogContent Style="width: 500px;right:50px">
+            <div class="form-group row">
+                <label for="semester">Semester</label>
+            </div>
+            <div class="col-sm-10">
+                <InputSelect id="semester" @bind-Value="SemesterId" class="form-control">
+                    @foreach (var sem in Semesters)
+                    {
+                        <option value="@sem.SemesterId">@sem.GetAbbreviation()</option>
+                    }
+                </InputSelect>
+            </div>
+            <div class="form-group row">
+                <label for="semester">Module Name</label>
+            </div>
+            <div class="col-sm-10">
+                <InputSelect id="module" @bind-Value="ModuleId" class="form-control">
+                    @foreach (var module in Modules)
+                    {
+                        <option value="@module.ModuleId">@module.ModuleId | @module.Title</option>
+                    }
+                </InputSelect>
+            </div>
+
+        </MatDialogContent>
+        <div class="btn-group">
+            <button type="submit" class="btn-btn-success">
+                Add Module
+            </button>
+        </div>
+    </MatDialog>
+</EditForm>
+
+
+
+
+
+
 @**test js*@
-<div id="accordion">
-    <h3>Asp.net</h3>
-    <div>
-        <p>
-            Microsoft ASP.NET is a set of technologies....
-        </p>
+@*<div id="accordion">
+        <h3>Asp.net</h3>
+        <div>
+            <p>
+                Microsoft ASP.NET is a set of technologies....
+            </p>
+        </div>
+        <h3>Asp.NET.MVC</h3>
+        <div>
+            <p>
+                Microsoft ASP.NET is a set of technologies....
+            </p>
+        </div>
+        <h3>JavaScript</h3>
+        <div>
+            <p>
+                Microsoft ASP.NET is a set of technologies....
+            </p>
+        </div>
     </div>
-    <h3>Asp.NET.MVC</h3>
-    <div>
-        <p>
-            Microsoft ASP.NET is a set of technologies....
-        </p>
+
+    <div class="jquery-btn">
+        <button>Click Me</button>
     </div>
-    <h3>JavaScript</h3>
-    <div>
-        <p>
-            Microsoft ASP.NET is a set of technologies....
-        </p>
-    </div>
-</div>
 
-<div class="jquery-btn">
-    <button>Click Me</button>
-</div>
+    <br />
+    <p>Clicked: <span class="click-count">0</span></p>
 
-<br />
-<p>Clicked: <span class="click-count">0</span></p>
-
-<br />
+    <br />*@
 
 @* other test *@
 
 
 
 @code {
+    
+        #region variables
 
 
+        #endregion
 
 
-    /// <summary>
-    /// js code for button
-    /// </summary>
+        /// <summary>
+            /// js code for button
+            ///
+      ///  </summary>
 
-    protected override async void OnAfterRender(bool firstRender)
-    {
+        protected override async void OnAfterRender(bool firstRender)
+        {
         await js.InvokeVoidAsync("renderjQueryComponents");
         base.OnAfterRender(firstRender);
 
-    }
+        }
 
-    private async Task CallJSMethod()
-    {
+        private async Task CallJSMethod()
+        {
 
         //await JS.InvokeVoidAsync("CollapseTableRow");
         await js.InvokeVoidAsync("GetName");
 
-    }
-    private async Task CallJSMethod2()
-    {
+        }
+        private async Task CallJSMethod2()
+        {
         await js.InvokeVoidAsync("SetButtonsVisible");
-    }
+        }
 
-    public void EditEvent() {
+        public void EditEvent()
+        {
 
-    }
+        }
 
-    #region Last Year Plan
+        #region Last Year Plan
 
-    #endregion
-    #region Dialog Box Methods for Last Year Plan
-    bool _isDelete = false;
-    bool dialogIsOpen = false;
-    bool _isEdit = false;
-    private void OpenDialog(bool isEdit)
-    {
-       
+        #endregion
+        #region Dialog Box Methods for Last Year Plan
+        bool _isDelete = false;
+        bool dialogIsOpen = false;
+        bool _isEdit = false;
+        private void OpenDialog(bool isEdit)
+        {
+
         //if (!_isEdit) plan = new Plan();
         dialogIsOpen = true;
-    }
-    private void okCklick()
-    {
+        }
+        private void okCklick()
+        {
         dialogIsOpen = false;
 
-    }
-    private void CloseDialog()
-    {
+        }
+        private void CloseDialog()
+        {
         dialogIsOpen = false;
-        
-    }
-    #endregion
 
-    //[Inject]
-    //public IPlanService PlanService { get; set; }
-
-    //public Plan Plan { get; set; } = new Plan();
-
-    //public List<Plan> Plans { get; set; } = new List<Plan>();
-
-    //[Parameter]
-    //public string Id { get; set; }
-
-    //protected async override Task OnInitializedAsync()
-    //{
-    //    int.TryParse(Id, out int planId);
-
-    //    if (planId != 0)
-    //    {
-    //        Plan = await PlanService.GetPlan(int.Parse(Id));
-    //    }
-
-    //    else
-    //    {
-    //        Plan = new Plan { };
-
-
-
-    //    }
-    //    Plans = (await PlanService.GetPlans()).ToList();
-
-    //}
-
-    //protected async Task HandleValidSubmit()
-    //{
-    //    Plan result = null;
-    //    if (Plan.Id != 0)
-    //    {
-    //        await PlanService.UpdatePlan(Plan);
-    //    }
-    //    else
-    //    {
-    //        result = await PlanService.CreatePlan(Plan);
-    //    }
-
-    //}
-}
-
-<style>
-    .table {
-        font-family: 'ArialMT', 'Arial';
-        font-weight: 400;
-        font-style: normal;
-        font-size: 13px;
-        letter-spacing: normal;
-        color: #333333;
-        vertical-align: none;
-        text-align: center;
-        line-height: normal;
-        text-transform: none;
-    }
-
-        .table th {
-            /*padding: 2px;*/
-            text-align: left;
+        }
+        #endregion
+        #region New Module
+        bool moduledialogIsOpen = false;
+        private void OpenModuleDialog(bool isEdit)
+        {
+        moduledialogIsOpen = true;
         }
 
-        .table tr {
+        private void moduleOkClick()
+        {
+        moduledialogIsOpen = false;
+        }
+        private async Task CreateModule()
+        {
+
+
+        await AddNewModule();
+        moduledialogIsOpen = false;
+        }
+        #endregion
+
+
         }
 
-        .table td {
-            text-align: center;
-        }
+        <style>
+            .table {
+                font-family: 'ArialMT', 'Arial';
+                font-weight: 400;
+                font-style: normal;
+                font-size: 13px;
+                letter-spacing: normal;
+                color: #333333;
+                vertical-align: none;
+                text-align: center;
+                line-height: normal;
+                text-transform: none;
+            }
 
-        .table tr:hover {
-            background-color: #f3eff3;
-        }
+                .table th {
+                    /*padding: 2px;*/
+                    text-align: left;
+                }
+
+                .table tr {
+                }
+
+                .table td {
+                    text-align: center;
+                }
+
+                .table tr:hover {
+                    background-color: #d1cfcf;
+                }
 
 
-    .btn {
-        background-color: white;
-        border: none;
-        padding: 3px 4px;
-        font-size: 9px;
-        cursor: pointer;
-    }
+            .btn {
+                background-color: white;
+                border: none;
+                padding: 3px 4px;
+                font-size: 9px;
+                cursor: pointer;
+            }
 
-    #del {
-        color: #d24141;
-    }
+            #del {
+                color: #d24141;
+            }
 
-    #add {
-        color: #1919aa
-    }
-     #delete-btn, #save-btn, #cancel-btn {
-        display:none;
-    }
-    /* Darker background on mouse-over */
-    .btn:hover {
-        background-color: #b2acb2;
-    }
+            #add {
+                color: #1919aa
+            }
 
-    #scroll td {
-        width: 500px;
-        height: 300px;
-        overflow: auto;
-    }
-</style>
+            #delete-btn, #save-btn, #cancel-btn {
+                display: none;
+            }
+            /* Darker background on mouse-over */
+            .btn:hover {
+                background-color: #b2acb2;
+            }
+
+            #scroll td {
+                width: 500px;
+                height: 300px;
+                overflow: auto;
+            }
+        </style>
