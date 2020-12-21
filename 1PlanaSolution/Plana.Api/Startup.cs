@@ -49,6 +49,7 @@ namespace Plana.Api
 
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IModuleRunService, ModuleRunService>();
+            services.AddScoped<IPlanLecturerService, PlanLecturerService>();
 
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
