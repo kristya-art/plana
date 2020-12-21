@@ -298,7 +298,9 @@ namespace Plana.Api.Migrations
                     AnnualTarget = table.Column<int>(nullable: false),
                     BalanceActual = table.Column<int>(nullable: false),
                     BalanceLastYear = table.Column<int>(nullable: false),
-                    BalanceAccumulated = table.Column<int>(nullable: false)
+                    BalanceAccumulated = table.Column<int>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

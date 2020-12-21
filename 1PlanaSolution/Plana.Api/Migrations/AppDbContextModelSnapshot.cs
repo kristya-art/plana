@@ -421,6 +421,12 @@ namespace Plana.Api.Migrations
                     b.Property<int>("BalanceLastYear")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("PlanId", "LecturerId");
 
                     b.HasIndex("LecturerId");

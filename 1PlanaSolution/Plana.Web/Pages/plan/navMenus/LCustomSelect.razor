@@ -1,0 +1,160 @@
+﻿@page "/lcustomSelect"
+@*<EditForm Model="@Plan">*@
+@if (Plans == null)
+{ return; }
+<form>
+    <select class="form-control" @bind="SelectedPlan.Id">
+
+        @foreach (var plan in Plans)
+        {
+            <option value="@plan.Id">
+                @plan.Year
+            </option>
+        }
+    </select>
+    <div class="btn-group">
+        <button @onclick="NavigateToModulesPlanPage">
+            show plan
+            @*<a href="@($"/editplan/{SelectedPlan.Id}")">show plan</a>*@
+
+        </button>
+        @*<button>show last year plan</button>*@
+    </div>
+</form>
+
+@*<MatFAB Icon="@MatIconNames.Add" Label="@SelectedPlan.Year">
+
+        <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
+    </MatFAB>*@
+
+
+
+@code {
+
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+    [Inject]
+    public IPlanService PlanService { get; set; }
+    [Parameter]
+    public Plan Plan { get; set; } = new Plan();
+    [Parameter]
+    public Plan SelectedPlan { get; set; } = new Plan();
+    //public Plan SelectePlanForShow { get; set; } = new Plan();
+    public List<Plan> Plans { get; set; }
+
+
+
+    public string Id { get; set; }
+
+    //protected async override Task OnInitializedAsync()
+    //{
+
+
+    //    Plans = (await PlanService.GetPlans()).ToList();
+
+    //}
+    //#region method
+    public void NavigateToModulesPlanPage()
+    {
+        string Id = Plan.Id.ToString();
+        NavManager.NavigateTo($"/editplan/{SelectedPlan.Id}", true);
+    }
+
+
+
+
+    #region   // for lCustomSelect
+    [Inject]
+    //public PlanLecturerService planLecturerService { get; set; }
+    public PlanLecturer PlanLct { get; set; }
+    public Lecturer Lecturer { get; set; } = new Lecturer();
+
+    public PlanLecturer SelectedPlanLecturer { get; set; } = new PlanLecturer();
+
+    public List<PlanLecturer> PlanLecturers { get; set; } = new List<PlanLecturer>();
+
+    public string PlanLectPlanId { get; set; }
+    public string PlanLectLectId { get; set; }
+
+    //protected void override Task OnInizialiedAsync()
+    //{
+    //    PlanLecturers = (await planLecturersService.GetPlanLecturers());
+    //}
+    #endregion
+
+}
+
+<style>
+    form {
+        padding: 2px;
+    }
+
+    input {
+        /* And hide the input's outline, so the form looks like the outline */
+        border: none;
+    }
+
+
+    .btn-group button {
+        background-color: #f2f2f2; /* background */
+        border: 1px solid rgb(26, 79, 238); /* border */
+        color: #333333; /*  text */
+        display: flex;
+        font-size: 16px;
+        font-family: 'ArialMT', 'Arial';
+        padding: 10px 5px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        float: left; /* Float the buttons side by side */
+        border-radius: 12px;
+        margin: 4px 8px;
+        width: 140px;
+        height: 40px;
+        position: center;
+    }
+
+        .btn-group button a, btn-link {
+            color: #333333
+        }
+
+            .btn-group button a:hover, btn-link:hover {
+                color: goldenrod
+            }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        /*background-color:azure;*/
+        color: goldenrod;
+    }
+
+    .customS {
+        /* display: table-cell;
+            vertical-align: middle;
+            height: 50px;
+            border: 1px solid #354496;
+            .selectYear
+            border-width: 0px;*/
+        position: absolute;
+        left: 399px;
+        top: 41px;
+        width: 177px;
+        height: 37px;
+        display: flex;
+        color: #000000;
+        text-align: left;
+    }
+
+    .show-button {
+    }
+</style>
+
