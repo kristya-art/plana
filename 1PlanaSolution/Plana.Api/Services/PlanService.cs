@@ -30,6 +30,17 @@ namespace Plana.Api.Services
 
         public async Task<Plan> AddPlan(Plan plan)
         {
+            //ICollection<Lecturer> lecturers = new List<Lecturer>();
+            //lecturers = (ICollection<Lecturer>)_lecturerRepository.GetLecturers();
+            //PlanLecturer planLecturer = new PlanLecturer();
+            //Semester Ssemester = new Semester();
+            //Semester Fsemester = new Semester();
+            //foreach (var l in lecturers)
+            //{
+            //    planLecturer = new PlanLecturer() { LecturerId = l.Id, PlanId = plan.Id };
+            //    await _planLecturerService.AddPlanLecturer(planLecturer);
+            //    plan.PlanLecturers.Add(planLecturer);
+            //}
             //Semester Ssemester = new Semester();
             //Semester Fsemester = new Semester();
             var result = await _context.Plans.AddAsync(plan);

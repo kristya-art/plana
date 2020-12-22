@@ -46,6 +46,7 @@ namespace Plana.Api.Models
             modelBuilder.Entity<Semester>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<AdditionalAssignment>().HasQueryFilter(p => !p.IsDeleted);
 
+
             modelBuilder.Entity<Lecturer>()
                 .HasKey(x => new { x.Id });
 
@@ -217,17 +218,7 @@ namespace Plana.Api.Models
                 .HasOne(m => m.Module)
                 .WithMany();
 
-
-
-
-
-
-
-
-
-
-
-        }
+      }
 
     }
 }
