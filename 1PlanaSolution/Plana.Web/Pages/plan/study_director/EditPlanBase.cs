@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Plana.Models;
 using Plana.Web.Services;
 using System;
@@ -11,7 +12,8 @@ namespace Plana.Web.Pages.plan.study_director
 {
     public class EditPlanBase : ComponentBase
     {
-
+        [CascadingParameter]
+        public Task<AuthenticationState> authenticationStateTask { get; set; }
         [Inject]
         public IPlanService PlanService { get; set; }
         [Inject]
@@ -58,6 +60,12 @@ namespace Plana.Web.Pages.plan.study_director
         /// <returns></returns>
         protected async override Task OnInitializedAsync()
         {
+            //var authenticationState = await authenticationStateTask;
+            //if (!authenticationState.User.Identity.IsAuthenticated) {
+            //    string returnUrl = System.Net.WebUtility.UrlEncode($"/editPlan/{Id}");
+            //    NavigationManager.NavigateTo($"/identity/account/login?returnUrl={returnUrl}");
+
+            //}
             int.TryParse(Id, out int planId);
 
             if (planId != 0)

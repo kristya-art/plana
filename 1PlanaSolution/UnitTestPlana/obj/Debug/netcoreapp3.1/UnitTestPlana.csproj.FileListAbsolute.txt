@@ -122,3 +122,7 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Uni
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\UnitTestPlana\obj\Debug\netcoreapp3.1\UnitTestPlana.csproj.CoreCompileInputs.cache
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\UnitTestPlana\obj\Debug\netcoreapp3.1\UnitTestPlana.dll
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\UnitTestPlana\obj\Debug\netcoreapp3.1\UnitTestPlana.pdb
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\UnitTestPlana\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\UnitTestPlana\bin\Debug\netcoreapp3.1\EntityFramework.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\UnitTestPlana\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\UnitTestPlana\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.EntityFramework.dll

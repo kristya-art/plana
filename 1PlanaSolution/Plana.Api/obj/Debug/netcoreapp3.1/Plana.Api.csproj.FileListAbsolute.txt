@@ -68,3 +68,7 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\obj\Debug\netcoreapp3.1\Plana.Api.dll
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\obj\Debug\netcoreapp3.1\Plana.Api.pdb
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\obj\Debug\netcoreapp3.1\Plana.Api.genruntimeconfig.cache
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\EntityFramework.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.EntityFramework.dll

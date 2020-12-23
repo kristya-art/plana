@@ -2,153 +2,157 @@
 @*<EditForm Model="@Plan">*@
 @if (Plans == null)
 { return; }
-<form>
-    <select class="form-control" @bind="SelectedPlan.Id">
+<div class="selectYear">
+    <form>
+        <select class="form-control" @bind="SelectedPlan.Id">
 
-        @foreach (var plan in Plans)
+            @foreach (var plan in Plans)
+            {
+                <option value="@plan.Id">
+                    @plan.Year
+                </option>
+            }
+        </select>
+        <div class="btn-group">
+            <button @onclick="NavigateToModulesPlanPage">
+                show plan
+                @*<a href="@($"/editplan/{SelectedPlan.Id}")">show plan</a>*@
+
+            </button>
+            @*<button>show last year plan</button>*@
+        </div>
+    </form>
+
+    @*<MatFAB Icon="@MatIconNames.Add" Label="@SelectedPlan.Year">
+
+            <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
+        </MatFAB>*@
+</div>
+
+
+    @code {
+
+        [Inject]
+        public NavigationManager NavManager { get; set; }
+        [Inject]
+        public IPlanService PlanService { get; set; }
+        [Parameter]
+        public Plan Plan { get; set; } = new Plan();
+        [Parameter]
+        public Plan SelectedPlan { get; set; } = new Plan();
+        //public Plan SelectePlanForShow { get; set; } = new Plan();
+        public List<Plan> Plans { get; set; }
+
+
+
+        public string Id { get; set; }
+
+        protected async override Task OnInitializedAsync()
         {
-            <option value="@plan.Id">
-                @plan.Year
-            </option>
+
+
+            Plans = (await PlanService.GetPlans()).ToList();
+
         }
-    </select>
-    <div class="btn-group">
-        <button @onclick="NavigateToModulesPlanPage">
-            show plan
-            @*<a href="@($"/editplan/{SelectedPlan.Id}")">show plan</a>*@
-
-        </button>
-        @*<button>show last year plan</button>*@
-    </div>
-</form>
-
-@*<MatFAB Icon="@MatIconNames.Add" Label="@SelectedPlan.Year">
-
-        <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
-    </MatFAB>*@
-
-
-
-@code {
-
-    [Inject]
-    public NavigationManager NavManager { get; set; }
-    [Inject]
-    public IPlanService PlanService { get; set; }
-    [Parameter]
-    public Plan Plan { get; set; } = new Plan();
-    [Parameter]
-    public Plan SelectedPlan { get; set; } = new Plan();
-    //public Plan SelectePlanForShow { get; set; } = new Plan();
-    public List<Plan> Plans { get; set; }
-
-
-
-    public string Id { get; set; }
-
-    protected async override Task OnInitializedAsync()
-    {
-
-
-        Plans = (await PlanService.GetPlans()).ToList();
-
-    }
-    //#region method
-    public void NavigateToModulesPlanPage()
-    {
-        string Id = Plan.Id.ToString();
-        NavManager.NavigateTo($"/editplan/{SelectedPlan.Id}", true);
-    }
-
-    //#endregion
-
-    // for last year plan
-    /// <summary>
-    /// this method 
-    /// opens a new tab targeting the component that we want opened separate from the current location
-    /// </summary>
-    /// <param name="url"></param>
-    /// <returns></returns>
-    @*@inject IJSRuntime JSRuntime
-
-    public async Task OpenInNewTab(string url)
-    {
-     // string url = "https://localhost:44340/home";
-
-        await JSRuntime.InvokeAsync<object>("open", url, "_blank");
-    }*@
-}
-
-<style>
-    form {
-        padding: 2px;
-    }
-
-    input {
-        /* And hide the input's outline, so the form looks like the outline */
-        border: none;
-    }
-
-
-    .btn-group button {
-        background-color: #f2f2f2; /* background */
-        border: 1px solid rgb(26, 79, 238); /* border */
-        color: #333333; /*  text */
-        display: flex;
-        font-size: 16px;
-        font-family: 'ArialMT', 'Arial';
-        padding: 10px 5px; /* Some padding */
-        cursor: pointer; /* Pointer/hand icon */
-        float: left; /* Float the buttons side by side */
-        border-radius: 12px;
-        margin: 4px 8px;
-        width: 140px;
-        height: 40px;
-        position: center;
-    }
-
-        .btn-group button a, btn-link {
-            color: #333333
+        //#region method
+        public void NavigateToModulesPlanPage()
+        {
+            string Id = Plan.Id.ToString();
+            NavManager.NavigateTo($"/editplan/{SelectedPlan.Id}", true);
         }
 
-            .btn-group button a:hover, btn-link:hover {
-                color: goldenrod
+        //#endregion
+
+        // for last year plan
+        /// <summary>
+        /// this method
+        /// opens a new tab targeting the component that we want opened separate from the current location
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        @*@inject IJSRuntime JSRuntime
+
+            public async Task OpenInNewTab(string url)
+            {
+             // string url = "https://localhost:44340/home";
+
+                await JSRuntime.InvokeAsync<object>("open", url, "_blank");
+            }*@
+    }
+
+    <style>
+        form {
+            padding: 2px;
+        }
+
+        input {
+            /* And hide the input's outline, so the form looks like the outline */
+            border: none;
+        }
+
+
+        .btn-group button {
+            background-color: #f2f2f2; /* background */
+            border: 1px solid rgb(26, 79, 238); /* border */
+            color: #333333; /*  text */
+            display: flex;
+            font-size: 16px;
+            font-family: 'ArialMT', 'Arial';
+            padding: 10px 5px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+            border-radius: 12px;
+            margin: 4px 8px;
+            width: 140px;
+            height: 40px;
+            position: center;
+        }
+
+            .btn-group button a, btn-link {
+                color: #333333
             }
 
-        .btn-group button:not(:last-child) {
-            border-right: none; /* Prevent double borders */
+                .btn-group button a:hover, btn-link:hover {
+                    color: goldenrod
+                }
+
+            .btn-group button:not(:last-child) {
+                border-right: none; /* Prevent double borders */
+            }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
         }
 
-    /* Clear floats (clearfix hack) */
-    .btn-group:after {
-        content: "";
-        clear: both;
-        display: table;
-    }
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            /*background-color:azure;*/
+            color: goldenrod;
+        }
 
-    /* Add a background color on hover */
-    .btn-group button:hover {
-        /*background-color:azure;*/
-        color: goldenrod;
-    }
-
-    .customS {
-        /* display: table-cell;
+       /* .customS {
+            /* display: table-cell;
             vertical-align: middle;
             height: 50px;
             border: 1px solid #354496;
-            .selectYear
-            border-width: 0px;*/
-        position: absolute;
-        left: 399px;
-        top: 41px;
-        width: 177px;
-        height: 37px;
-        display: flex;
-        color: #000000;
-        text-align: left;
-    }
+                }*/
 
-    .show-button {
-    }
-</style>
+
+           .selectYear{
+            border-width: 0px;
+            position: absolute;
+            left: 500px;
+            top: 41px;
+            width: 177px;
+            height: 37px;
+            display: flex;
+            color: #000000;
+            text-align: left;
+        }
+
+        .show-button {
+        }
+    </style>

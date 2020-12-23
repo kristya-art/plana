@@ -8,29 +8,9 @@
 
 @inherits EditPlanBase
 @if (Plan == null || Plans == null) { return; }
-@*@if (Plan.AutumnSemester == null) { return; }
-    @if (Plan.AutumnSemester.ModuleRuns == null) { return; }*@
 
 
-<!--<div>-->
-    @*Edit form for Plan*@
-    <!--<EditForm Model="@Plan" OnInvalidSubmit="HandleValidSubmit">
-        <div class="form-group row">
-
-            <InputText id="year" @bind-Value="Plan.Year" />
-        </div>-->
-
-        @*<InputDate id="publish date" @bind-Value="Plan.OfficialPublishDate"/>*@
-
-
-
-       
-        @*@if(showModulesPlanTable)*@
-
-    <!--</EditForm>
-</div>-->
-
-<Plana.Web.Pages.template_components.SdNavBar />
+<Plana.Web.Pages.template_components.CustomSelect/>
 
     <div class="btn-group">
         <button id="addNewModule" @onclick="@(e=>OpenModuleDialog(false))" style="float: right;">Add Module</button>

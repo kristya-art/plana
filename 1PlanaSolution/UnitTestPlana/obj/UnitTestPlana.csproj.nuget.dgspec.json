@@ -45,6 +45,10 @@
               "target": "Package",
               "version": "[4.4.0, )"
             },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

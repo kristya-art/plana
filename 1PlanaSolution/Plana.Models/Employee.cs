@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace Plana.Models
 {
     public abstract class Employee : User
+    //public abstract class Employee : IdentityUser
     {
         
         public DateTime BirthDate { get; set; }

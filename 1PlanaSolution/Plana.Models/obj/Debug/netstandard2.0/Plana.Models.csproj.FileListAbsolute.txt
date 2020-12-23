@@ -21,7 +21,7 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\bin\Debug\netstandard2.0\Plana.Models.pdb
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\obj\Debug\netstandard2.0\Plana.Models.AssemblyInfoInputs.cache
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\obj\Debug\netstandard2.0\Plana.Models.AssemblyInfo.cs
-C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\obj\Debug\netstandard2.0\Plana.Models.csproj.CoreCompileInputs.cache
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\obj\Debug\netstandard2.0\Plana.Models.dll
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\obj\Debug\netstandard2.0\Plana.Models.pdb
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\obj\Debug\netstandard2.0\Plana.Models.csprojAssemblyReference.cache
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Models\obj\Debug\netstandard2.0\Plana.Models.csproj.CoreCompileInputs.cache
