@@ -8,3 +8,9 @@
     <h1>@ViewData["Title"]</h1>
     <p>You have successfully logged out of the application.</p>
 </header>
+@* this js code makes automatically submit by logout *@
+<script>
+    (() => {
+        document.getElementById('logoutForm').submit();  
+   })()
+</script>
