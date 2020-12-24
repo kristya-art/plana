@@ -822,6 +822,22 @@ namespace Plana.Api.Models
                 context.Plans.Add(plan20_21);
                 context.SaveChanges();
 
+
+                // seed plan-->planlecturers
+
+               
+                PlanLecturer planLecturer1 = new PlanLecturer { LecturerId = 1, PlanId = 1 };
+                PlanLecturer planLecturer2 = new PlanLecturer { LecturerId = 2, PlanId = 1 };
+
+              
+                PlanLecturer planLecturer3 = new PlanLecturer { LecturerId = 3, PlanId = 2 };
+                PlanLecturer planLecturer4 = new PlanLecturer { LecturerId = 4, PlanId = 2 };
+
+
+                context.PlanLecturers.AddRange(planLecturer1, planLecturer2, planLecturer3, planLecturer4);
+                context.SaveChanges();
+                    
+
             }
             
 

@@ -13,8 +13,8 @@
         }
     </select>
     <div class="btn-group">
-        <button @onclick="NavigateToModulesPlanPage">
-            show plan
+        <button @onclick="NavigateToMyPlan">
+            My plan
             @*<a href="@($"/editplan/{SelectedPlan.Id}")">show plan</a>*@
 
         </button>
@@ -41,6 +41,7 @@
     public Plan SelectedPlan { get; set; } = new Plan();
     //public Plan SelectePlanForShow { get; set; } = new Plan();
     public List<Plan> Plans { get; set; }
+    
 
 
 
@@ -54,7 +55,7 @@
 
     //}
     //#region method
-    public void NavigateToModulesPlanPage()
+    public void NavigateToMyPlan()
     {
         string Id = Plan.Id.ToString();
         NavManager.NavigateTo($"/editplan/{SelectedPlan.Id}", true);

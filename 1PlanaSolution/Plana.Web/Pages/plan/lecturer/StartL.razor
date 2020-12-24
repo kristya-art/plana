@@ -1,0 +1,42 @@
+﻿@page "/startL/{id}"
+<p>personal page lecturer</p>
+
+
+
+<div>
+
+    <p> @Lecturer.FirstName</p>
+</div>
+
+@code {
+    [Inject]
+    public ILecturerService LecturerService { get; set; }
+    public Lecturer Lecturer { get; set; } = new Lecturer();
+
+    
+
+    [Parameter]
+    public string Id { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        int.TryParse(Id, out int lecturerId);
+
+        if (lecturerId != 0)
+        {
+            Lecturer = await LecturerService.GetLecturer(int.Parse(Id));
+        }
+        else {
+            Lecturer = new Lecturer { };
+
+
+
+        }
+
+    }
+
+
+
+
+
+}
