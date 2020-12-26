@@ -11,7 +11,9 @@ namespace Plana.Api.Models
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) :
              base(options)
-        { }
+        {            
+        }
+
         public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<ModuleRun> ModuleRuns { get; set; }

@@ -1,102 +1,110 @@
-﻿@page "/lcustomSelect"
-@*<EditForm Model="@Plan">*@
-@if (Plans == null)
-{ return; }
-<form>
-    <select class="form-control" @bind="SelectedPlan.Id">
+﻿<div class="selectYear">
 
-        @foreach (var plan in Plans)
-        {
-            <option value="@plan.Id">
-                @plan.Year
-            </option>
-        }
-    </select>
-    <div class="btn-group">
-        <button @onclick="NavigateToMyPlan">
-            My plan
-            @*<a href="@($"/editplan/{SelectedPlan.Id}")">show plan</a>*@
+    <form>
+        <p>Assignments plan for</p>
+        @*@if (Lecturer.PlanLecturers == null) { return; }*@
+        <select class="form-control">
+            @*@foreach (var planlecturer in Lecturer.PlanLecturers)
+                {
+                    <option value="@planlecturer.PlanId">
+                        @planlecturer.Plan.Year
+                    </option>
 
-        </button>
-        @*<button>show last year plan</button>*@
-    </div>
-</form>
-
-@*<MatFAB Icon="@MatIconNames.Add" Label="@SelectedPlan.Year">
-
-        <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
-    </MatFAB>*@
-
+                }*@
+        </select>
+        <div class="btn-group">
+            <button @onclick="NavigateToMyPlan">
+                My Plan
+            </button>
+        </div>
+    </form>
+</div>
+<div>
+</div>
+<p> @Lecturer.FirstName</p>
 
 
 @code {
-
     [Inject]
-    public NavigationManager NavManager { get; set; }
+    public NavigationManager NavigationMan { get; set; }
     [Inject]
-    public IPlanService PlanService { get; set; }
+    public ILecturerService LecturerService { get; set; }
+    public Lecturer Lecturer { get; set; } = new Lecturer();
     [Parameter]
-    public Plan Plan { get; set; } = new Plan();
-    [Parameter]
-    public Plan SelectedPlan { get; set; } = new Plan();
-    //public Plan SelectePlanForShow { get; set; } = new Plan();
-    public List<Plan> Plans { get; set; }
-    
-
-
-
     public string Id { get; set; }
 
-    //protected async override Task OnInitializedAsync()
-    //{
+    [Inject]
+    public IPlanService PlanService { get; set; }
+
+    public Plan Plan { get; set; } = new Plan();
+    public List<Plan> Plans { get; set; }
+
+    [Inject]
+    public IPlanLecturerService PlanLecturerService { get; set; }
+    public PlanLecturer SelectedPlanLecturer { get; set; } = new PlanLecturer();
+    IEnumerable<PlanLecturer> PlanLecturers { get; set; } = new List<PlanLecturer>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        int.TryParse(Id, out int lecturerId);
+
+        if (lecturerId != 0)
+        {
+            Lecturer = await LecturerService.GetLecturer(int.Parse(Id));
+            PlanLecturers = await PlanLecturerService.GetPlanLecturers();
+
+        }
+        else
+        {
+            Lecturer = new Lecturer { };
 
 
-    //    Plans = (await PlanService.GetPlans()).ToList();
 
-    //}
-    //#region method
+        }
+
+    }
+
+    #region methods
     public void NavigateToMyPlan()
     {
-        string Id = Plan.Id.ToString();
-        NavManager.NavigateTo($"/editplan/{SelectedPlan.Id}", true);
+
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanLecturer.PlanId}/{SelectedPlanLecturer.LecturerId}", true);
+
     }
 
-
-
-
-    #region   // for lCustomSelect
-    //[Inject]
-    //public PlanLecturerService planLecturerService { get; set; }
-    //public PlanLecturer PlanLct { get; set; }
-    //public Lecturer Lecturer { get; set; } = new Lecturer();
-
-    //public PlanLecturer SelectedPlanLecturer { get; set; } = new PlanLecturer();
-
-    //public List<PlanLecturer> PlanLecturers { get; set; } = new List<PlanLecturer>();
-
-    //public string PlanLectPlanId { get; set; }
-    //public string PlanLectLectId { get; set; }
-
-    //protected void override Task OnInizialiedAsync()
-    //{
-    //    PlanLecturers = (await planLecturersService.GetPlanLecturers());
-    //}
     #endregion
-
 }
-
 <style>
-    form {
-        padding: 2px;
+
+    .selectYear {
+        border-width: 0px;
+        position: absolute;
+        left: 500px;
+        top: 41px;
+        width: 177px;
+        height: 37px;
+        display: flex;
+        color: #000000;
+        text-align: left;
+        top: 0px;
+        width: 260px;
+        height: 150px;
     }
 
-    input {
-        /* And hide the input's outline, so the form looks like the outline */
-        border: none;
-    }
-
-
-   
-   
+        .selectYear p {
+            top: 5px;
+            /*position:absolute;*/
+            margin: auto;
+            /*width: 60%;*/
+            border: 1px solid rgb(138, 26, 238);
+            padding: 9px;
+            border-style: dotted;
+            height: 30px;
+            padding: 3px 2px 3px 2px;
+            font-family: 'ArialMT', 'Arial';
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            height: 25px;
+        }
 </style>
-

@@ -17,6 +17,7 @@ namespace Plana.Api.Models
         Task<Lecturer> UpdateLecturer(Lecturer lecturer);
        Task<Boolean> SoftDeleteLecturer(int lecturerId);
         Task<IEnumerable<Lecturer>> GetLecturersWithTasks();
+       
 
     }
 }

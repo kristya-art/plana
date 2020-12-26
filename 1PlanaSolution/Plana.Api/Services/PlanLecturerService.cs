@@ -91,5 +91,40 @@ namespace Plana.Api.Services
             }
             return null;
         }
+        /** dosn't work*/
+        public async Task<IEnumerable<ModuleRun>> GetLecturerModuleRuns(int planId,int lectId)
+        {
+
+            //planLecturer.LecturerId = lecturer.Id;
+            //planLecturer.PlanId = plan.Id;
+          
+            ICollection<ModuleRun> moduleRuns = new List<ModuleRun>();
+            var result = await GetPlanLecturer(planId,lectId);
+            ICollection<Semester> semesters = new List<Semester>();
+
+            if (result != null)
+            {
+                semesters.Add(result.Plan.AutumnSemester);
+                semesters.Add(result.Plan.SpringSemester);
+                foreach (var sem in semesters) 
+                { 
+                    foreach (var mr in sem.ModuleRuns)
+                    {
+                        
+                            foreach (var mrl in mr.LecturersMR)
+                            {
+                                if (mrl.LecturerId == lectId)
+                                {
+                                    moduleRuns.Add(mr);
+                                }
+                            }
+                        }
+
+                    }
+                return moduleRuns;
+
+            }
+            return moduleRuns;
+        }
     }
 }

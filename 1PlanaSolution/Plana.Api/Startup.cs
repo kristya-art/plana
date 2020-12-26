@@ -6,8 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Plana.Api.Models;
 using Plana.Api.Repositories;
 using Plana.Api.Services;
-using Plana.Models;
-using System;
 
 namespace Plana.Api
 {
@@ -23,12 +21,8 @@ namespace Plana.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-
-            //  services.AddDbContext<AppDbContext>(ServiceLifetime.Transient); // new
-          //  services.AddTransient<Func<AppDbContext>>(options => () => options.GetService<AppDbContext>());
-
-
+                options.UseLazyLoadingProxies()
+                       .UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleGroupRepository, ModuleGroupRepository>();
@@ -53,8 +47,7 @@ namespace Plana.Api
 
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         public void Configure(IApplicationBuilder app, AppDbContext context)
@@ -67,30 +60,8 @@ namespace Plana.Api
             {
                 endpoints.MapControllers();
             });
+
             SeedData.SeedDatabase(context);
         }
     }
 }
-
-
-//before configure
-
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-//public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-//{
-//    if (env.IsDevelopment())
-//    {
-//        app.UseDeveloperExceptionPage();
-//    }
-
-//    app.UseHttpsRedirection();
-
-//    app.UseRouting();
-
-//    app.UseAuthorization();
-
-//    app.UseEndpoints(endpoints =>
-//    {
-//        endpoints.MapControllers();
-//    });
-//}

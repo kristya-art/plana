@@ -15,12 +15,12 @@ namespace Plana.Api.Controllers
     public class PlanLecturerController : ControllerBase
     {
         private readonly IPlanLecturerService _planLecturerService;
-    
 
-    public PlanLecturerController(IPlanLecturerService planLecturerService)
-    {
-        _planLecturerService = planLecturerService;
-    }
+
+        public PlanLecturerController(IPlanLecturerService planLecturerService)
+        {
+            _planLecturerService = planLecturerService;
+        }
 
         [HttpPut()]
         public async Task<ActionResult<PlanLecturer>> UpdateLecturerModuleRun(PlanLecturer planLecturer)
@@ -36,7 +36,7 @@ namespace Plana.Api.Controllers
                     return NotFound($"PlanLecturer with id = {planLecturer.LecturerId}and id = {planLecturer.PlanId} not found!");
                 }
 
-               
+
                 return await _planLecturerService.UpdatePlanLecturer(planLecturer);
 
 
@@ -66,7 +66,7 @@ namespace Plana.Api.Controllers
             }
         }
 
-       
+
         [HttpGet("{id}/{id2}")]    //https://localhost:44399/api/planLecturer/1/6
         public async Task<ActionResult<PlanLecturer>> GetPlanLecturer(int id, int id2)
         {
@@ -107,6 +107,21 @@ namespace Plana.Api.Controllers
 
                 return StatusCode(StatusCodes.Status500InternalServerError,
                      "Error retrieving data from the database");
+            }
+        }
+        /** get lecturer's module runs  in concrete plan*/
+        //[HttpGet("{id}/{id2}")]
+        [HttpGet]
+        [Route("{lecturerPlan}/{planId}/{lecturerId}")]
+        public async Task<ActionResult> GetModuleRunsForConcretePlan(int planId, int lecturerId)
+        {
+            try
+            {
+                return Ok(await _planLecturerService.GetLecturerModuleRuns(planId, lecturerId));
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
             }
         }
     }

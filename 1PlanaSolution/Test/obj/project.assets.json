@@ -20,7 +20,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "MSTest.TestFramework/2.1.2": {
+      "MSTest.TestFramework/2.2.0-preview-20201126-03": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll": {},
@@ -78,10 +78,10 @@
         "runtime.json"
       ]
     },
-    "MSTest.TestFramework/2.1.2": {
-      "sha512": "DXTDuBumPC4oo9KKZMt5zgOuLdfUjqcsLRLyqeubaIxfl7ZBfk8wfsKRWYd1m5aCL3ekifW5pwT3rwuB2mDdLw==",
+    "MSTest.TestFramework/2.2.0-preview-20201126-03": {
+      "sha512": "YnrhBabObkyfVxWI2kfwNco+V3m1Rcjr+QFy5aFkHnm0DXEtHsg5pqRrkC+ONZh5A7s9TAOwOvmYsw0j6uHsBA==",
       "type": "package",
-      "path": "mstest.testframework/2.1.2",
+      "path": "mstest.testframework/2.2.0-preview-20201126-03",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -176,7 +176,7 @@
         "lib/uap10.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
         "lib/uap10.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
         "lib/uap10.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
-        "mstest.testframework.2.1.2.nupkg.sha512",
+        "mstest.testframework.2.2.0-preview-20201126-03.nupkg.sha512",
         "mstest.testframework.nuspec"
       ]
     },
@@ -311,7 +311,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "MSTest.TestFramework >= 2.1.2",
+      "MSTest.TestFramework >= 2.2.0-preview-20201126-03",
       "NETStandard.Library >= 2.0.3",
       "dotnet-test-mstest >= 1.1.2-preview"
     ]
@@ -345,6 +345,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "projectReferences": {}
         }
       },
@@ -356,10 +357,11 @@
     },
     "frameworks": {
       "netstandard2.0": {
+        "targetAlias": "netstandard2.0",
         "dependencies": {
           "MSTest.TestFramework": {
             "target": "Package",
-            "version": "[2.1.2, )"
+            "version": "[2.2.0-preview-20201126-03, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",
@@ -382,7 +384,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400-preview-015203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20601.7\\RuntimeIdentifierGraph.json"
       }
     }
   },

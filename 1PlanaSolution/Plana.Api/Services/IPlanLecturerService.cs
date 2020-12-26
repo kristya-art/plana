@@ -22,5 +22,7 @@ namespace Plana.Api.Services
 
 
         Task<Boolean> SoftDeletePlanLecturer(int id, int id2);
+        Task<IEnumerable<ModuleRun>> GetLecturerModuleRuns(int planId, int lecturerId);
+
     }
 }

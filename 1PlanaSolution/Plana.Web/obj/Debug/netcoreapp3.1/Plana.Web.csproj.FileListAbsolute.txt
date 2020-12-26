@@ -189,7 +189,6 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\semester\TryBlazor.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Plana.Web.csprojAssemblyReference.cache
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\plan\study_director\Sd_start.razor.g.cs
-C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\TopBar.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\template_components\Search.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\template_components\SdNavBar.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\template_components\CustomSelect.razor.g.cs
@@ -354,7 +353,6 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\template_components\TableTemplate.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
-C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Shared\TopBar.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
