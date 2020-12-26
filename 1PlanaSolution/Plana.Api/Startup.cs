@@ -1,8 +1,10 @@
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Plana.Api.Models;
 using Plana.Api.Repositories;
 using Plana.Api.Services;
@@ -20,6 +22,9 @@ namespace Plana.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // https://github.com/aspnet/Announcements/issues/432
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseLazyLoadingProxies()
                        .UseSqlServer(Configuration.GetConnectionString("DbConnection")));
@@ -50,11 +55,23 @@ namespace Plana.Api
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
-        public void Configure(IApplicationBuilder app, AppDbContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,  AppDbContext context)
         {
-            app.UseDeveloperExceptionPage();
-            app.UseHttpsRedirection();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+
+                // https://github.com/aspnet/Announcements/issues/432
+                app.UseMigrationsEndPoint();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHttpsRedirection();
+            }
+
             app.UseRouting();
+
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

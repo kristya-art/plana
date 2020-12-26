@@ -1,7 +1,5 @@
 ﻿using Plana.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Plana.Api.Services
@@ -10,19 +8,17 @@ namespace Plana.Api.Services
     {
         Task<IEnumerable<PlanLecturer>> GetPlanLecturers();
 
-        Task<PlanLecturer> AddPlanLecturer(PlanLecturer planLecturer);
-        Task<PlanLecturer> UpdatePlanLecturer(PlanLecturer planLecturer);
-        
-        Task<PlanLecturer> GetPlanLecturer(int id, int id2);
-
-
         Task<IEnumerable<PlanLecturer>> Search(string name);
+        
+        Task<PlanLecturer> GetPlanLecturer(int planId, int lecturerId);
 
-        Task<Boolean> DeletePlanLecturer(int id,int id2);
+        Task<PlanLecturer> AddPlanLecturer(PlanLecturer planLecturer);
+        
+        Task<PlanLecturer> UpdatePlanLecturer(PlanLecturer planLecturer);
 
+        Task<bool> DeletePlanLecturer(int planId, int lecturerId);
 
-        Task<Boolean> SoftDeletePlanLecturer(int id, int id2);
+        // TODO: Put in correct interface
         Task<IEnumerable<ModuleRun>> GetLecturerModuleRuns(int planId, int lecturerId);
-
     }
 }

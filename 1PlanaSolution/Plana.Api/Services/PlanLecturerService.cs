@@ -11,9 +11,7 @@ namespace Plana.Api.Services
 {
     public class PlanLecturerService : IPlanLecturerService
     {
-
         private readonly AppDbContext context;
-
 
         public PlanLecturerService(AppDbContext context)
         {
@@ -27,8 +25,9 @@ namespace Plana.Api.Services
             await context.SaveChangesAsync();
             return result.Entity;
         }
+
         /** completely delete*/
-        public async Task<Boolean> DeletePlanLecturer(int id, int id2)
+        public async Task<bool> DeletePlanLecturer(int id, int id2)
         {
             var result = await GetPlanLecturer(id,id2);
             if (result != null)
@@ -42,9 +41,9 @@ namespace Plana.Api.Services
             return false;
         }
 
-        public async Task<PlanLecturer> GetPlanLecturer(int id, int id2)
+        public async Task<PlanLecturer> GetPlanLecturer(int planId, int lecturerId)
         {
-            return await context.PlanLecturers.FindAsync(id,id2);
+            return await context.PlanLecturers.FindAsync(planId, lecturerId);
         }
 
         public async Task<IEnumerable<PlanLecturer>> GetPlanLecturers()

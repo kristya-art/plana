@@ -3,22 +3,32 @@ using Plana.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-
-using System.Collections;
-using System.Runtime.InteropServices.ComTypes;
-using System.ComponentModel.Design.Serialization;
 
 namespace Plana.Api.Models
 {
     public class SeedData
     {
-        public static void SeedDatabase(AppDbContext context) 
+        private static Module AddModule(AppDbContext context, string title, string code, int ects, int lectPerWeek, int totalHours)
+        {
+            Module module = new Module
+            {
+                Title = "Project and Training 1",
+                Code = "BTI3001",
+                ECTS = 6,
+                LectPerWeek = 8,
+                TotalHours = 516
+            };
+
+            context.Modules.Add(module);
+
+            return module;
+        }
+
+        public static void SeedDatabase(AppDbContext context)
         {
             context.Database.Migrate();
             if (context.Lecturers.Count() == 0 && context.Modules.Count() == 0 && context.ModuleRuns.Count() == 0 &&
-                context.Semesters.Count() == 0 && context.AdditionalAssignments.Count() ==0)
+                context.Semesters.Count() == 0 && context.AdditionalAssignments.Count() == 0)
             {
                 ICollection<ModuleRun> mrcol = new List<ModuleRun>();
                 ICollection<AdditionalAssignment> aacol = new List<AdditionalAssignment>();
@@ -26,72 +36,43 @@ namespace Plana.Api.Models
 
                 LecturerModuleRun lmr = new LecturerModuleRun();
 
-     //seed data for module
+                // Seed data for module
+
+                Module m2 = AddModule(context, "Project and Training 2", "BTI3011", 6, 8, 516);
+                Module project2 = AddModule(context, "Projekt 2", "BTI7302", 6, 1, 25);
+                AddModule(context, "User-Centered Design", "BTI7083", 4, 4, 100);
 
                 Module projectAndTraining1 = new Module
                 {
                     Title = "Project and Training 1",
-                Code = "BTI3001",
-                   ECTS = 6,
-                   LectPerWeek = 8,
-                   TotalHours= 516
-                   
-               };
-                Module projectAndTraining2 = new Module
-               {
-                    Title = "Project and Training 2",
-                    Code = "BTI3011",
+                    Code = "BTI3001",
                     ECTS = 6,
                     LectPerWeek = 8,
                     TotalHours = 516
-
-
-               };
-               
-              
-
-                Module project2 = new Module
-                {
-                    
-                    Title = "Projekt 2",
-                    Code = "BTI7302",
-                    ECTS = 6,
-                    LectPerWeek = 1,
-                    TotalHours = 25,
-                    
-
                 };
-                Module m2 = new Module
-                {
 
-                   
-                    Title = "User-Centered Design",
-                    Code = "BTI7083",
-                    ECTS = 4,
-                    LectPerWeek = 4,
-                    TotalHours = 100
-                };
+
                 Module m3 = new Module
                 {
-                    
                     Title = "E-Business and Web",
                     Code = "BTI7272",
                     ECTS = 8,
                     LectPerWeek = 8,
                     TotalHours = 408
                 };
+
                 Module m4 = new Module
                 {
-                   
                     Title = "Bachelor-Thesis",
                     Code = "BTI7321",
                     ECTS = 12,
                     LectPerWeek = 0,
                     TotalHours = 0
                 };
+
                 Module m5 = new Module
                 {
-                   
+
                     Title = "Smart Data-Driven Application",
                     Code = "BTI7293",
                     ECTS = 8,
@@ -101,16 +82,17 @@ namespace Plana.Api.Models
 
                 Module m6 = new Module
                 {
-                    
+
                     Title = "Einführung in C#",
                     Code = "BTI7512",
                     ECTS = 2,
                     LectPerWeek = 2,
                     TotalHours = 109
                 };
+
                 Module m7 = new Module
                 {
-                   
+
                     Title = "Grundlagen Geoinformationssysteme",
                     Code = "BTI7538",
                     ECTS = 2,
@@ -118,101 +100,95 @@ namespace Plana.Api.Models
                     TotalHours = 100
                 };
 
-                Module m8 =
-                    new Module
-                    {
-                        
-                        Title = "Software Engineering and Design",
-                        Code = "BTX8081",
-                        ECTS = 8,
-                        LectPerWeek = 6,
-                        TotalHours = 300
-                    };
+                Module m8 = new Module
+                {
 
-                Module m9 =
-                    new Module
-                    {
-                       
-                        Title = "Software Engineering and Design",
-                        Code = "BTX8082",
-                        ECTS = 4,
-                        LectPerWeek = 4,
-                        TotalHours = 200
-                    };
-                Module databases =
-                   new Module
-                   {
-                       
-                       Title = "Databases (F)",
-                       Code = "BTI1311",
-                       ECTS = 4,
-                       LectPerWeek = 4,
-                       TotalHours = 208
-                   };
-               
-                Module m12 =
-                     new Module
-                     {
-                         //  ModuleId = 13,
-                         Title = "Datenbanken",
-                         Code = "BTW2201",
-                         ECTS = 4,
-                         LectPerWeek = 4,
-                         TotalHours = 200
-                     };
-                Module studienBeratung =
-                    new Module
-                    {
-                        
-                        Title = "Studienberatung SG I",
-                        Code = "",
-                        ECTS = 0,
-                        LectPerWeek = 4,
-                        TotalHours = 200
-                    };
-                Module  computing_project =
-                     new Module
-                     {
-                         
-                         Title = "Computing Project",
-                         Code = "BTI6453",
-                         ECTS = 4,
-                         LectPerWeek = 4,
-                         TotalHours = 200
-                     };
-                Module intro_multim =
-                   new Module
-                   {
-                        
-                         Title = "Introduction to Multimedia",
-                       Code = "BTI6454",
-                       ECTS = 4,
-                       LectPerWeek = 4,
-                       TotalHours = 200
-                   };
-                Module prof_skills =
-                   new Module
-                   {
-                       
-                       Title = "Professional Skills",
-                       Code = "BTI6456",
-                       ECTS = 4,
-                       LectPerWeek = 4,
-                       TotalHours = 200
-                   };
+                    Title = "Software Engineering and Design",
+                    Code = "BTX8081",
+                    ECTS = 8,
+                    LectPerWeek = 6,
+                    TotalHours = 300
+                };
 
-               
-     context.Modules.AddRange(project2, m2, m3, m4,
-                    m5, m6, m7, m8, m9, databases, m12, studienBeratung,projectAndTraining1,projectAndTraining2, computing_project, intro_multim, prof_skills);
+                Module m9 = new Module
+                {
+
+                    Title = "Software Engineering and Design",
+                    Code = "BTX8082",
+                    ECTS = 4,
+                    LectPerWeek = 4,
+                    TotalHours = 200
+                };
+
+                Module databases = new Module
+                {
+                    Title = "Databases (F)",
+                    Code = "BTI1311",
+                    ECTS = 4,
+                    LectPerWeek = 4,
+                    TotalHours = 208
+                };
+
+                Module m12 = new Module
+                {
+                    Title = "Datenbanken",
+                    Code = "BTW2201",
+                    ECTS = 4,
+                    LectPerWeek = 4,
+                    TotalHours = 200
+                };
+
+                Module studienBeratung = new Module
+                {
+
+                    Title = "Studienberatung SG I",
+                    Code = "",
+                    ECTS = 0,
+                    LectPerWeek = 4,
+                    TotalHours = 200
+                };
+
+                Module computing_project = new Module
+                {
+
+                    Title = "Computing Project",
+                    Code = "BTI6453",
+                    ECTS = 4,
+                    LectPerWeek = 4,
+                    TotalHours = 200
+                };
+
+                Module intro_multim = new Module
+                {
+                    Title = "Introduction to Multimedia",
+                    Code = "BTI6454",
+                    ECTS = 4,
+                    LectPerWeek = 4,
+                    TotalHours = 200
+                };
+
+                Module prof_skills = new Module
+                {
+                    Title = "Professional Skills",
+                    Code = "BTI6456",
+                    ECTS = 4,
+                    LectPerWeek = 4,
+                    TotalHours = 200
+                };
+
+
+                context.Modules.AddRange(m3, m4,
+                               m5, m6, m7, m8, m9, databases, m12, studienBeratung, projectAndTraining1, computing_project, intro_multim, prof_skills);
+
                 context.SaveChanges();
 
-     //seed data for AdditionalAssignments
+                // Seed data for AdditionalAssignments
 
                 AdditionalAssignment a1 = new AdditionalAssignment
                 {
                     Title = "aF&E",
                     AAHours = 0,
-                    
+
                 };
                 AdditionalAssignment a2 = new AdditionalAssignment
                 {
@@ -223,7 +199,7 @@ namespace Plana.Api.Models
                 context.SaveChanges();
 
                 //seed data for lecturer
-               
+
 
                 Lecturer margo = new Lecturer
                 {
@@ -259,7 +235,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Female,
                     PhotoPath = "images/masha.jpg",
                     IsDeleted = false,
-                   
+
                 };
                 Lecturer lolita = new Lecturer
                 {
@@ -331,7 +307,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/mihail.jpg",
                     IsDeleted = false,
-                   
+
                 };
                 Lecturer kai = new Lecturer
                 {
@@ -351,7 +327,7 @@ namespace Plana.Api.Models
 
 
 
-                
+
 
                 Lecturer l2 = new Lecturer
                 {
@@ -362,7 +338,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Female,
                     PhotoPath = "images/mike.jpg",
                     IsDeleted = false,
-                   // LecturersModules = iclm
+                    // LecturersModules = iclm
                 };
                 l2.LecturersModules = new List<LecturerModule>
                 {
@@ -407,35 +383,35 @@ namespace Plana.Api.Models
                         Module = csbasics
                     },
                     new LecturerModule
-                    { 
+                    {
                        Lecturer = michele,
                        Module = m6
                     }
                 };
                 aacol.Add(a1);
                 michele.AdditionalAssignments = aacol;
-               
+
 
                 context.Lecturers.AddRange(michele, l2);
                 context.SaveChanges();
-              
 
 
 
-   //seed data for semester 
+
+                //seed data for semester 
                 Semester s1 = new Semester
                 {
                     Code = "2020-2021 - FS",
                     Date = new DateTime(2021, 02, 15),
                     AdditionalAssignments = aacol,
                     LecturersSemesters = new List<LecturerSemester>
-                    { 
+                    {
                        new LecturerSemester{Lecturer= masha},
                        new LecturerSemester{Lecturer= misha}
 
                     }
 
-                    
+
 
                 };
                 Semester s2 = new Semester
@@ -445,7 +421,7 @@ namespace Plana.Api.Models
                     AdditionalAssignments = new List<AdditionalAssignment> {
                         new AdditionalAssignment { Title = "newAdditionalAssigment1", AAHours = 0} ,
                         new AdditionalAssignment { Title = "newAddtitonalAssigment2", AAHours = 0} },
-                     LecturersSemesters = new List<LecturerSemester>
+                    LecturersSemesters = new List<LecturerSemester>
                     {
                        new LecturerSemester{Lecturer= margo},
                        new LecturerSemester{Lecturer= alic}
@@ -469,7 +445,7 @@ namespace Plana.Api.Models
                 {
                     Code = "2021-2022 - HS",
                     Date = new DateTime(2021, 08, 13),
-                      LecturersSemesters = new List<LecturerSemester>
+                    LecturersSemesters = new List<LecturerSemester>
                     {
                        new LecturerSemester{Lecturer= margo},
                        new LecturerSemester{Lecturer= alic}
@@ -530,16 +506,16 @@ namespace Plana.Api.Models
                       Module = csbasics,
                       Place = "Biel",
                       LecturersMR = new List<LecturerModuleRun>
-                      { 
+                      {
                        new LecturerModuleRun{ Lecturer = michele},
                        new LecturerModuleRun{ Lecturer = l2}
-                       
+
                       }
-                      
-                      
+
+
                     },
                     new ModuleRun
-                    { 
+                    {
                       Code = "q",
                       SemesterId = s3.SemesterId,
                       Place = "Bern",
@@ -548,7 +524,7 @@ namespace Plana.Api.Models
                     },
 
                     new ModuleRun
-                    { 
+                    {
                       Code ="b",
                       SemesterId = s2.SemesterId,
                       Module = csbasics,
@@ -564,8 +540,8 @@ namespace Plana.Api.Models
                 lmr.Lecturer = michele;
                 lmrcol.Add(lmr);
 
-                
-                      
+
+
 
                 s2.LecturersSemesters = new List<LecturerSemester>
                 {
@@ -582,9 +558,9 @@ namespace Plana.Api.Models
 
                 };
 
-               
-                   
-                context.Semesters.AddRange(s1,s2,s3,s4, as_23_24, ss_24,as_24_25,ss_25);
+
+
+                context.Semesters.AddRange(s1, s2, s3, s4, as_23_24, ss_24, as_24_25, ss_25);
                 context.SaveChanges();
 
 
@@ -604,12 +580,12 @@ namespace Plana.Api.Models
                 };
 
                 ModuleRun c = new ModuleRun
-                { 
-                    Code="a",
-                   Module = m6,
-                   SemesterId =s2.SemesterId,
-                   LecturersMR = new List<LecturerModuleRun> { 
-                   
+                {
+                    Code = "a",
+                    Module = m6,
+                    SemesterId = s2.SemesterId,
+                    LecturersMR = new List<LecturerModuleRun> {
+
                    new LecturerModuleRun{ Lecturer =misha}
                    }
 
@@ -662,7 +638,7 @@ namespace Plana.Api.Models
                 {
                     Module = intro_multim,
                     SemesterId = as_23_24.SemesterId,
-                    LecturersMR  = new List<LecturerModuleRun>
+                    LecturersMR = new List<LecturerModuleRun>
                     {
                         new LecturerModuleRun { Lecturer = kai },
                         new LecturerModuleRun { Lecturer = misha }
@@ -677,7 +653,7 @@ namespace Plana.Api.Models
                 {
                     Module = prof_skills,
                     SemesterId = ss_24.SemesterId,
-                    LecturersMR  = new List<LecturerModuleRun>
+                    LecturersMR = new List<LecturerModuleRun>
                     {
                         new LecturerModuleRun { Lecturer = lolita},
                         new LecturerModuleRun { Lecturer = rosita }
@@ -765,7 +741,7 @@ namespace Plana.Api.Models
 
                 };
 
-                context.ModuleRuns.AddRange(project2MR, c,q_ucd,p_ucd,prof_skills_bi24, prof_skills_bi25, intro_multim_bi23, computing_project_bi24,
+                context.ModuleRuns.AddRange(project2MR, c, q_ucd, p_ucd, prof_skills_bi24, prof_skills_bi25, intro_multim_bi23, computing_project_bi24,
                     prof_skills_be24, prof_skills_be25, intro_multim_be23, computing_project_be24);
                 context.SaveChanges();
 
@@ -774,10 +750,10 @@ namespace Plana.Api.Models
                 {
                     Code = "TI",
                     Title = "Information Technology",
-                    Modules = new List<Module> 
+                    Modules = new List<Module>
                     {
                       project2, m2, m3, m4,
-                      m5, m6, m7, m8, m9, 
+                      m5, m6, m7, m8, m9,
                       databases, m12,csbasics,
                       studienBeratung
                      }
@@ -797,8 +773,8 @@ namespace Plana.Api.Models
                     Year = "2023-2024",
                     AutumnSemester = as_23_24,
                     SpringSemester = ss_24
-                 //Semesters=   new List<Semester> { as_23_24,ss_24}
-                    
+                    //Semesters=   new List<Semester> { as_23_24,ss_24}
+
                 };
 
                 Plan plan24_25 = new Plan
@@ -825,21 +801,21 @@ namespace Plana.Api.Models
 
                 // seed plan-->planlecturers
 
-               
+
                 PlanLecturer planLecturer1 = new PlanLecturer { LecturerId = 1, PlanId = 1 };
                 PlanLecturer planLecturer2 = new PlanLecturer { LecturerId = 2, PlanId = 1 };
 
-              
+
                 PlanLecturer planLecturer3 = new PlanLecturer { LecturerId = 3, PlanId = 2 };
                 PlanLecturer planLecturer4 = new PlanLecturer { LecturerId = 4, PlanId = 2 };
 
 
                 context.PlanLecturers.AddRange(planLecturer1, planLecturer2, planLecturer3, planLecturer4);
                 context.SaveChanges();
-                    
+
 
             }
-            
+
 
 
         }
