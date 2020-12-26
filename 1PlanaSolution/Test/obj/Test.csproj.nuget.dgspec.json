@@ -1,31 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj": {}
+    "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj": {
+    "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj",
+        "projectUniqueName": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj",
         "projectName": "Test",
-        "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj",
-        "packagesPath": "C:\\Users\\kristya\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\obj\\",
+        "projectPath": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj",
+        "packagesPath": "C:\\Users\\SamuelEgger\\.nuget\\packages\\",
+        "outputPath": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\kristya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SamuelEgger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/adaris/_packaging/BootForms/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/adaris/_packaging/adaris/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
@@ -68,7 +73,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20601.7\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

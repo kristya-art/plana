@@ -9333,38 +9333,43 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kristya\\.nuget\\packages\\": {},
+    "C:\\Users\\SamuelEgger\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\UnitTestPlana\\UnitTestPlana.csproj",
+      "projectUniqueName": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\UnitTestPlana\\UnitTestPlana.csproj",
       "projectName": "UnitTestPlana",
-      "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\UnitTestPlana\\UnitTestPlana.csproj",
-      "packagesPath": "C:\\Users\\kristya\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\UnitTestPlana\\obj\\",
+      "projectPath": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\UnitTestPlana\\UnitTestPlana.csproj",
+      "packagesPath": "C:\\Users\\SamuelEgger\\.nuget\\packages\\",
+      "outputPath": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\UnitTestPlana\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\kristya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SamuelEgger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/adaris/_packaging/BootForms/nuget/v3/index.json": {},
+        "https://pkgs.dev.azure.com/adaris/_packaging/adaris/nuget/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj": {
-              "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj"
+            "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj": {
+              "projectPath": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj"
             }
           }
         }
@@ -9412,18 +9417,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20601.7\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },
