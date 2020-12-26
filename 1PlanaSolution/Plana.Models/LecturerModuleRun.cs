@@ -6,7 +6,7 @@ namespace Plana.Models
     {
 
         public int LecturerId { get; set; }
-        public Lecturer Lecturer { get; set; }
+        public virtual Lecturer Lecturer { get; set; }
 
         /// <summary>
         /// Gets or sets number of lessons per week.
@@ -14,7 +14,7 @@ namespace Plana.Models
         public int Lessons { get; set; }
 
         public int ModuleRunId { get; set; }
-        public ModuleRun ModuleRun { get; set; }
+        public virtual ModuleRun ModuleRun { get; set; }
         public int Hours { get; set; }
         public string Notes { get; set; }
 

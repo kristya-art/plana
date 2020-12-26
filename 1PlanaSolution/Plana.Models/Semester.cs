@@ -21,10 +21,10 @@ namespace Plana.Models
         //relationship
 
         //1-many
-        public ICollection<ModuleRun> ModuleRuns { get; set; }
-        public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
+        public virtual ICollection<ModuleRun> ModuleRuns { get; set; }
+        public virtual ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
-        public ICollection<LecturerSemester> LecturersSemesters { get; set; }
+        public virtual ICollection<LecturerSemester> LecturersSemesters { get; set; }
 
         /// <summary>
         /// method to take last 2 letters from the semester code "HS or FS"

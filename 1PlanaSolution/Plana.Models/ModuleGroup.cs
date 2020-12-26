@@ -13,10 +13,10 @@ namespace Plana.Models
         
         public DateTime? DeletedAt { get; set; }
 
-        public ICollection<ModuleRun> ModuleRuns { get; set; }
+        public virtual ICollection<ModuleRun> ModuleRuns { get; set; }
         
-        public ICollection<LecturerGroupModuleGroup> LecturerGroupModuleGroup { get; set; }
+        public virtual ICollection<LecturerGroupModuleGroup> LecturerGroupModuleGroup { get; set; }
 
-        public ICollection<LecturerModuleGroup> LecturerModuleGroup { get; set; }
+        public virtual ICollection<LecturerModuleGroup> LecturerModuleGroup { get; set; }
     }
 }

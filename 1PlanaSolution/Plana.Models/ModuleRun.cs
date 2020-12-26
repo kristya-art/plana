@@ -18,7 +18,7 @@ namespace Plana.Models
         //many-1
     //    public Semester Semester { get; set; }
         //many-1
-        public Module Module { get; set; }
+        public virtual Module Module { get; set; }
         
         //Biel, Bern
         public string Place { get; set; }
@@ -28,16 +28,16 @@ namespace Plana.Models
         //1/3, 1/2, 1/4
         //public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
         //many-many
-         public ICollection<LecturerModuleRun> LecturersMR { get; set; }
+         public virtual ICollection<LecturerModuleRun> LecturersMR { get; set; }
        
         public int ModuleId { get; set; } // Foreign key many-to-one
 
         public int SemesterId { get; set; } //Foreign key many-to-one
         
-        public ModuleGroup ModuleGroup { get; set; }
+        public virtual ModuleGroup ModuleGroup { get; set; }
 
 
-        public ICollection<ModuleRunLecturerGroup> ModuleRunLecturerGroups { get; set; }
+        public virtual ICollection<ModuleRunLecturerGroup> ModuleRunLecturerGroups { get; set; }
        
 
     }

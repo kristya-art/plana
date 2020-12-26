@@ -9,14 +9,14 @@ namespace Plana.Models
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; }
 
-        public ICollection<LecturerModule> LecturersModules { get; set; }
-        public ICollection<LecturerModuleRun> LecturersModuleRuns { get; set; }
-        public ICollection<LecturerSemester> LecturersSemesters { get; set; }
-        public ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
-
-        public ICollection<LecturerModuleGroup> LecturerModuleGroup { get; set; }
-        public ICollection<LecturerLecturerGroup> LecturerLecturerGroup { get; set; }
-        public ICollection<PlanLecturer> PlanLecturers { get; set; }
+        public virtual ICollection<LecturerModule> LecturersModules { get; set; }
+        public virtual ICollection<LecturerModuleRun> LecturersModuleRuns { get; set; }
+        public virtual ICollection<LecturerSemester> LecturersSemesters { get; set; }
+        public virtual ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
+       
+        public virtual ICollection<LecturerModuleGroup> LecturerModuleGroup { get; set; }
+        public virtual ICollection<LecturerLecturerGroup> LecturerLecturerGroup { get; set; }
+        public virtual ICollection<PlanLecturer> PlanLecturers { get; set; }
 
         public DateTime SetActiveDate()
         {

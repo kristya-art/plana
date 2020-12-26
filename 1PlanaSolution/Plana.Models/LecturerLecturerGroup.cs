@@ -7,9 +7,9 @@ namespace Plana.Models
    public class LecturerLecturerGroup
     {
         public int LecturerId { get; set; }
-        public Lecturer Lecturer { get; set; }
+        public virtual Lecturer Lecturer { get; set; }
         public int LecturerGroupId { get; set; }
-        public LecturerGroup LecturerGroup { get; set; }
+        public virtual LecturerGroup LecturerGroup { get; set; }
 
 
     }
