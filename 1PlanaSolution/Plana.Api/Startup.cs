@@ -50,7 +50,6 @@ namespace Plana.Api
             services.AddScoped<IModuleRunService, ModuleRunService>();
             services.AddScoped<IPlanLecturerService, PlanLecturerService>();
 
-            services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
