@@ -12,11 +12,11 @@ namespace Plana.Api.Models
         {
             Module module = new Module
             {
-                Title = "Project and Training 1",
-                Code = "BTI3001",
-                ECTS = 6,
-                LectPerWeek = 8,
-                TotalHours = 516
+                Title = title,
+                Code = code,
+                ECTS = ects,
+                LectPerWeek = lectPerWeek,
+                TotalHours = totalHours
             };
 
             context.Modules.Add(module);

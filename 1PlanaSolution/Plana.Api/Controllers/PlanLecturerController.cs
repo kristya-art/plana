@@ -1,7 +1,6 @@
-﻿
-using Castle.Core.Logging;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Plana.Api.Services;
 using Plana.Models;
 using System;
@@ -14,9 +13,9 @@ namespace Plana.Api.Controllers
     public class PlanLecturerController : ControllerBase
     {
         private readonly IPlanLecturerService _planLecturerService;
-        private readonly ILogger _logger;
+        private readonly ILogger<PlanLecturerController> _logger;
 
-        public PlanLecturerController(IPlanLecturerService planLecturerService, ILogger logger)
+        public PlanLecturerController(IPlanLecturerService planLecturerService, ILogger<PlanLecturerController> logger)
         {
             _planLecturerService = planLecturerService;
             _logger = logger;
@@ -31,7 +30,7 @@ namespace Plana.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.Error(SR.ErrorRetrievingDataFromDataBase, ex);
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
                 return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
@@ -50,7 +49,7 @@ namespace Plana.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.Error(SR.ErrorRetrievingDataFromDataBase, ex);
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
                 return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
@@ -94,7 +93,7 @@ namespace Plana.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.Error(SR.ErrorRetrievingDataFromDataBase, ex);
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
                 return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorUpdatingDatabase);
             }
         }
@@ -112,7 +111,7 @@ namespace Plana.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.Error(SR.ErrorRetrievingDataFromDataBase, ex);
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
                 return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
