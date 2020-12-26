@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Plana.Api.Services;
 using Plana.Models;
+using Plana.Shared;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Plana.Api.Controllers
@@ -22,11 +24,12 @@ namespace Plana.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetPlanLecturers()
+        public async Task<ActionResult<IEnumerable<PlanLecturerDto>>> GetPlanLecturers()
         {
             try
             {
-                return Ok(await _planLecturerService.GetPlanLecturers());
+                var result = await _planLecturerService.GetPlanLecturers();
+                return new ActionResult<IEnumerable<PlanLecturerDto>>(result);
             }
             catch (Exception ex)
             {
@@ -36,7 +39,7 @@ namespace Plana.Api.Controllers
         }
 
         [HttpGet("{planId}/{lecturerId}")]    //https://localhost:44399/api/planLecturer/1/6
-        public async Task<ActionResult<PlanLecturer>> GetPlanLecturer(int planId, int lecturerId)
+        public async Task<ActionResult<PlanLecturerDto>> GetPlanLecturer(int planId, int lecturerId)
         {
             try
             {
@@ -55,7 +58,7 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<PlanLecturer>> CreatePlanLecturer(PlanLecturer planLecturer)
+        public async Task<ActionResult<PlanLecturerDto>> CreatePlanLecturer(PlanLecturerDto planLecturer)
         {
             try
             {
@@ -63,23 +66,17 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-                var createdPlanLecturer = await _planLecturerService.AddPlanLecturer(planLecturer);
 
-                return CreatedAtAction(nameof(GetPlanLecturer), new { id = createdPlanLecturer.LecturerId }, createdPlanLecturer);
-
-
+                return await _planLecturerService.AddPlanLecturer(planLecturer);
             }
             catch (Exception)
-
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from the database");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
             }
         }
 
         [HttpPut]
-        public async Task<ActionResult<PlanLecturer>> UpdatePlanLecturer(PlanLecturer planLecturer)
+        public async Task<ActionResult<PlanLecturerDto>> UpdatePlanLecturer(PlanLecturer planLecturer)
         {
             try
             {

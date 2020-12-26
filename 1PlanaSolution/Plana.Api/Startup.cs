@@ -1,4 +1,5 @@
 
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,8 @@ namespace Plana.Api
                 options.UseLazyLoadingProxies()
                        .UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
+            services.AddAutoMapper(typeof(AutoMapperProfile));
+
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleGroupRepository, ModuleGroupRepository>();
             services.AddScoped<IModuleRunRepository, ModuleRunRepository>();
@@ -50,7 +53,6 @@ namespace Plana.Api
             services.AddScoped<IModuleRunService, ModuleRunService>();
             services.AddScoped<IPlanLecturerService, PlanLecturerService>();
 
-            services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }

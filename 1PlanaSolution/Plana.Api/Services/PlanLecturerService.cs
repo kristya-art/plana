@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Plana.Api.Models;
 using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Plana.Api.Services
@@ -12,27 +12,33 @@ namespace Plana.Api.Services
     public class PlanLecturerService : IPlanLecturerService
     {
         private readonly AppDbContext context;
+        private readonly IMapper mapper;
 
-        public PlanLecturerService(AppDbContext context)
+        public PlanLecturerService(AppDbContext context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
-        public async Task<PlanLecturer> AddPlanLecturer(PlanLecturer planLecturer)
+
+        public async Task<PlanLecturerDto> AddPlanLecturer(PlanLecturerDto planLecturerDto)
         {
+            var planLecturer = new PlanLecturer();
+            mapper.Map(planLecturerDto, planLecturer);
+
             var result = await context.PlanLecturers.AddAsync(planLecturer);
-
-
             await context.SaveChangesAsync();
-            return result.Entity;
+            
+            return mapper.Map<PlanLecturerDto>(result.Entity);
         }
 
-        /** completely delete*/
-        public async Task<bool> DeletePlanLecturer(int id, int id2)
+        public async Task<bool> DeletePlanLecturer(int planId, int lecturerId)
         {
-            var result = await GetPlanLecturer(id,id2);
-            if (result != null)
+            var planLecturer = await context.PlanLecturers.FindAsync(planId, lecturerId);
+            if (planLecturer != null)
             {
-                context.PlanLecturers.Remove(result);
+                planLecturer.IsDeleted = true;
+                planLecturer.DeletedAt = DateTime.Now;
+
                 await context.SaveChangesAsync();
                 
                 return true; 
@@ -41,22 +47,24 @@ namespace Plana.Api.Services
             return false;
         }
 
-        public async Task<PlanLecturer> GetPlanLecturer(int planId, int lecturerId)
+        public async Task<PlanLecturerDto> GetPlanLecturer(int planId, int lecturerId)
         {
-            return await context.PlanLecturers.FindAsync(planId, lecturerId);
+            var planLecturer = await context.PlanLecturers.FindAsync(planId, lecturerId);
+            return mapper.Map<PlanLecturerDto>(planLecturer);
         }
 
-        public async Task<IEnumerable<PlanLecturer>> GetPlanLecturers()
+        public async Task<IEnumerable<PlanLecturerDto>> GetPlanLecturers()
         {
-            return await context.PlanLecturers.ToListAsync();
+            var planLecturers = await context.PlanLecturers.ToListAsync();
+            return mapper.Map<IEnumerable<PlanLecturerDto>>(planLecturers);
         }
 
-        public Task<IEnumerable<PlanLecturer>> Search(string name)
+        public Task<IEnumerable<PlanLecturerDto>> Search(string name)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Boolean> SoftDeletePlanLecturer(int id, int id2)
+        public async Task<bool> SoftDeletePlanLecturer(int id, int id2)
         {
             var result = await GetPlanLecturer(id, id2);
             if (result != null)
@@ -72,7 +80,7 @@ namespace Plana.Api.Services
             return false;
         }
 
-        public async Task<PlanLecturer> UpdatePlanLecturer(PlanLecturer planLecturer)
+        public async Task<PlanLecturerDto> UpdatePlanLecturer(PlanLecturerDto planLecturer)
         {
             var result = await context.PlanLecturers.FindAsync(planLecturer.LecturerId, planLecturer.PlanId);
             if (result != null)
