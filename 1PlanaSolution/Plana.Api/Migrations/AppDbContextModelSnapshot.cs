@@ -15,9 +15,9 @@ namespace Plana.Api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("Plana.Api.Models.ModuleRunLecturerGroup", b =>
                 {
@@ -26,6 +26,12 @@ namespace Plana.Api.Migrations
 
                     b.Property<int>("LecturerGroupId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("ModuleRunId", "LecturerGroupId");
 
@@ -39,7 +45,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("AdditionalAssignmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("AACategory")
                         .HasColumnType("int");
@@ -79,7 +85,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("ActiveTill")
                         .HasColumnType("datetime2");
@@ -133,7 +139,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("LecturerGroupId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -162,6 +168,12 @@ namespace Plana.Api.Migrations
                     b.Property<int>("ModuleGroupId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("LecturerGroupId", "ModuleGroupId");
 
                     b.HasIndex("ModuleGroupId");
@@ -176,6 +188,12 @@ namespace Plana.Api.Migrations
 
                     b.Property<int>("LecturerGroupId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("LecturerId", "LecturerGroupId");
 
@@ -192,6 +210,12 @@ namespace Plana.Api.Migrations
                     b.Property<int>("LecturerId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("ModuleId", "LecturerId");
 
                     b.HasIndex("LecturerId");
@@ -206,6 +230,12 @@ namespace Plana.Api.Migrations
 
                     b.Property<int>("ModuleGroupId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("LecturerId", "ModuleGroupId");
 
@@ -222,8 +252,14 @@ namespace Plana.Api.Migrations
                     b.Property<int>("LecturerId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Hours")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Lessons")
                         .HasColumnType("int");
@@ -246,6 +282,12 @@ namespace Plana.Api.Migrations
                     b.Property<int>("LecturerId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("SemesterId", "LecturerId");
 
                     b.HasIndex("LecturerId");
@@ -258,7 +300,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("ModuleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -293,7 +335,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("ModuleGroupId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -314,7 +356,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("ModuleRunId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -356,7 +398,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("AutumnSemesterId")
                         .HasColumnType("int");
@@ -439,7 +481,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("SemesterId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -463,7 +505,7 @@ namespace Plana.Api.Migrations
                     b.Property<int>("StudyBranchId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -495,6 +537,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("ModuleRunId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("LecturerGroup");
+
+                    b.Navigation("ModuleRun");
                 });
 
             modelBuilder.Entity("Plana.Models.AdditionalAssignment", b =>
@@ -528,6 +574,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("ModuleGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("LecturerGroup");
+
+                    b.Navigation("ModuleGroup");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerLecturerGroup", b =>
@@ -543,6 +593,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("LecturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Lecturer");
+
+                    b.Navigation("LecturerGroup");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerModule", b =>
@@ -558,6 +612,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Lecturer");
+
+                    b.Navigation("Module");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerModuleGroup", b =>
@@ -573,6 +631,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("ModuleGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Lecturer");
+
+                    b.Navigation("ModuleGroup");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerModuleRun", b =>
@@ -588,6 +650,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("ModuleRunId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Lecturer");
+
+                    b.Navigation("ModuleRun");
                 });
 
             modelBuilder.Entity("Plana.Models.LecturerSemester", b =>
@@ -603,6 +669,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("SemesterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Lecturer");
+
+                    b.Navigation("Semester");
                 });
 
             modelBuilder.Entity("Plana.Models.Module", b =>
@@ -629,6 +699,10 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("SemesterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Module");
+
+                    b.Navigation("ModuleGroup");
                 });
 
             modelBuilder.Entity("Plana.Models.Plan", b =>
@@ -640,6 +714,10 @@ namespace Plana.Api.Migrations
                     b.HasOne("Plana.Models.Semester", "SpringSemester")
                         .WithOne()
                         .HasForeignKey("Plana.Models.Plan", "SpringSemesterId");
+
+                    b.Navigation("AutumnSemester");
+
+                    b.Navigation("SpringSemester");
                 });
 
             modelBuilder.Entity("Plana.Models.PlanLecturer", b =>
@@ -655,6 +733,78 @@ namespace Plana.Api.Migrations
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Lecturer");
+
+                    b.Navigation("Plan");
+                });
+
+            modelBuilder.Entity("Plana.Models.Lecturer", b =>
+                {
+                    b.Navigation("AdditionalAssignments");
+
+                    b.Navigation("LecturerLecturerGroup");
+
+                    b.Navigation("LecturerModuleGroup");
+
+                    b.Navigation("LecturersModuleRuns");
+
+                    b.Navigation("LecturersModules");
+
+                    b.Navigation("LecturersSemesters");
+
+                    b.Navigation("PlanLecturers");
+                });
+
+            modelBuilder.Entity("Plana.Models.LecturerGroup", b =>
+                {
+                    b.Navigation("LecturerGroupModuleGroup");
+
+                    b.Navigation("LecturerLecturerGroup");
+
+                    b.Navigation("LecturerSubGroups");
+
+                    b.Navigation("ModuleRunLecturerGroups");
+                });
+
+            modelBuilder.Entity("Plana.Models.Module", b =>
+                {
+                    b.Navigation("Lecturers");
+                });
+
+            modelBuilder.Entity("Plana.Models.ModuleGroup", b =>
+                {
+                    b.Navigation("LecturerGroupModuleGroup");
+
+                    b.Navigation("LecturerModuleGroup");
+
+                    b.Navigation("ModuleRuns");
+                });
+
+            modelBuilder.Entity("Plana.Models.ModuleRun", b =>
+                {
+                    b.Navigation("LecturersMR");
+
+                    b.Navigation("ModuleRunLecturerGroups");
+                });
+
+            modelBuilder.Entity("Plana.Models.Plan", b =>
+                {
+                    b.Navigation("PlanLecturers");
+                });
+
+            modelBuilder.Entity("Plana.Models.Semester", b =>
+                {
+                    b.Navigation("AdditionalAssignments");
+
+                    b.Navigation("LecturersSemesters");
+
+                    b.Navigation("ModuleRuns");
+                });
+
+            modelBuilder.Entity("Plana.Models.StudyBranch", b =>
+                {
+                    b.Navigation("Modules");
                 });
 #pragma warning restore 612, 618
         }

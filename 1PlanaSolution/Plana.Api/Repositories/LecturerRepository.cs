@@ -80,14 +80,7 @@ namespace Plana.Api.Models
 
         public async Task<IEnumerable<Lecturer>> GetLecturersWithTasks()
         {
-            return await appDbContext.Lecturers
-                //.Include(i => i.LecturersModuleRuns)
-                //.ThenInclude(mr => mr.ModuleRun)
-                //.Include(i=>i.AdditionalAssignments)
-                //.Include(i => i.LecturersModules)
-                //.ThenInclude(mo => mo.Module)
-                //.OrderBy(i=>i.LastName)
-                .ToListAsync();
+            return await appDbContext.Lecturers.ToListAsync();
                 
         }
 

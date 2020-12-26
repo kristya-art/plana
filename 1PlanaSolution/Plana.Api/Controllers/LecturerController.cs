@@ -46,7 +46,8 @@ namespace Plana.Api.Controllers
         {
             try
             {
-                return Ok(await lecturerRepository.GetLecturersWithTasks());
+                var lecturers = await lecturerRepository.GetLecturersWithTasks();
+                return Ok(lecturers);
 
             }
             catch (Exception)
