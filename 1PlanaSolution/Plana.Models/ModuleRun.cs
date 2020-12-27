@@ -10,9 +10,7 @@ namespace Plana.Models
     
     public class ModuleRun : ISoftDelete
     {
-       
-      
-        public int ModuleRunId { get; set; }
+       public int ModuleRunId { get; set; }
         //'a', 'b', 'p','q'
         public string Code { get; set; }
         //many-1
@@ -22,8 +20,6 @@ namespace Plana.Models
         
         //Biel, Bern
         public string Place { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedAt { get; set; }
         public bool Editable { get; set; }
         //1/3, 1/2, 1/4
         //public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
@@ -35,10 +31,10 @@ namespace Plana.Models
         public int SemesterId { get; set; } //Foreign key many-to-one
         
         public virtual ModuleGroup ModuleGroup { get; set; }
-
-
         public virtual ICollection<ModuleRunLecturerGroup> ModuleRunLecturerGroups { get; set; }
-       
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
+
 
     }
 }

@@ -64,6 +64,9 @@ namespace Plana.Api
             CreateMap<StudyBranchDto, StudyBranch>();
             CreateMap<StudyBranch, StudyBranchDto>();
 
+            CreateMap<AdditionalAssignmentCategoryDto, AdditionalAssignmentCategory>();
+            CreateMap<AdditionalAssignmentCategory, AdditionalAssignmentCategoryDto>();
+
         }
     }
 }

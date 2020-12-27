@@ -15,9 +15,7 @@ namespace Plana.Models
         public int SemesterId { get; set; }
         public string Code { get; set; }
         public DateTime Date { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedAt { get; set; }
-        
+      
         //relationship
 
         //1-many
@@ -27,15 +25,18 @@ namespace Plana.Models
         public virtual ICollection<LecturerSemester> LecturersSemesters { get; set; }
 
         /// <summary>
-        /// method to take last 2 letters from the semester code "HS or FS"
+        /// this method takes last 2 letters from the semester code "HS or FS"
         /// </summary>
         /// <returns></returns>
         public string GetAbbreviation() {
             var last2= Code.Substring(Code.Length - 2);
             return last2;
-        
         }
-       
-        
+
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
+
+
+
     }
 }

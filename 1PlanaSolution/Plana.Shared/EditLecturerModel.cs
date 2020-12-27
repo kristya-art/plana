@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Plana.Shared
 {
-    public class EditLecturerModel
+    public class EditLecturerModel : PlanaEntityDto
     {
-        public int LecturerId { get; set; }
+        
         [Required(ErrorMessage = "FirstName must be provided")]
         [MinLength(2)]
 

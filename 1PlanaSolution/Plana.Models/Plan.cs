@@ -17,9 +17,6 @@ namespace Plana.Models
         
         public DateTime? OfficialPublishDate { get; set; }
         public DateTime? PublishDateForProfessors { get; set; }
-
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedAt { get; set; }
         // public ICollection<Plan> MyPlan { get; set; }
         public virtual ICollection<PlanLecturer> PlanLecturers { get; set; }
         /// <summary>
@@ -33,6 +30,8 @@ namespace Plana.Models
         public virtual Semester AutumnSemester { get; set; } = new Semester();
         [ForeignKey("SpringSemesterId")]
         public virtual Semester SpringSemester { get; set; } = new Semester();
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
 
-     }
+    }
 }

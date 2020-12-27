@@ -7,7 +7,7 @@ namespace Plana.Models
 {
     public class StudyBranch : ISoftDelete
     {
-   //     [Key]
+ 
         public int StudyBranchId { get; set; }
         //1-many
         public virtual ICollection<Module> Modules { get; set; }
