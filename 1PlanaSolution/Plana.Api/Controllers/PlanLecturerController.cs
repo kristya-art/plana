@@ -76,14 +76,14 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<PlanLecturerDto>> UpdatePlanLecturer(PlanLecturer planLecturer)
+        public async Task<ActionResult<PlanLecturerDto?>> UpdatePlanLecturer(PlanLecturerDto planLecturer)
         {
             try
             {
                 var planLecturerForUpdate = await _planLecturerService.GetPlanLecturer(planLecturer.PlanId, planLecturer.LecturerId);
                 if (planLecturerForUpdate == null)
                 {
-                    return NotFound($"PlanLecturer with planId={planLecturer.LecturerId} and lecturerId={planLecturer.PlanId} was not found!");
+                    return NotFound($"PlanLecturer with planId={planLecturer.PlanId} and lecturerId={planLecturer.LecturerId} was not found!");
                 }
 
                 return await _planLecturerService.UpdatePlanLecturer(planLecturerForUpdate);

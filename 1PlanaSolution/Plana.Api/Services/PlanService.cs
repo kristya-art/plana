@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Plana.Api.Services
 {
-    public class PlanService : BizActionErrors, IPlanService
+    public class PlanService : IPlanService
     {
         private readonly AppDbContext _context;
         private readonly ISemesterRepository _semesterRepository;

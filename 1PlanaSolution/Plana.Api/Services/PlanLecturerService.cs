@@ -17,6 +17,7 @@ namespace Plana.Api.Services
         public PlanLecturerService(AppDbContext context, IMapper mapper)
         {
             this.context = context;
+
             this.mapper = mapper;
         }
 
@@ -64,50 +65,47 @@ namespace Plana.Api.Services
             throw new NotImplementedException();
         }
 
-        public async Task<bool> SoftDeletePlanLecturer(int id, int id2)
-        {
-            var result = await GetPlanLecturer(id, id2);
-            if (result != null)
-            {
-                result.IsDeleted = true;
-                result.DeletedAt = DateTime.Now.Date;
+        //public async Task<bool> SoftDeletePlanLecturer(int id, int id2)
+        //{
+        //    var result = await GetPlanLecturer(id, id2);
+        //    if (result != null)
+        //    {
+        //        result.IsDeleted = true;
+        //        result.DeletedAt = DateTime.Now.Date;
 
-                context.PlanLecturers.Update(result);
+        //        context.PlanLecturers.Update(result);
+        //        await context.SaveChangesAsync();
+        //        mapper.Map<IEnumerable<PlanLecturerDto>>(result);
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
+        public async Task<PlanLecturerDto?> UpdatePlanLecturer(PlanLecturerDto planLecturerDto)
+        {
+            var planLecturer = await context.PlanLecturers.FindAsync(planLecturerDto.LecturerId, planLecturerDto.PlanId);
+            if (planLecturer != null)
+            {
+                planLecturer.LecturerId = planLecturerDto.LecturerId;
+                planLecturer.PlanId = planLecturerDto.PlanId;
+                planLecturer.AnnualTarget = planLecturerDto.AnnualTarget;
+                planLecturer.BalanceAccumulated = planLecturerDto.BalanceAccumulated;
+                planLecturer.BalanceActual = planLecturerDto.BalanceActual;
+                planLecturer.BalanceLastYear = planLecturerDto.BalanceLastYear;
+
                 await context.SaveChangesAsync();
 
-                return true;
-            }
-            return false;
-        }
-
-        public async Task<PlanLecturerDto> UpdatePlanLecturer(PlanLecturerDto planLecturer)
-        {
-            var result = await context.PlanLecturers.FindAsync(planLecturer.LecturerId, planLecturer.PlanId);
-            if (result != null)
-            {
-                result.LecturerId = planLecturer.LecturerId;
-                result.PlanId = planLecturer.PlanId;
-                result.AnnualTarget = planLecturer.AnnualTarget;
-                result.BalanceAccumulated = planLecturer.BalanceAccumulated;
-                result.BalanceActual = planLecturer.BalanceActual;
-                result.BalanceLastYear = planLecturer.BalanceLastYear;
-
-                await context.SaveChangesAsync();
-
-                return result;
+                return mapper.Map<PlanLecturerDto>(planLecturer);
             }
             return null;
         }
         /** dosn't work*/
-        public async Task<IEnumerable<ModuleRun>> GetLecturerModuleRuns(int planId,int lectId)
+        public async Task<IEnumerable<ModuleRunDto>> GetLecturerModuleRuns(int planId,int lectId)
         {
 
-            //planLecturer.LecturerId = lecturer.Id;
-            //planLecturer.PlanId = plan.Id;
-          
-            ICollection<ModuleRun> moduleRuns = new List<ModuleRun>();
+            ICollection<ModuleRunDto> moduleRuns = new List<ModuleRunDto>();
             var result = await GetPlanLecturer(planId,lectId);
-            ICollection<Semester> semesters = new List<Semester>();
+            ICollection<SemesterDto> semesters = new List<SemesterDto>();
 
             if (result != null)
             {
@@ -125,13 +123,13 @@ namespace Plana.Api.Services
                                     moduleRuns.Add(mr);
                                 }
                             }
-                        }
-
                     }
-                return moduleRuns;
+
+                }
+                //return moduleRuns;
 
             }
-            return moduleRuns;
+            return mapper.Map<IEnumerable<ModuleRunDto>>(moduleRuns);
         }
     }
 }

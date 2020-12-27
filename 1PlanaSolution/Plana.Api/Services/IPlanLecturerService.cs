@@ -15,11 +15,11 @@ namespace Plana.Api.Services
 
         Task<PlanLecturerDto> AddPlanLecturer(PlanLecturerDto planLecturer);
         
-        Task<PlanLecturerDto> UpdatePlanLecturer(PlanLecturerDto planLecturer);
+        Task<PlanLecturerDto?> UpdatePlanLecturer(PlanLecturerDto planLecturer);
 
         Task<bool> DeletePlanLecturer(int planId, int lecturerId);
 
         // TODO: Put in correct interface
-        Task<IEnumerable<ModuleRun>> GetLecturerModuleRuns(int planId, int lecturerId);
+        Task<IEnumerable<ModuleRunDto>> GetLecturerModuleRuns(int planId, int lecturerId);
     }
 }
