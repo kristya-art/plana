@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plana.Shared
 {
-    class StudyBranchDto
+    public class StudyBranchDto
     {
     }
 }
