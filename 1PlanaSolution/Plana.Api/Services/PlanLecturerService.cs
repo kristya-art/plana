@@ -65,22 +65,6 @@ namespace Plana.Api.Services
             throw new NotImplementedException();
         }
 
-        //public async Task<bool> SoftDeletePlanLecturer(int id, int id2)
-        //{
-        //    var result = await GetPlanLecturer(id, id2);
-        //    if (result != null)
-        //    {
-        //        result.IsDeleted = true;
-        //        result.DeletedAt = DateTime.Now.Date;
-
-        //        context.PlanLecturers.Update(result);
-        //        await context.SaveChangesAsync();
-        //        mapper.Map<IEnumerable<PlanLecturerDto>>(result);
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
         public async Task<PlanLecturerDto?> UpdatePlanLecturer(PlanLecturerDto planLecturerDto)
         {
             var planLecturer = await context.PlanLecturers.FindAsync(planLecturerDto.LecturerId, planLecturerDto.PlanId);

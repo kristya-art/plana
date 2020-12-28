@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Plana.Web.Models;
 using Plana.Web.Services;
 
 
@@ -31,7 +30,7 @@ namespace Plana.Web
             //services.AddHttpClient();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddAutoMapper(typeof(LecturerProfile));
+            //services.AddAutoMapper(typeof(LecturerProfile));
             services.AddScoped<HttpClient>();
            
 

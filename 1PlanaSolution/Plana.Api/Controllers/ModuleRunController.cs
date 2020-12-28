@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Plana.Api.Models;
 using Plana.Api.Repositories;
 using Plana.Api.Services;
 using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,26 +18,30 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class ModuleRunController : ControllerBase
     {
-        private readonly IModuleRunRepository moduleRunRep;
-        private readonly IModuleRepository moduleRep;
-        private readonly ISemesterRepository semesterRep;
-        private readonly ILecturerRepository lecturerRep;
-        private readonly IModuleRunService moduleRunService;
-        private readonly ILecturerModuleRunRepository lecturerModuleRunRepository;
+        private readonly IModuleRunService _moduleRunService;
+        private readonly ILogger<ModuleRunController> _logger;
 
-        public ModuleRunController(IModuleRunRepository moduleRunRepository,
-                                IModuleRepository moduleRepository,
-                                ISemesterRepository semesterRepository,
-                                ILecturerRepository lecturerRepository,
-                                IModuleRunService moduleRunService,
-                                ILecturerModuleRunRepository lecturerModuleRunRepository)
+        //private readonly IModuleRepository moduleRep;
+        //private readonly ISemesterRepository semesterRep;
+        //private readonly ILecturerService lecturerService;
+        //private readonly IModuleRunService moduleRunService;
+        //private readonly ILecturerModuleRunRepository lecturerModuleRunRepository;
+
+        public ModuleRunController(IModuleRunService moduleRunService,
+                                   ILogger<ModuleRunController> logger)
+        //IModuleRepository moduleRepository,
+        //ISemesterRepository semesterRepository,
+        //ILecturerService lecturerService,
+        //IModuleRunService moduleRunService,
+        //ILecturerModuleRunRepository lecturerModuleRunRepository)
         {
-            this.moduleRunRep = moduleRunRepository;
-            this.moduleRep = moduleRepository;
-            this.semesterRep = semesterRepository;
-            this.lecturerRep = lecturerRepository;
-            this.moduleRunService = moduleRunService;
-            this.lecturerModuleRunRepository = lecturerModuleRunRepository;
+            _moduleRunService = moduleRunService;
+            _logger = logger;
+            //this.moduleRep = moduleRepository;
+            //this.semesterRep = semesterRepository;
+            //this.lecturerService=lecturerService;
+            //this.moduleRunService = moduleRunService;
+            //this.lecturerModuleRunRepository = lecturerModuleRunRepository;
 
 
         }
@@ -79,18 +85,22 @@ namespace Plana.Api.Controllers
         //}
 
         [HttpGet]
-        public async Task<ActionResult> GetModuleRuns()
+        public async Task<ActionResult<IEnumerable<ModuleRunDto>>> GetModuleRuns()
         {
             try
             {
-                return Ok(await moduleRunRep.GetModuleRuns());
+                var result = await _moduleRunService.GetModuleRuns();
+                return new ActionResult<IEnumerable<ModuleRunDto>>(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
+
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
+        
         }
+        
         //[HttpGet]
         //public async Task<ActionResult> GetCustomMRs()
         //{
@@ -109,27 +119,27 @@ namespace Plana.Api.Controllers
 
         //}
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<ModuleRun>> GetModuleRun(int id)
+        public async Task<ActionResult<ModuleRunDto>> GetModuleRun(int id)
         {
             try
             {
-                var result = await moduleRunRep.GetModuleRun(id);
+                var result = await _moduleRunService.GetModuleRun(id);
                 if (result == null)
                 {
                     return NotFound();
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
 
         }
 
         [HttpPost]
-        public async Task<ActionResult<ModuleRun>> CreateModuleRun(ModuleRun mr)
+        public async Task<ActionResult<ModuleRunDto>> CreateModuleRun(ModuleRunDto mr)
         {
 
             try
@@ -138,14 +148,8 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-                var createdModuleRun = await moduleRunRep.CreateModuleRun(mr);
-                //await moduleRep.UpdateModule(mr.Module);
-                //await semesterRep.UpdateSemester(mr.Semester);
-
-                return CreatedAtAction(nameof(GetModuleRun), new { id = createdModuleRun.ModuleRunId }, createdModuleRun);
-
-
-            }
+                return await _moduleRunService.CreateModuleRun(mr);
+             }
 
             catch (Exception)
             {
@@ -154,55 +158,26 @@ namespace Plana.Api.Controllers
             }
         }
 
-        //[HttpPut()]
-        //public async Task<ActionResult<ModuleRun>> UpdateModuleRun(ModuleRun moduleRun)
-        //{
-        //    try
-        //    {
-
-        //        var updatedModuleRun = await moduleRunRep.GetModuleRun(moduleRun.ModuleRunId);
-        //        if (updatedModuleRun == null)
-        //        {
-        //            return NotFound($"Module run with id = {moduleRun.ModuleRunId } not found!");
-        //        }
-        //        return await moduleRunRep.UpdateModuleRun(moduleRun);
-        //        //await moduleRep.UpdateModule(moduleRun.Module);
-        //        //await semesterRep.UpdateSemester(moduleRun.Semester);
-        //        //return StatusCode(StatusCodes.Status200OK, "Is ok");
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //        "Error updating database");
-        //    }
-        //}
-
-        [HttpPut()]
-        public async Task<ActionResult<ModuleRun>> UpdateModuleRun(ModuleRun moduleRun)
+       [HttpPut()]
+        public async Task<ActionResult<ModuleRunDto>> UpdateModuleRun(ModuleRunDto moduleRun)
         {
             try
             {
 
-                var updatedModuleRun = await moduleRunRep.GetModuleRun(moduleRun.ModuleRunId);
+                var updatedModuleRun = await _moduleRunService.GetModuleRun(moduleRun.Id);
                 if (updatedModuleRun == null)
                 {
-                    return NotFound($"Module run with id = {moduleRun.ModuleRunId } not found!");
+                    return NotFound($"Module run with id = {moduleRun.Id } was not found!");
                 }
 
-                //return await moduleRunRep.UpdateModuleRun(moduleRun);
-               return  await moduleRunService.SaveModuleRun(moduleRun);
-             
-
-
+                return await _moduleRunService.UpdateModuleRun(moduleRun);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                "Error updating database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorUpdatingDatabase);
             }
+
         }
 
 

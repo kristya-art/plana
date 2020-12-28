@@ -6,17 +6,24 @@ namespace Plana.Models
     public class Lecturer : Employee, ISoftDelete
     {
         public string PhotoPath { get; set; }
-        public DateTime? DeletedAt { get; set; }
-        public bool IsDeleted { get; set; }
 
         public virtual ICollection<LecturerModule> LecturersModules { get; set; }
+
         public virtual ICollection<LecturerModuleRun> LecturersModuleRuns { get; set; }
+
+        
         public virtual ICollection<LecturerSemester> LecturersSemesters { get; set; }
+        
         public virtual ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
        
         public virtual ICollection<LecturerModuleGroup> LecturerModuleGroup { get; set; }
+        
         public virtual ICollection<LecturerLecturerGroup> LecturerLecturerGroup { get; set; }
+        
         public virtual ICollection<PlanLecturer> PlanLecturers { get; set; }
+
+        public DateTime? DeletedAt { get; set; }
+        public bool IsDeleted { get; set; }
 
         public DateTime SetActiveDate()
         {

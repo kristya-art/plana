@@ -13,9 +13,9 @@ namespace Plana.Api.Services
         
         Task<PlanLecturerDto> GetPlanLecturer(int planId, int lecturerId);
 
-        Task<PlanLecturerDto> AddPlanLecturer(PlanLecturerDto planLecturer);
+        Task<PlanLecturerDto> AddPlanLecturer(PlanLecturerDto planLecturerDto);
         
-        Task<PlanLecturerDto?> UpdatePlanLecturer(PlanLecturerDto planLecturer);
+        Task<PlanLecturerDto?> UpdatePlanLecturer(PlanLecturerDto planLecturerDto);
 
         Task<bool> DeletePlanLecturer(int planId, int lecturerId);
 

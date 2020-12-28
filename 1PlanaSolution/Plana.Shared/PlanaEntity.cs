@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plana.Shared
 {
-    public abstract class PlanaEntityDto
+    public abstract class PlanaEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

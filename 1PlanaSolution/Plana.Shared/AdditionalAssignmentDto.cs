@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plana.Shared
 {
-    public class AdditionalAssignmentDto : PlanaEntityDto
+    public class AdditionalAssignmentDto : PlanaEntity
     {
         public string Title { get; set; }
 

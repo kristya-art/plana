@@ -9,7 +9,7 @@ namespace Plana.Shared
     public class LecturerModuleDto
     {
         public int LecturerId { get; set; }
-        public virtual EditLecturerModel Lecturer { get; set; }
+        public virtual LecturerDto Lecturer { get; set; }
         public int ModuleId { get; set; }
         public virtual ModuleDto Module { get; set; }
     }

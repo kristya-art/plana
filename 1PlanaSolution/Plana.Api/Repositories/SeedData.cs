@@ -465,7 +465,7 @@ namespace Plana.Api.Models
                 };
                 Semester ss_24 = new Semester()
                 {
-                    Code = "2024 - FS",
+                    Code = "2025 - FS",
                     Date = new DateTime(2024, 08, 13),
                     LecturersSemesters = new List<LecturerSemester>
                     {
@@ -477,7 +477,7 @@ namespace Plana.Api.Models
                 };
                 Semester as_24_25 = new Semester()
                 {
-                    Code = "2023-2024 - HS",
+                    Code = "2024-2025 - HS",
                     Date = new DateTime(2024, 08, 13),
                     LecturersSemesters = new List<LecturerSemester>
                         {

@@ -191,9 +191,9 @@ namespace Plana.Api.Migrations
                     AAHours = table.Column<double>(type: "float", nullable: false),
                     LecturerId = table.Column<int>(type: "int", nullable: true),
                     SemesterId = table.Column<int>(type: "int", nullable: true),
+                    AACategory = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AACategory = table.Column<int>(type: "int", nullable: false)
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -250,10 +250,10 @@ namespace Plana.Api.Migrations
                     ExpiredDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     OfficialPublishDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PublishDateForProfessors = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AutumnSemesterId = table.Column<int>(type: "int", nullable: true),
-                    SpringSemesterId = table.Column<int>(type: "int", nullable: true)
+                    SpringSemesterId = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -282,9 +282,9 @@ namespace Plana.Api.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LectPerWeek = table.Column<int>(type: "int", nullable: false),
                     TotalHours = table.Column<double>(type: "float", nullable: false),
+                    StudyBranchId = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    StudyBranchId = table.Column<int>(type: "int", nullable: true)
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -361,12 +361,12 @@ namespace Plana.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Place = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Editable = table.Column<bool>(type: "bit", nullable: false),
                     ModuleId = table.Column<int>(type: "int", nullable: false),
                     SemesterId = table.Column<int>(type: "int", nullable: false),
-                    ModuleGroupId = table.Column<int>(type: "int", nullable: true)
+                    ModuleGroupId = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

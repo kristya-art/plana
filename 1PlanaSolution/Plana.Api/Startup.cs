@@ -34,24 +34,25 @@ namespace Plana.Api
 
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleGroupRepository, ModuleGroupRepository>();
-            services.AddScoped<IModuleRunRepository, ModuleRunRepository>();
+            services.AddScoped<IModuleRunService, ModuleRunService>();
             
-            services.AddScoped<ISemesterRepository, SemesterRepository>();
             services.AddScoped<IStudyBranchRepository, StudyBranchRepository>();
             services.AddScoped<IAdditionalAssignmentRepository, AdditionalAssignmentRepository>();
 
             services.AddScoped<ILecturersModulesRepository, LecturersModulesRepository>();
             services.AddScoped<ILecturerSemesterRepository, LecturerSemesterRepository>();
-            services.AddScoped<ILecturerRepository, LecturerRepository>();
+            
             services.AddScoped<ILecturerGroupModuleGroupRepository, LecturerGroupModuleGroupRepository>();
             services.AddScoped<ILecturerGroupRepository, LecturerGroupRepository>();
             services.AddScoped<ILecturerLecturerGroupRepository, LecturerLecturerGroupRepository>();
             services.AddScoped<ILecturerModuleGroupRepository, LecturerModuleGroupRepository>();
             services.AddScoped<ILecturerModuleRunRepository, LecturerModuleRunRepository>();
 
+            services.AddScoped<ILecturerService, LecturerService>();
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IModuleRunService, ModuleRunService>();
             services.AddScoped<IPlanLecturerService, PlanLecturerService>();
+            services.AddScoped<ISemesterService, SemesterService>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

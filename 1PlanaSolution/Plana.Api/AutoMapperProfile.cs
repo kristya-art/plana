@@ -14,10 +14,9 @@ namespace Plana.Api
 
         private void CreateMaps()
         {
-            CreateMap<Lecturer, EditLecturerModel>()
+            CreateMap<Lecturer, LecturerDto>()
                 .ForMember(dest => dest.ConfirmEmail, opt => opt.MapFrom(src => src.Email));
-
-            CreateMap<EditLecturerModel, Lecturer>();
+           CreateMap<LecturerDto, Lecturer>();
 
             CreateMap<PlanLecturerDto, PlanLecturer>();
             CreateMap<PlanLecturer, PlanLecturerDto>();

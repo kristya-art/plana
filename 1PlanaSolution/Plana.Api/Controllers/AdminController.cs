@@ -14,19 +14,19 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly ILecturerRepository _lecturerRepository;
-        private readonly ISemesterRepository _semesterRepository;
+        private readonly ILecturerService _lecturerService;
+        private readonly ISemesterService _semesterRepository;
         private readonly IPlanService _planService;
-        private readonly IModuleRunRepository _moduleRunRepository;
+        private readonly IModuleRunService _moduleRunRepository;
         private readonly IModuleRepository _moduleRepository;
 
-        public AdminController(ILecturerRepository lecturerRepository,
-                                ISemesterRepository semesterRepository,
+        public AdminController(ILecturerService lecturerService,
+                                ISemesterService semesterRepository,
                                 IPlanService planService,
-                                IModuleRunRepository moduleRunRepository,
+                                IModuleRunService moduleRunRepository,
                                 IModuleRepository moduleRepository)
         {
-            _lecturerRepository = lecturerRepository;
+            _lecturerService = lecturerService;
             _semesterRepository = semesterRepository;
             _planService = planService;
             _moduleRunRepository = moduleRunRepository;

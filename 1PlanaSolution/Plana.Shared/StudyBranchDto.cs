@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plana.Shared
 {
-    public class StudyBranchDto : PlanaEntityDto
+    public class StudyBranchDto : PlanaEntity
     {
         public virtual ICollection<ModuleDto> Modules { get; set; }
 

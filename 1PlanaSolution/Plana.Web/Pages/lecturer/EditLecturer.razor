@@ -5,7 +5,7 @@
 
 @inherits EditLecturerBase
 
-<EditForm Model="@EditLecturerModel" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="@LecturerDto" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <h3>@PageHeaderText</h3>
     <hr />
@@ -16,8 +16,8 @@
         </label>
         <div class="col-sm-10">
             <InputText id="firstName" class="form-control" placeholder="First Name"
-                       @bind-Value="EditLecturerModel.FirstName" />
-            <ValidationMessage For="@(() => EditLecturerModel.FirstName)" />
+                       @bind-Value="LecturerDto.FirstName" />
+            <ValidationMessage For="@(() => LecturerDto.FirstName)" />
         </div>
     </div>
     <div class="form-group row">
@@ -26,8 +26,8 @@
         </label>
         <div class="col-sm-10">
             <InputText id="lastName" class="form-control" placeholder="Last Name"
-                       @bind-Value="EditLecturerModel.LastName" />
-            <ValidationMessage For="@(() => EditLecturerModel.LastName)" />
+                       @bind-Value="LecturerDto.LastName" />
+            <ValidationMessage For="@(() => LecturerDto.LastName)" />
 
         </div>
     </div>
@@ -39,13 +39,13 @@
         </label>
         <div class="col-sm-10">
             <InputDate id="birthDate" class="form-control" placeholder="Birthday"
-                       @bind-Value="EditLecturerModel.BirthDate" />
+                       @bind-Value="LecturerDto.BirthDate" />
         </div>
     </div>
     <div class="col-sm-10">
         <InputText id="token" class="form-control" placeholder="Token"
-                   @bind-Value="EditLecturerModel.Token" />
-        <ValidationMessage For="@(() => EditLecturerModel.Token)" />
+                   @bind-Value="LecturerDto.Token" />
+        <ValidationMessage For="@(() => LecturerDto.Token)" />
     </div>
 
     <div class="form-group row">
@@ -54,8 +54,8 @@
         </label>
         <div class="col-sm-10">
             <InputText id="email" class="form-control" placeholder="Email"
-                       @bind-Value="EditLecturerModel.Email" />
-            <ValidationMessage For="@(() => EditLecturerModel.Email)" />
+                       @bind-Value="LecturerDto.Email" />
+            <ValidationMessage For="@(() => LecturerDto.Email)" />
 
         </div>
 
@@ -69,8 +69,8 @@
 
         <div class="col-sm-10">
             <InputText id="email" class="form-control" placeholder="ConfirmEmail"
-                       @bind-Value="EditLecturerModel.ConfirmEmail" />
-            <ValidationMessage For="@(() => EditLecturerModel.ConfirmEmail)" />
+                       @bind-Value="LecturerDto.ConfirmEmail" />
+            <ValidationMessage For="@(() => LecturerDto.ConfirmEmail)" />
         </div>
     </div>
 
@@ -81,15 +81,15 @@
 
         <div class="col-sm-10">
             <InputDate id="activeTill" class="form-control" placeholder="ActiveTill"
-                       @bind-Value="EditLecturerModel.ActiveTill" />
+                       @bind-Value="LecturerDto.ActiveTill" />
         </div>
     </div>
     @*<div>
-            <MatCheckbox @bind-Value="EditLecturerModel.IsActive" Label="@(getLabel(checked1))">Active</MatCheckbox>
+            <MatCheckbox @bind-Value="LecturerDto.IsActive" Label="@(getLabel(checked1))">Active</MatCheckbox>
         </div>*@
     <div>
         Active<br />
-        <MatCheckbox @bind-Value="EditLecturerModel.IsActive" Label="@(ChangeLabel(EditLecturerModel.IsActive))"></MatCheckbox>
+        <MatCheckbox @bind-Value="LecturerDto.IsActive" Label="@(ChangeLabel(LecturerDto.IsActive))"></MatCheckbox>
     </div>
 
     @*<div class="form-group row">
@@ -100,7 +100,7 @@
             <div class="col-sm-10">
 
                 <InputCheckbox id="isActive" class="form-control" placeholder="IsActive"
-                               @bind-Value="EditLecturerModel.IsActive" />
+                               @bind-Value="LecturerDto.IsActive" />
             </div>
         </div>*@
 

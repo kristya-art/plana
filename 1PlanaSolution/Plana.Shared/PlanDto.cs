@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plana.Shared
 {
-    public class PlanDto : PlanaEntityDto
+    public class PlanDto : PlanaEntity
     {
         public bool IsFixed { get; set; }
 

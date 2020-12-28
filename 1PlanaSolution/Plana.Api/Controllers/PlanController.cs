@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Plana.Api.Services;
 using Plana.Models;
+using Plana.Shared;
 
 namespace Plana.Api.Controllers
 {
@@ -14,27 +16,29 @@ namespace Plana.Api.Controllers
     public class PlanController : ControllerBase
     {
         private readonly IPlanService _planService;
-        public PlanController(IPlanService planService) {
+        private readonly ILogger<PlanController> _logger;
+        public PlanController(IPlanService planService, ILogger<PlanController> logger) {
 
             _planService = planService;
+            _logger = logger;
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetPlans()
+        public async Task<ActionResult<IEnumerable<PlanDto>>> GetPlans()
         {
             try
             {
-                return Ok(await _planService.GetAllPlans());
+                var result = await _planService.GetAllPlans();
+                return new ActionResult<IEnumerable<PlanDto>>(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Plan>> GetPlan(int id)
+        public async Task<ActionResult<PlanDto>> GetPlan(int id)
         {
             try
             {
@@ -45,15 +49,14 @@ namespace Plana.Api.Controllers
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
         [HttpPost]
-        public async Task<ActionResult<Plan>> CreatePlan(Plan plan)
+        public async Task<ActionResult<PlanDto>> CreatePlan(PlanDto plan)
         {
             try
             {
@@ -61,37 +64,35 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-                var createdPlan = await _planService.AddPlan(plan);
-                return CreatedAtAction(nameof(GetPlan), new { id = createdPlan.Id }, createdPlan);
+                return await _planService.AddPlan(plan);
+                
             }
             catch (Exception)
             {
 
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
             }
         
         }
         [HttpPut()]
-        public async Task<ActionResult<Plan>> UpdatePlan(Plan plan)
+        public async Task<ActionResult<PlanDto?>> UpdatePlan(PlanDto plan)
         {
             try
             {
-                var updatedPlan = await _planService.GetPlan(plan.Id);
-                if (updatedPlan == null)
+                var planForUpdate = await _planService.GetPlan(plan.Id);
+                if (planForUpdate == null)
                 {
                     return NotFound($"Plan with id = {plan.Id} not found");
                 }
 
-                return await _planService.UpdatePlan(plan);
+                return await _planService.UpdatePlan(planForUpdate);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error updating database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorUpdatingDatabase);
             }
-        
+
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Plana.Api.Models;
 using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,72 +15,53 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class LecturerController : ControllerBase
     {
-        private readonly ILecturerRepository lecturerRepository;
-        public LecturerController(ILecturerRepository lecturerRepository)
+        private readonly ILecturerService _lecturerService;
+        private readonly ILogger<LecturerController> _logger;
+
+        public LecturerController(ILecturerService lecturerService, ILogger<LecturerController> logger)
         {
-            this.lecturerRepository = lecturerRepository;
+            _lecturerService = lecturerService;
+            _logger = logger;
         }
 
-        [HttpGet("{search}")]
-        public async Task<ActionResult<IEnumerable<Lecturer>>> Search(string name, Gender? gender)
-        {
-            try
-            {
-              var result = await  lecturerRepository.Search(name, gender);
-
-                if (result.Any())
-                {
-                    return Ok(result);
-                }
-                return NotFound();
-            }
-            catch (Exception)
-            {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from database");
-            }
-        }
-
+      
 
         [HttpGet]
-        public async Task<ActionResult> GetLecturers()
+        public async Task<ActionResult<IEnumerable<LecturerDto>>> GetLecturers()
         {
             try
             {
-                var lecturers = await lecturerRepository.GetLecturersWithTasks();
-                return Ok(lecturers);
+                var lecturers = await _lecturerService.GetLecturers();
+                return new ActionResult<IEnumerable<LecturerDto>>(lecturers);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
         
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Lecturer>> GetLecturer(int id)
+        public async Task<ActionResult<LecturerDto>> GetLecturer(int id)
         {
             try
             {
-               var result = await lecturerRepository.GetLecturer(id);
+               var result = await _lecturerService.GetLecturer(id);
                 if (result == null)
                 {
                     return NotFound();
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
         [HttpPost]
-        public async Task<ActionResult<Lecturer>> CreateLecturer(Lecturer lecturer)
+        public async Task<ActionResult<LecturerDto>> CreateLecturer(LecturerDto lecturer)
         {
             try
             {
@@ -86,88 +69,78 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-               var createdLecturer= await lecturerRepository.AddLecturer(lecturer);
 
-                return CreatedAtAction(nameof(GetLecturer),new { id= createdLecturer.Id},createdLecturer);
-                
+                return await _lecturerService.AddLecturer(lecturer);
 
-            }
-            catch (Exception)
-
+             }
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from the database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
+
         [HttpPut()]
-        public async Task<ActionResult<Lecturer>> UpdateLecturer(Lecturer lecturer)
+        public async Task<ActionResult<LecturerDto>> UpdateLecturer(LecturerDto lecturer)
         {
             try
             {
                
-                var updateLecturer = await lecturerRepository.GetLecturer(lecturer.Id);
+                var lecturerForUpdate = await _lecturerService.GetLecturer(lecturer.Id);
 
-                if (updateLecturer == null)
+                if (lecturerForUpdate == null)
                 {
-                    return NotFound($"Lecturer with id = {lecturer.Id} not found");
+                    return NotFound($"Lecturer with id = {lecturer.Id} was not found");
                 }
-                return await lecturerRepository.UpdateLecturer(lecturer);
+                return await _lecturerService.UpdateLecturer(lecturer);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                "Error updating database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorUpdatingDatabase);
             }
         }
 
-        /** soft deletion */
+    
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult<Boolean>> SoftDeleteLecturer(int id)
+        public async Task<ActionResult<Boolean>> DeleteLecturer(int id)
         {
             try
             {
 
-                var deleteLecturer = await lecturerRepository.GetLecturer(id);
-                if (deleteLecturer == null)
+                var LecturerForDelete = await _lecturerService.GetLecturer(id);
+                if (LecturerForDelete == null)
                 {
                     return NotFound($"Lecturer with this id = {id} is not found");
                 }
-                   return await lecturerRepository.SoftDeleteLecturer(id);
+                   return await _lecturerService.DeleteLecturer(id);
                 }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error deleting data");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
 
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<LecturerDto>>> Search(string name, Gender? gender)
+        {
+            try
+            {
+                var result = await _lecturerService.Search(name, gender);
 
-        /** normal deletion**/
-
-    //    [HttpDelete("{id:int}")]
-    //  //  public async Task<ActionResult<Lecturer>> DeleteLecturer(int id)
-    //  public async Task<ActionResult<Boolean>> DeleteLecturer(int id)
-    //    {
-    //        try
-    //        {
-    //            var deleteLecturer = await lecturerRepository.GetLecturer(id);
-    //            if (deleteLecturer == null)
-    //            { return NotFound($"Lecturer with this id = {id} is not found"); 
-    //            }
-    //              return await lecturerRepository.DeleteLecturer(id);
-
-    //        }
-    //        catch (Exception)
-    //        {
-
-    //            return StatusCode(StatusCodes.Status500InternalServerError,
-    //                "Error deleting data");
-    //        }
-    //    }
-    
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+            }
+        }
 
     }
 }

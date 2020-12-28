@@ -9,7 +9,7 @@ namespace Plana.Shared
     public class LecturerModuleRunDto
     {
         public int LecturerId { get; set; }
-        public virtual EditLecturerModel Lecturer { get; set; }
+        public virtual LecturerDto Lecturer { get; set; }
 
         /// <summary>
         /// Gets or sets number of lessons per week.
