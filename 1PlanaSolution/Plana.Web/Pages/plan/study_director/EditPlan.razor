@@ -340,7 +340,7 @@ else
                 <InputSelect id="semester" @bind-Value="SemesterId" class="form-control">
                     @foreach (var sem in Semesters)
                     {
-                        <option value="@sem.SemesterId">@sem.GetAbbreviation()</option>
+                        <option value="@sem.Id">@sem.GetAbbreviation()</option>
                     }
                 </InputSelect>
             </div>
@@ -351,7 +351,7 @@ else
                 <InputSelect id="module" @bind-Value="ModuleId" class="form-control">
                     @foreach (var module in Modules)
                     {
-                        <option value="@module.ModuleId">@module.ModuleId | @module.Title</option>
+                        <option value="@module.Id">@module.Id | @module.Title</option>
                     }
                 </InputSelect>
             </div>

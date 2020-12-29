@@ -1,4 +1,5 @@
-﻿<div class="selectYear">
+﻿@using Plana.Shared
+<div class="selectYear">
 
     <form>
         <p>Assignments plan for</p>
@@ -29,20 +30,20 @@
     public NavigationManager NavigationMan { get; set; }
     [Inject]
     public ILecturerService LecturerService { get; set; }
-    public Lecturer Lecturer { get; set; } = new Lecturer();
+    public LecturerDto Lecturer { get; set; } = new LecturerDto();
     [Parameter]
     public string Id { get; set; }
 
     [Inject]
     public IPlanService PlanService { get; set; }
 
-    public Plan Plan { get; set; } = new Plan();
-    public List<Plan> Plans { get; set; }
+    public PlanDto Plan { get; set; } = new PlanDto();
+    public List<PlanDto> Plans { get; set; }
 
     [Inject]
     public IPlanLecturerService PlanLecturerService { get; set; }
-    public PlanLecturer SelectedPlanLecturer { get; set; } = new PlanLecturer();
-    IEnumerable<PlanLecturer> PlanLecturers { get; set; } = new List<PlanLecturer>();
+    public PlanLecturerDto SelectedPlanLecturer { get; set; } = new PlanLecturerDto();
+    IEnumerable<PlanLecturerDto> PlanLecturers { get; set; } = new List<PlanLecturerDto>();
 
     protected async override Task OnInitializedAsync()
     {
@@ -56,7 +57,7 @@
         }
         else
         {
-            Lecturer = new Lecturer { };
+            Lecturer = new LecturerDto { };
 
 
 

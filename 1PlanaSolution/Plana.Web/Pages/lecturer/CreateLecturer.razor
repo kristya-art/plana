@@ -1,4 +1,5 @@
-﻿@page "/createlecturer"
+﻿@page "/createlecturer";
+@using Plana.Shared;
 
 @inject NavigationManager navmanager;
 
@@ -47,7 +48,7 @@
     [Inject]
     public ILecturerService LecturerService { get; set; }
 
-    Lecturer lecturer = new Lecturer();
+    LecturerDto lecturer = new LecturerDto();
 
     async Task Create()
     {

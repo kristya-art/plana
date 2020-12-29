@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Plana.Models;
+using Plana.Shared;
 using Plana.Web.Services;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Plana.Web.Pages
     public class LecturerDetailsBase : ComponentBase
     {
        
-        public Lecturer Lecturer { get; set; } = new Lecturer();
+        public LecturerDto Lecturer { get; set; } = new LecturerDto();
         
         [Inject]
         public ILecturerService LecturerService { get; set; }
@@ -30,8 +31,8 @@ namespace Plana.Web.Pages
             LecturersModules = (await LMService.GetLecturersModules()).ToList();
         }
 
-        public IEnumerable<Lecturer> Lecturers { get; set; }
-        public IEnumerable<LecturerModule> LecturersModules { get; set; }
+        public IEnumerable<LecturerDto> Lecturers { get; set; }
+        public IEnumerable<LecturerModuleDto> LecturersModules { get; set; }
         public bool ShowFooter { get; set; } = true;
 
         //protected override async Task OnInitializedAsync()

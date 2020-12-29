@@ -5,6 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\home\**" />
+    <Compile Remove="Pages\lecturersmodules\**" />
+    <Compile Remove="Pages\semester\**" />
+    <Content Remove="Pages\home\**" />
+    <Content Remove="Pages\lecturersmodules\**" />
+    <Content Remove="Pages\semester\**" />
+    <EmbeddedResource Remove="Pages\home\**" />
+    <EmbeddedResource Remove="Pages\lecturersmodules\**" />
+    <EmbeddedResource Remove="Pages\semester\**" />
+    <None Remove="Pages\home\**" />
+    <None Remove="Pages\lecturersmodules\**" />
+    <None Remove="Pages\semester\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="EmbeddedBlazorContent" Version="1.10.0" />
     <PackageReference Include="MatBlazor" Version="2.8.0" />

@@ -1,5 +1,6 @@
 ﻿@page "/lecturerlist"
 @inherits LecturerViewBase
+@using Plana.Shared 
 
 @if (Lecturers == null) { return; }
 <TableTemplate>
@@ -9,7 +10,7 @@
     <Body>
 
 
-        @foreach (Lecturer l in Lecturers)
+        @foreach (LecturerDto l in Lecturers)
         {
 
             <tr class="@GetClass(l.LastName)">

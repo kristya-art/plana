@@ -84,10 +84,10 @@ namespace Plana.Web.Pages.plan.study_director
 
             else
             {
-                Plan = new Plan { };
-                Semester = new Semester { };
-                Module = new Module { };
-                ModuleRun = new ModuleRun { };
+                Plan = new PlanDto { };
+                Semester = new SemesterDto { };
+                Module = new ModuleDto { };
+                ModuleRun = new ModuleRunDto { };
 
                 //AutumnSemester = new Semester { };
                 //SpringSemester = new Semester { };
@@ -131,8 +131,8 @@ namespace Plana.Web.Pages.plan.study_director
 
         protected async Task HandleValidSubmit()
         {
-            Plan result = null;
-            if (Semester.SemesterId != 0)
+            PlanDto result = null;
+            if (Semester.Id != 0)
             {
                 //await UpdateSemester();
                 //await UpdateMR();

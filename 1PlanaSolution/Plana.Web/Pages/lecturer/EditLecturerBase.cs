@@ -18,7 +18,7 @@ namespace Plana.Web.Pages
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        public Lecturer Lecturer { get; set; } = new Lecturer();
+        public LecturerDto Lecturer { get; set; } = new LecturerDto();
         public LecturerDto LecturerDto { get; set; } = new LecturerDto();
 
         [Parameter]
@@ -40,7 +40,7 @@ namespace Plana.Web.Pages
             else
             {
                 PageHeaderText = "Create Lecturer";
-                Lecturer = new Lecturer
+                Lecturer = new LecturerDto
                 {
                     // LecturerId = 1,
                    // BirthDate = DateTime.Now,
@@ -57,7 +57,7 @@ namespace Plana.Web.Pages
         {
             //Mapper.Map(EditLecturerModel, Lecturer);
 
-            Lecturer result = null;
+            LecturerDto result = null;
 
             if (Lecturer.Id != 0)
             {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Plana.Models;
+using Plana.Shared;
 using Plana.Web.Services;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Plana.Web.Pages
     public class DisplayLecturerBase : ComponentBase
     {
         [Parameter]
-        public Lecturer Lecturer { get; set; }
+        public LecturerDto Lecturer { get; set; }
         [Parameter]
         public bool ShowFooter { get; set; }
         [Parameter]

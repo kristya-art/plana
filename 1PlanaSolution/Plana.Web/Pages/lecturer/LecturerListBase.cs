@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Plana.Models;
 using Plana.Web.Services;
+using Plana.Shared;
 
 namespace Plana.Web.Pages
 {
@@ -11,7 +12,7 @@ namespace Plana.Web.Pages
     {
         [Inject]
         public ILecturerService LecturerService { get; set; }
-        public IEnumerable<Lecturer> Lecturers { get; set; }
+        public IEnumerable<LecturerDto> Lecturers { get; set; }
 
         public bool ShowFooter { get; set; } = true;
 

@@ -42,7 +42,7 @@ namespace Plana.Shared
         public DateTime ActiveTill { get; set; }
         public GenderDto Gender { get; set; }
         
-        //public virtual ICollection<LecturerModuleDto> LecturersModules { get; set; }
+        public virtual ICollection<LecturerModuleDto> LecturersModules { get; set; }
         
         //public virtual ICollection<LecturerModuleRunDto> LecturersModuleRuns { get; set; }
 

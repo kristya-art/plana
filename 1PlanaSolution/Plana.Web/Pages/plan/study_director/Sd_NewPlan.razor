@@ -1,6 +1,6 @@
 ﻿@page "/sd_NewPlan"
 @using MatBlazor;
-
+@using Plana.Shared;
 
 
 <Plana.Web.Pages.template_components.CustomSelect />
@@ -69,8 +69,8 @@
 @*<MatButton Raised="true" @onclick="DeleteEmployee" Icon="restore_from_trash" title="Delete Employee"></MatButton>*@
 @code {
 
-    Plan selectedPlan = null;
-    Plan tempPlan = null;
+    PlanDto selectedPlan = null;
+    PlanDto tempPlan = null;
     bool _isDelete = false;
     bool dialogIsOpen = false;
     bool _isEdit = false;
@@ -115,15 +115,15 @@
     [Inject]
     public NavigationManager NavManager { get; set; }
 
-    Plan plan { get; set; } = new Plan();
+    PlanDto plan { get; set; } = new PlanDto();
 
 
 
 
-    Semester Ssemester { get; set; } = new Semester();
+    SemesterDto Ssemester { get; set; } = new SemesterDto();
 
     
-    Semester Asemester { get; set; } = new Semester();
+    SemesterDto Asemester { get; set; } = new SemesterDto();
 
    
 

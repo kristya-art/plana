@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Microsoft.AspNetCore.Components;
+using Plana.Shared;
 
 namespace Plana.Web.Services
 {
@@ -15,9 +16,9 @@ namespace Plana.Web.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<IEnumerable<LecturerModule>> GetLecturersModules()
+        public async Task<IEnumerable<LecturerModuleDto>> GetLecturersModules()
         {
-            return await httpClient.GetJsonAsync<LecturerModule[]>("api/lecturermodule");
+            return await httpClient.GetJsonAsync<LecturerModuleDto[]>("api/lecturermodule");
         }
     }
 }

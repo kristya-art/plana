@@ -1,4 +1,5 @@
-﻿@page "/customSelect"
+﻿@using Plana.Shared
+@page "/customSelect"
 @*<EditForm Model="@Plan">*@
 @if (Plans == null)
 { return; }
@@ -37,11 +38,11 @@
         [Inject]
         public IPlanService PlanService { get; set; }
         [Parameter]
-        public Plan Plan { get; set; } = new Plan();
+        public PlanDto Plan { get; set; } = new PlanDto();
         [Parameter]
-        public Plan SelectedPlan { get; set; } = new Plan();
+        public PlanDto SelectedPlan { get; set; } = new PlanDto();
         //public Plan SelectePlanForShow { get; set; } = new Plan();
-        public List<Plan> Plans { get; set; }
+        public List<PlanDto> Plans { get; set; }
 
 
 

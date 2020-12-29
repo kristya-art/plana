@@ -1,6 +1,7 @@
 ﻿@*@page "/myplanL/{id}/{id2}"*@
 @page "/myPlanL/{id}"
 @page "/myplanL"
+@using Plana.Shared 
 
 @using MatBlazor;
 
@@ -93,7 +94,7 @@ else
         [Inject]
         public IPlanService PlanService { get; set; }
 
-        public Plan Plan { get; set; } = new Plan();
+        public PlanDto Plan { get; set; } = new PlanDto();
 
 
         //protected async override Task OnInitializedAsync()
