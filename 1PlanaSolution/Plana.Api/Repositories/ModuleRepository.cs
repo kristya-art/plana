@@ -1,8 +1,10 @@
-﻿using Castle.Core.Internal;
+﻿using AutoMapper;
+using Castle.Core.Internal;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,72 +15,66 @@ namespace Plana.Api.Models
     public class ModuleRepository : IModuleRepository
     {
         private readonly AppDbContext appDbContext;
+        private readonly IMapper mapper;
 
 
-        public ModuleRepository(AppDbContext appDbContext)
+        public ModuleRepository(AppDbContext appDbContext, IMapper mapper)
         {
             this.appDbContext = appDbContext;
+            this.mapper = mapper;
         }
 
-        public async Task<Module> AddModule(Module module)
+        public async Task<ModuleDto> AddModule(ModuleDto moduleDto)
         {
-           // module.IsDeleted = false;
+            var module = new Module();
+            mapper.Map(moduleDto, module);
+
             var result = await appDbContext.Modules.AddAsync(module);
             
             await appDbContext.SaveChangesAsync();
-            return result.Entity;
-        }
-
-        public async Task<Module> DeleteModule(int moduleId)
-        {
-            var result = await appDbContext.Modules
-                 .FirstOrDefaultAsync(e => e.ModuleId == moduleId);
-            if (result != null)
-            {
-                appDbContext.Modules.Remove(result);
-                await appDbContext.SaveChangesAsync();
-                return result;
-            }
-            return null;
-
-        }
-
-        public async Task<Module> GetModule(int moduleId)
-        {
-            return await appDbContext.Modules
-                 // .Include(e => e.Modules)
-
-                 .FirstOrDefaultAsync(e => e.ModuleId == moduleId);
+            return mapper.Map<ModuleDto>(result.Entity);
         }
 
        
-        public async Task<IEnumerable<Module>> Search(string title, string code)
+
+        public async Task<ModuleDto> GetModule(int moduleId)
         {
-            IQueryable<Module> query = appDbContext.Modules;
-            if (!string.IsNullOrEmpty(title))
-            {
-                query = query.Where(e => e.Title.Contains(title)
-                        );
-            }
-            if (code != null)
-            {
-                query = query.Where(e => e.Code.Contains(code));
-            }
-            return await query.ToListAsync();
+        var module =  await appDbContext.Modules.FindAsync(moduleId);
+        
+        return mapper.Map<ModuleDto>(module);
+                 // .Include(e => e.Modules)
+
+                
         }
 
-        public async Task<Module> UpdateModule(Module module)
+       
+        //public async Task<IEnumerable<Module>> Search(string title, string code)
+        //{
+        //    IQueryable<Module> query = appDbContext.Modules;
+        //    if (!string.IsNullOrEmpty(title))
+        //    {
+        //        query = query.Where(e => e.Title.Contains(title)
+        //                );
+        //    }
+        //    if (code != null)
+        //    {
+        //        query = query.Where(e => e.Code.Contains(code));
+        //    }
+        //    return await query.ToListAsync();
+        //}
+
+        public async Task<ModuleDto> UpdateModule(ModuleDto moduleDto)
         {
             var result = await appDbContext.Modules
-                .FirstOrDefaultAsync(e => e.ModuleId == module.ModuleId);
+                .FirstOrDefaultAsync(e => e.ModuleId == moduleDto.Id);
             if (result != null)
             {
                 
-                result.Code = module.Code;
-                result.ECTS = module.ECTS;
-                result.LectPerWeek = module.LectPerWeek;
-                result.TotalHours = module.TotalHours;
-                result.Lecturers = module.Lecturers;
+                result.Code = moduleDto.Code;
+                result.ECTS = moduleDto.ECTS;
+                result.LectPerWeek = moduleDto.LectPerWeek;
+                result.TotalHours = moduleDto.TotalHours;
+                //result.Lecturers = moduleDto.Lecturers;
                 
 
         
@@ -86,41 +82,42 @@ namespace Plana.Api.Models
 
                 await appDbContext.SaveChangesAsync();
 
-                return result;
+                return mapper.Map<ModuleDto>(result);
             }
 
             return null;
 
         }
-        public async Task<IEnumerable<Module>> GetModules()
+        public async Task<IEnumerable<ModuleDto>> GetModules()
         {
+            ICollection<Module> modules = new List<Module>();
             //  return await appDbContext.Modules.ToListAsync();
-            return await appDbContext.Modules
+            var result= await appDbContext.Modules
                   .Include(m => m.Lecturers)
                   .ThenInclude(l => l.Lecturer)
                   .OrderBy(m => m.Title)
                   .ToListAsync();
-
+            return mapper.Map<IEnumerable<ModuleDto>>(result);
         }
 
-        public async Task<Boolean> SoftDeleteModule(int moduleId)
-        {
+        //public async Task<Boolean> SoftDeleteModule(int moduleId)
+        //{
 
-            var result = await appDbContext.Modules
-                  .FirstOrDefaultAsync(e => e.ModuleId == moduleId);
-            if (result != null)
-            {
-                result.IsDeleted = true;
-                result.DeletedAt = DateTime.Now.Date;
+        //    var result = await appDbContext.Modules
+        //          .FirstOrDefaultAsync(e => e.ModuleId == moduleId);
+        //    if (result != null)
+        //    {
+        //        result.IsDeleted = true;
+        //        result.DeletedAt = DateTime.Now.Date;
 
-                appDbContext.Modules.Update(result);
-                await appDbContext.SaveChangesAsync();
+        //        appDbContext.Modules.Update(result);
+        //        await appDbContext.SaveChangesAsync();
 
-                return true;
-            }
-            return false;
+        //        return true;
+        //    }
+        //    return false;
 
-        }
+        //}
 
     }
 }
