@@ -19,6 +19,6 @@ namespace Plana.Api.Models
        
         Task<Boolean> DeleteLecturer(int lecturerId);
 
-        Task<LecturerDto> UpdateLecturer(LecturerDto lecturerDto);
+        Task<LecturerDto?> UpdateLecturer(LecturerDto lecturerDto);
     }
 }

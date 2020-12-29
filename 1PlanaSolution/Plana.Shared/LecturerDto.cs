@@ -1,18 +1,22 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plana.Shared
 {
     public class LecturerDto 
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required(ErrorMessage = "FirstName must be provided")]
-        [MinLength(2)]
+
+       [Required(ErrorMessage = "FirstName must be provided")]
+       [MinLength(2)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "LastName must be provided")]
-        [MinLength(2)]
+       [MinLength(2)]
         public string LastName { get; set; }
 
         public string Token { get; set; }
@@ -24,6 +28,7 @@ namespace Plana.Shared
         public string ConfirmEmail { get; set; }
 
         public string Password { get; set; }
+        public Role Role { get; set; }
 
         public DateTime BirthDate { get; set; }
 

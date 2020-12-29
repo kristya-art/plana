@@ -16,7 +16,7 @@ namespace Plana.Api
         {
             CreateMap<Lecturer, LecturerDto>()
                 .ForMember(dest => dest.ConfirmEmail, opt => opt.MapFrom(src => src.Email));
-           CreateMap<LecturerDto, Lecturer>();
+            CreateMap<LecturerDto, Lecturer>();
 
             CreateMap<PlanLecturerDto, PlanLecturer>();
             CreateMap<PlanLecturer, PlanLecturerDto>();
@@ -31,7 +31,7 @@ namespace Plana.Api
             CreateMap<LecturerLecturerGroup, LecturerLecturerGroupDto>();
 
             CreateMap<LecturerModuleDto, LecturerModule>();
-            CreateMap<LecturerModuleDto, LecturerModule>();
+            CreateMap<LecturerModule, LecturerModuleDto>();
 
             CreateMap<LecturerModuleGroupDto, LecturerModuleGroup>();
             CreateMap<LecturerModuleGroup, LecturerModuleGroupDto>();
@@ -63,9 +63,9 @@ namespace Plana.Api
             CreateMap<StudyBranchDto, StudyBranch>();
             CreateMap<StudyBranch, StudyBranchDto>();
 
-            CreateMap<AdditionalAssignmentCategoryDto, AdditionalAssignmentCategory>();
-            CreateMap<AdditionalAssignmentCategory, AdditionalAssignmentCategoryDto>();
-
+            CreateMap<AdditionalAssignmentDto, AdditionalAssignment>();
+            CreateMap<AdditionalAssignment, AdditionalAssignmentDto>();
+            
         }
     }
 }
