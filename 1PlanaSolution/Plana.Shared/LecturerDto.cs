@@ -2,13 +2,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Plana.Shared
 {
     public class LecturerDto 
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public int Id { get; set; }
 
        [Required(ErrorMessage = "FirstName must be provided")]
@@ -28,7 +28,8 @@ namespace Plana.Shared
         public string ConfirmEmail { get; set; }
 
         public string Password { get; set; }
-        public Role Role { get; set; }
+        
+        public RoleDto Role { get; set; }
 
         public DateTime BirthDate { get; set; }
 
@@ -40,21 +41,21 @@ namespace Plana.Shared
 
         public DateTime ActiveTill { get; set; }
         public GenderDto Gender { get; set; }
+        
+        //public virtual ICollection<LecturerModuleDto> LecturersModules { get; set; }
+        
+        //public virtual ICollection<LecturerModuleRunDto> LecturersModuleRuns { get; set; }
 
-        public virtual ICollection<LecturerModuleDto> LecturersModules { get; set; }
-
-        public virtual ICollection<LecturerModuleRunDto> LecturersModuleRuns { get; set; }
-
-
-        public virtual ICollection<LecturerSemesterDto> LecturersSemesters { get; set; }
-
+       
+        //public virtual ICollection<LecturerSemesterDto> LecturersSemesters { get; set; }
+        
         public virtual ICollection<AdditionalAssignmentDto> AdditionalAssignments { get; set; }
-
-        public virtual ICollection<LecturerModuleGroupDto> LecturerModuleGroup { get; set; }
-
-        public virtual ICollection<LecturerLecturerGroupDto> LecturerLecturerGroup { get; set; }
-
-        public virtual ICollection<PlanLecturerDto> PlanLecturers { get; set; }
+        
+        //public virtual ICollection<LecturerModuleGroupDto> LecturerModuleGroup { get; set; }
+        
+        //public virtual ICollection<LecturerLecturerGroupDto> LecturerLecturerGroup { get; set; }
+        
+        //public virtual ICollection<PlanLecturerDto> PlanLecturers { get; set; }
 
         public string SetToken()
         {

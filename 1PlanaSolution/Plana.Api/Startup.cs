@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Plana.Api.Models;
 using Plana.Api.Repositories;
 using Plana.Api.Services;
@@ -37,7 +39,7 @@ namespace Plana.Api
             services.AddScoped<IModuleRunService, ModuleRunService>();
             
             services.AddScoped<IStudyBranchRepository, StudyBranchRepository>();
-            services.AddScoped<IAdditionalAssignmentRepository, AdditionalAssignmentRepository>();
+            services.AddScoped<IAdditionalAssignmentService,AdditionalAssignmentService>();
 
             services.AddScoped<ILecturersModulesRepository, LecturersModulesRepository>();
             services.AddScoped<ILecturerSemesterRepository, LecturerSemesterRepository>();
@@ -53,9 +55,11 @@ namespace Plana.Api
             services.AddScoped<IModuleRunService, ModuleRunService>();
             services.AddScoped<IPlanLecturerService, PlanLecturerService>();
             services.AddScoped<ISemesterService, SemesterService>();
+            services.AddControllers();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,  AppDbContext context)

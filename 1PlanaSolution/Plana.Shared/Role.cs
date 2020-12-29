@@ -1,7 +1,7 @@
 ﻿
 namespace Plana.Shared
 {
-  public enum Role
+  public enum RoleDto
     {
         STUDY_DIRECTOR, LECTURER
     }

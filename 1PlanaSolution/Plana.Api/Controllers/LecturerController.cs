@@ -81,7 +81,7 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPut()]
-        public async Task<ActionResult<LecturerDto>> UpdateLecturer(LecturerDto lecturer)
+        public async Task<ActionResult<LecturerDto?>> UpdateLecturer(LecturerDto lecturer)
         {
             try
             {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Plana.Models;
-
+using Plana.Shared;
 
 namespace Plana.Web.Services
 {
@@ -12,10 +12,10 @@ namespace Plana.Web.Services
         /// <summary>
         /// for semester
         /// </summary>
-        Task<IEnumerable<Semester>> GetSemesters();
-        Task<Semester> GetSemester(int id);
-        Task UpdateSemester(Semester semester);
-        Task<Semester> CreateSemester(Semester semester);
+        Task<IEnumerable<SemesterDto>> GetSemesters();
+        Task<SemesterDto> GetSemester(int id);
+        Task UpdateSemester(SemesterDto semester);
+        Task<SemesterDto> CreateSemester(SemesterDto semester);
         Task SoftDeleteSemester(int id);
        
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +16,19 @@ namespace Plana.Web.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<Module> CreateModule(Module newModule)
+        public async Task<ModuleDto> CreateModule(ModuleDto newModule)
         {
-            return await httpClient.PostJsonAsync<Module>("api/admin/modules", newModule);
+            return await httpClient.PostJsonAsync<ModuleDto>("api/admin/modules", newModule);
         }
 
-        public async Task<Module> GetModule(int id)
+        public async Task<ModuleDto> GetModule(int id)
         {
-            return await httpClient.GetJsonAsync<Module>($"api/admin/modules/{id}");
+            return await httpClient.GetJsonAsync<ModuleDto>($"api/admin/modules/{id}");
         }
 
-        public async Task<IEnumerable<Module>> GetModules()
+        public async Task<IEnumerable<ModuleDto>> GetModules()
         {
-            return await httpClient.GetJsonAsync<Module[]>("api/admin/modules");
+            return await httpClient.GetJsonAsync<ModuleDto[]>("api/admin/modules");
         }
 
         public  Task SoftDeleteModule(int id)
@@ -36,9 +37,9 @@ namespace Plana.Web.Services
             //await httpClient.DeleteAsync($"api/admin/modules/{id}");
         }
 
-        public async Task<Module> UpdateModule(Module module)
+        public async Task<ModuleDto> UpdateModule(ModuleDto module)
         {
-            return await httpClient.PutJsonAsync<Module>("api/admin/modules", module);
+            return await httpClient.PutJsonAsync<ModuleDto>("api/admin/modules", module);
 
         }
     }

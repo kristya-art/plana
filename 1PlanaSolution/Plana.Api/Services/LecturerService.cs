@@ -70,10 +70,10 @@ namespace Plana.Api.Services
                 result.ActiveTill = lecturerDto.ActiveTill;
                 result.IsActive = lecturerDto.IsActive;
                 result.WorkingRate = lecturerDto.WorkingRate;
-                result.LecturersModules = lecturerDto.LecturersModules;//new
+               // result.LecturersModules = lecturerDto.LecturersModules;//new
                
                 result.AdditionalAssignments = lecturerDto.AdditionalAssignments;//new
-                result.LecturersModuleRuns = lecturerDto.LecturersModuleRuns;
+                //result.LecturersModuleRuns = lecturerDto.LecturersModuleRuns;
                
 
                 await appDbContext.SaveChangesAsync();

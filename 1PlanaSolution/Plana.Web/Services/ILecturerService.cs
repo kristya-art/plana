@@ -1,4 +1,5 @@
 ﻿using Plana.Models;
+using Plana.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,10 +7,10 @@ namespace Plana.Web.Services
 {
     public interface ILecturerService
     {
-       Task<IEnumerable<Lecturer>> GetLecturers();
-       Task<Lecturer> GetLecturer(int id);
-       Task<Lecturer> UpdateLecturer(Lecturer lecturer);
-        Task<Lecturer> CreateLecturer(Lecturer newLecturer);
+       Task<IEnumerable<LecturerDto>> GetLecturers();
+       Task<LecturerDto> GetLecturer(int id);
+       Task<LecturerDto> UpdateLecturer(LecturerDto lecturer);
+        Task<LecturerDto> CreateLecturer(LecturerDto newLecturer);
         Task DeleteLecturer(int id);
      }
 }

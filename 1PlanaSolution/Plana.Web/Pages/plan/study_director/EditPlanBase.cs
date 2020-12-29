@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Plana.Models;
+using Plana.Shared;
 using Plana.Web.Services;
 using System;
 using System.Collections.Generic;
@@ -28,21 +29,21 @@ namespace Plana.Web.Pages.plan.study_director
         [Inject]
         public IModuleService ModuleService { get; set; }
 
-        public Plan Plan { get; set; } 
-        public Semester Semester { get; set; } = new Semester();
-        public List<Plan> Plans { get; set; }
-        public List<Semester> Semesters { get; set; } = new List<Semester>();
-        public ModuleRun ModuleRun { get; set; } = new ModuleRun();
-        public Semester AutumnSemester { get; set; }
-        public Semester SpringSemester { get; set; }
-        public Module Module { get; set; } = new Module();
+        public PlanDto Plan { get; set; } 
+        public SemesterDto Semester { get; set; } = new SemesterDto();
+        public List<PlanDto> Plans { get; set; }
+        public List<SemesterDto> Semesters { get; set; } = new List<SemesterDto>();
+        public ModuleRunDto ModuleRun { get; set; } = new ModuleRunDto();
+        public SemesterDto AutumnSemester { get; set; }
+        public SemesterDto SpringSemester { get; set; }
+        public ModuleDto Module { get; set; } = new ModuleDto();
 
-        public List<ModuleRun> ModuleRuns { get; set; } = new List<ModuleRun>();
-        public List<Module> Modules { get; set; } = new List<Module>();
+        public List<ModuleRunDto> ModuleRuns { get; set; } = new List<ModuleRunDto>();
+        public List<ModuleDto> Modules { get; set; } = new List<ModuleDto>();
        
        
-        public Lecturer Lecturer { get; set; } 
-        public List<Lecturer> Lecturers { get; set; }
+        public LecturerDto Lecturer { get; set; } 
+        public List<LecturerDto> Lecturers { get; set; }
         /// <summary>
         /// Id will be passed in the URL. This property will automatically receive it.
         /// </summary>
@@ -74,10 +75,10 @@ namespace Plana.Web.Pages.plan.study_director
                 AutumnSemester = Plan.AutumnSemester;
                 SpringSemester = Plan.SpringSemester;
 
-                Semesters = new List<Semester> { AutumnSemester, SpringSemester };
+                Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
 
-                SemesterId = Semester.SemesterId.ToString();
-                ModuleId = Module.ModuleId.ToString();
+                SemesterId = Semester.Id.ToString();
+                ModuleId = Module.Id.ToString();
 
             }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +16,19 @@ namespace Plana.Web.Services
         public PlanService(HttpClient http) {
             this.http = http;
         }
-        public async Task<Plan> CreatePlan(Plan plan)
+        public async Task<PlanDto> CreatePlan(PlanDto plan)
         {
-            return await http.PostJsonAsync<Plan>("api/plan", plan);
+            return await http.PostJsonAsync<PlanDto>("api/plan", plan);
         }
 
-        public async Task<Plan> GetPlan(int id)
+        public async Task<PlanDto> GetPlan(int id)
         {
-            return await http.GetJsonAsync<Plan>($"api/plan/{id}");
+            return await http.GetJsonAsync<PlanDto>($"api/plan/{id}");
         }
 
-        public async Task<IEnumerable<Plan>> GetPlans()
+        public async Task<IEnumerable<PlanDto>> GetPlans()
         {
-            return await http.GetJsonAsync<Plan[]>("api/plan");
+            return await http.GetJsonAsync<PlanDto[]>("api/plan");
         }
 
         public Task SoftDeletePlan(int id)
@@ -35,7 +36,7 @@ namespace Plana.Web.Services
             throw new NotImplementedException();
         }
 
-        public async Task UpdatePlan(Plan plan)
+        public async Task UpdatePlan(PlanDto plan)
         {
             await http.PutJsonAsync("api/plan", plan);
         }
