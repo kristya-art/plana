@@ -71,7 +71,7 @@ else
                     @if (sem.ModuleRuns == null) { return; }
                     @foreach (var mr in sem.ModuleRuns)
                     {
-                        <tr>
+                        @*<tr>
                             <td>
 
                                 <button contenteditable="true">
@@ -79,7 +79,7 @@ else
                                 </button>
 
                             </td>
-                        </tr>
+                        </tr>*@
 
                         <tr>
                             <td>@sem.GetAbbreviation()</td>
@@ -103,6 +103,7 @@ else
                                     }
                                 }
                                 <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                @*<button class="btn" id="add" @onclick="@(e => OpenLecturerGDialog(false))"><i class="fa fa-plus"></i></button>*@
                             </td>
 
                             @if (mr.LecturersMR != null)
@@ -120,7 +121,9 @@ else
 
 
                                         }
-                                        <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                        
+                                        <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>
+                                        <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </td>
                                 <td contenteditable='true'>
@@ -172,6 +175,7 @@ else
 
 
 }
+
 @*dialog for last year plan *@
 <MatDialog @bind-IsOpen="dialogIsOpen">
     <MatDialogTitle>Add Plan</MatDialogTitle>
@@ -268,7 +272,10 @@ else
 
 
                                                 }
-                                                <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                                <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>
+                                                <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>
+
+
                                             </div>
                                         </td>
                                         <td contenteditable='true'>
@@ -365,7 +372,40 @@ else
     </MatDialog>
 </EditForm>
 
+/** dialog for lecturers*/
+<MatDialog @bind-IsOpen="LdialogIsOpen">
+    <MatDialogTitle>Add Professor</MatDialogTitle>
+    <MatDialogContent Style="width: 200px;right:50px">
+        <div class="selectYear">
+            <form>
+                @*<select class="form-control" @bind="selectedLecturer.Id">
 
+                    @foreach (var lecturer in Lecturers)
+                    {
+                        <option value="@lecturer.Id">
+                            @lecturer.Token
+                        </option>
+                    }
+                </select>
+                <div class="btn-group">
+                   
+                   
+                </div>*@
+            </form>
+
+            @*<MatFAB Icon="@MatIconNames.Add" Label="@selectedPlan.Year">
+
+            <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
+        </MatFAB>*@
+        </div>
+    </MatDialogContent>
+
+    <MatDialogActions>
+        <MatButton OnClick="okClickL">Add</MatButton>
+        <MatButton OnClick="CloseDialog">Close</MatButton>
+
+    </MatDialogActions>
+</MatDialog>
 
 
 
@@ -406,87 +446,109 @@ else
 
 
 @code {
-    
-        #region variables
+
+    #region variables
 
 
-        #endregion
+    #endregion
 
 
-        /// <summary>
-            /// js code for button
-            ///
-      ///  </summary>
+    /// <summary>
+    /// js code for button
+    ///
+    ///  </summary>
 
-        protected override async void OnAfterRender(bool firstRender)
-        {
+    protected override async void OnAfterRender(bool firstRender)
+    {
         await js.InvokeVoidAsync("renderjQueryComponents");
         base.OnAfterRender(firstRender);
 
-        }
+    }
 
-        private async Task CallJSMethod()
-        {
+    private async Task CallJSMethod()
+    {
 
         //await JS.InvokeVoidAsync("CollapseTableRow");
         await js.InvokeVoidAsync("GetName");
 
-        }
-        private async Task CallJSMethod2()
-        {
+    }
+    private async Task CallJSMethod2()
+    {
         await js.InvokeVoidAsync("SetButtonsVisible");
-        }
+    }
 
-        public void EditEvent()
-        {
+    public void EditEvent()
+    {
 
-        }
+    }
 
-        #region Last Year Plan
+    #region Last Year Plan
 
-        #endregion
-        #region Dialog Box Methods for Last Year Plan
-        bool _isDelete = false;
-        bool dialogIsOpen = false;
-        bool _isEdit = false;
-        private void OpenDialog(bool isEdit)
-        {
+    #endregion
+    #region Dialog Box Methods for Last Year Plan
+    bool _isDelete = false;
+    bool dialogIsOpen = false;
+    bool _isEdit = false;
+    private void OpenDialog(bool isEdit)
+    {
 
         //if (!_isEdit) plan = new Plan();
         dialogIsOpen = true;
-        }
-        private void okCklick()
-        {
+    }
+    private void okCklick()
+    {
         dialogIsOpen = false;
 
-        }
-        private void CloseDialog()
-        {
+    }
+    private void CloseDialog()
+    {
         dialogIsOpen = false;
 
-        }
-        #endregion
-        #region New Module
-        bool moduledialogIsOpen = false;
-        private void OpenModuleDialog(bool isEdit)
-        {
+    }
+    #endregion
+    #region New Module
+    bool moduledialogIsOpen = false;
+    private void OpenModuleDialog(bool isEdit)
+    {
         moduledialogIsOpen = true;
-        }
+    }
 
-        private void moduleOkClick()
-        {
+    private void moduleOkClick()
+    {
         moduledialogIsOpen = false;
-        }
-        private async Task CreateModule()
-        {
+    }
+    private async Task CreateModule()
+    {
 
 
         await AddNewModule();
         moduledialogIsOpen = false;
-        }
-        #endregion
+    }
+    #endregion
 
 
+    #region dialog for lecturers
+    bool LdialogIsOpen = false;
+    bool _isEditL = false;
+
+    private void OpenLecturerDialog(bool isEditL)
+    {
+        _isEditL = isEditL;
+        LdialogIsOpen = true;
+    }
+    private void okClickL()
+    {
+        LdialogIsOpen = false;
+        // LecturerService.Add(selectedLecturer);
+       // lecturerModuleRunService.update(LM);
+    }
+    private void LCloseDialog()
+    {
+        LdialogIsOpen = false;
+
+
+    }
+    #endregion
         }
 
         <style>

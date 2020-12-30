@@ -157,6 +157,9 @@ namespace Plana.Web.Pages.plan.study_director
             
             await ModuleRunService.CreateModuleRun(ModuleRun);
         }
+       protected async Task GetLecturers() {
+           await  LecturerService.GetLecturers();
+        }
 
 
     }
