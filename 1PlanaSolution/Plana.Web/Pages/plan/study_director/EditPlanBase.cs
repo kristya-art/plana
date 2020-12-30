@@ -28,6 +28,8 @@ namespace Plana.Web.Pages.plan.study_director
        
         [Inject]
         public IModuleService ModuleService { get; set; }
+        [Inject]
+        public ILecturerModuleRunService LecturerModuleRunService { get; set; }
 
         public PlanDto Plan { get; set; } 
         public SemesterDto Semester { get; set; } = new SemesterDto();
@@ -163,8 +165,9 @@ namespace Plana.Web.Pages.plan.study_director
             await ModuleRunService.CreateModuleRun(ModuleRun);
         }
 
-        protected async Task AddLecturer(LecturerDto lecturer) {
-            await LecturerService.CreateLecturer(lecturer);
+        protected async Task AddLecturer() {
+            //LecturerModuleRun
+            //await LecturerService.CreateLecturer(lecturer);
         }
 
 

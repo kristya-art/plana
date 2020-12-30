@@ -386,7 +386,7 @@ else
                     @foreach (var lecturer in Lecturers)
                     {
                         <option value="@lecturer.Id">
-                            @lecturer.Token
+                            @lecturer.SetToken()
                         </option>
                     }
                 </select>
