@@ -25,7 +25,7 @@ namespace Plana.Web.Pages.plan.study_director
         public NavigationManager NavigationManager { get; set; }
         [Inject]
         public ILecturerService LecturerService { get; set; }
-       // [Inject]
+       
         [Inject]
         public IModuleService ModuleService { get; set; }
 
@@ -41,9 +41,13 @@ namespace Plana.Web.Pages.plan.study_director
         public List<ModuleRunDto> ModuleRuns { get; set; } = new List<ModuleRunDto>();
         public List<ModuleDto> Modules { get; set; } = new List<ModuleDto>();
        
-       
-        public LecturerDto Lecturer { get; set; } 
-        public List<LecturerDto> Lecturers { get; set; }
+        /// <summary>
+        /// data for lecturers
+        /// </summary>
+        public LecturerDto Lecturer { get; set; }
+        public LecturerDto SelectedLecturer { get; set; } = new LecturerDto();
+        public List<LecturerDto> Lecturers { get; set; } = new List<LecturerDto>();
+        
         /// <summary>
         /// Id will be passed in the URL. This property will automatically receive it.
         /// </summary>
@@ -79,7 +83,7 @@ namespace Plana.Web.Pages.plan.study_director
 
                 SemesterId = Semester.Id.ToString();
                 ModuleId = Module.Id.ToString();
-
+                
             }
 
             else
@@ -99,6 +103,7 @@ namespace Plana.Web.Pages.plan.study_director
             //Semesters = (await SemesterService.GetSemesters()).ToList();
             ModuleRuns = (await ModuleRunService.GetModuleRuns()).ToList();
             Modules = (await ModuleService.GetModules()).ToList();
+            Lecturers = (await LecturerService.GetLecturers()).ToList();
 
         }
 
@@ -157,9 +162,11 @@ namespace Plana.Web.Pages.plan.study_director
             
             await ModuleRunService.CreateModuleRun(ModuleRun);
         }
-       protected async Task GetLecturers() {
-           await  LecturerService.GetLecturers();
+
+        protected async Task AddLecturer(LecturerDto lecturer) {
+            await LecturerService.CreateLecturer(lecturer);
         }
+
 
 
     }

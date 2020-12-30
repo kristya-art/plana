@@ -123,8 +123,30 @@ namespace Plana.Api.Services
             //return null;
 
         }
+        //public async Task<LecturerModuleRunDto> AddLecturerToModuleRun(ModuleRunDto moduleRun,LecturerDto lecturer)
+        //{
+        //    LecturerModuleRunDto result = new LecturerModuleRunDto { LecturerId = lecturer.Id, ModuleRunId = moduleRun.Id }
+        //    if (CheckLecturer(moduleRun, lecturer))
+        //    {
+        //        moduleRun.LecturersMR.Add(result);
 
+        //    }
+            
+        //    mapper.Map<LecturerModuleRunDto>(result);
+        //}
+        
+        //public bool CheckLecturer(ModuleRunDto moduleRun, LecturerDto lecturer) {
 
+        //    foreach (var LMR in moduleRun.LecturersMR)
+        //    {
+        //        if (moduleRun.LecturersMR.Contains(LMR))
+        //        {
+        //            return false;
+        //        }
+        //        return true;
+        //    }
+        //    return true;
+        //}
         public async Task<bool> DeleteModuleRun(int moduleRunId)
         {
             var moduleRun = await _context.ModuleRuns.FindAsync(moduleRunId);

@@ -375,10 +375,13 @@ else
 /** dialog for lecturers*/
 <MatDialog @bind-IsOpen="LdialogIsOpen">
     <MatDialogTitle>Add Professor</MatDialogTitle>
-    <MatDialogContent Style="width: 200px;right:50px">
-        <div class="selectYear">
+    <MatDialogContent Style="        width: 200px;
+        height: 200px;
+        right: 50px
+">
+        @*<div class="selectYear" style="width:100px">*@
             <form>
-                @*<select class="form-control" @bind="selectedLecturer.Id">
+                <select class="form-control" @bind="SelectedLecturer.Id">
 
                     @foreach (var lecturer in Lecturers)
                     {
@@ -390,14 +393,14 @@ else
                 <div class="btn-group">
                    
                    
-                </div>*@
+                </div>
             </form>
 
             @*<MatFAB Icon="@MatIconNames.Add" Label="@selectedPlan.Year">
 
             <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
         </MatFAB>*@
-        </div>
+        @*</div>*@
     </MatDialogContent>
 
     <MatDialogActions>
@@ -539,6 +542,7 @@ else
     private void okClickL()
     {
         LdialogIsOpen = false;
+        
         // LecturerService.Add(selectedLecturer);
        // lecturerModuleRunService.update(LM);
     }

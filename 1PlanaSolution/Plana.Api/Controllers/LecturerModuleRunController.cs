@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Plana.Api.Repositories;
+using Plana.Api.Services;
 using Plana.Models;
+using Plana.Shared;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Plana.Api.Controllers
@@ -11,30 +13,30 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class LecturerModuleRunController : ControllerBase
     {
-        private readonly ILecturerModuleRunRepository _lecturerModuleRunRepository;
+        private readonly ILecturerModuleRunService _lecturerModuleRunService;
 
 
-        public LecturerModuleRunController(ILecturerModuleRunRepository lecturerModuleRunRepository)
+        public LecturerModuleRunController(ILecturerModuleRunService lecturerModuleRunService)
         {
-            _lecturerModuleRunRepository = lecturerModuleRunRepository;
+            _lecturerModuleRunService = lecturerModuleRunService;
         }
 
         [HttpPut()]
-        public async Task<ActionResult<LecturerModuleRun>> UpdateLecturerModuleRun(LecturerModuleRun lecturerModuleRun)
+        public async Task<ActionResult<LecturerModuleRunDto>> UpdateLecturerModuleRun(LecturerModuleRunDto lecturerModuleRun)
         {
             int id = lecturerModuleRun.LecturerId;
             int id2 = lecturerModuleRun.ModuleRunId;
             try
             {
 
-                var updatedLecturerModuleRun = await _lecturerModuleRunRepository.GetLecturerModuleRun(id2, id);
+                var updatedLecturerModuleRun = await _lecturerModuleRunService.GetLecturerModuleRun(id2, id);
                 if (updatedLecturerModuleRun == null)
                 {
                     return NotFound($"LecturerModuleRun with id = {lecturerModuleRun.LecturerId}and id = {lecturerModuleRun.ModuleRunId} not found!");
                 }
 
                 //return await moduleRunRep.UpdateModuleRun(moduleRun);
-                return await _lecturerModuleRunRepository.UpdateLecturerModuleRun(lecturerModuleRun);
+                return await _lecturerModuleRunService.UpdateLecturerModuleRun(lecturerModuleRun);
 
 
 
@@ -48,11 +50,11 @@ namespace Plana.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetLecturerModuleRuns()
+        public async Task<ActionResult<IEnumerable<LecturerModuleRunDto>>> GetLecturerModuleRuns()
         {
             try
             {
-                return Ok(await _lecturerModuleRunRepository.GetLecturerModuleRuns());
+                return Ok(await _lecturerModuleRunService.GetLecturerModuleRuns());
 
             }
             catch (Exception)
@@ -71,12 +73,13 @@ namespace Plana.Api.Controllers
         
         //[HttpGet]
         //[HttpGet("id={id}&id2={id2}")] //  ==>{router}/empId=1&startDate=2020-20-20&endDate=2020-20-20 (postman)
-         [HttpGet("{id}/{id2}")]    //https://localhost:44399/api/lecturerModuleRun/1/6
-        public async Task<ActionResult<LecturerModuleRun>> GetLecturerModuleRun(int id, int id2)
+        
+        [HttpGet("{moduleRunId}/{lecturerId}")]    //https://localhost:44399/api/lecturerModuleRun/1/6
+        public async Task<ActionResult<LecturerModuleRunDto>> GetLecturerModuleRun(int moduleRunId, int lecturerId)
         {
             try
             {
-                var result = await _lecturerModuleRunRepository.GetLecturerModuleRun(id, id2);
+                var result = await _lecturerModuleRunService.GetLecturerModuleRun(moduleRunId, lecturerId);
                 if (result == null)
                 {
                     return NotFound();
@@ -91,7 +94,7 @@ namespace Plana.Api.Controllers
             }
         }
         [HttpPost]
-        public async Task<ActionResult<LecturerModuleRun>> CreateLecturer(LecturerModuleRun lecturerModuleRun)
+        public async Task<ActionResult<LecturerModuleRunDto>> CreateLecturer(LecturerModuleRunDto lecturerModuleRun)
         {
             try
             {
@@ -99,7 +102,7 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-                var createdLecturerModuleRun = await _lecturerModuleRunRepository.AddLecturerModuleRun(lecturerModuleRun);
+                var createdLecturerModuleRun = await _lecturerModuleRunService.AddLecturerModuleRun(lecturerModuleRun);
 
                 return CreatedAtAction(nameof(GetLecturerModuleRun), new { id = createdLecturerModuleRun.LecturerId}, createdLecturerModuleRun);
 
