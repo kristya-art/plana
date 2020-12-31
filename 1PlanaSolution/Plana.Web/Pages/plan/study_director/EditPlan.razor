@@ -2,6 +2,7 @@
 @page "/editplan"
 @using MatBlazor;
 @*@using Plana.Models;*@
+@using Plana.Shared;
 @using Plana.Web.Pages.plan.study_director;
 
 @inject IJSRuntime js
@@ -71,15 +72,16 @@ else
                     @if (sem.ModuleRuns == null) { return; }
                     @foreach (var mr in sem.ModuleRuns)
                     {
+                      
                         @*<tr>
-                            <td>
+                        <td>
 
-                                <button contenteditable="true">
-                                    @mr.Module.Title
-                                </button>
+                            <button contenteditable="true">
+                                @mr.Module.Title
+                            </button>
 
-                            </td>
-                        </tr>*@
+                        </td>
+                    </tr>*@
 
                         <tr>
                             <td>@sem.GetAbbreviation()</td>
@@ -114,14 +116,15 @@ else
                                     <div id="scroll">
                                         @foreach (var lm in mr.LecturersMR)
                                         {
+
                                             <p style="white-space:nowrap;">
                                                 @lm.Lecturer.SetToken() | @lm.Hours
                                                 <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
                                             </p>
-
+                                            @*<EditForm Model="@lm" visi*@
 
                                         }
-                                        
+
                                         <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>
                                         <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>
                                     </div>
@@ -130,29 +133,52 @@ else
                                     @foreach (var lm in mr.LecturersMR)
                                     {
 
-                                        <p contenteditable='true'> @lm.Hours</p>
+                                        @*<p contenteditable='true'> @lm.Hours</p>*@
+                                        <MatTextField @bind-Value="lm.Hours"></MatTextField>
+                                        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
 
                                     }
                                 </td>
                             }
-                            <td style="white-space:nowrap;" @onclick="CallJSMethod2">
-                                <button class="btn" id="edit-btn">edit</button>
-                                <button class="btn" id="save-btn">save lecturerModuleRun</button>
-                                <button class="btn" id="save-btn">save</button>
-                                <button class="btn" id="delete-btn">delete module</button>
-                                <button class="btn" id="cancel-btn">cancel</button>
-                                <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
+                        <td style="white-space:nowrap;" @onclick="CallJSMethod2">
+                            <button class="btn" id="edit-btn">edit</button>
+                            <button class="btn" id="save-btn">save lecturerModuleRun</button>
+                            <button class="btn" id="save-btn">save</button>
+                            <button class="btn" id="delete-btn">delete module</button>
+                            <button class="btn" id="cancel-btn">cancel</button>
+                            <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
+                            <MatButton Raised="true" @onclick="@(e=>OpenDialogM( mr))" Icon="edit" title="Edit Module"></MatButton>
+                            @*<EditForm Module="@mr">
+         <InputText id="id" @bind-Value="mr.Module.Title" />
+        </EditForm>*@
+                            
+                            <MatDialog @bind-IsOpen="dialogIsOpenM">
+                                <MatDialogTitle>Add / Edit Module</MatDialogTitle>
+                                <MatDialogContent>
+                                    <MatTextField Label="Module Title" @bind-Value="@mr.Module.Title"></MatTextField>
 
 
-                            </td>
+                                    <MatTextField Label="Place" @bind-Value="@mr.Place"></MatTextField>
+
+
+
+                                </MatDialogContent>
+
+                                <MatDialogActions>
+                                    <MatButton OnClick="okClickM">Add</MatButton>
+                                    <MatButton OnClick="CloseDialogM">Close</MatButton>
+
+                                </MatDialogActions>
+                            </MatDialog>
+                        </td>
                             <td><textarea>...</textarea></td>
 
                             @*in case of making row large*@
                             @*<td width="500" height="300">
-                                    <div style="width: 500px; height: 300px; overflow: auto">
-                                        lots of data that exceeds the dimensions
-                                    </div>
-                                </td>*@
+                            <div style="width: 500px; height: 300px; overflow: auto">
+                                lots of data that exceeds the dimensions
+                            </div>
+                        </td>*@
 
                         </tr>
 
@@ -161,7 +187,7 @@ else
                 }
 
                 @*<a class="btn btn-success">Edit</a>
-                    <button class="btn btn-danger">Delete</button>*@
+            <button class="btn btn-danger">Delete</button>*@
 
 
             }
@@ -259,6 +285,7 @@ else
 
                                     @if (mr.LecturersMR != null)
                                     {
+                                        <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>
 
                                         <td style="white-space:nowrap;">
 
@@ -270,13 +297,13 @@ else
                                                         <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
                                                     </p>
 
-
                                                 }
-                                                <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>
-                                                <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>
+                                                @*<MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>*@
+                                                @*<button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>*@
 
 
                                             </div>
+
                                         </td>
                                         <td contenteditable='true'>
                                             @foreach (var lm in mr.LecturersMR)
@@ -301,10 +328,10 @@ else
 
                                     @*in case of making row large*@
                                     @*<td width="500" height="300">
-                                            <div style="width: 500px; height: 300px; overflow: auto">
-                                                lots of data that exceeds the dimensions
-                                            </div>
-                                        </td>*@
+            <div style="width: 500px; height: 300px; overflow: auto">
+                lots of data that exceeds the dimensions
+            </div>
+        </td>*@
 
                                 </tr>
 
@@ -379,6 +406,7 @@ else
         height: 200px;
         right: 50px
 ">
+       
         @*<div class="selectYear" style="width:100px">*@
             <form>
                 <select class="form-control" @bind="SelectedLecturer.Id">
@@ -391,8 +419,9 @@ else
                     }
                 </select>
                 <div class="btn-group">
+                    
                    
-                   
+
                 </div>
             </form>
 
@@ -410,41 +439,7 @@ else
     </MatDialogActions>
 </MatDialog>
 
-
-
-
-@**test js*@
-@*<div id="accordion">
-        <h3>Asp.net</h3>
-        <div>
-            <p>
-                Microsoft ASP.NET is a set of technologies....
-            </p>
-        </div>
-        <h3>Asp.NET.MVC</h3>
-        <div>
-            <p>
-                Microsoft ASP.NET is a set of technologies....
-            </p>
-        </div>
-        <h3>JavaScript</h3>
-        <div>
-            <p>
-                Microsoft ASP.NET is a set of technologies....
-            </p>
-        </div>
-    </div>
-
-    <div class="jquery-btn">
-        <button>Click Me</button>
-    </div>
-
-    <br />
-    <p>Clicked: <span class="click-count">0</span></p>
-
-    <br />*@
-
-@* other test *@
+@*dialog for moduleRun*@
 
 
 
@@ -514,6 +509,7 @@ else
     private void OpenModuleDialog(bool isEdit)
     {
         moduledialogIsOpen = true;
+
     }
 
     private void moduleOkClick()
@@ -533,18 +529,24 @@ else
     #region dialog for lecturers
     bool LdialogIsOpen = false;
     bool _isEditL = false;
+    LecturerModuleRunDto newLmr = new LecturerModuleRunDto();
+    ModuleRunDto SelectedMR { get; set; }
 
-    private void OpenLecturerDialog(bool isEditL)
+    private async Task OpenLecturerDialog(bool isEditL)
     {
+        //SelectedMR =await ModuleRunService.GetModuleRun(id);
         _isEditL = isEditL;
         LdialogIsOpen = true;
     }
     private void okClickL()
     {
+        lmr.ModuleRunId = SelectedMR.Id;
+        lmr.LecturerId = SelectedLecturer.Id;
+
+        LecturerModuleRunService.CreateLecturerModuleRun(newLmr);
         LdialogIsOpen = false;
-        
         // LecturerService.Add(selectedLecturer);
-       // lecturerModuleRunService.update(LM);
+        // lecturerModuleRunService.update(LM);
     }
     private void LCloseDialog()
     {
@@ -553,7 +555,60 @@ else
 
     }
     #endregion
-        }
+
+    #region moduleRun
+    [Inject]
+    public IModuleRunService moduleRunService { get; set; }
+
+    ModuleRunDto moduleRun = new ModuleRunDto();
+    ModuleRunDto SelectedModuleRun { get; set; } = new ModuleRunDto();
+    bool dialogIsOpenM = false;
+
+    bool snackBarM = false;
+
+    #region Methods
+
+    private async Task AddModuleRun()
+    {
+        await moduleRunService.CreateModuleRun(SelectedModuleRun);
+    }
+
+    private void DeleteModuleRun()
+    {
+
+        snackBarM = true;
+    }
+    #endregion
+
+    #region Dialog Box Methods
+    private async Task OpenDialogM(ModuleRunDto moduleRun)
+    {
+
+        SelectedModuleRun = moduleRun;
+        dialogIsOpenM = true;
+    }
+
+    private async void okClickM()
+    {
+        dialogIsOpenM = false;
+        await this.ModuleRunService.UpdateModuleRun(SelectedModuleRun);
+
+
+    }
+    private void CloseDialogM()
+    {
+        dialogIsOpenM = false;
+
+    }
+
+
+
+
+    #endregion
+
+
+    #endregion
+}
 
         <style>
             /*.table {
