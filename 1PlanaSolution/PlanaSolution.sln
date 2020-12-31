@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plana.Api", "Plana.Api\Plan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plana.Models", "Plana.Models\Plana.Models.csproj", "{38C43429-46EE-4A77-8458-D20ED8CB3947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plana.Shared", "Plana.Shared\Plana.Shared.csproj", "{907BF5ED-2C3C-4473-8BE6-C5C67470B85C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plana.Shared", "Plana.Shared\Plana.Shared.csproj", "{907BF5ED-2C3C-4473-8BE6-C5C67470B85C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

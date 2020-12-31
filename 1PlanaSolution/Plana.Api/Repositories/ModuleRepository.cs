@@ -66,7 +66,7 @@ namespace Plana.Api.Models
         public async Task<ModuleDto> UpdateModule(ModuleDto moduleDto)
         {
             var result = await appDbContext.Modules
-                .FirstOrDefaultAsync(e => e.ModuleId == moduleDto.Id);
+                .FirstOrDefaultAsync(e => e.ModuleId == moduleDto.ModuleId);
             if (result != null)
             {
                 

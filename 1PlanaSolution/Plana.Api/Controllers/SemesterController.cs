@@ -91,10 +91,10 @@ namespace Plana.Api.Controllers
         {
             try
             {
-                var semesterForUpdate = await _semesterService.GetSemester(semester.Id);
+                var semesterForUpdate = await _semesterService.GetSemester(semester.SemesterId);
                 if (semesterForUpdate == null)
                 {
-                    return NotFound($"Semester with Id={semester.Id} was not found!");
+                    return NotFound($"Semester with Id={semester.SemesterId} was not found!");
                 }
 
                 return await _semesterService.UpdateSemester(semesterForUpdate);

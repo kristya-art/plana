@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Plana.Shared
 {
-    public class ModuleDto : PlanaEntity
+    public class ModuleDto 
     {
+        public int ModuleId { get; set; }
         public string Title { get; set; }
         public string Code { get; set; }
         public int ECTS;

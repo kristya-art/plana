@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Plana.Shared
 {
-    public class ModuleGroupDto : PlanaEntity
+    public class ModuleGroupDto 
     {
+        public int ModuleGroupId { get; set; }
         public string Title { get; set; }
 
         public virtual ICollection<ModuleRunDto> ModuleRuns { get; set; }

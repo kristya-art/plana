@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Plana.Shared
 {
-    public class SemesterDto : PlanaEntity
+    public class SemesterDto 
     {
+        public int SemesterId { get; set; }
        public string Code { get; set; }
         public DateTime Date { get; set; }
 

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Plana.Shared
 {
-    public class ModuleRunDto : PlanaEntity
+    public class ModuleRunDto
     {
+        public int Id { get; set; }
         //'a', 'b', 'p','q'
         public string Code { get; set; }
         //many-1

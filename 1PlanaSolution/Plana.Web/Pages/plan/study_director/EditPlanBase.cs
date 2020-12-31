@@ -51,8 +51,8 @@ namespace Plana.Web.Pages.plan.study_director
         public LecturerDto SelectedLecturer { get; set; } = new LecturerDto();
         public List<LecturerDto> Lecturers { get; set; } = new List<LecturerDto>();
 
-        public LecturerModuleRunDto lmr { get; set; } = new LecturerModuleRunDto();
-        
+        public LecturerModuleRunDto Lmr { get; set; } = new LecturerModuleRunDto();
+        public List<LecturerModuleRunDto> ListLmr { get; set; } = new List<LecturerModuleRunDto>();
         
         /// <summary>
         /// Id will be passed in the URL. This property will automatically receive it.
@@ -87,9 +87,9 @@ namespace Plana.Web.Pages.plan.study_director
 
                 Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
 
-                SemesterId = Semester.Id.ToString();
-                ModuleId = Module.Id.ToString();
-                
+                SemesterId = Semester.SemesterId.ToString();
+                ModuleId = Module.ModuleId.ToString();
+                Lmr = new LecturerModuleRunDto();
             }
 
             else
@@ -97,11 +97,11 @@ namespace Plana.Web.Pages.plan.study_director
                 Plan = new PlanDto { };
                 Semester = new SemesterDto { };
                 Module = new ModuleDto { };
-                ModuleRun = new ModuleRunDto { };
+                //ModuleRun = new ModuleRunDto { };
 
                 //AutumnSemester = new Semester { };
                 //SpringSemester = new Semester { };
-                
+                ListLmr = new List<LecturerModuleRunDto> { };
                 
 
             }
@@ -144,7 +144,7 @@ namespace Plana.Web.Pages.plan.study_director
         protected async Task HandleValidSubmit()
         {
             PlanDto result = null;
-            if (Semester.Id != 0)
+            if (Semester.SemesterId != 0)
             {
                 //await UpdateSemester();
                 //await UpdateMR();
@@ -152,7 +152,7 @@ namespace Plana.Web.Pages.plan.study_director
                 //await PlanService.UpdatePlan(Plan);
                 await SemesterService.UpdateSemester(AutumnSemester);
                 await SemesterService.UpdateSemester(SpringSemester);
-                await LecturerModuleRunService.UpdateLecturerModuleRun(lmr);
+                await LecturerModuleRunService.UpdateLecturerModuleRun(Lmr);
             }
 
             if (Plan.Id != 0)
@@ -166,16 +166,14 @@ namespace Plana.Web.Pages.plan.study_director
 
         }
 
-        protected async Task AddNewModule() {
-            
-            await ModuleRunService.CreateModuleRun(ModuleRun);
-        }
-
+        
         protected async Task AddLecturer(int ModuleRunId, int LecturerId) {
-            LecturerModuleRunDto lecturerModuleRunDto = new LecturerModuleRunDto();
-            lecturerModuleRunDto.LecturerId = LecturerId;
-            lecturerModuleRunDto.ModuleRunId = ModuleRunId;
-            
+            LecturerModuleRunDto lecturerModuleRunDto = new LecturerModuleRunDto
+            {
+                LecturerId = LecturerId,
+                ModuleRunId = ModuleRunId
+            };
+
             await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRunDto);
             //LecturerModuleRun
             //await LecturerService.CreateLecturer(lecturer);

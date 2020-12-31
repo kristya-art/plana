@@ -50,16 +50,18 @@ namespace Plana.Shared
         //public virtual ICollection<LecturerSemesterDto> LecturersSemesters { get; set; }
         
         public virtual ICollection<AdditionalAssignmentDto> AdditionalAssignments { get; set; }
-        
+
         //public virtual ICollection<LecturerModuleGroupDto> LecturerModuleGroup { get; set; }
-        
+
         //public virtual ICollection<LecturerLecturerGroupDto> LecturerLecturerGroup { get; set; }
-        
+
         //public virtual ICollection<PlanLecturerDto> PlanLecturers { get; set; }
 
         public string SetToken()
         {
-            Token = FirstName.Substring(0, 1).ToUpper() + LastName.Substring(0, 1).ToUpper();
+
+            Token = this.FirstName.Substring(0, 2).ToUpper() + this.LastName.Substring(0, 2).ToUpper() + BirthDate.Day;
+
             return Token;
         }
         //public override string DisplayData()

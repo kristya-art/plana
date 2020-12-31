@@ -14,7 +14,7 @@
 <Plana.Web.Pages.template_components.CustomSelect/>
 
     <div class="btn-group">
-        <button id="addNewModule" @onclick="@(e=>OpenModuleDialog(false))" style="float: right;">Add Module</button>
+        <button id="addNewModule" @onclick="@(e=>OpenDialogMNew(false))" style="float: right;">Add Module</button>
         <button @onclick="@(e=>OpenDialog(false))" style="float: right;">last year plan</button>
     </div>
 
@@ -124,9 +124,18 @@ else
                                             @*<EditForm Model="@lm" visi*@
 
                                         }
-
+                                        @*<div class="form-group row">
+                                            <div class="col-sm-10">
+                                                <InputSelect id="lecturer" @bind-Value="Lecturer.Id" class="form-control">
+                                                    @foreach (var lecturer in Lecturers)
+                                                                        {
+                                                        <option value="@lecturer.Id">@Lecturer.FirstName</option>
+                                                                        }
+                                                </InputSelect>
+                                            </div>
+                                        </div>*@
                                         <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>
-                                        <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>
+                                        @*<button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>*@
                                     </div>
                                 </td>
                                 <td contenteditable='true'>
@@ -136,7 +145,7 @@ else
                                         @*<p contenteditable='true'> @lm.Hours</p>*@
                                         <MatTextField @bind-Value="lm.Hours"></MatTextField>
                                         <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
-
+                                        
                                     }
                                 </td>
                             }
@@ -147,11 +156,12 @@ else
                             <button class="btn" id="delete-btn">delete module</button>
                             <button class="btn" id="cancel-btn">cancel</button>
                             <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
-                            <MatButton Raised="true" @onclick="@(e=>OpenDialogM( mr))" Icon="edit" title="Edit Module"></MatButton>
+                            <MatButton Raised="true" @onclick="@(e=>OpenDialogM(true))" Icon="edit" title="Edit Module"></MatButton>
+                            <MatButton Raised="true" @onclick="@(e=>LecturerModuleRunService.CreateLecturerModuleRun(new LecturerModuleRunDto() { Lecturer=SelectedLecturer}))" Icon="edit" title="Save Lecturer"></MatButton>
                             @*<EditForm Module="@mr">
          <InputText id="id" @bind-Value="mr.Module.Title" />
         </EditForm>*@
-                            
+
                             <MatDialog @bind-IsOpen="dialogIsOpenM">
                                 <MatDialogTitle>Add / Edit Module</MatDialogTitle>
                                 <MatDialogContent>
@@ -285,8 +295,8 @@ else
 
                                     @if (mr.LecturersMR != null)
                                     {
-                                        <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>
-
+                                        @*<MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>*@
+                                        
                                         <td style="white-space:nowrap;">
 
                                             <div id="scroll">
@@ -363,18 +373,18 @@ else
 
 
 @*Dialog for the making a new module*@
-<EditForm Model="@ModuleRun" OnInvalidSubmit="@CreateModule">
-    <MatDialog @bind-IsOpen="moduledialogIsOpen">
+<EditForm Model="@moduleRun" OnInvalidSubmit="@okClickM">
+    <MatDialog @bind-IsOpen="dialogIsOpenMNew">
         <MatDialogTitle>Add Module</MatDialogTitle>
         <MatDialogContent Style="width: 500px;right:50px">
             <div class="form-group row">
                 <label for="semester">Semester</label>
             </div>
             <div class="col-sm-10">
-                <InputSelect id="semester" @bind-Value="SemesterId" class="form-control">
+                <InputSelect id="semester" @bind-Value="@moduleRun.SemesterId" class="form-control">
                     @foreach (var sem in Semesters)
                     {
-                        <option value="@sem.Id">@sem.GetAbbreviation()</option>
+                        <option value="@sem.SemesterId">@sem.GetAbbreviation()</option>
                     }
                 </InputSelect>
             </div>
@@ -382,20 +392,34 @@ else
                 <label for="semester">Module Name</label>
             </div>
             <div class="col-sm-10">
-                <InputSelect id="module" @bind-Value="ModuleId" class="form-control">
+                <InputSelect id="module" @bind-Value="@moduleRun.ModuleId" class="form-control">
                     @foreach (var module in Modules)
                     {
-                        <option value="@module.Id">@module.Id | @module.Title</option>
+                        <option value="@module.ModuleId">@module.ModuleId | @module.Title</option>
                     }
                 </InputSelect>
             </div>
-
+            <div class="form-group row">
+                <label for="Place" class="col-sm-2 col-form-label">
+                    Place
+                </label>
+                <div class="col-sm-10">
+                    <InputText id="Place" class="form-control" placeholder="Place"
+                               @bind-Value="@moduleRun.Place" />
+                </div>
+            </div>
+            <div>
+                Active<br />
+                <MatCheckbox @bind-Value="@moduleRun.Editable" Label="@(ChangeLabel(ModuleRun.Editable))"></MatCheckbox>
+            </div>
         </MatDialogContent>
-        <div class="btn-group">
-            <button type="submit" class="btn-btn-success">
-                Add Module
-            </button>
-        </div>
+        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>ModuleRunService.CreateModuleRun(moduleRun))">OK</MatButton>
+
+        @*<div class="btn-group">*@
+        <button type="submit" class="btn-btn-success">
+            Add Module
+        </button>
+        @*</div>*@
     </MatDialog>
 </EditForm>
 
@@ -407,7 +431,7 @@ else
         right: 50px
 ">
        
-        @*<div class="selectYear" style="width:100px">*@
+        
             <form>
                 <select class="form-control" @bind="SelectedLecturer.Id">
 
@@ -425,16 +449,15 @@ else
                 </div>
             </form>
 
-            @*<MatFAB Icon="@MatIconNames.Add" Label="@selectedPlan.Year">
-
-            <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
-        </MatFAB>*@
-        @*</div>*@
+            
     </MatDialogContent>
 
     <MatDialogActions>
         <MatButton OnClick="okClickL">Add</MatButton>
         <MatButton OnClick="CloseDialog">Close</MatButton>
+        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.CreateLecturerModuleRun(new LecturerModuleRunDto() { LecturerId=
+                                                                      SelectedLecturer.Id, ModuleRunId=SelectedMR.Id}))">Save</MatButton>
+
 
     </MatDialogActions>
 </MatDialog>
@@ -504,46 +527,64 @@ else
 
     }
     #endregion
-    #region New Module
-    bool moduledialogIsOpen = false;
-    private void OpenModuleDialog(bool isEdit)
-    {
-        moduledialogIsOpen = true;
 
-    }
+    //#region New ModuleRun
 
-    private void moduleOkClick()
-    {
-        moduledialogIsOpen = false;
-    }
-    private async Task CreateModule()
-    {
+    //bool dialogIsOpenM = false;
+    //bool _isEditM = false;
 
 
-        await AddNewModule();
-        moduledialogIsOpen = false;
-    }
-    #endregion
+    //private void OpenDialogM(bool isEditM)
+    //{
+    //    _isEditM = isEditM;
+    //    dialogIsOpenM = true;
+
+    //}
+
+    //private void moduleOkClick()
+    //{
+    //    dialogIsOpenM = false;
+    //}
+
+
+
+    //async Task CreateModuleRun()
+    //{
+
+    //    await ModuleRunService.CreateModuleRun(ModuleRun);
+    //    foreach (var sem in Semesters)
+    //    {
+    //        await SemesterService.UpdateSemester(sem);
+    //    }
+
+    //    dialogIsOpenM = false;
+    //}
+
+
+
+    //#endregion
 
 
     #region dialog for lecturers
+
     bool LdialogIsOpen = false;
     bool _isEditL = false;
     LecturerModuleRunDto newLmr = new LecturerModuleRunDto();
     ModuleRunDto SelectedMR { get; set; }
 
-    private async Task OpenLecturerDialog(bool isEditL)
+    private void OpenLecturerDialog(bool isEditL)
     {
+        //SelectedMR.Id = moduleRun.Id;
         //SelectedMR =await ModuleRunService.GetModuleRun(id);
         _isEditL = isEditL;
         LdialogIsOpen = true;
     }
     private void okClickL()
     {
-        lmr.ModuleRunId = SelectedMR.Id;
-        lmr.LecturerId = SelectedLecturer.Id;
+        //lmr.ModuleRunId = SelectedMR.Id;
+        //lmr.LecturerId = SelectedLecturer.Id;
 
-        LecturerModuleRunService.CreateLecturerModuleRun(newLmr);
+        //LecturerModuleRunService.CreateLecturerModuleRun(newLmr);
         LdialogIsOpen = false;
         // LecturerService.Add(selectedLecturer);
         // lecturerModuleRunService.update(LM);
@@ -557,21 +598,30 @@ else
     #endregion
 
     #region moduleRun
+
+    string labelName1 = "setEditable";
+    string labelName2 = "Disable";
+
+
+    string ChangeLabel(bool val)
+    {
+        return !val ? labelName1 : labelName2;
+    }
+
     [Inject]
     public IModuleRunService moduleRunService { get; set; }
 
     ModuleRunDto moduleRun = new ModuleRunDto();
     ModuleRunDto SelectedModuleRun { get; set; } = new ModuleRunDto();
     bool dialogIsOpenM = false;
+    bool dialogIsOpenMNew = false;
+    bool _isEditM = false;
 
     bool snackBarM = false;
 
     #region Methods
 
-    private async Task AddModuleRun()
-    {
-        await moduleRunService.CreateModuleRun(SelectedModuleRun);
-    }
+
 
     private void DeleteModuleRun()
     {
@@ -581,23 +631,34 @@ else
     #endregion
 
     #region Dialog Box Methods
-    private async Task OpenDialogM(ModuleRunDto moduleRun)
+    private void OpenDialogM(bool isEditM)
     {
-
-        SelectedModuleRun = moduleRun;
+        _isEditM = isEditM;
         dialogIsOpenM = true;
     }
-
+    private void OpenDialogMNew(bool isEditM)
+    {
+        _isEditM = isEditM;
+        dialogIsOpenMNew = true;
+    }
     private async void okClickM()
     {
         dialogIsOpenM = false;
-        await this.ModuleRunService.UpdateModuleRun(SelectedModuleRun);
+        dialogIsOpenMNew = false;
+        if (moduleRun.Id != 0)
+        {
+            await ModuleRunService.UpdateModuleRun(moduleRun);
+        }
+        else {
+            moduleRun = await ModuleRunService.CreateModuleRun(moduleRun);
+        }
 
 
     }
     private void CloseDialogM()
     {
         dialogIsOpenM = false;
+        dialogIsOpenMNew = false;
 
     }
 

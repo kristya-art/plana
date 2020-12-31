@@ -8,8 +8,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plana.Shared
 {
-    public class PlanDto : PlanaEntity
+    public class PlanDto
     {
+        public int Id { get; set; }
         public bool IsFixed { get; set; }
 
         public bool IsModifyable { get; set; }

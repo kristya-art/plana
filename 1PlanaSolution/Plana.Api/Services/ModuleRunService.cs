@@ -79,7 +79,7 @@ namespace Plana.Api.Services
                 moduleRun.Place = moduleRunDto.Place;
               //  moduleRun.ModuleRunLecturerGroups = moduleRunDto.ModuleRunLecturerGroups;
                 moduleRun.SemesterId = moduleRunDto.SemesterId;
-                moduleRun.ModuleGroup.ModuleGroupId = moduleRunDto.ModuleGroup.Id;
+                moduleRun.ModuleGroup.ModuleGroupId = moduleRunDto.ModuleGroup.ModuleGroupId;
 
                 await _context.SaveChangesAsync();
 

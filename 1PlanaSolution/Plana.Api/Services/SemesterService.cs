@@ -89,7 +89,7 @@ namespace Plana.Api.Services
         public async Task<SemesterDto> UpdateSemester(SemesterDto semesterDto)
         {
 
-            var result = await _context.Semesters.FindAsync(semesterDto.Id);
+            var result = await _context.Semesters.FindAsync(semesterDto.SemesterId);
 
 
             if (result != null)

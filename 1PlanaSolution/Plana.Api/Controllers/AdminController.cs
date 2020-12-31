@@ -49,7 +49,7 @@ namespace Plana.Api.Controllers
                     return BadRequest();
                 }
                 var createdModule = await _moduleRepository.AddModule(module);
-                return CreatedAtAction(nameof(_moduleRepository.GetModule), new { id = createdModule.Id }, createdModule);
+                return CreatedAtAction(nameof(_moduleRepository.GetModule), new { id = createdModule.ModuleId }, createdModule);
             }
             catch (Exception)
             {
@@ -104,11 +104,11 @@ namespace Plana.Api.Controllers
             try
             {
 
-                var updateModule = await _moduleRepository.GetModule(module.Id);
+                var updateModule = await _moduleRepository.GetModule(module.ModuleId);
 
                 if (updateModule == null)
                 {
-                    return NotFound($"Lecturer with id = {module.Id} not found");
+                    return NotFound($"Lecturer with id = {module.ModuleId} not found");
                 }
                 return await _moduleRepository.UpdateModule(module);
             }
