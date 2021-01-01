@@ -102,9 +102,9 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-                var createdLecturerModuleRun = await _lecturerModuleRunService.AddLecturerModuleRun(lecturerModuleRun);
-
-                return CreatedAtAction(nameof(GetLecturerModuleRun), new { id = createdLecturerModuleRun.LecturerId}, createdLecturerModuleRun);
+                //var createdLecturerModuleRun = await _lecturerModuleRunService.AddLecturerModuleRun(lecturerModuleRun);
+                return await _lecturerModuleRunService.AddLecturerModuleRun(lecturerModuleRun);
+                //return CreatedAtAction(nameof(GetLecturerModuleRun), new { id = createdLecturerModuleRun.LecturerId}, createdLecturerModuleRun);
 
 
             }

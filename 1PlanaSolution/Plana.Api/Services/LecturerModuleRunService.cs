@@ -25,7 +25,7 @@ namespace Plana.Api.Services
         public async Task<LecturerModuleRunDto> AddLecturerModuleRun(LecturerModuleRunDto lecturerModuleRunDto)
         {
             var lecturerModuleRun = new LecturerModuleRun();
-            mapper.Map<LecturerModuleRun>(lecturerModuleRun);
+            mapper.Map(lecturerModuleRunDto,lecturerModuleRun);
             
             var result = await context.LecturersModuleRuns.AddAsync(lecturerModuleRun);
 

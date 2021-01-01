@@ -73,13 +73,13 @@ namespace Plana.Api.Services
 
             if (moduleRun != null)
             {
-                
+                moduleRun.ModuleRunId = moduleRunDto.ModuleRunId;
                 moduleRun.Code = moduleRunDto.Code;
               
                 moduleRun.ModuleId = moduleRunDto.ModuleId;
                 moduleRun.Place = moduleRunDto.Place;
                 moduleRun.SemesterId = moduleRunDto.SemesterId;
-                moduleRun.ModuleGroup.ModuleGroupId = moduleRunDto.ModuleGroup.ModuleGroupId;
+              //  moduleRun.ModuleGroup.ModuleGroupId = moduleRunDto.ModuleGroup.ModuleGroupId;
                 
                 //  moduleRun.LecturersMR = moduleRunDto.LecturersMR;
                 //  moduleRun.ModuleRunLecturerGroups = moduleRunDto.ModuleRunLecturerGroups;
