@@ -19,9 +19,7 @@ namespace Plana.Shared
         //Biel, Bern
         public string Place { get; set; }
         public bool Editable { get; set; }
-        //1/3, 1/2, 1/4
-        //public double ModuleRunRate { get; set; } // maybe better to have it in lecturersmoduleruns
-        //many-many
+        
         public virtual ICollection<LecturerModuleRunDto> LecturersMR { get; set; }
 
         public int ModuleId { get; set; } // Foreign key many-to-one

@@ -56,7 +56,7 @@ namespace Plana.Api.Services
 
         public async Task<LecturerDto?> UpdateLecturer(LecturerDto lecturerDto)
         {
-            var result = await GetLecturer(lecturerDto.Id);
+            var result = await appDbContext.Lecturers.FindAsync(lecturerDto.Id);
             if (result != null) 
             {
                 result.FirstName = lecturerDto.FirstName;
@@ -65,14 +65,14 @@ namespace Plana.Api.Services
                 result.Email = lecturerDto.Email;
                 //result.Password = lecturerDto.Password
                 result.BirthDate = lecturerDto.BirthDate;
-                result.Gender = lecturerDto.Gender;
+                result.Gender = (Gender)lecturerDto.Gender;
                 result.PhotoPath = lecturerDto.PhotoPath;
                 result.ActiveTill = lecturerDto.ActiveTill;
                 result.IsActive = lecturerDto.IsActive;
                 result.WorkingRate = lecturerDto.WorkingRate;
-                result.LecturersModules = lecturerDto.LecturersModules;//new
+              //  result.LecturersModules = (ICollection<LecturerModule>)lecturerDto.LecturersModules;//new
                
-                result.AdditionalAssignments = lecturerDto.AdditionalAssignments;//new
+                // result.AdditionalAssignments = (ICollection<AdditionalAssignment>)lecturerDto.AdditionalAssignments;//new
                 //result.LecturersModuleRuns = lecturerDto.LecturersModuleRuns;
                
 

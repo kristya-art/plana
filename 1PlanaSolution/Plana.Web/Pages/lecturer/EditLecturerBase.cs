@@ -24,8 +24,8 @@ namespace Plana.Web.Pages
         [Parameter]
         public string Id { get; set; }
 
-        [Inject]
-        public IMapper Mapper { get; set; }
+        //[Inject]
+        //public IMapper Mapper { get; set; }
 
 
        protected async override Task OnInitializedAsync()
@@ -51,11 +51,11 @@ namespace Plana.Web.Pages
                     
                 };
             }
-            //Mapper.Map(Lecturer, EditLecturerModel);
+           
         }
         protected async Task HandleValidSubmit()
         {
-            //Mapper.Map(EditLecturerModel, Lecturer);
+            
 
             LecturerDto result = null;
 
