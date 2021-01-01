@@ -8,7 +8,7 @@ namespace Plana.Shared
 {
     public class ModuleRunDto
     {
-        public int Id { get; set; }
+        public int ModuleRunId { get; set; }
         //'a', 'b', 'p','q'
         public string Code { get; set; }
         //many-1

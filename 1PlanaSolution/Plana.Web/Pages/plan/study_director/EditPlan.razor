@@ -456,7 +456,7 @@ else
         <MatButton OnClick="okClickL">Add</MatButton>
         <MatButton OnClick="CloseDialog">Close</MatButton>
         <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.CreateLecturerModuleRun(new LecturerModuleRunDto() { LecturerId=
-                                                                      SelectedLecturer.Id, ModuleRunId=SelectedMR.Id}))">Save</MatButton>
+                                                                      SelectedLecturer.Id, ModuleRunId=SelectedMR.ModuleRunId}))">Save</MatButton>
 
 
     </MatDialogActions>
@@ -645,7 +645,7 @@ else
     {
         dialogIsOpenM = false;
         dialogIsOpenMNew = false;
-        if (moduleRun.Id != 0)
+        if (moduleRun.ModuleRunId != 0)
         {
             await ModuleRunService.UpdateModuleRun(moduleRun);
         }

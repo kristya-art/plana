@@ -69,11 +69,11 @@ namespace Plana.Api.Services
 
         public async Task<ModuleRunDto> UpdateModuleRun(ModuleRunDto moduleRunDto)
         {
-            var moduleRun = await _context.ModuleRuns.FindAsync(moduleRunDto.Id);
+            var moduleRun = await _context.ModuleRuns.FindAsync(moduleRunDto.ModuleRunId);
 
             if (moduleRun != null)
             {
-                moduleRun.ModuleRunId = moduleRunDto.Id;
+                moduleRun.ModuleRunId = moduleRunDto.ModuleRunId;
               //  moduleRun.LecturersMR = moduleRunDto.LecturersMR;
                 moduleRun.ModuleId = moduleRunDto.ModuleId;
                 moduleRun.Place = moduleRunDto.Place;

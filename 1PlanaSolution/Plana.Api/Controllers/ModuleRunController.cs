@@ -164,10 +164,10 @@ namespace Plana.Api.Controllers
             try
             {
 
-                var updatedModuleRun = await _moduleRunService.GetModuleRun(moduleRun.Id);
+                var updatedModuleRun = await _moduleRunService.GetModuleRun(moduleRun.ModuleRunId);
                 if (updatedModuleRun == null)
                 {
-                    return NotFound($"Module run with id = {moduleRun.Id } was not found!");
+                    return NotFound($"Module run with id = {moduleRun.ModuleRunId } was not found!");
                 }
 
                 return await _moduleRunService.UpdateModuleRun(moduleRun);
