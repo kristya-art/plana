@@ -125,7 +125,7 @@ else
 
                                 <p style="white-space:nowrap;">
                                     @lm.Lecturer.SetToken() | @lm.Hours
-                                    <button class="btn" disabled id="del" @onclick="@(e=>LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId,lm.LecturerId))"><i class="fa fa-close"></i></button>
+                                    <button class="btn"  id="del" @onclick="@(e=>LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId,lm.LecturerId))"><i class="fa fa-close"></i></button>
                                 </p>
                                 @*<EditForm Model="@lm" visi*@
 
