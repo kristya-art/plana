@@ -12,8 +12,10 @@
     <form>
 
         <select class="form-control" @bind="SelectedPlan.Id">
+            
             @foreach (var plan in Plans)
             {
+
                 <option value="@plan.Id">
                     @plan.Year
                 </option>
@@ -78,7 +80,7 @@ else
                     @if (ModuleRuns != null) {
 
                       @foreach (var mr in ModuleRuns)
-                      { 
+                      {
                          <tr>
                              <td>@mr.SemesterId</td>
                              <td>@mr.Module.Code</td>
@@ -86,7 +88,20 @@ else
                              <td>@mr.Code</td>
                              <td>@mr.Place</td>
                              <td>@mr.Module.TotalHours</td>
-                             <td></td>
+                             @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
+                              @foreach (var lmr in mr.LecturersMR)
+                              {
+                                 @if(lmr.Lecturer.Id == Lecturer.Id) { 
+                                   <td>@lmr.Hours</td>
+                                   <td>
+                                       <MatTextField @bind-Value="lmr.Hours"></MatTextField>
+                                       <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
+                                   </td>
+                                 }
+                              }
+                             <td>
+
+                             </td>
                              <td></td>
                              <td></td>
                              @foreach (var mrlg in mr.ModuleRunLecturerGroups)
@@ -139,32 +154,34 @@ else
 @code {
 
 
-    [Inject]
-    NavigationManager NavigationMan { get; set; }
+        [Inject]
+        NavigationManager NavigationMan { get; set; }
 
-    [Parameter]
-    public string Id { get; set; }
+        [Parameter]
+        public string Id { get; set; }
 
-    [Parameter]
-    public string Id2 { get; set; }
+        [Parameter]
+        public string Id2 { get; set; }
 
-    [Inject]
-    public ISemesterService SemesterService{ get; set; }
+        [Inject]
+        public ISemesterService SemesterService { get; set; }
 
-    [Inject]
-    public IPlanLecturerService PlanLecturerService { get; set; }
+        [Inject]
+        public IPlanLecturerService PlanLecturerService { get; set; }
 
-    public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
+        public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
 
-    [Inject]
-    public IPlanService PlanService { get; set; }
-    [Inject]
-    public IModuleRunService ModuleRunService { get; set; }
+        [Inject]
+        public IPlanService PlanService { get; set; }
+        [Inject]
+        public IModuleRunService ModuleRunService { get; set; }
 
-    public PlanDto Plan { get; set; } = new PlanDto();
-    public List<PlanDto> Plans { get; set; }
-    [Inject]
-    public ILecturerService LecturerService { get; set; }
+        public PlanDto Plan { get; set; } = new PlanDto();
+        public List<PlanDto> Plans { get; set; }
+        [Inject]
+        public ILecturerService LecturerService { get; set; }
+        [Inject]
+        public ILecturerModuleRunService LecturerModuleRunService {get;set;}
 
     public LecturerDto Lecturer { get; set; } = new LecturerDto();
 
@@ -179,7 +196,7 @@ else
     public SemesterDto AutumnSemester { get; set; }
     public SemesterDto SpringSemester { get; set; }
     public string SemesterId { get; set; }
-
+    int idsl { get; set; }
     protected async override Task OnInitializedAsync()
     {
 
@@ -199,6 +216,11 @@ else
             SpringSemester = Plan.SpringSemester;
 
             Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
+        //    LecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun()
+
+
+
+
         }
         else { PlanLecturer = new PlanLecturerDto { }; }
         Semester = new SemesterDto { };
@@ -208,13 +230,20 @@ else
     [Parameter]
     public PlanDto SelectedPlan { get; set; } = new PlanDto();
 
+
+
+
+
+
     public void NavigateToMyPlan()
     {
         //PlanLecturer = await PlanLecturerService.GetPlanLecturer(SelectedPlan.Id, Lecturer.Id);
         //if (PlanLecturer != null)
         //{
+
         string PlanId = Plan.Id.ToString();
         NavigationMan.NavigateTo($"/myplanL/{SelectedPlan.Id}/{Lecturer.Id}", true);
+
     }
 
     //await Alert();
@@ -269,5 +298,11 @@ else
         border-spacing: 0;
         /* width: 400px;*/
         border: 1px solid #ddd;
+    }
+
+    .new {
+        float: right;
+        margin-top: -55px;
+        position: sticky;
     }
 </style>
