@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Plana.Api.Services;
 using Plana.Models;
 using Plana.Shared;
@@ -14,11 +15,13 @@ namespace Plana.Api.Controllers
     public class LecturerModuleRunController : ControllerBase
     {
         private readonly ILecturerModuleRunService _lecturerModuleRunService;
+        private readonly ILogger<LecturerModuleRunController> _logger;
 
 
-        public LecturerModuleRunController(ILecturerModuleRunService lecturerModuleRunService)
+        public LecturerModuleRunController(ILecturerModuleRunService lecturerModuleRunService, ILogger<LecturerModuleRunController> logger)
         {
             _lecturerModuleRunService = lecturerModuleRunService;
+            _logger = logger;
         }
 
         [HttpPut()]
@@ -114,6 +117,26 @@ namespace Plana.Api.Controllers
 
                 return StatusCode(StatusCodes.Status500InternalServerError,
                      "Error retrieving data from the database");
+            }
+        }
+        [HttpDelete("{moduleRunId}/{lecturerId}")]
+        public async Task<ActionResult<bool>> DeleteLecturerModuleRun( int moduleRunId, int lecturerId)
+        {
+            try
+            {
+
+                var LecturerMRForDelete = await _lecturerModuleRunService.GetLecturerModuleRun(moduleRunId, lecturerId);
+                if (LecturerMRForDelete == null)
+                {
+                    return NotFound();
+
+                }
+                return await _lecturerModuleRunService.DeleteLecturerModuleRun(moduleRunId, lecturerId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
     }

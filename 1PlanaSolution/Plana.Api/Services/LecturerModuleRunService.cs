@@ -34,6 +34,21 @@ namespace Plana.Api.Services
             return mapper.Map<LecturerModuleRunDto>(result.Entity);
         }
 
+        public async Task<bool> DeleteLecturerModuleRun(int moduleRunId, int lecturerId)
+        {
+            var lecturerModuleRun = await context.LecturersModuleRuns.FindAsync(moduleRunId,lecturerId);
+            if (lecturerModuleRun != null)
+            {
+                lecturerModuleRun.IsDeleted = true;
+                lecturerModuleRun.DeletedAt = DateTime.Now;
+
+                await context.SaveChangesAsync();
+
+                return true;
+            }
+            return false;
+        }
+
         public async Task<LecturerModuleRunDto> GetLecturerModuleRun(int moduleRunId, int lecturerId)
         {
            

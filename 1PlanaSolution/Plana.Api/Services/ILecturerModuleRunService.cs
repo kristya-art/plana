@@ -16,13 +16,14 @@ namespace Plana.Api.Services
        
         Task<LecturerModuleRunDto> GetLecturerModuleRun(int moduleRunId, int lecturerId);
 
+        Task<bool> DeleteLecturerModuleRun(int moduleRunId, int lecturerId);
 
         //Task<IEnumerable<LecturerModuleRun>> Search(string name);
 
-        
-        //Task<Boolean> DeleteLecturerModuleRun(int lecturerModuleRunId);
 
-       
+
+
+
 
     }
 }
