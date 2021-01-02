@@ -1,14 +1,16 @@
 ﻿@page "/startL/{id}"
 @using Plana.Shared
 <p>personal page lecturer</p>
-<Plana.Web.Pages.plan.navMenus.LCustomSelect/>
-@*<div class="selectYear">
+@*<Plana.Web.Pages.plan.navMenus.LCustomSelect/>*@
+@if (Plans == null)
+{ return; }
+<div class="selectYear">
         <form>
-            @if (Lecturer.PlanLecturers == null) { return; }
-            <select class="form-control" @bind="SelectedPlanLecturer">
-                @foreach (var planlecturer in Lecturer.PlanLecturers) {
-                   <option value="@planlecturer.PlanId">
-                       @planlecturer.Plan.Year
+            
+            <select class="form-control" @bind="SelectedPlan.Id">
+                @foreach (var plan in Plans) {
+                   <option value="@plan.Id">
+                       @plan.Year
                    </option>
 
                 }
@@ -19,15 +21,9 @@
                 </button>
             </div>
         </form>
-    </div>*@
-@*<div>
-        @if (Lecturer.PlanLecturers == null) { return; }
-        @foreach (var planlecturer in Lecturer.PlanLecturers)
-        {
+    </div>
 
-            @planlecturer.Plan.Year
-        }
-    </div>*@
+        
 
 <!--<div class="selectYear">
     
@@ -69,11 +65,13 @@
     public IPlanService PlanService { get; set; }
 
     public PlanDto Plan { get; set; } = new PlanDto();
+    [Parameter]
+    public PlanDto SelectedPlan { get; set; } = new PlanDto();
     public List<PlanDto> Plans { get; set; }
 
     [Inject]
     public IPlanLecturerService PlanLecturerService { get; set; }
-    public PlanLecturerDto SelectedPlanLecturer { get; set; } = new PlanLecturerDto();
+    public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
     IEnumerable<PlanLecturerDto> PlanLecturers { get; set; } = new List<PlanLecturerDto>();
 
     protected async override Task OnInitializedAsync()
@@ -84,6 +82,8 @@
         {
             Lecturer = await LecturerService.GetLecturer(int.Parse(Id));
             PlanLecturers = await PlanLecturerService.GetPlanLecturers();
+            Plans = (await PlanService.GetPlans()).ToList();
+          //  PlanLecturer = await PlanLecturerService.GetPlanLecturer(SelectedPlan.Id, Lecturer.Id);
 
         }
         else
@@ -99,8 +99,10 @@
     #region methods
     public void NavigateToMyPlan()
     {
-
-        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanLecturer.PlanId}/{SelectedPlanLecturer.LecturerId}", true);
+        
+            string PlanId = Plan.Id.ToString();
+            NavigationMan.NavigateTo($"/myplanL/{SelectedPlan.Id}/{Lecturer.Id}", true);
+        
 
     }
 

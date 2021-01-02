@@ -1,11 +1,40 @@
-﻿@*@page "/myplanL/{id}/{id2}"*@
-@page "/myPlanL/{id}"
+﻿@page "/myplanL/{Id}/{Id2}"
+@*@page "/myPlanL/{id}"*@
 @page "/myplanL"
-@using Plana.Shared 
-
+@using Plana.Shared
+@inject IJSRuntime js
 @using MatBlazor;
 
-<Plana.Web.Pages.plan.navMenus.LCustomSelect />
+@*section for plan selection*@
+@if (Plans == null)
+{ return; }
+<div class="selectYear">
+    <form>
+
+        <select class="form-control" @bind="SelectedPlan.Id">
+            @foreach (var plan in Plans)
+            {
+                <option value="@plan.Id">
+                    @plan.Year
+                </option>
+
+            }
+        </select>
+        <div class="btn-group">
+            <button @onclick="NavigateToMyPlan">
+                My Plan
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="new">
+    <p>@Lecturer.FirstName</p>
+    <p>@Plan.Year</p>
+</div>
+
+@*<Plana.Web.Pages.plan.navMenus.LCustomSelect />*@
+
 <div class="btn-group" style="font-size: 13px">
     <button style="float: right;">add module</button>
     <button style="float: right;">add additional assignment</button>
@@ -23,115 +52,130 @@ else
 {
 
     @*<table class="table" itemscope="@Plan" itemid="@Plan.Id">*@
-<div id="table_container">
-    <div class="row">
-        <div class="column">
-            <table class="table" >
-                <thead>
-                    <tr>
+    <div id="table_container">
+        <div class="row">
+            <div class="column">
+                <table class="table">
+                    <thead>
+                        <tr>
 
 
-                        <th>Semester</th>
-                        <th>Module</th>
-                        <th>Module Title</th>
-                        <th>Group</th>
-                        <th>Place</th>
-                        <th>Module Total Hours</th>
-                        <th>My hours</th>
-                        <th>Actions</th>
-                        <th>notes</th>
-                        <th>lecturer group</th>
-                    </tr>
+                            <th>Semester</th>
+                            <th>Module</th>
+                            <th>Module Title</th>
+                            <th>Group</th>
+                            <th>Place</th>
+                            <th>Module Total Hours</th>
+                            <th>My hours</th>
+                            <th>Actions</th>
+                            <th>notes</th>
+                            <th>lecturer group</th>
+                        </tr>
 
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-</div>
-        <div class="columnMiddle"></div>
-        <div class="column">
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="columnMiddle"></div>
+            <div class="column">
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
 
-                        <th>HS</th>
-                        <th>FS</th>
-                        <th>AA</th>
-                        <th>YEAR</th>
-                        
-                    </tr>
+                            <th>HS</th>
+                            <th>FS</th>
+                            <th>AA</th>
+                            <th>YEAR</th>
 
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        </tr>
 
-                    </tr>
-                    <tr>
-                       
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        </div>
-        </div>
-        }
+    </div>
+}
 
-        @code {
+@code {
 
 
-            [Parameter]
-            public string Id { get; set; }
+        [Inject]
+        NavigationManager NavigationMan { get; set; }
 
-            [Parameter]
-            public string Id2 { get; set; }
+        [Parameter]
+        public string Id { get; set; }
 
-            [Inject]
-            public IPlanLecturerService PlanLecturerService { get; set; }
-        public PlanLecturer PlanLecturer { get; set; } = new PlanLecturer();
+        [Parameter]
+        public string Id2 { get; set; }
+
+        [Inject]
+        public IPlanLecturerService PlanLecturerService { get; set; }
+        public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
 
         [Inject]
         public IPlanService PlanService { get; set; }
 
         public PlanDto Plan { get; set; } = new PlanDto();
+        public List<PlanDto> Plans { get; set; }
+        [Inject]
+        public ILecturerService LecturerService { get; set; }
 
-
-        //protected async override Task OnInitializedAsync()
-        //{
-
-        //    int.TryParse(Id, out int LecturerId);
-        //    int.TryParse(Id2, out int PlanId);
-
-        //    if (LecturerId != 0 && PlanId != 0)
-        //    {
-        //        PlanLecturer = await PlanLecturerService.GetPlanLecturer(LecturerId, PlanId);
-
-
-        //    }
-        //    else { PlanLecturer = new PlanLecturer { }; }
-        //}
-
+        public LecturerDto Lecturer { get; set; } = new LecturerDto();
         protected async override Task OnInitializedAsync()
         {
-            int.TryParse(Id, out int planId);
 
-            if (planId != 0)
-            {
-                Plan = await PlanService.GetPlan(int.Parse(Id));
+            int.TryParse(Id, out int LecturerId);
+            int.TryParse(Id2, out int PlanId);
 
-            }
+            if (LecturerId != 0 && PlanId != 0) { 
 
+            PlanLecturer = await PlanLecturerService.GetPlanLecturer(int.Parse(Id), int.Parse(Id2));
+
+            Lecturer = await LecturerService.GetLecturer(int.Parse(Id2));
+            Plan = await PlanService.GetPlan(int.Parse(Id));
+            Plans = (await PlanService.GetPlans()).ToList();
         }
-        }
-        <style>
-            /*   .row {
+        else { PlanLecturer = new PlanLecturerDto { }; }
+    }
+    #region plan selection
+
+    [Parameter]
+    public PlanDto SelectedPlan { get; set; } = new PlanDto();
+
+    public void NavigateToMyPlan()
+    {
+        //PlanLecturer = await PlanLecturerService.GetPlanLecturer(SelectedPlan.Id, Lecturer.Id);
+        //if (PlanLecturer != null)
+        //{
+        string PlanId = Plan.Id.ToString();
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlan.Id}/{Lecturer.Id}", true);
+    }
+
+    //await Alert();
+
+    #endregion
+
+
+
+}
+<style>
+    /*   .row {
                     margin-left: -5px;
                     margin-right: -5px;
                 }
@@ -141,39 +185,39 @@ else
                     width: 30%;
                     padding: 5px;
                 }*/
-            #table_container {
-                width: 1200px;
-                margin: 0 auto;
-            }
+    #table_container {
+        width: 1200px;
+        margin: 0 auto;
+    }
 
-            .row {
-                margin-left: -5px;
-                margin-right: -5px;
-            }
+    .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
 
-            .column {
-                float: left;
-                width: 35%;
-                padding: 5px;
-            }
-            .columnMiddle {
-                float: left;
-                width: 30%;
-                padding: 5px;
-            }
+    .column {
+        float: left;
+        width: 35%;
+        padding: 5px;
+    }
 
-            /* Clearfix (clear floats) */
-            .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
+    .columnMiddle {
+        float: left;
+        width: 30%;
+        padding: 5px;
+    }
 
-            .table {
-                border-collapse: collapse;
-                border-spacing: 0;
-               /* width: 400px;*/
-                border: 1px solid #ddd;
+    /* Clearfix (clear floats) */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
 
-            }
-        </style>
+    .table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        /* width: 400px;*/
+        border: 1px solid #ddd;
+    }
+</style>

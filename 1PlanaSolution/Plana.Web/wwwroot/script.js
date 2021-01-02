@@ -40,3 +40,7 @@ $('#save-btn').click(function () {
     $(this).siblings('#delete-btn,#cancel-btn').hide();
     $(this).siblings('#edit-btn').show();
 });
+
+window.Alert = function (message) {
+    alert(message);
+}
