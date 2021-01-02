@@ -39,7 +39,7 @@ namespace Plana.Web.Pages.plan.study_director
         public SemesterDto AutumnSemester { get; set; }
         public SemesterDto SpringSemester { get; set; }
         public ModuleDto Module { get; set; } = new ModuleDto();
-
+        public ModuleRunDto MR { get; set; } = new ModuleRunDto();
         public List<ModuleRunDto> ModuleRuns { get; set; } = new List<ModuleRunDto>();
         // public ModuleRunDto SelectedModuleRun { get; set; } = new ModuleRunDto();
         public List<ModuleDto> Modules { get; set; } = new List<ModuleDto>();
@@ -153,6 +153,7 @@ namespace Plana.Web.Pages.plan.study_director
                 await SemesterService.UpdateSemester(AutumnSemester);
                 await SemesterService.UpdateSemester(SpringSemester);
                 await LecturerModuleRunService.UpdateLecturerModuleRun(Lmr);
+                await ModuleRunService.UpdateModuleRun(MR);
             }
 
             if (Plan.Id != 0)

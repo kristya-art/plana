@@ -26,7 +26,7 @@ else
 <div id="table_container">
     <div class="row">
         <div class="column">
-            <table class="table">
+            <table class="table" >
                 <thead>
                     <tr>
 
@@ -34,7 +34,7 @@ else
                         <th>Semester</th>
                         <th>Module</th>
                         <th>Module Title</th>
-                        <th>Module-Group</th>
+                        <th>Group</th>
                         <th>Place</th>
                         <th>Module Total Hours</th>
                         <th>My hours</th>
@@ -48,29 +48,35 @@ else
                 </tbody>
             </table>
 </div>
+        <div class="columnMiddle"></div>
         <div class="column">
 
             <table class="table">
                 <thead>
                     <tr>
-                        Total
-</tr>
+                        <th>Total</th>
+                    </tr>
                     <tr>
 
-                        <th>Semester</th>
-                        <th>Module</th>
-                        <th>Module Title</th>
-                        <th>Module-Group</th>
-                        <th>Place</th>
-                        <th>Module Total Hours</th>
-                        <th>My hours</th>
-                        <th>Actions</th>
-                        <th>notes</th>
-                        <th>lecturer group</th>
+                        <th>HS</th>
+                        <th>FS</th>
+                        <th>AA</th>
+                        <th>YEAR</th>
+                        
                     </tr>
 
                 </thead>
                 <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                       
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -136,7 +142,7 @@ else
                     padding: 5px;
                 }*/
             #table_container {
-                width: 1000px;
+                width: 1200px;
                 margin: 0 auto;
             }
 
@@ -147,7 +153,12 @@ else
 
             .column {
                 float: left;
-                width: 50%;
+                width: 35%;
+                padding: 5px;
+            }
+            .columnMiddle {
+                float: left;
+                width: 30%;
                 padding: 5px;
             }
 
@@ -161,7 +172,8 @@ else
             .table {
                 border-collapse: collapse;
                 border-spacing: 0;
-                width: 400px;
+               /* width: 400px;*/
                 border: 1px solid #ddd;
+
             }
         </style>
