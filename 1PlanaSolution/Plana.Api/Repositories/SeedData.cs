@@ -786,32 +786,65 @@ namespace Plana.Api.Models
 
 
                 };
-                Plan plan20_21 = new Plan
-                {
-                    Year = "2020-2021",
-
-                };
+                
 
 
                 context.Plans.Add(plan23_24);
                 context.Plans.Add(plan24_25);
-                context.Plans.Add(plan20_21);
+                
                 context.SaveChanges();
 
 
                 // seed plan-->planlecturers
 
 
-                PlanLecturer planLecturer1 = new PlanLecturer { LecturerId = 1, PlanId = 1 };
-                PlanLecturer planLecturer2 = new PlanLecturer { LecturerId = 2, PlanId = 1 };
+                PlanLecturer pl01 = new PlanLecturer { PlanId = 1, LecturerId = 1  };
+                PlanLecturer pl2 = new PlanLecturer { PlanId = 1, LecturerId = 2 };
+                PlanLecturer pl3 = new PlanLecturer { PlanId = 2, LecturerId = 3 };
+                PlanLecturer pl4 = new PlanLecturer { PlanId = 2, LecturerId = 4 };
+                PlanLecturer pl5 = new PlanLecturer { PlanId = 1, LecturerId = 5 };
+                PlanLecturer pl6 = new PlanLecturer { PlanId = 1, LecturerId = 6 };
+                PlanLecturer pl7 = new PlanLecturer { PlanId = 2, LecturerId = 7};
+                PlanLecturer pl8 = new PlanLecturer { PlanId = 2, LecturerId = 8};
+                PlanLecturer pl9 = new PlanLecturer { PlanId = 1, LecturerId = 9};
+                PlanLecturer pl10 = new PlanLecturer { PlanId = 1, LecturerId = 10 };
+                PlanLecturer pl11 = new PlanLecturer { PlanId = 2, LecturerId = 11};
+                PlanLecturer pl12 = new PlanLecturer { PlanId = 2 ,LecturerId = 12 };
 
+                PlanLecturer pl011 = new PlanLecturer { PlanId = 2, LecturerId = 1};
+                PlanLecturer pl21 = new PlanLecturer { PlanId = 2, LecturerId = 2};
+                PlanLecturer pl31= new PlanLecturer { PlanId = 1, LecturerId = 3};
+                PlanLecturer pl41 = new PlanLecturer { PlanId = 1, LecturerId = 4 };
+                PlanLecturer pl51 = new PlanLecturer { PlanId = 2, LecturerId = 5};
+                PlanLecturer pl61 = new PlanLecturer { PlanId = 2,LecturerId = 6 };
+                PlanLecturer pl71 = new PlanLecturer { PlanId = 1, LecturerId = 7 };
+                PlanLecturer pl81 = new PlanLecturer { PlanId = 1, LecturerId = 8};
+                PlanLecturer pl91 = new PlanLecturer { PlanId = 2, LecturerId = 9 };
+                PlanLecturer pl101 = new PlanLecturer { PlanId = 2, LecturerId = 10 };
+                PlanLecturer pl111 = new PlanLecturer { PlanId = 1 , LecturerId = 11 };
+                PlanLecturer pl121 = new PlanLecturer { PlanId = 1 , LecturerId = 12 };
 
-                PlanLecturer planLecturer3 = new PlanLecturer { LecturerId = 3, PlanId = 2 };
-                PlanLecturer planLecturer4 = new PlanLecturer { LecturerId = 4, PlanId = 2 };
-
-
-                context.PlanLecturers.AddRange(planLecturer1, planLecturer2, planLecturer3, planLecturer4);
+                context.PlanLecturers.AddRange(pl01, pl2, pl3, pl4, pl5, pl6, pl7, pl8, pl9, pl10, pl11, pl12, pl011,
+                    pl011, pl21, pl31, pl41, pl51, pl61, pl71, pl81, pl91, pl101, pl111, pl121);
                 context.SaveChanges();
+
+
+                // PlanLecturer newPlanLecturer = new PlanLecturer();
+                //List<PlanLecturer> planLecturers = new List<PlanLecturer>();
+
+                //foreach (var p in context.Plans) {
+                //    foreach (var l in context.Lecturers)
+                //    {
+                //        int id1 = l.Id;
+                //        int id2 = p.Id;
+                //        newPlanLecturer = new PlanLecturer() { LecturerId = id1, PlanId = id2 };
+                //        //planLecturers.Add(newPlanLecturer);
+                //        context.PlanLecturers.Add(new PlanLecturer());
+
+                //    }
+                //}
+                ////context.PlanLecturers.AddRange(planLecturer1, planLecturer2, planLecturer3, planLecturer4);
+                //context.SaveChanges();
 
 
             }
