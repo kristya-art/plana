@@ -19,10 +19,10 @@ namespace Plana.Api.Services
 
         //Task<IEnumerable<LecturerModuleRun>> Search(string name);
 
-        //   Task<LecturerModuleRun> DeleteLecturerModuleRun(int LecturerModuleRunId);
+        
         //Task<Boolean> DeleteLecturerModuleRun(int lecturerModuleRunId);
 
-        //Task<Boolean> SoftDeleteLecturerModuleRun(int lecturerModuleRunId);
+       
 
     }
 }

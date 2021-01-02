@@ -21,7 +21,12 @@ namespace Plana.Web.Services
         {
             return await http.PostJsonAsync<PlanLecturerDto>("api/planLecturer", planLecturer);
         }
-        
+
+        public async Task<IEnumerable<ModuleRunDto>> GetModuleRunsForPlan(int id, int id2)
+        {
+            return await http.GetJsonAsync<ModuleRunDto[]>($"api/planLecturer/moduleRuns/{id}/{id2}");
+        }
+
         public async Task<PlanLecturerDto> GetPlanLecturer(int id, int id2)
         {
             return await http.GetJsonAsync<PlanLecturerDto>($"api/planLecturer/{id}/{id2}");

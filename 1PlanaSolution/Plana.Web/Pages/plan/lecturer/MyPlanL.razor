@@ -73,7 +73,31 @@ else
                         </tr>
 
                     </thead>
+
                     <tbody>
+                    @if (ModuleRuns != null) {
+
+                      @foreach (var mr in ModuleRuns)
+                      { 
+                         <tr>
+                             <td>@mr.SemesterId</td>
+                             <td>@mr.Module.Code</td>
+                             <td>@mr.Module.Title</td>
+                             <td>@mr.Code</td>
+                             <td>@mr.Place</td>
+                             <td>@mr.Module.TotalHours</td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             @foreach (var mrlg in mr.ModuleRunLecturerGroups)
+                             {
+                             <td>@mrlg.LecturerGroup.Title</td>
+                             }
+
+                         </tr>
+                      }
+
+                    }
                     </tbody>
                 </table>
             </div>
@@ -115,43 +139,69 @@ else
 @code {
 
 
-        [Inject]
-        NavigationManager NavigationMan { get; set; }
+    [Inject]
+    NavigationManager NavigationMan { get; set; }
 
-        [Parameter]
-        public string Id { get; set; }
+    [Parameter]
+    public string Id { get; set; }
 
-        [Parameter]
-        public string Id2 { get; set; }
+    [Parameter]
+    public string Id2 { get; set; }
 
-        [Inject]
-        public IPlanLecturerService PlanLecturerService { get; set; }
-        public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
+    [Inject]
+    public ISemesterService SemesterService{ get; set; }
 
-        [Inject]
-        public IPlanService PlanService { get; set; }
+    [Inject]
+    public IPlanLecturerService PlanLecturerService { get; set; }
 
-        public PlanDto Plan { get; set; } = new PlanDto();
-        public List<PlanDto> Plans { get; set; }
-        [Inject]
-        public ILecturerService LecturerService { get; set; }
+    public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
 
-        public LecturerDto Lecturer { get; set; } = new LecturerDto();
-        protected async override Task OnInitializedAsync()
-        {
+    [Inject]
+    public IPlanService PlanService { get; set; }
+    [Inject]
+    public IModuleRunService ModuleRunService { get; set; }
 
-            int.TryParse(Id, out int LecturerId);
-            int.TryParse(Id2, out int PlanId);
+    public PlanDto Plan { get; set; } = new PlanDto();
+    public List<PlanDto> Plans { get; set; }
+    [Inject]
+    public ILecturerService LecturerService { get; set; }
 
-            if (LecturerId != 0 && PlanId != 0) { 
+    public LecturerDto Lecturer { get; set; } = new LecturerDto();
+
+    public ModuleRunDto ModuleRun { get; set; } = new ModuleRunDto();
+
+    public List<ModuleRunDto> ModuleRuns { get; set; } = new List<ModuleRunDto>();
+
+    public SemesterDto Semester { get; set; } = new SemesterDto();
+
+    public List<SemesterDto> Semesters { get; set; } = new List<SemesterDto>();
+
+    public SemesterDto AutumnSemester { get; set; }
+    public SemesterDto SpringSemester { get; set; }
+    public string SemesterId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+
+        int.TryParse(Id, out int LecturerId);
+        int.TryParse(Id2, out int PlanId);
+
+        if (LecturerId != 0 && PlanId != 0) {
 
             PlanLecturer = await PlanLecturerService.GetPlanLecturer(int.Parse(Id), int.Parse(Id2));
 
             Lecturer = await LecturerService.GetLecturer(int.Parse(Id2));
             Plan = await PlanService.GetPlan(int.Parse(Id));
             Plans = (await PlanService.GetPlans()).ToList();
+            ModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
+
+            AutumnSemester = Plan.AutumnSemester;
+            SpringSemester = Plan.SpringSemester;
+
+            Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
         }
         else { PlanLecturer = new PlanLecturerDto { }; }
+        Semester = new SemesterDto { };
     }
     #region plan selection
 
