@@ -18,7 +18,11 @@ namespace Plana.Shared
 
         public int ModuleRunId { get; set; }
         public virtual ModuleRunDto ModuleRun { get; set; }
-        public int Hours { get; set; }
+        public double Hours { get; set; }
         public string Notes { get; set; }
+
+        
+
+
     }
 }

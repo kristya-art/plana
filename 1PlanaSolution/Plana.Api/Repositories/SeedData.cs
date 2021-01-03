@@ -210,8 +210,8 @@ namespace Plana.Api.Models
                     BirthDate = new DateTime(1983, 04, 11),
                     Gender = Gender.Female,
                     PhotoPath = "images/margo.jpg",
-                    IsDeleted = false,                  //better take it away 
-                                                        // LecturersModules = iclm
+                    IsDeleted = false,
+                    WorkingHours = 1300.0                    
                 };
                 Lecturer rosita = new Lecturer
                 {
@@ -223,7 +223,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Female,
                     PhotoPath = "images/rosita.png",
                     IsDeleted = false,
-                    // LecturersModules = iclm
+                    WorkingHours = 1600.0
                 };
                 Lecturer masha = new Lecturer
                 {
@@ -235,6 +235,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Female,
                     PhotoPath = "images/masha.jpg",
                     IsDeleted = false,
+                    WorkingHours = 1600.0
 
                 };
                 Lecturer lolita = new Lecturer
@@ -247,6 +248,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Female,
                     PhotoPath = "images/lolita.jpg",
                     IsDeleted = false,
+                    WorkingHours = 800.0
 
                 };
                 Lecturer bob = new Lecturer
@@ -259,6 +261,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/bob.png",
                     IsDeleted = false,
+                    WorkingHours = 900.0
 
                 };
                 Lecturer bombo = new Lecturer
@@ -271,6 +274,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/bombo.jpg",
                     IsDeleted = false,
+                    WorkingHours = 1600.0
 
                 };
                 Lecturer chris = new Lecturer
@@ -283,6 +287,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/christopher.png",
                     IsDeleted = false,
+                    WorkingHours = 1700.0
 
                 };
                 Lecturer alic = new Lecturer
@@ -295,6 +300,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/alic.jpg",
                     IsDeleted = false,
+                    WorkingHours = 1700.0
 
                 };
                 Lecturer misha = new Lecturer
@@ -307,6 +313,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/mihail.jpg",
                     IsDeleted = false,
+                    WorkingHours = 850.0
 
                 };
                 Lecturer kai = new Lecturer
@@ -319,7 +326,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/Kai.jpg",
                     IsDeleted = false,
-
+                    WorkingHours = 1200.0
                 };
 
                 context.Lecturers.AddRange(margo, misha, kai, rosita, alic, chris, bombo, bob, masha);
@@ -338,7 +345,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Female,
                     PhotoPath = "images/mike.jpg",
                     IsDeleted = false,
-                    // LecturersModules = iclm
+                    WorkingHours = 1600.0
                 };
                 l2.LecturersModules = new List<LecturerModule>
                 {
@@ -365,6 +372,7 @@ namespace Plana.Api.Models
                     Gender = Gender.Male,
                     PhotoPath = "images/michele.jpg",
                     IsDeleted = false,
+                    WorkingHours = 1700.0
                 };
                 var csbasics = new Module
                 {

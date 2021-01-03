@@ -10,7 +10,7 @@ namespace Plana.Models
         
         // 100%
         public double WorkingRate { get; set; }
-        
+        public double WorkingHours { get; set; }
         public bool IsActive { get; set; }
         
         public DateTime ActiveTill { get; set; }

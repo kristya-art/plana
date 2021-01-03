@@ -34,6 +34,7 @@ namespace Plana.Shared
         public DateTime BirthDate { get; set; }
 
         public double WorkingRate { get; set; }
+        public double WorkingHours { get; set; }
 
         public bool IsActive { get; set; }
 

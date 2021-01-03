@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210102200156_Initial")]
+    [Migration("20210103000524_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,6 +127,9 @@ namespace Plana.Api.Migrations
 
                     b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("WorkingHours")
+                        .HasColumnType("float");
 
                     b.Property<double>("WorkingRate")
                         .HasColumnType("float");
@@ -257,8 +260,8 @@ namespace Plana.Api.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Hours")
-                        .HasColumnType("int");
+                    b.Property<double>("Hours")
+                        .HasColumnType("float");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -453,23 +456,35 @@ namespace Plana.Api.Migrations
                     b.Property<int>("LecturerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AnnualTarget")
-                        .HasColumnType("int");
+                    b.Property<double>("AAtotal")
+                        .HasColumnType("float");
 
-                    b.Property<int>("BalanceAccumulated")
-                        .HasColumnType("int");
+                    b.Property<double>("AnnualTarget")
+                        .HasColumnType("float");
 
-                    b.Property<int>("BalanceActual")
-                        .HasColumnType("int");
+                    b.Property<double>("BalanceAccumulated")
+                        .HasColumnType("float");
 
-                    b.Property<int>("BalanceLastYear")
-                        .HasColumnType("int");
+                    b.Property<double>("BalanceActual")
+                        .HasColumnType("float");
+
+                    b.Property<double>("BalanceLastYear")
+                        .HasColumnType("float");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<double>("FStotal")
+                        .HasColumnType("float");
+
+                    b.Property<double>("HStotal")
+                        .HasColumnType("float");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<double>("YearTotal")
+                        .HasColumnType("float");
 
                     b.HasKey("PlanId", "LecturerId");
 

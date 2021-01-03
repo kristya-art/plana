@@ -47,6 +47,7 @@ namespace Plana.Api.Migrations
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     WorkingRate = table.Column<double>(type: "float", nullable: false),
+                    WorkingHours = table.Column<double>(type: "float", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     ActiveTill = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -303,12 +304,16 @@ namespace Plana.Api.Migrations
                 {
                     LecturerId = table.Column<int>(type: "int", nullable: false),
                     PlanId = table.Column<int>(type: "int", nullable: false),
-                    AnnualTarget = table.Column<int>(type: "int", nullable: false),
-                    BalanceActual = table.Column<int>(type: "int", nullable: false),
-                    BalanceLastYear = table.Column<int>(type: "int", nullable: false),
-                    BalanceAccumulated = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    HStotal = table.Column<double>(type: "float", nullable: false),
+                    FStotal = table.Column<double>(type: "float", nullable: false),
+                    AAtotal = table.Column<double>(type: "float", nullable: false),
+                    YearTotal = table.Column<double>(type: "float", nullable: false),
+                    AnnualTarget = table.Column<double>(type: "float", nullable: false),
+                    BalanceActual = table.Column<double>(type: "float", nullable: false),
+                    BalanceLastYear = table.Column<double>(type: "float", nullable: false),
+                    BalanceAccumulated = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -398,7 +403,7 @@ namespace Plana.Api.Migrations
                     LecturerId = table.Column<int>(type: "int", nullable: false),
                     ModuleRunId = table.Column<int>(type: "int", nullable: false),
                     Lessons = table.Column<int>(type: "int", nullable: false),
-                    Hours = table.Column<int>(type: "int", nullable: false),
+                    Hours = table.Column<double>(type: "float", nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
