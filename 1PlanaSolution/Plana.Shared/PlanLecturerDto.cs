@@ -1,4 +1,6 @@
-﻿namespace Plana.Shared
+﻿using System.Collections.Generic;
+
+namespace Plana.Shared
 {
     public class PlanLecturerDto
     {
@@ -29,15 +31,16 @@
 
         public double GetHStotal()
         {
+            HStotal = 0.0;
             foreach (var mr in Plan.AutumnSemester.ModuleRuns)
             {
                 foreach (var lmr in mr.LecturersMR)
                 {
                     if (lmr.LecturerId == Lecturer.Id)
                     {
-                        HStotal += lmr.Hours;
+                        HStotal = HStotal + lmr.Hours;
                     }
-
+                    
                 }
 
             }
@@ -62,11 +65,26 @@
 
             return FStotal;
         }
-        //public double GetAA()
-        //{
-        //    AAtotal = 0.0;
+        public double GetAA()
+        {
+            List<SemesterDto> SemesterList = new List<SemesterDto>();
+            SemesterList.Add(Plan.AutumnSemester);
+            SemesterList.Add(Plan.SpringSemester);
 
-        //}
+            AAtotal = 0.0;
+            foreach(var aa in Lecturer.AdditionalAssignments)
+            {
+                foreach (var sem in SemesterList)
+                {
+                    if (aa.SemesterId == sem.SemesterId)
+                    {
+                        AAtotal += aa.AAHours;
+                    }
+                }
+
+            }
+            return AAtotal;
+        }
 
         public double GetTotal()
         {
