@@ -126,10 +126,10 @@ else
                         </tr>
                         <tr>
 
-                            <th>HS</th>
-                            <th>FS</th>
-                            <th>AA</th>
-                            <th>YEAR</th>
+                            <th width="20%">HS</th>
+                            <th width="20%">FS</th>
+                            <th width="20%">AA</th>
+                            <th width="20%">YEAR</th>
 
                         </tr>
 
@@ -142,9 +142,26 @@ else
                             <td>@PlanLecturer.GetTotal()</td>
 
                         </tr>
+                        <tr><td></td><td></td></tr>
                         <tr>
+                            <th width="40%">ANNUAL TARGET</th>
+                            <td>@PlanLecturer.SetAnnualTarget()</td>
                         </tr>
+                        <tr>
+                            <th width="40%">BALANCE ACTUAL</th>
+                            <td>@PlanLecturer.BalanceActual</td>
+                        </tr>
+                        <tr>
+                            <th width="40%">BALANCE LAST YEAR</th>
+<td>@PlanLecturer.BalanceLastYear</td>
+                        </tr>
+                        <tr>
+                            <th width="40%">BALANCE ACCUMULATED</th>
+<td>@PlanLecturer.BalanceAccumulated</td>
+                        </tr>
+
                     </tbody>
+                  
                 </table>
             </div>
         </div>
@@ -276,13 +293,13 @@ else
 
     .column {
         float: left;
-        width: 35%;
+        width: 32.5%;
         padding: 5px;
     }
 
     .columnMiddle {
         float: left;
-        width: 30%;
+        width: 35%;
         padding: 5px;
     }
 

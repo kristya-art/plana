@@ -91,5 +91,17 @@ namespace Plana.Shared
             return HStotal + FStotal + AAtotal;
 
         }
+        /// <summary>
+        /// this method to set total of lecturer working hours per year, this method can
+        /// be extended if we know the hours for 100% working and the rate for concrete lecturer,
+        /// it could be done like this hours(100%) * working rate. But in our case we make it easier cuz 
+        /// we don't know how it shall to be calculated exactly
+        /// </summary>
+        /// <returns></returns>
+        public double SetAnnualTarget()
+        {
+            AnnualTarget = Lecturer.WorkingHours;
+            return AnnualTarget;
+        }
     }
 }
