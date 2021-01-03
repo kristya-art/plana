@@ -92,9 +92,10 @@ else
                               @foreach (var lmr in mr.LecturersMR)
                               {
                                  @if(lmr.Lecturer.Id == Lecturer.Id) { 
-                                   <td>@lmr.Hours</td>
+                                   <td><p>@lmr.Hours</p></td>
                                    <td>
-                                       <MatTextField @bind-Value="lmr.Hours"></MatTextField>
+                                       @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
+                                       <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
                                        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
                                    </td>
                                  }
@@ -149,15 +150,15 @@ else
                         </tr>
                         <tr>
                             <th width="40%">BALANCE ACTUAL</th>
-                            <td>@PlanLecturer.BalanceActual</td>
+                            <td>@PlanLecturer.GetBalanceActual()</td>
                         </tr>
                         <tr>
                             <th width="40%">BALANCE LAST YEAR</th>
-<td>@PlanLecturer.BalanceLastYear</td>
+                            <td>@PlanLecturer.BalanceLastYear</td>
                         </tr>
                         <tr>
                             <th width="40%">BALANCE ACCUMULATED</th>
-<td>@PlanLecturer.BalanceAccumulated</td>
+                            <td>@PlanLecturer.GetBalanceAccumulated()</td>
                         </tr>
 
                     </tbody>

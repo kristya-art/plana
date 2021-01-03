@@ -77,6 +77,8 @@ namespace Plana.Api.Services
                 planLecturer.BalanceActual = planLecturerDto.BalanceActual;
                 planLecturer.BalanceLastYear = planLecturerDto.BalanceLastYear;
                 planLecturer.AAtotal = planLecturerDto.AAtotal;
+                planLecturer.HStotal = planLecturerDto.HStotal;
+                planLecturer.YearTotal = planLecturerDto.HStotal;
 
                 await context.SaveChangesAsync();
 

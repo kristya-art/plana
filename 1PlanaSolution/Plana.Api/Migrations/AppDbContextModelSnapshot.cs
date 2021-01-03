@@ -258,6 +258,9 @@ namespace Plana.Api.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<double>("DesiredHours")
+                        .HasColumnType("float");
+
                     b.Property<double>("Hours")
                         .HasColumnType("float");
 

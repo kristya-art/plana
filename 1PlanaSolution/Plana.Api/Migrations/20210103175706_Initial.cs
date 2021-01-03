@@ -404,6 +404,7 @@ namespace Plana.Api.Migrations
                     ModuleRunId = table.Column<int>(type: "int", nullable: false),
                     Lessons = table.Column<int>(type: "int", nullable: false),
                     Hours = table.Column<double>(type: "float", nullable: false),
+                    DesiredHours = table.Column<double>(type: "float", nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)

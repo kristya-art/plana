@@ -240,6 +240,7 @@ img {
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
     border-radius: 12px;
+    border-style: dashed;
     margin: 4px 8px;
     width: 140px;
     height: 40px;

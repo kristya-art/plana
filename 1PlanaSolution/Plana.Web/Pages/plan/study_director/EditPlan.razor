@@ -151,7 +151,7 @@ else
                             @*<p contenteditable='true'> @lm.Hours</p>*@
                             <MatTextField @bind-Value="lm.Hours"></MatTextField>
                             <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
-
+                            <p style="color:lightcoral;"> @lm.DesiredHours</p>
                         }
 
                     </td>
@@ -503,11 +503,6 @@ else
     private async Task CallJSMethod2()
     {
         await js.InvokeVoidAsync("SetButtonsVisible");
-    }
-
-    public void EditEvent()
-    {
-
     }
 
     #region Last Year Plan

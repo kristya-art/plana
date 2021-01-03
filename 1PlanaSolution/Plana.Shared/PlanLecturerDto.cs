@@ -88,7 +88,8 @@ namespace Plana.Shared
 
         public double GetTotal()
         {
-            return HStotal + FStotal + AAtotal;
+            YearTotal = HStotal + FStotal + AAtotal;
+            return YearTotal;
 
         }
         /// <summary>
@@ -102,6 +103,16 @@ namespace Plana.Shared
         {
             AnnualTarget = Lecturer.WorkingHours;
             return AnnualTarget;
+        }
+        public double GetBalanceActual() {
+
+            BalanceActual = YearTotal - AnnualTarget;
+            return BalanceActual;
+        }
+
+        public double GetBalanceAccumulated() {
+           BalanceAccumulated = BalanceActual + BalanceLastYear;
+           return BalanceAccumulated;
         }
     }
 }

@@ -73,6 +73,7 @@ namespace Plana.Api.Services
                 result.ModuleRunId = lecturerModuleRunDto.ModuleRunId;
                 result.Lessons = lecturerModuleRunDto.Lessons;
                 result.Hours = lecturerModuleRunDto.Hours;
+                result.DesiredHours = lecturerModuleRunDto.DesiredHours;
                 result.Notes = lecturerModuleRunDto.Notes;
                 await context.SaveChangesAsync();
 
