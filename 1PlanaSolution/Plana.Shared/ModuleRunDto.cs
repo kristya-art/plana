@@ -31,5 +31,24 @@ namespace Plana.Shared
 
         public virtual ICollection<ModuleRunLecturerGroupDto> ModuleRunLecturerGroups { get; set; }
 
+        public double TotalDesiredHours { get; set; } = 0.0;
+        public double GetTotalDesiredHours() {
+            TotalDesiredHours = 0.0;
+            foreach (var l in LecturersMR) {
+                
+                TotalDesiredHours += l.DesiredHours;
+            
+            }
+            return TotalDesiredHours;
+        }
+
+        public bool IsExceedingHours() {
+            TotalDesiredHours = GetTotalDesiredHours();
+            if (TotalDesiredHours > Module.TotalHours) {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

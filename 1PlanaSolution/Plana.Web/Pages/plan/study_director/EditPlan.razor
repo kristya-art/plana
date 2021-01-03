@@ -41,7 +41,7 @@ else
         <thead>
             <tr>
 
-
+                <th width="10%">Semeter Id</th>
                 <th>Semester</th>
                 <th>Module</th>
                 <th>Module Title</th>
@@ -51,6 +51,7 @@ else
                 <th>Lecturers Group</th>
                 <th>Lecturers</th>
                 <th>Set Lecturers hours</th>
+                <th>Desired hours</th>
                 <th>Actions</th>
                 <th>notes</th>
             </tr>
@@ -125,7 +126,7 @@ else
 
                                 <p style="white-space:nowrap;">
                                     @lm.Lecturer.SetToken() | @lm.Hours
-                                    <button class="btn"  id="del" @onclick="@(e=>LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId,lm.LecturerId))"><i class="fa fa-close"></i></button>
+                                    <button class="btn" id="del" @onclick="@(e => LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId, lm.LecturerId))"><i class="fa fa-close"></i></button>
                                 </p>
                                 @*<EditForm Model="@lm" visi*@
 
@@ -140,7 +141,7 @@ else
                             </InputSelect>
                         </div>
                     </div>*@
-                            <MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false , local))">Add</MatButton>
+                            <MatButton Outlined="true" @onclick="@(e => OpenLecturerDialog(false, local))">Add</MatButton>
                             @*<button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>*@
                         </div>
                     </td>
@@ -148,14 +149,37 @@ else
                         @foreach (var lm in mr.LecturersMR)
                         {
 
-                            @*<p contenteditable='true'> @lm.Hours</p>*@
+
+
                             <MatTextField @bind-Value="lm.Hours"></MatTextField>
-                            <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
-                            <p style="color:lightcoral;"> @lm.DesiredHours</p>
+                            <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var lm in mr.LecturersMR)
+                        {
+
+                            <p style="color:lightcoral;"> @lm.DesiredHours.</p>
+
                         }
 
+                        @if (mr.IsExceedingHours())
+                        {
+                            @*<div class="w3-panel w3-pale-red w3-border" >
+                <h3>Attention!</h3>
+                <p>The number of desired hours exceeds the norm</p>
+            </div>*@
+                            <i class="material-icons" style="font-size:24px">warning</i>
+                        }
+
+
+                        @*@mr.TotalDesiredHours()*@
                     </td>
+                   
                 }
+
+
+
                 <td style="white-space:nowrap;" @onclick="CallJSMethod2">
                     <button class="btn" id="edit-btn">edit</button>
                     <button class="btn" id="save-btn">save lecturerModuleRun</button>
