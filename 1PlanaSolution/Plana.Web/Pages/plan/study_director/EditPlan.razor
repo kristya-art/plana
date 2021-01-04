@@ -113,7 +113,7 @@ else
                     <td contenteditable='true'>
                         @foreach (var lm in mr.LecturersMR)
                         {
-                            <MatTextField @bind-Value="lm.Hours"></MatTextField>
+                            <MatTextField @bind-Value="lm.Hours" style=" height: 20px;"></MatTextField>
                             <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
                         }
                     </td>
@@ -323,7 +323,7 @@ else
 </MatDialog>
 
 
-@*Dialog for the making a new module*@
+@*Dialog for making a new module*@
 <EditForm Model="@moduleRun" OnInvalidSubmit="@okClickM">
     <MatDialog @bind-IsOpen="dialogIsOpenMNew">
         <MatDialogTitle>Add Module</MatDialogTitle>
@@ -364,13 +364,9 @@ else
                 <MatCheckbox @bind-Value="@moduleRun.Editable" Label="@(ChangeLabel(ModuleRun.Editable))"></MatCheckbox>
             </div>
         </MatDialogContent>
-        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>ModuleRunService.CreateModuleRun(moduleRun))">OK</MatButton>
+        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>addModuleRun())">OK</MatButton>
 
-        @*<div class="btn-group">*@
-        <button type="submit" class="btn-btn-success">
-            Add Module
-        </button>
-        @*</div>*@
+       
     </MatDialog>
 </EditForm>
 
@@ -541,13 +537,19 @@ else
         //else {
         //    moduleRun = await ModuleRunService.CreateModuleRun(moduleRun);
         //}
-       
-            await ModuleRunService.UpdateModuleRun(moduleRun);
-        
-   }
+
+        await ModuleRunService.UpdateModuleRun(moduleRun);
+
+    }
+    async Task addModuleRun()
+    {
+        await ModuleRunService.CreateModuleRun(moduleRun);
+        CloseDialogM();
+    }
     private void CloseDialogM()
     {
         dialogIsOpenM = false;
+        dialogIsOpenMNew = false;
         dialogIsOpenMNew = false;
 
     }
@@ -621,4 +623,8 @@ else
                 height: 300px;
                 overflow: auto;
             }*/
+
+            .mdc-text-field__ripple MatTextField {
+                width:24px;
+            }
         </style>
