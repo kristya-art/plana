@@ -24,9 +24,6 @@
 
     </div>
 
-    @*<button class="btn btn-primary" @onclick="CallJSMethod">show</button>*@
-
-
 @*Modules Table*@
 
 @if (Plan == null)
@@ -35,12 +32,9 @@
 }
 else
 {
-
-    @*<table class="table" itemscope="@Plan" itemid="@Plan.Id">*@
-    <table class="table">
+   <table class="table">
         <thead>
             <tr>
-
                 <th width="10%">Semeter Id</th>
                 <th>Semester</th>
                 <th>Module</th>
@@ -55,41 +49,23 @@ else
                 <th>Actions</th>
                 <th>notes</th>
             </tr>
-
-        </thead>
+     </thead>
         <tbody>
 
             @if (Semesters != null)
             {
-
-
-                @foreach (var sem in Semesters)
+              @foreach (var sem in Semesters)
                 {
 
                     @*fix it , the problem is that when the sem == null, program is break up*@
                     @*@if (sem.ModuleRuns == null) { return; }*@
-
-
                     @if (sem.ModuleRuns == null) { return; }
                     @foreach (var mr in sem.ModuleRuns)
                     {
-                       
                         SelectedModuleRun = mr;
                         int local = mr.ModuleRunId;
 
-
-
-                   @*<tr>
-                        <td>
-
-                            <button contenteditable="true">
-                                @mr.Module.Title
-                            </button>
-
-                        </td>
-                    </tr>*@
-
-            <tr>
+                <tr>
                 <td><input Id="mr" @bind="mr.ModuleRunId" /></td>
                 <td>@sem.GetAbbreviation()</td>
 
@@ -117,9 +93,7 @@ else
 
                 @if (mr.LecturersMR != null)
                 {
-
-                    <td style="white-space:nowrap;">
-
+                     <td style="white-space:nowrap;">
                         <div id="scroll">
                             @foreach (var lm in mr.LecturersMR)
                             {
@@ -128,19 +102,10 @@ else
                                     @lm.Lecturer.SetToken() | @lm.Hours
                                     <button class="btn" id="del" @onclick="@(e => LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId, lm.LecturerId))"><i class="fa fa-close"></i></button>
                                 </p>
-                                @*<EditForm Model="@lm" visi*@
+                               
 
                             }
-                            @*<div class="form-group row">
-                        <div class="col-sm-10">
-                            <InputSelect id="lecturer" @bind-Value="Lecturer.Id" class="form-control">
-                                @foreach (var lecturer in Lecturers)
-                                                    {
-                                    <option value="@lecturer.Id">@Lecturer.FirstName</option>
-                                                    }
-                            </InputSelect>
-                        </div>
-                    </div>*@
+                           
                             <MatButton Outlined="true" @onclick="@(e => OpenLecturerDialog(false, local))">Add</MatButton>
                             @*<button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>*@
                         </div>
@@ -148,9 +113,6 @@ else
                     <td contenteditable='true'>
                         @foreach (var lm in mr.LecturersMR)
                         {
-
-
-
                             <MatTextField @bind-Value="lm.Hours"></MatTextField>
                             <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
                         }
@@ -158,29 +120,22 @@ else
                     <td>
                         @foreach (var lm in mr.LecturersMR)
                         {
-
-                            <p style="color:lightcoral;"> @lm.DesiredHours.</p>
+                     <p style="color:lightcoral;"> @lm.DesiredHours.</p>
 
                         }
 
                         @if (mr.IsExceedingHours())
                         {
                             @*<div class="w3-panel w3-pale-red w3-border" >
-                <h3>Attention!</h3>
-                <p>The number of desired hours exceeds the norm</p>
-            </div>*@
+                              <h3>Attention!</h3>
+                              <p>The number of desired hours exceeds the norm</p>
+                             </div>*@
                             <i class="material-icons" style="font-size:24px">warning</i>
                         }
-
-
-                        @*@mr.TotalDesiredHours()*@
-                    </td>
+                     </td>
                    
                 }
-
-
-
-                <td style="white-space:nowrap;" @onclick="CallJSMethod2">
+                    <td style="white-space:nowrap;" @onclick="CallJSMethod2">
                     <button class="btn" id="edit-btn">edit</button>
                     <button class="btn" id="save-btn">save lecturerModuleRun</button>
                     <button class="btn" id="save-btn">save</button>
@@ -188,9 +143,7 @@ else
                     <button class="btn" id="cancel-btn">cancel</button>
                     <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
                     <MatButton Raised="true" @onclick="@(e=>OpenDialogM(true))" Icon="edit" title="Edit ModuleRun"></MatButton>
-                    @*<EditForm Module="@mr">
-             <InputText id="id" @bind-Value="mr.Module.Title" />
-            </EditForm>*@
+                   
 
                     <MatDialog @bind-IsOpen="dialogIsOpenM">
                         <MatDialogTitle>Add / Edit Module</MatDialogTitle>
@@ -199,30 +152,15 @@ else
                             <MatTextField Label="Place" @bind-Value="@mr.Place"></MatTextField>
                         </MatDialogContent>
                         <MatDialogActions>
-
                             <MatButton OnClick="okClickM">Add</MatButton>
                             <MatButton OnClick="CloseDialogM">Close</MatButton>
 
                         </MatDialogActions>
                     </MatDialog>
-
-
-
-
-
-
-
-                </td>
+                 </td>
                 <td><textarea>...</textarea></td>
 
-                @*in case of making row large*@
-                @*<td width="500" height="300">
-            <div style="width: 500px; height: 300px; overflow: auto">
-                lots of data that exceeds the dimensions
-            </div>
-        </td>*@
-
-            </tr>
+          </tr>
 
                         /** dialog for lecturers*/
 
@@ -242,43 +180,23 @@ else
                                         }
                                     </select>
                                     <div class="btn-group">
-
-                                        <button @onclick="@(e=>addLecturer(SelectedModuleRun.ModuleRunId,SelectedLecturer.Id))"> Add Professor</button>
-
-
+                                    <button @onclick="@(e=>addLecturer(SelectedModuleRun.ModuleRunId,SelectedLecturer.Id))"> Add Professor</button>
                                     </div>
                                 </EditForm>
                                 @*</form>*@
-
-
-
-                            </MatDialogContent>
+                             </MatDialogContent>
                             <MatDialogActions>
                                 <MatButton OnClick="okClickL">Add</MatButton>
                                 <MatButton OnClick="CloseDialog">Close</MatButton>
-
-
                             </MatDialogActions>
-                        </MatDialog>
-
-                    }
+                           </MatDialog>
+                     }
 
                 }
 
-                @*<a class="btn btn-success">Edit</a>
-            <button class="btn btn-danger">Delete</button>*@
-
-
             }
-
-
-        </tbody>
+          </tbody>
     </table>
-
-
-
-
-
 }
 
 @*dialog for last year plan *@
@@ -291,13 +209,9 @@ else
         }
         else
         {
-
-            @*<table class="table" itemscope="@Plan" itemid="@Plan.Id">*@
-            <table class="table">
+           <table class="table">
                 <thead>
                     <tr>
-
-
                         <th>Semester</th>
                         <th>Module</th>
                         <th>Module Title</th>
@@ -310,27 +224,21 @@ else
                         <th>Actions</th>
                         <th>notes</th>
                     </tr>
-
                 </thead>
                 <tbody>
 
                     @if (Semesters != null)
                     {
-
-
-                        @foreach (var sem in Semesters)
+                           @foreach (var sem in Semesters)
                         {
 
                             @*flix it , the problem is that when the sem == null, program is break up*@
-                            @if (sem.ModuleRuns == null) { return; }
-
-
+                         
                             @if (sem.ModuleRuns == null) { return; }
                             @foreach (var mr in sem.ModuleRuns)
                             {
                                 <tr>
                                     <td>
-
                                         <button contenteditable="true">
                                             @mr.Module.Title
                                         </button>
@@ -364,8 +272,7 @@ else
 
                                     @if (mr.LecturersMR != null)
                                     {
-                                        @*<MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>*@
-                                        
+
                                         <td style="white-space:nowrap;">
 
                                             <div id="scroll">
@@ -377,9 +284,6 @@ else
                                                     </p>
 
                                                 }
-                                                @*<MatButton Outlined="true" @onclick="@(e=>OpenLecturerDialog(false))">Add</MatButton>*@
-                                                @*<button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false))"><i class="fa fa-plus"></i></button>*@
-
 
                                             </div>
 
@@ -401,38 +305,16 @@ else
                                         <button class="btn" id="cancel-btn">cancel</button>
                                         <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
 
-
                                     </td>
                                     <td><textarea>...</textarea></td>
-
-                                    @*in case of making row large*@
-                                    @*<td width="500" height="300">
-            <div style="width: 500px; height: 300px; overflow: auto">
-                lots of data that exceeds the dimensions
-            </div>
-        </td>*@
-
                                 </tr>
-
-                            }
-
+                              }
                         }
 
-                        @*<a class="btn btn-success">Edit</a>
-                            <button class="btn btn-danger">Delete</button>*@
-
-
-                    }
-
-
-                </tbody>
+                }
+                 </tbody>
             </table>
-
-
-
-
-
-        }
+ }
 
     </MatDialogContent>
     <button type="submit" class="btn-btn-success">
@@ -556,43 +438,6 @@ else
 
     }
     #endregion
-
-    //#region New ModuleRun
-
-    //bool dialogIsOpenM = false;
-    //bool _isEditM = false;
-
-
-    //private void OpenDialogM(bool isEditM)
-    //{
-    //    _isEditM = isEditM;
-    //    dialogIsOpenM = true;
-
-    //}
-
-    //private void moduleOkClick()
-    //{
-    //    dialogIsOpenM = false;
-    //}
-
-
-
-    //async Task CreateModuleRun()
-    //{
-
-    //    await ModuleRunService.CreateModuleRun(ModuleRun);
-    //    foreach (var sem in Semesters)
-    //    {
-    //        await SemesterService.UpdateSemester(sem);
-    //    }
-
-    //    dialogIsOpenM = false;
-    //}
-
-
-
-    //#endregion
-
 
     #region dialog for lecturers
 
