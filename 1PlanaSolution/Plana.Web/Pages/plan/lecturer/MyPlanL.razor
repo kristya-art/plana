@@ -38,7 +38,7 @@
 @*<Plana.Web.Pages.plan.navMenus.LCustomSelect />*@
 
 <div class="btn-group" style="font-size: 13px">
-    <button style="float: right;">add module</button>
+    <button style="float: right;" @onclick="@(e=>OpenDialogMR(true))">add module</button>
     <button style="float: right;">add additional assignment</button>
     <button style="float: right;">show lecturer groups</button>
     <button style="float:left">show last year plan</button>
@@ -78,9 +78,9 @@ else
                     </thead>
 
                     <tbody>
-                    @if (ModuleRuns != null) {
+                    @if (MyModuleRuns != null) {
 
-                      @foreach (var mr in ModuleRuns)
+                      @foreach (var mr in MyModuleRuns)
                       {
                          <tr>
                              <td>@mr.SemesterId</td>
@@ -169,44 +169,157 @@ else
         </div>
     </div>
 }
+@*dialog with Module Run list*@
+<MatDialog @bind-IsOpen="dialogIsOpenMR">
+    <MatDialogTitle>Add Plan</MatDialogTitle>
+    <MatDialogContent Style="width: 1100px;right:50px">
+        @if (Plan == null)
+        {
+            <text>Loading...</text>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>Module</th>
+                        <th>Module Title</th>
+                        <th>Module-Group</th>
+                        <th>Place</th>
+                        <th>Module Total Hours</th>
+                        <th>Add me</th>
+                        <th>Add group</th>
+                        <th>My hours</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @if (Semesters != null)
+                    {
+                        @foreach (var sem in Semesters)
+                        {
+
+                            @*flix it , the problem is that when the sem == null, program is break up*@
+
+                            @if (sem.ModuleRuns == null) { return; }
+                            @foreach (var mr in sem.ModuleRuns)
+                            {
+                              
+                                <tr>
+                                    <td>@sem.GetAbbreviation()</td>
+
+                                    <td contenteditable='true'>@mr.Module.Code</td>
+                                    <td>@mr.Module.Title</td>
+                                    <td>@mr.ModuleGroup</td>
+                                    <td contenteditable="true">@mr.Place</td>
+                                    <td contenteditable="true">@mr.Module.TotalHours</td>
+                                    <td>
+
+                                        @*@if (mr.ModuleRunLecturerGroups != null)
+                                        {
+
+                                            @foreach (var lg in mr.ModuleRunLecturerGroups)
+                                            {
+                                                <p style="white-space:nowrap;">
+                                                    @lg.LecturerGroup.Title
+                                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                                </p>
+                                            }
+                                        }*@
+                                        <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                    </td>
+
+                                    @*@if (mr.LecturersMR != null)
+                                    {*@
+
+                                        <td style="white-space:nowrap;">
+
+                                            @*<div id="scroll">
+                                                @foreach (var lm in mr.LecturersMR)
+                                                {
+                                                    <p style="white-space:nowrap;">
+                                                        @lm.Lecturer.SetToken() | @lm.Hours
+                                                        <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
+                                                    </p>
+
+                                                }
+
+                                            </div>*@
+
+                                        </td>
+                                        <td contenteditable='true'>
+                                            @*@foreach (var lm in mr.LecturersMR)
+                                            {
+
+                                                <p contenteditable='true'> @lm.Hours</p>
+
+                                            }*@
+                                        </td>
+                                    }
+                                    <td style="white-space:nowrap;">
+                                        
+                                        <button class="btn" id="save-btn">save</button>
+                                         <button class="btn" id="cancel-btn">cancel</button>
+                                        @*<MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>*@
+
+                                    </td>
+                                    
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        }
+
+    </MatDialogContent>
+    <button type="submit" class="btn-btn-success">
+        Save
+    </button>
+</MatDialog>
 
 @code {
 
 
-        [Inject]
-        NavigationManager NavigationMan { get; set; }
+    [Inject]
+    NavigationManager NavigationMan { get; set; }
 
-        [Parameter]
-        public string Id { get; set; }
+    [Parameter]
+    public string Id { get; set; }
 
-        [Parameter]
-        public string Id2 { get; set; }
+    [Parameter]
+    public string Id2 { get; set; }
 
-        [Inject]
-        public ISemesterService SemesterService { get; set; }
+    [Inject]
+    public ISemesterService SemesterService { get; set; }
 
-        [Inject]
-        public IPlanLecturerService PlanLecturerService { get; set; }
+    [Inject]
+    public IPlanLecturerService PlanLecturerService { get; set; }
 
-        public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
+    public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
 
-        [Inject]
-        public IPlanService PlanService { get; set; }
-        [Inject]
-        public IModuleRunService ModuleRunService { get; set; }
+    [Inject]
+    public IPlanService PlanService { get; set; }
+    [Inject]
+    public IModuleRunService ModuleRunService { get; set; }
 
-        public PlanDto Plan { get; set; } = new PlanDto();
-        public List<PlanDto> Plans { get; set; }
-        [Inject]
-        public ILecturerService LecturerService { get; set; }
-        [Inject]
-        public ILecturerModuleRunService LecturerModuleRunService {get;set;}
+    public PlanDto Plan { get; set; } = new PlanDto();
+    public List<PlanDto> Plans { get; set; }
+    [Inject]
+    public ILecturerService LecturerService { get; set; }
+    [Inject]
+    public ILecturerModuleRunService LecturerModuleRunService {get;set;}
 
     public LecturerDto Lecturer { get; set; } = new LecturerDto();
 
     public ModuleRunDto ModuleRun { get; set; } = new ModuleRunDto();
 
-    public List<ModuleRunDto> ModuleRuns { get; set; } = new List<ModuleRunDto>();
+    public List<ModuleRunDto> MyModuleRuns { get; set; } = new List<ModuleRunDto>();
+    public List<ModuleRunDto> AllModuleRuns { get; set; } = new List<ModuleRunDto>();
 
     public SemesterDto Semester { get; set; } = new SemesterDto();
 
@@ -229,13 +342,17 @@ else
             Lecturer = await LecturerService.GetLecturer(int.Parse(Id2));
             Plan = await PlanService.GetPlan(int.Parse(Id));
             Plans = (await PlanService.GetPlans()).ToList();
-            ModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
+            MyModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
 
             AutumnSemester = Plan.AutumnSemester;
             SpringSemester = Plan.SpringSemester;
+            Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
+
+
+
 
             Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
-        //    LecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun()
+            //    LecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun()
 
 
 
@@ -267,6 +384,27 @@ else
 
     //await Alert();
 
+    #endregion
+    #region Dialog box for add moduleRun
+    bool _isDelete = false;
+    bool dialogIsOpenMR = false;
+    bool _isEdit = false;
+    private void OpenDialogMR(bool isEdit)
+    {
+
+        //if (!_isEdit) plan = new Plan();
+        dialogIsOpenMR = true;
+    }
+
+    private void okClick() {
+        dialogIsOpenMR = false;
+
+    }
+
+    private void CloseDialog()
+    {
+        dialogIsOpenMR = false;
+    }
     #endregion
 
 
