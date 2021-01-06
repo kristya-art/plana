@@ -118,5 +118,33 @@ namespace Plana.Api.Services
             }
             return mapper.Map<IEnumerable<ModuleRunDto>>(moduleRuns);
         }
+
+        public async Task<IEnumerable<PlanLecturerDto>> AddLecturersToPlan(PlanDto plan, List<LecturerDto> lecturers)
+        {
+            var lecturersList = lecturers;
+            
+
+            foreach (var l in lecturers)
+            {
+                if (GetPlanLecturer(plan.Id, l.Id) == null)
+                {
+                    var PlanLecturer = new PlanLecturer()
+                    {
+                        PlanId = plan.Id,
+                        LecturerId = l.Id
+                    };
+                    
+                    context.PlanLecturers.Add(PlanLecturer);
+                    await context.SaveChangesAsync();
+
+
+                }
+
+                
+            }
+            var planLecturers = await context.PlanLecturers.ToListAsync();
+            return mapper.Map<IEnumerable<PlanLecturerDto>>(planLecturers);
+        }
+
     }
 }

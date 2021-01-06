@@ -15,7 +15,7 @@ namespace Plana.Web.Services
         Task<PlanLecturerDto> CreatePlanLecturer(PlanLecturerDto planLecturer);
         Task SoftDeletePlanLecturer(int id, int id2);
         Task<IEnumerable<ModuleRunDto>> GetModuleRunsForPlan(int id, int id2);
-        
 
+        //Task<IEnumerable<PlanLecturerDto>> AddLecturersToPlan(PlanDto plan, List<LecturerDto> lecturers);
     }
 }

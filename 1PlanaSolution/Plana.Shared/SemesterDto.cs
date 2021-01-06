@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Plana.Shared
+
 {
     public class SemesterDto 
     {
         public int SemesterId { get; set; }
-       public string Code { get; set; }
+        [Required(ErrorMessage = "the Title of Semester must be provided!")]
+        [MinLength(7)]
+        public string Code { get; set; }
         public DateTime Date { get; set; }
 
         //relationship

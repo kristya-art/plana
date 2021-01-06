@@ -112,6 +112,27 @@ namespace Plana.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
+
+        //[HttpGet]
+        //[Route("AddLecturersToPlan")]
+        //public async Task<ActionResult> AddLecturersToPlan(PlanDto plan, List<LecturerDto> lecturers) {
+        //    try
+        //    {
+        //        if (plan.Id == 0 || lecturers == null) { NotFound(); }
+               
+        //            return Ok(await _planLecturerService.AddLecturersToPlan(plan, lecturers));
+                
+        //    }
+        //    catch (Exception ex) 
+        //    {
+
+        //        _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+        //        return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+        //    }
+        
+        
+        //}
+        
     }
 }
 

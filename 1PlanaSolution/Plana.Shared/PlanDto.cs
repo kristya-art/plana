@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace Plana.Shared
 {
@@ -14,7 +14,8 @@ namespace Plana.Shared
         public bool IsFixed { get; set; }
 
         public bool IsModifyable { get; set; }
-
+        [Required(ErrorMessage="The Year must be provided")]
+        [MinLength(9)]
         public string Year { get; set; }
 
         public DateTime? ExpiredDate { get; set; }

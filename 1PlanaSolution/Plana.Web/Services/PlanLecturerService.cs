@@ -46,5 +46,10 @@ namespace Plana.Web.Services
         {
             await http.PutJsonAsync<PlanLecturerDto>("api/planLecturer", planLecturer); 
         }
+
+        //public async Task<IEnumerable<PlanLecturerDto>> AddLecturersToPlan(PlanDto plan, List<LecturerDto> lecturers)
+        //{
+        //    await http.GetJsonAsync<PlanLecturerDto[]>($"api/planLecturer/addLecturersToPlan");
+        //}
     }
 }

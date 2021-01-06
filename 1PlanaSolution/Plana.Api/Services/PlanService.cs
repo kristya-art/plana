@@ -35,15 +35,27 @@ namespace Plana.Api.Services
         public async Task<PlanDto> AddPlan(PlanDto planDto)
         {
             var plan = new Plan();
-            _mapper.Map(planDto, plan);
+            
+           _mapper.Map(planDto, plan);
             
             var result = await _context.Plans.AddAsync(plan);
+           
             await _context.SaveChangesAsync();
+            
+            //foreach (var l in _context.Lecturers)
+            //{
+            //    var PlanLecturer = new PlanLecturer() { PlanId = plan.Id, LecturerId = l.Id };
+            //    if (!_context.PlanLecturers.Contains(PlanLecturer))
+            //    {
+            //        plan.PlanLecturers.Add(PlanLecturer);
+            //    }
+            //}
+            //await _context.SaveChangesAsync();
 
             return _mapper.Map<PlanDto>(result.Entity);
         }
 
-      
+        
 
         public async Task<IEnumerable<PlanDto>> GetAllPlans()
         {

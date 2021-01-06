@@ -21,5 +21,7 @@ namespace Plana.Api.Services
 
         // TODO: Put in correct interface
         Task<IEnumerable<ModuleRunDto>> GetLecturerModuleRuns(int planId, int lecturerId);
+
+        public Task<IEnumerable<PlanLecturerDto>> AddLecturersToPlan(PlanDto plan, List<LecturerDto> lecturers);
     }
 }
