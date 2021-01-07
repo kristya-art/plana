@@ -4,6 +4,8 @@
 @*@using Plana.Models;*@
 @using Plana.Shared;
 @using Plana.Web.Pages.plan.study_director;
+@using Microsoft.Extensions.Logging
+@inject ILogger<EditPlan> Logger
 
 @inject IJSRuntime js
 
@@ -64,11 +66,11 @@ else
                     {
                         int local = mr.ModuleRunId;
                         <tr>@local</tr>
-                       
+
                         <tr>
                             @*<td>
-                                <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false,local))"><i class="fa fa-plus"></i></button>
-                            </td>*@
+                                    <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false,local))"><i class="fa fa-plus"></i></button>
+                                </td>*@
                             <td><input Id="SelectedId" @bind="mr.ModuleRunId" /></td>
                             <td>@sem.GetAbbreviation()</td>
 
@@ -105,7 +107,7 @@ else
                                                 @lm.Lecturer.SetToken() | @lm.Hours
                                                 <button class="btn" id="del" @onclick="@(e => LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId, lm.LecturerId))"><i class="fa fa-close"></i></button>
                                             </p>
-                                         }
+                                        }
 
                                         <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false,local))"><i class="fa fa-plus"></i></button>
 
@@ -128,9 +130,9 @@ else
                                     @if (mr.IsExceedingHours())
                                     {
                                         @*<div class="w3-panel w3-pale-red w3-border" >
-                                     <h3>Attention!</h3>
-                                     <p>The number of desired hours exceeds the norm</p>
-                                    </div>*@
+                                             <h3>Attention!</h3>
+                                             <p>The number of desired hours exceeds the norm</p>
+                                            </div>*@
                                         <i class="material-icons" style="font-size:24px">warning</i>
                                     }
                                 </td>
@@ -160,13 +162,13 @@ else
 
                         </tr>
 
-                        <MatDialog @bind-IsOpen="LdialogIsOpen" >
+                        <MatDialog @bind-IsOpen="LdialogIsOpen">
                             <MatDialogTitle>Add Professor</MatDialogTitle>
                             <MatDialogContent Style="width: 400px; height: 200px; right: 50px">
                                 <h3>@choosedModuleRun.ModuleRunId </h3>
                                 <h3>@mr.ModuleRunId | @mr.Module.Title </h3>
-                               <EditForm Model="@mr">
-                                  <select class="form-control" @bind="SelectedLecturer.Id">
+                                <EditForm Model="@mr">
+                                    <select class="form-control" @bind="SelectedLecturer.Id">
                                         @foreach (var lecturer in Lecturers)
                                         {
                                             <option value="@lecturer.Id">
@@ -175,7 +177,7 @@ else
                                         }
                                     </select>
                                 </EditForm>
-                                
+
                             </MatDialogContent>
                             <MatDialogActions>
                                 <button @onclick="@(e=>addLecturer(choosedModuleRun.ModuleRunId,SelectedLecturer.Id))"> Test</button>
@@ -371,6 +373,7 @@ else
 @code {
 
     #region variables
+    bool loadFailed;
     #endregion
 
 
@@ -437,7 +440,7 @@ else
 
     public ModuleRunDto choosedModuleRun = new ModuleRunDto();
     [Parameter]
-   public int moduleRunIdChoosed { get; set; }
+    public int moduleRunIdChoosed { get; set; }
 
     private async Task OpenLecturerDialog(bool isEditL, int choosedModuleRunId)
     {
@@ -448,9 +451,9 @@ else
     }
     private void okClickL()
     {
-       
+
         LdialogIsOpen = false;
-        
+
     }
     private void LCloseDialog()
     {
@@ -461,12 +464,22 @@ else
 
     async Task addLecturer(int moduleRunId, int lecturerId)
     {
-        LecturerModuleRunDto lecturerModuleRun = new LecturerModuleRunDto()
+        try
         {
-            LecturerId = lecturerId,
-            ModuleRunId = moduleRunId
-        };
-        lecturerModuleRun = await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRun);
+            LecturerModuleRunDto lecturerModuleRun = new LecturerModuleRunDto()
+            {
+                LecturerId = lecturerId,
+                ModuleRunId = moduleRunId
+            };
+            lecturerModuleRun = await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRun);
+        }
+        catch (Exception ex)
+        {
+            loadFailed = true;
+            Logger.LogWarning(ex, "The selected Lecturer is already addet to this module");
+
+        }
+
 
         LdialogIsOpen = false;
     }
@@ -544,8 +557,8 @@ else
 
     }
 
- #endregion
- #endregion
+    #endregion
+    #endregion
 }
 
 <style>
