@@ -1,6 +1,9 @@
 ﻿@page "/myplanL/{Id}/{Id2}"
-
 @page "/myplanL"
+@using Microsoft.Extensions.Logging
+
+@inject ILogger<MyPlanL> Logger
+
 @using Plana.Shared
 @inject IJSRuntime js
 @using MatBlazor;
@@ -12,7 +15,7 @@
     <form>
 
         <select class="form-control" @bind="SelectedPlan.Id">
-            
+
             @foreach (var plan in Plans)
             {
 
@@ -78,43 +81,44 @@ else
                     </thead>
 
                     <tbody>
-                    @if (MyModuleRuns != null) {
+                        @if (MyModuleRuns != null)
+                        {
 
-                      @foreach (var mr in MyModuleRuns)
-                      {
-                         <tr>
-                             <td>@mr.SemesterId</td>
-                             <td>@mr.Module.Code</td>
-                             <td>@mr.Module.Title</td>
-                             <td>@mr.Code</td>
-                             <td>@mr.Place</td>
-                             <td>@mr.Module.TotalHours</td>
-                             @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
-                              @foreach (var lmr in mr.LecturersMR)
-                              {
-                                 @if (lmr.Lecturer.Id == Lecturer.Id) {
-                                   <td><p>@lmr.Hours</p></td>
-                                   <td>
-                                       @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
-                                       <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
-                                       <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
-                                   </td>
-                                 }
-                              }
-                             <td>
+                            @foreach (var mr in MyModuleRuns)
+                            {
+                                <tr>
+                                    <td>@mr.SemesterId</td>
+                                    <td>@mr.Module.Code</td>
+                                    <td>@mr.Module.Title</td>
+                                    <td>@mr.Code</td>
+                                    <td>@mr.Place</td>
+                                    <td>@mr.Module.TotalHours</td>
+                                    @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
+                                    @foreach (var lmr in mr.LecturersMR)
+                                    {
+                                        @if (lmr.Lecturer.Id == Lecturer.Id)
+                                        {
+                                            <td><p>@lmr.Hours</p></td>
+                                            <td>
+                                                @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
+                                                <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
+                                                <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
+                                            </td>
+                                        }
+                                    }
+                                    <td>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    @foreach (var mrlg in mr.ModuleRunLecturerGroups)
+                                    {
+                                        <td>@mrlg.LecturerGroup.Title</td>
+                                    }
 
-                             </td>
-                             <td></td>
-                             <td></td>
-                             @foreach (var mrlg in mr.ModuleRunLecturerGroups)
-                             {
-                             <td>@mrlg.LecturerGroup.Title</td>
-                             }
+                                </tr>
+                            }
 
-                         </tr>
-                      }
-
-                    }
+                        }
                     </tbody>
                 </table>
             </div>
@@ -163,14 +167,14 @@ else
                         </tr>
 
                     </tbody>
-                  
+
                 </table>
             </div>
         </div>
     </div>
 }
 @*dialog with Module Run list*@
-<MatDialog @bind-IsOpen="dialogIsOpenMR" >
+<MatDialog @bind-IsOpen="dialogIsOpenMR">
     <MatDialogTitle>Add Plan</MatDialogTitle>
     <MatDialogContent Style="width: 1100px;right:50px">
         @if (Plan == null)
@@ -293,8 +297,8 @@ else
         <MatButton @onclick="@(e => SaveToMylist())">save</MatButton>
 
         @*<button type="submit" class="btn-btn-success">
-            Save
-        </button>*@
+                Save
+            </button>*@
     </MatDialogActions>
 </MatDialog>
 
@@ -351,7 +355,8 @@ else
         int.TryParse(Id, out int LecturerId);
         int.TryParse(Id2, out int PlanId);
 
-        if (LecturerId != 0 && PlanId != 0) {
+        if (LecturerId != 0 && PlanId != 0)
+        {
 
             PlanLecturer = await PlanLecturerService.GetPlanLecturer(int.Parse(Id), int.Parse(Id2));
 
@@ -412,7 +417,8 @@ else
         dialogIsOpenMR = true;
     }
 
-    private void okClick() {
+    private void okClick()
+    {
         dialogIsOpenMR = false;
 
     }
@@ -430,7 +436,7 @@ else
     //public async Task addToMyList(int RunId) {
     //    LecturerModuleRunDto lecturerModueleRun = new LecturerModuleRunDto()
     //    {
-    //       
+    //
 
     //    };
     //    await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModueleRun);
@@ -464,7 +470,7 @@ else
     //    }
 
     //}
-
+    bool loadFailed;
     public async Task SaveToMylist()
     {
         List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
@@ -479,26 +485,33 @@ else
             }
             //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
         }
-        //LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto();
-        foreach (var moduleRun in modulesToAdd)
+        try
         {
-            //if (moduleRun.isSelected == true)
-            //{
-            //    if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null)
-            //    {
-            LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
+            if (modulesToAdd != null)
             {
-                LecturerId = Lecturer.Id,
-                ModuleRunId = moduleRun.ModuleRunId
-            };
-            await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
+                foreach (var moduleRun in modulesToAdd)
+                {
+                    //if (moduleRun.isSelected == true)
+                    //{
+                    //    if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null)
+                    //    {
+                    LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
+                    {
+                        LecturerId = Lecturer.Id,
+                        ModuleRunId = moduleRun.ModuleRunId
+                    };
+                    await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
 
-
-
-            //    }
-
-            //}
+                }
+            }
         }
+        catch (Exception ex)
+        {
+
+            loadFailed = true;
+            Logger.LogWarning(ex, "The selected Modules are already belong to your plan");
+        }
+
 
     }
 
@@ -519,7 +532,7 @@ else
         width: 1200px;
         margin: 0 auto;
     }
-    
+
     .row {
         margin-left: -5px;
         margin-right: -5px;
