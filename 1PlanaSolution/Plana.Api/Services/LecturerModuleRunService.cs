@@ -77,6 +77,7 @@ namespace Plana.Api.Services
                 result.Hours = lecturerModuleRunDto.Hours;
                 result.DesiredHours = lecturerModuleRunDto.DesiredHours;
                 result.Notes = lecturerModuleRunDto.Notes;
+                result.IsRequested = lecturerModuleRunDto.IsRequested; 
                 await context.SaveChangesAsync();
 
                 return mapper.Map<LecturerModuleRunDto>(result);

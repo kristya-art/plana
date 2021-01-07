@@ -21,6 +21,7 @@ namespace Plana.Shared
         public double Hours { get; set; }
         public double DesiredHours { get; set; }
         public string Notes { get; set; }
+        public Boolean IsRequested { get; set; }
 
         
 

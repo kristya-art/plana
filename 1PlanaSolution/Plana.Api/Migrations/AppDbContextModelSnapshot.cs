@@ -267,6 +267,9 @@ namespace Plana.Api.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsRequested")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Lessons")
                         .HasColumnType("int");
 
@@ -387,6 +390,9 @@ namespace Plana.Api.Migrations
 
                     b.Property<int>("SemesterId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isSelected")
+                        .HasColumnType("bit");
 
                     b.HasKey("ModuleRunId");
 

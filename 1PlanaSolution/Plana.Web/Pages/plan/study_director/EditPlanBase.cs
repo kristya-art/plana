@@ -128,19 +128,6 @@ namespace Plana.Web.Pages.plan.study_director
             }
         }
 
-
-        //protected async Task UpdateMR()
-        //{
-        //    ModuleRun result = null;
-
-        //    if (ModuleRun.ModuleRunId != 0)
-        //    {
-
-        //        result = await ModuleRunService.UpdateModuleRun(ModuleRun);
-        //    }
-        //    else { result = await ModuleRunService.CreateModuleRun(ModuleRun); }
-        //}
-
         protected async Task HandleValidSubmit()
         {
             PlanDto result = null;
@@ -176,8 +163,7 @@ namespace Plana.Web.Pages.plan.study_director
             };
 
             await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRunDto);
-            //LecturerModuleRun
-            //await LecturerService.CreateLecturer(lecturer);
+            
         }
 
 

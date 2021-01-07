@@ -1,5 +1,5 @@
 ﻿@page "/myplanL/{Id}/{Id2}"
-@*@page "/myPlanL/{id}"*@
+
 @page "/myplanL"
 @using Plana.Shared
 @inject IJSRuntime js
@@ -38,7 +38,7 @@
 @*<Plana.Web.Pages.plan.navMenus.LCustomSelect />*@
 
 <div class="btn-group" style="font-size: 13px">
-    <button style="float: right;" @onclick="@(e=>OpenDialogMR(true))">add module</button>
+    <button style="float: right;" @onclick="@(e => OpenDialogMR(true))">add module</button>
     <button style="float: right;">add additional assignment</button>
     <button style="float: right;">show lecturer groups</button>
     <button style="float:left">show last year plan</button>
@@ -92,12 +92,12 @@ else
                              @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
                               @foreach (var lmr in mr.LecturersMR)
                               {
-                                 @if(lmr.Lecturer.Id == Lecturer.Id) { 
+                                 @if (lmr.Lecturer.Id == Lecturer.Id) {
                                    <td><p>@lmr.Hours</p></td>
                                    <td>
                                        @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
                                        <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
-                                       <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
+                                       <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
                                    </td>
                                  }
                               }
@@ -170,7 +170,7 @@ else
     </div>
 }
 @*dialog with Module Run list*@
-<MatDialog @bind-IsOpen="dialogIsOpenMR">
+<MatDialog @bind-IsOpen="dialogIsOpenMR" >
     <MatDialogTitle>Add Plan</MatDialogTitle>
     <MatDialogContent Style="width: 1100px;right:50px">
         @if (Plan == null)
@@ -192,7 +192,7 @@ else
                         <th>Add group</th>
                         <th>My hours</th>
                         <th>Actions</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -207,37 +207,49 @@ else
                             @if (sem.ModuleRuns == null) { return; }
                             @foreach (var mr in sem.ModuleRuns)
                             {
-                              
+
                                 <tr>
                                     <td>@sem.GetAbbreviation()</td>
 
-                                    <td contenteditable='true'>@mr.Module.Code</td>
+                                    <td>@mr.Module.Code</td>
                                     <td>@mr.Module.Title</td>
-                                    <td>@mr.ModuleGroup</td>
-                                    <td contenteditable="true">@mr.Place</td>
-                                    <td contenteditable="true">@mr.Module.TotalHours</td>
+                                    @*<td>@mr.ModuleGroup</td>*@
+                                    <td>
+                                        <EditForm Model="@mr">
+
+
+                                            @*<button class="btn" id="add" @onclick="(e=>addToMyList(SelectedRun.ModuleRunId))"><i class="fa fa-plus"></i></button>*@
+                                            <MatCheckbox @bind-Value="mr.isSelected"></MatCheckbox>
+
+                                            @*<button class="btn btn-primary" type="submit">Submit</button>*@
+                                            <MatButton @onclick="@(e => ModuleRunService.UpdateModuleRun(mr))">save</MatButton>
+
+                                        </EditForm>
+                                    </td>
+                                    <td>@mr.Place</td>
+                                    <td>@mr.Module.TotalHours</td>
                                     <td>
 
                                         @*@if (mr.ModuleRunLecturerGroups != null)
-                                        {
-
-                                            @foreach (var lg in mr.ModuleRunLecturerGroups)
                                             {
-                                                <p style="white-space:nowrap;">
-                                                    @lg.LecturerGroup.Title
-                                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
-                                                </p>
-                                            }
-                                        }*@
+
+                                                @foreach (var lg in mr.ModuleRunLecturerGroups)
+                                                {
+                                                    <p style="white-space:nowrap;">
+                                                        @lg.LecturerGroup.Title
+                                                        <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                                    </p>
+                                                }
+                                            }*@
                                         <button class="btn" id="add"><i class="fa fa-plus"></i></button>
                                     </td>
 
                                     @*@if (mr.LecturersMR != null)
-                                    {*@
+                                        {*@
 
-                                        <td style="white-space:nowrap;">
+                                    <td style="white-space:nowrap;">
 
-                                            @*<div id="scroll">
+                                        @*<div id="scroll">
                                                 @foreach (var lm in mr.LecturersMR)
                                                 {
                                                     <p style="white-space:nowrap;">
@@ -249,24 +261,24 @@ else
 
                                             </div>*@
 
-                                        </td>
-                                        <td contenteditable='true'>
-                                            @*@foreach (var lm in mr.LecturersMR)
+                                    </td>
+                                    <td contenteditable='true'>
+                                        @*@foreach (var lm in mr.LecturersMR)
                                             {
 
                                                 <p contenteditable='true'> @lm.Hours</p>
 
                                             }*@
-                                        </td>
+                                    </td>
                                     }
                                     <td style="white-space:nowrap;">
-                                        
-                                        <button class="btn" id="save-btn">save</button>
-                                         <button class="btn" id="cancel-btn">cancel</button>
+
+                                        <button class="btn" id="save-btn" @onclick="@(e => SaveToMylist())">save</button>
+                                        <button class="btn" id="cancel-btn">cancel</button>
                                         @*<MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>*@
 
                                     </td>
-                                    
+
                                 </tr>
                             }
                         }
@@ -277,9 +289,13 @@ else
         }
 
     </MatDialogContent>
-    <button type="submit" class="btn-btn-success">
-        Save
-    </button>
+    <MatDialogActions>
+        <MatButton @onclick="@(e => SaveToMylist())">save</MatButton>
+
+        @*<button type="submit" class="btn-btn-success">
+            Save
+        </button>*@
+    </MatDialogActions>
 </MatDialog>
 
 @code {
@@ -312,7 +328,7 @@ else
     [Inject]
     public ILecturerService LecturerService { get; set; }
     [Inject]
-    public ILecturerModuleRunService LecturerModuleRunService {get;set;}
+    public ILecturerModuleRunService LecturerModuleRunService { get; set; }
 
     public LecturerDto Lecturer { get; set; } = new LecturerDto();
 
@@ -406,9 +422,87 @@ else
         dialogIsOpenMR = false;
     }
     #endregion
+    #region multiselection
+    //[Parameter]
+    //public MultiSelectList Items {get;set;} = null!;
+    public ModuleRunDto SelectedRun { get; set; } = new ModuleRunDto();
+
+    //public async Task addToMyList(int RunId) {
+    //    LecturerModuleRunDto lecturerModueleRun = new LecturerModuleRunDto()
+    //    {
+    //       
+
+    //    };
+    //    await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModueleRun);
+
+    //}
+    //public async Task SaveToMylist()
+    //{
+    //    List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
+    //    foreach (var sem in Semesters) {
+    //        foreach (var mr in sem.ModuleRuns)
+    //        {
+
+    //            modulesToAdd.Add(mr);
+    //        }
+    //        //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
+    //    }
+    //    //LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto();
+    //    foreach (var moduleRun in modulesToAdd) {
+    //        if (moduleRun.isSelected == true) {
+    //            if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null) {
+    //                LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto() {
+    //                    LecturerId = Lecturer.Id,
+    //                    ModuleRunId = moduleRun.ModuleRunId };
+    //                await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
 
 
 
+    //            }
+
+    //        }
+    //    }
+
+    //}
+
+    public async Task SaveToMylist()
+    {
+        List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
+        foreach (var sem in Semesters)
+        {
+            foreach (var mr in sem.ModuleRuns)
+            {
+                if (mr.isSelected == true && !MyModuleRuns.Contains(mr))
+                {
+                    modulesToAdd.Add(mr);
+                }
+            }
+            //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
+        }
+        //LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto();
+        foreach (var moduleRun in modulesToAdd)
+        {
+            //if (moduleRun.isSelected == true)
+            //{
+            //    if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null)
+            //    {
+            LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
+            {
+                LecturerId = Lecturer.Id,
+                ModuleRunId = moduleRun.ModuleRunId
+            };
+            await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
+
+
+
+            //    }
+
+            //}
+        }
+
+    }
+
+    #endregion
 }
 <style>
     /*   .row {
@@ -425,7 +519,7 @@ else
         width: 1200px;
         margin: 0 auto;
     }
-
+    
     .row {
         margin-left: -5px;
         margin-right: -5px;
@@ -433,33 +527,69 @@ else
 
     .column {
         float: left;
-        width: 30%;
-        padding: 5px;
+    width: 30%;
+    padding: 5px;
     }
 
     .columnMiddle {
         float: left;
-        width: 40%;
-        padding: 5px;
+    width: 40%;
+    padding: 5px;
     }
 
     /* Clearfix (clear floats) */
     .row::after {
-        content: "";
-        clear: both;
-        display: table;
+    content: "";
+    clear: both;
+    display: table;
     }
 
     .table {
         border-collapse: collapse;
         border-spacing: 0;
-        /* width: 400px;*/
-        border: 1px solid #ddd;
+    /* width: 400px;*/
+    border: 1px solid #ddd;
     }
 
     .new {
-        float: right;
+         float: right;
         margin-top: -55px;
         position: sticky;
     }
+    [id="heart"] {
+    position: absolute;
+    left: -100vw;
+    }
+
+    [for="heart"] {
+    color: #aab8c2;
+  cursor: pointer;
+        font-size: 6em;
+        align-self: center;
+    transition: color 0.2s ease-in-out;
+    }
+
+    [for="heart"]:hover {
+    color: grey;
+    }
+
+    [for="heart"]::selection {
+    color: none;
+    background: transparent;
+    }
+
+    [for="heart"]::moz-selection {
+    color: none;
+    background: transparent;
+    }
+
+    [id="heart"]:checked + label {
+    color: #e2264d;
+  will-change: font-size;
+    animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+    }
+
+
+@*@keyframes heart {0%, 17.5% {font-size: 0;}}*@
+
 </style>

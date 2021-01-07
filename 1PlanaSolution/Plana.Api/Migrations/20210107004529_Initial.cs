@@ -367,6 +367,7 @@ namespace Plana.Api.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Place = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Editable = table.Column<bool>(type: "bit", nullable: false),
+                    isSelected = table.Column<bool>(type: "bit", nullable: false),
                     ModuleId = table.Column<int>(type: "int", nullable: false),
                     SemesterId = table.Column<int>(type: "int", nullable: false),
                     ModuleGroupId = table.Column<int>(type: "int", nullable: true),
@@ -406,6 +407,7 @@ namespace Plana.Api.Migrations
                     Hours = table.Column<double>(type: "float", nullable: false),
                     DesiredHours = table.Column<double>(type: "float", nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsRequested = table.Column<bool>(type: "bit", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },

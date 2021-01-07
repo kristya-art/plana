@@ -20,6 +20,7 @@ namespace Plana.Shared
         public string Place { get; set; }
         public bool Editable { get; set; }
         
+        public bool isSelected { get; set; }
         public virtual ICollection<LecturerModuleRunDto> LecturersMR { get; set; }
 
         public int ModuleId { get; set; } // Foreign key many-to-one

@@ -19,6 +19,7 @@ namespace Plana.Models
         public double Hours { get; set; }
         public double DesiredHours { get; set; }
         public string Notes { get; set; }
+        public Boolean IsRequested { get; set; }
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; }
     }
