@@ -31,10 +31,10 @@ namespace Plana.Web.Services
             return await httpClient.GetJsonAsync<ModuleRunDto[]>("api/modulerun");
         }
 
-        public  Task SoftDeleteModuleRun(int id)
+        public async Task SoftDeleteModuleRun(int id)
         {
-            throw new NotImplementedException();
-           // await httpClient.DeleteAsync($"api/modulerun/{id}");
+         await httpClient.DeleteAsync($"api/moduleRun/{id}");
+            
 
         }
 

@@ -179,7 +179,26 @@ namespace Plana.Api.Controllers
             }
 
         }
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<bool>> DeleteModuleRun(int id)
+        {
+            try
+            {
 
+                var MRForDelete = await _moduleRunService.GetModuleRun(id);
+                if (MRForDelete == null)
+                {
+                    return NotFound();
+
+                }
+                return await _moduleRunService.DeleteModuleRun(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+            }
+        }
 
     }
 }
