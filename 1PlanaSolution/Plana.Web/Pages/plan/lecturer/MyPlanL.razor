@@ -305,20 +305,20 @@ else
 @code {
 
 
-    [Inject]
-    NavigationManager NavigationMan { get; set; }
+        [Inject]
+        NavigationManager NavigationMan { get; set; }
 
-    [Parameter]
-    public string Id { get; set; }
+        [Parameter]
+        public string Id { get; set; }
 
-    [Parameter]
-    public string Id2 { get; set; }
+        [Parameter]
+        public string Id2 { get; set; }
 
-    [Inject]
-    public ISemesterService SemesterService { get; set; }
+        [Inject]
+        public ISemesterService SemesterService { get; set; }
 
-    [Inject]
-    public IPlanLecturerService PlanLecturerService { get; set; }
+        [Inject]
+        public IPlanLecturerService PlanLecturerService { get; set; }
 
     public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
 
@@ -471,26 +471,78 @@ else
 
     //}
     bool loadFailed;
+
+    //public async Task SaveToMylist()
+    //{
+    //    List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
+    //    foreach (var sem in Semesters)
+    //    {
+    //        foreach (var mr in sem.ModuleRuns)
+    //        {
+    //            if (mr.isSelected == true && !MyModuleRuns.Contains(mr))
+    //            {
+    //                modulesToAdd.Add(mr);
+    //            }
+    //        }
+    //        //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
+    //    }
+    //    try
+    //    {
+    //        if (modulesToAdd != null)
+    //        {
+    //            foreach (var moduleRun in modulesToAdd)
+    //            {
+    //                //if (moduleRun.isSelected == true)
+    //                //{
+    //                //    if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null)
+    //                //    {
+    //                LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
+    //                {
+    //                    LecturerId = Lecturer.Id,
+    //                    ModuleRunId = moduleRun.ModuleRunId
+    //                };
+    //                await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
+
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+
+    //        loadFailed = true;
+    //        Logger.LogWarning(ex, "The selected Modules are already belong to your plan");
+    //    }
+
+
+    //}
     public async Task SaveToMylist()
     {
         List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
-        foreach (var sem in Semesters)
-        {
-            foreach (var mr in sem.ModuleRuns)
-            {
-                if (mr.isSelected == true && !MyModuleRuns.Contains(mr))
-                {
-                    modulesToAdd.Add(mr);
-                }
-            }
-            //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
-        }
+        ModuleRunDto selectedModuleRun = new ModuleRunDto();
         try
         {
+            foreach (var sem in Semesters)
+            {
+                foreach (var mr in sem.ModuleRuns)
+                {
+                    if (mr.isSelected == true )
+                    {
+                        selectedModuleRun = mr;
+                        if (!MyModuleRuns.Contains(selectedModuleRun))
+                        {
+                            modulesToAdd.Add(selectedModuleRun);
+                        }
+                    }
+                }
+                //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
+            }
+
             if (modulesToAdd != null)
             {
                 foreach (var moduleRun in modulesToAdd)
                 {
+                    // if (MyModuleRuns.Contains(moduleRun)) { return; }
+
                     //if (moduleRun.isSelected == true)
                     //{
                     //    if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null)
@@ -504,6 +556,7 @@ else
 
                 }
             }
+
         }
         catch (Exception ex)
         {
@@ -515,6 +568,9 @@ else
 
     }
 
+    #endregion
+    #region
+    public bool isDesiredHoursVisible { get; set; } = true;
     #endregion
 }
 <style>
