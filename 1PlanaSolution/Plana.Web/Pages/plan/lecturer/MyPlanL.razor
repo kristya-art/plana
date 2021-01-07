@@ -305,20 +305,20 @@ else
 @code {
 
 
-        [Inject]
-        NavigationManager NavigationMan { get; set; }
+    [Inject]
+    NavigationManager NavigationMan { get; set; }
 
-        [Parameter]
-        public string Id { get; set; }
+    [Parameter]
+    public string Id { get; set; }
 
-        [Parameter]
-        public string Id2 { get; set; }
+    [Parameter]
+    public string Id2 { get; set; }
 
-        [Inject]
-        public ISemesterService SemesterService { get; set; }
+    [Inject]
+    public ISemesterService SemesterService { get; set; }
 
-        [Inject]
-        public IPlanLecturerService PlanLecturerService { get; set; }
+    [Inject]
+    public IPlanLecturerService PlanLecturerService { get; set; }
 
     public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
 
@@ -340,6 +340,7 @@ else
 
     public List<ModuleRunDto> MyModuleRuns { get; set; } = new List<ModuleRunDto>();
     public List<ModuleRunDto> AllModuleRuns { get; set; } = new List<ModuleRunDto>();
+    public List<ModuleRunDto> OtherModuleRuns { get; set; } = new List<ModuleRunDto>();
 
     public SemesterDto Semester { get; set; } = new SemesterDto();
 
@@ -373,7 +374,7 @@ else
 
 
             Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
-            //    LecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun()
+
 
 
 
@@ -429,92 +430,13 @@ else
     }
     #endregion
     #region multiselection
-    //[Parameter]
-    //public MultiSelectList Items {get;set;} = null!;
+
     public ModuleRunDto SelectedRun { get; set; } = new ModuleRunDto();
 
-    //public async Task addToMyList(int RunId) {
-    //    LecturerModuleRunDto lecturerModueleRun = new LecturerModuleRunDto()
-    //    {
-    //
 
-    //    };
-    //    await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModueleRun);
-
-    //}
-    //public async Task SaveToMylist()
-    //{
-    //    List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
-    //    foreach (var sem in Semesters) {
-    //        foreach (var mr in sem.ModuleRuns)
-    //        {
-
-    //            modulesToAdd.Add(mr);
-    //        }
-    //        //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
-    //    }
-    //    //LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto();
-    //    foreach (var moduleRun in modulesToAdd) {
-    //        if (moduleRun.isSelected == true) {
-    //            if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null) {
-    //                LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto() {
-    //                    LecturerId = Lecturer.Id,
-    //                    ModuleRunId = moduleRun.ModuleRunId };
-    //                await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
-
-
-
-    //            }
-
-    //        }
-    //    }
-
-    //}
     bool loadFailed;
 
-    //public async Task SaveToMylist()
-    //{
-    //    List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
-    //    foreach (var sem in Semesters)
-    //    {
-    //        foreach (var mr in sem.ModuleRuns)
-    //        {
-    //            if (mr.isSelected == true && !MyModuleRuns.Contains(mr))
-    //            {
-    //                modulesToAdd.Add(mr);
-    //            }
-    //        }
-    //        //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
-    //    }
-    //    try
-    //    {
-    //        if (modulesToAdd != null)
-    //        {
-    //            foreach (var moduleRun in modulesToAdd)
-    //            {
-    //                //if (moduleRun.isSelected == true)
-    //                //{
-    //                //    if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null)
-    //                //    {
-    //                LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
-    //                {
-    //                    LecturerId = Lecturer.Id,
-    //                    ModuleRunId = moduleRun.ModuleRunId
-    //                };
-    //                await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
 
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-
-    //        loadFailed = true;
-    //        Logger.LogWarning(ex, "The selected Modules are already belong to your plan");
-    //    }
-
-
-    //}
     public async Task SaveToMylist()
     {
         List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
@@ -551,8 +473,10 @@ else
                     {
                         LecturerId = Lecturer.Id,
                         ModuleRunId = moduleRun.ModuleRunId
+
                     };
                     await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
+
 
                 }
             }

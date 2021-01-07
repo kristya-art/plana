@@ -27,6 +27,16 @@ function SetButtonsVisible() {
         $(this).siblings('#delete-btn,#cancel-btn').hide();
         $(this).siblings('#edit-btn').show();
     });
+    $('#cancel-btn').click(function () {
+        $(this).hide();
+        $(this).siblings('#delete-btn,#save-btn').hide();
+        $(this).siblings('#edit-btn').show();
+    });
+    $('#delete-btn').click(function () {
+        $(this).hide();
+        $(this).siblings('#save-btn,#cancel-btn').hide();
+        $(this).siblings('#edit-btn').show();
+    });
 }
 
 

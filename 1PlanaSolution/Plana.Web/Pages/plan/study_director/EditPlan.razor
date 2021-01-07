@@ -140,7 +140,7 @@ else
                 <MatButton Raised="true" @onclick="@(e => OpenDialogM(true))" Icon="edit" title="Edit ModuleRun"></MatButton>
 
                 @*dialog to update Module Run*@
-                <MatDialog @bind-IsOpen="dialogIsOpenM">
+                <MatDialog @bind-IsOpen="dialogIsOpenM" @bind-Value="mr.ModuleRunId">
                     <MatDialogTitle>Add / Edit Module</MatDialogTitle>
                     <MatDialogContent>
                         <MatTextField Label="Module Title" @bind-Value="@mr.Module.Title"></MatTextField>
@@ -404,6 +404,7 @@ else
     {
         await js.InvokeVoidAsync("renderjQueryComponents");
         base.OnAfterRender(firstRender);
+        await js.InvokeVoidAsync("SetButtonsVisible");
 
     }
 
