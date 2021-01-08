@@ -147,14 +147,16 @@ else
                                 <button class="btn" id="edit-btn">edit</button>
                                 <button class="btn" id="delete-btn" @onclick="@(e=>ModuleRunService.SoftDeleteModuleRun(mr.ModuleRunId))">delete</button>
                                 <button class="btn" id="cancel-btn">cancel</button>
-                                <MatButton Raised="true" @onclick="@(e => OpenDialogM(true))" Icon="edit" title="Edit ModuleRun"></MatButton>
+                                <MatButton Raised="true" @onclick="@(e => OpenDialogM(true,local))" Icon="edit" title="Edit ModuleRun"></MatButton>
 
                                 @*dialog to update Module Run*@
-                                <MatDialog @bind-IsOpen="dialogIsOpenM" @bind-Value="mr.ModuleRunId">
+                                <MatDialog @bind-IsOpen="dialogIsOpenM" @bind-Value="@choosedModuleRun.ModuleRunId">
                                     <MatDialogTitle>Add / Edit Module</MatDialogTitle>
                                     <MatDialogContent>
-                                        <MatTextField Label="Module Title" @bind-Value="@mr.Module.Title"></MatTextField>
-                                        <MatTextField Label="Place" @bind-Value="@mr.Place"></MatTextField>
+                                        <h3>@choosedModuleRun.ModuleRunId</h3>
+                                        @*<MatTextField Label="Module Title" @bind-Value="@choosedModuleRun.Module.Title"></MatTextField>*@
+                                        <MatTextField Label="Place" @bind-Value="@choosedModuleRun.Place"></MatTextField>
+                                        <MatTextField Label="CodeGroup" @bind-Value="@choosedModuleRun.Code"></MatTextField>
                                     </MatDialogContent>
                                     <MatDialogActions>
                                         <MatButton OnClick="okClickM">Add</MatButton>
@@ -524,8 +526,13 @@ else
     #endregion
 
     #region Dialog Box Methods
-    private void OpenDialogM(bool isEditM)
+    private async Task OpenDialogM(bool isEditM, int choosedModuleRunId)
     {
+        moduleRunIdChoosed = choosedModuleRunId;
+        choosedModuleRun = await moduleRunService.GetModuleRun(moduleRunIdChoosed);
+        
+
+
         _isEditM = isEditM;
         dialogIsOpenM = true;
     }
@@ -546,7 +553,7 @@ else
         //    moduleRun = await ModuleRunService.CreateModuleRun(moduleRun);
         //}
 
-        await ModuleRunService.UpdateModuleRun(moduleRun);
+        await ModuleRunService.UpdateModuleRun(choosedModuleRun);
 
     }
     async Task addModuleRun()
