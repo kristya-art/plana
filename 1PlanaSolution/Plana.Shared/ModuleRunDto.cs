@@ -50,6 +50,28 @@ namespace Plana.Shared
             }
             return false;
         }
+        public double TotalSetHours{ get; set; } = 0.0;
+        public double GetTotalSetHours()
+        {
+            TotalSetHours = 0.0;
+            foreach (var l in LecturersMR)
+            {
+
+                TotalSetHours += l.Hours;
+
+            }
+            return TotalSetHours;
+        }
+
+        public bool IsExceedingSetHours()
+        {
+           TotalSetHours = GetTotalSetHours();
+            if (TotalSetHours > Module.TotalHours)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }

@@ -119,6 +119,11 @@ else
                                         <MatTextField @bind-Value="lm.Hours" style=" height: 20px;"></MatTextField>
                                         <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
                                     }
+                                    @if (mr.IsExceedingSetHours())
+                                    {
+                                     
+                                        <i class="material-icons" style="font-size:24px">warning</i>
+                                    }
                                 </td>
                                 <td>
                                     @foreach (var lm in mr.LecturersMR)
