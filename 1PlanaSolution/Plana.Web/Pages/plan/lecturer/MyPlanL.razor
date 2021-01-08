@@ -67,7 +67,7 @@ else
 
                             <th width="2%">Semester</th>
                             <th>Module</th>
-                            <th>Module Title</th>
+                            @*<th>Module Title</th>*@
                             <th>Group</th>
                             <th>Place</th>
                             <th>Module Total Hours</th>
@@ -86,36 +86,49 @@ else
 
                             @foreach (var mr in MyModuleRuns)
                             {
-                                <tr>
-                                    <td>@mr.SemesterId</td>
-                                    <td>@mr.Module.Code</td>
-                                    <td>@mr.Module.Title</td>
-                                    <td>@mr.Code</td>
-                                    <td>@mr.Place</td>
-                                    <td>@mr.Module.TotalHours</td>
-                                    @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
-                                    @foreach (var lmr in mr.LecturersMR)
-                                    {
-                                        @if (lmr.Lecturer.Id == Lecturer.Id)
-                                        {
-                                            <td><p>@lmr.Hours</p></td>
-                                            <td>
-                                                @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
-                                                <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
-                                                <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
-                                            </td>
-                                        }
-                                    }
-                                    <td>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    @foreach (var mrlg in mr.ModuleRunLecturerGroups)
-                                    {
-                                        <td>@mrlg.LecturerGroup.Title</td>
-                                    }
+                        <tr>
+                            <td>@mr.SemesterId</td>
+                            @*<td width="40px">@mr.Module.Code</td>*@
+                        <td style="white-space:nowrap;">
+                            (@mr.Module.Code) @mr.Module.Title 
+                            @foreach (var lmr1 in mr.LecturersMR)
+                            {
 
-                                </tr>
+                                @if (lmr1.IsRequested == true)
+                                {
+                                    @request
+                                    @*<h6 style="color:mediumvioletred">| R</h6>*@
+
+                                }
+
+                            }
+                        </td>                         
+                            <td>@mr.Code</td>
+                            <td>@mr.Place</td>
+                            <td>@mr.Module.TotalHours</td>
+                            @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
+                            @foreach (var lmr in mr.LecturersMR)
+                            {
+                                @if (lmr.Lecturer.Id == Lecturer.Id)
+                                {
+                                    <td><p>@lmr.Hours</p></td>
+                                    <td>
+                                        @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
+                                        <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
+                                        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
+                                    </td>
+                                }
+                            }
+                            <td>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            @foreach (var mrlg in mr.ModuleRunLecturerGroups)
+                            {
+                                <td>@mrlg.LecturerGroup.Title</td>
+                            }
+
+                        </tr>
                             }
 
                         }
@@ -303,7 +316,8 @@ else
 </MatDialog>
 
 @code {
-
+    string request { get; set; } = " | R";
+    
 
     [Inject]
     NavigationManager NavigationMan { get; set; }
@@ -475,6 +489,7 @@ else
                         ModuleRunId = moduleRun.ModuleRunId
 
                     };
+                    newLecturerModuleRun.IsRequested = true;
                     await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
 
 
@@ -498,6 +513,7 @@ else
     #endregion
 }
 <style>
+    
     /*   .row {
                     margin-left: -5px;
                     margin-right: -5px;
@@ -508,6 +524,9 @@ else
                     width: 30%;
                     padding: 5px;
                 }*/
+    .table {
+       
+    }
     #table_container {
         width: 1200px;
         margin: 0 auto;

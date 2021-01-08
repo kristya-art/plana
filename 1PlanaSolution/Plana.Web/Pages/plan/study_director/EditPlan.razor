@@ -103,10 +103,13 @@ else
                                         @foreach (var lm in mr.LecturersMR)
                                         {
 
-                                            <p style="white-space:nowrap;">
-                                                @lm.Lecturer.SetToken() | @lm.Hours
-                                                <button class="btn" id="del" @onclick="@(e => LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId, lm.LecturerId))"><i class="fa fa-close"></i></button>
-                                            </p>
+                                        <p style="white-space:nowrap;">
+                                            @lm.Lecturer.SetToken() |  @if (lm.IsRequested == true)
+                                            {
+                                                @request
+                                             }
+                                            <button class="btn" id="del" @onclick="@(e => LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId, lm.LecturerId))"><i class="fa fa-close"></i></button>
+                                        </p>
                                         }
 
                                         <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false,local))"><i class="fa fa-plus"></i></button>
@@ -117,7 +120,7 @@ else
                                     @foreach (var lm in mr.LecturersMR)
                                     {
                                         <MatTextField @bind-Value="lm.Hours" style=" height: 20px;"></MatTextField>
-                                        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
+                                        <MatButton type="submit" name="HandleValidSubmit"  @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))" Style="width:20px;height:20px">OK</MatButton>
                                     }
                                     @if (mr.IsExceedingSetHours())
                                     {
@@ -289,8 +292,8 @@ else
                                     <td contenteditable='true'>
                                         @foreach (var lm in mr.LecturersMR)
                                         {
-                                            <MatTextField @bind-Value="lm.Hours" style=" height: 20px;"></MatTextField>
-                                            <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
+                                            <MatTextField @bind-Value="lm.Hours" style=" height: 25px;"></MatTextField> <button class="btn" id="save-btn">save</button>
+                                            <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">save</MatButton>
                                         }
                                         @if (mr.IsExceedingSetHours())
                                         {
@@ -434,6 +437,7 @@ else
 @code {
 
     #region variables
+    string request { get; set; } = "R";
     bool loadFailed;
     #endregion
 
@@ -584,7 +588,7 @@ else
     {
         moduleRunIdChoosed = choosedModuleRunId;
         choosedModuleRun = await moduleRunService.GetModuleRun(moduleRunIdChoosed);
-        
+
 
 
         _isEditM = isEditM;
