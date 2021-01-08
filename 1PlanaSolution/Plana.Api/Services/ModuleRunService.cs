@@ -158,7 +158,9 @@ namespace Plana.Api.Services
             {
                 moduleRun.IsDeleted = true;
                 moduleRun.DeletedAt = DateTime.Now;
-
+                foreach (var lm in moduleRun.LecturersMR) {
+                    _context.LecturersModuleRuns.Remove(lm);
+                }
                 await _context.SaveChangesAsync();
 
                 return true;
