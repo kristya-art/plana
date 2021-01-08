@@ -14,21 +14,15 @@
 <div class="selectYear">
     <form>
 
-        <select class="form-control" @bind="SelectedPlan.Id">
+        <select class="form-control" @bind="SelectedPlanId">
 
             @foreach (var plan in Plans)
             {
-
-                <option value="@plan.Id">
-                    @plan.Year
-                </option>
-
+              <option value="@plan.Id"> @plan.Year</option>
             }
         </select>
         <div class="btn-group">
-            <button @onclick="NavigateToMyPlan">
-                My Plan
-            </button>
+            <button @onclick="NavigateToMyPlan"> My Plan</button>
         </div>
     </form>
 </div>
@@ -317,7 +311,7 @@ else
 
 @code {
     string request { get; set; } = " | R";
-    
+
 
     [Inject]
     NavigationManager NavigationMan { get; set; }
@@ -383,7 +377,7 @@ else
             AutumnSemester = Plan.AutumnSemester;
             SpringSemester = Plan.SpringSemester;
             Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
-
+            SelectedPlanId = Plan.Id;
 
 
 
@@ -403,7 +397,7 @@ else
     public PlanDto SelectedPlan { get; set; } = new PlanDto();
 
 
-
+    public int? SelectedPlanId { get; set; }
 
 
 
@@ -414,7 +408,7 @@ else
         //{
 
         string PlanId = Plan.Id.ToString();
-        NavigationMan.NavigateTo($"/myplanL/{SelectedPlan.Id}/{Lecturer.Id}", true);
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
 
     }
 

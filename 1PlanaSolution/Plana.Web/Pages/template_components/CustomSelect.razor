@@ -5,29 +5,24 @@
 { return; }
 <div class="selectYear">
     <form>
-        <select class="form-control" @bind="SelectedPlan.Id">
+        <select class="form-control" @bind="SelectedPlanId">
 
             @foreach (var plan in Plans)
             {
-                <option value="@plan.Id">
-                    @plan.Year
-                </option>
+                <option value="@plan.Id">@plan.Year</option>
             }
         </select>
         <div class="btn-group">
             <button @onclick="NavigateToModulesPlanPage">
                 show plan
-                @*<a href="@($"/editplan/{SelectedPlan.Id}")">show plan</a>*@
+                
 
             </button>
-            @*<button>show last year plan</button>*@
+           
         </div>
     </form>
 
-    @*<MatFAB Icon="@MatIconNames.Add" Label="@SelectedPlan.Year">
-
-            <a href="@($"/editplan/{SelectedPlan.Id}")">show</a>
-        </MatFAB>*@
+    
 </div>
 
 
@@ -38,28 +33,26 @@
         [Inject]
         public IPlanService PlanService { get; set; }
         [Parameter]
-        public PlanDto Plan { get; set; } = new PlanDto();
-        [Parameter]
-        public PlanDto SelectedPlan { get; set; } = new PlanDto();
-        //public Plan SelectePlanForShow { get; set; } = new Plan();
+        public PlanDto Plan { get; set; }
+
         public List<PlanDto> Plans { get; set; }
 
-
-
-        public string Id { get; set; }
+        public int? SelectedPlanId { get; set; }
+        
+       
 
         protected async override Task OnInitializedAsync()
         {
-
-
+          
             Plans = (await PlanService.GetPlans()).ToList();
-
+            SelectedPlanId = Plans.FirstOrDefault()?.Id; 
         }
         //#region method
         public void NavigateToModulesPlanPage()
         {
-            string Id = Plan.Id.ToString();
-            NavManager.NavigateTo($"/editplan/{SelectedPlan.Id}", true);
+            
+            NavManager.NavigateTo($"/editplan/{SelectedPlanId}", true);
+          
         }
 
         //#endregion

@@ -13,6 +13,8 @@ namespace Plana.Web.Pages.plan.study_director
 {
     public class EditPlanBase : ComponentBase
     {
+        [Inject]
+        public NavigationManager NavManager { get; set; }
         [CascadingParameter]
         public Task<AuthenticationState> authenticationStateTask { get; set; }
         [Inject]
@@ -61,8 +63,8 @@ namespace Plana.Web.Pages.plan.study_director
         public string Id { get; set; }
        public string SemesterId { get; set; }
         public string ModuleId { get; set;}
-       
 
+        public int? SelectedPlanId { get; set; }
         
        
         /// <summary>
@@ -90,6 +92,7 @@ namespace Plana.Web.Pages.plan.study_director
                 SemesterId = Semester.SemesterId.ToString();
                 ModuleId = Module.ModuleId.ToString();
                 Lmr = new LecturerModuleRunDto();
+                SelectedPlanId = Plan.Id;
             }
 
             else
@@ -154,16 +157,22 @@ namespace Plana.Web.Pages.plan.study_director
 
         }
 
-        
-        protected async Task AddLecturer(int ModuleRunId, int LecturerId) {
-            LecturerModuleRunDto lecturerModuleRunDto = new LecturerModuleRunDto
-            {
-                LecturerId = LecturerId,
-                ModuleRunId = ModuleRunId
-            };
 
-            await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRunDto);
-            
+        //protected async Task AddLecturer(int ModuleRunId, int LecturerId) {
+        //    LecturerModuleRunDto lecturerModuleRunDto = new LecturerModuleRunDto
+        //    {
+        //        LecturerId = LecturerId,
+        //        ModuleRunId = ModuleRunId
+        //    };
+
+        //    await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRunDto);
+
+        //}
+        public void NavigateToModulesPlanPage()
+        {
+
+            NavManager.NavigateTo($"/editplan/{SelectedPlanId}", true);
+
         }
 
 
