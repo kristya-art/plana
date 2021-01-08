@@ -67,16 +67,16 @@ namespace Plana.Api.Controllers
                     "Error retrieving data from database");
             }
         }
-        
+
         /// Example of multiple parameters
         ///   [HttpGet("empId={empId}&startDate={startDate}&endDate={endDate}")]
         ///    public IEnumerable<Validate> Get(int empId, string startDate, string endDate) { }
 
         //[HttpGet("{id:int}/{id2:int}")]   
-        
+
         //[HttpGet]
         //[HttpGet("id={id}&id2={id2}")] //  ==>{router}/empId=1&startDate=2020-20-20&endDate=2020-20-20 (postman)
-        
+
         [HttpGet("{moduleRunId}/{lecturerId}")]    //https://localhost:44399/api/lecturerModuleRun/1/6
         public async Task<ActionResult<LecturerModuleRunDto>> GetLecturerModuleRun(int moduleRunId, int lecturerId)
         {
@@ -97,30 +97,13 @@ namespace Plana.Api.Controllers
             }
         }
         [HttpPost]
-        public async Task<ActionResult<LecturerModuleRunDto>> CreateLecturer(LecturerModuleRunDto lecturerModuleRun)
+        public async Task<ActionResultDto<LecturerModuleRunDto>> CreateLecturer(LecturerModuleRunDto lecturerModuleRun)
         {
-            try
-            {
-                if (lecturerModuleRun == null)
-                {
-                    return BadRequest();
-                }
-                //var createdLecturerModuleRun = await _lecturerModuleRunService.AddLecturerModuleRun(lecturerModuleRun);
-                return await _lecturerModuleRunService.AddLecturerModuleRun(lecturerModuleRun);
-                //return CreatedAtAction(nameof(GetLecturerModuleRun), new { id = createdLecturerModuleRun.LecturerId}, createdLecturerModuleRun);
-
-
-            }
-            catch (Exception)
-
-            {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from the database");
-            }
+            return await _lecturerModuleRunService.AddLecturerModuleRun(lecturerModuleRun);
         }
+
         [HttpDelete("{moduleRunId}/{lecturerId}")]
-        public async Task<ActionResult<bool>> DeleteLecturerModuleRun( int moduleRunId, int lecturerId)
+        public async Task<ActionResult<bool>> DeleteLecturerModuleRun(int moduleRunId, int lecturerId)
         {
             try
             {

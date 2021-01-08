@@ -1,78 +1,51 @@
 ﻿@page "/startL/{id}"
+
 @using Plana.Shared
-<p>personal page lecturer</p>
-@*<Plana.Web.Pages.plan.navMenus.LCustomSelect/>*@
+
+<p>Personal page lecturer</p>
+
 @if (Plans == null)
-{ return; }
+{
+    return;
+}
+
 <div class="selectYear">
-        <form>
-            
-            <select class="form-control" @bind="SelectedPlan.Id">
-                @foreach (var plan in Plans) {
-                   <option value="@plan.Id">
-                       @plan.Year
-                   </option>
-
-                }
-            </select>
-            <div class="btn-group">
-                <button @onclick="NavigateToMyPlan">
-                    My Plan
-                </button>
-            </div>
-        </form>
-    </div>
-
-        
-
-<!--<div class="selectYear">
-    
     <form>
-        <p>Assignments plan for</p>-->
-        @*@if (Lecturer.PlanLecturers == null) { return; }*@
-        <!--<select class="form-control">-->
-            @*@foreach (var planlecturer in Lecturer.PlanLecturers)
+        <select class="form-control" @bind="SelectedPlanId">
+            @foreach (var plan in Plans)
             {
-                <option value="@planlecturer.PlanId">
-                    @planlecturer.Plan.Year
-                </option>
-
-            }*@
-        @*</select>
+                <option value="@plan.Id">@plan.Year</option>
+            }
+        </select>
         <div class="btn-group">
-            <button @onclick="NavigateToMyPlan">
-                My Plan
-            </button>
+            <button @onclick="NavigateToMyPlan">My Plan</button>
         </div>
     </form>
-</div>*
-<div>
 </div>
-           
-    <p> @Lecturer.FirstName</p>*@
-
 
 @code {
     [Inject]
     public NavigationManager NavigationMan { get; set; }
+
     [Inject]
     public ILecturerService LecturerService { get; set; }
-    public LecturerDto Lecturer { get; set; } = new LecturerDto();
-    [Parameter]
-    public string Id { get; set; }
 
     [Inject]
     public IPlanService PlanService { get; set; }
 
-    public PlanDto Plan { get; set; } = new PlanDto();
-    [Parameter]
-    public PlanDto SelectedPlan { get; set; } = new PlanDto();
-    public List<PlanDto> Plans { get; set; }
-
     [Inject]
     public IPlanLecturerService PlanLecturerService { get; set; }
-    public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
-    IEnumerable<PlanLecturerDto> PlanLecturers { get; set; } = new List<PlanLecturerDto>();
+
+    public LecturerDto Lecturer { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    public int? SelectedPlanId { get; set; }
+
+    public List<PlanDto> Plans { get; set; }
+
+    public IEnumerable<PlanLecturerDto> PlanLecturers { get; set; } = new List<PlanLecturerDto>();
 
     protected async override Task OnInitializedAsync()
     {
@@ -83,32 +56,17 @@
             Lecturer = await LecturerService.GetLecturer(int.Parse(Id));
             PlanLecturers = await PlanLecturerService.GetPlanLecturers();
             Plans = (await PlanService.GetPlans()).ToList();
-          //  PlanLecturer = await PlanLecturerService.GetPlanLecturer(SelectedPlan.Id, Lecturer.Id);
-
+            SelectedPlanId = Plans.FirstOrDefault()?.Id;
         }
-        else
-        {
-            Lecturer = new LecturerDto { };
-
-
-
-        }
-
     }
 
     #region methods
     public void NavigateToMyPlan()
     {
-        
-            string PlanId = Plan.Id.ToString();
-            NavigationMan.NavigateTo($"/myplanL/{SelectedPlan.Id}/{Lecturer.Id}", true);
-        
-
+        if (Lecturer != null)
+        {
+            NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+        }
     }
-
     #endregion
 }
-<style>
-   
-   
-</style>

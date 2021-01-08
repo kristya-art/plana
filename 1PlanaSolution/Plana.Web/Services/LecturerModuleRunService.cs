@@ -1,11 +1,8 @@
-﻿using Plana.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Components;
 using Plana.Shared;
+using System.Collections.Generic;
 using System.Net.Http;
-using Microsoft.AspNetCore.Components;
+using System.Threading.Tasks;
 
 namespace Plana.Web.Services
 {
@@ -17,9 +14,9 @@ namespace Plana.Web.Services
         {
             this.http = http;
         }
-        public async Task<LecturerModuleRunDto> CreateLecturerModuleRun(LecturerModuleRunDto lecturerModuleRun)
+        public async Task<ActionResultDto<LecturerModuleRunDto>> CreateLecturerModuleRun(LecturerModuleRunDto lecturerModuleRun)
         {
-            return await http.PostJsonAsync<LecturerModuleRunDto>("api/lecturerModuleRun", lecturerModuleRun );
+            return await http.PostJsonAsync<ActionResultDto<LecturerModuleRunDto>>("api/lecturerModuleRun", lecturerModuleRun );
         }
 
         public async Task DeleteLecturerModuleRun(int id, int id2)

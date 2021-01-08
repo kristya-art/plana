@@ -10,20 +10,13 @@ namespace Plana.Api.Services
     public interface ILecturerModuleRunService
     {
         Task<IEnumerable<LecturerModuleRunDto>> GetLecturerModuleRuns();
-       
-        Task<LecturerModuleRunDto> AddLecturerModuleRun(LecturerModuleRunDto lecturerModuleRunDto);
+
+        Task<ActionResultDto<LecturerModuleRunDto>> AddLecturerModuleRun(LecturerModuleRunDto lecturerModuleRunDto);
+        
         Task<LecturerModuleRunDto> UpdateLecturerModuleRun(LecturerModuleRunDto lecturerModuleRunDto);
        
         Task<LecturerModuleRunDto> GetLecturerModuleRun(int moduleRunId, int lecturerId);
 
         Task<bool> DeleteLecturerModuleRun(int moduleRunId, int lecturerId);
-
-        //Task<IEnumerable<LecturerModuleRun>> Search(string name);
-
-
-
-
-
-
     }
 }

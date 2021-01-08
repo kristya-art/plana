@@ -177,6 +177,10 @@ else
                             <MatDialogContent Style="width: 400px; height: 200px; right: 50px">
                                 <h3>@choosedModuleRun.ModuleRunId </h3>
                                 <h3>@mr.ModuleRunId | @mr.Module.Title </h3>
+                                @if(ErrorMessage != null)
+                                {
+                                    <p>@ErrorMessage</p>
+                                }
                                 <EditForm Model="@mr">
                                     <select class="form-control" @bind="SelectedLecturer.Id">
                                         @foreach (var lecturer in Lecturers)
@@ -190,8 +194,6 @@ else
 
                             </MatDialogContent>
                             <MatDialogActions>
-                                <button @onclick="@(e=>addLecturer(choosedModuleRun.ModuleRunId,SelectedLecturer.Id))"> Test</button>
-
                                 <MatButton OnClick="@(e=>addLecturer(choosedModuleRun.ModuleRunId,SelectedLecturer.Id))">Add</MatButton>
                                 <MatButton OnClick="CloseDialog">Close</MatButton>
                             </MatDialogActions>
@@ -360,8 +362,6 @@ else
 
                                 </MatDialogContent>
                                 <MatDialogActions>
-                                    <button @onclick="@(e=>addLecturer(choosedModuleRun.ModuleRunId,SelectedLecturer.Id))"> Test</button>
-
                                     <MatButton OnClick="@(e=>addLecturer(choosedModuleRun.ModuleRunId,SelectedLecturer.Id))">Add</MatButton>
                                     <MatButton OnClick="CloseDialog">Close</MatButton>
                                 </MatDialogActions>
@@ -502,6 +502,7 @@ else
     LecturerModuleRunDto newLmr = new LecturerModuleRunDto();
     ModuleRunDto SelectedMR { get; set; }
     public int ModuleRunId;
+    private string ErrorMessage { get; set; }
 
     public ModuleRunDto choosedModuleRun = new ModuleRunDto();
     [Parameter]
@@ -514,17 +515,15 @@ else
         _isEditL = isEditL;
         LdialogIsOpen = true;
     }
+
     private void okClickL()
     {
-
         LdialogIsOpen = false;
-
     }
+    
     private void LCloseDialog()
     {
         LdialogIsOpen = false;
-
-
     }
 
     async Task addLecturer(int moduleRunId, int lecturerId)
@@ -536,17 +535,22 @@ else
                 LecturerId = lecturerId,
                 ModuleRunId = moduleRunId
             };
-            lecturerModuleRun = await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRun);
+
+            var result = await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRun);
+            if(result.ErrorMessage != null)
+            {
+                ErrorMessage = result.ErrorMessage;
+            }
+            else
+            {
+                LdialogIsOpen = false;
+            }
         }
         catch (Exception ex)
         {
             loadFailed = true;
             Logger.LogWarning(ex, "The selected Lecturer is already addet to this module");
-
         }
-
-
-        LdialogIsOpen = false;
     }
     #endregion
 
