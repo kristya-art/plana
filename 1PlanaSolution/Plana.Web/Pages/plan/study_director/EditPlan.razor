@@ -210,112 +210,166 @@ else
         }
         else
         {
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Semester</th>
-                        <th>Module</th>
-                        <th>Module Title</th>
-                        <th>Module-Group</th>
-                        <th>Place</th>
-                        <th>Module Total Hours</th>
-                        <th>Lecturers Group</th>
-                        <th>Lecturers</th>
-                        <th>Set Lecturers hours</th>
-                        <th>Actions</th>
-                        <th>notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @if (Semesters != null)
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                    <th>Semester</th>
+                    <th>Module</th>
+                    <th>Module Title</th>
+                    <th>Module-Group</th>
+                    <th>Place</th>
+                    <th>Module Total Hours</th>
+                    <th>Lecturers Group</th>
+                    <th>Lecturers</th>
+                    <th>Set Lecturers hours</th>
+                    <th>Desired hours</th>
+                    <th>Actions</th>
+                    <th>notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Semesters != null)
+                {
+                    @foreach (var sem in Semesters)
                     {
-                        @foreach (var sem in Semesters)
+
+                       
+                        @if (sem.ModuleRuns == null) { continue; }
+
+                        @foreach (var mr in sem.ModuleRuns)
                         {
+                            int local = mr.ModuleRunId;
+                            
 
-                            @*flix it , the problem is that when the sem == null, program is break up*@
+                            <tr>
+                                
+                                
+                                <td>@sem.GetAbbreviation()</td>
 
-                            @if (sem.ModuleRuns == null) { return; }
-                            @foreach (var mr in sem.ModuleRuns)
-                            {
-                                <tr>
-                                    <td>
-                                        <button contenteditable="true">
-                                            @mr.Module.Title
-                                        </button>
+                                <td>@mr.Module.Code</td>
+                                <td>@mr.Module.Title</td>
+                                <td>@mr.ModuleGroup</td>
+                                <td>@mr.Place</td>
+                                <td>@mr.Module.TotalHours</td>
+                                <td>
 
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>@sem.GetAbbreviation()</td>
-
-                                    <td contenteditable='true'>@mr.Module.Code</td>
-                                    <td>@mr.Module.Title</td>
-                                    <td>@mr.ModuleGroup</td>
-                                    <td contenteditable="true">@mr.Place</td>
-                                    <td contenteditable="true">@mr.Module.TotalHours</td>
-                                    <td>
-
-                                        @if (mr.ModuleRunLecturerGroups != null)
-                                        {
-
-                                            @foreach (var lg in mr.ModuleRunLecturerGroups)
-                                            {
-                                                <p style="white-space:nowrap;">
-                                                    @lg.LecturerGroup.Title
-                                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
-                                                </p>
-                                            }
-                                        }
-                                        <button class="btn" id="add"><i class="fa fa-plus"></i></button>
-                                    </td>
-
-                                    @if (mr.LecturersMR != null)
+                                    @if (mr.ModuleRunLecturerGroups != null)
                                     {
 
-                                        <td style="white-space:nowrap;">
+                                        @foreach (var lg in mr.ModuleRunLecturerGroups)
+                                        {
+                                            <p style="white-space:nowrap;">
+                                                @lg.LecturerGroup.Title
+                                                <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                            </p>
+                                        }
+                                    }
+                                    <button class="btn" id="add"><i class="fa fa-plus"></i></button>
+                                    @*<button class="btn" id="add" @onclick="@(e => OpenLecturerGDialog(false))"><i class="fa fa-plus"></i></button>*@
+                                </td>
 
-                                            <div id="scroll">
-                                                @foreach (var lm in mr.LecturersMR)
-                                                {
-                                                    <p style="white-space:nowrap;">
-                                                        @lm.Lecturer.SetToken() | @lm.Hours
-                                                        <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
-                                                    </p>
-
-                                                }
-
-                                            </div>
-
-                                        </td>
-                                        <td contenteditable='true'>
+                                @if (mr.LecturersMR != null)
+                                {
+                                    <td style="white-space:nowrap;">
+                                        <div id="scroll">
                                             @foreach (var lm in mr.LecturersMR)
                                             {
 
-                                                <p contenteditable='true'> @lm.Hours</p>
-
+                                                <p style="white-space:nowrap;">
+                                                    @lm.Lecturer.SetToken() | @lm.Hours
+                                                    <button class="btn" id="del" @onclick="@(e => LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId, lm.LecturerId))"><i class="fa fa-close"></i></button>
+                                                </p>
                                             }
-                                        </td>
-                                    }
-                                    <td style="white-space:nowrap;" @onclick="CallJSMethod2">
-                                        <button class="btn" id="edit-btn">edit</button>
-                                        <button class="btn" id="save-btn">save lecturerModuleRun</button>
-                                        <button class="btn" id="save-btn">save</button>
-                                        <button class="btn" id="delete-btn">delete module</button>
-                                        <button class="btn" id="cancel-btn">cancel</button>
-                                        <MatButton Raised="true" @onclick="HandleValidSubmit" Icon="save" title="Save"></MatButton>
 
+                                            <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false,local))"><i class="fa fa-plus"></i></button>
+
+                                        </div>
                                     </td>
-                                    <td><textarea>...</textarea></td>
-                                </tr>
-                            }
-                        }
+                                    <td contenteditable='true'>
+                                        @foreach (var lm in mr.LecturersMR)
+                                        {
+                                            <MatTextField @bind-Value="lm.Hours" style=" height: 20px;"></MatTextField>
+                                            <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">OK</MatButton>
+                                        }
+                                        @if (mr.IsExceedingSetHours())
+                                        {
 
+                                            <i class="material-icons" style="font-size:24px">warning</i>
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var lm in mr.LecturersMR)
+                                        {
+                                            <p style="color:lightcoral;"> @lm.DesiredHours.</p>
+
+                                        }
+
+                                        @if (mr.IsExceedingHours())
+                                        {
+                                           
+                                            <i class="material-icons" style="font-size:24px">warning</i>
+                                        }
+                                    </td>
+
+                                }
+                                <td style="white-space:nowrap;" @onclick="CallJSMethod2">
+                                    <button class="btn" id="edit-btn">edit</button>
+                                    <button class="btn" id="delete-btn" @onclick="@(e=>ModuleRunService.SoftDeleteModuleRun(mr.ModuleRunId))">delete</button>
+                                    <button class="btn" id="cancel-btn">cancel</button>
+                                    <MatButton Raised="true" @onclick="@(e => OpenDialogM(true,local))" Icon="edit" title="Edit ModuleRun"></MatButton>
+
+                                    @*dialog to update Module Run*@
+                                    <MatDialog @bind-IsOpen="dialogIsOpenM" @bind-Value="@choosedModuleRun.ModuleRunId">
+                                        <MatDialogTitle>Add / Edit Module</MatDialogTitle>
+                                        <MatDialogContent>
+                                            <h3>@choosedModuleRun.ModuleRunId</h3>
+                                            @*<MatTextField Label="Module Title" @bind-Value="@choosedModuleRun.Module.Title"></MatTextField>*@
+                                            <MatTextField Label="Place" @bind-Value="@choosedModuleRun.Place"></MatTextField>
+                                            <MatTextField Label="CodeGroup" @bind-Value="@choosedModuleRun.Code"></MatTextField>
+                                        </MatDialogContent>
+                                        <MatDialogActions>
+                                            <MatButton OnClick="okClickM">Add</MatButton>
+                                            <MatButton OnClick="CloseDialogM">Close</MatButton>
+
+                                        </MatDialogActions>
+                                    </MatDialog>
+                                </td>
+                                <td><textarea>...</textarea></td>
+
+                            </tr>
+
+                            <MatDialog @bind-IsOpen="LdialogIsOpen">
+                                <MatDialogTitle>Add Professor</MatDialogTitle>
+                                <MatDialogContent Style="width: 400px; height: 200px; right: 50px">
+                                    <h3>@choosedModuleRun.ModuleRunId </h3>
+                                    <h3>@mr.ModuleRunId | @mr.Module.Title </h3>
+                                    <EditForm Model="@mr">
+                                        <select class="form-control" @bind="SelectedLecturer.Id">
+                                            @foreach (var lecturer in Lecturers)
+                                            {
+                                                <option value="@lecturer.Id">
+                                                    @lecturer.SetToken()
+                                                </option>
+                                            }
+                                        </select>
+                                    </EditForm>
+
+                                </MatDialogContent>
+                                <MatDialogActions>
+                                    <button @onclick="@(e=>addLecturer(choosedModuleRun.ModuleRunId,SelectedLecturer.Id))"> Test</button>
+
+                                    <MatButton OnClick="@(e=>addLecturer(choosedModuleRun.ModuleRunId,SelectedLecturer.Id))">Add</MatButton>
+                                    <MatButton OnClick="CloseDialog">Close</MatButton>
+                                </MatDialogActions>
+                            </MatDialog>
+                        }
                     }
-                </tbody>
-            </table>
+                }
+            </tbody>
+        </table>
         }
+
 
     </MatDialogContent>
     <button type="submit" class="btn-btn-success">
