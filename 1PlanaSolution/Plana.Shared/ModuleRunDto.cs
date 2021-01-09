@@ -45,7 +45,7 @@ namespace Plana.Shared
 
         public bool IsExceedingHours() {
             TotalDesiredHours = GetTotalDesiredHours();
-            if (TotalDesiredHours > Module.TotalHours) {
+            if (Module.TotalHours!= 0 && TotalDesiredHours > Module.TotalHours) {
                 return true;
             }
             return false;
@@ -66,11 +66,21 @@ namespace Plana.Shared
         public bool IsExceedingSetHours()
         {
            TotalSetHours = GetTotalSetHours();
-            if (TotalSetHours > Module.TotalHours)
+            if (Module.TotalHours != 0 && TotalSetHours > Module.TotalHours)
             {
                 return true;
             }
             return false;
+        }
+
+        public double HoursToPlan() {
+            double HoursToPlan = 0.0;
+            TotalSetHours = GetTotalSetHours();
+            if (Module.TotalHours!= 0) {
+                HoursToPlan = Module.TotalHours - TotalSetHours;
+               
+            }
+            return HoursToPlan;
         }
 
     }
