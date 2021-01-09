@@ -472,14 +472,17 @@ else
 
     public async Task RemoveFromMyList(int localLecturerModuleRunId)
     {
+        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected module run from your list");
+        
         tempLecturerModuleRunId = localLecturerModuleRunId;
-         lmrToRemove = await LecturerModuleRunService.GetLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
-        if (lmrToRemove.IsRequested == true)
+        lmrToRemove = await LecturerModuleRunService.GetLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
+        if (lmrToRemove.IsRequested == true && isConfirm)
         {
+
             await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
+           
         }
-        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
-    
+        //NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
     }
 
     #endregion
