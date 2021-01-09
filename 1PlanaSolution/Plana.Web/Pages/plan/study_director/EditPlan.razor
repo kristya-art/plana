@@ -95,7 +95,14 @@ else
                 <td>@mr.ModuleGroup</td>
                 <td>@mr.Place</td>
                 <td >@mr.Module.TotalHours</td>
-                <td><p style="color:navy;"> @mr.HoursToPlan()</p></td>
+                <td><p style="color:darkorchid;">
+                    @mr.HoursToPlan()
+                 @if (mr.IsExceedingSetHours())
+                 {
+
+                  <i class="material-icons" style="font-size:24px">warning</i>
+                }
+                </p></td>
                 <td>
 
                     @if (mr.ModuleRunLecturerGroups != null)
@@ -152,19 +159,16 @@ else
                             <i class="material-icons" style="font-size:24px">warning</i>
                         }
                     </td>
-                    <td contenteditable='true'>
+                    <td>
                         @foreach (var lm in mr.LecturersMR)
                         {
                             <p>
-                                <MatTextField @bind-Value="lm.Hours" style=" height: 20px;"></MatTextField>
-                                <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))" Style="width:20px;height:20px">OK</MatButton>
+                                
+                                <MatTextField @bind-Value="lm.Hours"></MatTextField>
+                                <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))" >OK</MatButton>
                             </p>
                         }
-                        @if (mr.IsExceedingSetHours())
-                        {
-
-                            <i class="material-icons" style="font-size:24px">warning</i>
-                        }
+                       
                     </td>
 
 
