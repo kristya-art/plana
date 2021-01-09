@@ -119,14 +119,16 @@ else
                         <div id="scroll">
                             @foreach (var lm in mr.LecturersMR)
                             {
+                                int localMRId = lm.ModuleRunId;
+                                int localLId = lm.LecturerId;
+                            <p style="white-space:nowrap;">
+                                @lm.Lecturer.SetToken() |@lm.Hours|  @if (lm.IsRequested == true)
+                                {
+                                    @request
+                                }
+                                <button class="btn" id="del" @onclick="@(e => DeleteLecturerModuleRun(localMRId,localLId))"><i class="fa fa-close"></i></button>
 
-                                <p style="white-space:nowrap;">
-                                    @lm.Lecturer.SetToken() |@lm.Hours|  @if (lm.IsRequested == true)
-                                    {
-                                        @request
-                                    }
-                                    <button class="btn" id="del" @onclick="@(e => LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId, lm.LecturerId))"><i class="fa fa-close"></i></button>
-                                </p>
+                            </p>
                             }
 
                            
@@ -457,16 +459,16 @@ else
 
 @code {
 
-    #region variables
-    string request { get; set; } = "R";
-    bool loadFailed;
+        #region variables
+        string request { get; set; } = "R";
+        bool loadFailed;
     #endregion
 
 
-    /// <summary>
-    /// js code for button
-    ///
-    ///  </summary>
+        /// <summary>
+        /// js code for button
+        ///
+        ///  </summary>
 
     protected override async void OnAfterRender(bool firstRender)
     {
@@ -574,7 +576,24 @@ else
         }
     }
     #endregion
+    #region lecturer module Run
+    [Parameter]
+    public int tempModuleRunId { get; set; }
+    LecturerModuleRunDto tempLecturerModuleRun { get; set; }
 
+    [Parameter]
+    public int tempLecturerId { get; set; }
+    public async Task DeleteLecturerModuleRun(int localMRId, int localLId) {
+        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to remove selected lecturer?");
+
+        tempModuleRunId = localMRId;
+        tempLecturerId = localLId;
+        if (isConfirm)
+        {
+            await LecturerModuleRunService.DeleteLecturerModuleRun(tempModuleRunId, tempLecturerId);
+        }
+    }
+    #endregion
     #region moduleRun
 
     string labelName1 = "setEditable";
