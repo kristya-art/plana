@@ -93,6 +93,7 @@ namespace Plana.Web.Pages.plan.study_director
                 ModuleId = Module.ModuleId.ToString();
                 Lmr = new LecturerModuleRunDto();
                 SelectedPlanId = Plan.Id;
+                ListLmr = (await LecturerModuleRunService.GetLecturerModuleRuns()).ToList();
             }
 
             else

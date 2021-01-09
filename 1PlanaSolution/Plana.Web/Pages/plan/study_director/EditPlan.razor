@@ -104,7 +104,7 @@ else
                 }
                 </p></td>
                 <td>
-
+                    
                     @if (mr.ModuleRunLecturerGroups != null)
                     {
 
@@ -126,15 +126,15 @@ else
                         <div id="scroll">
                             @foreach (var lm in mr.LecturersMR)
                             {
-                                int localMRId = lm.ModuleRunId;
+                               
                                 int localLId = lm.LecturerId;
                             <p style="white-space:nowrap;">
                                 @lm.Lecturer.SetToken() |@lm.Hours|  @if (lm.IsRequested == true)
                                 {
                                     @request
                                 }
-                                <button class="btn" id="del" @onclick="@(e => DeleteLecturerModuleRun(localMRId,localLId))"><i class="fa fa-close"></i></button>
-
+                                @*<button class="btn" id="del" @onclick="@(e => DeleteLecturerModuleRun(local,localLId))"><i class="fa fa-close"></i></button>*@
+                                <button class="btn" id="del" @onclick="@(e=> LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId,lm.LecturerId))"><i class="fa fa-close"></i></button>
                             </p>
                             }
 
@@ -463,24 +463,24 @@ else
 
 @code {
 
-        #region variables
-        string request { get; set; } = "R";
-        bool loadFailed;
+    #region variables
+    string request { get; set; } = "R";
+    bool loadFailed;
     #endregion
 
 
-        /// <summary>
-        /// js code for button
-        ///
-        ///  </summary>
+    /// <summary>
+    /// js code for button
+    ///
+    ///  </summary>
 
-    protected override async void OnAfterRender(bool firstRender)
-    {
-        await js.InvokeVoidAsync("renderjQueryComponents");
-        base.OnAfterRender(firstRender);
-        await js.InvokeVoidAsync("SetButtonsVisible");
+    //protected override async void OnAfterRender(bool firstRender)
+    //{
+    //    await js.InvokeVoidAsync("renderjQueryComponents");
+    //    base.OnAfterRender(firstRender);
+    //    await js.InvokeVoidAsync("SetButtonsVisible");
 
-    }
+    //}
 
     private async Task CallJSMethod()
     {
@@ -583,20 +583,24 @@ else
     #region lecturer module Run
     [Parameter]
     public int tempModuleRunId { get; set; }
-    LecturerModuleRunDto tempLecturerModuleRun { get; set; }
+    LecturerModuleRunDto tempLecturerModuleRun { get; set; } = new LecturerModuleRunDto();
 
     [Parameter]
     public int tempLecturerId { get; set; }
-    public async Task DeleteLecturerModuleRun(int localMRId, int localLId) {
+    public async Task DeleteLecturerModuleRun(int localMRId, int localLId) 
+    {
+        tempLecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun(tempModuleRunId, tempLecturerId);
         bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to remove selected lecturer?");
 
         tempModuleRunId = localMRId;
         tempLecturerId = localLId;
         if (isConfirm)
         {
-            await LecturerModuleRunService.DeleteLecturerModuleRun(tempModuleRunId, tempLecturerId);
+            await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRun.ModuleRunId, tempLecturerModuleRun.LecturerId);
+
         }
     }
+    
     #endregion
     #region moduleRun
 

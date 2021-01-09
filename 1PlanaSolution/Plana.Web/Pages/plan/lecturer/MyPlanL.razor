@@ -200,7 +200,7 @@ else
 @*dialog with Module Run list*@
 <MatDialog @bind-IsOpen="dialogIsOpenMR">
     <MatDialogTitle>Add Plan</MatDialogTitle>
-    <MatDialogContent Style="width: 650px;right:50px">
+    <MatDialogContent Style="width: 700px;right:250px">
         @if (Plan == null)
         {
             <text>Loading...</text>
@@ -367,14 +367,15 @@ else
 
 
 
-    public void NavigateToMyPlan()
+    public async Task NavigateToMyPlan()
     {
         //PlanLecturer = await PlanLecturerService.GetPlanLecturer(SelectedPlan.Id, Lecturer.Id);
         //if (PlanLecturer != null)
         //{
 
         string PlanId = Plan.Id.ToString();
-        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+        //NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+        MyModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
 
     }
 
@@ -453,6 +454,7 @@ else
                     await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
 
                     okClick();
+                    NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
                 }
             }
 
@@ -473,14 +475,15 @@ else
     public async Task RemoveFromMyList(int localLecturerModuleRunId)
     {
         bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected module run from your list");
-        
+
         tempLecturerModuleRunId = localLecturerModuleRunId;
         lmrToRemove = await LecturerModuleRunService.GetLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
         if (lmrToRemove.IsRequested == true && isConfirm)
         {
 
             await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
-           
+            MyModuleRuns = MyModuleRuns.Where(c => c.ModuleRunId != tempLecturerModuleRunId).ToList();
+
         }
         //NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
     }
