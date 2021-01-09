@@ -83,39 +83,56 @@ else
                         <tr>
                             <td>@mr.SemesterId</td>
                             @*<td width="40px">@mr.Module.Code</td>*@
-                        <td style="white-space:nowrap;">
-                            (@mr.Module.Code) @mr.Module.Title 
-                            @foreach (var lmr1 in mr.LecturersMR)
-                            {
-
-                                @if (lmr1.IsRequested == true)
+                            <td style="white-space:nowrap;">
+                                (@mr.Module.Code) @mr.Module.Title
+                                @foreach (var lmr1 in mr.LecturersMR)
                                 {
-                                    @request
-                                    @*<h6 style="color:mediumvioletred">| R</h6>*@
+
+                                    @if (lmr1.IsRequested == true)
+                                    {
+                                        @request
+                                        @*<h6 style="color:mediumvioletred">| R</h6>*@
+
+                                    }
 
                                 }
-
-                            }
-                        </td>                         
+                            </td>
                             <td>@mr.Code</td>
                             <td>@mr.Place</td>
                             <td>@mr.Module.TotalHours</td>
                             @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
                             @foreach (var lmr in mr.LecturersMR)
                             {
+
                                 @if (lmr.Lecturer.Id == Lecturer.Id)
                                 {
+
                                     <td><p>@lmr.Hours</p></td>
                                     <td>
                                         @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
                                         <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
                                         <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
                                     </td>
+
+                                }
+
+                            }
+                        <td>
+                            @foreach (var lmr1 in mr.LecturersMR)
+                            {
+                                int local = lmr1.ModuleRunId;
+                                @if (lmr1.LecturerId == Lecturer.Id)
+                                {
+                                    @if (lmr1.IsRequested == true)
+                                    {
+
+                                        <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveFromMyList(local))">DEL</MatButton>
+
+                                    }
                                 }
                             }
-                            <td>
-                            </td>
-                            <td></td>
+                        </td>
+                            
                             <td></td>
                             @foreach (var mrlg in mr.ModuleRunLecturerGroups)
                             {
@@ -183,7 +200,7 @@ else
 @*dialog with Module Run list*@
 <MatDialog @bind-IsOpen="dialogIsOpenMR">
     <MatDialogTitle>Add Plan</MatDialogTitle>
-    <MatDialogContent Style="width: 1100px;right:50px">
+    <MatDialogContent Style="width: 650px;right:50px">
         @if (Plan == null)
         {
             <text>Loading...</text>
@@ -198,12 +215,8 @@ else
                         <th>Module Title</th>
                         <th>Module-Group</th>
                         <th>Place</th>
-                        @*<th>Module Total Hours</th>
-                        <th>Add me</th>
-                        <th>Add group</th>
-                        <th>My hours</th>
-                        <th>Actions</th>*@
-
+                        <th>Actions</th>
+                  
                     </tr>
                 </thead>
                 <tbody>
@@ -219,71 +232,29 @@ else
                             @foreach (var mr in sem.ModuleRuns)
                             {
 
-                                <tr>
-                                    <td>@sem.GetAbbreviation()</td>
+                    <tr>
+                        <td>@sem.GetAbbreviation()</td>
 
-                                    <td>@mr.Module.Code</td>
-                                    <td>@mr.Module.Title</td>
-                                    <td>@mr.ModuleGroup</td>
-                                    <td>
-                                        <EditForm Model="@mr">
-                                        <MatCheckbox @bind-Value="mr.isSelected"></MatCheckbox>
-                                       @*<MatButton @onclick="@(e => ModuleRunService.UpdateModuleRun(mr))">save</MatButton>*@
-                                        </EditForm>
-                                    </td>
-                                    <td>@mr.Place</td>
-                                    @*<td>@mr.Module.TotalHours</td>*@
-                                    @*<td>*@
+                        <td>@mr.Module.Code</td>
+                        <td>@mr.Module.Title</td>
+                        <td>@mr.Code</td>
+                        <td>@mr.Place</td>
+                        <td>
+                            <EditForm Model="@mr">
+                                <MatCheckbox @bind-Value="mr.isSelected"></MatCheckbox>
+                                @*<MatButton @onclick="@(e => ModuleRunService.UpdateModuleRun(mr))">save</MatButton>*@
+                            </EditForm>
+                        </td>
 
-                                        @*@if (mr.ModuleRunLecturerGroups != null)
-                                            {
 
-                                                @foreach (var lg in mr.ModuleRunLecturerGroups)
-                                                {
-                                                    <p style="white-space:nowrap;">
-                                                        @lg.LecturerGroup.Title
-                                                        <button class="btn" id="del"><i class="fa fa-close"></i></button>
-                                                    </p>
-                                                }
-                                            }*@
-                                        @*<button class="btn" id="add"><i class="fa fa-plus"></i></button>
-                                    </td>*@
+                        @*<td style="white-space:nowrap;">
 
-                                    @*@if (mr.LecturersMR != null)
-                                        {*@
+                            <button class="btn" id="save-btn" @onclick="@(e => SaveToMylist())">Add</button>
+                            
 
-                                    @*<td style="white-space:nowrap;">*@
+                        </td>*@
 
-                                        @*<div id="scroll">
-                                                @foreach (var lm in mr.LecturersMR)
-                                                {
-                                                    <p style="white-space:nowrap;">
-                                                        @lm.Lecturer.SetToken() | @lm.Hours
-                                                        <button class="btn" disabled id="del"><i class="fa fa-close"></i></button>
-                                                    </p>
-
-                                                }
-
-                                            </div>*@
-
-                                    @*</td>*@
-                                    @*<td contenteditable='true'>*@
-                                        @*@foreach (var lm in mr.LecturersMR)
-                                            {
-
-                                                <p contenteditable='true'> @lm.Hours</p>
-
-                                            }*@
-                                    @*</td>
-                                    }*@
-                                    <td style="white-space:nowrap;">
-
-                                        <button class="btn" id="save-btn" @onclick="@(e => SaveToMylist())">Add</button>
-                                        <button class="btn" id="cancel-btn">X</button>
-
-                                    </td>
-
-                                </tr>
+                    </tr>
                             }
                         }
 
@@ -295,10 +266,12 @@ else
     </MatDialogContent>
     <MatDialogActions>
         <MatButton @onclick="@(e => SaveToMylist())">save</MatButton>
+        <MatButton Type="cancel" @onclick="okClick" >X</MatButton> 
+        <button class="btn" id="cancel-btn">X</button>
 
         @*<button type="submit" class="btn-btn-success">
-                Save
-            </button>*@
+            Save
+        </button>*@
     </MatDialogActions>
 </MatDialog>
 
@@ -492,6 +465,21 @@ else
         }
 
 
+    }
+    [Parameter]
+    public int tempLecturerModuleRunId { get; set; }
+    LecturerModuleRunDto lmrToRemove { get; set; }
+
+    public async Task RemoveFromMyList(int localLecturerModuleRunId)
+    {
+        tempLecturerModuleRunId = localLecturerModuleRunId;
+         lmrToRemove = await LecturerModuleRunService.GetLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
+        if (lmrToRemove.IsRequested == true)
+        {
+            await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
+        }
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+    
     }
 
     #endregion
