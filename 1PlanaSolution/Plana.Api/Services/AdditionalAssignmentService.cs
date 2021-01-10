@@ -73,7 +73,7 @@ namespace Plana.Api.Services
                 result.AAHours = additionalAssignmentDto.AAHours;
                 result.Description = additionalAssignmentDto.Description;
                 // have to put also category after db-update
-                
+                result.AACategory = (AdditionalAssignmentCategory)additionalAssignmentDto.AACategory;
                 await context.SaveChangesAsync();
                 return mapper.Map<AdditionalAssignmentDto>(result);
 

@@ -96,5 +96,26 @@ namespace Plana.Api.Controllers
                 "Error udating database");
             }
         }
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<bool>> DeleteAdditionalAssignment(int id)
+        {
+            try
+            {
+
+                var AAForDelete = await additionalAssignmentService.GetAdditionalAssignment(id);
+                if (AAForDelete == null)
+                {
+                    return NotFound();
+
+                }
+                return await additionalAssignmentService.DeleteAdditionalAssignment(id);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+
+            }
+        }
     }
 }

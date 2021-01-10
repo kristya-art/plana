@@ -63,13 +63,14 @@ namespace Plana.Api.Services
                 result.LastName = lecturerDto.LastName;
                 result.Token = lecturerDto.Token;
                 result.Email = lecturerDto.Email;
-                //result.Password = lecturerDto.Password
+                result.Password = lecturerDto.Password;
                 result.BirthDate = lecturerDto.BirthDate;
                 result.Gender = (Gender)lecturerDto.Gender;
                 result.PhotoPath = lecturerDto.PhotoPath;
                 result.ActiveTill = lecturerDto.ActiveTill;
                 result.IsActive = lecturerDto.IsActive;
                 result.WorkingRate = lecturerDto.WorkingRate;
+                result.Role = (Role)lecturerDto.Role;
               //  result.LecturersModules = (ICollection<LecturerModule>)lecturerDto.LecturersModules;//new
                
                 // result.AdditionalAssignments = (ICollection<AdditionalAssignment>)lecturerDto.AdditionalAssignments;//new
