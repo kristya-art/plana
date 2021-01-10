@@ -36,7 +36,7 @@
 
 <div class="btn-group" style="font-size: 13px">
     <button style="float: right;" @onclick="@(e => OpenDialogMR(true))">add module</button>
-    <button style="float: right;">add additional assignment</button>
+    <button style="float: right;" @onclick="@(e=> OpenDialogAA(true))">add additional assignment</button>
     <button style="float: right;">show lecturer groups</button>
     <button style="float:left">show last year plan</button>
     <button class="btn-groupR" style="border-color:navajowhite">submit until</button>
@@ -80,69 +80,84 @@ else
 
                             @foreach (var mr in MyModuleRuns)
                             {
-                        <tr>
-                            <td>@mr.SemesterId</td>
-                            @*<td width="40px">@mr.Module.Code</td>*@
-                            <td style="white-space:nowrap;">
-                                (@mr.Module.Code) @mr.Module.Title
-                                @foreach (var lmr1 in mr.LecturersMR)
-                                {
+                                <tr>
+                                    <td>@mr.SemesterId</td>
+                                    @*<td width="40px">@mr.Module.Code</td>*@
+                                    <td style="white-space:nowrap;">
+                                        (@mr.Module.Code) @mr.Module.Title
+                                        @foreach (var lmr1 in mr.LecturersMR)
+                                        {
 
-                                    @if (lmr1.IsRequested == true)
+                                            @if (lmr1.IsRequested == true)
+                                            {
+                                                @request
+                                                @*<h6 style="color:mediumvioletred">| R</h6>*@
+
+                                            }
+
+                                        }
+                                    </td>
+                                    <td>@mr.Code</td>
+                                    <td>@mr.Place</td>
+                                    <td>@mr.Module.TotalHours</td>
+                                    @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
+                                    @foreach (var lmr in mr.LecturersMR)
                                     {
-                                        @request
-                                        @*<h6 style="color:mediumvioletred">| R</h6>*@
+
+                                        @if (lmr.Lecturer.Id == Lecturer.Id)
+                                        {
+
+                                            <td><p>@lmr.Hours</p></td>
+                                            <td>
+                                                @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
+                                                <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
+                                                <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
+                                            </td>
+
+                                        }
 
                                     }
-
-                                }
-                            </td>
-                            <td>@mr.Code</td>
-                            <td>@mr.Place</td>
-                            <td>@mr.Module.TotalHours</td>
-                            @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
-                            @foreach (var lmr in mr.LecturersMR)
-                            {
-
-                                @if (lmr.Lecturer.Id == Lecturer.Id)
-                                {
-
-                                    <td><p>@lmr.Hours</p></td>
                                     <td>
-                                        @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
-                                        <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
-                                        <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
+                                        @foreach (var lmr1 in mr.LecturersMR)
+                                        {
+                                            int local = lmr1.ModuleRunId;
+                                            @if (lmr1.LecturerId == Lecturer.Id)
+                                            {
+                                                @if (lmr1.IsRequested == true)
+                                                {
+
+                                                    <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveFromMyList(local))">DEL</MatButton>
+
+                                                }
+                                            }
+                                        }
                                     </td>
 
-                                }
-
-                            }
-                        <td>
-                            @foreach (var lmr1 in mr.LecturersMR)
-                            {
-                                int local = lmr1.ModuleRunId;
-                                @if (lmr1.LecturerId == Lecturer.Id)
-                                {
-                                    @if (lmr1.IsRequested == true)
+                                    <td></td>
+                                    @foreach (var mrlg in mr.ModuleRunLecturerGroups)
                                     {
-
-                                        <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveFromMyList(local))">DEL</MatButton>
-
+                                        <td>@mrlg.LecturerGroup.Title</td>
                                     }
-                                }
-                            }
-                        </td>
-                            
-                            <td></td>
-                            @foreach (var mrlg in mr.ModuleRunLecturerGroups)
-                            {
-                                <td>@mrlg.LecturerGroup.Title</td>
-                            }
 
-                        </tr>
+                                </tr>
+
                             }
 
                         }
+                        <tr>
+                            <td>
+                                @foreach (var aa in additionalAssignments)
+                                {
+                                    @foreach (var sem in Semesters)
+                                    {
+                                        if (aa.SemesterId == sem.SemesterId && aa.LecturerId == Lecturer.Id)
+                                        {
+                                            @aa.AACategory;
+                                        }
+                                    }
+                                }
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -275,6 +290,52 @@ else
     </MatDialogActions>
 </MatDialog>
 
+@*dialog with Additional Assigmnets*@
+<EditForm Model="@additionalAssignment" OnValidSubmit="@Create">
+
+
+    <MatDialog @bind-IsOpen="dialogIsOpenAA">
+        <MatDialogTitle>Add Addtional Assignment</MatDialogTitle>
+        <MatDialogContent Style="width: 500px;right:50px">
+
+            <div class="form-group row">
+                <label for="semester">Semester</label>
+            </div>
+            <div class="col-sm-10">
+                <InputSelect id="semester" @bind-Value="@additionalAssignment.SemesterId" class="form-control">
+                    @foreach (var sem in Semesters)
+                    {
+                        <option value="@sem.SemesterId">@sem.GetAbbreviation()</option>
+                    }
+                </InputSelect>
+
+            </div>
+            <div class="form-field">
+                <label>Title:</label>
+                <div>
+                    <InputText @bind-Value="@additionalAssignment.Title" placeholder="" pattern="^(?=.*\S).{1,256}$" />
+                </div>
+            </div>
+            <div class="cols-sm-10">
+
+                <InputSelect @bind-Value="@additionalAssignment.AACategory">
+                    @foreach (var category in Enum.GetValues(typeof(AdditionalAssignmentCategoryDto)))
+                    {
+                        <option value="@category">@category</option>
+                    }
+                </InputSelect>
+            
+          </div>
+
+
+        </MatDialogContent>
+        @*<button type="submit" class="btn-btn-success">
+            Create 
+        </button>*@
+        <MatButton Type="submit" OnClick="@(e=> Create())">Add</MatButton>
+    </MatDialog>
+</EditForm>
+
 @code {
     string request { get; set; } = " | R";
 
@@ -298,22 +359,33 @@ else
 
     [Inject]
     public IPlanService PlanService { get; set; }
+
     [Inject]
     public IModuleRunService ModuleRunService { get; set; }
 
-    public PlanDto Plan { get; set; } = new PlanDto();
-    public List<PlanDto> Plans { get; set; }
+
+
     [Inject]
     public ILecturerService LecturerService { get; set; }
+
     [Inject]
     public ILecturerModuleRunService LecturerModuleRunService { get; set; }
+
+    [Inject]
+    public IAdditionalAssignmentService AdditionalAssignmentService { get; set; }
+
+    public PlanDto Plan { get; set; } = new PlanDto();
+
+    public List<PlanDto> Plans { get; set; }
 
     public LecturerDto Lecturer { get; set; } = new LecturerDto();
 
     public ModuleRunDto ModuleRun { get; set; } = new ModuleRunDto();
 
     public List<ModuleRunDto> MyModuleRuns { get; set; } = new List<ModuleRunDto>();
+
     public List<ModuleRunDto> AllModuleRuns { get; set; } = new List<ModuleRunDto>();
+
     public List<ModuleRunDto> OtherModuleRuns { get; set; } = new List<ModuleRunDto>();
 
     public SemesterDto Semester { get; set; } = new SemesterDto();
@@ -321,9 +393,19 @@ else
     public List<SemesterDto> Semesters { get; set; } = new List<SemesterDto>();
 
     public SemesterDto AutumnSemester { get; set; }
+
     public SemesterDto SpringSemester { get; set; }
+
     public string SemesterId { get; set; }
+
     int idsl { get; set; }
+
+    List<AdditionalAssignmentDto> additionalAssignments = new List<AdditionalAssignmentDto>();
+
+    AdditionalAssignmentDto additionalAssignment{ get; set; } = new AdditionalAssignmentDto();
+
+    public string AAHours { get; set; }
+
     protected async override Task OnInitializedAsync()
     {
 
@@ -348,8 +430,8 @@ else
 
 
             Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
-
-
+            additionalAssignments = (await AdditionalAssignmentService.GetAdditionalAssignments()).ToList();
+            AAHours = additionalAssignment.AAHours.ToString();
 
 
 
@@ -385,6 +467,7 @@ else
     #region Dialog box for add moduleRun
     bool _isDelete = false;
     bool dialogIsOpenMR = false;
+    bool dialogIsOpenAA = false;
     bool _isEdit = false;
     private void OpenDialogMR(bool isEdit)
     {
@@ -392,26 +475,35 @@ else
         //if (!_isEdit) plan = new Plan();
         dialogIsOpenMR = true;
     }
+    private void OpenDialogAA(bool isEdit)
+    {
+        dialogIsOpenAA = true;
+    }
 
     private void okClick()
     {
         dialogIsOpenMR = false;
+        dialogIsOpenAA = false;
 
     }
 
     private void CloseDialog()
     {
         dialogIsOpenMR = false;
+        dialogIsOpenAA = false;
     }
     #endregion
     #region multiselection
 
-    public ModuleRunDto SelectedRun { get; set; } = new ModuleRunDto();
+    //public ModuleRunDto SelectedRun { get; set; } = new ModuleRunDto();
 
 
     bool loadFailed;
 
-
+    /// <summary>
+    /// method to add modules to the personal plan
+    /// </summary>
+    /// <returns></returns>
     public async Task SaveToMylist()
     {
         List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
@@ -468,9 +560,14 @@ else
 
 
     }
+
     [Parameter]
     public int tempLecturerModuleRunId { get; set; }
     LecturerModuleRunDto lmrToRemove { get; set; }
+
+    /// <summary>
+    /// method to remove the modules from the personal plan of lecturer
+    /// </summary>
 
     public async Task RemoveFromMyList(int localLecturerModuleRunId)
     {
@@ -491,6 +588,15 @@ else
     #endregion
     #region
     public bool isDesiredHoursVisible { get; set; } = true;
+    #endregion
+
+    #region methods for additional assignment
+    async Task Create() {
+        Lecturer.AdditionalAssignments.Add(additionalAssignment);
+        additionalAssignment.LecturerId = Lecturer.Id;
+         await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+    }
     #endregion
 }
 <style>

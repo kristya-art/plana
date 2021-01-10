@@ -581,26 +581,26 @@ else
     }
     #endregion
     #region lecturer module Run
-    [Parameter]
-    public int tempModuleRunId { get; set; }
-    LecturerModuleRunDto tempLecturerModuleRun { get; set; } = new LecturerModuleRunDto();
+    //[Parameter]
+    //public int tempModuleRunId { get; set; }
+    //LecturerModuleRunDto tempLecturerModuleRun { get; set; } = new LecturerModuleRunDto();
 
-    [Parameter]
-    public int tempLecturerId { get; set; }
-    public async Task DeleteLecturerModuleRun(int localMRId, int localLId) 
-    {
-        tempLecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun(tempModuleRunId, tempLecturerId);
-        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to remove selected lecturer?");
+    //[Parameter]
+    //public int tempLecturerId { get; set; }
+    //public async Task DeleteLecturerModuleRun(int localMRId, int localLId) 
+    //{
+    //    tempLecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun(tempModuleRunId, tempLecturerId);
+    //    bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to remove selected lecturer?");
 
-        tempModuleRunId = localMRId;
-        tempLecturerId = localLId;
-        if (isConfirm)
-        {
-            await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRun.ModuleRunId, tempLecturerModuleRun.LecturerId);
+    //    tempModuleRunId = localMRId;
+    //    tempLecturerId = localLId;
+    //    if (isConfirm)
+    //    {
+    //        await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRun.ModuleRunId, tempLecturerModuleRun.LecturerId);
 
-        }
-    }
-    
+    //    }
+    //}
+
     #endregion
     #region moduleRun
 
@@ -680,7 +680,8 @@ else
     }
 
     #endregion
-    #region custome select
+    #region Additional Assigmment
+
     #endregion
     #endregion
 }

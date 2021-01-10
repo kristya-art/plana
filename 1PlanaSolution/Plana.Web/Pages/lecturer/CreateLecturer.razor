@@ -35,6 +35,16 @@
             <ValidationMessage For="@(() => lecturer.Email)" />
         </div>
     </div>
+    <div class="cols-sm-10">
+
+        <InputSelect @bind-Value="@lecturer.Role">
+            @foreach (var role in Enum.GetValues(typeof(RoleDto)))
+            {
+                <option value="@role">@role</option>
+            }
+        </InputSelect>
+
+    </div>
     <button type="submit" class="btn-btn-success">
         Create Lecturer
     </button>
