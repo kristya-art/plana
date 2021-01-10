@@ -144,20 +144,26 @@ else
                             }
 
                         }
-                        <tr>
-                            <td>
-                                @foreach (var aa in additionalAssignments)
-                                {
-                                    @foreach (var sem in Semesters)
-                                    {
-                                        if (aa.SemesterId == sem.SemesterId && aa.LecturerId == Lecturer.Id)
-                                        {
-                                            @aa.AACategory;
-                                        }
-                                    }
-                                }
-                            </td>
-                        </tr>
+                    <tr>
+
+                        @foreach (var aa in MyAdditionalAssignments)
+                        {
+                           
+                                    int localAA = aa.AdditionalAssignmentId;
+                                    <td>AA</td>
+                                    <td>(@aa.AACategory) @aa.Title</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>@aa.AAHours</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td> <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveAA(localAA))">DEL</MatButton></td>
+
+                           
+                        }
+                        
+
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -291,7 +297,7 @@ else
 </MatDialog>
 
 @*dialog with Additional Assigmnets*@
-<EditForm Model="@additionalAssignment" OnValidSubmit="@Create">
+<EditForm Model="@additionalAssignment" >
 
 
     <MatDialog @bind-IsOpen="dialogIsOpenAA">
@@ -318,7 +324,7 @@ else
             </div>
             <div class="cols-sm-10">
 
-                <InputSelect @bind-Value="@additionalAssignment.AACategory">
+                <InputSelect  @bind-Value="@additionalAssignment.AACategory">
                     @foreach (var category in Enum.GetValues(typeof(AdditionalAssignmentCategoryDto)))
                     {
                         <option value="@category">@category</option>
@@ -406,6 +412,8 @@ else
 
     public string AAHours { get; set; }
 
+    public List<AdditionalAssignmentDto> MyAdditionalAssignments = new List<AdditionalAssignmentDto>();
+
     protected async override Task OnInitializedAsync()
     {
 
@@ -424,7 +432,7 @@ else
 
             AutumnSemester = Plan.AutumnSemester;
             SpringSemester = Plan.SpringSemester;
-            Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
+           
             SelectedPlanId = Plan.Id;
 
 
@@ -432,6 +440,13 @@ else
             Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
             additionalAssignments = (await AdditionalAssignmentService.GetAdditionalAssignments()).ToList();
             AAHours = additionalAssignment.AAHours.ToString();
+            foreach (var aa in additionalAssignments) {
+               
+                    if ((aa.SemesterId == AutumnSemester.SemesterId||aa.SemesterId == SpringSemester.SemesterId) && aa.LecturerId == Lecturer.Id) {
+                        MyAdditionalAssignments.Add(aa);
+                    
+                }
+            }
 
 
 
@@ -584,6 +599,21 @@ else
         }
         //NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
     }
+    [Parameter]
+    public int tempAAId { get; set; }
+
+    AdditionalAssignmentDto aaToDelete { get; set; }
+
+    public async Task RemoveAA(int localAA) {
+        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected additional assignment from your list");
+        int tempAA = localAA;
+        aaToDelete = await AdditionalAssignmentService.GetAdditionalAssignment(tempAA);
+        if (isConfirm)
+        {
+            await AdditionalAssignmentService.SoftDeleteAdditionalAssignment(aaToDelete.AdditionalAssignmentId);
+        }
+    }
+
 
     #endregion
     #region
@@ -594,7 +624,7 @@ else
     async Task Create() {
         Lecturer.AdditionalAssignments.Add(additionalAssignment);
         additionalAssignment.LecturerId = Lecturer.Id;
-         await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
+        await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
         NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
     }
     #endregion
