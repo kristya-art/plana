@@ -13,6 +13,7 @@ namespace Plana.Models
         public bool IsFixed { get; set; }
         public bool IsModifyable { get; set; }
         public string Year { get; set; }
+        public string LastYear { get; set; }
         public DateTime? ExpiredDate { get; set; }
         
         public DateTime? OfficialPublishDate { get; set; }

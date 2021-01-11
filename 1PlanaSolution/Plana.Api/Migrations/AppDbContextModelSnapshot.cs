@@ -430,6 +430,9 @@ namespace Plana.Api.Migrations
                     b.Property<bool>("IsModifyable")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LastYear")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("OfficialPublishDate")
                         .HasColumnType("datetime2");
 

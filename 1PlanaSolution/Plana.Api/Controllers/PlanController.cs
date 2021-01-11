@@ -94,5 +94,33 @@ namespace Plana.Api.Controllers
             }
 
         }
+
+        //[HttpGet]
+        //[Route("{lastYearPlan}")]
+        //public async Task<ActionResult<PlanDto>> LastYearPlan(PlanDto plan)
+        //{
+        //    try
+        //    {
+        //        var result = await _planService.FindLastYearPlan(plan);
+
+        //        if (result != null)
+        //        {
+        //            return Ok(result);
+        //        }
+        //        return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+        //        return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+        //    }
+        //}
+
+        [HttpGet]
+        [Route("{lastYearPlan}")]
+        public async Task<ActionResultDto<PlanDto>> GetLastYearPlan(PlanDto plan)
+        {
+            return await _planService.FindLastYearPlan(plan);
+        }
     }
 }

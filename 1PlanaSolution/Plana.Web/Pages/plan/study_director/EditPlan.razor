@@ -496,6 +496,7 @@ else
 
     #region Last Year Plan
 
+
     #endregion
     #region Dialog Box Methods for Last Year Plan
     bool _isDelete = false;
@@ -552,6 +553,27 @@ else
     {
         LdialogIsOpen = false;
     }
+
+
+    //public  async Task ShowLastYearPlan(PlanDto plan) {
+
+    //      try
+    //      {
+    //          var result = await PlanService.LastYearPlan(plan);
+    //          if (result.ErrorMessage != null)
+    //          {
+    //              ErrorMessage = result.ErrorMessage;
+    //          }
+    //      }
+    //      catch (Exception ex)
+    //      {
+
+    //          loadFailed = true;
+    //          Logger.LogWarning(ex, "There are no last year plan.");
+    //      }
+
+
+    //  }
 
     async Task addLecturer(int moduleRunId, int lecturerId)
     {

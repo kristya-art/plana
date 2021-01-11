@@ -17,7 +17,8 @@ namespace Plana.Shared
         [Required(ErrorMessage="The Year must be provided")]
         [MinLength(9)]
         public string Year { get; set; }
-
+         
+        public string LastYear { get; set; } 
         public DateTime? ExpiredDate { get; set; }
 
         public DateTime? OfficialPublishDate { get; set; }
@@ -31,5 +32,14 @@ namespace Plana.Shared
 
         [ForeignKey("SpringSemesterId")]
         public virtual SemesterDto SpringSemester { get; set; } = new SemesterDto();
+
+        public string FindLastYearPlan() {
+            var LastNumbers = Year.Substring(Year.Length - 2); // example 2020-2019  ==> 19 as string
+            int LastNumbersInt = Int32.Parse(LastNumbers); //=> 19 as int 
+            int LastYearLast2Numbers = LastNumbersInt - 1; // => 19-1 => 18 as int
+            LastYear = LastYearLast2Numbers.ToString(); // => 18 as string
+            return LastYear;
+        
+        }
     }
 }

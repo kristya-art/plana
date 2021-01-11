@@ -14,6 +14,6 @@ namespace Plana.Web.Services
         Task UpdatePlan(PlanDto plan);
         Task<PlanDto> CreatePlan(PlanDto plan);
         Task SoftDeletePlan(int id);
-       
-    }
+        Task<ActionResultDto<PlanDto>> LastYearPlan(PlanDto plan);
+        }
 }

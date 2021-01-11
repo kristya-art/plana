@@ -116,10 +116,6 @@ namespace Plana.Api.Services
         }
 
 
-
-
-
-
         public void AddSemester(Semester semester) {
             if (semester != null) { 
               
@@ -157,6 +153,25 @@ namespace Plana.Api.Services
                 return _mapper.Map<PlanDto>(result);
             }
             return null;
+        }
+
+        public async Task<ActionResultDto<PlanDto>> FindLastYearPlan(PlanDto plan) {
+            
+            string last2Numbers =  plan.FindLastYearPlan();
+            var foundPlan = new Plan();
+            bool existLastYearPlan = false;
+            foreach (var p in _context.Plans)
+            {
+                if (p.Year.Substring(p.Year.Length - 2) == last2Numbers)
+                {
+                    foundPlan = p;
+                    existLastYearPlan = true;
+                }
+                else if (!existLastYearPlan) { return new ActionResultDto<PlanDto>("There are no last year plan!"); }
+                
+            }
+            var result = await _context.Plans.FindAsync(foundPlan);
+            return _mapper.Map<PlanDto>(result);
         }
 
 

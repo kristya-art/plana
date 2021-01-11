@@ -46,6 +46,7 @@ namespace Plana.Web.Pages.plan.study_director
         // public ModuleRunDto SelectedModuleRun { get; set; } = new ModuleRunDto();
         public List<ModuleDto> Modules { get; set; } = new List<ModuleDto>();
 
+         
         /// <summary>
         /// data for lecturers
         /// </summary>
@@ -65,7 +66,7 @@ namespace Plana.Web.Pages.plan.study_director
         public string ModuleId { get; set;}
 
         public int? SelectedPlanId { get; set; }
-        
+        public PlanDto lastYearPlan { get; set; }
        
         /// <summary>
         /// inside this method we call the rest api and retrieve a data
@@ -94,23 +95,20 @@ namespace Plana.Web.Pages.plan.study_director
                 Lmr = new LecturerModuleRunDto();
                 SelectedPlanId = Plan.Id;
                 ListLmr = (await LecturerModuleRunService.GetLecturerModuleRuns()).ToList();
-            }
+                
+               
+               }
 
             else
             {
                 Plan = new PlanDto { };
                 Semester = new SemesterDto { };
                 Module = new ModuleDto { };
-                //ModuleRun = new ModuleRunDto { };
-
-                //AutumnSemester = new Semester { };
-                //SpringSemester = new Semester { };
-                ListLmr = new List<LecturerModuleRunDto> { };
+               ListLmr = new List<LecturerModuleRunDto> { };
                 
 
             }
             Plans = (await PlanService.GetPlans()).ToList();
-            //Semesters = (await SemesterService.GetSemesters()).ToList();
             ModuleRuns = (await ModuleRunService.GetModuleRuns()).ToList();
             Modules = (await ModuleService.GetModules()).ToList();
             Lecturers = (await LecturerService.GetLecturers()).ToList();

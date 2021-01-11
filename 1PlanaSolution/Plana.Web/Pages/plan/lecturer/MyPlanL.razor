@@ -432,7 +432,7 @@ else
 
             AutumnSemester = Plan.AutumnSemester;
             SpringSemester = Plan.SpringSemester;
-           
+
             SelectedPlanId = Plan.Id;
 
 
@@ -441,10 +441,10 @@ else
             additionalAssignments = (await AdditionalAssignmentService.GetAdditionalAssignments()).ToList();
             AAHours = additionalAssignment.AAHours.ToString();
             foreach (var aa in additionalAssignments) {
-               
-                    if ((aa.SemesterId == AutumnSemester.SemesterId||aa.SemesterId == SpringSemester.SemesterId) && aa.LecturerId == Lecturer.Id) {
-                        MyAdditionalAssignments.Add(aa);
-                    
+
+                if ((aa.SemesterId == AutumnSemester.SemesterId||aa.SemesterId == SpringSemester.SemesterId) && aa.LecturerId == Lecturer.Id) {
+                    MyAdditionalAssignments.Add(aa);
+
                 }
             }
 
@@ -611,6 +611,9 @@ else
         if (isConfirm)
         {
             await AdditionalAssignmentService.SoftDeleteAdditionalAssignment(aaToDelete.AdditionalAssignmentId);
+            MyAdditionalAssignments = MyAdditionalAssignments.Where(c => c.AdditionalAssignmentId != tempAAId).ToList();
+
+
         }
     }
 

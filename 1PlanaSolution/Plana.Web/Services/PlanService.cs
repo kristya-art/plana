@@ -21,6 +21,8 @@ namespace Plana.Web.Services
             return await http.PostJsonAsync<PlanDto>("api/plan", plan);
         }
 
+        
+
         public async Task<PlanDto> GetPlan(int id)
         {
             return await http.GetJsonAsync<PlanDto>($"api/plan/{id}");
@@ -39,6 +41,12 @@ namespace Plana.Web.Services
         public async Task UpdatePlan(PlanDto plan)
         {
             await http.PutJsonAsync("api/plan", plan);
+        }
+
+        public async Task<ActionResultDto<PlanDto>> LastYearPlan(PlanDto plan)
+        {
+            return await http.GetJsonAsync<ActionResultDto<PlanDto>>($"api/plan/lastYearPlan");
+
         }
     }
 }
