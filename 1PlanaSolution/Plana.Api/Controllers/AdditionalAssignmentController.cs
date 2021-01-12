@@ -65,7 +65,7 @@ namespace Plana.Api.Controllers
             {
                 if (additionalAssignment == null) { return BadRequest(); }
                 var createdAAssignment = await additionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
-                return CreatedAtAction(nameof(GetAdditionalAssignment), new { id = createdAAssignment.Id }, createdAAssignment);
+                return CreatedAtAction(nameof(GetAdditionalAssignment), new { id = createdAAssignment.AdditionalAssignmentId }, createdAAssignment);
             }
             catch (Exception)
             {
@@ -80,11 +80,11 @@ namespace Plana.Api.Controllers
         {
             try
             {
-                var updateAAssignment = await additionalAssignmentService.GetAdditionalAssignment(additionalAssignment.Id);
+                var updateAAssignment = await additionalAssignmentService.GetAdditionalAssignment(additionalAssignment.AdditionalAssignmentId);
 
                 if (updateAAssignment == null)
                 {
-                    return NotFound($"AditionalAssignment with id = {additionalAssignment.Id} not found");
+                    return NotFound($"AditionalAssignment with id = {additionalAssignment.AdditionalAssignmentId} not found");
                 }
                 return await additionalAssignmentService.UpdateAdditionalAssignment(additionalAssignment);
 

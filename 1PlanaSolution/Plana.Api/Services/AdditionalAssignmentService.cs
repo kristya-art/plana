@@ -67,7 +67,7 @@ namespace Plana.Api.Services
 
         public async Task<AdditionalAssignmentDto> UpdateAdditionalAssignment(AdditionalAssignmentDto additionalAssignmentDto)
         {
-            var result = await context.AdditionalAssignments.FindAsync(additionalAssignmentDto.Id);
+            var result = await context.AdditionalAssignments.FindAsync(additionalAssignmentDto.AdditionalAssignmentId);
             if (result != null) {
                 result.Title = additionalAssignmentDto.Title;
                 result.AAHours = additionalAssignmentDto.AAHours;
