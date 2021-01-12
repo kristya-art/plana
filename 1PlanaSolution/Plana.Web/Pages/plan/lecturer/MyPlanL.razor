@@ -454,7 +454,7 @@ else
                 //    MyAdditionalAssignments.Add(aa);
 
                 //}
-                if ((aa.PlanId == SelectedPlan.Id) &&( aa.LecturerId == Lecturer.Id)) {
+                if ((aa.PlanId == Plan.Id) &&( aa.LecturerId == Lecturer.Id)) {
                    MyAdditionalAssignments.Add(aa);
 
                 }
@@ -471,8 +471,6 @@ else
 
     [Parameter]
     public PlanDto SelectedPlan { get; set; } = new PlanDto();
-
-
     public int? SelectedPlanId { get; set; }
 
 
@@ -523,7 +521,7 @@ else
     #endregion
     #region multiselection
 
-    //public ModuleRunDto SelectedRun { get; set; } = new ModuleRunDto();
+   
 
 
     bool loadFailed;
@@ -638,9 +636,9 @@ else
 
     #region methods for additional assignment
     async Task Create() {
-        Lecturer.AdditionalAssignments.Add(additionalAssignment);
+        //Lecturer.AdditionalAssignments.Add(additionalAssignment);
         additionalAssignment.LecturerId = Lecturer.Id;
-        additionalAssignment.PlanId = SelectedPlan.Id;
+        additionalAssignment.PlanId = Plan.Id;
         await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
         NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
     }
