@@ -17,7 +17,8 @@ namespace Plana.Shared
 
         public int? LecturerId { get; set; } 
 
-        public int? SemesterId { get; set; } 
+        public int? SemesterId { get; set; }
+        public int PlanId { get; set; }
 
         public AdditionalAssignmentCategoryDto AACategory { get; set; }
     }

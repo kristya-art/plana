@@ -144,26 +144,31 @@ else
                             }
 
                         }
-                    <tr>
+                    
 
                         @foreach (var aa in MyAdditionalAssignments)
                         {
-                           
-                                    int localAA = aa.AdditionalAssignmentId;
-                                    <td>AA</td>
-                                    <td>(@aa.AACategory) @aa.Title</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>@aa.AAHours</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td> <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveAA(localAA))">DEL</MatButton></td>
+                            int localAA = aa.AdditionalAssignmentId;
+                        <tr>
 
-                           
-                        }
-                        
+                       
+                        <td>AA</td>
+                        <td>(@aa.AACategory) @aa.Title</td>
+                        <td></td>
+                        <td></td>
+                        <td>@aa.AAHours</td>
+                        <td>
+                            <p><MatTextField @bind-Value="aa.AAHours"></MatTextField></p>
+                            <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => AdditionalAssignmentService.UpdateAdditionalAssignment(aa))">OK</MatButton>
+                        </td>
+                        <td></td>
+                        <td> <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveAA(localAA))">DEL</MatButton></td>
 
                     </tr>
+                          }
+
+
+
                     </tbody>
                 </table>
             </div>
@@ -304,10 +309,10 @@ else
         <MatDialogTitle>Add Addtional Assignment</MatDialogTitle>
         <MatDialogContent Style="width: 500px;right:50px">
 
-            <div class="form-group row">
+            @*<div class="form-group row">
                 <label for="semester">Semester</label>
-            </div>
-            <div class="col-sm-10">
+            </div>*@
+            @*<div class="col-sm-10">
                 <InputSelect id="semester" @bind-Value="@additionalAssignment.SemesterId" class="form-control">
                     @foreach (var sem in Semesters)
                     {
@@ -315,7 +320,7 @@ else
                     }
                 </InputSelect>
 
-            </div>
+            </div>*@
             <div class="form-field">
                 <label>Title:</label>
                 <div>
@@ -323,18 +328,21 @@ else
                 </div>
             </div>
             <div class="cols-sm-10">
+                <div class="form-field">
+                    <label>Category:</label>
+                    <div>
+                        <InputSelect @bind-Value="@additionalAssignment.AACategory">
+                            @foreach (var category in Enum.GetValues(typeof(AdditionalAssignmentCategoryDto)))
+                            {
+                                <option value="@category">@category</option>
+                            }
+                        </InputSelect>
+                    </div>
+                </div>
+            </div>
 
-                <InputSelect  @bind-Value="@additionalAssignment.AACategory">
-                    @foreach (var category in Enum.GetValues(typeof(AdditionalAssignmentCategoryDto)))
-                    {
-                        <option value="@category">@category</option>
-                    }
-                </InputSelect>
-            
-          </div>
 
-
-        </MatDialogContent>
+</MatDialogContent>
         @*<button type="submit" class="btn-btn-success">
             Create 
         </button>*@
@@ -442,10 +450,15 @@ else
             AAHours = additionalAssignment.AAHours.ToString();
             foreach (var aa in additionalAssignments) {
 
-                if ((aa.SemesterId == AutumnSemester.SemesterId||aa.SemesterId == SpringSemester.SemesterId) && aa.LecturerId == Lecturer.Id) {
-                    MyAdditionalAssignments.Add(aa);
+                //if ((aa.SemesterId == AutumnSemester.SemesterId||aa.SemesterId == SpringSemester.SemesterId) && aa.LecturerId == Lecturer.Id) {
+                //    MyAdditionalAssignments.Add(aa);
+
+                //}
+                if ((aa.PlanId == SelectedPlan.Id) &&( aa.LecturerId == Lecturer.Id)) {
+                   MyAdditionalAssignments.Add(aa);
 
                 }
+
             }
 
 
@@ -627,6 +640,7 @@ else
     async Task Create() {
         Lecturer.AdditionalAssignments.Add(additionalAssignment);
         additionalAssignment.LecturerId = Lecturer.Id;
+        additionalAssignment.PlanId = SelectedPlan.Id;
         await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
         NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
     }

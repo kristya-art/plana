@@ -65,6 +65,9 @@ namespace Plana.Api.Migrations
                     b.Property<int?>("LecturerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("PlanId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("SemesterId")
                         .HasColumnType("int");
 

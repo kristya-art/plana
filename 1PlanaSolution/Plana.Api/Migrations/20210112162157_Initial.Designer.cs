@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210110161850_Initial")]
+    [Migration("20210112162157_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,6 +65,9 @@ namespace Plana.Api.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("LecturerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlanId")
                         .HasColumnType("int");
 
                     b.Property<int?>("SemesterId")

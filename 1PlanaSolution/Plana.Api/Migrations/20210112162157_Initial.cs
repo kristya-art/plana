@@ -192,6 +192,7 @@ namespace Plana.Api.Migrations
                     AAHours = table.Column<double>(type: "float", nullable: false),
                     LecturerId = table.Column<int>(type: "int", nullable: true),
                     SemesterId = table.Column<int>(type: "int", nullable: true),
+                    PlanId = table.Column<int>(type: "int", nullable: false),
                     AACategory = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)

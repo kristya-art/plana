@@ -19,6 +19,7 @@ namespace Plana.Models
          public int? LecturerId { get; set; } //foreign key one-to-many
 
          public int?  SemesterId { get; set; } //foreign key one-to-many
+         public int PlanId { get; set; }
       
         public AdditionalAssignmentCategory AACategory { get; set; }
 
