@@ -53,9 +53,9 @@ namespace Plana.Api.Services
         {
             var result = await context.AdditionalAssignments.FindAsync(additionalAssignmentId);
             if (result != null) {
-                result.IsDeleted = true;
-                result.DeletedAt = DateTime.Now.Date;
-
+                //result.IsDeleted = true;
+                //result.DeletedAt = DateTime.Now.Date;
+                context.AdditionalAssignments.Remove(result);
              
                 await context.SaveChangesAsync();
 

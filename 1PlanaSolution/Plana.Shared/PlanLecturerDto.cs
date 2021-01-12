@@ -67,21 +67,13 @@ namespace Plana.Shared
         }
         public double GetAA()
         {
-            List<SemesterDto> SemesterList = new List<SemesterDto>();
-            SemesterList.Add(Plan.AutumnSemester);
-            SemesterList.Add(Plan.SpringSemester);
-
             AAtotal = 0.0;
             foreach(var aa in Lecturer.AdditionalAssignments)
             {
-                foreach (var sem in SemesterList)
-                {
-                    if (aa.SemesterId == sem.SemesterId)
+                if (aa.PlanId == PlanId)
                     {
                         AAtotal += aa.AAHours;
                     }
-                }
-
             }
             return AAtotal;
         }

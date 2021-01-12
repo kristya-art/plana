@@ -149,11 +149,12 @@ else
                         @foreach (var aa in MyAdditionalAssignments)
                         {
                             int localAA = aa.AdditionalAssignmentId;
-                        <tr>
+                    <tr>
 
-                       
+
                         <td>AA</td>
                         <td>(@aa.AACategory) @aa.Title</td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td>@aa.AAHours</td>
@@ -161,7 +162,7 @@ else
                             <p><MatTextField @bind-Value="aa.AAHours"></MatTextField></p>
                             <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => AdditionalAssignmentService.UpdateAdditionalAssignment(aa))">OK</MatButton>
                         </td>
-                        <td></td>
+
                         <td> <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveAA(localAA))">DEL</MatButton></td>
 
                     </tr>
@@ -309,18 +310,6 @@ else
         <MatDialogTitle>Add Addtional Assignment</MatDialogTitle>
         <MatDialogContent Style="width: 500px;right:50px">
 
-            @*<div class="form-group row">
-                <label for="semester">Semester</label>
-            </div>*@
-            @*<div class="col-sm-10">
-                <InputSelect id="semester" @bind-Value="@additionalAssignment.SemesterId" class="form-control">
-                    @foreach (var sem in Semesters)
-                    {
-                        <option value="@sem.SemesterId">@sem.GetAbbreviation()</option>
-                    }
-                </InputSelect>
-
-            </div>*@
             <div class="form-field">
                 <label>Title:</label>
                 <div>
@@ -340,9 +329,14 @@ else
                     </div>
                 </div>
             </div>
+            <div class="form-field">
+                <label>Description:</label>
+                <div>
+                    <InputText @bind-Value="@additionalAssignment.Description" placeholder="" pattern="^(?=.*\S).{1,256}$" />
+                </div>
+            </div>
 
-
-</MatDialogContent>
+        </MatDialogContent>
         @*<button type="submit" class="btn-btn-success">
             Create 
         </button>*@
@@ -455,7 +449,7 @@ else
 
                 //}
                 if ((aa.PlanId == Plan.Id) &&( aa.LecturerId == Lecturer.Id)) {
-                   MyAdditionalAssignments.Add(aa);
+                    MyAdditionalAssignments.Add(aa);
 
                 }
 
@@ -521,7 +515,7 @@ else
     #endregion
     #region multiselection
 
-   
+
 
 
     bool loadFailed;
@@ -617,13 +611,14 @@ else
 
     public async Task RemoveAA(int localAA) {
         bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected additional assignment from your list");
-        int tempAA = localAA;
-        aaToDelete = await AdditionalAssignmentService.GetAdditionalAssignment(tempAA);
+       
+        tempAAId = localAA;
+        aaToDelete = await AdditionalAssignmentService.GetAdditionalAssignment(tempAAId);
         if (isConfirm)
         {
             await AdditionalAssignmentService.SoftDeleteAdditionalAssignment(aaToDelete.AdditionalAssignmentId);
             MyAdditionalAssignments = MyAdditionalAssignments.Where(c => c.AdditionalAssignmentId != tempAAId).ToList();
-
+            
 
         }
     }
