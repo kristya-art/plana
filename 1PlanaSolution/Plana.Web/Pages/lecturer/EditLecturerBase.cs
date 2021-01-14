@@ -69,7 +69,7 @@ namespace Plana.Web.Pages
             }
             if (result != null)
             {
-                NavigationManager.NavigateTo("/");
+                NavigationManager.NavigateTo("/lecturers");
             }
         }
 
