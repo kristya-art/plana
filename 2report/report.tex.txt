@@ -104,94 +104,103 @@
 \section{Acknowledgments}
 
 
-
+\pagebreak
 \section{Abstract}
 
+PLANA (Planning of Assignments for Lecturers) is a web application tool for effective teacher planning. With PLANA, teachers can participate in the planning process, make suggestions about the modules which they teach, and schedule hourly workloads for specific modules.
+In this thesis, we improve the planning of assignments for lecturers by implementing a web application using ASP.NET Core Blazor. We also describe the application’s system architecture and system design and perform domain analysis.
+Additionally, we justify our choice of implementing PLANA as a web application by exploring the advantages of web applications over Microsoft Excel solutions and desktop applications.
 
+
+\pagebreak
 \setcounter{secnumdepth}{2}  % to make sections without numbers
 
 
 
 \section{Introduction}
-At our school at the Department of Technology and Computer Science, actual teacher assignment planning is done using Microsoft Excel tool.
-This plan is handled by one responsible person.
-The modern world with the rapid growth of new technologies makes it possible to improve various systems, giving them more and more possibilities, automating many functions and saving a lot of time.
-This work aims to develop an information system that enables assignment planning for lecturers. But unlike the existing system, it should have the following criteria:
+At our school at the Department of Technology and Computer Science, teacher
+assignment planning is done using Microsoft Excel. This plan is handled by one
+person. In the modern world, with the rapid growth of new technologies, it is
+possible to improve various systems, giving them more and more possibilities, automating
+many functions and saving a lot of time. This thesis aims to develop an information
+system that eases assignment planning for lecturers. But unlike the existing system,
+it should fulfill the following criteria.
+
 \begin{itemize}
-\item the teachers themselves should be involved in the planning process
-\item the ability of create groups of modules and groups of teachers
-\item increased planning flexibility
+\item The teachers themselves should be involved in the planning process
+\item The ability to create groups of modules and groups of teachers
+\item Increased planning flexibility
 \end{itemize}
-An innovative type of this work is \textbf{product development.} Product development describes the process of creating product. 
-Previous project  and this work include all phases of creation: an analysis of new trends in technology, study of what the client wants,  and idea how to create product based on selected technologies and concepts. As well as product implementation and testing. \cite{innovation}
-The  degree of novelty in this work includes:
+
+This thesis also employs an innovation technique called  \textbf{product development.} The previous project (project2) \footnote{Project 2 is a project module of the Bern University of Applied Sciences, in which students often deal with the topic of the Bachelor's
+start working.} and this thesis include all phases of product creation.\cite{innovation}
 \begin{itemize}
-\item establishing successful ideas such as: 
+    \item An analysis of new trends in technology
+    \item A study of the client’s needs
+    \item An idea of how to create the product based on the selected technologies and concepts
+    \item Product implementation and testing 
+\end{itemize}
+
+
+This thesis contains the following novelties.
+\begin{itemize}
+\item Establishing successful ideas, such as: 
     \begin{itemize}
     \item Involving teachers in the planning process, which reduces planning time and makes the process easier
+
     \item Creation of groups of teachers and modules, making it easier to coordinate planning
     \end{itemize}
- \item creation of a specific solution -  product that includes great advantages over the existing product. These advantage are:
+ \item Creation of a specific solution - a product that includes great advantages over the existing product. These advantages are:
     \begin{itemize}
-        \item possibility of collaborative work. That is, all system actors can actively participate in the planning process.
-        \item consistency of the data
-        \item better overview of the entire system
-        \item accessibility anywhere, etc.
+        \item Possibility of collaborative work, i.e. all system actors can actively participate in the planning process.
+
+        \item Data consistency
+        \item A better overview of the entire system
+        \item Accessibility regardless of location, etc.
     \end{itemize}
 \end{itemize}
+The planning process involves the input of specific data for specific user-defined views for each user, as well as time limits set by the system.
 
-Below we will describe in details which model of the system can offer us such opportunities.
 
-The planning process involves the input of specific data for specific user-defined views for each user and time limits set by the system. 
+All of these requirements need a more suitable system than Microsoft Excel. In the previous project, we compared a  \textbf{Microsoft Excel} solution to a generic \textbf{Web Application} with respect to several criteria and concluded that the web application meets the requirements of
+the conceived system.
 
- All of these requirements need a more suitable system than Microsoft Excel.
-In the previous project, we compared \textbf{Microsoft Excel} and \textbf{Web Application} according to several criteria. And we concluded that the web application meets the requirements of the conceived system. 
 \begin{itemize}
-    \item The web application is designed to involve \textbf{many users}, 
-    \item it can have a  database that gives us  \textbf{consistency of the data}. 
-    \item Also, the data is much \textbf{safer} in a database.  
-    \item The web application gives the best \textbf{overview} of the entire system.
+    \item The web application is designed to involve \textbf{many users} 
+    \item It can have a  database that gives us  \textbf{data consistency}
+    \item Also, the data is much \textbf{safer} in a database 
+    \item The web application gives the best \textbf{overview} of the entire system
 \end{itemize}
 
-Comparing \textbf{Desktop Application} with \textbf{Web Application} web application wins in:
+Comparing  a generic \textbf{Desktop Application} to a generic \textbf{Web Application}also results in the web application being the better option:
 \begin{itemize}
-\item it is \textbf{accessible anywhere}
-\item \textbf{no update needed }
-\item \textbf{costs less} 
+\item it is \textbf{It is accessible from anywhere}
+\item \textbf{No updates required }
+\item \textbf{Costs less} 
 \end{itemize} 
- We decided to make a web application that will meet all the requirements and will be created using suitable modern technologies. Technologies such as ASP.NET Core Blazor Server with Entity Framework Core (EFCore) and MS SQL (Microsoft Structured Query Language) for the database were chosen. ASP.NET Core Blazor is a new framework that is gaining popularity. Interestingly, thanks to it, it becomes possible to do the entire application in C\# without using JavaScript.\\
-This work is a continuation of a project that was completed last semester, In which we have prepared the necessary environment for this project.
-In project 2, we created a prototype. In this work, the system will be detailed and expanded. In particular, the following goals are pursued:
+We decided to make a web application that will meet all the requirements and will be created using suitable modern technologies. ASP.NET Core Blazor Server with Entity Framework Core (EFCore) and MS SQL (Microsoft Structured Query Language) was the database technologies of choice. ASP.NET Core Blazor is a new framework that is gaining popularity. A major advantage of using ASP.NET Core Blazor is that it becomes possible to do the entire application in C\# without using JavaScript.\\
+This work is a continuation of project 2 \footnote{Project 2 is a project module of the Bern University of Applied Sciences, in which students often deal with the topic of the Bachelor's
+Start working.}, which was completed last semester, where we have prepared the necessary environment for this project by creating a prototype. In this thesis, the system will be expanded. In particular, the following goals are pursued.
+
 \begin{itemize}
 \item \textbf{Involvement of lecturers in the planning process.}
-Lecturers can create their medium- and long-term plans in form of requests and proposal for the definite plan, which is then approved by the person responsible for the planning.
+Lecturers can create their medium- and long-term plans in form of requests and proposal for the definite plan, which is then approved by the person responsible for the planning
 \item \textbf{Manage planning data.} Each teacher can manage his assignments.
 \item \textbf{Grouping of lecturers.} It should be possible to schedule several lecturers for the same module.
    \begin{itemize}
    \item Teachers who join a group can independently manage their assignments related to their common module.
    \item Each teacher can make a group with other lecturers.
    \end{itemize}
- \item \textbf{Grouping of the modules.} The group of lecturers can choose the group of modules and set themselves to it. This can be done in the form of a proposal for the definitive plan, which is then approved by the person responsible for the planning.
+ \item \textbf{Grouping of the modules.} The group of lecturers can choose a group of modules and assign themselves to it. This can be done in the form of a proposal for the definitive plan, which is then approved by the person responsible for the planning.
 \end{itemize}
 
-
- 
-In this work, first, we will explain how the project was organized and how we used a SCRUM to manage it, then we carry out an additional analysis of the system in connection with the expansion of the system requirements. We will make changes to the domain analysis. We will expand the topic of System Architecture and System Design. And then we will cover the topics Project Implementation and Testing.
+This thesis has the following structure. First, we will explain how the project was organized and how SCRUM was used to manage it. Then, we will carry out an additional analysis of the system pertaining to the expansion of system requirements. We will also make changes to the domain analysis and extend the System Architecture and System Design chapters. Finally, we present the Project Implementation and Testing. 
 
 
 
 
 
-%\section{Customer Problem Statement}
-%
-%\subsection{Problem Statement}
 
-
-%\**
-%A minimum 3-page high-level narrative about your project. The narrative should not be written from the developer’s perspective, describing the features of the planned system.
-%Rather, put yourself into a customer’s role, and write your problem statement as if your imagined customer would write it! —Describe the problem that your customer is facing and his or her suggestions about how a software system could help.
-%Your problem statement should be based on your project proposal, revised and improved as necessary.
-%*\
 
 \pagebreak
 
@@ -216,9 +225,21 @@ KKK      &              345\\
 
 
 \subsection{Glossary}
+\item \textbf{API} Application Programming Interface.
+\item \textbf{ASP.NET Core API}Is a free and open-source web framework and successor to ASP.NET, developed by Microsoft and the community. It is a modular framework that runs on both the full .NET Framework, on Windows, and the cross-platform .NET Core.
+\item \textbf{ASP.NET Core Blazor} is a free and open-source web framework that enables developers to create web apps using C\# and HTML. It is being developed by Microsoft.
+\item \textbf{Azure Cosmos DB}  is a fully managed NoSQL database for modern app development.
+\item \textbf{Backend} refers to any part of a website or software program that users do not see.
+\item \textbf{BPMN} Business Process Model and Notation
+\item \textbf{CRUD} Create, read, update and delete
+\item \textbf{C\# } is a general-purpose, multi-paradigm programming language encompassing static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.
+\item \textbf{Database} Database is an organized collection of data, generally stored and accessed electronically from a computer system
+\item \textbf{DBContext}
+DbContext is an important class in Entity Framework API. It is a bridge between domain or entity classes and the database. DbContext is the primary class that is responsible for interacting with the database
+\item \textbf{DTO} Data Transfer Object
+\item \textbf{Entity Framework(EF)Core} It is open-source, lightweight, extensible, and a cross-platform version of Entity Framework data access technology. 
+\item \textbf{Frontend}. The Frontend of a software program or website is everything with which the user interacts.
 \begin{itemize}
-
-
 \item \textbf{FURPS+}\cite{eeles2005capturing} is a system for classifying requirements.
 \begin{itemize}
 \item Functionality
@@ -228,64 +249,55 @@ KKK      &              345\\
 \item Supportability 
 \end{itemize}
 
-
-\item \textbf{ SignalIR} is a free and open-source software library for Microsoft ASP.NET that allows server code to send asynchronous notifications to client-side web applications. 
-
-\item \textbf{Blazor} is a free and open-source web framework that enables developers to create web apps using C\# and HTML. It is being developed by Microsoft.
-
-\item \textbf{EF Core} 
-
 \item \textbf{HTML} Hyper Text Markup language
-
-
-\item \textbf{SQL} Structured Query Language
+\item \textbf{MS SQL} Structured Query Language
 \item \textbf{JS } JavaScript
-\item \textbf{CRUD} Create, read, update and delete
-\item \textbf{UI} User Interface
-\item \textbf{API} Application Programming Interface 
-
-\item \textbf{MS} Microsoft
-\item \textbf{BPMN} Business Process Model and Notation
-\item \textbf{Entity Framework(EE)Core}
-Is an Object-Relational Mapping (O/RM) framework. It is an enhancement to ADO.NET that gives developers an automated mechanism for accessing & storing the data in the database
-\item \textbf{NuGet}
-Is a free and open-source package manager designed for the Microsoft development platform.
-\item \textbf{DBContext}
-DbContext is an important class in Entity Framework API. It is a bridge between domain or entity classes and the database. DbContext is the primary class that is responsible for interacting with the database
-\item \textbf{Database} Database is an organized collection of data, generally stored and accessed electronically from a computer system
+\item\textbf{JSON}(JavaScript Object Notation)is an open standard file format, and data interchange format, that uses human-readable text to store and transmit data objects consisting of attribute-value pairs and array data types (or any other serializable value).
+\item \textbf{Microsoft Teams} is a proprietary business communication platform developed by Microsoft.
 \item \textbf{Microsoft SQL Server}
-Microsoft SQL Server is a relational database management system (RDBMS) that supports a wide variety of transaction processing, business intelligence and analytics applications in corporate IT environments
-\item \textbf{ASP.NET Core API}Is a free and open-source web framework and successor to ASP.NET, developed by Microsoft and the community. It is a modular framework that runs on both the full .NET Framework, on Windows, and the cross-platform .NET Core.
-\item \textbf{}
-\item \textbf{}
-\item \textbf{}
-\item \textbf{}
-\item \textbf{}
+Microsoft SQL Server is a relational database management system (RDBMS) that supports a wide variety of transaction processing, business intelligence and analytic applications in corporate IT environments
+\item \textbf{MySQL} is an open-source relational database management system.
+\item \textbf{Microsoft Visual Studio} is an integrated development environment (IDE) from Microsoft. It is used to develop computer programs, as well as websites, web apps, web services, and mobile apps.
+\item \textbf{NuGet} Is a free and open-source package manager designed for the Microsoft development platform.
+\item \textbf{PostgresSQL} is a free and open-source relational database. 
+\item \textbf{REST} Representational state transfer (REST) is a de-facto standard for a software architecture for interactive applications that typically use multiple Web services. To be used in REST-based application, a Web Service needs to meet certain constraints; such a Web Service is called RESTful.\cite{rest}
+\item \textbf{Product Backlog} is a prioritized list of work for the development team that is derived from the roadmap and its requirements. 
+
+\item \textbf{Relational Database} is a digital database based on the relational model of data.
+\item \textbf{SCRUM }is a process framework used to manage product development 
+\item \textbf{SQLite} is a server-less database and is self-contained.
+\item \textbf{ SignalIR} is a free and open-source software library for Microsoft ASP.NET that allows server code to send asynchronous notifications to client-side web applications.
+\item \textbf{Stakeholder} The term \" stakeholder\" refers to the people or groups affected by a software development project. They may be end users, or they might simply be affected by the process.
+\item \textbf{UI} User Interface is the space where interactions between humans and machines occur.
+
+
+
+
 
 
 
 \end{itemize}
-%\section{System Requirements}
+
 
 \section{Project Management}
 \subsection{Effort Estimation}
   		
-The Bachelor's Thesis  is designed as a 12 ECTS module. This corresponds to a workload of 360 hours.To control the hours allotted to work on the project the author used an excel.
- At the end of the project, by the time the documents were submitted the total working time was...Together with the subsequent preparation for the defense and presentation, the total time will be from 420 to 450 hours.
+The Bachelor's Thesis is designed as a 12 ECTS module. This corresponds to a workload of 360 hours. To control the hours allotted to work on the project we used Microsoft Excel.
+ At the end of the project, by the time the documents were submitted the total working time was 400 hours. Together with the subsequent preparation for the defense and presentation, the total time will be from 420 to 450 hours.
   		
   		
   		
   		
   		
-\subsection{Scrum}  	
-The foundation of the project organization was Scrum.
+\subsection{Scrum }	
+The foundation of the project organization was Scrum \footnote{ Scrum is an agile framework for developing, delivering, and sustaining complex products.}.
  	    Some principles of Scrum could not be achieved since they need a group of more than two people. 
  	    Our work was based on the principles of Scrum like the Empirical Process of Control, the core of Scrum, self-organization, value-based prioritization, etc.
  	    The Empirical Process of Control includes three main ideas, namely transparency, inspection, and adaptation. \\
  	    \begin{itemize}
  	        \item Transparency: The work is carried out in full trust of all parties involved. Everyone has the courage to keep each other up to date with both good and bad news. 
- 	        \item  Inspection: Inspection is carried out by every one in the Scrum Team. The team openly shows the product at the end of each Sprint.
- 	        \item  Adaptation: The team asks constant questions about the progress of work, whether we are on the right way. Depending on this, we can adapt an existing product.		 \\
+ 	        \item  Inspection: Inspection is carried out by everyone in the Scrum Team. The team openly shows the product at the end of each Sprint.
+ 	        \item  Adaptation: The team asks constant questions about the progress of work, whether we are on the right way. Depending on this, we can adapt to an existing product.		 \\
  	    \end{itemize}
  	    
  	   At the beginning of the project, we have discussed and estimated all the work that needs to be done. Meetings between supervisor and developer are bi-weekly and sometimes weekly.
@@ -299,24 +311,25 @@ The foundation of the project organization was Scrum.
  \subsubsection{\romannumeral1.  Scrum Roles}
  The Scrum Roles have been defined as follows:
  \begin{itemize}
- \item Product Owner: Mr. Pfahrer acts as the owner of the product. He is also responsible for feedback on the work, and overseeing the work process.
+ \item Product Owner: Mr. Pfahrer acts as the owner of the product. He is also responsible for feedback on the work and overseeing the work process.
  \item Development Team: Since there is only one developer, this role is assigned to Shiryagina Kristina.
  \item Scrum Master: Shiryagina Kristina takes on this role.
   	
 	\end{itemize}
-The Thesis expert Federico Flueckiger takes a part in the meetings thus has the role of stackenolder.
+The Thesis expert Federico Flueckiger takes a part in the meetings thus has the role of stakeholder.
 
   	    \subsubsection{\romannumeral2. Scrum Plan}
-  	    To discuss the project, were weekly and biweekly meetings held . They included personal meetings or meetings using Microsoft Teams. The meetings consisted of:
+  	    To discuss the project, were weekly and biweekly meetings held. They included personal meetings or meetings using Microsoft Teams. The meetings consisted of:
   	    \begin{itemize}
   	    \item Sprint Review. It includes a show of work and its discussion.
   	    \item Sprint Planning. It includes the scheduling of future tasks.
   	    \item Sprint Retrospective. It includes discussion about what went well and what went wrong, what we should do differently. 
   	    \end{itemize}
-  		\subsubsection{\romannumeral3. Scrum Artifacts }
-  		Gitlab from the BFH school was used for the project, which makes it easy to figure out what has already been done and what else is in the process of work, as well as make plans for sprints. 
-  	The figures below shows that with the help of gitlab the Product Backlog and Sprint backlog was created.
-  	\textbf{Product Backlog} contains everything that product needs. 
+  		\subsubsection{\romannumeral3. Scrum Artifacts}\footnote{Scrum Artifacts provide key information that the Scrum Team and the stakeholders need to be aware of for understanding the product under development, the activities being planned, and the activities are done in the project.}
+  		
+  		Gitlab\footnote{GitLab is an open-source code repository and collaborative software development platform for projects.} from the BFH school was used for the project, which makes it easy to figure out what has already been done and what else is in the process of work, as well as make plans for sprints. 
+  	The figures below show that with the help of Gitlab the Product Backlog and Sprint backlog \footnote{A sprint backlog is the set of items that a cross-functional product team selects from its product backlog to work on during the upcoming sprint.} was created.
+  	\textbf{Product Backlog} contains everything that the product needs. 
   	\textbf{Sprint Backlog} is a set of items selected from Product backlog for working on concrete sprint. For each task there is a label "TODO", "DOING" and "DONE", which facilitates the overall control of the work.
 \begin{figure}[h]
 \centering
@@ -324,8 +337,7 @@ The Thesis expert Federico Flueckiger takes a part in the meetings thus has the 
 \caption{Gitlab boards with issues}
 \label{blabla}
 \end{figure}
-
-An Excel document was also used to organize the project.This document displays all data on the deadlines,goals of the sprint, duration of sprints, as well as tasks for a specific sprint, description, duration, and their prioritization.
+We created document(PLANA\_project\_management)  in Excel format, that can be found under the following link  \url{https://gitlab.ti.bfh.ch/shirk1/planning-of-the-assignments-for-lecturers-plana/-/tree/master/3project_management}, which was used to organize this project. This document contains all data on the deadlines, goals of the sprints, duration of sprints, as well as tasks for a specific sprint, description, duration, and their prioritization.
 \begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{gitlab/sprints.JPG}
@@ -337,20 +349,20 @@ An Excel document was also used to organize the project.This document displays a
 \begin{figure}[h]
 \centering
 \includegraphics[width=150mm]{gitlab/excel.JPG}
-\caption{}
+\caption{Organization of Sprint one}
 \label{blabla}
 \end{figure}
 
  \subsubsection{\romannumeral4. Sprints}
   		
 \subsubsection{Conclusion Project Management}  	
-If to look closely at each sprint in the document  \url{https://gitlab.ti.bfh.ch/shirk1/planning-of-the-assignments-for-lecturers-plana/-/tree/master/3project_management"},it is east to see that some tasks have been moved from one sprint to the next. This suggests that not all tasks were completed on time, that is, first of all, attention was paid to tasks with high importance. This is due to the fact that some tasks may vary significantly over time. therefore, the prioritization system is in demand in this case. 
-There was a noticeable delay during the implementation of the code for the program, which I could not solve for several days, in this case I turned to a colleague for help, who explained to me what I needed to change in the configuration. And I think that school projects are always associated with a risk that they will not meet the deadline, since there is a constant study of new technologies, and working alone is always inferior to teamwork. On the other hand, dividing work into sprints allows you to have more clear control over the overall situation.
-
+If to look closely at each sprint in the document  \url{https://gitlab.ti.bfh.ch/shirk1/planning-of-the-assignments-for-lecturers-plana/-/tree/master/3project_management"}, it is easy to see that some tasks have been moved from one sprint to the next. This suggests that not all tasks were completed on time, that is, first of all, attention was paid to tasks with high importance. This is since some tasks may vary significantly over time. therefore, the prioritization system is in demand in this case. 
+There was a noticeable delay during the implementation of the code for the program, which I could not solve for several days, in this case, I turned to a colleague for help, who explained to me what I needed to change in the configuration. And I think that school projects are always associated with a risk that they will not meet the deadline, since there is a constant study of new technologies, and working alone is always inferior to teamwork. On the other hand, dividing work into sprints allows you to have more clear control over the overall situation.
+\pagebreak
 \section{System requirements}		
 
 \subsection{Product Backlog and User Stories}
-n project 2, the main user stories were identified, in this work I supplemented this list in accordance with the new requirements.
+In project 2, the main user stories were identified, in this work we supplemented this list in accordance with the new requirements.
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|p{0.5cm} |p{3cm}|p{5.5cm}|p{5.5cm}|}
@@ -447,7 +459,7 @@ As a Study Director, I want to be able to make a group of lecturers and attach i
 
 09 &
 See the requests for the modules &
-As a Study Director, I want to see  proposal for the selected modules so that it will be easier to make assignment plan. &
+As a Study Director, I want to see proposals for the selected modules so that it will be easier to make an assignment plan. &
           
   User is able to:            
 \begin{itemize}
@@ -458,7 +470,7 @@ As a Study Director, I want to see  proposal for the selected modules so that it
 
  10 &
 See the requests for the groups  &
-As a Study Director, I want to see teachers suggestions for the group work so that it will be easier to approve specific groups and make assignment plan. &
+As a Study Director, I want to see teachers' suggestions for the group work so that it will be easier to approve specific groups and make an assignment plan. &
           
   User is able to:            
 \begin{itemize}
@@ -469,7 +481,7 @@ As a Study Director, I want to see teachers suggestions for the group work so th
 
 11 &
 See the working hours request for the concrete modules &
-As a Study Director, I want to see teachers proposal for working hours for concrete module so it will be easier to set working hours to each lecturer. &
+As a Study Director, I want to see teachers' proposals for working hours for the concrete module so it will be easier to set working hours for each lecturer. &
           
   User is able to:            
 \begin{itemize}
@@ -491,7 +503,7 @@ As a Study Director, I want to see teachers proposal for working hours for concr
 \end{itemize}                                                                 \\ \hline
 13 &
  Set groups of lecturers to the modules &
- As a Study Director, I want to be able to set group of lecturers to the assignment plan. &
+ As a Study Director, I want to be able to set a group of lecturers to the assignment plan. &
  
    User is able to:            
 \begin{itemize}
@@ -530,7 +542,7 @@ As a Study Director, I want to see teachers proposal for working hours for concr
 \hline
 15&
  Attach Lecturers to the module &
- As a Study Director, I want to be able to attach lecturer or group of lecturers to the specific module in the assignment plan. &
+ As a Study Director, I want to be able to attach a lecturer or group of lecturers to the specific module in the assignment plan. &
  
    User is able to:            
 \begin{itemize}
@@ -540,7 +552,7 @@ As a Study Director, I want to see teachers proposal for working hours for concr
 \end{itemize}       \\ \hline    
  16&
  Attach Lecturers to the module group &
- As a Study Director, I want to be able to attach  group of lecturers to the specific module in the assignment plan. &
+ As a Study Director, I want to be able to attach a group of lecturers to the specific module in the assignment plan. &
  
    User is able to:            
 \begin{itemize}
@@ -549,7 +561,7 @@ As a Study Director, I want to see teachers proposal for working hours for concr
 \end{itemize}       \\ \hline   
 17&
  Attach Lecturers Group to the Module Group &
- As a Study Director, I want to be able to attach  group of lecturers to the group of modules in the assignment plan. &
+ As a Study Director, I want to be able to attach a group of lecturers to the group of modules in the assignment plan. &
  
    User is able to:            
 \begin{itemize}
@@ -605,7 +617,7 @@ As a Lecturer, who joins a group, I want to be able to independently manage the 
 \label{table2}
 \end{table}
 
-The Figure below shows all identified user stories with their prioritization
+Figure 4 below shows all identified user stories with their prioritization.
 There is an identifier in priority weight
 from 1 to 10. A higher priority weight indicates that the corresponding user story is
 more important for the project’s success and for meeting customer needs.
@@ -624,7 +636,7 @@ more important for the project’s success and for meeting customer needs.
  	The stakeholders of our system are:
   	\begin{itemize}
   	\item \textbf{ Study director}\\
-  	The first major stakeholder is a study director.The study director can be both the person who makes an assignment plan and also a lecturer. He participates in planning, and is the person who take control and main responsibility for planning.
+  	The first major stakeholder is a study director. The study director can be both the person who makes an assignment plan and also a lecturer. He participates in planning and is the person who takes control and main responsibility for planning.
   	
   	\item  \textbf{ Lecturer} \\
   	The lecturer is another major stakeholder of our system. He participates in assignment planning.
@@ -651,17 +663,15 @@ more important for the project’s success and for meeting customer needs.
 		\begin{itemize}
 		\item Initiating Actor
 		\item  \textbf{goal }Uses the system to participate in the planning of  his assignments .
-		    \item  \textbf{goal }Uses system to see his assignment plan .
-		    \item \textbf{goal} Uses system to make a requests for the modules he/she wants to teach.
+		    \item  \textbf{goal }Uses system to see his assignment plan.
+		    \item \textbf{goal} Uses system to make a request for the modules he/she wants to teach.
   			\item \textbf{goal } Uses system to make a request for the teaching hours for a concrete module.
   	
 \end{itemize} 
     
 \end{itemize}
 \subsection{c. User Interface Requirements}
-In the project2 I did the main part of the Functional Requirements .In this work I pay special attention to the development the user interface concepts.
-All requirements are based
-on consumer needs. There is an identifier in the form of REQ-x and a priority weight
+In project2 we did the main part of the Functional Requirements. In this work, we pay special attention to the development of the user interface concepts. There is an identifier in the form of REQ-x\footnote{ REQ - is an abbreviation of Requirements} and a priority weight
 from 1 to 10. A higher priority weight indicates that the corresponding requirement is
 more important for the project’s success and for meeting customer needs.
 % ***************** 1 login *******
@@ -680,12 +690,12 @@ REQ-2   &  10&  UI must have study director start page. \\ \hline
 
  REQ-4    &  10& UI must have a page to add a module. \\ \hline
  
-  REQ-5    &  7&   UI must have a page to load existing module. \\ \hline
+  REQ-5    &  7&   UI must have a page to load the existing module. \\ \hline
   
  REQ-6    &  10& UI must have a page to create a new module .\\ \hline
   
  REQ-7    &  10&
- UI must have a page to add lecturers or group of lecturers to the module. \\ \hline
+ UI must have a page to add lecturers or groups of lecturers to the module. \\ \hline
  
   REQ-8    &  7&   UI must have a page with copied assignments from last year. \\ \hline
   
@@ -706,7 +716,7 @@ REQ-2   &  10&  UI must have study director start page. \\ \hline
  UI must have a page to see the groups of lecturers to the corresponding module/module group \\ \hline
  
 %   REQ-    &  1&  
-%   UI must have a lecturer's page to make a notes. \\ \hline
+%   UI must have a lecturer's page to make a note. \\ \hline
   
  REQ-14    &  10&
  UI must have a page to see and manage the plan after editing of lecturers \\ \hline
@@ -720,30 +730,30 @@ REQ-2   &  10&  UI must have study director start page. \\ \hline
 
 
 \section{System Architecture and System Design}
-In project 2 describes the System architecture and design. In this work this chapter is supplemented with new diagrams and descriptions. \\
+In project 2 describes the System architecture and design. In this work, this chapter is supplemented with new diagrams and descriptions. \\
 
 \subsection{a. Architecture Styles according business logic }
 Applications are designed to provide a variety of services to solve specific problems. And each problem has a list of rules (business rules). That is, the developer writes the code to implement the business rule. This code is business logic. There are various techniques and patterns for handling business logic. \cite{smith2018entity}
 
-In this application is used a layered architecture.
- The pattern is used to make development of database access faster and to make code cleaner.
-And this pattern based on the domain-driven design(DDD) pattern from Eric Evans. But in this case the business logic is not in the entity classes but in the Business Logic Service layer.
+This application uses a layered architecture.
+ The pattern is used to make the development of database access faster and to make the code cleaner.
+And this pattern based on the domain-driven design(DDD) pattern from Eric Evans. But in this case, the business logic is not in the entity classes but in the Business Logic Service layer.
 
-The following list shows the guidelines that build the business logic pattern of Plana application.
-\textbf{The guidelines that build the business logic }
+The following list shows the guidelines that build the business logic pattern of the Plana application. \\
+\textbf{The guidelines that build the business logic }\cite{martin}\\
 \begin{itemize}
-    \item Low coupling between layers, high cohesion within them.
-    \item Separation of concerns.
-    \item Adaptability: be able to change.
+    \item Low coupling between layers, high cohesion within them
+    \item Separation of concerns
+    \item Adaptability: be able to change
     \item No circular references between layers 
-    \item Lower layers should not depend on upper layers. 
+    \item Lower layers should not depend on upper layers
 \end{itemize}
-\cite{martin}\\
-The Figure below shows the structure of application's back-end.
+
+The Figure below shows the structure of the application's back-end.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=150mm]{layer/backend-arch.jpg}
+\includegraphics[width=150mm]{images/layer/backend-arch.jpg}
 \caption{Layer Architecture of Plana Back-end}
 \label{backend_arch}
 \end{figure}
@@ -757,13 +767,12 @@ The Figure below shows the structure of application's back-end.
 Data access layer                   &      
 The layer stores and retrieves the information from a
 database\\ \hline
-Business database access layer                   &      
-The layer performs database operation using EF Context object.\\ \hline
+
 Business Logic Service layer                   &       
 The layer makes logical decisions, processes commands	\\ \hline
 Presentation layer                   &  
-The layer contains the code for the Web API endpoint logic.
-It contains a minimal business logic.\cite{infoq}
+The layer contains the code for the Web API endpoint logic
+It contains minimal business logic.\cite{infoq}
 \\ \hline
 
 \end{tabular}
@@ -772,7 +781,7 @@ It contains a minimal business logic.\cite{infoq}
 \label{table2}
 \end{table}
 
-Layers shall to be loosely coupled and design dependency in only one direction.
+Layers shall be loosely coupled and design dependency in only one direction.
 \cite{domain}
 \cite{smith2018entity}
 
@@ -780,7 +789,7 @@ Layers shall to be loosely coupled and design dependency in only one direction.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=150mm]{layer/plana-arch.jpg}
+\includegraphics[width=150mm]{images/layer/plana-arch-last.JPG}
 \caption{Layer Architecture of Plana Application}
 \label{backend_arch}
 \end{figure}
@@ -809,12 +818,16 @@ This folder includes Entity Framework Core generated migration classes
  Pages  and Shared               &      
 The Pages and the Shared folders contain .razor files, which are the
 Blazor components \cite{blazor} \\ \hline
+
+Services             &      
+Service class uses HttpClient\footnote{The HttpClient class is used to send and receive requests to an HTTP endpoint.} to call the REST API service\cite{kud} \\ \hline
+
 \textbf{Plana.Models} Project \\ \hline
 Models                  &       
 This folder holds the application domain objects, the Code First classes. \cite{onion}	\\ \hline
-\textbf{Plana.Dtos} Project \\ \hline
+\textbf{Plana.Shared} Project \\ \hline
 DTO models                 &  
-in this application DTO has role of the view model ,which is used  to transfer data between the domain model and the view, it contains User Interface logic 
+In this application DTO has a role of the view model, which is used  to transfer data between the domain model and the view, it contains User Interface logic 
 \\ \hline
 
 
@@ -829,6 +842,10 @@ in this application DTO has role of the view model ,which is used  to transfer d
 \section{User Interface Specification}
 *Note: only selected Interface designs are presented below because they are the main functions of the application.
 \subsection{a. Preliminary Design}
+We made a user interface prototype
+using a \textbf{Axure RP} tool. This prototype can be found under the following link \url{https://5ztn9l.axshare.com}, the password to get access to the data is \textbf{oblako}. On the login page of the prototype, the user name and password are not required, it is necessary to click the button login.
+\\
+The following are print screens of the prototype we have created.\\
 i. Login \\
 ii.Study director's dashboard\\
 Once the study director successfully logged in, the personal dashboard page should be shown directly
@@ -840,7 +857,7 @@ Once the study director successfully logged in, the personal dashboard page shou
    \end{figure}
 \end{figure}
 
-iii.Create a plan\\
+iii. Create a plan\\
 Once the personal dashboard is displayed, user could click on the "Make a new plan" button, and add new module page will be shown where study director can make a new assignments plan.
 \begin{figure}[H]
   \begin{figure}[H]
@@ -850,7 +867,7 @@ Once the personal dashboard is displayed, user could click on the "Make a new pl
    \end{figure}
 \end{figure}
 
-\romannumeral 4. Add a new module \\ Study director  could click on the "add new module" button, and a window with buttons of adding or creating a module will be shown.
+\romannumeral 4. Add a new module \\ Study director could click on the "add new module" button, and a window with buttons of adding or creating a module will be shown.
 \begin{figure}[H]
   \begin{figure}[H]
     \raisebox{-\totalheight}{\includegraphics[width=1\textwidth, height=70mm]{UI-req/sd-make-new-add-module.JPG}}
@@ -859,11 +876,11 @@ Once the personal dashboard is displayed, user could click on the "Make a new pl
    \end{figure}
 \end{figure}
 \newpage 
-\romannumeral 5. Possibility of adding a module or group of modules. \\ Study director  could click on the "add an existing module" button, and a drop down menu with possible modules  will be displayed, then he could choose one of them and click button "save" and the chosen module will be displayed in the table. Or study director can choose "add new module button" and the row  with an editable fields will be displayed.
+\romannumeral 5. Possibility of adding a module or group of modules. \\ Study director could click on the "add an existing module" button, and a drop-down menu with possible modules will be displayed, then he could choose one of them and click the button "save" and the chosen module will be displayed in the table. Or study director can choose "add new module button" and the row with an editable fields will be displayed.
 \begin{figure}[H]
   \begin{figure}[H]
     \raisebox{-\totalheight}{\includegraphics[width=1\textwidth, height=70mm]{UI-req/sd-make-new-add-module-exist.JPG}}
-    \caption{A boat.}
+    \caption{Module is added to the plan}
     \label{fig:boat1}
     \raisebox{-\totalheight}{\includegraphics[width=1\textwidth, height=70mm]{UI-req/sd-make-new-add-module-new.JPG}}
   \caption{Add module/ modules group view}
@@ -871,7 +888,7 @@ Once the personal dashboard is displayed, user could click on the "Make a new pl
    \end{figure}
 \end{figure}
 
-\romannumeral 6. Possibility of adding a lecturer or group of lecturers. \\ Study director  could click on the "+" button that represents an add button and the windows with different buttons will be displayed. There are "add existing group" button to add an existing group of lecturers, "add new group" button to create a new group of lecturers and it to the module/group of modules and the "add lecturer" button to add lecturer.
+\romannumeral 6. Possibility of adding a lecturer or group of lecturers. \\ Study director could click on the "+" button that represents an add button and the windows with different buttons will be displayed. There are "add existing group" button to add an existing group of lecturers, "add new group" button to create a new group of lecturers and it to the module/group of modules, and the "add lecturer" button to add lecturer.
 \begin{figure}[H]
   \begin{figure}[H]
     \raisebox{-\totalheight}{\includegraphics[width=1\textwidth, height=70mm]{UI-req/sd-make-new-add-group.JPG}}
@@ -881,8 +898,8 @@ Once the personal dashboard is displayed, user could click on the "Make a new pl
 \end{figure}
 \newpage
 
-\romannumeral 7. See and copy last year plan.\\
-The study director could click on the button "last year plan" to see the last year's plan. Then he could copy the whole plan clicking the button "copy whole plan to the actual plan" or he could choose the modules he likes and copy it to the actual plan clicking the button "copy to the actual plan".
+\romannumeral 7. See and copy last year's plan.\\
+The study director could click on the button "last year plan" to see the last year's plan. Then he could copy the whole plan by clicking the button "copy whole plan to the actual plan" or he could choose the modules he likes and copy it to the actual plan by clicking the button "copy to the actual plan".
 \begin{figure}[H]
   \begin{figure}[H]
     \raisebox{-\totalheight}{\includegraphics[width=1\textwidth, height=70mm]{UI-req/sd-last-y-plan.JPG}}
@@ -895,10 +912,10 @@ The study director could click on the button "last year plan" to see the last ye
     
       \end{figure}
 \end{figure}
-Study director can use this page to make a plan and could publish it for the lecturers by clicking the button "publish on 18 July".\\
+The study director can use this page to make a plan and could publish it for the lecturers by clicking the button "publish on 18 July".\\
 \newpage
 \romannumeral 8. Lecturer's dashboard \\
-Once the lecturer successfully logged in the dash board page is shown. And if the study director has already published the plan, the lecturer's assignment plan will be displayed. The dash board contains also buttons with different functions. Here the lecturer can manage his assignments.
+Once the lecturer successfully logged in the dashboard page is shown. And if the study director has already published the plan, the lecturer's assignment plan will be displayed. The dashboard contains also buttons with different functions. Here the lecturer can manage his assignments.
 
 \begin{figure}[H]
   \begin{figure}[H]
@@ -914,7 +931,7 @@ Once the lecturer successfully logged in the dash board page is shown. And if th
 \end{figure}     
 \newpage
 \romannumeral 9. Add new module\\
-Lecturer could click on the "add new module" button and UI would show the window with possible modules. The lecturer could add him to the module and set desired hours for the module. The lecturer could click the button "add new additional assignment" and the window with possible additional assignment will be displayed. And like with modules he can add desired assignment to his plan and set the hours.
+The lecturer could click on the "add new module" button and UI would show the window with possible modules. The lecturer could add him to the module and set desired hours for the module. The lecturer could click the button "add new additional assignment" and the window with possible additional assignment will be displayed. And like with modules he can add the desired assignment to his plan and set the hours.
 
 \begin{figure}[H]
   \begin{figure}[H]
@@ -930,7 +947,7 @@ Lecturer could click on the "add new module" button and UI would show the window
 \end{figure}     
 \newpage
 \romannumeral 10. Lecturers groups \\
-Lecturer could click on the 'show lecturer groups' and the window with lecturers corresponding to the module will be displayed".
+The lecturer could click on the 'show lecturer groups' and the window with lecturers corresponding to the module will be displayed".
 
 \begin{figure}[H]
   \begin{figure}[H]
@@ -946,7 +963,7 @@ Lecturer could click on the 'show lecturer groups' and the window with lecturers
 \end{figure}     
 \newpage
 \romannumeral 12. Lecturer's last year plan \\
-Lecturer could click on the button "last year plan" and the window with the last year plan will be displayed. 
+The lecturer could click on the button "last year plan" and the window with the last year plan will be displayed. 
 
 \begin{figure}[H]
   \begin{figure}[H]
@@ -980,7 +997,7 @@ The lecturer could submit plan by clicking the "submit plan" button. After that 
 
 \section{Domain Analysis}
 \subsection{Domain Model}
-The domain model (Figure 1) shows us the important concept classes, associations and
+The domain model (Figure 1) shows us the important concept classes, associations, and
 multiplicities between them. The model made in the previous project is shown in black. And other colors show new concepts and associations associated with new tasks.
 
 \begin{figure}[H]
@@ -990,7 +1007,7 @@ multiplicities between them. The model made in the previous project is shown in 
 \label{blabla}
 \end{figure}
 
-In the domain model (Figure 2) we added small changes.
+In the domain model (Figure 24) we added small changes.
 When analyzing graphic concepts and the domain model, we found that it is necessary to add associations between the teacher and the teacher subgroup, since they are directly related. 
 
 
@@ -1002,14 +1019,14 @@ When analyzing graphic concepts and the domain model, we found that it is necess
 \end{figure}
 
 
-The domain model (Figure 3) is the post-analysis Domain model. We have removed the LecturerSubGroup since we can simplify the application. The LecturerGroup can consist of other LecturerGroups, that is, we create a relationship between them. Also we removed the links between the Module and Module Group and added it between the Module Run and the Module Group, since it is intended to create a groups of the Module Runs.
+The domain model (Figure 3) is the post-analysis Domain model. We have removed the LecturerSubGroup since we can simplify the application. The LecturerGroup can consist of other LecturerGroups, that is, we create a relationship between them. Also, we removed the links between the Module and Module Group and added it between the Module Run and the Module Group, since it is intended to create groups of the Module Runs.
 \begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{uml/domain-b3.JPG}
 \caption{Domain Model for PLANA}
 \label{blabla}
 \end{figure}
-
+The Figure 27 show the last variant of the Domain Model, where we added the concept class \"Plan\" and association between Semester and Lecturer.This gives us possibility to make the code easier.
 \begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{uml/domain-b4.JPG}
@@ -1017,7 +1034,7 @@ The domain model (Figure 3) is the post-analysis Domain model. We have removed t
 \label{blabla}
 \end{figure}
 
-In the definition of concepts, new concepts, associations between them and other concepts are highlighted in blue.
+In the definition of concepts, new concepts, associations between them, and other concepts are highlighted in blue.
 
 	    \subsubsection{i. Concept Definition}
 	    
@@ -1026,16 +1043,18 @@ In the definition of concepts, new concepts, associations between them and other
 	     \item Concept class \textbf{Study Branch} models a conceptual subdivision of subjects that form a study program.
 	      \item Concept class \textbf{Module} models a set of independent units that form a course at the school.
 	       \item Concept class \textbf{Module Run } models executions of a course in different languages.
-	       	      \item Concept class \textbf{Additional Assignment} models a set of independent units that form an additional task for the assignment's plan for the lecturer. There are several types of the Additional Assignments. For example, teaching, research. Each teacher can plan his Additional Assignment and manage it. 
+	       	      \item Concept class \textbf{Additional Assignment} models a set of independent units that form an additional task for the assignment's plan for the lecturer. There are several types of Additional Assignments. For example, teaching, research. Each teacher can plan his Additional Assignment and manage it. 
   \item Concept class \textbf{Semester} models the periods in the year, during which the lecturer is present in the school.
-  \item Concept class \textbf{\textcolor{blue}{ LecturerGroup}} models   group of teachers who will jointly participate in teaching one or more modules.
+  \item Concept class \textbf{\textcolor{blue}{ LecturerGroup}} models group of teachers who will jointly participate in teaching one or more modules.
    \item Concept class \textbf{\textcolor{blue}{ModuleGroup }}  models
    several modules collected in groups for further effective use.
+   \item Concept class \textbf{\textcolor{blue}{Plan }}  models the Plan for concrete year.
    \end{itemize} 
    
    
 \subsubsection{ii. Association Definition}
-	    \begin{table}[H]
+
+\begin{table}[H]
 \begin{center}
 \begin{tabular}{| p{6.5cm}| p{6.5cm} |p{2.5cm}|}
 
@@ -1058,14 +1077,14 @@ as there are module runs or not executed at all.
 A Module run is executed for one Module.& executes \\ \hline
 
 Study Branch -> Module                    &   Each Study Branch has many modules. These modules belong to exactly one study branch.  & has\\ \hline
-  Semester -> Lecturer                  &      In each Semester, there are many lecturers that are teaching, and these teachers are teaching in more than one Semester       & includes\\ \hline
+  Semester -> Lecturer                  &       Each Semester has many teachers, and these teachers are teaching in more than one Semester       & includes\\ \hline
  
 
  
 
  
  \textbf{\textcolor{blue}{ Lecturer -> LecturerGroup}}  & 
- Each Lecturer build  zero or multiple groups. 
+ Each Lecturer builds zero or multiple groups. 
  Each LecturerGroup must consist of two or more lecturers. & \textcolor{blue}{build}\\ \hline
  
   \textbf{\textcolor{blue}{  LecturerGroup -> ModuleRun}}  & 
@@ -1079,12 +1098,33 @@ A ModuleRun can belong to zero or one ModuleGroup. ModuleGroup can have from two
 
 \textbf{\textcolor{blue}{LecturerGroup -> ModuleGroup}}  &  A LecturerGroup can teach zero or multiple ModuleGroups. A ModuleGroup can have zero to many LecturerGroup.
 . &\textcolor{blue}{teaches} \\ \hline
+\end{tabular}
+\end{center}
+\caption{Association Definition}
+\label{table2}
+\end{table}
 
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{| p{6.5cm}| p{6.5cm} |p{2.5cm}|}
+
+\hline
+\rowcolor{LightCyan}
+\textbf{Concept Pair} & \textbf{Association Definition}& \textbf{Association Name} \\
+\hline
 \textbf{\textcolor{blue}{Lecturer -> ModuleGroup}}  &  Each Lecturer can take a part in teaching zero or many ModuleGroups. ModuleGroup can be teached by  one or many Lecturers .
-
 & \textcolor{blue}{takes part in teaching} \\ \hline
-\textbf{\textcolor{blue}{LecturerGroup -> LecturerGroup}}  &  Each LecturerGroup can consist of zero or multiple LecturerGroup and each LecturerGroup can be included in zero or multiple LecturerGroup .
-& \textcolor{blue}{consists} \\ \hline
+
+\textbf{\textcolor{blue}{LecturerGroup -> LecturerGroup}}  &  Each LecturerGroup can contain a zero or multiple LecturerGroup and each LecturerGroup can be included in zero or multiple LecturerGroup .
+& \textcolor{blue}{contains} \\ \hline
+
+\textbf{\textcolor{blue}{Plan-> Semester}}  &  Each Plan contains exactly one Autumn Semester and exactly one Spring Semester and each Semester can be included in zero or one Plan .
+& \textcolor{blue}{contains} \\ \hline
+
+\textbf{\textcolor{blue}{Plan-> Lecturer}}  &  Each Plan includes from zero to many Lecturers and each Lecturer can be included in zero or many Plans .
+& \textcolor{blue}{includes} \\ \hline
+
 \end{tabular}
 \end{center}
 \caption{Association Definition}
@@ -1093,13 +1133,13 @@ A ModuleRun can belong to zero or one ModuleGroup. ModuleGroup can have from two
 
 
 \section{Technologies}
-This chapter is described in project 2  report-roject2.pdf in Chapter 7, that can be found  at the following link \url{ https://gitlab.ti.bfh.ch/shirk1/planning-of-the-assignments-for-lecturers-plana/-/tree/master/help%20documents} 
+This chapter is described in project 2 (report-roject2.pdf in Chapter 7), which can be found  at the following link \url{https://gitlab.ti.bfh.ch/shirk1/planning-of-the-assignments-for-lecturers-plana/-/tree/master/help%20documents} 
 %%%implementation
 \section{Creating the Projects}
-In project 2 I started the implementation of the Plana application. I created the initial structure of the project, added domain classes and implemented the crud(Create, Update, Delete) operation for the teacher.
+In project 2 we started the implementation of the Plana application. We created the initial structure of the project, added domain classes, and implemented the crud(Create, Update, Delete) operation for the teacher.
 \subsection{Structure of Projects and Folders}
-The structure of Projects as well the Data Models Project, Plana.API project, Plan.Web project as well as Plana Database  were described in Project 2 in the document Visual Review In Initial Phase of Project.pdf at the following link \url{https://gitlab.ti.bfh.ch/shirk1/project2/-/tree/master/report-docs}
-In this work I added one more sub Project Plana.Shared, wich contains the Data trasnfer object(DTO), the objects that are used to encapsulate data, and send it from one subsystem of an application to another.\cite{dto-stack}
+The structure of Projects as well as the Data Models Project, Plana.API project, Plana.Web project, as well as Plana Database, were described in Project 2 in the document Visual Review In Initial Phase of Project.pdf at the following link \url{https://gitlab.ti.bfh.ch/shirk1/project2/-/tree/master/report-docs}
+In this work, we added one more sub-Project Plana.Shared, which contains the Data transfer object(DTO), the objects that are used to encapsulate data, and send it from one subsystem of an application to another.\cite{dto-stack}
 
 \subsection{Database and Entity Framework Core}
 Entity Framework(EF) Core is an object-relational mapper (O /RM). It is designed to make writing code for accessing a database quick and intuitive.
@@ -1112,7 +1152,7 @@ One-to-many: Lecturer
 Many-to-many:
 One-To-Many Relationship : 
 Lecturer to an Additional Assignment 
-Semester to a Additional Assignment
+Semester to an Additional Assignment
 Semester to a Module Run 
 Module to a Module Run
 Study Branch to a Module
@@ -1126,12 +1166,12 @@ Lecturers to Module Run
 
 \subsection{Modeling Types of Database Relationships}
 \subsubsection{Many-to-many Relationship }
-Creating many-to-many relationship is little bit different from the one-to-many and one-to-one.
-We will take as example relation between Lecturer and Module.\\
+Creating a many-to-many relationship is a little bit different from one-to-many and one-to-one.
+We will take as an example the relation between Lecturer and Module.\\
 
-In EF Core database doesn't directly implement this kind of relationships.
-First we have to create class Lecturer and class Module. Then we have to create one more class, we call it LecturersModules. This class links lecturers to their modules. \\
-At the LecturerModules class there are two properties, LecturerId and ModuleId. There are both - primary keys and foreign keys, known as a composite key.\cite{efa}
+In EF Core database doesn't directly implement this kind of relationship.
+First, we have to create a class Lecturer and class Module. Then we have to create one more class, we call it LecturersModules. This class links lecturers to their modules. \\
+At the LecturerModules class, there are two properties, LecturerId and ModuleId. There are both - primary keys and foreign keys, known as composite key.\cite{efa}
 
 
 \begin{figure}[H]
@@ -1177,7 +1217,7 @@ We need write just this and Entity Framework Core will do the correct implementa
 \label{blabla}
 \end{figure} 
 
-From Figure 3 we can see that one many-to-many relationship has transformed in two one-to-many and many-to-one relationships.
+From Figure 3 we can see that one many-to-many relationship has transformed into two one-to-many and many-to-one relationships.
 
 \begin{figure}[H]
 \centering
@@ -1188,11 +1228,11 @@ From Figure 3 we can see that one many-to-many relationship has transformed in t
 
 
 
-\subsection{Creating Database}
+%\subsection{Creating Database}
 \newpage
 \subsection{Creating a Repository}
 
-todo: photo of repository
+todo: photo of the repository
 
 
 
@@ -1233,10 +1273,10 @@ Entity Framework Core makes it possible to generate schema for the database from
 
 
 \subsection{Creating Seed Data}
-The seed data is the data that is used to populate the database. For seed data we add class SeedData.cs in the Models folder in Plana.Api project \cite{core3}.
+The seed data is the data that is used to populate the database. For seed data, we add class SeedData.cs in the Models folder in Plana.Api project \cite{core3}.
 %\subsubsection{Delete method in Entity Framework Core}
-By default, Entity Framework Core uses cascade deletes for depend relationships with non-nullable foreign keys. \cite{efa} \\
-..add photo of seed class (give it name The contents of the SeedData.cs class \\
+By default, Entity Framework Core uses cascade deletes depending on relationships with non-nullable foreign keys. \cite{efa} \\
+..add a photo of seed class (give it name The contents of the SeedData.cs class \\
 \subsubsection{Configuration of Core Services and Entity Framework}
 
 It is necessary to make changes in Startup.cs class in Plana.Api project - configure Entity Framework Core and set up the services that will be used to access the database \cite{efa}.\\
@@ -1273,7 +1313,10 @@ The figure below shows all these configurations.
 
 
 \subsubsection{Complex Data Model}
-in this section I would like to highlight more complex features of coding and data model structure in asp .net core.\\
+In this section, we would like to highlight more complex features of coding and data model structure in ASP.NET Core.\\
+
+To see a data from related entities it is necessary use methods \textbf{Include}, \textbf{ThenInclude}. Without the data in related entities shows the null values.
+
 
 \noindent                                                                %
 \begin{minipage}{\linewidth}                            % to keep image and caption on one page
@@ -1288,7 +1331,7 @@ in this section I would like to highlight more complex features of coding and da
 \begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{report_img/complex_data_problem/michele_module_null}
-\caption{}
+\caption{JSON Response of GetLecturers method}
 \label{blabla}
 \end{figure}
 
@@ -1296,42 +1339,45 @@ in this section I would like to highlight more complex features of coding and da
 \begin{minipage}{\linewidth}                            % to keep image and caption on one page
 \makebox[\linewidth]{                                       %  to center the image
   \includegraphics[keepaspectratio=true,scale=0.9]{report_img/complex_data_problem/repository_get_lecturers_modules}}
-\captionof{figure}{...}
+\captionof{figure}{GetLecturersModules method with added methods to get related data.}
 \label{visina8                                                      }%  only if needed  
 \end{minipage}
 
 
-
+After we have changed the structure of the method we have got the exception. We solve this problem by installing the package (Microsoft.AspNetCore.Mvc.NewtonsoftJson) and by changing the configuration in the Startup class.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{report_img/complex_data_problem/json_problem}
-\caption{}
+\caption{Excetption message }
 \label{blabla}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{report_img/complex_data_problem/install_newtonsoft_json}
-\caption{}
+\caption{The Microsoft.AspNetCore.Mvc.NewtonsoftJson package}
 \label{blabla}
 \end{figure}
+
+
 
 \noindent                                                                %
 \begin{minipage}{\linewidth}                            % to keep image and caption on one page
 \makebox[\linewidth]{                                       %  to center the image
   \includegraphics[keepaspectratio=true,scale=0.9]{report_img/complex_data_problem/startup_add_newtonsoft}}
-\captionof{figure}{...}
+\captionof{figure}{The Startup class}
 \label{visina8                                                      }%  only if needed  
 \end{minipage}
+\\
+\\
 
-
-
+Figure 41 shows a result that now contains the data we wanted.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=150mm]{report_img/complex_data_problem/michele_module_ok}
-\caption{}
+\caption{Response of getLecturersModules method }
 \label{blabla}
 \end{figure}
 
@@ -1340,7 +1386,7 @@ in this section I would like to highlight more complex features of coding and da
 
 \textbf{Call the API from Asp.net Core Blazor}
 
-.. add picture with a blazor page
+.. add a picture with a blazor page
 
 ...write about imports 
 
@@ -1379,23 +1425,14 @@ When we need to use some data from other folders in a blazor files like Razor fi
 \end{minipage}
 
 \subsection{Changing Architecture}
-After studying the literature about the Framework entity, I came to the conclusion that the Laeyr repositories do not really matter in the application, since Repository just duplicates what the DbContext class of Entity Framework already gives us. I deleted the repository layer, so the service class directly contacts with the data access layer.
+After studying the literature about the Framework entity, we concluded that the Layer repositories do not really matter in the application, since Repository just duplicates what the DbContext class of Entity Framework already gives us. We deleted the repository layer, so the service class directly contacts with the data access layer.
 \subsection{Setup for Blazor}
 To use the Blazor framework it is necessary to install :\\
 \begin{itemize}
-\item \textbf{.NET Core SDK 3.1 or later} from \url {http://dotnet.microsoft.com/download}
-\item \textbf{Visual Studio 2019} from \url {https://visualstudio.microsoft.com/downloads/}
+\item \textbf{.NET Core SDK 3.1 or later} from 
+\url{http://dotnet.microsoft.com/download}
+\item \textbf{Visual Studio 2019} from \url{https://visualstudio.microsoft.com/downloads/}
 \end{itemize}
-
-%\section{Proof of Concepts }
-%/**
-%determine whether an idea can be turned into a reality\\
-%test if the idea is viable and explore 
-%\\
-%how the proposed product or service will support organizational goals\\
-%*/
-
-
 
 
 
@@ -1404,9 +1441,9 @@ To use the Blazor framework it is necessary to install :\\
 %\section{Work Plan}
   		
   		
-	The sprints covered a one three-four weeks period. At the end of each sprint, there was a discussion with the supervisor.
+%	The sprints covered a one three-four weeks period. At the end of each sprint, there was a discussion with the supervisor.
 %
-%In Table 11 is an overview of what was achieved in which sprint.
+% Table 11 is an overview of what was achieved in which sprint.
 %\textbf{Sprint's Backlog}
 %
 %\begin{table}[H]
@@ -1600,34 +1637,66 @@ To use the Blazor framework it is necessary to install :\\
 %\caption{Sprints}
 %\label{table2}
 %\end{table}
-
+\pagebreak
 \section{Testing}
-The most important was to test  REST-API. For this purpose, the Postman application was chosen.The main logic is stored in the Service classes. And they are injected in Controller classes. Thus, were tested Controllers classes in the Api sub project. \\
-There are several HTTP status codes. The status code it is when the server sends back an HTTP code to signal the status of the request.\cite{postman}
-\subsection{Test Cases}
-Common  HTTP status codes include:
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{| p{2.5cm}| p{7.5cm} |}
-\hline
-\textbf{Status Code} & \textbf{Description} \\
-\hline
-200                  &      OK Successful responses        \\ \hline
- 400                   &   Bad\_REQUEST\\ \hline
-404                    &     NOT\_FOND         \\ \hline
-500                  & SERVER\_ERROR\\
-\hline
+\subsection{Testing API}
+The API layer of our application is 
+the most important part. It is the channel that connects the client to the server, contains business logic, in our case in the service classes, and provides the controllers which give value to users.\cite{test-rest} The API that is provided to the client, in case it breaks, will put at risk not only one application but the whole chain of business processes built around it. That is why it is necessary to test this part of the program. 
 
 
-\end{tabular}
-\end{center}
-\caption{HTTP status code}
-\label{table2}
-\end{table}
 
-All Controller classes and all methods in it are tested. Below are examples of testing certain methods and Response Statuses .
-\subsubsection{Testing the ModuleRun Controller }
-\textbf{Update ModuleRun}
+\subsubsection{API Test Actions}
+Each test consists of test actions. For each API request, the following steps are taken.
+
+\begin{itemize}
+   \item \textb{Verify correct HTTP status code} \\
+   To Test the API the Postman application was chosen.
+     There are several HTTP status codes. The status code it is when the server sends back an HTTP code to signal the status of the request.\cite{postman} \\
+         Common  HTTP Status Codes
+            \begin{table}[H]
+            \begin{center}
+            \begin{tabular}{| p{2.5cm}| p{7.5cm} |}
+            \hline
+            \textbf{Status Code} & \textbf{Description} \\
+            \hline
+        200                  &      OK Successful responses        \\ \hline
+         201                  &      CREATED responses        \\ \hline
+         400                   &   Bad\_REQUEST\\ \hline
+          403                 &      FORBIDDEN responses        \\ \hline
+        404                    &     NOT\_FOND         \\ \hline
+        500                  & SERVER\_ERROR\\
+         \hline
+         \end{tabular}
+        \end{center}
+            \caption{HTTP status code}
+             \label{table2}
+            \end{table}
+
+    \item \textbf{Verify response payload.}
+    Check valid JSON body and correct field names, types, and values 
+    \item \textbf{Verify response headers}
+    \item \textbf{Verify correct application state.}
+     Applicable if the check of the user interface is available \cite{test-rest}
+    
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Test Cases}
+
+
+We have tested all methods in Controller classes. Below are examples of testing certain methods and Response Statuses.
+\\
+\\
+\textbf{Testing the ModuleRun Controller } \\
+\textbf{Update ModuleRun}\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/mr/put.JPG}
@@ -1636,110 +1705,135 @@ All Controller classes and all methods in it are tested. Below are examples of t
 \end{figure}
 
 \pagebreak
-\textbf{Get ModuleRun}
+\textbf{Get ModuleRun} \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/mr/get.JPG}
-\caption{Update Module Run}
+\caption{Test for get ModuleRun method}
 \label{blabla}
-\end{figure}
+\end{figure}\\
 %%%% lm
-\subsubsection{Testing the  LecturerModuleRun Controller }
-\textbf{Get LecturerModuleRun}
+\textbf{Testing the  LecturerModuleRun Controller } \\
+
+\textbf{Get LecturerModuleRun} \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/lm/get.JPG}
 \caption{Test for get  LecturerModuleRun method}
 \label{blabla}
-\end{figure}
-
+\end{figure} 
+\\
 
 
 %%%% modules
-\subsubsection{Testing the Modules Controller }
+\textbf{Testing the Modules Controller }\\
 
 
-\textbf{Get All Modules}
+\textbf{Get All Modules}\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/modules/getAll.JPG}
 \caption{Test for get all modules  }
 \label{blabla}
 \end{figure}
-
-\textbf{Get module}
+\\
+\textbf{Get module} \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/modules/module.JPG}
-\caption{Test of get a module  method}
+\caption{Test for get a module  method}
 \label{blabla}
 \end{figure}
 
-\textbf{Create module}
+\textbf{Create module} \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/modules/post.JPG}
-\caption{Test of creating a new module}
+\caption{Test for create a new module method}
 \label{blabla}
 \end{figure}
+\\
 %%%% plan
-\subsubsection{Testing the Plan Controller }
-\textbf{Create a plan}
+\textbf{Testing the Plan Controller }\\
+\textbf{Create a plan}\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/plan/post.JPG}
-\caption{Test to create a new plan method}
+\caption{Test for create a new plan method}
 \label{blabla}
-\end{figure}
-
+\end{figure} 
+\\
 
 %%%% plan Lecturer
-\subsubsection{Testing the Plan Lecturer Controller }
+\textbf{Testing the Plan Lecturer Controller } \\
 
 \textbf{Get module runs of certain planLecturer}
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/planLecturer/getModuleRuns.JPG}
-\caption{Test to find module runs for the concrete Lecturer in concrete Plan}
+\caption{Test for get all module runs for the concrete Lecturer in concrete Plan method}
 \label{blabla}
-\end{figure}
-
+\end{figure} 
+\\
 
 
 %%%% semester
-\subsubsection{Testing the Semester Controller }
+\textbf{Testing the Semester Controller } \\
 
-\textbf{Delete Semester}
+\textbf{Delete Semester} \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=140mm]{posman/semester/delete.JPG}
-\caption{Test to delete a semester}
+\caption{Test for delete a semester method}
 \label{blabla}
 \end{figure}
 
 
 
+\subsection{Testing Frontend}
+The frontend is the visual client-side of a program. 
+To test a Presentation layer of our system we have asked two people to help with it, so they were our testers. 
+\begin{itemize}
+\item\textbf{Usability Test}
+The first test task was to test the system without any knowledge about the system requirements. 
+We tested the application for its intuitiveness, ease of use, and process clarity.
+Other front end tests need knowledge about requirements.
+The next tests were
+
+\item \textbf{Error-free test} Check each element for errors
+\item \textbf{Acceptance test} Evaluation the compliance of a system with business requirements\cite{testim}
 
 
+\end{itemize}
 
-\subsection{Conclusions}
+Before starting with testing We have made a testing plan.
+The necessary questions to the testers were recorded.
+A checklist with the functions of the system was made.
+
+Summing up this testing, I can say that it took a lot of time to test the API, since it contains the business logic of the system, respectively, the main operations.
+But such testing is very effective, since it allows to find errors at the development stage of the back end and, accordingly, eliminate them in time, which prevents further difficulties with the implementation of the code.
+Speaking of testing the Front End, bugs were revealed that were not obvious before.
+
+\pagebreak
+\section{Conclusions}
+\pagebreak
 
 \listoffigures
 
 %%\section{List of illustrations}
 %%\section{Contents of the table}
 \section{Appendix}
-\textbf{Gitlab-Repositories (Bachelor-Thesis):}
-\url{https://gitlab.ti.bfh.ch/shirk1/planning-of-the-assignments-for-lecturers-plana} \\
-\textbf{Gitlab-Repositories (Project2):}
+\textbf{Gitlab-Repositories (Bachelor-Thesis):} \\
+\url {https://gitlab.ti.bfh.ch/shirk1/planning-of-the-assignments-for-lecturers-plana} \\
+\textbf{Gitlab-Repositories (Project2):} \\
 \url{https://gitlab.ti.bfh.ch/shirk1/project2}\\
 
-\textbf{Other sources used:}
+\textbf{Other sources used:} \\
 \textbf{Blazor Tutorials:} 
 \url {https://www.pragimtech.com/courses/blazor-tutorial-for-beginners/} \\
 \textbf{Guide to a Writing a Thesis:} \url{https://www.ece.rutgers.edu/~marsic/thesis-guide.html}
 \section{Declaration of Authorship}
-I hereby certify that I composed this work completely unaided, and without the use of any other sources or resources other than those specified in the bibliography. All text sections not of my authorship are cited as quotations, and accompanied by an exact reference to their origin.\\
+I hereby certify that I composed this work completely unaided and without the use of any other sources or resources other than those specified in the bibliography. All text sections not of my authorship are cited as quotations and accompanied by an exact reference to their origin.\\
 \\
 Place, date:\\
 \\
@@ -1861,13 +1955,11 @@ Agenda
 Plan\\
 Future goals are: 
 \begin{itemize}
-
-
-	\item 
-	\item 
+	\item Project management document
+	\item Add new items to Product Backlog
 \end{itemize}	
 Retrospective\\
-
+discussion about Project 2
 Next Meeting: 08.09.20\\
 \**** \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1875,13 +1967,11 @@ Next Meeting: 08.09.20\\
 Plan\\
 Future goals are: 
 \begin{itemize}
-
-
-	\item 
-	\item 
+	\item Add an Introduction
+	\item Start with a new views
 \end{itemize}	
 Retrospective\\
- 
+Discussion about project management 
 Next Meeting: 21.10.20\\
 
 
@@ -1894,15 +1984,15 @@ Future goals are:
 \begin{itemize}
     \item Implementation. Add new concept classes into the application. 
   	\item  Implementation. Start implementation of graphic concepts we've made.
-	\item Make Study director plan view concept with less elements.
+	\item Make Study director plan view concept with fewer elements.
 	\item Put UI concepts to the report.
 \end{itemize}	
 Retrospective\\
 \begin{itemize}
-\item In graphical concept i have choice between semester view and year view, but for planning is more important year view.
-\item Actual state of planing view for study director looks little bit heavy because of many elements in it, would be better to minimize some staffs. In implementation we can manipulate view hiding some part of them. 
+\item In graphical concept we have a choice between semester view and year view, but for planning is more important year view.
+\item Actual state of the planning view for the study director looks a little bit heavy because of many elements in it, would be better to minimize some staff. In the implementation, we can manipulate views hiding some part of them. 
 
-\item Additional Assignments have a category, description and number of hours.
+\item Additional Assignments have a category, description, and number of hours.
 
 \end{itemize}
 Next Meeting: 04.11.20 (13:30)\\
@@ -1916,7 +2006,7 @@ Plan\\
 Future goals are: 
 \begin{itemize}
   \item \textbf{report} Describe the Additional Assignments. There are several Arts of Additional Assignments. The Lecturer and also Study Director can plan and manage it.
-  \item \textbf{report} Describe what is innovative in this work. For example that Lecturer, Study Director and Institute Manager can active collaborate with each other. That is idea of making groups is also innovative. In general, we make a specific solution for problem that we face.
+  \item \textbf{report} Describe what is innovative in this work. For example, the Lecturer, Study Director, and Institute Manager can active collaborate with each other. That is the idea of making groups is also innovative. In general, we make a specific solution to the problem that we face.
   \item Put tasks which have to be done until \textbf{21-January 2021} into the sprint backlog. These are 
   \begin{enumerate}
   \item Report
@@ -1930,7 +2020,7 @@ Future goals are:
 Retrospective\\
 \begin{itemize}
 \item The graphical concepts looking better now.
-\item Conflict between number of hours and lecturers that can teach specific module have place  in application.
+\item Conflict between a number of hours and lecturers that can teach specific modules have a place in the application.
 
 \end{itemize}
 Next Meeting: 18.11.20 (13:30)\\
@@ -1949,25 +2039,25 @@ Future goals are:
 Retrospective\\
 \begin{itemize}
 
-\item It is important to add the date to the bib file in case i use the article from the internet.
+\item It is important to add the date to the bib file in case we use the article from the internet.
 \end{itemize}
 Next Meeting: 02.12.20)\\
 
 \****
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{\textit{Report from  }}\\
+\textbf{\textit{Report from 02.12.20 }}\\
 Plan\\
 Future goals are: 
 \begin{itemize}
-   \item
+   \item Check functionality of most important use cases
 \end{itemize}	
-Retrospective\\
+Retrospective
 \begin{itemize}
-\item
+\item Discussion about the Views 
 
 \end{itemize}
-Next Meeting: )\\
+Next Meeting: 20.01.21)\\
 
 
 \end{document}
