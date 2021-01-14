@@ -19,7 +19,7 @@ namespace Plana.Web.Pages
         public NavigationManager NavigationManager { get; set; }
 
         public LecturerDto Lecturer { get; set; } = new LecturerDto();
-        public LecturerDto LecturerDto { get; set; } = new LecturerDto();
+       
 
         [Parameter]
         public string Id { get; set; }
