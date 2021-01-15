@@ -32,7 +32,6 @@ namespace Plana.Api.Services
         {
             var moduleRun = new ModuleRun();
             mapper.Map(moduleRunDto, moduleRun);
-
             var result = await _context.ModuleRuns.AddAsync(moduleRun);
             await _context.SaveChangesAsync();
 

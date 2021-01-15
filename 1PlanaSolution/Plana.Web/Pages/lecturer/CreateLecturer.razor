@@ -3,6 +3,7 @@
 @inherits EditLecturerBase
 @inject NavigationManager navmanager;
 
+@attribute [Authorize(Roles = "study_director")]
 <h3>Create Lecturer</h3>
 
 <EditForm Model="@Lecturer" OnValidSubmit="HandleValidSubmit">
@@ -49,14 +50,14 @@
             </div>
         </div>
     </div>
-            <button type="submit" class="btn-btn-success">
-                Create Lecturer
-            </button>
+    <button type="submit" class="btn-btn-success">
+        Create Lecturer
+    </button>
 </EditForm>
 
 @code {
     @*@using Plana.Web.Services;
-    @using Plana.Models;*@
+        @using Plana.Models;*@
 
 
     //[Inject]

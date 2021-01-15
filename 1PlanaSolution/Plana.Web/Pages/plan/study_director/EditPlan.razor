@@ -57,7 +57,7 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th width="10%">ModuleRunId</th>
+                @*<th width="10%">ModuleRunId</th>*@
                 <th>Semester</th>
                 <th>Module</th>
                 @*<th>Module </th>*@
@@ -87,24 +87,26 @@ else
                     {
                         int local = mr.ModuleRunId;
             <tr>
-                <td><input Id="SelectedId" @bind="mr.ModuleRunId" /></td>
+                @*<td><input Id="SelectedId" @bind="mr.ModuleRunId" /></td>*@
                 <td>@sem.GetAbbreviation()</td>
 
-                <td >(@mr.Module.Code) @mr.Module.Title</td>
+                <td>(@mr.Module.Code) @mr.Module.Title</td>
                 @*<td>@mr.Module.Title</td>*@
                 <td>@mr.ModuleGroup</td>
                 <td>@mr.Place</td>
-                <td >@mr.Module.TotalHours</td>
-                <td><p style="color:darkorchid;">
-                    @mr.HoursToPlan()
-                 @if (mr.IsExceedingSetHours())
-                 {
-
-                  <i class="material-icons" style="font-size:24px">warning</i>
-                }
-                </p></td>
+                <td>@mr.Module.TotalHours</td>
                 <td>
-                    
+                    <p style="color:darkorchid;">
+                        @mr.HoursToPlan()
+                        @if (mr.IsExceedingSetHours())
+                        {
+
+                            <i class="material-icons" style="font-size:24px">warning</i>
+                        }
+                    </p>
+                </td>
+                <td>
+
                     @if (mr.ModuleRunLecturerGroups != null)
                     {
 
@@ -126,19 +128,19 @@ else
                         <div id="scroll">
                             @foreach (var lm in mr.LecturersMR)
                             {
-                               
+
                                 int localLId = lm.LecturerId;
-                            <p style="white-space:nowrap;">
-                                @lm.Lecturer.SetToken() |@lm.Hours|  @if (lm.IsRequested == true)
-                                {
-                                    @request
-                                }
-                                @*<button class="btn" id="del" @onclick="@(e => DeleteLecturerModuleRun(local,localLId))"><i class="fa fa-close"></i></button>*@
-                                <button class="btn" id="del" @onclick="@(e=> LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId,lm.LecturerId))"><i class="fa fa-close"></i></button>
-                            </p>
+                                <p style="white-space:nowrap;">
+                                    @lm.Lecturer.SetToken() |@lm.Hours|  @if (lm.IsRequested == true)
+                                    {
+                                        @request
+                                    }
+                                    @*<button class="btn" id="del" @onclick="@(e => DeleteLecturerModuleRun(local,localLId))"><i class="fa fa-close"></i></button>*@
+                                    <button class="btn" id="del" @onclick="@(e=> LecturerModuleRunService.DeleteLecturerModuleRun(lm.ModuleRunId,lm.LecturerId))"><i class="fa fa-close"></i></button>
+                                </p>
                             }
 
-                           
+
                             <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false,local))"><i class="fa fa-plus"></i></button>
 
                         </div>
@@ -159,25 +161,26 @@ else
                             <i class="material-icons" style="font-size:24px">warning</i>
                         }
                     </td>
-                    <td>
+                    <td >
                         @foreach (var lm in mr.LecturersMR)
                         {
-                            <p>
-                                
-                                <MatTextField @bind-Value="lm.Hours"></MatTextField>
-                                <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))" >OK</MatButton>
-                            </p>
+                           
+                        <MatTextField @bind-Value="lm.Hours"></MatTextField>
+                        <button class="btn" id="save-btn"  @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">save</button>
                         }
-                       
+
                     </td>
 
 
                 }
-                <td style="white-space:nowrap;" @onclick="CallJSMethod2">
-                    <button class="btn" id="edit-btn">edit</button>
-                    <button class="btn" id="delete-btn" @onclick="@(e=>ModuleRunService.SoftDeleteModuleRun(mr.ModuleRunId))">delete</button>
-                    <button class="btn" id="cancel-btn">cancel</button>
-                    <MatButton Raised="true" @onclick="@(e => OpenDialogM(true,local))" Icon="edit" title="Edit ModuleRun"></MatButton>
+               
+                <td style="white-space:nowrap;">
+                    
+                    <button class="btn" id="edit-btn" @onclick="@(e => OpenDialogM(true, local))">edit</button>
+
+                    <button class="btn" id="delete-btn"  @onclick="@(e => RemoveModuleRun(local))">delete</button>
+                    @*<button class="btn" id="cancel-btn">cancel</button>*@
+                    @*<MatButton Raised="true" @onclick="@(e => OpenDialogM(true, local))" Icon="edit" title="Edit ModuleRun"></MatButton>*@
 
                     @*dialog to update Module Run*@
                     <MatDialog @bind-IsOpen="dialogIsOpenM" @bind-Value="@choosedModuleRun.ModuleRunId">
@@ -345,12 +348,17 @@ else
                                         </td>
 
                                     }
-                                    <td style="white-space:nowrap;" @onclick="CallJSMethod2">
-                                        <button class="btn" id="edit-btn">edit</button>
-                                        <button class="btn" id="delete-btn" @onclick="@(e=>ModuleRunService.SoftDeleteModuleRun(mr.ModuleRunId))">delete</button>
-                                        <button class="btn" id="cancel-btn">cancel</button>
-                                        <MatButton Raised="true" @onclick="@(e => OpenDialogM(true,local))" Icon="edit" title="Edit ModuleRun"></MatButton>
-
+                                    <td style="white-space:nowrap;">
+                                       
+                                        
+                                        <button class="btn" id="edit-btn" @onclick="@(e => OpenDialogM(true, local))">edit</button>
+                                        
+                                       
+                                        <button class="btn" id="delete-btn" @onclick="@(e => ModuleRunService.SoftDeleteModuleRun(mr.ModuleRunId))">delete</button>
+                                        @*<button class="btn" id="cancel-btn">cancel</button>*@
+                                        <MatButton Raised="true" @onclick="@(e => OpenDialogM(true, local))" Icon="edit" title="Edit ModuleRun"></MatButton>
+                                         
+                                        
                                         @*dialog to update Module Run*@
                                         <MatDialog @bind-IsOpen="dialogIsOpenM" @bind-Value="@choosedModuleRun.ModuleRunId">
                                             <MatDialogTitle>Add / Edit Module</MatDialogTitle>
@@ -491,6 +499,7 @@ else
     }
     private async Task CallJSMethod2()
     {
+
         await js.InvokeVoidAsync("SetButtonsVisible");
     }
 
@@ -553,7 +562,21 @@ else
     {
         LdialogIsOpen = false;
     }
+    /// <summary>
+    /// method to remove moduleRun from plan
+    /// </summary>
+    private async Task RemoveModuleRun(int choosedModuleRunId)
+    {
+        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected module run from this plan");
 
+        moduleRunIdChoosed = choosedModuleRunId;
+        if (isConfirm) {
+            await ModuleRunService.SoftDeleteModuleRun(moduleRunIdChoosed);
+            await OnInitializedAsync();
+            //NavManager.NavigateTo($"/editplan/{SelectedPlanId}", true);
+        }
+
+    }
 
     //public  async Task ShowLastYearPlan(PlanDto plan) {
 
@@ -593,6 +616,7 @@ else
             else
             {
                 LdialogIsOpen = false;
+                await OnInitializedAsync();
             }
         }
         catch (Exception ex)
@@ -692,6 +716,7 @@ else
     {
         await ModuleRunService.CreateModuleRun(moduleRun);
         CloseDialogM();
+        await OnInitializedAsync();
     }
     private void CloseDialogM()
     {
@@ -706,6 +731,14 @@ else
 
     #endregion
     #endregion
+
+    private bool ShowGroupButton = false;
+    private bool ShowEditButton = true;
+
+    private void ShowButtons() {
+        ShowGroupButton = !ShowGroupButton;
+        ShowEditButton = !ShowEditButton;
+    }
 }
 
 <style>
