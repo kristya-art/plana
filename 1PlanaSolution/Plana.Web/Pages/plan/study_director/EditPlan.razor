@@ -419,8 +419,15 @@ else
 @*Dialog for making a new module*@
 <EditForm Model="@moduleRun" OnInvalidSubmit="@okClickM">
     <MatDialog @bind-IsOpen="dialogIsOpenMNew">
-        <MatDialogTitle>Add Module</MatDialogTitle>
+        <MatDialogTitle>
+            Add Module
+            
+        </MatDialogTitle>
         <MatDialogContent Style="width: 500px;right:50px">
+            @if (ErrorMessage != null)
+            {
+                <p>@ErrorMessage</p>
+            }
             <div class="form-group row">
                 <label for="semester">Semester</label>
             </div>
@@ -452,6 +459,16 @@ else
                                @bind-Value="@moduleRun.Place" />
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="Place" class="col-sm-2 col-form-label">
+
+                </label>
+                <div class="col-sm-10">
+                    <InputText id="Place" class="form-control" placeholder="Code"
+                               @bind-Value="@moduleRun.Code" />
+                </div>
+            </div>
+
             <div>
                 Active<br />
                 <MatCheckbox @bind-Value="@moduleRun.Editable" Label="@(ChangeLabel(ModuleRun.Editable))"></MatCheckbox>
@@ -714,9 +731,28 @@ else
     }
     async Task addModuleRun()
     {
-        await ModuleRunService.CreateModuleRun(moduleRun);
-        CloseDialogM();
-        await OnInitializedAsync();
+        try
+        {
+            var result = await ModuleRunService.CreateModuleRun(moduleRun);
+            if (result.ErrorMessage != null)
+            {
+                ErrorMessage = result.ErrorMessage;
+            }
+            else
+            {
+                CloseDialogM();
+                await OnInitializedAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+
+            loadFailed = true;
+            Logger.LogWarning(ex, "Don't duplicate the module run!");
+        }
+
+
+
     }
     private void CloseDialogM()
     {

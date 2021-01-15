@@ -28,11 +28,27 @@ namespace Plana.Api.Services
         }
       
 
-        public async Task<ModuleRunDto> CreateModuleRun(ModuleRunDto moduleRunDto )
+        public async Task<ActionResultDto<ModuleRunDto>> CreateModuleRun(ModuleRunDto moduleRunDto )
         {
             var moduleRun = new ModuleRun();
             mapper.Map(moduleRunDto, moduleRun);
-            var result = await _context.ModuleRuns.AddAsync(moduleRun);
+            if (moduleRun == null) { return new ActionResultDto<ModuleRunDto>("You can not add an empty module run "); }
+            foreach (var mr in _context.ModuleRuns)
+            {
+                if ((moduleRun.Module.ModuleId == mr.Module.ModuleId) && (moduleRun.SemesterId == mr.SemesterId) &&
+                     (moduleRun.Place == mr.Place && mr.Code == mr.Code))
+                {
+                    return new ActionResultDto<ModuleRunDto>("This Module run already" +
+                        "exists in this semester.");
+                }
+            }
+            bool containsModuleRun = await _context.ModuleRuns.ContainsAsync(moduleRun);
+            if(containsModuleRun)
+            {
+                        return new ActionResultDto<ModuleRunDto>("This Module run already" +
+                          "exists in this semester.");
+                   }
+                var result = await _context.ModuleRuns.AddAsync(moduleRun);
             await _context.SaveChangesAsync();
 
             return mapper.Map<ModuleRunDto>(result.Entity);

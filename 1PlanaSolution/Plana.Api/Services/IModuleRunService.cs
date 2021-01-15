@@ -15,7 +15,7 @@ namespace Plana.Api.Services
 
         Task<IEnumerable<ModuleRunDto>> GetModuleRuns();
 
-        Task<ModuleRunDto> CreateModuleRun(ModuleRunDto moduleRunDto);
+        Task<ActionResultDto<ModuleRunDto>> CreateModuleRun(ModuleRunDto moduleRunDto);
 
         Task<ModuleRunDto> UpdateModuleRun(ModuleRunDto moduleRunDto);
      

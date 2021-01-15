@@ -139,23 +139,24 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ModuleRunDto>> CreateModuleRun(ModuleRunDto mr)
+        public async Task<ActionResultDto<ModuleRunDto>> CreateModuleRun(ModuleRunDto mr)
         {
 
-            try
-            {
-                if (mr == null)
-                {
-                    return BadRequest();
-                }
-                return await _moduleRunService.CreateModuleRun(mr);
-             }
+            //try
+            //{
+            //    if (mr == null)
+            //    {
+            //        return BadRequest();
+            //    }
+            //    return await _moduleRunService.CreateModuleRun(mr);
+            // }
 
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from the database");
-            }
+            //catch (Exception)
+            //{
+            //    return StatusCode(StatusCodes.Status500InternalServerError,
+            //         "Error retrieving data from the database");
+            //}
+            return await _moduleRunService.CreateModuleRun(mr);
         }
 
        [HttpPut()]
