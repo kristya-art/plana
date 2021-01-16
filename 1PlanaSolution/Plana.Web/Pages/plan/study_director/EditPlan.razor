@@ -10,8 +10,9 @@
 @inject IJSRuntime js
 
 @inherits EditPlanBase
-@if (lastYearPlan != null) { 
-<p>@lastYearPlan.Id</p>}
+@if (lastYearPlan != null)
+{
+    <p>@lastYearPlan.Id</p>}
 
 @if (Plan == null || Plans == null) { return; }
 <p>@Plan.FindLastYearPlan()</p>
@@ -45,14 +46,45 @@
     <button id="addNewModule" @onclick="@(e=>OpenDialogMNew(false))" style="float: right;">Add Module</button>
     <button @onclick="@(e=>OpenDialog(false))" style="float: right;">last year plan</button>
     <MatButton Type="delete" OnClick="@(e=>DeletePlan())">Delete Plan</MatButton>
+    <MatButton Type="delete" OnClick="@(e=>OpenDialogP(false))">Edit Plan</MatButton>
 </div>
 
 <div class="btn-groupR">
+   
     <button>Share with professors on @Plan.PublishDateForProfessors </button>
     <button>Official publish on @Plan.OfficialPublishDate</button>
-    
-</div>
 
+</div>
+@*dialog to Plan*@
+<MatDialog @bind-IsOpen="dialogIsOpenP" @bind-Value="@Plan.Id">
+    <MatDialogTitle>Add / Edit Plan</MatDialogTitle>
+    <MatDialogContent>
+        @*<EditForm Model="@Plan">*@
+        <div>
+            Active<br />
+            <MatCheckbox @bind-Value="Plan.IsModifyable" Label="@(ChangeLabelPlan(Plan.IsModifyable))"></MatCheckbox>
+            <MatTextField Label="Plan Year" @bind-Value="@Plan.Year"></MatTextField>
+            <MatTextField Label="Publish date for professors" @bind-Value="@Plan.PublishDateForProfessors"></MatTextField>
+            <MatTextField Label="Publish date" @bind-Value="@Plan.OfficialPublishDate"></MatTextField>
+
+            <MatTextField Label="Autumn Semester" @bind-Value="@AutumnSemester.Code"placeholder="0000-0000-HS"></MatTextField>
+            <MatTextField Label="Spring Semester" @bind-Value="@SpringSemester.Code" placeholder="0000-FS"></MatTextField>
+
+
+        </div>
+            <MatButton Type="submit" @onclick="@(e=>PlanService.UpdatePlan(Plan))">Save</MatButton>
+        @*</EditForm>*@
+
+        
+      
+
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="@(e=>okClickP(Plan))">Save</MatButton>
+        <MatButton OnClick="CloseDialog">Close</MatButton>
+
+    </MatDialogActions>
+</MatDialog>
 
 @*Modules Table*@
 
@@ -496,73 +528,65 @@ else
 
 @code {
 
-    #region variables
-    string request { get; set; } = "R";
-    bool loadFailed;
-    #endregion
+        #region variables
+        string request { get; set; } = "R";
+        bool loadFailed;
+        #endregion
 
 
-    /// <summary>
-    /// js code for button
-    ///
-    ///  </summary>
 
-    //protected override async void OnAfterRender(bool firstRender)
-    //{
-    //    await js.InvokeVoidAsync("renderjQueryComponents");
-    //    base.OnAfterRender(firstRender);
-    //    await js.InvokeVoidAsync("SetButtonsVisible");
+        private async Task CallJSMethod()
+        {
 
-    //}
+            //await JS.InvokeVoidAsync("CollapseTableRow");
+            await js.InvokeVoidAsync("GetName");
 
-    private async Task CallJSMethod()
-    {
+        }
+        private async Task CallJSMethod2()
+        {
 
-        //await JS.InvokeVoidAsync("CollapseTableRow");
-        await js.InvokeVoidAsync("GetName");
+            await js.InvokeVoidAsync("SetButtonsVisible");
+        }
 
-    }
-    private async Task CallJSMethod2()
-    {
-
-        await js.InvokeVoidAsync("SetButtonsVisible");
-    }
-
-    #region Last Year Plan
+        #region Last Year Plan
 
 
-    #endregion
-    #region Dialog Box Methods for Last Year Plan
-    bool _isDelete = false;
-    bool dialogIsOpen = false;
-    bool _isEdit = false;
-    private void OpenDialog(bool isEdit)
-    {
+        #endregion
+        #region Dialog Box Methods for Last Year Plan
+        bool _isDelete = false;
+        bool dialogIsOpen = false;
+        bool _isEdit = false;
 
-        //if (!_isEdit) plan = new Plan();
-        dialogIsOpen = true;
-    }
-    private void okCklick()
-    {
-        dialogIsOpen = false;
 
-    }
-    private void CloseDialog()
-    {
-        dialogIsOpen = false;
-        LdialogIsOpen = false;
-        dialogIsOpenM = false;
-        dialogIsOpenMNew = false;
+        private void OpenDialog(bool isEdit)
+        {
 
-    }
-    #endregion
+            //if (!_isEdit) plan = new Plan();
+            dialogIsOpen = true;
+        }
+        private void okCklick()
+        {
+            dialogIsOpen = false;
+            dialogIsOpenP = false;
 
-    #region dialog for lecturers
+        }
+        private void CloseDialog()
+        {
+            dialogIsOpen = false;
+            LdialogIsOpen = false;
+            dialogIsOpenM = false;
+            dialogIsOpenMNew = false;
+            dialogIsOpenP = false;
 
-    bool LdialogIsOpen = false;
-    bool _isEditL = false;
-    LecturerModuleRunDto newLmr = new LecturerModuleRunDto();
-    ModuleRunDto SelectedMR { get; set; }
+        }
+        #endregion
+
+        #region dialog for lecturers
+
+        bool LdialogIsOpen = false;
+        bool _isEditL = false;
+        LecturerModuleRunDto newLmr = new LecturerModuleRunDto();
+        ModuleRunDto SelectedMR { get; set; }
     public int ModuleRunId;
     private string ErrorMessage { get; set; }
 
@@ -778,31 +802,78 @@ else
     #endregion
     #region Additional Assigmment
 
+
     #endregion
     #endregion
-
-    private bool ShowGroupButton = false;
-    private bool ShowEditButton = true;
-
-    //private void ShowButtons()
-    //{
-    //    ShowGroupButton = !ShowGroupButton;
-    //    ShowEditButton = !ShowEditButton;
-    //}
 
     #region plan
-    public async Task DeletePlan() {
+    public async Task DeletePlan()
+    {
         bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete this plan?");
 
-        
+
         if (isConfirm)
         {
             await PlanService.DeletePlan(Plan.Id);
-            
+
             NavManager.NavigateTo($"/home", true);
         }
     }
+
+    /// <summary>
+    /// set plan modifyable
+    /// </summary>
+    string labelName3 = "setEditable";
+    string labelName4 = "Disable";
+    bool editable = false;
+    async Task SetEditablePlan()
+    {
+
+        if (!editable)
+        {
+            ChangeLabelPlan(editable);
+            Plan.IsModifyable = true;
+
+            await PlanService.UpdatePlan(Plan);
+            editable = true;
+            ChangeLabelPlan(editable);
+        }
+        else
+        {
+            ChangeLabelPlan(editable);
+            Plan.IsModifyable = false;
+            editable = false;
+
+        }
+    }
+
+    string ChangeLabelPlan(bool val)
+    {
+        return !val ? labelName3 : labelName4;
+        if (!editable)
+        {
+            Plan.IsModifyable = true;
+        }
+        Plan.IsModifyable = false;
+    }
     #endregion
+    #region dialog plan
+    bool dialogIsOpenP = false;
+
+    private void OpenDialogP(bool isEdit)
+    {
+
+        //if (!_isEdit) plan = new Plan();
+        dialogIsOpenP = true;
+    }
+
+    async Task okClickP(PlanDto plan) {
+        await PlanService.UpdatePlan(plan);
+        CloseDialog();
+    }
+
+    #endregion
+
 }
 
 <style>

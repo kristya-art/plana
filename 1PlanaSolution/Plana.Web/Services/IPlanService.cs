@@ -11,7 +11,7 @@ namespace Plana.Web.Services
     {
         Task<IEnumerable<PlanDto>> GetPlans();
         Task<PlanDto> GetPlan(int id);
-        Task UpdatePlan(PlanDto plan);
+        Task<PlanDto> UpdatePlan(PlanDto plan);
         Task<PlanDto> CreatePlan(PlanDto plan);
         Task DeletePlan(int id);
         Task<PlanDto> LastYearPlan(int id);

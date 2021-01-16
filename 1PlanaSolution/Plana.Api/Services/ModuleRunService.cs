@@ -104,41 +104,7 @@ namespace Plana.Api.Services
                 return mapper.Map<ModuleRunDto>(moduleRun);
             }
             return null;
-            //var result = await GetModuleRun(moduleRun.ModuleRunId);
-            //if (result != null)
-            //{
-            //    result.Code = moduleRun.Code;
-
-            //    //result.LecturersMR = moduleRun.LecturersMR;
-
-
-            //    result.Module = moduleRun.Module;
-
-            // //   result.ModuleId = moduleRun.ModuleId;
-
-            //    result.Place = moduleRun.Place;
-
-            //    foreach (var LMR in moduleRun.LecturersMR) {
-            //        if (!result.LecturersMR.Contains(LMR))
-            //        {
-            //            result.LecturersMR.Add(new LecturerModuleRun { LecturerId = LMR.LecturerId, ModuleRunId = LMR.ModuleRunId });
-            //        }
-
-            //    }
-
-            //   
-
-            //    //result.ModuleRunLecturerGroups = moduleRun.ModuleRunLecturerGroups;
-            //    result.SemesterId = moduleRun.SemesterId;
-
-            //    result.ModuleGroup = moduleRun.ModuleGroup;
-
-            //    await appDbContext.SaveChangesAsync();
-
-            //    return result;
-
-            //}
-            //return null;
+           
 
         }
         //public async Task<LecturerModuleRunDto> AddLecturerToModuleRun(ModuleRunDto moduleRun,LecturerDto lecturer)

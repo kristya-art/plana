@@ -18,29 +18,29 @@ namespace Plana.Api.Services
         private readonly AppDbContext _context;
         private readonly ISemesterService _semesterService;
         private readonly IMapper _mapper;
-        
-        
-        public PlanService(AppDbContext context, 
-                           ISemesterService semesterService ,
+
+
+        public PlanService(AppDbContext context,
+                           ISemesterService semesterService,
                            IMapper mapper)
         {
-                _context = context;
-                _semesterService = semesterService;
-                _mapper = mapper;
-               
+            _context = context;
+            _semesterService = semesterService;
+            _mapper = mapper;
+
 
         }
-      
+
 
         public async Task<PlanDto> AddPlan(PlanDto planDto)
         {
             var plan = new Plan();
-            
-           _mapper.Map(planDto, plan);
-            
+
+            _mapper.Map(planDto, plan);
+
             var result = await _context.Plans.AddAsync(plan);
 
-            
+
             //plan.LastYear= plan.FindLastYearPlan();
             plan.FindLastYearPlan();
             foreach (var l in _context.Lecturers) {
@@ -48,63 +48,64 @@ namespace Plana.Api.Services
                 plan.PlanLecturers.Add(new PlanLecturer() { PlanId = plan.Id, LecturerId = l.Id });
             }
             await _context.SaveChangesAsync();
-            
-             return _mapper.Map<PlanDto>(result.Entity);
+
+            return _mapper.Map<PlanDto>(result.Entity);
         }
 
-        
+
 
         public async Task<IEnumerable<PlanDto>> GetAllPlans()
         {
-           var plans = await _context.Plans
-                   .Include(x => x.AutumnSemester)
-                   //.Include(x=>x.Semesters)
-                   .ThenInclude(xa => xa.ModuleRuns)
-                   .Include(x => x.SpringSemester)
-                  .ThenInclude(xs => xs.ModuleRuns)
+            var plans = await _context.Plans
+                 // .Include(x => x.AutumnSemester)
+                 // //.Include(x=>x.Semesters)
+                 // .ThenInclude(xa => xa.ModuleRuns)
+                 // .Include(x => x.SpringSemester)
+                 //.ThenInclude(xs => xs.ModuleRuns)
 
-                .ToListAsync();
+                 .ToListAsync();
             return _mapper.Map<IEnumerable<PlanDto>>(plans);
         }
 
         public async Task<PlanDto> GetPlan(int planId)
         {
-             var result = await _context.Plans
-                   .Include(e => e.AutumnSemester)
-                       //.Include(e=>e.Semesters)
-                       .ThenInclude(s => s.ModuleRuns)
-                           .ThenInclude(mr => mr.LecturersMR)
-                               .ThenInclude(l => l.Lecturer)
-                  //.Include(e=>e.Semesters)
-                  .Include(e => e.AutumnSemester)
-                      .ThenInclude(s => s.ModuleRuns)
-                          .ThenInclude(m => m.Module)
-                  .Include(e => e.AutumnSemester)
-                    //.Include(e=>e.Semesters)
-                    .ThenInclude(a => a.AdditionalAssignments)
+            var result = await _context.Plans
+   //                .Include(e => e.AutumnSemester)
+   //                    //.Include(e=>e.Semesters)
+   //                    .ThenInclude(s => s.ModuleRuns)
+   //                        .ThenInclude(mr => mr.LecturersMR)
+   //                            .ThenInclude(l => l.Lecturer)
+   //               //.Include(e=>e.Semesters)
+   //               .Include(e => e.AutumnSemester)
+   //                   .ThenInclude(s => s.ModuleRuns)
+   //                       .ThenInclude(m => m.Module)
+   //               .Include(e => e.AutumnSemester)
+   //                 //.Include(e=>e.Semesters)
+   //                 .ThenInclude(a => a.AdditionalAssignments)
 
-   .Include(e => e.SpringSemester)
-                       //.Include(e=>e.Semesters)
-                       .ThenInclude(s => s.ModuleRuns)
-                           .ThenInclude(mr => mr.LecturersMR)
-                               .ThenInclude(l => l.Lecturer)
-                  //.Include(e=>e.Semesters)
-                  .Include(e => e.SpringSemester)
-                      .ThenInclude(s => s.ModuleRuns)
-                          .ThenInclude(m => m.Module)
-                  .Include(e => e.SpringSemester)
-                    //.Include(e=>e.Semesters)
-                    .ThenInclude(a => a.AdditionalAssignments)
+   //.Include(e => e.SpringSemester)
+   //                    //.Include(e=>e.Semesters)
+   //                    .ThenInclude(s => s.ModuleRuns)
+   //                        .ThenInclude(mr => mr.LecturersMR)
+   //                            .ThenInclude(l => l.Lecturer)
+   //               //.Include(e=>e.Semesters)
+   //               .Include(e => e.SpringSemester)
+   //                   .ThenInclude(s => s.ModuleRuns)
+   //                       .ThenInclude(m => m.Module)
+   //               .Include(e => e.SpringSemester)
+   //                 //.Include(e=>e.Semesters)
+   //                 .ThenInclude(a => a.AdditionalAssignments)
 
 
 
-                   .Include(e => e.PlanLecturers)
-                   
-               .FirstOrDefaultAsync(e => e.Id == planId);
+   //                .Include(e => e.PlanLecturers)
+
+   //           .FirstOrDefaultAsync(e => e.Id == planId);
+   .FindAsync(planId);
 
             return _mapper.Map<PlanDto>(result);
 
-           
+
         }
 
         private Plan NotFound()
@@ -114,41 +115,45 @@ namespace Plana.Api.Services
 
 
         public void AddSemester(Semester semester) {
-            if (semester != null) { 
-              
-            
+            if (semester != null) {
+
+
             }
         }
 
-        public async Task<PlanDto?> UpdatePlan(PlanDto planDto)
+        public async Task<PlanDto> UpdatePlan(PlanDto planDto)
         {
-            var result = await GetPlan(planDto.Id);
+            //var result = await GetPlan(planDto.Id);
+            var result = await _context.Plans.FindAsync(planDto.Id);
             if (result != null)
             {
                 result.Year = planDto.Year;
-                if (planDto.SpringSemester != null)
-                {
-                    result.SpringSemester = planDto.SpringSemester;
-                    await _semesterService.UpdateSemester(result.SpringSemester);
-                }
-                if (planDto.AutumnSemester != null)
-                {
-                    result.AutumnSemester = planDto.AutumnSemester;
-                    await _semesterService.UpdateSemester(result.AutumnSemester);
-                }
-                if (planDto.PlanLecturers != null)
-                {
-                    result.PlanLecturers = planDto.PlanLecturers;
-                }
-                result.OfficialPublishDate = planDto.OfficialPublishDate;
-                result.IsModifyable = planDto.IsModifyable;
-                result.IsFixed = planDto.IsFixed;
-                result.PublishDateForProfessors = planDto.PublishDateForProfessors;
+                result.SpringSemester.Code = planDto.SpringSemester.Code;
+                result.AutumnSemester.Code = planDto.AutumnSemester.Code;
+                //if (planDto.SpringSemester != null)
+                //{
+                //    result.SpringSemester.Code = planDto.SpringSemester.Code;
+                //    await _semesterService.UpdateSemester(result.SpringSemester);
+                //}
+                //if (planDto.AutumnSemester != null)
+                //{
+                //    result.AutumnSemester.Code = planDto.AutumnSemester.Code;
+                //    await _semesterService.UpdateSemester(result.AutumnSemester);
+           // }
+            //if (planDto.PlanLecturers != null)
+            //{
+            //    result.PlanLecturers = planDto.PlanLecturers;
+            //}
 
-               await _context.SaveChangesAsync();
+            result.OfficialPublishDate = planDto.OfficialPublishDate;
+            result.IsModifyable = planDto.IsModifyable;
+            result.IsFixed = planDto.IsFixed;
+            result.PublishDateForProfessors = planDto.PublishDateForProfessors;
 
-                return _mapper.Map<PlanDto>(result);
-            }
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<PlanDto>(result);
+        }
             return null;
         }
 

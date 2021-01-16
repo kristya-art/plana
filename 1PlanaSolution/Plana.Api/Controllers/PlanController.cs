@@ -75,7 +75,7 @@ namespace Plana.Api.Controllers
 
         }
         [HttpPut()]
-        public async Task<ActionResult<PlanDto?>> UpdatePlan(PlanDto plan)
+        public async Task<ActionResult<PlanDto>> UpdatePlan(PlanDto plan)
         {
             try
             {

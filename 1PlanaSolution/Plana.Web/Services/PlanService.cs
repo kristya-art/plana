@@ -38,9 +38,9 @@ namespace Plana.Web.Services
             throw new NotImplementedException();
         }
 
-        public async Task UpdatePlan(PlanDto plan)
+        public async Task<PlanDto> UpdatePlan(PlanDto plan)
         {
-            await http.PutJsonAsync("api/plan", plan);
+           return await http.PutJsonAsync<PlanDto>("api/plan", plan);
         }
 
         public async Task<PlanDto> LastYearPlan(int id)
