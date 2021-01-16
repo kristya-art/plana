@@ -464,10 +464,12 @@ else
 
         </MatDialogTitle>
         <MatDialogContent Style="width: 500px;right:50px">
+            <h3>error message</h3>
             @if (ErrorMessage != null)
             {
                 <p>@ErrorMessage</p>
             }
+
             <div class="form-group row">
                 <label for="semester">Semester</label>
             </div>
@@ -528,65 +530,65 @@ else
 
 @code {
 
-        #region variables
-        string request { get; set; } = "R";
-        bool loadFailed;
-        #endregion
+    #region variables
+    string request { get; set; } = "R";
+    bool loadFailed;
+    #endregion
 
 
 
-        private async Task CallJSMethod()
-        {
+    private async Task CallJSMethod()
+    {
 
-            //await JS.InvokeVoidAsync("CollapseTableRow");
-            await js.InvokeVoidAsync("GetName");
+        //await JS.InvokeVoidAsync("CollapseTableRow");
+        await js.InvokeVoidAsync("GetName");
 
-        }
-        private async Task CallJSMethod2()
-        {
+    }
+    private async Task CallJSMethod2()
+    {
 
-            await js.InvokeVoidAsync("SetButtonsVisible");
-        }
+        await js.InvokeVoidAsync("SetButtonsVisible");
+    }
 
-        #region Last Year Plan
-
-
-        #endregion
-        #region Dialog Box Methods for Last Year Plan
-        bool _isDelete = false;
-        bool dialogIsOpen = false;
-        bool _isEdit = false;
+    #region Last Year Plan
 
 
-        private void OpenDialog(bool isEdit)
-        {
+    #endregion
+    #region Dialog Box Methods for Last Year Plan
+    bool _isDelete = false;
+    bool dialogIsOpen = false;
+    bool _isEdit = false;
 
-            //if (!_isEdit) plan = new Plan();
-            dialogIsOpen = true;
-        }
-        private void okCklick()
-        {
-            dialogIsOpen = false;
-            dialogIsOpenP = false;
 
-        }
-        private void CloseDialog()
-        {
-            dialogIsOpen = false;
-            LdialogIsOpen = false;
-            dialogIsOpenM = false;
-            dialogIsOpenMNew = false;
-            dialogIsOpenP = false;
+    private void OpenDialog(bool isEdit)
+    {
 
-        }
-        #endregion
+        //if (!_isEdit) plan = new Plan();
+        dialogIsOpen = true;
+    }
+    private void okCklick()
+    {
+        dialogIsOpen = false;
+        dialogIsOpenP = false;
 
-        #region dialog for lecturers
+    }
+    private void CloseDialog()
+    {
+        dialogIsOpen = false;
+        LdialogIsOpen = false;
+        dialogIsOpenM = false;
+        dialogIsOpenMNew = false;
+        dialogIsOpenP = false;
 
-        bool LdialogIsOpen = false;
-        bool _isEditL = false;
-        LecturerModuleRunDto newLmr = new LecturerModuleRunDto();
-        ModuleRunDto SelectedMR { get; set; }
+    }
+    #endregion
+
+    #region dialog for lecturers
+
+    bool LdialogIsOpen = false;
+    bool _isEditL = false;
+    LecturerModuleRunDto newLmr = new LecturerModuleRunDto();
+    ModuleRunDto SelectedMR { get; set; }
     public int ModuleRunId;
     private string ErrorMessage { get; set; }
 
@@ -680,28 +682,8 @@ else
         }
     }
     #endregion
-    #region lecturer module Run
-    //[Parameter]
-    //public int tempModuleRunId { get; set; }
-    //LecturerModuleRunDto tempLecturerModuleRun { get; set; } = new LecturerModuleRunDto();
 
-    //[Parameter]
-    //public int tempLecturerId { get; set; }
-    //public async Task DeleteLecturerModuleRun(int localMRId, int localLId)
-    //{
-    //    tempLecturerModuleRun = await LecturerModuleRunService.GetLecturerModuleRun(tempModuleRunId, tempLecturerId);
-    //    bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to remove selected lecturer?");
 
-    //    tempModuleRunId = localMRId;
-    //    tempLecturerId = localLId;
-    //    if (isConfirm)
-    //    {
-    //        await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRun.ModuleRunId, tempLecturerModuleRun.LecturerId);
-
-    //    }
-    //}
-
-    #endregion
     #region moduleRun
 
     string labelName1 = "setEditable";
@@ -777,7 +759,8 @@ else
             }
             else
             {
-                CloseDialogM();
+                // CloseDialogM();
+                dialogIsOpenMNew = false;
                 await OnInitializedAsync();
             }
         }
@@ -787,10 +770,9 @@ else
             loadFailed = true;
             Logger.LogWarning(ex, "Don't duplicate the module run!");
         }
-
-
-
     }
+
+   
     private void CloseDialogM()
     {
         dialogIsOpenM = false;
