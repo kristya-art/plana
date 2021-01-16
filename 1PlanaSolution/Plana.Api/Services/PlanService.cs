@@ -127,36 +127,35 @@ namespace Plana.Api.Services
             var result = await _context.Plans.FindAsync(planDto.Id);
             if (result != null)
             {
+                result.Id = planDto.Id;
                 result.Year = planDto.Year;
                 result.SpringSemester.Code = planDto.SpringSemester.Code;
                 result.AutumnSemester.Code = planDto.AutumnSemester.Code;
-                //if (planDto.SpringSemester != null)
-                //{
-                //    result.SpringSemester.Code = planDto.SpringSemester.Code;
-                //    await _semesterService.UpdateSemester(result.SpringSemester);
-                //}
-                //if (planDto.AutumnSemester != null)
-                //{
-                //    result.AutumnSemester.Code = planDto.AutumnSemester.Code;
-                //    await _semesterService.UpdateSemester(result.AutumnSemester);
-           // }
-            //if (planDto.PlanLecturers != null)
-            //{
-            //    result.PlanLecturers = planDto.PlanLecturers;
-            //}
+                result.OfficialPublishDate = planDto.OfficialPublishDate;
+                result.IsModifyable = planDto.IsModifyable;
+                result.IsFixed = planDto.IsFixed;
+                result.PublishDateForProfessors = planDto.PublishDateForProfessors;
 
-            result.OfficialPublishDate = planDto.OfficialPublishDate;
-            result.IsModifyable = planDto.IsModifyable;
-            result.IsFixed = planDto.IsFixed;
-            result.PublishDateForProfessors = planDto.PublishDateForProfessors;
+                await _context.SaveChangesAsync();
 
-            await _context.SaveChangesAsync();
-
-            return _mapper.Map<PlanDto>(result);
-        }
+                return _mapper.Map<PlanDto>(result);
+            }
             return null;
         }
 
+        //public async Task<PlanDto> UpdatePlan(PlanDto planDto) {
+
+        //    var result = await _context.Plans.FindAsync(planDto.Id);
+        //    if (result != null)
+        //    {
+        //        result.IsModifyable = planDto.IsModifyable;
+
+        //        await _context.SaveChangesAsync();
+
+        //        return _mapper.Map<PlanDto>(result);
+        //    }
+        //    return null;
+        //}
        
         public async Task<PlanDto> FindLastYearPlan(int planId)
         {
