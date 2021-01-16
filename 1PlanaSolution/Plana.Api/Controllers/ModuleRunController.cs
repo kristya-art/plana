@@ -20,31 +20,13 @@ namespace Plana.Api.Controllers
     {
         private readonly IModuleRunService _moduleRunService;
         private readonly ILogger<ModuleRunController> _logger;
-
-        //private readonly IModuleRepository moduleRep;
-        //private readonly ISemesterRepository semesterRep;
-        //private readonly ILecturerService lecturerService;
-        //private readonly IModuleRunService moduleRunService;
-        //private readonly ILecturerModuleRunRepository lecturerModuleRunRepository;
-
         public ModuleRunController(IModuleRunService moduleRunService,
                                    ILogger<ModuleRunController> logger)
-        //IModuleRepository moduleRepository,
-        //ISemesterRepository semesterRepository,
-        //ILecturerService lecturerService,
-        //IModuleRunService moduleRunService,
-        //ILecturerModuleRunRepository lecturerModuleRunRepository)
+        
         {
             _moduleRunService = moduleRunService;
             _logger = logger;
-            //this.moduleRep = moduleRepository;
-            //this.semesterRep = semesterRepository;
-            //this.lecturerService=lecturerService;
-            //this.moduleRunService = moduleRunService;
-            //this.lecturerModuleRunRepository = lecturerModuleRunRepository;
-
-
-        }
+         }
         //[HttpGet("{search}")]
         //public async Task<ActionResult<IEnumerable<ModuleRun>>> Search( string name,string code)
         //{
@@ -101,23 +83,6 @@ namespace Plana.Api.Controllers
         
         }
         
-        //[HttpGet]
-        //public async Task<ActionResult> GetCustomMRs()
-        //{
-        //    try
-        //    {
-        //        return Ok(await moduleRunRepository.GetCustomated());
-
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //               "Error retrieving data from database");
-        //    }
-
-
-        //}
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ModuleRunDto>> GetModuleRun(int id)
         {

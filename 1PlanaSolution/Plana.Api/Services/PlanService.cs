@@ -39,20 +39,17 @@ namespace Plana.Api.Services
            _mapper.Map(planDto, plan);
             
             var result = await _context.Plans.AddAsync(plan);
-           
+
+            
+            //plan.LastYear= plan.FindLastYearPlan();
+            plan.FindLastYearPlan();
+            foreach (var l in _context.Lecturers) {
+
+                plan.PlanLecturers.Add(new PlanLecturer() { PlanId = plan.Id, LecturerId = l.Id });
+            }
             await _context.SaveChangesAsync();
             
-            //foreach (var l in _context.Lecturers)
-            //{
-            //    var PlanLecturer = new PlanLecturer() { PlanId = plan.Id, LecturerId = l.Id };
-            //    if (!_context.PlanLecturers.Contains(PlanLecturer))
-            //    {
-            //        plan.PlanLecturers.Add(PlanLecturer);
-            //    }
-            //}
-            //await _context.SaveChangesAsync();
-
-            return _mapper.Map<PlanDto>(result.Entity);
+             return _mapper.Map<PlanDto>(result.Entity);
         }
 
         
@@ -155,23 +152,42 @@ namespace Plana.Api.Services
             return null;
         }
 
-        public async Task<ActionResultDto<PlanDto>> FindLastYearPlan(PlanDto plan) {
-            
-            string last2Numbers =  plan.FindLastYearPlan();
+       
+        public async Task<PlanDto> FindLastYearPlan(int planId)
+        {
+            var plan = await GetPlan(planId);
             var foundPlan = new Plan();
-            bool existLastYearPlan = false;
-            foreach (var p in _context.Plans)
+           
+            foreach (Plan p in _context.Plans)
             {
-                if (p.Year.Substring(p.Year.Length - 2) == last2Numbers)
+                 if (p.Year == plan.LastYear)
                 {
-                    foundPlan = p;
-                    existLastYearPlan = true;
-                }
-                else if (!existLastYearPlan) { return new ActionResultDto<PlanDto>("There are no last year plan!"); }
+                    foundPlan = await _context.Plans.FindAsync(p.Id);
+                   
+                 }
                 
+                else { return null; }
+
+            } 
+            return _mapper.Map<PlanDto>(foundPlan);
+            
+        }
+        public async Task<bool> DeletePlan(int planId)
+        {
+            var plan = await _context.Plans.FindAsync(planId);
+            if (plan != null)
+            {
+                
+                _context.Plans.Remove(plan);
+                foreach (var pl in plan.PlanLecturers)
+                {
+                    _context.PlanLecturers.Remove(pl);
+                }
+                await _context.SaveChangesAsync();
+
+                return true;
             }
-            var result = await _context.Plans.FindAsync(foundPlan);
-            return _mapper.Map<PlanDto>(result);
+            return false;
         }
 
 

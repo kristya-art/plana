@@ -34,5 +34,20 @@ namespace Plana.Models
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
 
+        public string FindLastYearPlan()
+        {
+            var secondY = (Int32.Parse(Year.Substring(7, 2)) - 1).ToString();
+            var firstY = (Int32.Parse(Year.Substring(2, 2)) - 1).ToString();
+            //var aStringBuilder = new StringBuilder(Year);
+            //aStringBuilder.Remove(2, 2);
+            //aStringBuilder.Insert(2, firstY);
+            //aStringBuilder.Remove(7, 2);
+            //aStringBuilder.Insert(7,secondY);
+            string lastY = Year.Remove(2, 2).Insert(2, firstY);
+            lastY = lastY.Remove(7, 2).Insert(7, secondY);
+            return lastY;
+
+        }
+
     }
-}
+    }

@@ -13,6 +13,7 @@ namespace Plana.Api.Services
         Task<PlanDto> AddPlan(PlanDto planDto);
         Task<PlanDto?> UpdatePlan(PlanDto planDto);
         Task<PlanDto> GetPlan(int planId);
-        Task<ActionResultDto<PlanDto>> FindLastYearPlan(PlanDto plan);
+        Task<PlanDto> FindLastYearPlan(int planId);
+        Task<bool> DeletePlan(int planId);
     }
 }

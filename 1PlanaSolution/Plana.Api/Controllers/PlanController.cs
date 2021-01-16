@@ -65,14 +65,14 @@ namespace Plana.Api.Controllers
                     return BadRequest();
                 }
                 return await _planService.AddPlan(plan);
-                
+
             }
             catch (Exception)
             {
 
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
             }
-        
+
         }
         [HttpPut()]
         public async Task<ActionResult<PlanDto?>> UpdatePlan(PlanDto plan)
@@ -95,32 +95,46 @@ namespace Plana.Api.Controllers
 
         }
 
-        //[HttpGet]
-        //[Route("{lastYearPlan}")]
-        //public async Task<ActionResult<PlanDto>> LastYearPlan(PlanDto plan)
-        //{
-        //    try
-        //    {
-        //        var result = await _planService.FindLastYearPlan(plan);
-
-        //        if (result != null)
-        //        {
-        //            return Ok(result);
-        //        }
-        //        return NotFound();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
-        //        return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
-        //    }
-        //}
-
         [HttpGet]
-        [Route("{lastYearPlan}")]
-        public async Task<ActionResultDto<PlanDto>> GetLastYearPlan(PlanDto plan)
+        [Route("lastYearPlan/{id}")]
+        public async Task<ActionResult<PlanDto>> LastYearPlan(int id)
         {
-            return await _planService.FindLastYearPlan(plan);
+            try
+            {
+                var result = await _planService.FindLastYearPlan(id);
+
+                if (result == null)
+                {
+                    return NotFound($"Last year plan is not found");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+            }
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<bool>> DeletePlan(int id)
+        {
+            try
+            {
+
+                var PlanForDelete = await _planService.GetPlan(id);
+                if (PlanForDelete == null)
+                {
+                    return NotFound();
+
+                }
+                return await _planService.DeletePlan(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+            }
         }
     }
 }

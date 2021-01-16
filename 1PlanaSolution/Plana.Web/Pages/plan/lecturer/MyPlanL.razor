@@ -476,7 +476,7 @@ else
         //{
 
         string PlanId = Plan.Id.ToString();
-        //NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
         MyModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
 
     }
@@ -550,12 +550,7 @@ else
             {
                 foreach (var moduleRun in modulesToAdd)
                 {
-                    // if (MyModuleRuns.Contains(moduleRun)) { return; }
-
-                    //if (moduleRun.isSelected == true)
-                    //{
-                    //    if (LecturerModuleRunService.GetLecturerModuleRun(moduleRun.ModuleRunId, Lecturer.Id) == null)
-                    //    {
+                   
                     LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
                     {
                         LecturerId = Lecturer.Id,
