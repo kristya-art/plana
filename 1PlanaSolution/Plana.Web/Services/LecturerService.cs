@@ -21,11 +21,6 @@ namespace Plana.Web.Services
 
 
 
-        //public async  Task<Lecturer> GetLecturer(int id)
-        //{
-        //    return await httpClient.GetJsonAsync<Lecturer>($"api/lecturer/{id}");
-
-        //}
         public async Task<LecturerDto> GetLecturer(int id)
         {
             return await httpClient.GetJsonAsync<LecturerDto>($"api/lecturer/{id}");

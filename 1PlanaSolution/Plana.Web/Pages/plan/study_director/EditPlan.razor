@@ -108,7 +108,14 @@ else
                 <th>Lecturers Group</th>
                 <th>Lecturers</th>
                 <th>Desired hours</th>
-                <th>Set Lecturers hours</th>
+                <th>
+                    @*Set Lecturers hours*@ 
+                    @if(showHours)
+                    {<MatButton class="btn" Type="submit" @onclick="@(e => ShowSetHours())">set hours</MatButton>}
+                   else { 
+                     <MatButton class="btn" Type="cancel" @onclick="@(e => ShowSetHours())">X</MatButton>
+                    }
+                 </th>
                 <th>Actions</th>
                 <th>notes</th>
             </tr>
@@ -204,11 +211,14 @@ else
                                 <td>
                                     @foreach (var lm in mr.LecturersMR)
                                     {
+                                       
+                                        if (!showHours)
+                                        {
+                                            <MatTextField @bind-Value="lm.Hours"></MatTextField>
+                                            <button class="btn" id="save-btn" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">save</button>
 
-                                        <MatTextField @bind-Value="lm.Hours"></MatTextField>
-                                        <button class="btn" id="save-btn" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lm))">save</button>
+                                        }
                                     }
-
                                 </td>
 
 
@@ -297,7 +307,12 @@ else
                         <th>Module Total Hours</th>
                         <th>Lecturers Group</th>
                         <th>Lecturers</th>
-                        <th>Set Lecturers hours</th>
+                        <th>
+                            @*Set Lecturers hours*@
+                            if (showHours)
+                            {<button class="btn" id="save-btn" @onclick="@(e => ShowSetHours())">set hours</button>}
+                            <button class="btn" id="cancel-btn" @onclick="@(e => ShowSetHours())">x</button>
+                        </th>
                         <th>Desired hours</th>
                         <th>Actions</th>
                         <th>notes</th>
@@ -464,7 +479,7 @@ else
 
         </MatDialogTitle>
         <MatDialogContent Style="width: 500px;right:50px">
-            <h3>error message</h3>
+            
             @if (ErrorMessage != null)
             {
                 <p>@ErrorMessage</p>
@@ -681,6 +696,13 @@ else
             Logger.LogWarning(ex, "The selected Lecturer is already addet to this module");
         }
     }
+
+
+    public bool showHours = true;
+
+    void ShowSetHours() {
+        showHours = !showHours;
+    }
     #endregion
 
 
@@ -772,7 +794,7 @@ else
         }
     }
 
-   
+
     private void CloseDialogM()
     {
         dialogIsOpenM = false;

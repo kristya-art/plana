@@ -13,7 +13,7 @@ namespace Plana.Shared
         
         public virtual ICollection<LecturerLecturerGroupDto> LecturerLecturerGroup { get; set; }
         public virtual ICollection<LecturerGroupModuleGroupDto> LecturerGroupModuleGroup { get; set; }
-        //[parent]
+        
         public virtual ICollection<LecturerGroupDto> LecturerSubGroups { get; set; }
         public virtual ICollection<ModuleRunLecturerGroupDto> ModuleRunLecturerGroups { get; set; }
 
