@@ -46,7 +46,7 @@ namespace Plana.Api
             
             services.AddScoped<ILecturerGroupModuleGroupRepository, LecturerGroupModuleGroupRepository>();
             services.AddScoped<ILecturerGroupService, LecturerGroupService>();
-            services.AddScoped<ILecturerLecturerGroupRepository, LecturerLecturerGroupRepository>();
+            services.AddScoped<ILecturerLecturerGroupService, LecturerLecturerGroupService>();
             services.AddScoped<ILecturerModuleGroupRepository, LecturerModuleGroupRepository>();
 
             services.AddScoped<ILecturerModuleRunService, LecturerModuleRunService>();

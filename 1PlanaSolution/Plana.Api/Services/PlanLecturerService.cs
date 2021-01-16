@@ -86,7 +86,7 @@ namespace Plana.Api.Services
             }
             return null;
         }
-        /** dosn't work*/
+        
         public async Task<IEnumerable<ModuleRunDto>> GetLecturerModuleRuns(int planId,int lectId)
         {
 
