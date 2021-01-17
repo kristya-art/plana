@@ -18,6 +18,8 @@
 <p>@Plan.FindLastYearPlan()</p>
 
 
+
+
 <div class="selectYear">
     <form>
         <select class="form-control" @bind="SelectedPlanId">
@@ -159,10 +161,15 @@ else
 
                                     @foreach (var lg in mr.ModuleRunLecturerGroups)
                                     {
-                                        <p style="white-space:nowrap;">
-                                            @lg.LecturerGroup.Title
-                                            <button class="btn" id="del"><i class="fa fa-close"></i></button>
-                                        </p>
+                                <p style="white-space:nowrap;">
+                                    @lg.LecturerGroup.Title
+
+
+                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                    @foreach (var llg in lg.LecturerGroup.LecturerLecturerGroup) { 
+                                         <p> @llg.Lecturer.FirstName</p>
+                                    }
+                                    </p>
                                     }
                                 }
                                 <button class="btn" id="add"><i class="fa fa-plus"></i></button>
@@ -644,30 +651,10 @@ else
         }
 
     }
-    PlanDto lastYearPLan { get; set; }
+   
 
 
-    public async Task ShowLastYearPlan()
-    {
-
-        try
-        {
-            var result = await PlanService.LastYearPlan(Plan.Id);
-            if (result != null)
-            {
-                lastYearPlan = result;
-            }
-
-        }
-        catch (Exception ex)
-        {
-
-            loadFailed = true;
-            Logger.LogWarning(ex, "There are no last year plan.");
-        }
-
-
-    }
+   
 
     async Task addLecturer(int moduleRunId, int lecturerId)
     {

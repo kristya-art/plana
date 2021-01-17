@@ -22,5 +22,6 @@ namespace Plana.Models
         public Boolean IsRequested { get; set; }
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; }
+       
     }
 }

@@ -7,12 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 
 namespace Plana.Web.Pages.plan.study_director
 {
     public class EditPlanBase : ComponentBase
     {
+        [Inject]
+        ILogger<EditPlan> Logger { get; set; }
         [Inject]
         public NavigationManager NavManager { get; set; }
         [CascadingParameter]
@@ -67,7 +70,12 @@ namespace Plana.Web.Pages.plan.study_director
 
         public int? SelectedPlanId { get; set; }
         public PlanDto lastYearPlan { get; set; }
-       
+
+        // variables for last year plan
+        PlanDto lastYearPLan { get; set; }
+        bool loadFailed;
+
+
         /// <summary>
         /// inside this method we call the rest api and retrieve a data
         /// </summary>
@@ -100,7 +108,9 @@ namespace Plana.Web.Pages.plan.study_director
                         ModuleRuns.Add(mr);
                   }
                 }
-               }
+               await ShowLastYearPlan();
+            }
+                    
 
             else
             {
@@ -160,16 +170,27 @@ namespace Plana.Web.Pages.plan.study_director
         }
 
 
-        //protected async Task AddLecturer(int ModuleRunId, int LecturerId) {
-        //    LecturerModuleRunDto lecturerModuleRunDto = new LecturerModuleRunDto
-        //    {
-        //        LecturerId = LecturerId,
-        //        ModuleRunId = ModuleRunId
-        //    };
+        public async Task ShowLastYearPlan()
+        {
 
-        //    await LecturerModuleRunService.CreateLecturerModuleRun(lecturerModuleRunDto);
+            try
+            {
+                var result = await PlanService.LastYearPlan(Plan.Id);
+                if (result != null)
+                {
+                    lastYearPlan = result;
+                }
 
-        //}
+            }
+            catch (Exception ex)
+            {
+
+                loadFailed = true;
+                Logger.LogWarning(ex, "There are no last year plan.");
+            }
+
+
+        }
         public void NavigateToModulesPlanPage()
         {
 
