@@ -25,7 +25,7 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPut()]
-        public async Task<ActionResult<LecturerLecturerGroupDto>> UpdateLecturerLecturerGroup(LecturerLecturerGroupDto lecturerLecturerGroup)
+        public async Task<ActionResult<LecturerLecturerGroupDto?>> UpdateLecturerLecturerGroup(LecturerLecturerGroupDto lecturerLecturerGroup)
         {
             int id = lecturerLecturerGroup.LecturerId;
             int id2 = lecturerLecturerGroup.LecturerGroupId;
@@ -108,7 +108,7 @@ namespace Plana.Api.Controllers
             try
             {
 
-                var LecturerMRForDelete = await _lecturerLecturerGroupService.GetLectureLecturerGroup(lecturerGroupId, lecturerId);
+                var LecturerMRForDelete = await _lecturerLecturerGroupService.GetLectureLecturerGroup(lecturerId, lecturerGroupId);
                 if (LecturerMRForDelete == null)
                 {
                     return NotFound();

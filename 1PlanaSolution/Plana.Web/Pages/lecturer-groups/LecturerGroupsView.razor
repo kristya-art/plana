@@ -29,7 +29,7 @@ else
                         {
 
                             @llGroup.Lecturer.SetToken()
-                <button class="btn" id="del" @onclick="@(e=> LecturerLecturerGroupService.DeleteLecturerLecturerGroup(llGroup.LecturerGroupId,llGroup.LecturerId))"><i class="fa fa-close"></i></button>
+                <button class="btn" id="del" @onclick="@(e=> LecturerLecturerGroupService.DeleteLecturerLecturerGroup(llGroup.LecturerId,llGroup.LecturerGroupId))"><i class="fa fa-close"></i></button>
 
             }
                         <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false, local))"><i class="fa fa-plus"></i></button>
