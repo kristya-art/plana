@@ -35,17 +35,9 @@ namespace Plana.Api.Services
             var result = await context.ModuleRunLecturerGroups.AddAsync(moduleRunLecturerGroup);
             await context.SaveChangesAsync();
 
-            // 2nd try
-            
-            //if (moduleRunLecturerGroup.LecturerGroup != null)
-            //{
                 LecturerGroup lg = new LecturerGroup();
                 lg = await context.LecturerGroups.FindAsync(moduleRunLecturerGroup.LecturerGroupId);
-                //lg = moduleRunLecturerGroup.LecturerGroup;
-
-                //List<LecturerLecturerGroup> llg = new List<LecturerLecturerGroup>();
-
-                //llg = (List<LecturerLecturerGroup>)lg.LecturerLecturerGroup;
+                
 
                 LecturerLecturerGroup llg = new LecturerLecturerGroup();
                 
@@ -67,48 +59,38 @@ namespace Plana.Api.Services
                     await context.SaveChangesAsync();
                 }
                    
-               // }
-            }
-
-            //
-            return mapper.Map<ModuleRunLecturerGroupDto>(result.Entity);
+          }
+                 return mapper.Map<ModuleRunLecturerGroupDto>(result.Entity);
         }
 
-        //public async Task<ModuleRunLecturerGroupDto> AddModuleRunLecturerGroup(ModuleRunLecturerGroupDto moduleRunLecturerGroupDto) {
-        //    var moduleRunLecturerGroup = new ModuleRunLecturerGroup();
-        //    mapper.Map(moduleRunLecturerGroupDto, moduleRunLecturerGroup);
-
-        //    var result = await context.ModuleRunLecturerGroups.AddAsync(moduleRunLecturerGroup);
-
-        //    LecturerGroup lg = new LecturerGroup();
-        //    List<LecturerLecturerGroup> llg = (List<LecturerLecturerGroup>)lg.LecturerLecturerGroup;
-        //    lg = moduleRunLecturerGroup.LecturerGroup;
-
-        //    var moduleRun = moduleRunLecturerGroup.ModuleRun;
-
-        //    foreach (var l in llg) {
-
-        //        var moduleRunLecturer = new LecturerModuleRun()
-        //       {
-        //           LecturerId = l.LecturerId,
-        //          ModuleRunId = moduleRun.ModuleRunId
-
-        //         };
-        //        context.LecturersModuleRuns.Add(moduleRunLecturer);
-        //        await context.SaveChangesAsync();
-        //    }
-
-        //}
+       
 
        
 
 
         public async Task<bool> DeleteModuleRunLecturerGroup(int moduleRunId, int lecturerId)
         {
-            var ModuleRunLecturerGroup = await context.ModuleRunLecturerGroups.FindAsync(moduleRunId, lecturerId);
-            if (ModuleRunLecturerGroup != null)
+            var moduleRunLecturerGroup = await context.ModuleRunLecturerGroups.FindAsync(moduleRunId, lecturerId);
+
+            LecturerGroup lg = new LecturerGroup();
+            lg = await context.LecturerGroups.FindAsync(moduleRunLecturerGroup.LecturerGroupId);
+
+            if (moduleRunLecturerGroup != null)
             {
-                context.ModuleRunLecturerGroups.Remove(ModuleRunLecturerGroup);
+              //  foreach (var lecturerModuleRun in context.LecturersModuleRuns) {
+              //      foreach (var lecturer in lg.LecturerLecturerGroup) {
+              //          if ((lecturerModuleRun.ModuleRunId == moduleRunLecturerGroup.ModuleRunId) &&
+              //              (lecturerModuleRun.LecturerId == lecturer.LecturerId))
+              //              {
+
+              //              context.LecturersModuleRuns.Remove(lecturerModuleRun);
+              //              context.SaveChanges();
+              //          }
+
+
+              //  }
+              //}
+                context.ModuleRunLecturerGroups.Remove(moduleRunLecturerGroup);
                 await context.SaveChangesAsync();
 
                 return true;

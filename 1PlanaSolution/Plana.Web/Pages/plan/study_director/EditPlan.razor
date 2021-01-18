@@ -162,10 +162,10 @@ else
                                     @foreach (var lg in mr.ModuleRunLecturerGroups)
                                     {
                                 <p style="white-space:nowrap;">
-                                    @lg.LecturerGroup.Title
+                                    @lg.LecturerGroup.Title | 
 
 
-                                    <button class="btn" id="del"><i class="fa fa-close"></i></button>
+                                    <button class="btn" id="del" @onclick="@(e=>DeleteModuleRunLecturerGroup(lg))"><i class="fa fa-close"></i></button>
                                     @foreach (var llg in lg.LecturerGroup.LecturerLecturerGroup) { 
                                          <p> @llg.Lecturer.FirstName</p>
                                     }
@@ -651,10 +651,10 @@ else
         }
 
     }
-   
 
 
-   
+
+
 
     async Task addLecturer(int moduleRunId, int lecturerId)
     {
@@ -865,6 +865,23 @@ else
 
     #endregion
 
+    #region lecturers group
+    [Inject]
+    public IModuleRunLecturerGroupService moduleRunLecturerGroupService { get; set; }
+
+    public async Task DeleteModuleRunLecturerGroup(ModuleRunLecturerGroupDto mrlg)
+    {
+        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected group of lecturers from this module?");
+
+
+        if (isConfirm)
+        {
+            await moduleRunLecturerGroupService.DeleteModuleRunLecturerGroup(mrlg.ModuleRunId,mrlg.LecturerGroupId);
+            await OnInitializedAsync();
+            //NavManager.NavigateTo($"/editplan/{SelectedPlanId}", true);
+        }
+    }
+    #endregion
 }
 
 <style>

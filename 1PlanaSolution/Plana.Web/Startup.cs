@@ -71,6 +71,19 @@ namespace Plana.Web
             {
                 client.BaseAddress = new Uri("https://localhost:44399");
             });
+            services.AddHttpClient<IModuleRunLecturerGroupService, ModuleRunLecturerGroupService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<ILecturerLecturerGroupService, LecturerLecturerGroupService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<ILecturerGroupService, LecturerGroupService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+
 
 
         }
