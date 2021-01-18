@@ -54,15 +54,19 @@ namespace Plana.Api.Services
 
                 foreach (var l in lg.LecturerLecturerGroup)
                 {
-
+                    
                     var moduleRunLecturer = new LecturerModuleRun()
                     {
                         LecturerId = l.Lecturer.Id,
                         ModuleRunId = moduleRunId
 
                     };
+                bool containsModuleRunLecturer = await context.LecturersModuleRuns.ContainsAsync(moduleRunLecturer);
+                if (!containsModuleRunLecturer) {
                     context.LecturersModuleRuns.Add(moduleRunLecturer);
                     await context.SaveChangesAsync();
+                }
+                   
                // }
             }
 
