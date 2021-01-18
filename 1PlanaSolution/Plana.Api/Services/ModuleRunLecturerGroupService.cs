@@ -28,7 +28,7 @@ namespace Plana.Api.Services
             bool containsModelRun = await context.ModuleRunLecturerGroups.ContainsAsync(moduleRunLecturerGroup);
             if (containsModelRun)
             {
-                return new ActionResultDto<ModuleRunLecturerGroupDto>("Lecturer has already been added.");
+                return new ActionResultDto<ModuleRunLecturerGroupDto>("This group has already been added.");
             }
 
             

@@ -36,6 +36,9 @@ namespace Plana.Web.Pages.plan.study_director
         [Inject]
         public ILecturerModuleRunService LecturerModuleRunService { get; set; }
 
+        [Inject]
+        public ILecturerGroupService LecturerGroupService { get; set; }
+
         public PlanDto Plan { get; set; }
         public SemesterDto Semester { get; set; } = new SemesterDto();
         public List<PlanDto> Plans { get; set; }
@@ -60,6 +63,12 @@ namespace Plana.Web.Pages.plan.study_director
         public LecturerModuleRunDto Lmr { get; set; } = new LecturerModuleRunDto();
         public List<LecturerModuleRunDto> ListLmr { get; set; } = new List<LecturerModuleRunDto>();
         
+        //data for lecturers group
+        public LecturerGroupDto LecturerGroup { get; set; }
+        public List<LecturerGroupDto> LecturerGroups { get; set; } 
+
+
+
         /// <summary>
         /// Id will be passed in the URL. This property will automatically receive it.
         /// </summary>
@@ -125,6 +134,7 @@ namespace Plana.Web.Pages.plan.study_director
             ModuleRuns = (await ModuleRunService.GetModuleRuns()).ToList();
             Modules = (await ModuleService.GetModules()).ToList();
             Lecturers = (await LecturerService.GetLecturers()).ToList();
+            LecturerGroups = (await LecturerGroupService.GetLecturerGroups()).ToList();
 
 
         }
