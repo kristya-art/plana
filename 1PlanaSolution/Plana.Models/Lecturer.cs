@@ -7,6 +7,8 @@ namespace Plana.Models
     {
         public string PhotoPath { get; set; }
 
+        public bool isSelected { get; set; }
+
         public virtual ICollection<LecturerModule> LecturersModules { get; set; }
 
         public virtual ICollection<LecturerModuleRun> LecturersModuleRuns { get; set; }

@@ -135,6 +135,9 @@ namespace Plana.Api.Migrations
                     b.Property<double>("WorkingRate")
                         .HasColumnType("float");
 
+                    b.Property<bool>("isSelected")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Lecturers");

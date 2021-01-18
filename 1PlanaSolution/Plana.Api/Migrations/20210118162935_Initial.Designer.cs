@@ -10,7 +10,7 @@ using Plana.Api.Models;
 namespace Plana.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210116033423_Initial")]
+    [Migration("20210118162935_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,6 +136,9 @@ namespace Plana.Api.Migrations
 
                     b.Property<double>("WorkingRate")
                         .HasColumnType("float");
+
+                    b.Property<bool>("isSelected")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

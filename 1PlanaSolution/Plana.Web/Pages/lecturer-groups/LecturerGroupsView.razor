@@ -1,0 +1,156 @@
+﻿@page "/lecturergroupsview"
+
+@using Microsoft.Extensions.Logging
+@inject ILogger<LecturerGroupsView> Logger
+
+@if (lgs == null) { return; }
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Group</th>
+                <th>Lecturers</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var lg in lgs)
+            {
+                int local = lg.LecturerGroupId;
+            <tr>
+
+                <td>@lg.Title</td>
+
+                <td>
+                    <p style="white-space:nowrap;">
+                        @foreach (var llGroup in lg.LecturerLecturerGroup)
+                        {
+
+                            @llGroup.Lecturer.SetToken()
+                <button class="btn" id="del" @onclick="@(e=> LecturerLecturerGroupService.DeleteLecturerLecturerGroup(llGroup.LecturerGroupId,llGroup.LecturerId))"><i class="fa fa-close"></i></button>
+
+            }
+                        <button class="btn" id="add" @onclick="@(e => OpenLecturerDialog(false, local))"><i class="fa fa-plus"></i></button>
+                        </p>
+                </td>
+            </tr>
+
+
+
+                <MatDialog @bind-IsOpen="LdialogIsOpen">
+                    <MatDialogTitle>Add Professor</MatDialogTitle>
+                    <MatDialogContent Style="width: 400px; height: 200px; right: 50px">
+
+                        @if (ErrorMessage != null)
+                        {
+                            <p>@ErrorMessage</p>
+                        }
+                        <EditForm Model="@lg">
+                            <select class="form-control" @bind="SelectedLecturer.Id">
+                                @foreach (var lecturer in ls)
+                                {
+                                    <option value="@lecturer.Id">
+                                        @lecturer.SetToken()
+                                    </option>
+                                }
+                            </select>
+                        </EditForm>
+
+                    </MatDialogContent>
+                    <MatDialogActions>
+                        <MatButton OnClick="@(e => addLecturer(choosedLecturerGroup.LecturerGroupId, SelectedLecturer.Id))">Add</MatButton>
+                        <MatButton OnClick="CloseDialog">Close</MatButton>
+                    </MatDialogActions>
+                </MatDialog>
+            }
+            </tbody>
+    </table>
+
+
+}
+
+
+@using Plana.Shared;
+@code {
+
+    [Inject]
+    public ILecturerGroupService LecturerGroupService { get; set; }
+
+    [Inject]
+    public ILecturerLecturerGroupService LecturerLecturerGroupService { get; set; }
+
+    [Inject]
+    public ILecturerService LecturerService { get; set; }
+
+    IEnumerable<LecturerLecturerGroupDto> llgs { get; set; }
+
+    IEnumerable<LecturerDto> ls { get; set; }
+
+    IEnumerable<LecturerGroupDto> lgs { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        llgs = (await LecturerLecturerGroupService.GetLecturerLecturerGroups());
+        lgs = (await LecturerGroupService.GetLecturerGroups());
+        ls = (await LecturerService.GetLecturers());
+    }
+
+    bool LdialogIsOpen = false;
+    bool _isEditL = false;
+    public LecturerGroupDto choosedLecturerGroup = new LecturerGroupDto();
+    private string ErrorMessage { get; set; }
+    bool loadFailed;
+    public LecturerDto SelectedLecturer { get; set; } = new LecturerDto();
+    [Parameter]
+    public int lecturerGroupIdChoosed { get; set; }
+
+    private async Task OpenLecturerDialog(bool isEditL, int choosedId)
+    {
+
+        lecturerGroupIdChoosed = choosedId;
+        choosedLecturerGroup = await LecturerGroupService.GetLecturerGroup(lecturerGroupIdChoosed);
+        _isEditL = isEditL;
+        LdialogIsOpen = true;
+
+    }
+    private void okClickL()
+    {
+        LdialogIsOpen = false;
+    }
+
+    private void CloseDialog()
+    {
+      LdialogIsOpen = false;
+     }
+
+    async Task addLecturer(int lecturerGroupId, int lecturerId)
+    {
+        try
+        {
+            LecturerLecturerGroupDto lecturerLecturerGroup = new LecturerLecturerGroupDto()
+            {
+                LecturerId = lecturerId,
+                LecturerGroupId = lecturerGroupId
+            };
+
+            var result = await LecturerLecturerGroupService.CreateLecturerLecturerGroup(lecturerLecturerGroup);
+            if (result.ErrorMessage != null)
+            {
+                ErrorMessage = result.ErrorMessage;
+            }
+            else
+            {
+                LdialogIsOpen = false;
+                await OnInitializedAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            loadFailed = true;
+            Logger.LogWarning(ex, "The selected Lecturer is already addet to this module");
+        }
+    }
+}

@@ -41,8 +41,11 @@ namespace Plana.Shared
         public string PhotoPath { get; set; }
 
         public DateTime ActiveTill { get; set; }
+
         public GenderDto Gender { get; set; }
-        
+
+        public bool isSelected { get; set; }
+
         public virtual ICollection<LecturerModuleDto> LecturersModules { get; set; }
         
         //public virtual ICollection<LecturerModuleRunDto> LecturersModuleRuns { get; set; }
