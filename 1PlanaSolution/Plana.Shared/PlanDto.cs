@@ -30,20 +30,13 @@ namespace Plana.Shared
 
         public virtual ICollection<PlanLecturerDto> PlanLecturers { get; set; }
         
-       // [ForeignKey("AutumnSemesterId")]
-        public virtual SemesterDto AutumnSemester { get; set; } = new SemesterDto();
+       
+        public virtual SemesterDto AutumnSemester { get; set; }
 
-       // [ForeignKey("SpringSemesterId")]
-        public virtual SemesterDto SpringSemester { get; set; } = new SemesterDto();
+       
+        public virtual SemesterDto SpringSemester { get; set; }
 
-        //public string FindLastYearPlan() {
-        //    var LastNumbers = Year.Substring(Year.Length - 2); // example 2020-2019  ==> 19 as string
-        //    int LastNumbersInt = Int32.Parse(LastNumbers); //=> 19 as int 
-        //    int LastYearLast2Numbers = LastNumbersInt - 1; // => 19-1 => 18 as int
-        //    LastYear = LastYearLast2Numbers.ToString(); // => 18 as string
-        //    return LastYear;
-
-        //}
+        
         public string FindLastYearPlan() {
             var secondY = (Int32.Parse(Year.Substring(7,2)) -1).ToString();
             var firstY = (Int32.Parse(Year.Substring(2,2)) -1).ToString();

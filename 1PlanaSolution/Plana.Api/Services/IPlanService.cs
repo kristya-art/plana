@@ -10,10 +10,15 @@ namespace Plana.Api.Services
     public interface IPlanService
     {
         Task<IEnumerable<PlanDto>> GetAllPlans();
+
         Task<PlanDto> AddPlan(PlanDto planDto);
-        Task<PlanDto> UpdatePlan(PlanDto planDto);
+
+        Task<PlanDto?> UpdatePlan(PlanDto planDto);
+
         Task<PlanDto> GetPlan(int planId);
-        Task<PlanDto> FindLastYearPlan(int planId);
+
+        Task<PlanDto?> FindLastYearPlan(int planId);
+
         Task<bool> DeletePlan(int planId);
     }
 }

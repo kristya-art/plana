@@ -34,10 +34,10 @@ namespace Plana.Models
         /// </summary>
 
         [ForeignKey("AutumnSemesterId")]
-        public virtual Semester AutumnSemester { get; set; } = new Semester();
+        public virtual Semester AutumnSemester { get; set; }
 
         [ForeignKey("SpringSemesterId")]
-        public virtual Semester SpringSemester { get; set; } = new Semester();
+        public virtual Semester SpringSemester { get; set; }
 
         public bool IsDeleted { get; set; }
 

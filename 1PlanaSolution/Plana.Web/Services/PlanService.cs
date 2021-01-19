@@ -16,6 +16,7 @@ namespace Plana.Web.Services
         public PlanService(HttpClient http) {
             this.http = http;
         }
+
         public async Task<PlanDto> CreatePlan(PlanDto plan)
         {
             return await http.PostJsonAsync<PlanDto>("api/plan", plan);

@@ -12,16 +12,15 @@ namespace Plana.Web.Services
     public class LecturerService : ILecturerService
     {
         private readonly HttpClient httpClient;
+
         public LecturerService(HttpClient httpClient)
         {
             this.httpClient = httpClient;
         }
 
-        public HttpClient HttpClient { get; }
+     //   public HttpClient HttpClient { get; }
 
-
-
-        public async Task<LecturerDto> GetLecturer(int id)
+         public async Task<LecturerDto> GetLecturer(int id)
         {
             return await httpClient.GetJsonAsync<LecturerDto>($"api/lecturer/{id}");
         }

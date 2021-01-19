@@ -314,7 +314,8 @@ img {
 }
 /*table*/
 .table {
-    font-family: 'ArialMT', 'Arial';
+    /*font-family: 'ArialMT', 'Arial';*/
+    font-family: cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 13px;

@@ -62,17 +62,27 @@ else
                         <tr>
 
 
-                            <th >Semester</th>
+                            <th>Sem</th>
                             <th width="50px">Module</th>
                             @*<th>Module Title</th>*@
                             <th>Group</th>
                             <th>Place</th>
-                            <th>Module Total Hours</th>
-                            <th>My hours</th>
+                            <th>Module hrs</th>
+                            <th>My hrs</th>
                             <th>Set desired hours</th>
                             <th>Actions</th>
                             <th width="20%">notes</th>
-                            <th>lecturer group</th>
+                            <th style="position:absolute">
+                                
+                                @if (!showgroup)
+                                {
+                                <button class="btn" id="save-btn" @onclick="@(e => showGroups())">show groups</button>
+                                }
+                                else
+                                {
+                                    <MatButton class="btn" Type="cancel" @onclick="@(e => showGroups())">X</MatButton>
+                                }
+                            </th>
                         </tr>
 
                     </thead>
@@ -84,22 +94,24 @@ else
                             @foreach (var mr in MyModuleRuns)
                             {
                                 <tr>
+                                    
                                     <td>@mr.SemesterId</td>
                                     @*<td width="40px">@mr.Module.Code</td>*@
-                                    <td style="white-space:nowrap;">
-                                        (@mr.Module.Code) @mr.Module.Title
-                                        @foreach (var lmr1 in mr.LecturersMR)
+                                <td style="white-space:nowrap;">
+                                    <p>(@mr.Module.Code)</p> 
+                                    <p> @mr.Module.Title</p>
+                                    @foreach (var lmr1 in mr.LecturersMR)
+                                    {
+
+                                        @if (lmr1.IsRequested == true)
                                         {
-
-                                            @if (lmr1.IsRequested == true)
-                                            {
-                                                @request
-                                                @*<h6 style="color:mediumvioletred">| R</h6>*@
-
-                                            }
+                                            @request
+                                            @*<h6 style="color:mediumvioletred">| R</h6>*@
 
                                         }
-                                    </td>
+
+                                    }
+                                </td>
                                     <td>@mr.Code</td>
                                     <td>@mr.Place</td>
                                     <td>@mr.Module.TotalHours</td>
@@ -137,9 +149,19 @@ else
                                     </td>
 
                                     <td></td>
+                                    @if (showgroup)
+                                    {
                                     @foreach (var mrlg in mr.ModuleRunLecturerGroups)
                                     {
-                                        <td>@mrlg.LecturerGroup.Title</td>
+                                <td>
+                                    @mrlg.LecturerGroup.Title
+                                    <p>_________</p>
+                                    @foreach (var llg in mrlg.LecturerGroup.LecturerLecturerGroup)
+                                    {
+                                        <p>  @llg.Lecturer.FirstName;</p>
+                                    }
+                                </td>
+                                    }
                                     }
 
                                 </tr>
@@ -553,7 +575,7 @@ else
             {
                 foreach (var moduleRun in modulesToAdd)
                 {
-                   
+
                     LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
                     {
                         LecturerId = Lecturer.Id,
@@ -609,14 +631,14 @@ else
 
     public async Task RemoveAA(int localAA) {
         bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected additional assignment from your list");
-       
+
         tempAAId = localAA;
         aaToDelete = await AdditionalAssignmentService.GetAdditionalAssignment(tempAAId);
         if (isConfirm)
         {
             await AdditionalAssignmentService.SoftDeleteAdditionalAssignment(aaToDelete.AdditionalAssignmentId);
             MyAdditionalAssignments = MyAdditionalAssignments.Where(c => c.AdditionalAssignmentId != tempAAId).ToList();
-            
+
 
         }
     }
@@ -636,6 +658,16 @@ else
         NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
     }
     #endregion
+
+    bool showgroup = false;
+    void showGroups() { showgroup = !showgroup; }
+
+    public async Task<string> findSem(int SemesterId) {
+        SemesterDto sem = new SemesterDto();
+        sem =  await SemesterService.GetSemester(SemesterId);
+        var ab = sem.GetAbbreviation();
+        return ab;
+    }
 }
 <style>
     

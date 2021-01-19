@@ -17,6 +17,7 @@ namespace Plana.Api.Controllers
     {
         private readonly IPlanService _planService;
         private readonly ILogger<PlanController> _logger;
+
         public PlanController(IPlanService planService, ILogger<PlanController> logger) {
 
             _planService = planService;
@@ -75,7 +76,7 @@ namespace Plana.Api.Controllers
 
         }
         [HttpPut()]
-        public async Task<ActionResult<PlanDto>> UpdatePlan(PlanDto plan)
+        public async Task<ActionResult<PlanDto?>> UpdatePlan(PlanDto plan)
         {
             try
             {
