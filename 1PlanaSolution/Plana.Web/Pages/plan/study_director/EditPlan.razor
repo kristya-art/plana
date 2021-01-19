@@ -10,12 +10,12 @@
 @inject IJSRuntime js
 
 @inherits EditPlanBase
-@if (lastYearPlan != null)
+@*@if (lastYearPlan != null)
 {
-    <p>@lastYearPlan.Id</p>}
+    <p>@lastYearPlan.Id</p>}*@
 
 @if (Plan == null || Plans == null) { return; }
-<p>@Plan.FindLastYearPlan()</p>
+@*<p>@Plan.FindLastYearPlan()</p>*@
 
 
 
@@ -47,16 +47,20 @@
 <div class="btn-group">
     <button id="addNewModule" @onclick="@(e=>OpenDialogMNew(false))" style="float: right;">Add Module</button>
     <button @onclick="@(e=>OpenDialog(false))" style="float: right;">last year plan</button>
-    <MatButton Type="delete" OnClick="@(e=>DeletePlan())">Delete Plan</MatButton>
+    <button id="addNewModule" @onclick="@(e=>ShowDates())">Publish Dates</button>
     <MatButton Type="delete" OnClick="@(e=>OpenDialogP(false))">Edit Plan</MatButton>
+    <MatButton Type="delete" OnClick="@(e=>DeletePlan())">Delete Plan</MatButton>
 </div>
-
+@if (showDates)
+{
 <div class="btn-groupR">
-   
+
     <button>Share with professors on @Plan.PublishDateForProfessors </button>
+
     <button>Official publish on @Plan.OfficialPublishDate</button>
 
 </div>
+}
 @*dialog to Plan*@
 <MatDialog @bind-IsOpen="dialogIsOpenP" @bind-Value="@Plan.Id">
     <MatDialogTitle>Add / Edit Plan</MatDialogTitle>
@@ -772,6 +776,10 @@ else
         }
     }
     #endregion
+    bool showDates = false;
+    void ShowDates() {
+        showDates = !showDates;
+    }
 }
 
 <style>

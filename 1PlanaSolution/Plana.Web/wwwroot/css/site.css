@@ -226,14 +226,15 @@ img {
 /***** button group */
 .btn-group button {
     background-color: #f2f2f2; /* background */
-    /*border: 1px solid rgb(26, 79, 238);*/ /* border */
+    border: 1px solid rgb(26, 79, 238); /* border */
     /*border: 1px solid transparent;*/ /* border */
     border-color: #6200ee;
     color: #333333; /*  text */
     text-align: center;
     display: flex;
     font-size: 13px;
-    font-family: Roboto, sans-serif;
+   /* font-family: Roboto, sans-serif;*/
+   font-family: cursive;
     font-weight: 500;
     align-items: center;
     /*padding: 5px 5px;*/ /* Some padding */
@@ -246,6 +247,7 @@ img {
     height: 40px;
     position: center;
     left: -1px;
+   
 }
 
     .btn-group button a, btn-link {
@@ -269,6 +271,7 @@ img {
 
 /*button -> right*/
 .btn-groupR button {
+    top: 50px;
     background-color: #f2f2f2; /* background */
     border: 1px solid rgb(120, 24, 119); /* border */
     color: #333333; /*  text */
@@ -284,8 +287,8 @@ img {
     width: 140px;
     height: 70px;
     position: center;
-   
-    top:150px;
+   /* left: 20px;
+    position: absolute;*/
 }
 
 .btn-groupR button a, btn-link {
@@ -374,7 +377,7 @@ img {
 .selectYear {
     border-width: 0px;
     position: absolute;
-    left: 500px;
+    left: 40%;
     top: 41px;
     width: 177px;
     height: 37px;
