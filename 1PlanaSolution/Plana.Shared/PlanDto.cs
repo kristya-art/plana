@@ -17,7 +17,7 @@ namespace Plana.Shared
         public bool IsModifyable { get; set; }
 
         [Required(ErrorMessage="The Year must be provided")]
-        [MinLength(9)]
+        //[MinLength(9)]
         public string Year { get; set; } 
         
         public string LastYear { get; set; } 
@@ -29,15 +29,18 @@ namespace Plana.Shared
         public DateTime? PublishDateForProfessors { get; set; }
 
         public virtual ICollection<PlanLecturerDto> PlanLecturers { get; set; }
-        
-       
-        public virtual SemesterDto AutumnSemester { get; set; }
+
+        // [Required(ErrorMessage = "Must be provided")]
+        public virtual SemesterDto AutumnSemester { get; set; } = new SemesterDto();
+
+
+
+        //[Required(ErrorMessage = "Must be provided")]
+        public virtual SemesterDto SpringSemester { get; set; } = new SemesterDto();
 
        
-        public virtual SemesterDto SpringSemester { get; set; }
 
-        
-        public string FindLastYearPlan() {
+           public string FindLastYearPlan() {
             var secondY = (Int32.Parse(Year.Substring(7,2)) -1).ToString();
             var firstY = (Int32.Parse(Year.Substring(2,2)) -1).ToString();
             LastYear = Year.Remove(2,2).Insert(2,firstY);

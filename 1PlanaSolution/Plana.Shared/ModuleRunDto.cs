@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,9 @@ namespace Plana.Shared
     public class ModuleRunDto
     {
         public int ModuleRunId { get; set; }
+
         //'a', 'b', 'p','q'
+        
         public string Code { get; set; }
         //many-1
         //    public Semester Semester { get; set; }
