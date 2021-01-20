@@ -62,6 +62,7 @@ namespace Plana.Web.Areas.Identity.Pages.Account
             }
 
             returnUrl = returnUrl ?? Url.Content("~/");
+            
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -73,7 +74,8 @@ namespace Plana.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            // returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? Url.Content("~/startlogedIn");
 
             if (ModelState.IsValid)
             {
@@ -83,7 +85,8 @@ namespace Plana.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                     return LocalRedirect(returnUrl);
+                    
                 }
                 if (result.RequiresTwoFactor)
                 {

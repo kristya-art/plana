@@ -88,6 +88,8 @@ app {
            display: flex;
             align-items: center;
             line-height: 3rem;
+            color:sienna;
+            margin-top: 50px;
         }
 
             .sidebar .nav-item a.active {
@@ -97,7 +99,8 @@ app {
             }
 
             .sidebar .nav-item a:hover {
-                background-color: #fff;
+                 background-color: rgba(211, 202, 202, 0.29);
+                
                 color: #43427d;
             }
 

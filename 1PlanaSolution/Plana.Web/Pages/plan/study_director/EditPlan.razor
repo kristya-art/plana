@@ -46,7 +46,7 @@
 
 <div class="btn-group">
     <button id="addNewModule" @onclick="@(e=>OpenDialogMNew(false))" style="float: right;">Add Module</button>
-    <button @onclick="@(e=>OpenDialog(false))" style="float: right;">last year plan</button>
+    @*<button @onclick="@(e=>OpenDialog(false))" style="float: right;">last year plan</button>*@
     <button id="addNewModule" @onclick="@(e=>ShowDates())">Publish Dates</button>
     <MatButton Type="delete" OnClick="@(e=>OpenDialogP(false))">Edit Plan</MatButton>
     <MatButton Type="delete" OnClick="@(e=>DeletePlan())">Delete Plan</MatButton>
