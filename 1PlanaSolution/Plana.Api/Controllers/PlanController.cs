@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Plana.Api.Models;
 using Plana.Api.Services;
 using Plana.Models;
 using Plana.Shared;
@@ -18,10 +19,13 @@ namespace Plana.Api.Controllers
         private readonly IPlanService _planService;
         private readonly ILogger<PlanController> _logger;
 
-        public PlanController(IPlanService planService, ILogger<PlanController> logger) {
+        private readonly AppDbContext context;
+
+        public PlanController(IPlanService planService, ILogger<PlanController> logger, AppDbContext context ) {
 
             _planService = planService;
             _logger = logger;
+            context = context;
         }
 
         [HttpGet]
@@ -87,6 +91,7 @@ namespace Plana.Api.Controllers
                 }
 
                 return await _planService.UpdatePlan(planForUpdate);
+                
             }
             catch (Exception ex)
             {

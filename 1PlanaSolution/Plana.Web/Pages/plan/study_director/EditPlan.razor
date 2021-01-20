@@ -65,7 +65,7 @@
 <MatDialog @bind-IsOpen="dialogIsOpenP" @bind-Value="@Plan.Id">
     <MatDialogTitle>Add / Edit Plan</MatDialogTitle>
     <MatDialogContent>
-        @*<EditForm Model="@Plan">*@
+        
         <div>
             Active<br />
             <MatCheckbox @bind-Value="Plan.IsModifyable" Label="@(ChangeLabelPlan(Plan.IsModifyable))"></MatCheckbox>
@@ -79,7 +79,7 @@
 
         </div>
             <MatButton Type="submit" @onclick="@(e=>PlanService.UpdatePlan(Plan))">Save</MatButton>
-        @*</EditForm>*@
+      
 
         
       
@@ -241,15 +241,14 @@ else
                                 <button class="btn" id="edit-btn" @onclick="@(e => OpenDialogM(true, local))">edit</button>
 
                                 <button class="btn" id="delete-btn" @onclick="@(e => RemoveModuleRun(local))">delete</button>
-                                @*<button class="btn" id="cancel-btn">cancel</button>*@
-                                @*<MatButton Raised="true" @onclick="@(e => OpenDialogM(true, local))" Icon="edit" title="Edit ModuleRun"></MatButton>*@
+                               
 
                                 @*dialog to update Module Run*@
                                 <MatDialog @bind-IsOpen="dialogIsOpenM" @bind-Value="@choosedModuleRun.ModuleRunId">
                                     <MatDialogTitle>Add / Edit Module</MatDialogTitle>
                                     <MatDialogContent>
-                                        <h3>@choosedModuleRun.ModuleRunId</h3>
-                                        @*<MatTextField Label="Module Title" @bind-Value="@choosedModuleRun.Module.Title"></MatTextField>*@
+                                        
+                                      
                                         <MatTextField Label="Place" @bind-Value="@choosedModuleRun.Place"></MatTextField>
                                         <MatTextField Label="CodeGroup" @bind-Value="@choosedModuleRun.Code"></MatTextField>
                                     </MatDialogContent>
@@ -267,8 +266,7 @@ else
                         <MatDialog @bind-IsOpen="LdialogIsOpen">
                             <MatDialogTitle>Add Professor</MatDialogTitle>
                             <MatDialogContent Style="width: 400px; height: 200px; right: 50px">
-                                <h3>@choosedModuleRun.ModuleRunId </h3>
-                                <h3>@mr.ModuleRunId | @mr.Module.Title </h3>
+                               
                                 @if (ErrorMessage != null)
                                 {
                                     <p>@ErrorMessage</p>
@@ -344,7 +342,7 @@ else
             }
 
         <div class="form-group row">
-            <label for="semester"class="col-sm-2 col-form-label">Semester</label>
+            <label for="semester"class="col-sm-2 col-form-label">Sem.</label>
 
             <div class="col-sm-10">
                 <InputSelect id="semester" @bind-Value="@moduleRun.SemesterId" class="form-control" placeholder="Semester">
@@ -377,7 +375,7 @@ else
                 Place
                 </label>
                 <div class="col-sm-10">
-                    <InputText id="Place" class="form-control" placeholder="Place"
+                    <InputText id="Place" class="form-control" 
                                @bind-Value="@moduleRun.Place" />
                 </div>
             </div>
@@ -387,15 +385,12 @@ else
                     Code
                 </label>
                 <div class="col-sm-10">
-                    <InputText id="Place" class="form-control" placeholder="Code"
+                    <InputText id="Place" class="form-control" 
                                @bind-Value="@moduleRun.Code" />
                 </div>
             </div>
 
-            <div>
-                Active<br />
-                <MatCheckbox @bind-Value="@moduleRun.Editable" Label="@(ChangeLabel(ModuleRun.Editable))"></MatCheckbox>
-            </div>
+           
         </MatDialogContent>
         <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e=>addModuleRun())">OK</MatButton>
         <MatButton Type="cancel" Name="Cancel" @onclick="@(e=>CloseDialog())">X</MatButton>
@@ -418,18 +413,17 @@ else
 
 
 
-    private async Task CallJSMethod()
-    {
+    //private async Task CallJSMethod()
+    //{
 
-        //await JS.InvokeVoidAsync("CollapseTableRow");
-        await js.InvokeVoidAsync("GetName");
+    //     await js.InvokeVoidAsync("GetName");
 
-    }
-    private async Task CallJSMethod2()
-    {
+    //}
+    //private async Task CallJSMethod2()
+    //{
 
-        await js.InvokeVoidAsync("SetButtonsVisible");
-    }
+    //    await js.InvokeVoidAsync("SetButtonsVisible");
+    //}
 
     #region Last Year Plan
 
@@ -444,7 +438,6 @@ else
     private void OpenDialog(bool isEdit)
     {
 
-        //if (!_isEdit) plan = new Plan();
         dialogIsOpen = true;
     }
     private void okCklick()
@@ -507,7 +500,7 @@ else
         {
             await ModuleRunService.SoftDeleteModuleRun(moduleRunIdChoosed);
             await OnInitializedAsync();
-            //NavManager.NavigateTo($"/editplan/{SelectedPlanId}", true);
+
         }
 
     }
@@ -606,14 +599,6 @@ else
     {
         dialogIsOpenM = false;
         dialogIsOpenMNew = false;
-        //if (moduleRun.ModuleRunId != 0)
-        //{
-        //    await ModuleRunService.UpdateModuleRun(moduleRun);
-        //}
-        //else {
-        //    moduleRun = await ModuleRunService.CreateModuleRun(moduleRun);
-        //}
-
         await ModuleRunService.UpdateModuleRun(choosedModuleRun);
 
     }
@@ -738,7 +723,7 @@ else
         {
             await moduleRunLecturerGroupService.DeleteModuleRunLecturerGroup(mrlg.ModuleRunId,mrlg.LecturerGroupId);
             await OnInitializedAsync();
-            
+
         }
     }
     public async Task DeleteLecturer(LecturerModuleRunDto lmr)
@@ -750,7 +735,7 @@ else
         {
             await LecturerModuleRunService.DeleteLecturerModuleRun(lmr.ModuleRunId,lmr.LecturerId);
             await OnInitializedAsync();
-           
+
         }
     }
 

@@ -57,8 +57,7 @@ namespace Plana.Api.Services
             if(lecturergroup == null ) { return new ActionResultDto<LecturerGroupDto>("You can not add an empty lecturer group "); }
             foreach (var lg in _context.LecturerGroups) {
                 if (lg.Title == lecturergroup.Title) {
-                    return new ActionResultDto<LecturerGroupDto>("The group with this name  is already" +
-                          "exist .");
+                    return new ActionResultDto<LecturerGroupDto>("The group is already has been added.");
                 }
             }
             var result = await _context.LecturerGroups.AddAsync(lecturergroup);
