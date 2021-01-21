@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Plana.Api.Models;
-using Plana.Api.Repositories;
 using Plana.Models;
 using Plana.Shared;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Plana.Api.Services
@@ -28,7 +24,6 @@ namespace Plana.Api.Services
             _semesterService = semesterService;
             _mapper = mapper;
 
-
         }
 
 
@@ -40,8 +35,6 @@ namespace Plana.Api.Services
 
             var result = await _context.Plans.AddAsync(plan);
 
-
-            //plan.LastYear= plan.FindLastYearPlan();
             plan.FindLastYearPlan();
             foreach (var l in _context.Lecturers) {
 
@@ -57,12 +50,7 @@ namespace Plana.Api.Services
         public async Task<IEnumerable<PlanDto>> GetAllPlans()
         {
             var plans = await _context.Plans
-                 // .Include(x => x.AutumnSemester)
-                 // //.Include(x=>x.Semesters)
-                 // .ThenInclude(xa => xa.ModuleRuns)
-                 // .Include(x => x.SpringSemester)
-                 //.ThenInclude(xs => xs.ModuleRuns)
-
+        
                  .ToListAsync();
             return _mapper.Map<IEnumerable<PlanDto>>(plans);
         }
@@ -70,42 +58,9 @@ namespace Plana.Api.Services
         public async Task<PlanDto> GetPlan(int planId)
         {
             var result = await _context.Plans
-   //                .Include(e => e.AutumnSemester)
-   //                    //.Include(e=>e.Semesters)
-   //                    .ThenInclude(s => s.ModuleRuns)
-   //                        .ThenInclude(mr => mr.LecturersMR)
-   //                            .ThenInclude(l => l.Lecturer)
-   //               //.Include(e=>e.Semesters)
-   //               .Include(e => e.AutumnSemester)
-   //                   .ThenInclude(s => s.ModuleRuns)
-   //                       .ThenInclude(m => m.Module)
-   //               .Include(e => e.AutumnSemester)
-   //                 //.Include(e=>e.Semesters)
-   //                 .ThenInclude(a => a.AdditionalAssignments)
-
-   //.Include(e => e.SpringSemester)
-   //                    //.Include(e=>e.Semesters)
-   //                    .ThenInclude(s => s.ModuleRuns)
-   //                        .ThenInclude(mr => mr.LecturersMR)
-   //                            .ThenInclude(l => l.Lecturer)
-   //               //.Include(e=>e.Semesters)
-   //               .Include(e => e.SpringSemester)
-   //                   .ThenInclude(s => s.ModuleRuns)
-   //                       .ThenInclude(m => m.Module)
-   //               .Include(e => e.SpringSemester)
-   //                 //.Include(e=>e.Semesters)
-   //                 .ThenInclude(a => a.AdditionalAssignments)
-
-
-
-   //                .Include(e => e.PlanLecturers)
-
-   //           .FirstOrDefaultAsync(e => e.Id == planId);
-   .FindAsync(planId);
-
+  
+            .FindAsync(planId);
             return _mapper.Map<PlanDto>(result);
-
-
         }
 
         private Plan NotFound()
@@ -120,6 +75,8 @@ namespace Plana.Api.Services
             if (plan != null)
             {
                 plan.Year = planDto.Year;
+                //plan.SpringSemester.SemesterId = planDto.SpringSemester.SemesterId;
+                //plan.AutumnSemester.SemesterId = planDto.AutumnSemester.SemesterId;
                 plan.SpringSemester.Code = planDto.SpringSemester.Code;
                 plan.AutumnSemester.Code = planDto.AutumnSemester.Code;
                 plan.OfficialPublishDate = planDto.OfficialPublishDate;
@@ -127,6 +84,7 @@ namespace Plana.Api.Services
                 plan.IsFixed = planDto.IsFixed;
                 plan.PublishDateForProfessors = planDto.PublishDateForProfessors;
                 plan.ExpiredDate = planDto.ExpiredDate;
+               // _mapper.Map(planDto, plan);
 
                 await _context.SaveChangesAsync();
 
@@ -172,7 +130,5 @@ namespace Plana.Api.Services
             }
             return false;
         }
-
-
     }
 }

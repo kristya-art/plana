@@ -90,7 +90,7 @@ namespace Plana.Api.Controllers
                     return NotFound($"Plan with id = {plan.Id} not found");
                 }
 
-                return await _planService.UpdatePlan(planForUpdate);
+                return await _planService.UpdatePlan(plan);
                 
             }
             catch (Exception ex)
