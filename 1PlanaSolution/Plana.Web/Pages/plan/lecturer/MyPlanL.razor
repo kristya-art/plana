@@ -242,6 +242,7 @@ else
                         <tr>
                             <th width="40%">BALANCE ACCUMULATED</th>
                             <td>@PlanLecturer.GetBalanceAccumulated()</td>
+                            <td>@lY.Id</td>
                         </tr>
 
                     </tbody>
@@ -459,7 +460,7 @@ else
             AAHours = additionalAssignment.AAHours.ToString();
             foreach (var aa in additionalAssignments) {
 
-                
+
                 if ((aa.PlanId == Plan.Id) &&( aa.LecturerId == Lecturer.Id)) {
                     MyAdditionalAssignments.Add(aa);
 
@@ -483,14 +484,14 @@ else
 
     public async Task NavigateToMyPlan()
     {
-       
+
         string PlanId = Plan.Id.ToString();
         NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
         MyModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
 
     }
 
-   
+
 
     #endregion
     #region Dialog box for add moduleRun
@@ -634,7 +635,7 @@ else
 
     #region methods for additional assignment
     async Task Create() {
-        
+
         additionalAssignment.LecturerId = Lecturer.Id;
         additionalAssignment.PlanId = Plan.Id;
         await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
@@ -651,6 +652,16 @@ else
         var ab = sem.GetAbbreviation();
         return ab;
     }
+
+    #region last year plan
+
+    PlanDto lY = new PlanDto();
+
+    public async Task findlY() {
+       lY=  await PlanService.LastYearPlan(Plan.Id);
+    }
+
+    #endregion
 }
 <style>
     

@@ -10,12 +10,12 @@
 @inject IJSRuntime js
 
 @inherits EditPlanBase
-@*@if (lastYearPlan != null)
+@if (lastYearPlan != null)
 {
-    <p>@lastYearPlan.Id</p>}*@
+    <p>@lastYearPlan.Id</p> }
 
 @if (Plan == null || Plans == null) { return; }
-@*<p>@Plan.FindLastYearPlan()</p>*@
+<p>@Plan.FindLastYearPlan()</p>
 
 
 

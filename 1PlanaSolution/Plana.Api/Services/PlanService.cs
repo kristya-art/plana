@@ -75,8 +75,6 @@ namespace Plana.Api.Services
             if (plan != null)
             {
                 plan.Year = planDto.Year;
-                //plan.SpringSemester.SemesterId = planDto.SpringSemester.SemesterId;
-                //plan.AutumnSemester.SemesterId = planDto.AutumnSemester.SemesterId;
                 plan.SpringSemester.Code = planDto.SpringSemester.Code;
                 plan.AutumnSemester.Code = planDto.AutumnSemester.Code;
                 plan.OfficialPublishDate = planDto.OfficialPublishDate;
@@ -84,7 +82,7 @@ namespace Plana.Api.Services
                 plan.IsFixed = planDto.IsFixed;
                 plan.PublishDateForProfessors = planDto.PublishDateForProfessors;
                 plan.ExpiredDate = planDto.ExpiredDate;
-               // _mapper.Map(planDto, plan);
+               
 
                 await _context.SaveChangesAsync();
 
@@ -96,21 +94,23 @@ namespace Plana.Api.Services
        
         public async Task<PlanDto?> FindLastYearPlan(int planId)
         {
-            var plan = await GetPlan(planId);
+            var plan = await _context.Plans.FindAsync(planId);
             var foundPlan = new Plan();
-           
-            foreach (Plan p in _context.Plans)
+            string lastyear = plan.FindLastYearPlan();
+            foreach (var p in _context.Plans)
             {
-                 if (p.Year == plan.LastYear)
+                 if (p.Year == lastyear)
                 {
+
                     foundPlan = await _context.Plans.FindAsync(p.Id);
-                   
+                                  
                  }
                 
                 else { return null; }
 
-            } 
+            }
             return _mapper.Map<PlanDto>(foundPlan);
+           
             
         }
         public async Task<bool> DeletePlan(int planId)

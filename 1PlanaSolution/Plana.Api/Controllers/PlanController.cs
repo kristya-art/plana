@@ -19,13 +19,13 @@ namespace Plana.Api.Controllers
         private readonly IPlanService _planService;
         private readonly ILogger<PlanController> _logger;
 
-        private readonly AppDbContext context;
+       
 
-        public PlanController(IPlanService planService, ILogger<PlanController> logger, AppDbContext context ) {
+        public PlanController(IPlanService planService, ILogger<PlanController> logger) {
 
             _planService = planService;
             _logger = logger;
-            context = context;
+           
         }
 
         [HttpGet]
