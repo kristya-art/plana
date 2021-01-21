@@ -100,10 +100,11 @@ else
                                 <td style="white-space:nowrap;">
                                     <p>(@mr.Module.Code)</p> 
                                     <p> @mr.Module.Title</p>
+                                    
                                     @foreach (var lmr1 in mr.LecturersMR)
                                     {
 
-                                        @if (lmr1.IsRequested == true)
+                                        @if (lmr1.IsRequested == true && lmr1.LecturerId == Lecturer.Id)
                                         {
                                             @request
                                             @*<h6 style="color:mediumvioletred">| R</h6>*@
@@ -138,6 +139,7 @@ else
                                             int local = lmr1.ModuleRunId;
                                             @if (lmr1.LecturerId == Lecturer.Id)
                                             {
+
                                                 @if (lmr1.IsRequested == true)
                                                 {
 
@@ -294,17 +296,10 @@ else
                         <td>
                             <EditForm Model="@mr">
                                 <MatCheckbox @bind-Value="mr.isSelected"></MatCheckbox>
-                                @*<MatButton @onclick="@(e => ModuleRunService.UpdateModuleRun(mr))">save</MatButton>*@
+                               
                             </EditForm>
                         </td>
 
-
-                        @*<td style="white-space:nowrap;">
-
-                            <button class="btn" id="save-btn" @onclick="@(e => SaveToMylist())">Add</button>
-                            
-
-                        </td>*@
 
                     </tr>
                             }
@@ -319,12 +314,7 @@ else
     <MatDialogActions>
         <MatButton @onclick="@(e => SaveToMylist())">save</MatButton>
         <MatButton Type="cancel" @onclick="okClick" >X</MatButton> 
-        <button class="btn" id="cancel-btn">X</button>
-
-        @*<button type="submit" class="btn-btn-success">
-            Save
-        </button>*@
-    </MatDialogActions>
+       </MatDialogActions>
 </MatDialog>
 
 @*dialog with Additional Assigmnets*@
@@ -469,10 +459,7 @@ else
             AAHours = additionalAssignment.AAHours.ToString();
             foreach (var aa in additionalAssignments) {
 
-                //if ((aa.SemesterId == AutumnSemester.SemesterId||aa.SemesterId == SpringSemester.SemesterId) && aa.LecturerId == Lecturer.Id) {
-                //    MyAdditionalAssignments.Add(aa);
-
-                //}
+                
                 if ((aa.PlanId == Plan.Id) &&( aa.LecturerId == Lecturer.Id)) {
                     MyAdditionalAssignments.Add(aa);
 
@@ -496,17 +483,14 @@ else
 
     public async Task NavigateToMyPlan()
     {
-        //PlanLecturer = await PlanLecturerService.GetPlanLecturer(SelectedPlan.Id, Lecturer.Id);
-        //if (PlanLecturer != null)
-        //{
-
+       
         string PlanId = Plan.Id.ToString();
         NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
         MyModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
 
     }
 
-    //await Alert();
+   
 
     #endregion
     #region Dialog box for add moduleRun
@@ -517,7 +501,6 @@ else
     private void OpenDialogMR(bool isEdit)
     {
 
-        //if (!_isEdit) plan = new Plan();
         dialogIsOpenMR = true;
     }
     private void OpenDialogAA(bool isEdit)
@@ -651,7 +634,7 @@ else
 
     #region methods for additional assignment
     async Task Create() {
-        //Lecturer.AdditionalAssignments.Add(additionalAssignment);
+        
         additionalAssignment.LecturerId = Lecturer.Id;
         additionalAssignment.PlanId = Plan.Id;
         await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
@@ -671,16 +654,7 @@ else
 }
 <style>
     
-    /*   .row {
-                    margin-left: -5px;
-                    margin-right: -5px;
-                }
-
-                .column {
-                    float: left;
-                    width: 30%;
-                    padding: 5px;
-                }*/
+   
     .table {
        
     }
