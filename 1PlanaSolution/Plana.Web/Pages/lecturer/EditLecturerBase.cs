@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Components;
 using Plana.Models;
-using Plana.Web.Models;
+using Plana.Shared;
+
 using Plana.Web.Services;
 using System;
 using System.Threading.Tasks;
@@ -17,14 +18,13 @@ namespace Plana.Web.Pages
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        public Lecturer Lecturer { get; set; } = new Lecturer();
-        public EditLecturerModel EditLecturerModel { get; set; } = new EditLecturerModel();
+        public LecturerDto Lecturer { get; set; } = new LecturerDto();
+       
 
         [Parameter]
         public string Id { get; set; }
 
-        [Inject]
-        public IMapper Mapper { get; set; }
+        
 
 
        protected async override Task OnInitializedAsync()
@@ -39,7 +39,7 @@ namespace Plana.Web.Pages
             else
             {
                 PageHeaderText = "Create Lecturer";
-                Lecturer = new Lecturer
+                Lecturer = new LecturerDto
                 {
                     // LecturerId = 1,
                    // BirthDate = DateTime.Now,
@@ -50,13 +50,13 @@ namespace Plana.Web.Pages
                     
                 };
             }
-            Mapper.Map(Lecturer, EditLecturerModel);
+           
         }
         protected async Task HandleValidSubmit()
         {
-            Mapper.Map(EditLecturerModel, Lecturer);
+            
 
-            Lecturer result = null;
+            LecturerDto result = null;
 
             if (Lecturer.Id != 0)
             {
@@ -68,7 +68,7 @@ namespace Plana.Web.Pages
             }
             if (result != null)
             {
-                NavigationManager.NavigateTo("/");
+                NavigationManager.NavigateTo("/lecturers");
             }
         }
 

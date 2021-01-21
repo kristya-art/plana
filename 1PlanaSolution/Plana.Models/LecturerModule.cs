@@ -1,13 +1,20 @@
-﻿namespace Plana.Models
+﻿using System;
+
+namespace Plana.Models
 {
-    public class LecturerModule
+    public class LecturerModule : ISoftDelete
     {
         public int LecturerId { get; set; }
-        public Lecturer Lecturer { get; set; }
+
+        public virtual Lecturer Lecturer { get; set; }
+
         public int ModuleId {get;set;}
-        public Module Module { get; set; }
 
+        public virtual Module Module { get; set; }
 
-       
+        public DateTime? DeletedAt { get; set; }
+
+        public bool IsDeleted { get; set; }
+
     }
 }

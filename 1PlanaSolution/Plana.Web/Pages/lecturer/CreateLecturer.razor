@@ -1,37 +1,53 @@
-﻿@page "/createlecturer"
-
+﻿@page "/createlecturer";
+@using Plana.Shared;
+@inherits EditLecturerBase
 @inject NavigationManager navmanager;
 
+@attribute [Authorize(Roles = "study_director")]
 <h3>Create Lecturer</h3>
 
-<EditForm Model="@lecturer" OnValidSubmit="@Create">
+<EditForm Model="@Lecturer" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <div class="form-field">
         <label>First Name:</label>
         <div>
-            <InputText @bind-Value="@lecturer.FirstName" />
-            <ValidationMessage For="@(() => lecturer.FirstName)" />
+            <InputText @bind-Value="@Lecturer.FirstName" />
+            <ValidationMessage For="@(() => Lecturer.FirstName)" />
         </div>
     </div>
     <div class="form-field">
         <label>Last Name:</label>
         <div>
-            <InputText @bind-Value="@lecturer.LastName" />
-            <ValidationMessage For="@(() => lecturer.LastName)" />
+            <InputText @bind-Value="@Lecturer.LastName" />
+            <ValidationMessage For="@(() => Lecturer.LastName)" />
         </div>
     </div>
     <div class="form-field">
         <label>Last Token:</label>
         <div>
-            <InputText @bind-Value="@lecturer.Token" />
-            <ValidationMessage For="@(() => lecturer.Token)" />
+            <InputText @bind-Value="@Lecturer.Token" />
+            <ValidationMessage For="@(() => Lecturer.Token)" />
         </div>
     </div>
     <div class="form-field">
         <label>Email :</label>
         <div>
-            <InputText @bind-Value="@lecturer.Email" />
-            <ValidationMessage For="@(() => lecturer.Email)" />
+            <InputText @bind-Value="@Lecturer.Email" />
+            <ValidationMessage For="@(() => Lecturer.Email)" />
+        </div>
+    </div>
+    <div class="cols-sm-10">
+
+        <div class="form-field">
+            <label>Role :</label>
+            <div>
+                <InputSelect @bind-Value="@Lecturer.Role">
+                    @foreach (var role in Enum.GetValues(typeof(RoleDto)))
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </InputSelect>
+            </div>
         </div>
     </div>
     <button type="submit" class="btn-btn-success">
@@ -40,22 +56,22 @@
 </EditForm>
 
 @code {
-    @using Plana.Web.Services;
-    @using Plana.Models;
+    @*@using Plana.Web.Services;
+        @using Plana.Models;*@
 
 
-    [Inject]
-    public ILecturerService LecturerService { get; set; }
+    //[Inject]
+    //public ILecturerService LecturerService { get; set; }
 
-    Lecturer lecturer = new Lecturer();
+    //LecturerDto lecturer = new LecturerDto();
 
-    async Task Create()
-    {
-       
-        
-        lecturer = await LecturerService.CreateLecturer(lecturer);
-        navmanager.NavigateTo("/");
-    }
+    //async Task Create()
+    //{
 
-    
+
+    //    lecturer = await LecturerService.CreateLecturer(lecturer);
+    //    navmanager.NavigateTo("/lecturers");
+    //}
+
+
 }

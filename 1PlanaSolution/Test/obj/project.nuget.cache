@@ -1,12 +1,16 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "xNH/zWkgC7d2sELlhlaYTJcwNescYM8clMerKwXRJrMQob2zWWGLplN9GnaXD2Hs4w9AF906qMW5zEXuZvcalw==",
+=======
+  "dgSpecHash": "A+2C0UQ2hJwURm+lY2rBNj5rErfX95M1xjH9L3r0+PWTBDzHky6WPnFBt14MJEKDtBzfsFPcIOBycdq1c4zD3w==",
+>>>>>>> sprint4
   "success": true,
-  "projectFilePath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj",
+  "projectFilePath": "C:\\_gitlab\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Test\\Test.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\kristya\\.nuget\\packages\\dotnet-test-mstest\\1.1.2-preview\\dotnet-test-mstest.1.1.2-preview.nupkg.sha512",
+    "C:\\Users\\SamuelEgger\\.nuget\\packages\\dotnet-test-mstest\\1.1.2-preview\\dotnet-test-mstest.1.1.2-preview.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\kristya\\.nuget\\packages\\mstest.testframework\\2.1.2\\mstest.testframework.2.1.2.nupkg.sha512",
+    "C:\\Users\\SamuelEgger\\.nuget\\packages\\mstest.testframework\\2.2.0-preview-20201126-03\\mstest.testframework.2.2.0-preview-20201126-03.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": [

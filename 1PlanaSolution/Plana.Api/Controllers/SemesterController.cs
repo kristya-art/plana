@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 using Plana.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
+using Plana.Api.Repositories;
+
+using Plana.Api.Services;
+using Microsoft.Extensions.Logging;
+using Plana.Shared;
 
 namespace Plana.Api.Controllers
 {
@@ -15,88 +20,55 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class SemesterController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        private readonly ISemesterRepository semesterRepository;
+        private readonly ISemesterService _semesterService;
+        private readonly ILogger<SemesterController> _logger;
+       
 
-        public SemesterController( AppDbContext _context, ISemesterRepository semesterRepository)
+        public SemesterController(ISemesterService semesterService, ILogger<SemesterController> logger)
         {
-            this.semesterRepository = semesterRepository;
-            this._context = _context;
+            _semesterService = semesterService;
+            _logger = logger;
+        
         }
+      
 
         [HttpGet]
-        public async Task<ActionResult<List<Semester>>> Get()
-        {
-            return await _context.Semesters.ToListAsync();
-        }
-        [HttpGet("{id}", Name = "GetPerson")]
-        public async Task<ActionResult<Semester>> Get(int id)
-        {
-            return await _context.Semesters.FirstOrDefaultAsync(x => x.SemesterId == id);
-        }
-        /// <summary>
-        /// crud for Semester
-        /// </summary>
-
-        //[HttpGet("{search}")]
-        //public async Task<ActionResult<IEnumerable<Semester>>> Search(string name)
-        //{
-        //    try
-        //    {
-        //        var result = await semesterRepository.Search(name);
-
-        //        if (result.Any())
-        //        {
-        //            return Ok(result);
-        //        }
-        //        return NotFound();
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error retrieving data from database");
-        //    }
-        //}
-
-
-        //[HttpGet]
-        //public async Task<ActionResult> GetSemesters()
-        //{
-        //    try
-        //    {
-        //        return Ok(await semesterRepository.GetSemesters());
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //            "Error retrieving data from database");
-        //    }
-        //}
-
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<Semester>> GetSemester(int id)
+        public async Task<ActionResult<IEnumerable<SemesterDto>>> GetSemesters()
         {
             try
             {
-                var result = await semesterRepository.GetSemester(id);
+                var result = await _semesterService.GetSemesters();
+                return new ActionResult<IEnumerable<SemesterDto>>(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<SemesterDto>> GetSemester(int id)
+        {
+            try
+            {
+                var result = await _semesterService.GetSemester(id);
                 if (result == null)
                 {
                     return NotFound();
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
+       
+
         [HttpPost]
-        public async Task<ActionResult<Semester>> CreateSemester(Semester semester)
+        public async Task<ActionResult<SemesterDto>> CreateSemester(SemesterDto semester)
         {
             try
             {
@@ -104,94 +76,48 @@ namespace Plana.Api.Controllers
                 {
                     return BadRequest();
                 }
-                var createdSemester = await semesterRepository.CreateSemester(semester);
-
-                return CreatedAtAction(nameof(GetSemester), new { id = createdSemester.SemesterId }, createdSemester);
 
 
+                return await _semesterService.CreateSemester(semester);
             }
             catch (Exception)
-
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from the database");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
             }
         }
-        
-        //example-pseudo-code
-        //[HttpPut]
-        //public async Task<IActionResult> UpdateSemester(SemesterDto semesterDto)
-        //{
-        //    var semester = _context.Semesters.FindAsync(semesterDto.Id);
-        //    if(semester == null)
-        //    {
-        //        throw NotFound("...")
-        //    }
 
-        //    // Map dto to model
-        //    semester.Name = semesterDto.Name;
-        //    // ...
-
-        //    await _context.SaveChangesAsync(semester);
-        //}
         [HttpPut]
-        public async Task<IActionResult> UpdateSemester(Semester semester)
+        public async Task<ActionResult<SemesterDto>> UpdateSemester(SemesterDto semester)
         {
-            var result = await _context.Semesters.FindAsync(semester.SemesterId);
-            if (semester == null)
+            try
             {
-                return NotFound("...");
+                var semesterForUpdate = await _semesterService.GetSemester(semester.SemesterId);
+                if (semesterForUpdate == null)
+                {
+                    return NotFound($"Semester with Id={semester.SemesterId} was not found!");
+                }
+
+                return await _semesterService.UpdateSemester(semesterForUpdate);
             }
-            result.Code = semester.Code;
-            result.Date = semester.Date;
-            result.AdditionalAssignments = semester.AdditionalAssignments;
-            result.LecturersSemesters = semester.LecturersSemesters;
-            result.ModuleRuns = semester.ModuleRuns;
-
-            await _context.SaveChangesAsync();
-            return Ok(result);
-
-
-
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorUpdatingDatabase);
+            }
         }
 
-        //[HttpPut()]
-        //public async Task<ActionResult> UpdateSemester(Semester semester)
-        //{
-        //    try
-        //    {
-        //            var updateSemester = await semesterRepository.GetSemester(semester.SemesterId);
-        //            if (updateSemester == null)
-        //            {
-        //                return NotFound($"Semester with id = {semester.SemesterId} not found");
-        //            }
-
-        //            await semesterRepository.UpdateSemester(semester);
-        //            return Ok(updateSemester);
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //        "Error updating database");
-        //    }
-        //}
-
-        /** soft deletion */
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult<Boolean>> SoftDeleteSemester(int id)
+        public async Task<ActionResult<bool>> DeleteSemester(int id)
         {
             try
             {
 
-                var deleteSemester = await semesterRepository.GetSemester(id);
+                var deleteSemester = await _semesterService.GetSemester(id);
                 if (deleteSemester == null)
                 {
                     return NotFound($"Semester with this id = {id} is not found");
                 }
-                return await semesterRepository.SoftDeleteSemester(id);
+                return await _semesterService.DeleteSemester(id);
             }
             catch (Exception)
             {
@@ -200,5 +126,6 @@ namespace Plana.Api.Controllers
                     "Error deleting data");
             }
         }
-    }
+
+     }
 }

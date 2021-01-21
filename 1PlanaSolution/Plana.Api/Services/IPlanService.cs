@@ -1,4 +1,5 @@
 ﻿using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,16 @@ namespace Plana.Api.Services
 {
     public interface IPlanService
     {
-        Task<IEnumerable<Plan>> GetAllPlans();
-        Task<Plan> AddPlan(Plan plan);
-        Task<Plan> UpdatePlan(Plan plan);
-        Task<Plan> GetPlan(int? planId);
+        Task<IEnumerable<PlanDto>> GetAllPlans();
 
+        Task<PlanDto> AddPlan(PlanDto planDto);
+
+        Task<PlanDto?> UpdatePlan(PlanDto planDto);
+
+        Task<PlanDto> GetPlan(int planId);
+
+        Task<PlanDto?> FindLastYearPlan(int planId);
+
+        Task<bool> DeletePlan(int planId);
     }
 }

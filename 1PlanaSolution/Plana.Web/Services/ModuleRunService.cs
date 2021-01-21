@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Microsoft.AspNetCore.Components;
+using Plana.Shared;
 
 namespace Plana.Web.Services
 {
@@ -15,31 +16,31 @@ namespace Plana.Web.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<ModuleRun> CreateModuleRun(ModuleRun newModuleRun)
+        public async Task<ActionResultDto<ModuleRunDto>> CreateModuleRun(ModuleRunDto newModuleRun)
         {
-            return await httpClient.PostJsonAsync<ModuleRun>("api/modulerun",newModuleRun);
+            return await httpClient.PostJsonAsync<ModuleRunDto>("api/modulerun",newModuleRun);
         }
 
-        public async Task<ModuleRun> GetModuleRun(int id)
+        public async Task<ModuleRunDto> GetModuleRun(int id)
         {
-            return await httpClient.GetJsonAsync<ModuleRun>($"api/modulerun/{id}");
+            return await httpClient.GetJsonAsync<ModuleRunDto>($"api/modulerun/{id}");
         }
 
-        public async  Task<IEnumerable<ModuleRun>> GetModuleRuns()
+        public async  Task<IEnumerable<ModuleRunDto>> GetModuleRuns()
         {
-            return await httpClient.GetJsonAsync<ModuleRun[]>("api/modulerun");
+            return await httpClient.GetJsonAsync<ModuleRunDto[]>("api/modulerun");
         }
 
-        public  Task SoftDeleteModuleRun(int id)
+        public async Task SoftDeleteModuleRun(int id)
         {
-            throw new NotImplementedException();
-           // await httpClient.DeleteAsync($"api/modulerun/{id}");
+         await httpClient.DeleteAsync($"api/moduleRun/{id}");
+            
 
         }
 
-        public async Task<ModuleRun> UpdateModuleRun(ModuleRun moduleRun)
+        public async Task<ModuleRunDto> UpdateModuleRun(ModuleRunDto moduleRun)
         {
-            return await httpClient.PutJsonAsync<ModuleRun>("api/modulerun", moduleRun);
+            return await httpClient.PutJsonAsync<ModuleRunDto>("api/modulerun", moduleRun);
 
         }
     }

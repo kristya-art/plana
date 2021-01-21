@@ -11,15 +11,21 @@ namespace Plana.Models
     {
 
         public bool IsFixed { get; set; }
-        public bool IsModifyable { get; set; }
-        public string Year { get; set; }
-        public string ExpiredDate { get; set; }
-        public string OfficialPublishDate { get; set; }
 
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedAt { get; set; }
-        // public ICollection<Plan> MyPlan { get; set; }
-        public ICollection<PlanLecturer> PlanLecturers { get; set; }
+        public bool IsModifyable { get; set; }
+
+        public string Year { get; set; }
+
+        public string LastYear { get; set; }
+
+        public DateTime? ExpiredDate { get; set; }
+        
+        public DateTime? OfficialPublishDate { get; set; }
+
+        public DateTime? PublishDateForProfessors { get; set; }
+        
+        public virtual ICollection<PlanLecturer> PlanLecturers { get; set; }
+
         /// <summary>
         /// below is the inverse property data annotation
         /// could be done also with 
@@ -28,14 +34,24 @@ namespace Plana.Models
         /// </summary>
 
         [ForeignKey("AutumnSemesterId")]
-        //public int AutumnSemesterId { get; set; }
+        public virtual Semester AutumnSemester { get; set; }
 
-        public Semester AutumnSemester { get; set; }
         [ForeignKey("SpringSemesterId")]
-        //public int SpringSemesterId { get; set; }
-        public Semester SpringSemester { get; set; }
-       
-       
-        //public List<Semester> Semesters { get; set; } = new List<Semester>();
+        public virtual Semester SpringSemester { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedAt { get; set; }
+
+        public string FindLastYearPlan()
+        {
+            var secondY = (Int32.Parse(Year.Substring(7, 2)) - 1).ToString();
+            var firstY = (Int32.Parse(Year.Substring(2, 2)) - 1).ToString();
+            LastYear = Year.Remove(2, 2).Insert(2, firstY);
+            LastYear = LastYear.Remove(7, 2).Insert(7, secondY);
+            return LastYear;
+
+        }
+
     }
-}
+    }

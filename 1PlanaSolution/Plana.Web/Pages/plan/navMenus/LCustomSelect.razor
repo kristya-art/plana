@@ -1,0 +1,111 @@
+﻿@using Plana.Shared
+<div class="selectYear">
+
+    <form>
+        <p>Assignments plan for</p>
+        @*@if (Lecturer.PlanLecturers == null) { return; }*@
+        <select class="form-control">
+            @*@foreach (var planlecturer in Lecturer.PlanLecturers)
+                {
+                    <option value="@planlecturer.PlanId">
+                        @planlecturer.Plan.Year
+                    </option>
+
+                }*@
+        </select>
+        <div class="btn-group">
+            <button @onclick="NavigateToMyPlan">
+                My Plan
+            </button>
+        </div>
+    </form>
+</div>
+<div>
+</div>
+<p> @Lecturer.FirstName</p>
+
+
+@code {
+    [Inject]
+    public NavigationManager NavigationMan { get; set; }
+    [Inject]
+    public ILecturerService LecturerService { get; set; }
+    public LecturerDto Lecturer { get; set; } = new LecturerDto();
+    [Parameter]
+    public string Id { get; set; }
+
+    [Inject]
+    public IPlanService PlanService { get; set; }
+
+    public PlanDto Plan { get; set; } = new PlanDto();
+    public List<PlanDto> Plans { get; set; }
+
+    [Inject]
+    public IPlanLecturerService PlanLecturerService { get; set; }
+    public PlanLecturerDto SelectedPlanLecturer { get; set; } = new PlanLecturerDto();
+    IEnumerable<PlanLecturerDto> PlanLecturers { get; set; } = new List<PlanLecturerDto>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        int.TryParse(Id, out int lecturerId);
+
+        if (lecturerId != 0)
+        {
+            Lecturer = await LecturerService.GetLecturer(int.Parse(Id));
+            PlanLecturers = await PlanLecturerService.GetPlanLecturers();
+
+        }
+        else
+        {
+            Lecturer = new LecturerDto { };
+
+
+
+        }
+
+    }
+
+    #region methods
+    public void NavigateToMyPlan()
+    {
+
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanLecturer.PlanId}/{SelectedPlanLecturer.LecturerId}", true);
+
+    }
+
+    #endregion
+}
+<style>
+
+    .selectYear {
+        border-width: 0px;
+        position: absolute;
+        left: 500px;
+        top: 41px;
+        width: 177px;
+        height: 37px;
+        display: flex;
+        color: #000000;
+        text-align: left;
+        top: 0px;
+        width: 260px;
+        height: 150px;
+    }
+
+        .selectYear p {
+            top: 5px;
+            /*position:absolute;*/
+            margin: auto;
+            /*width: 60%;*/
+            border: 1px solid rgb(138, 26, 238);
+            padding: 9px;
+            border-style: dotted;
+            height: 30px;
+            padding: 3px 2px 3px 2px;
+            font-family: 'ArialMT', 'Arial';
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            height: 25px;
+        }
+</style>

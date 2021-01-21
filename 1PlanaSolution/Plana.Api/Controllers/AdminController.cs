@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Plana.Api.Models;
-using Plana.Api.Services;
-using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Threading.Tasks;
 
 namespace Plana.Api.Controllers
@@ -14,31 +13,18 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly ILecturerRepository _lecturerRepository;
-        private readonly ISemesterRepository _semesterRepository;
-        private readonly IPlanService _planService;
-        private readonly IModuleRunRepository _moduleRunRepository;
+      
         private readonly IModuleRepository _moduleRepository;
+        
 
-        public AdminController(ILecturerRepository lecturerRepository,
-                                ISemesterRepository semesterRepository,
-                                IPlanService planService,
-                                IModuleRunRepository moduleRunRepository,
-                                IModuleRepository moduleRepository)
+        public AdminController( IModuleRepository moduleRepository)
         {
-            _lecturerRepository = lecturerRepository;
-            _semesterRepository = semesterRepository;
-            _planService = planService;
-            _moduleRunRepository = moduleRunRepository;
-            _moduleRepository = moduleRepository;
-
-
-
+              _moduleRepository = moduleRepository;
         }
         // ../api/admin/modules
         [HttpPost]
         [Route("{modules}")]
-        public async Task<ActionResult<Module>> CreateModule(Module module)
+        public async Task<ActionResult<ModuleDto>> CreateModule(ModuleDto module)
         {
             try
             {
@@ -60,7 +46,7 @@ namespace Plana.Api.Controllers
        // ../api/admin/modules
         [HttpGet]
         [Route("{modules}")]
-        public async Task<ActionResult> GetModules()
+        public async Task<ActionResult<IEnumerable<ModuleDto>>> GetModules()
         {
             try
             {
@@ -77,7 +63,7 @@ namespace Plana.Api.Controllers
         //../api/admin/modules/4
         [HttpGet("modules/{id}")]
       
-        public async Task<ActionResult<Module>> GetModule(int id)
+        public async Task<ActionResult<ModuleDto>> GetModule(int id)
         {
             try
             {
@@ -97,7 +83,7 @@ namespace Plana.Api.Controllers
         }
         [HttpPut()]
         [Route("{modules}")]
-        public async Task<ActionResult<Module>> UpdateModule(Module module)
+        public async Task<ActionResult<ModuleDto>> UpdateModule(ModuleDto module)
         {
             try
             {
@@ -117,25 +103,6 @@ namespace Plana.Api.Controllers
                 "Error updating database");
             }
         }
-        //[HttpPut()]
-        //public async Task<ActionResult<Plan>> Update(Plan plandto)
-        //{
-
-        //    try
-        //    {
-        //        var updatedPlan = await _planService.GetPlan(plandto.Id);
-        //        if (updatedPlan == null)
-        //        {
-        //            return NotFound($"Plan with id = {plandto.Id} not found");
-        //        }
-        //        return await 
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
+       
     }
 }

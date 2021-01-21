@@ -1,0 +1,716 @@
+﻿@page "/myplanL/{Id}/{Id2}"
+@page "/myplanL"
+@using Microsoft.Extensions.Logging
+
+@inject ILogger<MyPlanL> Logger
+
+@using Plana.Shared
+@inject IJSRuntime js
+@using MatBlazor;
+
+@*section for plan selection*@
+@if (Plans == null)
+{ return; }
+<div class="selectYear">
+    <form>
+
+        <select class="form-control" @bind="SelectedPlanId">
+
+            @foreach (var plan in Plans)
+            {
+              <option value="@plan.Id"> @plan.Year</option>
+            }
+        </select>
+        <div class="btn-group">
+            <button @onclick="NavigateToMyPlan"> My Plan</button>
+        </div>
+    </form>
+</div>
+
+<div class="new ">
+    <h3>@Lecturer.FirstName</h3>
+    @*<p>@Plan.Year</p>*@
+</div>
+
+@*<Plana.Web.Pages.plan.navMenus.LCustomSelect />*@
+
+<div class="btn-group" style="font-size: 13px">
+    @if(Plan.IsModifyable)
+    {
+    <button style="float: right;" @onclick="@(e => OpenDialogMR(true))">add module</button>
+    <button style="float: right;" @onclick="@(e => OpenDialogAA(true))">add additional assignment</button>
+    }
+    
+    <button class="btn-groupR" style="border-color:burlywood;width:250px">plan before @Plan.ExpiredDate </button>
+</div>
+
+
+@if (Plan == null)
+{
+    <text>Loading...</text>
+}
+else
+{
+
+    @*<table class="table" itemscope="@Plan" itemid="@Plan.Id">*@
+    <div id="table_container">
+        <div class="row">
+            <div class="column">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+
+                            <th>Sem</th>
+                            <th width="50px">Module</th>
+                            @*<th>Module Title</th>*@
+                            <th>Group</th>
+                            <th>Place</th>
+                            <th>Module hrs</th>
+                            <th>My hrs</th>
+                            <th>Set desired hours</th>
+                            <th>Actions</th>
+                            <th width="20%">notes</th>
+                            <th style="position:absolute">
+                                
+                                @if (!showgroup)
+                                {
+                                <button class="btn" id="save-btn" @onclick="@(e => showGroups())">show groups</button>
+                                }
+                                else
+                                {
+                                    <MatButton class="btn" Type="cancel" @onclick="@(e => showGroups())">X</MatButton>
+                                }
+                            </th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        @if (MyModuleRuns != null)
+                        {
+
+                            @foreach (var mr in MyModuleRuns)
+                            {
+                                <tr>
+                                    
+                                    <td>@mr.SemesterId</td>
+                                    @*<td width="40px">@mr.Module.Code</td>*@
+                                <td style="white-space:nowrap;">
+                                    <p>(@mr.Module.Code)</p> 
+                                    <p> @mr.Module.Title</p>
+                                    
+                                    @foreach (var lmr1 in mr.LecturersMR)
+                                    {
+
+                                        @if (lmr1.IsRequested == true && lmr1.LecturerId == Lecturer.Id)
+                                        {
+                                            @request
+                                            @*<h6 style="color:mediumvioletred">| R</h6>*@
+
+                                        }
+
+                                    }
+                                </td>
+                                    <td>@mr.Code</td>
+                                    <td>@mr.Place</td>
+                                    <td>@mr.Module.TotalHours</td>
+                                    @*@if (mr.LecturersMR.Contains(Lecturer)) { }*@
+                                    @foreach (var lmr in mr.LecturersMR)
+                                    {
+
+                                        @if (lmr.Lecturer.Id == Lecturer.Id)
+                                        {
+
+                                            <td><p>@lmr.Hours</p></td>
+                                            <td>
+                                                @*<MatTextField @bind-Value="lmr.Hours"></MatTextField>*@
+                                                <p><MatTextField @bind-Value="lmr.DesiredHours"></MatTextField></p>
+                                                <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => LecturerModuleRunService.UpdateLecturerModuleRun(lmr))">OK</MatButton>
+                                            </td>
+
+                                        }
+
+                                    }
+                                    <td>
+                                        @foreach (var lmr1 in mr.LecturersMR)
+                                        {
+                                            int local = lmr1.ModuleRunId;
+                                            @if (lmr1.LecturerId == Lecturer.Id)
+                                            {
+
+                                                @if (lmr1.IsRequested == true)
+                                                {
+
+                                                    <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveFromMyList(local))">DEL</MatButton>
+
+                                                }
+                                            }
+                                        }
+                                    </td>
+
+                                    <td></td>
+                                    @if (showgroup)
+                                    {
+                                    @foreach (var mrlg in mr.ModuleRunLecturerGroups)
+                                    {
+                                <td style="background-color:antiquewhite;position:absolute">
+                                    @mrlg.LecturerGroup.Title
+                                    <p>_________</p>
+                                    @foreach (var llg in mrlg.LecturerGroup.LecturerLecturerGroup)
+                                    {
+                                        <p>  @llg.Lecturer.FirstName;</p>
+                                    }
+                                </td>
+                                    }
+                                    }
+
+                                </tr>
+
+                            }
+
+                        }
+                    
+
+                        @foreach (var aa in MyAdditionalAssignments)
+                        {
+                            int localAA = aa.AdditionalAssignmentId;
+                    <tr>
+
+
+                        <td>AA</td>
+                        <td>(@aa.AACategory) @aa.Title</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>@aa.AAHours</td>
+                        <td>
+                            <p><MatTextField @bind-Value="aa.AAHours"></MatTextField></p>
+                            <MatButton type="submit" name="HandleValidSubmit" @onclick="@(e => AdditionalAssignmentService.UpdateAdditionalAssignment(aa))">OK</MatButton>
+                        </td>
+
+                        <td> <MatButton type="delete" name="HandleValidSubmit" @onclick="@(e => RemoveAA(localAA))">DEL</MatButton></td>
+
+                    </tr>
+                          }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="columnMiddle"></div>
+            <div class="column">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+
+                            <th width="20%">HS</th>
+                            <th width="20%">FS</th>
+                            <th width="20%">AA</th>
+                            <th width="20%">YEAR</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@PlanLecturer.GetHStotal()</td>
+                            <td>@PlanLecturer.GetFStotal()</td>
+                            <td>@PlanLecturer.GetAA()</td>
+                            <td>@PlanLecturer.GetTotal()</td>
+
+                        </tr>
+                        <tr><td></td><td></td></tr>
+                        <tr>
+                            <th width="40%">ANNUAL TARGET</th>
+                            <td>@PlanLecturer.SetAnnualTarget()</td>
+                        </tr>
+                        <tr>
+                            <th width="40%">BALANCE ACTUAL</th>
+                            <td>@PlanLecturer.GetBalanceActual()</td>
+                        </tr>
+                        <tr>
+                            <th width="40%">BALANCE LAST YEAR</th>
+                            <td>@PlanLecturer.BalanceLastYear</td>
+                        </tr>
+                        <tr>
+                            <th width="40%">BALANCE ACCUMULATED</th>
+                            <td>@PlanLecturer.GetBalanceAccumulated()</td>
+                            
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+}
+@*dialog with Module Run list*@
+<MatDialog @bind-IsOpen="dialogIsOpenMR">
+    <MatDialogTitle>Add Plan</MatDialogTitle>
+    <MatDialogContent Style="width: 700px;right:250px">
+        @if (Plan == null)
+        {
+            <text>Loading...</text>
+        }
+        else
+        {
+            <table class="table" style="width:500px">
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>Module</th>
+                        <th>Module Title</th>
+                        <th>Module-Group</th>
+                        <th>Place</th>
+                        <th>Actions</th>
+                  
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @if (Semesters != null)
+                    {
+                        @foreach (var sem in Semesters)
+                        {
+
+                            @*flix it , the problem is that when the sem == null, program is break up*@
+
+                            @if (sem.ModuleRuns == null) { return; }
+                            @foreach (var mr in sem.ModuleRuns)
+                            {
+
+                    <tr>
+                        <td>@sem.GetAbbreviation()</td>
+
+                        <td>@mr.Module.Code</td>
+                        <td>@mr.Module.Title</td>
+                        <td>@mr.Code</td>
+                        <td>@mr.Place</td>
+                        <td>
+                            <EditForm Model="@mr">
+                                <MatCheckbox @bind-Value="mr.isSelected"></MatCheckbox>
+                               
+                            </EditForm>
+                        </td>
+
+
+                    </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        }
+
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton @onclick="@(e => SaveToMylist())">save</MatButton>
+        <MatButton Type="cancel" @onclick="okClick" >X</MatButton> 
+       </MatDialogActions>
+</MatDialog>
+
+@*dialog with Additional Assigmnets*@
+<EditForm Model="@additionalAssignment" >
+
+
+    <MatDialog @bind-IsOpen="dialogIsOpenAA">
+        <MatDialogTitle>Add Addtional Assignment</MatDialogTitle>
+        <MatDialogContent Style="width: 500px;right:50px">
+
+            <div class="form-field">
+                <label>Title:</label>
+                <div>
+                    <InputText @bind-Value="@additionalAssignment.Title" placeholder="" pattern="^(?=.*\S).{1,256}$" />
+                </div>
+            </div>
+            <div class="cols-sm-10">
+                <div class="form-field">
+                    <label>Category:</label>
+                    <div>
+                        <InputSelect @bind-Value="@additionalAssignment.AACategory">
+                            @foreach (var category in Enum.GetValues(typeof(AdditionalAssignmentCategoryDto)))
+                            {
+                                <option value="@category">@category</option>
+                            }
+                        </InputSelect>
+                    </div>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Description:</label>
+                <div>
+                    <InputText @bind-Value="@additionalAssignment.Description" placeholder="" pattern="^(?=.*\S).{1,256}$" />
+                </div>
+            </div>
+
+        </MatDialogContent>
+        @*<button type="submit" class="btn-btn-success">
+            Create 
+        </button>*@
+        <MatButton Type="submit" OnClick="@(e=> Create())">Add</MatButton>
+    </MatDialog>
+</EditForm>
+
+@code {
+    string request { get; set; } = " | R";
+
+
+    [Inject]
+    NavigationManager NavigationMan { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public string Id2 { get; set; }
+
+    [Inject]
+    public ISemesterService SemesterService { get; set; }
+
+    [Inject]
+    public IPlanLecturerService PlanLecturerService { get; set; }
+
+    public PlanLecturerDto PlanLecturer { get; set; } = new PlanLecturerDto();
+
+    [Inject]
+    public IPlanService PlanService { get; set; }
+
+    [Inject]
+    public IModuleRunService ModuleRunService { get; set; }
+
+
+
+    [Inject]
+    public ILecturerService LecturerService { get; set; }
+
+    [Inject]
+    public ILecturerModuleRunService LecturerModuleRunService { get; set; }
+
+    [Inject]
+    public IAdditionalAssignmentService AdditionalAssignmentService { get; set; }
+
+    public PlanDto Plan { get; set; } = new PlanDto();
+
+    public List<PlanDto> Plans { get; set; }
+
+    public LecturerDto Lecturer { get; set; } = new LecturerDto();
+
+    public ModuleRunDto ModuleRun { get; set; } = new ModuleRunDto();
+
+    public List<ModuleRunDto> MyModuleRuns { get; set; } = new List<ModuleRunDto>();
+
+    public List<ModuleRunDto> AllModuleRuns { get; set; } = new List<ModuleRunDto>();
+
+    public List<ModuleRunDto> OtherModuleRuns { get; set; } = new List<ModuleRunDto>();
+
+    public SemesterDto Semester { get; set; } = new SemesterDto();
+
+    public List<SemesterDto> Semesters { get; set; } = new List<SemesterDto>();
+
+    public SemesterDto AutumnSemester { get; set; }
+
+    public SemesterDto SpringSemester { get; set; }
+
+    public string SemesterId { get; set; }
+
+    int idsl { get; set; }
+
+    List<AdditionalAssignmentDto> additionalAssignments = new List<AdditionalAssignmentDto>();
+
+    AdditionalAssignmentDto additionalAssignment{ get; set; } = new AdditionalAssignmentDto();
+
+    public string AAHours { get; set; }
+
+    public List<AdditionalAssignmentDto> MyAdditionalAssignments = new List<AdditionalAssignmentDto>();
+
+    protected async override Task OnInitializedAsync()
+    {
+
+        int.TryParse(Id, out int LecturerId);
+        int.TryParse(Id2, out int PlanId);
+
+        if (LecturerId != 0 && PlanId != 0)
+        {
+
+            PlanLecturer = await PlanLecturerService.GetPlanLecturer(int.Parse(Id), int.Parse(Id2));
+
+            Lecturer = await LecturerService.GetLecturer(int.Parse(Id2));
+            Plan = await PlanService.GetPlan(int.Parse(Id));
+            Plans = (await PlanService.GetPlans()).ToList();
+            MyModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
+
+            AutumnSemester = Plan.AutumnSemester;
+            SpringSemester = Plan.SpringSemester;
+
+            SelectedPlanId = Plan.Id;
+
+
+
+            Semesters = new List<SemesterDto> { AutumnSemester, SpringSemester };
+            additionalAssignments = (await AdditionalAssignmentService.GetAdditionalAssignments()).ToList();
+            AAHours = additionalAssignment.AAHours.ToString();
+            foreach (var aa in additionalAssignments) {
+
+
+                if ((aa.PlanId == Plan.Id) &&( aa.LecturerId == Lecturer.Id)) {
+                    MyAdditionalAssignments.Add(aa);
+
+                }
+
+            }
+
+
+
+        }
+        else { PlanLecturer = new PlanLecturerDto { }; }
+        Semester = new SemesterDto { };
+    }
+    #region plan selection
+
+    [Parameter]
+    public PlanDto SelectedPlan { get; set; } = new PlanDto();
+    public int? SelectedPlanId { get; set; }
+
+
+
+    public async Task NavigateToMyPlan()
+    {
+
+        string PlanId = Plan.Id.ToString();
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+        MyModuleRuns = (await PlanLecturerService.GetModuleRunsForPlan(Plan.Id, Lecturer.Id)).ToList();
+
+    }
+
+
+
+    #endregion
+    #region Dialog box for add moduleRun
+    bool dialogIsOpenMR = false;
+    bool dialogIsOpenAA = false;
+    
+    private void OpenDialogMR(bool isEdit)
+    {
+
+        dialogIsOpenMR = true;
+    }
+    private void OpenDialogAA(bool isEdit)
+    {
+        dialogIsOpenAA = true;
+    }
+
+    private void okClick()
+    {
+        dialogIsOpenMR = false;
+        dialogIsOpenAA = false;
+
+    }
+
+    private void CloseDialog()
+    {
+        dialogIsOpenMR = false;
+        dialogIsOpenAA = false;
+    }
+    #endregion
+    #region multiselection
+
+
+
+
+    bool loadFailed;
+
+    /// <summary>
+    /// method to add modules to the personal plan
+    /// </summary>
+    /// <returns></returns>
+    public async Task SaveToMylist()
+    {
+        List<ModuleRunDto> modulesToAdd = new List<ModuleRunDto>();
+        ModuleRunDto selectedModuleRun = new ModuleRunDto();
+        try
+        {
+            foreach (var sem in Semesters)
+            {
+                foreach (var mr in sem.ModuleRuns)
+                {
+                    if (mr.isSelected == true )
+                    {
+                        selectedModuleRun = mr;
+                        if (!MyModuleRuns.Contains(selectedModuleRun))
+                        {
+                            modulesToAdd.Add(selectedModuleRun);
+                        }
+                    }
+                }
+                //  modulesToAdd.Select(e => (e.isSelected == true)).ToList();
+            }
+
+            if (modulesToAdd != null)
+            {
+                foreach (var moduleRun in modulesToAdd)
+                {
+
+                    LecturerModuleRunDto newLecturerModuleRun = new LecturerModuleRunDto()
+                    {
+                        LecturerId = Lecturer.Id,
+                        ModuleRunId = moduleRun.ModuleRunId
+
+                    };
+                    newLecturerModuleRun.IsRequested = true;
+                    await LecturerModuleRunService.CreateLecturerModuleRun(newLecturerModuleRun);
+
+                    okClick();
+                    NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+
+            loadFailed = true;
+            Logger.LogWarning(ex, "The selected Modules are already belong to your plan");
+        }
+
+
+    }
+
+    [Parameter]
+    public int tempLecturerModuleRunId { get; set; }
+    LecturerModuleRunDto lmrToRemove { get; set; }
+
+    /// <summary>
+    /// method to remove the modules from the personal plan of lecturer
+    /// </summary>
+
+    public async Task RemoveFromMyList(int localLecturerModuleRunId)
+    {
+        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected module run from your list");
+
+        tempLecturerModuleRunId = localLecturerModuleRunId;
+        lmrToRemove = await LecturerModuleRunService.GetLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
+        if (lmrToRemove.IsRequested == true && isConfirm)
+        {
+
+            await LecturerModuleRunService.DeleteLecturerModuleRun(tempLecturerModuleRunId, Lecturer.Id);
+            MyModuleRuns = MyModuleRuns.Where(c => c.ModuleRunId != tempLecturerModuleRunId).ToList();
+
+        }
+       
+    }
+    [Parameter]
+    public int tempAAId { get; set; }
+
+    AdditionalAssignmentDto aaToDelete { get; set; }
+
+    public async Task RemoveAA(int localAA) {
+        bool isConfirm = await js.InvokeAsync<bool>("confirm", "do you want to delete selected additional assignment from your list");
+
+        tempAAId = localAA;
+        aaToDelete = await AdditionalAssignmentService.GetAdditionalAssignment(tempAAId);
+        if (isConfirm)
+        {
+            await AdditionalAssignmentService.SoftDeleteAdditionalAssignment(aaToDelete.AdditionalAssignmentId);
+            MyAdditionalAssignments = MyAdditionalAssignments.Where(c => c.AdditionalAssignmentId != tempAAId).ToList();
+
+
+        }
+    }
+
+
+    #endregion
+    #region
+    public bool isDesiredHoursVisible { get; set; } = true;
+    #endregion
+
+    #region methods for additional assignment
+    async Task Create() {
+
+        additionalAssignment.LecturerId = Lecturer.Id;
+        additionalAssignment.PlanId = Plan.Id;
+        await AdditionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
+        NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+    }
+    #endregion
+
+    bool showgroup = false;
+    void showGroups() { showgroup = !showgroup; }
+
+    public async Task<string> findSem(int SemesterId) {
+        SemesterDto sem = new SemesterDto();
+        sem =  await SemesterService.GetSemester(SemesterId);
+        var ab = sem.GetAbbreviation();
+        return ab;
+    }
+
+    #region last year plan
+
+    PlanDto lY = new PlanDto();
+
+    public async Task findlY() {
+       lY=  await PlanService.LastYearPlan(Plan.Id);
+    }
+
+    #endregion
+}
+<style>
+    
+   
+    .table {
+       
+    }
+    #table_container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .column {
+        float: left;
+    width: 30%;
+    padding: 5px;
+    }
+
+    .columnMiddle {
+        float: left;
+    width: 40%;
+    padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+
+    .table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    /* width: 400px;*/
+    border: 1px solid #ddd;
+    }
+
+    .new {
+        
+        margin-top: -35px;
+        right: 5%;
+        position: absolute;
+       float : right;
+
+    }
+   
+
+</style>

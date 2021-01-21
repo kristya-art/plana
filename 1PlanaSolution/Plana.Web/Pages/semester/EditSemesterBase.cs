@@ -1,4 +1,4 @@
-﻿using Plana.Web.Pages.employee;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using Plana.Models;
 using Microsoft.Extensions.Logging;
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.DataProtection.XmlEncryption;
-
+using Plana.Shared;
 namespace Plana.Web.Pages.semester
 {
     public class EditSemesterBase : ComponentBase
@@ -29,16 +29,16 @@ namespace Plana.Web.Pages.semester
 
 
 
-        public Semester Semester { get; set; }
-        public List<Semester> Semesters { get; set; }
-        public ModuleRun ModuleRun { get; set; } = new ModuleRun();
+        public SemesterDto Semester { get; set; }
+        public List<SemesterDto> Semesters { get; set; }
+        public ModuleRunDto ModuleRun { get; set; } = new ModuleRunDto();
        
         
         
-        public List<ModuleRun> ModuleRuns { get; set; }
+        public List<ModuleRunDto> ModuleRuns { get; set; }
 
-        public Lecturer Lecturer { get; set; }
-        public List<Lecturer> Lecturers { get; set; }
+        public LecturerDto Lecturer { get; set; }
+        public List<LecturerDto> Lecturers { get; set; }
          
 
         /// <summary>

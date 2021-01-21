@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Plana.Models;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,28 +22,24 @@ namespace Plana.Web.Services
         /// </summary>
         /// <param name="semester"></param>
         /// <returns></returns>
-        public async Task<Semester> CreateSemester(Semester semester)
+        public async Task<SemesterDto> CreateSemester(SemesterDto semester)
         {
-            return await http.PostJsonAsync<Semester>("api/semester",semester);
+            return await http.PostJsonAsync<SemesterDto>("api/semester",semester);
         }
 
-        public async Task<Semester> GetSemester(int id)
+        public async Task<SemesterDto> GetSemester(int id)
         {
-            return await http.GetJsonAsync<Semester>($"api/semester/{id}");
+            return await http.GetJsonAsync<SemesterDto>($"api/semester/{id}");
         }
 
-        public async Task<IEnumerable<Semester>> GetSemesters()
+        public async Task<IEnumerable<SemesterDto>> GetSemesters()
         {
-            return await http.GetJsonAsync<Semester[]>("api/semester");
+            return await http.GetJsonAsync<SemesterDto[]>("api/semester");
         }
 
-        public async Task SoftDeleteSemester(int id)
-        {
-            throw new NotImplementedException();
-            //await http.DeleteAsync($"api/semester/{id}");
-        }
+       
 
-        public async Task UpdateSemester(Semester semester)
+        public async Task UpdateSemester(SemesterDto semester)
         {
             await http.PutJsonAsync("api/semester", semester);
         }

@@ -11,6 +11,6 @@ namespace Plana.Api.Repositories
         Task<IEnumerable<LecturerModuleGroup>> GetLecturerModuleGroups();
         Task<LecturerModuleGroup> GetLecturerModuleGroup(int lecturerModuleGroupId);
         Task<LecturerModuleGroup> AddLecturerModuleGroup(LecturerModuleGroup lecturerModuleGroup);
-        Task<LecturerModuleGroup> UpdateLecturerModuleGroup(LecturerModuleGroup lecturerModuleGroup);
+        Task<LecturerModuleGroup?> UpdateLecturerModuleGroup(LecturerModuleGroup lecturerModuleGroup);
     }
 }

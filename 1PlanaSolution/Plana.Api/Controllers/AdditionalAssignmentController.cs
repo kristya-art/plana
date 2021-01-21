@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Plana.Api.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Plana.Models;
-using Plana.Api.Repositories;
+using Plana.Api.Services;
+using Microsoft.Extensions.Logging;
+using Plana.Shared;
 
 namespace Plana.Api.Controllers
 {
@@ -14,17 +14,20 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class AdditionalAssignmentController : ControllerBase
     {
-        private readonly IAdditionalAssignmentRepository aaRep;
-        public AdditionalAssignmentController(IAdditionalAssignmentRepository aaRep)
+        private readonly IAdditionalAssignmentService additionalAssignmentService;
+        private readonly ILogger<AdditionalAssignmentController> logger;
+
+        public AdditionalAssignmentController(IAdditionalAssignmentService additionalAssignmentService, ILogger<AdditionalAssignmentController> logger)
         {
-            this.aaRep= aaRep;
+            this.additionalAssignmentService = additionalAssignmentService;
+            this.logger = logger;
         }
         [HttpGet]
-        public async Task<ActionResult> GetAdditionalAssignments()
+        public async Task<ActionResult<IEnumerable<AdditionalAssignmentDto>>> GetAdditionalAssignments()
         {
             try
             {
-                return Ok(await aaRep.GetAdditionalAssignments());
+                return Ok(await additionalAssignmentService.GetAdditionalAssignments());
             }
             catch (Exception)
             {
@@ -34,11 +37,11 @@ namespace Plana.Api.Controllers
             }
         }
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<AdditionalAssignment>> GetAdditionalAssignment(int id)
+        public async Task<ActionResult<AdditionalAssignmentDto>> GetAdditionalAssignment(int id)
         {
             try
             {
-                var result = await aaRep.GetAdditionalAssignment(id);
+                var result = await additionalAssignmentService.GetAdditionalAssignment(id);
                 if (result == null)
                 {
                     return NotFound();
@@ -54,12 +57,12 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<AdditionalAssignment>> CreateAdditionalAssignment(AdditionalAssignment additionalAssignment)
+        public async Task<ActionResult<AdditionalAssignmentDto>> CreateAdditionalAssignment(AdditionalAssignmentDto additionalAssignment)
         {
             try
             {
                 if (additionalAssignment == null) { return BadRequest(); }
-                var createdAAssignment = await aaRep.CreateAdditionalAssignment(additionalAssignment);
+                var createdAAssignment = await additionalAssignmentService.CreateAdditionalAssignment(additionalAssignment);
                 return CreatedAtAction(nameof(GetAdditionalAssignment), new { id = createdAAssignment.AdditionalAssignmentId }, createdAAssignment);
             }
             catch (Exception)
@@ -71,17 +74,17 @@ namespace Plana.Api.Controllers
 
 
         [HttpPut]
-        public async Task<ActionResult<AdditionalAssignment>> UpdateAAssignemt(AdditionalAssignment additionalAssignment)
+        public async Task<ActionResult<AdditionalAssignmentDto>> UpdateAAssignemt(AdditionalAssignmentDto additionalAssignment)
         {
             try
             {
-                var updateAAssignment = await aaRep.GetAdditionalAssignment(additionalAssignment.AdditionalAssignmentId);
+                var updateAAssignment = await additionalAssignmentService.GetAdditionalAssignment(additionalAssignment.AdditionalAssignmentId);
 
                 if (updateAAssignment == null)
                 {
                     return NotFound($"AditionalAssignment with id = {additionalAssignment.AdditionalAssignmentId} not found");
                 }
-                return await aaRep.UpdateAdditionalAssignment(additionalAssignment);
+                return await additionalAssignmentService.UpdateAdditionalAssignment(additionalAssignment);
 
             }
             catch (Exception)
@@ -89,6 +92,27 @@ namespace Plana.Api.Controllers
 
                 return StatusCode(StatusCodes.Status500InternalServerError,
                 "Error udating database");
+            }
+        }
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<bool>> DeleteAdditionalAssignment(int id)
+        {
+            try
+            {
+
+                var AAForDelete = await additionalAssignmentService.GetAdditionalAssignment(id);
+                if (AAForDelete == null)
+                {
+                    return NotFound();
+
+                }
+                return await additionalAssignmentService.DeleteAdditionalAssignment(id);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
+
             }
         }
     }

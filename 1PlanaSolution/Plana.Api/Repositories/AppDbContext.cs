@@ -11,7 +11,9 @@ namespace Plana.Api.Models
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) :
              base(options)
-        { }
+        {            
+        }
+
         public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<ModuleRun> ModuleRuns { get; set; }
@@ -41,10 +43,24 @@ namespace Plana.Api.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lecturer>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity <PlanLecturer>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<LecturerGroup>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<ModuleGroup>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<Module>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<ModuleRun>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<ModuleRunLecturerGroup>().HasQueryFilter(p => !p.IsDeleted);
+
             modelBuilder.Entity<Semester>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<Plan>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<AdditionalAssignment>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<LecturerSemester>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<LecturerModuleRun>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<LecturerModuleGroup>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<LecturerModule>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<LecturerLecturerGroup>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<LecturerGroupModuleGroup>().HasQueryFilter(p => !p.IsDeleted);
+
+
 
             modelBuilder.Entity<Lecturer>()
                 .HasKey(x => new { x.Id });
@@ -217,17 +233,7 @@ namespace Plana.Api.Models
                 .HasOne(m => m.Module)
                 .WithMany();
 
-
-
-
-
-
-
-
-
-
-
-        }
+      }
 
     }
 }

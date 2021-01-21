@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Plana.Api.Models;
-using Plana.Models;
+using Microsoft.Extensions.Logging;
+using Plana.Api.Services;
+using Plana.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -14,163 +14,102 @@ namespace Plana.Api.Controllers
     [ApiController]
     public class ModuleRunController : ControllerBase
     {
-        private readonly IModuleRunRepository moduleRunRep;
-        private readonly IModuleRepository moduleRep;
-        private readonly ISemesterRepository semesterRep;
-        private readonly ILecturerRepository lecturerRep;
-
-        public ModuleRunController(IModuleRunRepository moduleRunRepository,
-                                IModuleRepository moduleRepository,
-                                ISemesterRepository semesterRepository,
-                                ILecturerRepository lecturerRepository)
+        private readonly IModuleRunService _moduleRunService;
+        private readonly ILogger<ModuleRunController> _logger;
+        public ModuleRunController(IModuleRunService moduleRunService,
+                                   ILogger<ModuleRunController> logger)
+        
         {
-            this.moduleRunRep = moduleRunRepository;
-            this.moduleRep = moduleRepository;
-            this.semesterRep = semesterRepository;
-            this.lecturerRep = lecturerRepository;
-
-
-        }
-        //[HttpGet("{search}")]
-        //public async Task<ActionResult<IEnumerable<ModuleRun>>> Search( string name,string code)
-        //{
-        //    try
-        //    {
-        //        var result = await moduleRunRepository.Search(name,code);
-
-        //        if (result.Any())
-        //        {
-        //            return Ok(result);
-        //        }
-        //        return NotFound();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //            "Error retrieving data from database");
-        //    }
-        //}
-        //[HttpGet("{searchfrom}")]
-        //public async Task<ActionResult<IEnumerable<ModuleRun>>> SearchFromModule(string moduleCode)
-        //{
-        //    try
-        //    {
-        //        var result = await moduleRunRepository.SearchFromModule(moduleCode);
-
-        //        if (result.Any())
-        //        {
-        //            return Ok(result);
-        //        }
-        //        return NotFound();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //            "Error retrieving data from database");
-        //    }
-        //}
-
+            _moduleRunService = moduleRunService;
+            _logger = logger;
+         }
+        
         [HttpGet]
-        public async Task<ActionResult> GetModuleRuns()
+        public async Task<ActionResult<IEnumerable<ModuleRunDto>>> GetModuleRuns()
         {
             try
             {
-                return Ok(await moduleRunRep.GetModuleRuns());
+                var result = await _moduleRunService.GetModuleRuns();
+                return new ActionResult<IEnumerable<ModuleRunDto>>(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
+
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
+        
         }
-        //[HttpGet]
-        //public async Task<ActionResult> GetCustomMRs()
-        //{
-        //    try
-        //    {
-        //        return Ok(await moduleRunRepository.GetCustomated());
-
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //               "Error retrieving data from database");
-        //    }
-
-
-        //}
+        
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<ModuleRun>> GetModuleRun(int id)
+        public async Task<ActionResult<ModuleRunDto>> GetModuleRun(int id)
         {
             try
             {
-                var result = await moduleRunRep.GetModuleRun(id);
+                var result = await _moduleRunService.GetModuleRun(id);
                 if (result == null)
                 {
                     return NotFound();
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from database");
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
 
         }
 
         [HttpPost]
-        public async Task<ActionResult<ModuleRun>> CreateModuleRun(ModuleRun mr)
+        public async Task<ActionResultDto<ModuleRunDto>> CreateModuleRun(ModuleRunDto mr)
         {
 
-            try
-            {
-                if (mr == null)
-                {
-                    return BadRequest();
-                }
-                var createdModuleRun = await moduleRunRep.CreateModuleRun(mr);
-                //await moduleRep.UpdateModule(mr.Module);
-                //await semesterRep.UpdateSemester(mr.Semester);
-
-                return CreatedAtAction(nameof(GetModuleRun), new { id = createdModuleRun.ModuleRunId }, createdModuleRun);
-
-
-            }
-
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                     "Error retrieving data from the database");
-            }
+            
+            return await _moduleRunService.CreateModuleRun(mr);
         }
 
-        [HttpPut()]
-        public async Task<ActionResult<ModuleRun>> UpdateModuleRun(ModuleRun moduleRun)
+       [HttpPut()]
+        public async Task<ActionResult<ModuleRunDto?>> UpdateModuleRun(ModuleRunDto moduleRun)
         {
             try
             {
-                
-                var updatedModuleRun = await moduleRunRep.GetModuleRun(moduleRun.ModuleRunId);
+
+                var updatedModuleRun = await _moduleRunService.GetModuleRun(moduleRun.ModuleRunId);
                 if (updatedModuleRun == null)
                 {
-                    return NotFound($"Module run with id = {moduleRun.ModuleRunId } not found!");
+                    return NotFound($"Module run with id = {moduleRun.ModuleRunId } was not found!");
                 }
-                return await moduleRunRep.UpdateModuleRun(moduleRun);
-                //await moduleRep.UpdateModule(moduleRun.Module);
-                //await semesterRep.UpdateSemester(moduleRun.Semester);
-                //return StatusCode(StatusCodes.Status200OK, "Is ok");
 
+                return await _moduleRunService.UpdateModuleRun(moduleRun);
             }
-            catch (Exception)
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorUpdatingDatabase);
+            }
+
+        }
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<bool>> DeleteModuleRun(int id)
+        {
+            try
             {
 
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                "Error updating database");
+                var MRForDelete = await _moduleRunService.GetModuleRun(id);
+                if (MRForDelete == null)
+                {
+                    return NotFound();
+
+                }
+                return await _moduleRunService.DeleteModuleRun(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(SR.ErrorRetrievingDataFromDataBase, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, SR.ErrorRetrievingDataFromDataBase);
             }
         }
-        
 
     }
 }

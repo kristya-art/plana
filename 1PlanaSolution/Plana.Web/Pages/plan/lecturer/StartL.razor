@@ -1,0 +1,72 @@
+﻿@page "/startL/{id}"
+
+@using Plana.Shared
+
+<p>Personal page lecturer</p>
+
+@if (Plans == null)
+{
+    return;
+}
+
+<div class="selectYear">
+    <form>
+        <select class="form-control" @bind="SelectedPlanId">
+            @foreach (var plan in Plans)
+            {
+                <option value="@plan.Id">@plan.Year</option>
+            }
+        </select>
+        <div class="btn-group">
+            <button @onclick="NavigateToMyPlan">My Plan</button>
+        </div>
+    </form>
+</div>
+
+@code {
+    [Inject]
+    public NavigationManager NavigationMan { get; set; }
+
+    [Inject]
+    public ILecturerService LecturerService { get; set; }
+
+    [Inject]
+    public IPlanService PlanService { get; set; }
+
+    [Inject]
+    public IPlanLecturerService PlanLecturerService { get; set; }
+
+    public LecturerDto Lecturer { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    public int? SelectedPlanId { get; set; }
+
+    public List<PlanDto> Plans { get; set; }
+
+    public IEnumerable<PlanLecturerDto> PlanLecturers { get; set; } = new List<PlanLecturerDto>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        int.TryParse(Id, out int lecturerId);
+
+        if (lecturerId != 0)
+        {
+            Lecturer = await LecturerService.GetLecturer(int.Parse(Id));
+            PlanLecturers = await PlanLecturerService.GetPlanLecturers();
+            Plans = (await PlanService.GetPlans()).ToList();
+            SelectedPlanId = Plans.FirstOrDefault()?.Id;
+        }
+    }
+
+    #region methods
+    public void NavigateToMyPlan()
+    {
+        if (Lecturer != null)
+        {
+            NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+        }
+    }
+    #endregion
+}

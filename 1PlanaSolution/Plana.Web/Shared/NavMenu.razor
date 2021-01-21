@@ -1,135 +1,199 @@
-﻿<TopBar/>
-@*<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">
-        Plana.Web
-    </a>
-    <div class="logo-image">
-        <img src="/images/logo.png" class="img-fluid" href="/home">
+﻿
+<div class="topnav" id="topnav" style="position: relative;top: 0px;">
+
+    <div style="overflow:auto;">
+        <div class="navbar-toggler w3-left" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon">
+                <img src="/images/toggler.JPG" />
+            </span>
+
+        </div>
+
+      
+        <div class="search" style="overflow:hidden;height:60px;">
+            <Plana.Web.Pages.template_components.Search />
+        </div>
+        <div class="avaLogo">
+            <div class="avatar w3-right">
+                <a href="/myaccount">
+                <img src="/images/avatar.png" class="img-fluid" />
+                </a>
+            </div>
+            <div class="logo-image  w3-right">
+                <a href="/home">
+                <img src="/images/logo.png" class="img-fluid" />
+                </a>
+            </div>
+        </div>
+
     </div>
-    <NavMenuB />
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>*@
-@*<div class="@open_vM" @onclick="ToggleNavMenu">
-    <div class="vertical-menu">
-        <a href="#" class="active">Home</a>
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-        <a href="#">Link 4</a>
+    
+    
+
+    <div class="@openVerticalMenu" style="width:55%" @onclick="ToggleNavMenu">
+        <div class="vertical-menu">
+            <ul class="nav flex-column">
+                <AuthorizeView>
+                    <Authorized>
+                        <li class="nav-item px-3">
+                            <NavLink class="nav-link" href="/sd_NewPlan" Match="NavLinkMatch.All">
+                                <span class="oi oi-file" aria-hidden="true"></span> Planning
+                            </NavLink>
+                        </li>
+                        <li class="nav-item px-3">
+                            <NavLink class="nav-link" href="/lecturers">
+                                <span class="oi oi-file" aria-hidden="true"></span> Lecturers
+                            </NavLink>
+                        </li>
+                        <li class="nav-item px-3">
+                            <NavLink class="nav-link" href="/editlecturer">
+                                <span class="oi oi-file" aria-hidden="true"></span> Create Lecturer
+                            </NavLink>
+                        </li>
+                        @*<li class="nav-item px-3">
+            <NavLink class="nav-link" href="/editlecturergroup">
+                <span class="oi oi-file" aria-hidden="true"></span> Create Lecturer Group
+            </NavLink>
+        </li>*@
+                        <li class="nav-item px-3">
+                           <NavLink class="nav-link" href="/lecturergroupsview">
+                              <span class="oi oi-file" aria-hidden="true"></span> Lecturers Groups
+                         </NavLink>
+                        </li>
+
+
+
+                        <li class="nav-item px-3">
+                            <NavLink class="nav-link" href="/home">
+                                <span class="" aria-hidden="true"></span> Home
+                            </NavLink>
+                        </li>
+
+                        <li class="nav-item px-3">
+                            <NavLink class="nav-link" href="/identity/account/login">
+                                <span class="oi oi-lock-locked" aria-hidden="true"></span> Login
+                            </NavLink>
+                        </li>
+                        <li class="nav-item px-3">
+                            <NavLink class="nav-link" href="/identity/account/logout">
+                                <span class="oi oi-power-standby" aria-hidden="true"></span> Logout
+                            </NavLink>
+                        </li>
+                    </Authorized>
+                    <NotAuthorized>
+                        <li class="nav-item px-3">
+                            <NavLink class="nav-link" href="/identity/account/login" Match="NavLinkMatch.All">
+                                <span class="oi oi-lock-locked" aria-hidden="true"></span> Login
+                            </NavLink>
+                        </li>
+                    </NotAuthorized>
+
+                </AuthorizeView>
+            </ul>
+
+        </div>
     </div>
-</div>*@
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> List of Lecturers
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/home">
-                <span class="" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/sd_start">
-                <span class="" aria-hidden="true"></span> Component
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/editlecturer">
-                <span class="" aria-hidden="true"></span> Create Lecturer
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="" aria-hidden="true"></span> Semester
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/plana">
-                <span class="" aria-hidden="true"></span> Plan try
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/lectmoduleslist">
-                <span class="" aria-hidden="true"></span> Lecturers-Modules
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/lecturerlist">
-                <span class="" aria-hidden="true"></span> LecturerList new
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/semester">
-                <span class="" aria-hidden="true"></span> Semester List
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="/component">
-                <span class="" aria-hidden="true"></span> Component
-            </NavLink>
-        </li>
-
-
-    </ul>
-
 </div>
-
-
-
-
 
 
 @code {
 
-    private bool collapseNavMenu = true;
-    private bool verticalM = true;
+    [Inject]
+    public NavigationManager navigationManager { get; set; }
+    /** nav menu*/
+    private bool verticalMenu = true;
 
-    private string open_vM => verticalM ? "collapse" : null;
-
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
+    private string openVerticalMenu => verticalMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
-        collapseNavMenu = !collapseNavMenu;
-        verticalM = !verticalM;
+        verticalMenu = !verticalMenu;
     }
+    #region button methods
+
+   
+    protected void navigateToMyAccount()
+    {
+        navigationManager.NavigateTo("/myAccount", true);
+
+    }
+    #endregion
+
+    
 
 
 }
-
-
-@*<style>
-    .vertical-menu {
-        width: 200px;
-        float : left;
-        position: sticky;
+<style>
+    .topnav {
+        position: relative;
+        background-color: #f2f2f2;
+        /*width: 80%;*/
+        letter-spacing: 1px;
+        height: 100px;
     }
 
-        .vertical-menu a {
-            background-color: #eee;
-            color: black;
-            display: block;
-            padding: 12px;
-            text-decoration: none;
-        }
-
-            .vertical-menu a:hover {
-                background-color: #ccc;
-            }
-
-            .vertical-menu a.active {
-                background-color: white;
-                color: white;
-            }
-
-
+    .w3-bar {
+        width: 100%;
+        height: 120px;
+        overflow: hidden;
     }
-</style>*@
 
+    .w3-right {
+        float: right !important;
+    }
 
+    .w3-left {
+        float: left !important;
+    }
+    
+    
+
+    .navbar-toggler-icon {
+        width: 46px;
+        height: 35px;
+        overflow: hidden;
+        margin-left: 30px;
+      
+    }
+
+    
+
+    .search {
+        border: none;
+        color: rgba(0,0,0,.87);
+        display: flex;
+        font-size: 16px;
+    }
+
+    .matList {
+    }
+
+    
+
+    /**  mat select item*/
+    .my-item-class {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .avaLogo {
+        float: right;
+        padding: 10px 5px;
+        margin: 4px 8px;
+        margin-top: -45px;
+    }
+
+    .logo-image {
+        width: 75px;
+        height: 59px;
+        left: 0;
+        overflow: hidden;
+    }
+
+    /*avatar*/
+    .avatar {
+        width: 94px;
+        height: 61px;
+    }
+    
+</style>

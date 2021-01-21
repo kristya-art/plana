@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Plana.Models;
+using Plana.Shared;
 
 namespace Plana.Web.Pages.lecturer
 {
@@ -16,8 +17,8 @@ namespace Plana.Web.Pages.lecturer
         [Inject]
       public ILecturersModulesService LMService { get; set; }
 
-        public IEnumerable<Lecturer> Lecturers { get; set; }
-        public IEnumerable<LecturerModule> LecturersModules { get; set; }
+        public IEnumerable<LecturerDto> Lecturers { get; set; }
+        public IEnumerable<LecturerModuleDto> LecturersModules { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

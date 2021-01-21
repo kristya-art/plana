@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Plana.Web.Models;
 using Plana.Web.Services;
 
 
@@ -26,10 +25,12 @@ namespace Plana.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Identity.Application")
+                .AddCookie();
             //services.AddHttpClient();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddAutoMapper(typeof(LecturerProfile));
+            //services.AddAutoMapper(typeof(LecturerProfile));
             services.AddScoped<HttpClient>();
            
 
@@ -54,6 +55,35 @@ namespace Plana.Web
                 client.BaseAddress = new Uri("https://localhost:44399");
             }
             );
+            services.AddHttpClient<IModuleService, ModuleService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<IPlanLecturerService, PlanLecturerService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<ILecturerModuleRunService, LecturerModuleRunService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<IAdditionalAssignmentService, AdditionalAssignmentService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<IModuleRunLecturerGroupService, ModuleRunLecturerGroupService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<ILecturerLecturerGroupService, LecturerLecturerGroupService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+            services.AddHttpClient<ILecturerGroupService, LecturerGroupService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44399");
+            });
+
 
 
         }
@@ -76,6 +106,8 @@ namespace Plana.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEmbeddedBlazorContent(typeof(MatBlazor.BaseMatComponent).Assembly);
 
