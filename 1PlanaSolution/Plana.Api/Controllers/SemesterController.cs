@@ -127,44 +127,5 @@ namespace Plana.Api.Controllers
             }
         }
 
-        //example-pseudo-code
-        //[HttpPut]
-        //public async Task<IActionResult> UpdateSemester(SemesterDto semesterDto)
-        //{
-        //    var semester = _context.Semesters.FindAsync(semesterDto.Id);
-        //    if(semester == null)
-        //    {
-        //        throw NotFound("...")
-        //    }
-
-        //    // Map dto to model
-        //    semester.Name = semesterDto.Name;
-        //    // ...
-
-        //    await _context.SaveChangesAsync(semester);
-        //}
-
-
-        //[HttpGet("{search}")]
-        //public async Task<ActionResult<IEnumerable<Semester>>> Search(string name)
-        //{
-        //    try
-        //    {
-        //        var result = await semesterRepository.Search(name);
-
-        //        if (result.Any())
-        //        {
-        //            return Ok(result);
-        //        }
-        //        return NotFound();
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error retrieving data from database");
-        //    }
-        //}
-
-    }
+     }
 }

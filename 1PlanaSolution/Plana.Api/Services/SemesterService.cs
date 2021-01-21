@@ -38,25 +38,7 @@ namespace Plana.Api.Services
             var semester = await _context.Semesters.FindAsync(semesterId);
             return _mapper.Map<SemesterDto>(semester);
 
-         //if (semesterId == null)
-         //   {
-         //       return NotFound();
-         //   }
-         //   var result = await context.Semesters
-         //        .Include(e => e.ModuleRuns)
-         //             .ThenInclude(mr => mr.LecturersMR)
-         //                 .ThenInclude(l => l.Lecturer)
-                          
-         //        .Include(e => e.ModuleRuns)
-         //        .ThenInclude(mr => mr.Module)
-                 
-         //      // .Include(e=>e.LecturersSemesters)
-         //     //  .ThenInclude(l=>l.Lecturer)
-
-         //       .Include(e=>e.AdditionalAssignments)
-               
-         //       .FirstOrDefaultAsync(e => e.SemesterId == semesterId);
-         //   return result;
+        
         }
 
         private Semester NotFound()
@@ -96,9 +78,7 @@ namespace Plana.Api.Services
             {
                 result.Code = semesterDto.Code;
                 result.Date = semesterDto.Date;
-                //result.LecturersSemesters = semesterDto.LecturersSemesters;
-                //result.ModuleRuns = semesterDto.ModuleRuns;
-                //result.AdditionalAssignments = semesterDto.AdditionalAssignments;
+                
 
                 await _context.SaveChangesAsync();
 

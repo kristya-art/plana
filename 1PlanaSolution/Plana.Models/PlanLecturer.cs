@@ -5,15 +5,19 @@ namespace Plana.Models
     public class PlanLecturer : ISoftDelete
     {
         public int LecturerId { get; set; }
+
         public virtual Lecturer Lecturer { get; set; }
 
         public int PlanId { get; set; }
+
         public virtual Plan Plan { get; set; }
 
         public bool IsDeleted { get; set; }
+
         public DateTime? DeletedAt { get; set; }
 
         public double HStotal { get; set; } = 0.0;
+
         public double FStotal { get; set; } = 0.0;
 
         public double AAtotal { get; set; }
@@ -21,8 +25,11 @@ namespace Plana.Models
         public double YearTotal { get; set; } 
 
         public double AnnualTarget { get; set; }
+
         public double BalanceActual { get; set; }
+
         public double BalanceLastYear { get; set; }
+
         public double BalanceAccumulated { get; set; }
 
         public double GetHStotal()

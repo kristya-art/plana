@@ -12,41 +12,16 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-
-
     <MatDialog @bind-IsOpen="dialogIsOpen">
         <MatDialogTitle>Add Plan</MatDialogTitle>
         <MatDialogContent Style="width: 500px;right:50px">
-            @*<div class="form-field">
-            <label>Plan Year:</label>
-            <div>
-                <InputText @bind-Value="@plan.Year" placeholder="0000-0000" pattern="[0-9]{4}-[0-9]{4}" />
-            </div>
-        </div>*@
+           
             <MatTextField Label="Plan Year" @bind-Value="@plan.Year" placeholder="0000-0000" pattern="[0-9]{4}-[0-9]{4}"></MatTextField>
-            @*<div class="form-field">
-            <label>Publish Date:</label>
-            <div>
-                <InputDate placeholder="Publish Date" @bind-Value="@plan.OfficialPublishDate" />
-            </div>
-        </div>
-        <div class="form-field">
-            <label>Share with Professors Date:</label>
-            <div>
-                <InputDate placeholder="Share Date" @bind-Value="@plan.PublishDateForProfessors" />
-            </div>
-        </div>*@
-
             <MatTextField Label="Publish date for professors" @bind-Value="@plan.PublishDateForProfessors"></MatTextField>
             <MatTextField Label="Expired date" @bind-Value="@plan.ExpiredDate"></MatTextField>
             <MatTextField Label="Official publish date" @bind-Value="@plan.OfficialPublishDate"></MatTextField>
 
-            @*<div class="form-field">
-            <label>Expired Date:</label>
-            <div>
-                <InputDate placeholder="Expired Date" @bind-Value="@plan.ExpiredDate" />
-            </div>
-        </div>*@
+           
             <div class="form-field">
                 <label>Set modifiable :</label>
                 <div>
@@ -54,25 +29,11 @@
                 </div>
             </div>
 
-            @*<div class="form-field">
-            <label>Autumn Semester code:</label>
-            <div>
-                <InputText @bind-Value="@Asemester.Code" placeholder="0000-0000-HS" pattern="[0-9]{4}-[0-9]{4}-(HS)" />
-
-                <ValidationMessage For="@(() => Asemester.Code)" />
-            </div>
-        </div>*@
+           
             <ValidationMessage For="@(() => Asemester.Code)" />
             <MatTextField Label="HS Semester Title" @bind-Value="@Asemester.Code" placeholder="0000-0000-HS" pattern="[0-9]{4}-[0-9]{4}-(HS)"></MatTextField>
 
-            @*<div class="form-field">
-    <label>Spring Semester code:</label>
-    <div>
-        <InputText @bind-Value="@Ssemester.Code" placeholder="0000-FS" pattern="[0-9]{4}-(FS)" />
-        <ValidationMessage For="@(() => Ssemester.Code)" />
-            <mat-hint>Hint</mat-hint>
-            </div>
-    </div>*@
+           
             <ValidationMessage For="@(() => Ssemester.Code)" />
             <MatTextField Label="FS Semester Title" @bind-Value="@Ssemester.Code" placeholder="0000-FS" pattern="[0-9]{4}-(FS)"></MatTextField>
 
@@ -84,31 +45,38 @@
     </MatDialog>
 </EditForm>
 
-@*<MatButton Raised="true" @onclick="@(e=>OpenDialog(true))" Icon="edit" title="Edit Employee"></MatButton>*@
-@*<MatButton Raised="true" @onclick="DeleteEmployee" Icon="restore_from_trash" title="Delete Employee"></MatButton>*@
+
 @code {
 
+    [Inject]
+    public IPlanService PlanService { get; set; }
+    [Inject]
+    public ISemesterService SemesterService { get; set; }
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+
     PlanDto selectedPlan = null;
+
     PlanDto tempPlan = null;
+
     bool _isDelete = false;
+
     bool dialogIsOpen = false;
+
     bool _isEdit = false;
 
-    bool snackBar = false;
+    PlanDto plan { get; set; } = new PlanDto();
 
+    SemesterDto Ssemester { get; set; } = new SemesterDto();
 
+    SemesterDto Asemester { get; set; } = new SemesterDto();
 
-
-
-    #region Methods
-
-    #endregion
 
     #region Dialog Box Methods
     private void OpenDialog(bool isEdit)
     {
         _isEdit = isEdit;
-        //if (!_isEdit) plan = new Plan();
+
         dialogIsOpen = true;
     }
     private void okCklick()
@@ -122,34 +90,15 @@
         if (selectedPlan != null)
         {
             plan = selectedPlan;
-            //this.EditPlan(selectedPlan);
+
         }
     }
     #endregion
 
-    [Inject]
-    public IPlanService PlanService { get; set; }
-    [Inject]
-    public ISemesterService SemesterService { get; set; }
-    [Inject]
-    public NavigationManager NavManager { get; set; }
 
-    PlanDto plan { get; set; } = new PlanDto();
-
-
-
-
-    SemesterDto Ssemester { get; set; } = new SemesterDto();
-
-    
-    SemesterDto Asemester { get; set; } = new SemesterDto();
-
-   
 
     async Task Create()
     {
-
-
 
         plan.SpringSemester = Ssemester;
 
@@ -157,8 +106,6 @@
 
 
         plan = await PlanService.CreatePlan(plan);
-        //await SemesterService.UpdateSemester(plan.SpringSemester);
-        //await SemesterService.UpdateSemester(plan.AutumnSemester);
         NavManager.NavigateTo($"/editplan/{plan.Id}", true);
         dialogIsOpen = false;
     }

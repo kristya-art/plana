@@ -13,7 +13,7 @@ namespace Plana.Api.Services
 
         Task<ActionResultDto<ModuleRunLecturerGroupDto>> AddModuleRunLecturerGroup(ModuleRunLecturerGroupDto ModuleRunLecturerGroupDto);
 
-        Task<ModuleRunLecturerGroupDto> UpdateModuleRunLecturerGroup(ModuleRunLecturerGroupDto ModuleRunLecturerGroupDto);
+        Task<ModuleRunLecturerGroupDto?> UpdateModuleRunLecturerGroup(ModuleRunLecturerGroupDto ModuleRunLecturerGroupDto);
 
         Task<ModuleRunLecturerGroupDto> GetModuleRunLecturerGroup(int moduleRunId, int lecturerId);
 

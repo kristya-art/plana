@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Plana.Api.Services;
-using Plana.Models;
 using Plana.Shared;
 using System;
 using System.Collections.Generic;

@@ -77,19 +77,7 @@ namespace Plana.Api.Services
 
             if (moduleRunLecturerGroup != null)
             {
-              //  foreach (var lecturerModuleRun in context.LecturersModuleRuns) {
-              //      foreach (var lecturer in lg.LecturerLecturerGroup) {
-              //          if ((lecturerModuleRun.ModuleRunId == moduleRunLecturerGroup.ModuleRunId) &&
-              //              (lecturerModuleRun.LecturerId == lecturer.LecturerId))
-              //              {
-
-              //              context.LecturersModuleRuns.Remove(lecturerModuleRun);
-              //              context.SaveChanges();
-              //          }
-
-
-              //  }
-              //}
+              
                 context.ModuleRunLecturerGroups.Remove(moduleRunLecturerGroup);
                 await context.SaveChangesAsync();
 
@@ -110,18 +98,14 @@ namespace Plana.Api.Services
             return mapper.Map<IEnumerable<ModuleRunLecturerGroupDto>>(ModuleRunLecturerGroups);
         }
 
-        public async Task<ModuleRunLecturerGroupDto> UpdateModuleRunLecturerGroup(ModuleRunLecturerGroupDto ModuleRunLecturerGroupDto)
+        public async Task<ModuleRunLecturerGroupDto?> UpdateModuleRunLecturerGroup(ModuleRunLecturerGroupDto ModuleRunLecturerGroupDto)
         {
             var result = await context.ModuleRunLecturerGroups.FindAsync(ModuleRunLecturerGroupDto.ModuleRunId, ModuleRunLecturerGroupDto.LecturerGroupId);
             if (result != null)
             {
                 result.ModuleRunId = ModuleRunLecturerGroupDto.ModuleRunId;
                 result.LecturerGroupId = ModuleRunLecturerGroupDto.LecturerGroupId;
-               
-               // result.Hours = ModuleRunLecturerGroupDto.Hours;
-               // result.DesiredHours = ModuleRunLecturerGroupDto.DesiredHours;
               
-               // result.IsRequested = ModuleRunLecturerGroupDto.IsRequested;
                 await context.SaveChangesAsync();
 
                 return mapper.Map<ModuleRunLecturerGroupDto>(result);

@@ -24,8 +24,6 @@ namespace Plana.Api.Services
         }
 
 
-        //public  IEnumerable<LecturerDto> Teachers =>
-        //    appDbContext.Lecturers.Include(m => m.LecturersModules).ThenInclude(mo => mo.Module);
 
         public async Task<LecturerDto> AddLecturer(LecturerDto lecturerDto)
         {
@@ -71,11 +69,7 @@ namespace Plana.Api.Services
                 result.IsActive = lecturerDto.IsActive;
                 result.WorkingRate = lecturerDto.WorkingRate;
                 result.Role = (Role)lecturerDto.Role;
-              //  result.LecturersModules = (ICollection<LecturerModule>)lecturerDto.LecturersModules;//new
-               
-                // result.AdditionalAssignments = (ICollection<AdditionalAssignment>)lecturerDto.AdditionalAssignments;//new
-                //result.LecturersModuleRuns = lecturerDto.LecturersModuleRuns;
-               
+              
 
                 await appDbContext.SaveChangesAsync();
 
@@ -119,8 +113,7 @@ namespace Plana.Api.Services
             return mapper.Map<IEnumerable<LecturerDto>>(lecturers);
             
         }
-
-       
+      
        }
     }
 

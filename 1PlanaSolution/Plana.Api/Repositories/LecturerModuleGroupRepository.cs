@@ -41,7 +41,7 @@ namespace Plana.Api.Repositories
                 .ToListAsync();
         }
 
-        public async Task<LecturerModuleGroup> UpdateLecturerModuleGroup(LecturerModuleGroup lecturerModuleGroup)
+        public async Task<LecturerModuleGroup?> UpdateLecturerModuleGroup(LecturerModuleGroup lecturerModuleGroup)
         {
             var result = await GetLecturerModuleGroup(lecturerModuleGroup.LecturerId);
             if (result != null)

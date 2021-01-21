@@ -91,12 +91,7 @@ namespace Plana.Web.Pages.plan.study_director
         /// <returns></returns>
         protected async override Task OnInitializedAsync()
         {
-            //var authenticationState = await authenticationStateTask;
-            //if (!authenticationState.User.Identity.IsAuthenticated) {
-            //    string returnUrl = System.Net.WebUtility.UrlEncode($"/editPlan/{Id}");
-            //    NavigationManager.NavigateTo($"/identity/account/login?returnUrl={returnUrl}");
-
-            //}
+            
             int.TryParse(Id, out int planId);
 
             if (planId != 0)
@@ -158,10 +153,7 @@ namespace Plana.Web.Pages.plan.study_director
             PlanDto result = null;
             if (Semester.SemesterId != 0)
             {
-                //await UpdateSemester();
-                //await UpdateMR();
-
-                //await PlanService.UpdatePlan(Plan);
+                
                 await SemesterService.UpdateSemester(AutumnSemester);
                 await SemesterService.UpdateSemester(SpringSemester);
                 await LecturerModuleRunService.UpdateLecturerModuleRun(Lmr);
@@ -207,8 +199,6 @@ namespace Plana.Web.Pages.plan.study_director
             NavManager.NavigateTo($"/editplan/{SelectedPlanId}", true);
 
         }
-
-
 
     }
 }

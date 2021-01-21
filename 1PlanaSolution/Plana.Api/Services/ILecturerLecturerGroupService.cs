@@ -1,8 +1,5 @@
-﻿using Plana.Models;
-using Plana.Shared;
-using System;
+﻿using Plana.Shared;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Plana.Api.Services

@@ -1,8 +1,6 @@
 ﻿using Plana.Models;
 using Plana.Shared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Plana.Api.Services
@@ -12,10 +10,13 @@ namespace Plana.Api.Services
         Task<IEnumerable<AdditionalAssignment>> Search(string name);
 
         Task<IEnumerable<AdditionalAssignmentDto>> GetAdditionalAssignments();
+
         Task<AdditionalAssignmentDto> GetAdditionalAssignment(int additionalAssignmentId);
+
         Task<AdditionalAssignmentDto> CreateAdditionalAssignment(AdditionalAssignmentDto additionalAssignmentDto);
        
         Task<bool> DeleteAdditionalAssignment(int additionalAssignmentId);
+
         Task<AdditionalAssignmentDto> UpdateAdditionalAssignment(AdditionalAssignmentDto additionalAssignmentDto);
         
        

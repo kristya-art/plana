@@ -20,6 +20,7 @@ namespace Plana.Models
         
         //Biel, Bern
         public string Place { get; set; }
+
         public bool Editable { get; set; }
 
         public bool isSelected { get; set; }
@@ -34,8 +35,11 @@ namespace Plana.Models
         public int SemesterId { get; set; } //Foreign key many-to-one
         
         public virtual ModuleGroup ModuleGroup { get; set; }
+
         public virtual ICollection<ModuleRunLecturerGroup> ModuleRunLecturerGroups { get; set; }
+
         public bool IsDeleted { get; set; }
+
         public DateTime? DeletedAt { get; set; }
 
 

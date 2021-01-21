@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Plana.Api.Models;
-using Plana.Api.Repositories;
 using Plana.Api.Services;
-using Plana.Models;
 using Plana.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -27,45 +23,7 @@ namespace Plana.Api.Controllers
             _moduleRunService = moduleRunService;
             _logger = logger;
          }
-        //[HttpGet("{search}")]
-        //public async Task<ActionResult<IEnumerable<ModuleRun>>> Search( string name,string code)
-        //{
-        //    try
-        //    {
-        //        var result = await moduleRunRepository.Search(name,code);
-
-        //        if (result.Any())
-        //        {
-        //            return Ok(result);
-        //        }
-        //        return NotFound();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //            "Error retrieving data from database");
-        //    }
-        //}
-        //[HttpGet("{searchfrom}")]
-        //public async Task<ActionResult<IEnumerable<ModuleRun>>> SearchFromModule(string moduleCode)
-        //{
-        //    try
-        //    {
-        //        var result = await moduleRunRepository.SearchFromModule(moduleCode);
-
-        //        if (result.Any())
-        //        {
-        //            return Ok(result);
-        //        }
-        //        return NotFound();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError,
-        //            "Error retrieving data from database");
-        //    }
-        //}
-
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ModuleRunDto>>> GetModuleRuns()
         {
@@ -107,25 +65,12 @@ namespace Plana.Api.Controllers
         public async Task<ActionResultDto<ModuleRunDto>> CreateModuleRun(ModuleRunDto mr)
         {
 
-            //try
-            //{
-            //    if (mr == null)
-            //    {
-            //        return BadRequest();
-            //    }
-            //    return await _moduleRunService.CreateModuleRun(mr);
-            // }
-
-            //catch (Exception)
-            //{
-            //    return StatusCode(StatusCodes.Status500InternalServerError,
-            //         "Error retrieving data from the database");
-            //}
+            
             return await _moduleRunService.CreateModuleRun(mr);
         }
 
        [HttpPut()]
-        public async Task<ActionResult<ModuleRunDto>> UpdateModuleRun(ModuleRunDto moduleRun)
+        public async Task<ActionResult<ModuleRunDto?>> UpdateModuleRun(ModuleRunDto moduleRun)
         {
             try
             {

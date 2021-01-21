@@ -25,7 +25,7 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPut()]
-        public async Task<ActionResult<ModuleRunLecturerGroupDto>> UpdateModuleRunLecturerGroup(ModuleRunLecturerGroupDto ModuleRunLecturerGroup)
+        public async Task<ActionResult<ModuleRunLecturerGroupDto?>> UpdateModuleRunLecturerGroup(ModuleRunLecturerGroupDto ModuleRunLecturerGroup)
         {
             int id = ModuleRunLecturerGroup.LecturerGroupId;
             int id2 = ModuleRunLecturerGroup.ModuleRunId;
@@ -38,7 +38,7 @@ namespace Plana.Api.Controllers
                     return NotFound($"ModuleRunLecturerGroup with id = {ModuleRunLecturerGroup.LecturerGroupId}and id = {ModuleRunLecturerGroup.ModuleRunId} not found!");
                 }
 
-                //return await moduleRunRep.UpdateModuleRun(moduleRun);
+                
                 return await _ModuleRunLecturerGroupService.UpdateModuleRunLecturerGroup(ModuleRunLecturerGroup);
 
 
@@ -68,14 +68,7 @@ namespace Plana.Api.Controllers
             }
         }
 
-        /// Example of multiple parameters
-        ///   [HttpGet("empId={empId}&startDate={startDate}&endDate={endDate}")]
-        ///    public IEnumerable<Validate> Get(int empId, string startDate, string endDate) { }
-
-        //[HttpGet("{id:int}/{id2:int}")]   
-
-        //[HttpGet]
-        //[HttpGet("id={id}&id2={id2}")] //  ==>{router}/empId=1&startDate=2020-20-20&endDate=2020-20-20 (postman)
+        
 
         [HttpGet("{moduleRunId}/{lecturerId}")]    //https://localhost:44399/api/ModuleRunLecturerGroup/1/6
         public async Task<ActionResult<ModuleRunLecturerGroupDto>> GetModuleRunLecturerGroup(int moduleRunId, int lecturerId)

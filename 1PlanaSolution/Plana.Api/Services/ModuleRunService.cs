@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Plana.Api.Models;
 using Plana.Models;
 using Plana.Shared;
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

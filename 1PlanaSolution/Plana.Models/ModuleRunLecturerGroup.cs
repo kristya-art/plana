@@ -14,6 +14,7 @@ namespace Plana.Api.Models
         public virtual LecturerGroup LecturerGroup { get; set; }
 
         public bool IsDeleted { get; set; }
+
         public DateTime? DeletedAt { get; set; }
 
     }

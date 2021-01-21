@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Plana.Models
 {
@@ -13,13 +13,16 @@ namespace Plana.Models
     {
         [Key]
         public int SemesterId { get; set; }
+
         public string Code { get; set; }
+
         public DateTime Date { get; set; }
       
         //relationship
 
         //1-many
         public virtual ICollection<ModuleRun> ModuleRuns { get; set; }
+
         public virtual ICollection<AdditionalAssignment> AdditionalAssignments { get; set; }
 
         public virtual ICollection<LecturerSemester> LecturersSemesters { get; set; }

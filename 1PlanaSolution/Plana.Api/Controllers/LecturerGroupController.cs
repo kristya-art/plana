@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Plana.Api.Models;
-using Plana.Api.Repositories;
 using Plana.Api.Services;
-using Plana.Models;
 using Plana.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Threading.Tasks;
 
 namespace Plana.Api.Controllers
@@ -76,7 +73,7 @@ namespace Plana.Api.Controllers
         }
 
         [HttpPut()]
-        public async Task<ActionResult<LecturerGroupDto>> UpdateLecturerGroupDto(LecturerGroupDto lecturerGroup)
+        public async Task<ActionResult<LecturerGroupDto?>> UpdateLecturerGroupDto(LecturerGroupDto lecturerGroup)
         {
             try
             {
