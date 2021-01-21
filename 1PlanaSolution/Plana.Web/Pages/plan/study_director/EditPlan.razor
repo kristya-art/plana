@@ -10,12 +10,10 @@
 @inject IJSRuntime js
 
 @inherits EditPlanBase
-@if (lastYearPlan != null)
-{
-    <p>@lastYearPlan.Id</p> }
+
 
 @if (Plan == null || Plans == null) { return; }
-<p>@Plan.FindLastYearPlan()</p>
+
 
 
 
@@ -178,7 +176,7 @@ else
                                         }
                                 }
                                 <button class="btn" id="add" @onclick="@(e=>OpenDialogLecturerGroup(false,local))"><i class="fa fa-plus"></i></button>
-                                @*<button class="btn" id="add" @onclick="@(e => OpenLecturerGDialog(false))"><i class="fa fa-plus"></i></button>*@
+                                
                             </td>
 
                             @if (mr.LecturersMR != null)
@@ -430,7 +428,7 @@ else
 
     #endregion
     #region Dialog Box Methods for Last Year Plan
-    bool _isDelete = false;
+    
     bool dialogIsOpen = false;
     bool _isEdit = false;
 
@@ -566,17 +564,13 @@ else
     bool dialogIsOpenMNew = false;
     bool _isEditM = false;
 
-    bool snackBarM = false;
+    
 
     #region Methods
 
 
 
-    private void DeleteModuleRun()
-    {
-
-        snackBarM = true;
-    }
+   
     #endregion
 
     #region Dialog Box Methods

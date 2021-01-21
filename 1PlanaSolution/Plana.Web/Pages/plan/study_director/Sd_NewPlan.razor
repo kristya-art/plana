@@ -62,16 +62,19 @@
                 <ValidationMessage For="@(() => Asemester.Code)" />
             </div>
         </div>*@
+            <ValidationMessage For="@(() => Asemester.Code)" />
             <MatTextField Label="HS Semester Title" @bind-Value="@Asemester.Code" placeholder="0000-0000-HS" pattern="[0-9]{4}-[0-9]{4}-(HS)"></MatTextField>
-            <!--<div class="form-field">
-        <label>Spring Semester code:</label>
-        <div>
-            <InputText @bind-Value="@Ssemester.Code" placeholder="0000-FS" pattern="[0-9]{4}-(FS)" />
-            <ValidationMessage For="@(() => Ssemester.Code)" />-->
-            @*<mat-hint>Hint</mat-hint>*@
-            <!--</div>
-    </div>-->
-            <MatTextField Label="FS Semester Title"@bind-Value="@Ssemester.Code" placeholder="0000-FS" pattern="[0-9]{4}-(FS)"></MatTextField>
+
+            @*<div class="form-field">
+    <label>Spring Semester code:</label>
+    <div>
+        <InputText @bind-Value="@Ssemester.Code" placeholder="0000-FS" pattern="[0-9]{4}-(FS)" />
+        <ValidationMessage For="@(() => Ssemester.Code)" />
+            <mat-hint>Hint</mat-hint>
+            </div>
+    </div>*@
+            <ValidationMessage For="@(() => Ssemester.Code)" />
+            <MatTextField Label="FS Semester Title" @bind-Value="@Ssemester.Code" placeholder="0000-FS" pattern="[0-9]{4}-(FS)"></MatTextField>
 
 
         </MatDialogContent>

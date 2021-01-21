@@ -30,8 +30,10 @@ namespace Plana.Shared
 
         public virtual ICollection<PlanLecturerDto> PlanLecturers { get; set; }
 
+        [Required(ErrorMessage = "The Semester must be provided")]
         public virtual SemesterDto AutumnSemester { get; set; } = new SemesterDto();
 
+        [Required(ErrorMessage = "The Semester must be provided")]
         public virtual SemesterDto SpringSemester { get; set; } = new SemesterDto();
 
        

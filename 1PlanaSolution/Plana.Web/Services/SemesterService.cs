@@ -37,11 +37,7 @@ namespace Plana.Web.Services
             return await http.GetJsonAsync<SemesterDto[]>("api/semester");
         }
 
-        public async Task SoftDeleteSemester(int id)
-        {
-            throw new NotImplementedException();
-            //await http.DeleteAsync($"api/semester/{id}");
-        }
+       
 
         public async Task UpdateSemester(SemesterDto semester)
         {

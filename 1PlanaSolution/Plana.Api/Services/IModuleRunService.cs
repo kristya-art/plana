@@ -17,7 +17,7 @@ namespace Plana.Api.Services
 
         Task<ActionResultDto<ModuleRunDto>> CreateModuleRun(ModuleRunDto moduleRunDto);
 
-        Task<ModuleRunDto> UpdateModuleRun(ModuleRunDto moduleRunDto);
+        Task<ModuleRunDto?> UpdateModuleRun(ModuleRunDto moduleRunDto);
      
         Task<bool> DeleteModuleRun(int moduleRunId);
         

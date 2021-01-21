@@ -27,8 +27,8 @@
     </form>
 </div>
 
-<div class="new avatar w3-right">
-    <p>@Lecturer.FirstName</p>
+<div class="new ">
+    <h3>@Lecturer.FirstName</h3>
     @*<p>@Plan.Year</p>*@
 </div>
 
@@ -41,10 +41,9 @@
     <button style="float: right;" @onclick="@(e => OpenDialogAA(true))">add additional assignment</button>
     }
     
-    @*<button style="float:left">show last year plan</button>*@
     <button class="btn-groupR" style="border-color:burlywood;width:250px">plan before @Plan.ExpiredDate </button>
 </div>
-<div class="btn-groupR" style="border-color:palevioletred">submit plan</div>
+
 
 @if (Plan == null)
 {
@@ -242,7 +241,7 @@ else
                         <tr>
                             <th width="40%">BALANCE ACCUMULATED</th>
                             <td>@PlanLecturer.GetBalanceAccumulated()</td>
-                            <td>@lY.Id</td>
+                            
                         </tr>
 
                     </tbody>
@@ -495,10 +494,9 @@ else
 
     #endregion
     #region Dialog box for add moduleRun
-    bool _isDelete = false;
     bool dialogIsOpenMR = false;
     bool dialogIsOpenAA = false;
-    bool _isEdit = false;
+    
     private void OpenDialogMR(bool isEdit)
     {
 
@@ -606,7 +604,7 @@ else
             MyModuleRuns = MyModuleRuns.Where(c => c.ModuleRunId != tempLecturerModuleRunId).ToList();
 
         }
-        //NavigationMan.NavigateTo($"/myplanL/{SelectedPlanId}/{Lecturer.Id}", true);
+       
     }
     [Parameter]
     public int tempAAId { get; set; }
@@ -706,10 +704,12 @@ else
     }
 
     .new {
-        /*float: right;*/
+        
         margin-top: -35px;
-        position: sticky;
-        margin-right: -110px
+        right: 5%;
+        position: absolute;
+       float : right;
+
     }
    
 

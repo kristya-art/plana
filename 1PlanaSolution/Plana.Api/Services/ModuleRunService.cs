@@ -41,12 +41,7 @@ namespace Plana.Api.Services
                         "exist in this semester.");
                 }
             }
-            //bool containsModuleRun = await _context.ModuleRuns.ContainsAsync(moduleRun);
-            //if (containsModuleRun)
-            //{
-            //    return new ActionResultDto<ModuleRunDto>("This Module run already" +
-            //      "exists in this semester.");
-            //}
+            
             var result = await _context.ModuleRuns.AddAsync(moduleRun);
             await _context.SaveChangesAsync();
 
@@ -58,11 +53,7 @@ namespace Plana.Api.Services
         {
             var moduleRun = await _context.ModuleRuns.FindAsync(moduleRunId);
             return mapper.Map<ModuleRunDto>(moduleRun);
-           //     .Include(m=>m.LecturersMR)
-           //     .ThenInclude(lmr=>lmr.Lecturer)
-           //  //   .Include(m=>m.Semester)
-           //  //   .Include(m=>m.Module)
-           //.FirstOrDefaultAsync(e => e.ModuleRunId == moduleRunId);
+          
 
         }
 
@@ -71,17 +62,12 @@ namespace Plana.Api.Services
             var moduleRuns = await _context.ModuleRuns.ToListAsync();
             return mapper.Map<IEnumerable<ModuleRunDto>>(moduleRuns);
 
-            //return await appDbContext.ModuleRuns
-            //    .Include(m => m.Module)
-            //    .Include(m => m.LecturersMR)
-            //    .ThenInclude(lmr => lmr.Lecturer)
-            //    .OrderBy(m => m.Module.Title)
-            //    .ToListAsync();
+          
         }
 
 
 
-        public async Task<ModuleRunDto> UpdateModuleRun(ModuleRunDto moduleRunDto)
+        public async Task<ModuleRunDto?> UpdateModuleRun(ModuleRunDto moduleRunDto)
         {
             var moduleRun = await _context.ModuleRuns.FindAsync(moduleRunDto.ModuleRunId);
 
@@ -94,10 +80,7 @@ namespace Plana.Api.Services
                 moduleRun.Place = moduleRunDto.Place;
                 moduleRun.SemesterId = moduleRunDto.SemesterId;
                 moduleRun.isSelected = moduleRunDto.isSelected;
-              //  moduleRun.ModuleGroup.ModuleGroupId = moduleRunDto.ModuleGroup.ModuleGroupId;
-                
-                //  moduleRun.LecturersMR = moduleRunDto.LecturersMR;
-                //  moduleRun.ModuleRunLecturerGroups = moduleRunDto.ModuleRunLecturerGroups;
+              
 
                 await _context.SaveChangesAsync();
 

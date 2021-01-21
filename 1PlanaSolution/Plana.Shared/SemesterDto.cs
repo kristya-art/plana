@@ -12,7 +12,7 @@ namespace Plana.Shared
     public class SemesterDto 
     {
         public int SemesterId { get; set; }
-        //[Required(ErrorMessage = "The Title of Semester must be provided!")]
+        [Required(ErrorMessage = "The Title of Semester must be provided!")]
         //[MinLength(7)]
         public string Code { get; set; }
         public DateTime Date { get; set; }
