@@ -87,7 +87,7 @@ namespace Plana.Api.Controllers
                     return NotFound($"Module run with id = {lecturerGroup.LecturerGroupId } was not found!");
                 }
 
-                return await _lecturerGroupService.UpdateLecturerGroup(updatedLecturerGroup);
+                return await _lecturerGroupService.UpdateLecturerGroup(lecturerGroup);
             }
             catch (Exception ex)
             {

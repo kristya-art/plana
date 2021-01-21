@@ -2,7 +2,7 @@
 
 @using Microsoft.Extensions.Logging
 @inject ILogger<LecturerGroupsView> Logger
-
+<a href="@($"/editlecturergroup")" class="btn btn-primary m-1">Create</a>
 @if (lgs == null) { return; }
 else
 {
@@ -21,13 +21,13 @@ else
                 int local = lg.LecturerGroupId;
             <tr>
 
-                <td>@lg.Title</td>
+                <td>@lg.Title <a href="@($"/editlecturergroup/{lg.LecturerGroupId}")" class="btn btn-primary m-1">Edit</a></td>
 
                 <td>
                     <p style="white-space:nowrap;">
                         @foreach (var llGroup in lg.LecturerLecturerGroup)
                         {
-
+                            @if (llGroup == null) { return; }
                             @llGroup.Lecturer.SetToken()
                 <button class="btn" id="del" @onclick="@(e=> LecturerLecturerGroupService.DeleteLecturerLecturerGroup(llGroup.LecturerId,llGroup.LecturerGroupId))"><i class="fa fa-close"></i></button>
 

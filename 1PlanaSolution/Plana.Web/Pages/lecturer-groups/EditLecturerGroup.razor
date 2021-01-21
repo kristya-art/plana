@@ -1,4 +1,4 @@
-﻿@*@page "/editlecturergroup/{id}"*@
+﻿@page "/editlecturergroup/{id}"
 @page "/editlecturergroup"
 @using MatBlazor;
 @using Plana.Shared;
@@ -21,8 +21,8 @@
             <ValidationMessage For="@(() => LecturerGroup.Title)" />
         </div>
     </div>
-    <div class="btn-group" style="font-size: 13px">
-        <button style="float: right;">add group</button>
+    <div class="submit" style="font-size: 13px">
+        <button style="float: right;">save</button>
 
     </div>
 
@@ -31,55 +31,6 @@
 </EditForm>
 
 
-<div class="btn-group" style="font-size: 13px">
-    <button style="float: right;" @onclick="@(e => OpenDialogLecturers(true))">show lecturers</button>
-
-</div>
-
-@*dialog for choose lecturers*@
-<MatDialog @bind-IsOpen="dialogIsOpenLecturers">
-    <MatDialogTitle>Add Lecturers To Plan</MatDialogTitle>
-    <MatDialogContent Style="width: 700px;right:250px">
-        @if (Lecturers == null)
-        {<text>Loading...</text> }
-    else
-    {
-        <table class="table" style="width:300px">
-            <thead>
-                <tr>
-
-                    <th>Lecturer Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                    @foreach (var l in Lecturers)
-                    {
-                        <td>@l.FirstName</td>
-
-                        <td>
-                            @*<EditForm Model="@l">*@
-                            <MatCheckbox @bind-Value="l.isSelected"></MatCheckbox>
-
-                        </td>
-
-                    }
-                </tr>
-            </tbody>
-        </table>
-    }
-
-    </MatDialogContent>
-    <MatDialogActions>
-        <MatButton @onclick="@(e => SaveToLecturerGroup())">save</MatButton>
-
-        <MatButton Type="cancel" @onclick="okClick">X</MatButton>
-        <button class="btn" id="cancel-btn">X</button>
-
-
-    </MatDialogActions>
-</MatDialog>
 
 
 

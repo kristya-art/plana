@@ -54,6 +54,7 @@ namespace Plana.Web.Pages.lecturer_groups
             {
                 PageHeaderText = "Edit LecturerGroup";
                 LecturerGroup = await LecturerGroupService.GetLecturerGroup(int.Parse(Id));
+               
             }
             else
             {
@@ -62,6 +63,7 @@ namespace Plana.Web.Pages.lecturer_groups
                 {
                     
                 };
+               
             }
             Lecturers = (await LecturerService.GetLecturers()).ToList();
           //  LecturerLecturerGroups = (await LecturerLecturerGroupService.GetLecturerLecturerGroups()).ToList();
@@ -82,10 +84,7 @@ namespace Plana.Web.Pages.lecturer_groups
             {
                 result = await LecturerGroupService.CreateLecturerGroup(LecturerGroup);
             }
-            //if (result != null)
-            //{
-            //    NavigationManager.NavigateTo("/lecturers");
-            //}
+            NavigationManager.NavigateTo($"/lecturergroupsview");
         }
 
         protected async Task Delete_Click()
