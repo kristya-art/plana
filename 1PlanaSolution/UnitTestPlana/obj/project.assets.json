@@ -9072,6 +9072,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj": {
               "projectPath": "C:\\Code\\PLANA\\planning-of-the-assignments-for-lecturers-plana\\1PlanaSolution\\Plana.Models\\Plana.Models.csproj"
@@ -9087,6 +9088,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "MSTest.TestAdapter": {
             "target": "Package",
@@ -9124,7 +9126,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400-preview-015203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },

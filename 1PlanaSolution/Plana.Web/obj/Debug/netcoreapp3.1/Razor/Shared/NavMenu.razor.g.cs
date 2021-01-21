@@ -120,17 +120,14 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(5, "\r\n    ");
-            __builder.OpenElement(6, "ul");
-            __builder.AddAttribute(7, "class", "nav flex-column");
-            __builder.AddMarkupContent(8, "\r\n        ");
-            __builder.OpenElement(9, "li");
-            __builder.AddAttribute(10, "class", "nav-item px-3");
-            __builder.AddMarkupContent(11, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(12);
-            __builder.AddAttribute(13, "class", "nav-link");
-            __builder.AddAttribute(14, "href", "");
-            __builder.AddAttribute(15, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+            __builder.OpenElement(5, "ul");
+            __builder.AddAttribute(6, "class", "nav flex-column");
+            __builder.OpenElement(7, "li");
+            __builder.AddAttribute(8, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(9);
+            __builder.AddAttribute(10, "class", "nav-link");
+            __builder.AddAttribute(11, "href", "");
+            __builder.AddAttribute(12, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 26 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\NavMenu.razor"
                                                      NavLinkMatch.All
@@ -139,142 +136,121 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(16, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(17, "\r\n                <span class=\"oi oi-home\" aria-hidden=\"true\"></span> List of Lecturers\r\n            ");
+            __builder.AddAttribute(13, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(14, "<span class=\"oi oi-home\" aria-hidden=\"true\"></span> List of Lecturers\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(18, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(19, "\r\n        ");
-            __builder.OpenElement(20, "li");
-            __builder.AddAttribute(21, "class", "nav-item px-3");
-            __builder.AddMarkupContent(22, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(23);
-            __builder.AddAttribute(24, "class", "nav-link");
-            __builder.AddAttribute(25, "href", "/home");
-            __builder.AddAttribute(26, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(27, "\r\n                <span class aria-hidden=\"true\"></span> Home\r\n            ");
+            __builder.AddMarkupContent(15, "\r\n        ");
+            __builder.OpenElement(16, "li");
+            __builder.AddAttribute(17, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(18);
+            __builder.AddAttribute(19, "class", "nav-link");
+            __builder.AddAttribute(20, "href", "/home");
+            __builder.AddAttribute(21, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(22, "<span class aria-hidden=\"true\"></span> Home\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(28, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(29, "\r\n        ");
-            __builder.OpenElement(30, "li");
-            __builder.AddAttribute(31, "class", "nav-item px-3");
-            __builder.AddMarkupContent(32, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(33);
-            __builder.AddAttribute(34, "class", "nav-link");
-            __builder.AddAttribute(35, "href", "/sd_start");
-            __builder.AddAttribute(36, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(37, "\r\n                <span class aria-hidden=\"true\"></span> Component\r\n            ");
+            __builder.AddMarkupContent(23, "\r\n        ");
+            __builder.OpenElement(24, "li");
+            __builder.AddAttribute(25, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(26);
+            __builder.AddAttribute(27, "class", "nav-link");
+            __builder.AddAttribute(28, "href", "/sd_start");
+            __builder.AddAttribute(29, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(30, "<span class aria-hidden=\"true\"></span> Component\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(38, "\r\n        ");
+            __builder.CloseElement();
+            __builder.AddMarkupContent(31, "\r\n        ");
+            __builder.OpenElement(32, "li");
+            __builder.AddAttribute(33, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(34);
+            __builder.AddAttribute(35, "class", "nav-link");
+            __builder.AddAttribute(36, "href", "/editlecturer");
+            __builder.AddAttribute(37, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(38, "<span class aria-hidden=\"true\"></span> Create Lecturer\r\n            ");
+            }
+            ));
+            __builder.CloseComponent();
             __builder.CloseElement();
             __builder.AddMarkupContent(39, "\r\n        ");
             __builder.OpenElement(40, "li");
             __builder.AddAttribute(41, "class", "nav-item px-3");
-            __builder.AddMarkupContent(42, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(43);
-            __builder.AddAttribute(44, "class", "nav-link");
-            __builder.AddAttribute(45, "href", "/editlecturer");
-            __builder.AddAttribute(46, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(47, "\r\n                <span class aria-hidden=\"true\"></span> Create Lecturer\r\n            ");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(42);
+            __builder.AddAttribute(43, "class", "nav-link");
+            __builder.AddAttribute(44, "href", "fetchdata");
+            __builder.AddAttribute(45, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(46, "<span class aria-hidden=\"true\"></span> Semester\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(48, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(49, "\r\n        ");
-            __builder.OpenElement(50, "li");
-            __builder.AddAttribute(51, "class", "nav-item px-3");
-            __builder.AddMarkupContent(52, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(53);
-            __builder.AddAttribute(54, "class", "nav-link");
-            __builder.AddAttribute(55, "href", "fetchdata");
-            __builder.AddAttribute(56, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(57, "\r\n                <span class aria-hidden=\"true\"></span> Semester\r\n            ");
+            __builder.AddMarkupContent(47, "\r\n        ");
+            __builder.OpenElement(48, "li");
+            __builder.AddAttribute(49, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(50);
+            __builder.AddAttribute(51, "class", "nav-link");
+            __builder.AddAttribute(52, "href", "/plana");
+            __builder.AddAttribute(53, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(54, "<span class aria-hidden=\"true\"></span> Plan try\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(58, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(59, "\r\n        ");
-            __builder.OpenElement(60, "li");
-            __builder.AddAttribute(61, "class", "nav-item px-3");
-            __builder.AddMarkupContent(62, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(63);
-            __builder.AddAttribute(64, "class", "nav-link");
-            __builder.AddAttribute(65, "href", "/plana");
-            __builder.AddAttribute(66, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(67, "\r\n                <span class aria-hidden=\"true\"></span> Plan try\r\n            ");
+            __builder.AddMarkupContent(55, "\r\n        ");
+            __builder.OpenElement(56, "li");
+            __builder.AddAttribute(57, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(58);
+            __builder.AddAttribute(59, "class", "nav-link");
+            __builder.AddAttribute(60, "href", "/lectmoduleslist");
+            __builder.AddAttribute(61, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(62, "<span class aria-hidden=\"true\"></span> Lecturers-Modules\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(68, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(69, "\r\n        ");
-            __builder.OpenElement(70, "li");
-            __builder.AddAttribute(71, "class", "nav-item px-3");
-            __builder.AddMarkupContent(72, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(73);
-            __builder.AddAttribute(74, "class", "nav-link");
-            __builder.AddAttribute(75, "href", "/lectmoduleslist");
-            __builder.AddAttribute(76, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(77, "\r\n                <span class aria-hidden=\"true\"></span> Lecturers-Modules\r\n            ");
+            __builder.AddMarkupContent(63, "\r\n        ");
+            __builder.OpenElement(64, "li");
+            __builder.AddAttribute(65, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(66);
+            __builder.AddAttribute(67, "class", "nav-link");
+            __builder.AddAttribute(68, "href", "/lecturerlist");
+            __builder.AddAttribute(69, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(70, "<span class aria-hidden=\"true\"></span> LecturerList new\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(78, "\r\n        ");
+            __builder.CloseElement();
+            __builder.AddMarkupContent(71, "\r\n        ");
+            __builder.OpenElement(72, "li");
+            __builder.AddAttribute(73, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(74);
+            __builder.AddAttribute(75, "class", "nav-link");
+            __builder.AddAttribute(76, "href", "/semester");
+            __builder.AddAttribute(77, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(78, "<span class aria-hidden=\"true\"></span> Semester List\r\n            ");
+            }
+            ));
+            __builder.CloseComponent();
             __builder.CloseElement();
             __builder.AddMarkupContent(79, "\r\n        ");
             __builder.OpenElement(80, "li");
             __builder.AddAttribute(81, "class", "nav-item px-3");
-            __builder.AddMarkupContent(82, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(83);
-            __builder.AddAttribute(84, "class", "nav-link");
-            __builder.AddAttribute(85, "href", "/lecturerlist");
-            __builder.AddAttribute(86, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(87, "\r\n                <span class aria-hidden=\"true\"></span> LecturerList new\r\n            ");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(82);
+            __builder.AddAttribute(83, "class", "nav-link");
+            __builder.AddAttribute(84, "href", "/component");
+            __builder.AddAttribute(85, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(86, "<span class aria-hidden=\"true\"></span> Component\r\n            ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(88, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(89, "\r\n        ");
-            __builder.OpenElement(90, "li");
-            __builder.AddAttribute(91, "class", "nav-item px-3");
-            __builder.AddMarkupContent(92, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(93);
-            __builder.AddAttribute(94, "class", "nav-link");
-            __builder.AddAttribute(95, "href", "/semester");
-            __builder.AddAttribute(96, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(97, "\r\n                <span class aria-hidden=\"true\"></span> Semester List\r\n            ");
-            }
-            ));
-            __builder.CloseComponent();
-            __builder.AddMarkupContent(98, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(99, "\r\n        ");
-            __builder.OpenElement(100, "li");
-            __builder.AddAttribute(101, "class", "nav-item px-3");
-            __builder.AddMarkupContent(102, "\r\n            ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(103);
-            __builder.AddAttribute(104, "class", "nav-link");
-            __builder.AddAttribute(105, "href", "/component");
-            __builder.AddAttribute(106, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(107, "\r\n                <span class aria-hidden=\"true\"></span> Component\r\n            ");
-            }
-            ));
-            __builder.CloseComponent();
-            __builder.AddMarkupContent(108, "\r\n        ");
-            __builder.CloseElement();
-            __builder.AddMarkupContent(109, "\r\n\r\n\r\n    ");
-            __builder.CloseElement();
-            __builder.AddMarkupContent(110, "\r\n\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

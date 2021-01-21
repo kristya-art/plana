@@ -99,7 +99,7 @@ using MatBlazor;
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.AddMarkupContent(0, "<div class=\"slidebar\">\r\n    \r\n</div>");
+            __builder.AddMarkupContent(0, "<div class=\"slidebar\"></div>");
         }
         #pragma warning restore 1998
     }

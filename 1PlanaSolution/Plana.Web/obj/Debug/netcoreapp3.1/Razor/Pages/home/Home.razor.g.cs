@@ -100,7 +100,7 @@ using MatBlazor;
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.AddMarkupContent(0, "<h2>Welcome to PLANA</h2>\r\n\r\n\r\n\r\n");
-            __builder.AddMarkupContent(1, "<style>\r\n    .app-fab--absolute {\r\n        position: fixed;\r\n        bottom: 1rem;\r\n        right: 1rem;\r\n    }\r\n</style>\r\n\r\n\r\n");
+            __builder.AddMarkupContent(1, "<style>\r\n    .app-fab--absolute {\r\n        position: fixed;\r\n        bottom: 1rem;\r\n        right: 1rem;\r\n    }\r\n</style>");
 #nullable restore
 #line 25 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
  if (Semesters == null)
@@ -109,9 +109,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(2, " \r\n");
-            __builder.OpenComponent<MatBlazor.MatButton>(3);
-            __builder.AddAttribute(4, "Outlined", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.OpenComponent<MatBlazor.MatButton>(2);
+            __builder.AddAttribute(3, "Outlined", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 28 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                      true
@@ -120,7 +119,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(5, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(4, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 28 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                                        e=>OpenDialog(false)
@@ -129,14 +128,14 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(6, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddContent(7, "Add Semester");
+            __builder.AddAttribute(5, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddContent(6, "Add Semester");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(8, "\r\n\r\n");
-            __builder.OpenComponent<MatBlazor.MatFAB>(9);
-            __builder.AddAttribute(10, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddMarkupContent(7, "\r\n\r\n");
+            __builder.OpenComponent<MatBlazor.MatFAB>(8);
+            __builder.AddAttribute(9, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                MatIconNames.Favorite
@@ -145,8 +144,8 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(11, "Label", "Mini");
-            __builder.AddAttribute(12, "Mini", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(10, "Label", "Mini");
+            __builder.AddAttribute(11, "Mini", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                                                          true
@@ -156,7 +155,6 @@ using MatBlazor;
 #nullable disable
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(13, "\r\n\r\n");
 #nullable restore
 #line 32 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
  foreach (var semester in Semesters)
@@ -166,9 +164,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(14, "    ");
-            __builder.OpenComponent<MatBlazor.MatFAB>(15);
-            __builder.AddAttribute(16, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.OpenComponent<MatBlazor.MatFAB>(12);
+            __builder.AddAttribute(13, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 35 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                    MatIconNames.Add
@@ -177,7 +174,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(17, "Label", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(14, "Label", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 35 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                                              semester.Code
@@ -186,10 +183,9 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(18, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(19, "\r\n        ");
-                __builder2.OpenElement(20, "a");
-                __builder2.AddAttribute(21, "href", 
+            __builder.AddAttribute(15, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.OpenElement(16, "a");
+                __builder2.AddAttribute(17, "href", 
 #nullable restore
 #line 36 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                    $"/editsemester/{semester.SemesterId}"
@@ -198,13 +194,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddContent(22, "Plan for");
+                __builder2.AddContent(18, "Plan for");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(23, "\r\n    ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(24, "\r\n");
 #nullable restore
 #line 38 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
 
@@ -213,8 +207,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.OpenComponent<MatBlazor.MatFAB>(25);
-            __builder.AddAttribute(26, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.OpenComponent<MatBlazor.MatFAB>(19);
+            __builder.AddAttribute(20, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 40 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                MatIconNames.Add
@@ -223,11 +217,10 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(27, "Label", "");
-            __builder.AddAttribute(28, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(29, "\r\n    ");
-                __builder2.OpenElement(30, "a");
-                __builder2.AddAttribute(31, "href", 
+            __builder.AddAttribute(21, "Label", "");
+            __builder.AddAttribute(22, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.OpenElement(23, "a");
+                __builder2.AddAttribute(24, "href", 
 #nullable restore
 #line 41 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                $"/createsemester"
@@ -236,15 +229,14 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddContent(32, "Add ");
+                __builder2.AddContent(25, "Add ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(33, "\r\n");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(34, "\r\n\r\n");
-            __builder.OpenComponent<MatBlazor.MatDialog>(35);
-            __builder.AddAttribute(36, "IsOpen", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddMarkupContent(26, "\r\n\r\n");
+            __builder.OpenComponent<MatBlazor.MatDialog>(27);
+            __builder.AddAttribute(28, "IsOpen", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 44 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\home\Home.razor"
                          dialogIsOpen
@@ -253,16 +245,14 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(37, "IsOpenChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Boolean>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Boolean>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => dialogIsOpen = __value, dialogIsOpen))));
-            __builder.AddAttribute(38, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(39, "\r\n    ");
-                __builder2.OpenComponent<MatBlazor.MatDialogTitle>(40);
-                __builder2.AddAttribute(41, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddContent(42, "Add / Edit Semester");
+            __builder.AddAttribute(29, "IsOpenChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Boolean>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Boolean>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => dialogIsOpen = __value, dialogIsOpen))));
+            __builder.AddAttribute(30, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.OpenComponent<MatBlazor.MatDialogTitle>(31);
+                __builder2.AddAttribute(32, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
+                    __builder3.AddContent(33, "Add / Edit Semester");
                 }
                 ));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(43, " \r\n");
             }
             ));
             __builder.CloseComponent();

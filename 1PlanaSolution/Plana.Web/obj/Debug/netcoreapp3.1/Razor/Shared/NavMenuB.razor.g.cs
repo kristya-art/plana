@@ -100,10 +100,8 @@ using MatBlazor;
         {
             __builder.OpenComponent<MatBlazor.MatList>(0);
             __builder.AddAttribute(1, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(2, "\r\n    ");
-                __builder2.OpenElement(3, "p");
-                __builder2.AddMarkupContent(4, "\r\n        ");
-                __Blazor.Plana.Web.Shared.NavMenuB.TypeInference.CreateMatSelectItem_0(__builder2, 5, 6, "my-item-class", 7, 
+                __builder2.OpenElement(2, "p");
+                __Blazor.Plana.Web.Shared.NavMenuB.TypeInference.CreateMatSelectItem_0(__builder2, 3, 4, "my-item-class", 5, 
 #nullable restore
 #line 8 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\NavMenuB.razor"
                                                                             year_values
@@ -111,7 +109,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 8, 
+                , 6, 
 #nullable restore
 #line 8 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\NavMenuB.razor"
                                                             value1
@@ -119,15 +117,13 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 9, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => value1 = __value, value1)), 10, () => value1);
-                __builder2.AddMarkupContent(11, "\r\n    ");
+                , 7, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => value1 = __value, value1)), 8, () => value1);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(12, "\r\n");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(13, "\r\n\r\n");
-            __builder.AddMarkupContent(14, "<style>\r\n    .my-item-class {\r\n        width:100%;\r\n       text-align:center;\r\n    }\r\n</style>");
+            __builder.AddMarkupContent(9, "\r\n\r\n");
+            __builder.AddMarkupContent(10, "<style>\r\n    .my-item-class {\r\n        width:100%;\r\n       text-align:center;\r\n    }\r\n</style>");
         }
         #pragma warning restore 1998
 #nullable restore

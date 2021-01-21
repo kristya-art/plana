@@ -116,7 +116,7 @@ using MatBlazor;
             __builder.SetUpdatesAttributeName("checked");
             __builder.CloseElement();
             __builder.AddMarkupContent(6, "\r\n");
-            __builder.AddMarkupContent(7, "<label for=\"showFooter\">Show Footer</label>\r\n\r\n");
+            __builder.AddMarkupContent(7, "<label for=\"showFooter\">Show Footer</label>");
 #nullable restore
 #line 7 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
  if (Lecturers == null)
@@ -125,7 +125,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(8, "    <div class=\"spinner\"></div>\r\n");
+            __builder.AddMarkupContent(8, "<div class=\"spinner\"></div>");
 #nullable restore
 #line 10 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
 }
@@ -136,7 +136,6 @@ else {
 #nullable disable
             __builder.OpenElement(9, "div");
             __builder.AddAttribute(10, "class", "card-deck");
-            __builder.AddMarkupContent(11, "\r\n");
 #nullable restore
 #line 13 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
      foreach (var lecturer in Lecturers)
@@ -146,9 +145,8 @@ else {
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(12, "        ");
-            __builder.OpenComponent<Plana.Web.Pages.lecturer.DisplayLecturer>(13);
-            __builder.AddAttribute(14, "Lecturer", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Plana.Models.Lecturer>(
+            __builder.OpenComponent<Plana.Web.Pages.lecturer.DisplayLecturer>(11);
+            __builder.AddAttribute(12, "Lecturer", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Plana.Models.Lecturer>(
 #nullable restore
 #line 28 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
                                    lecturer
@@ -157,7 +155,7 @@ else {
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(15, "ShowFooter", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(13, "ShowFooter", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 28 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
                                                          ShowFooter
@@ -166,7 +164,7 @@ else {
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(16, "OnLecturerDeleted", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
+            __builder.AddAttribute(14, "OnLecturerDeleted", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
                                             LecturersDeleted
@@ -176,7 +174,6 @@ else {
 #nullable disable
             )));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(17, "\r\n");
 #nullable restore
 #line 33 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
     
@@ -185,9 +182,7 @@ else {
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(18, "\r\n        \r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(19, "\r\n");
 #nullable restore
 #line 38 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerList.razor"
 }

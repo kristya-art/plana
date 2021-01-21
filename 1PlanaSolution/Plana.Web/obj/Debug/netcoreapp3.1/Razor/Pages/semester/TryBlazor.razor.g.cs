@@ -106,10 +106,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(0, "\r\n\r\n\r\n");
-            __builder.OpenElement(1, "h2");
-            __builder.AddMarkupContent(2, "\r\n    ");
-            __builder.AddContent(3, 
+            __builder.OpenElement(0, "h2");
+            __builder.AddContent(1, 
 #nullable restore
 #line 11 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
      Semester.Code
@@ -118,11 +116,10 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(4, "\r\n");
             __builder.CloseElement();
-            __builder.AddMarkupContent(5, "\r\n");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(6);
-            __builder.AddAttribute(7, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddMarkupContent(2, "\r\n");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(3);
+            __builder.AddAttribute(4, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 13 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                   Semester
@@ -131,7 +128,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(8, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(5, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 13 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                            HandleValidSubmit
@@ -140,12 +137,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(9, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
-                __builder2.AddMarkupContent(10, "\r\n    ");
-                __builder2.AddMarkupContent(11, "<label for=\"code\">Code</label>\r\n    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(12);
-                __builder2.AddAttribute(13, "id", "code");
-                __builder2.AddAttribute(14, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(6, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
+                __builder2.AddMarkupContent(7, "<label for=\"code\">Code</label>\r\n    ");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(8);
+                __builder2.AddAttribute(9, "id", "code");
+                __builder2.AddAttribute(10, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 15 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                       Semester.Code
@@ -154,12 +150,12 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(15, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Code = __value, Semester.Code))));
-                __builder2.AddAttribute(16, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => Semester.Code));
+                __builder2.AddAttribute(11, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Code = __value, Semester.Code))));
+                __builder2.AddAttribute(12, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => Semester.Code));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(17, "\r\n    ");
-                __builder2.AddMarkupContent(18, "<label for=\"date\">Semester Date</label>\r\n    ");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateInputDate_0(__builder2, 19, 20, "date", 21, 
+                __builder2.AddMarkupContent(13, "\r\n    ");
+                __builder2.AddMarkupContent(14, "<label for=\"date\">Semester Date</label>\r\n    ");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateInputDate_0(__builder2, 15, 16, "date", 17, 
 #nullable restore
 #line 17 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                       Semester.Date
@@ -167,15 +163,15 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 22, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Date = __value, Semester.Date)), 23, () => Semester.Date);
-                __builder2.AddMarkupContent(24, "\r\n\r\n    ");
-                __builder2.AddMarkupContent(25, "<button class=\"btn btn-primary\" type=\"submit\">Submit</button>\r\n\r\n");
+                , 18, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Date = __value, Semester.Date)), 19, () => Semester.Date);
+                __builder2.AddMarkupContent(20, "\r\n\r\n    ");
+                __builder2.AddMarkupContent(21, "<button class=\"btn btn-primary\" type=\"submit\">Submit</button>");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(26, "\r\n\r\n");
-            __builder.OpenComponent<MatBlazor.MatButton>(27);
-            __builder.AddAttribute(28, "Outlined", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddMarkupContent(22, "\r\n\r\n");
+            __builder.OpenComponent<MatBlazor.MatButton>(23);
+            __builder.AddAttribute(24, "Outlined", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 23 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                      true
@@ -184,7 +180,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(29, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(25, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 23 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                        e=>openModules()
@@ -193,12 +189,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(30, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddContent(31, "Modules view");
+            __builder.AddAttribute(26, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddContent(27, "Modules view");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(32, "\r\n\r\n\r\n");
 #nullable restore
 #line 26 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
      if (showModuleRunTable)
@@ -208,8 +203,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(33, "        ");
-            __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTable_1(__builder, 34, 35, 
+            __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTable_1(__builder, 28, 29, 
 #nullable restore
 #line 29 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                           Semester.ModuleRuns
@@ -217,20 +211,18 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            , 36, "mat-elevation-z5", 37, "Module-Title", 38, (__builder2) => {
-                __builder2.AddMarkupContent(39, "\r\n\r\n                ");
-                __builder2.AddMarkupContent(40, "<th>Module</th>\r\n                ");
-                __builder2.AddMarkupContent(41, "<th>Module-Title</th>\r\n                ");
-                __builder2.AddMarkupContent(42, "<th>Group</th>\r\n                ");
-                __builder2.AddMarkupContent(43, "<th>Place</th>\r\n                ");
-                __builder2.AddMarkupContent(44, "<th>Total Hours</th>\r\n                ");
-                __builder2.AddMarkupContent(45, "<th>Lecturer</th>\r\n                \r\n                ");
-                __builder2.AddMarkupContent(46, "<th>Actions</th>\r\n\r\n\r\n\r\n            ");
+            , 30, "mat-elevation-z5", 31, "Module-Title", 32, (__builder2) => {
+                __builder2.AddMarkupContent(33, "<th>Module</th>\r\n                ");
+                __builder2.AddMarkupContent(34, "<th>Module-Title</th>\r\n                ");
+                __builder2.AddMarkupContent(35, "<th>Group</th>\r\n                ");
+                __builder2.AddMarkupContent(36, "<th>Place</th>\r\n                ");
+                __builder2.AddMarkupContent(37, "<th>Total Hours</th>\r\n                ");
+                __builder2.AddMarkupContent(38, "<th>Lecturer</th>\r\n                \r\n                ");
+                __builder2.AddMarkupContent(39, "<th>Actions</th>");
             }
-            , 47, (context) => (__builder2) => {
-                __builder2.AddMarkupContent(48, "\r\n\r\n\r\n                ");
-                __builder2.OpenElement(49, "td");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_2(__builder2, 50, 51, 
+            , 40, (context) => (__builder2) => {
+                __builder2.OpenElement(41, "td");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_2(__builder2, 42, 43, 
 #nullable restore
 #line 57 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                Semester.Code
@@ -238,11 +230,11 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 52, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Code = __value, Semester.Code)), 53, () => Semester.Code);
+                , 44, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Code = __value, Semester.Code)), 45, () => Semester.Code);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(54, "\r\n                ");
-                __builder2.OpenElement(55, "td");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_3(__builder2, 56, 57, 
+                __builder2.AddMarkupContent(46, "\r\n                ");
+                __builder2.OpenElement(47, "td");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_3(__builder2, 48, 49, 
 #nullable restore
 #line 58 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                context.Module.Code
@@ -250,11 +242,11 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 58, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Module.Code = __value, context.Module.Code)), 59, () => context.Module.Code);
+                , 50, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Module.Code = __value, context.Module.Code)), 51, () => context.Module.Code);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(60, "\r\n                ");
-                __builder2.OpenElement(61, "td");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_4(__builder2, 62, 63, 
+                __builder2.AddMarkupContent(52, "\r\n                ");
+                __builder2.OpenElement(53, "td");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_4(__builder2, 54, 55, 
 #nullable restore
 #line 59 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                context.Module.Title
@@ -262,11 +254,11 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 64, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Module.Title = __value, context.Module.Title)), 65, () => context.Module.Title);
+                , 56, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Module.Title = __value, context.Module.Title)), 57, () => context.Module.Title);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(66, "\r\n                ");
-                __builder2.OpenElement(67, "td");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_5(__builder2, 68, 69, 
+                __builder2.AddMarkupContent(58, "\r\n                ");
+                __builder2.OpenElement(59, "td");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_5(__builder2, 60, 61, 
 #nullable restore
 #line 60 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                context.Code
@@ -274,11 +266,11 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 70, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Code = __value, context.Code)), 71, () => context.Code);
+                , 62, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Code = __value, context.Code)), 63, () => context.Code);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(72, "\r\n                ");
-                __builder2.OpenElement(73, "td");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_6(__builder2, 74, 75, 
+                __builder2.AddMarkupContent(64, "\r\n                ");
+                __builder2.OpenElement(65, "td");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_6(__builder2, 66, 67, 
 #nullable restore
 #line 61 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                context.Place
@@ -286,11 +278,11 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 76, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Place = __value, context.Place)), 77, () => context.Place);
+                , 68, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Place = __value, context.Place)), 69, () => context.Place);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(78, "\r\n                ");
-                __builder2.OpenElement(79, "td");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_7(__builder2, 80, 81, 
+                __builder2.AddMarkupContent(70, "\r\n                ");
+                __builder2.OpenElement(71, "td");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_7(__builder2, 72, 73, 
 #nullable restore
 #line 62 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                context.Module.TotalHours
@@ -298,13 +290,12 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 82, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Module.TotalHours = __value, context.Module.TotalHours)), 83, () => context.Module.TotalHours);
+                , 74, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Module.TotalHours = __value, context.Module.TotalHours)), 75, () => context.Module.TotalHours);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(84, "\r\n\r\n\r\n                ");
-                __builder2.OpenElement(85, "td");
-                __builder2.AddMarkupContent(86, "\r\n                    ");
-                __builder2.OpenComponent<MatBlazor.MatButton>(87);
-                __builder2.AddAttribute(88, "Raised", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+                __builder2.AddMarkupContent(76, "\r\n\r\n\r\n                ");
+                __builder2.OpenElement(77, "td");
+                __builder2.OpenComponent<MatBlazor.MatButton>(78);
+                __builder2.AddAttribute(79, "Raised", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 66 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                        true
@@ -313,10 +304,9 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(89, "Icon", "add");
-                __builder2.AddAttribute(90, "title", "Add lecturer");
+                __builder2.AddAttribute(80, "Icon", "add");
+                __builder2.AddAttribute(81, "title", "Add lecturer");
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(91, "\r\n");
 #nullable restore
 #line 67 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                      foreach (var mr in context.LecturersMR)
@@ -326,10 +316,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddContent(92, "                        ");
-                __builder2.OpenElement(93, "p");
-                __builder2.AddMarkupContent(94, "\r\n\r\n                            ");
-                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_8(__builder2, 95, 96, 
+                __builder2.OpenElement(82, "p");
+                __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_8(__builder2, 83, 84, 
 #nullable restore
 #line 72 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                                                       mr.Lecturer.FirstName
@@ -337,7 +325,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 97, 
+                , 85, 
 #nullable restore
 #line 72 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                                                                                        true
@@ -345,7 +333,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 98, 
+                , 86, 
 #nullable restore
 #line 72 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                        mr.Lecturer.FirstName
@@ -353,10 +341,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 99, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => mr.Lecturer.FirstName = __value, mr.Lecturer.FirstName)), 100, () => mr.Lecturer.FirstName);
-                __builder2.AddMarkupContent(101, "\r\n\r\n\r\n                        ");
+                , 87, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => mr.Lecturer.FirstName = __value, mr.Lecturer.FirstName)), 88, () => mr.Lecturer.FirstName);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(102, "\r\n");
 #nullable restore
 #line 76 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                         }
@@ -364,14 +350,13 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddMarkupContent(103, "\r\n                ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(104, "\r\n                ");
-                __builder2.OpenElement(105, "td");
-                __builder2.OpenComponent<MatBlazor.MatButton>(106);
-                __builder2.AddAttribute(107, "type", "submit");
-                __builder2.AddAttribute(108, "name", "UpdateMR");
-                __builder2.AddAttribute(109, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                __builder2.AddMarkupContent(89, "\r\n                ");
+                __builder2.OpenElement(90, "td");
+                __builder2.OpenComponent<MatBlazor.MatButton>(91);
+                __builder2.AddAttribute(92, "type", "submit");
+                __builder2.AddAttribute(93, "name", "UpdateMR");
+                __builder2.AddAttribute(94, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 80 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                                        e=>ModuleRunService.UpdateModuleRun(context)
@@ -380,18 +365,18 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(110, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddContent(111, "OK");
+                __builder2.AddAttribute(95, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
+                    __builder3.AddContent(96, "OK");
                 }
                 ));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(112, "\r\n\r\n                ");
-                __builder2.OpenElement(113, "td");
-                __builder2.OpenComponent<MatBlazor.MatButton>(114);
-                __builder2.AddAttribute(115, "Type", "submit");
-                __builder2.AddAttribute(116, "name", "HandleValidSubmit");
-                __builder2.AddAttribute(117, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                __builder2.AddMarkupContent(97, "\r\n\r\n                ");
+                __builder2.OpenElement(98, "td");
+                __builder2.OpenComponent<MatBlazor.MatButton>(99);
+                __builder2.AddAttribute(100, "Type", "submit");
+                __builder2.AddAttribute(101, "name", "HandleValidSubmit");
+                __builder2.AddAttribute(102, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 82 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                                                 HandleValidSubmit
@@ -400,16 +385,14 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(118, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddContent(119, "semester-update-test");
+                __builder2.AddAttribute(103, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
+                    __builder3.AddContent(104, "semester-update-test");
                 }
                 ));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(120, "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n            ");
             }
             );
-            __builder.AddMarkupContent(121, "\r\n");
 #nullable restore
 #line 100 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
   
@@ -419,8 +402,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.OpenComponent<MatBlazor.MatButton>(122);
-            __builder.AddAttribute(123, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.OpenComponent<MatBlazor.MatButton>(105);
+            __builder.AddAttribute(106, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 103 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                     BackHome
@@ -429,15 +412,14 @@ using MatBlazor;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(124, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddContent(125, "Back");
+            __builder.AddAttribute(107, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddContent(108, "Back");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(126, "\r\n");
-            __builder.OpenElement(127, "p");
-            __builder.AddMarkupContent(128, "\r\n    ");
-            __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_9(__builder, 129, 130, "Standard", 131, 
+            __builder.AddMarkupContent(109, "\r\n");
+            __builder.OpenElement(110, "p");
+            __Blazor.Plana.Web.Pages.semester.TryBlazor.TypeInference.CreateMatTextField_9(__builder, 111, 112, "Standard", 113, 
 #nullable restore
 #line 105 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                                                           true
@@ -445,7 +427,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            , 132, 
+            , 114, 
 #nullable restore
 #line 105 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\TryBlazor.razor"
                                 Semester.Code
@@ -453,8 +435,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            , 133, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Code = __value, Semester.Code)), 134, () => Semester.Code);
-            __builder.AddMarkupContent(135, "\r\n");
+            , 115, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Semester.Code = __value, Semester.Code)), 116, () => Semester.Code);
             __builder.CloseElement();
         }
         #pragma warning restore 1998

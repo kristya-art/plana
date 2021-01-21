@@ -108,12 +108,10 @@ using MatBlazor;
 #nullable disable
             __builder.OpenComponent<Plana.Web.Pages.lecturer.TableTemplate>(0);
             __builder.AddAttribute(1, "Header", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(2, "\r\n        ");
-                __builder2.AddMarkupContent(3, "<tr><th>ID</th><th>Name</th><th>Module Name</th><th>Module Code</th></tr>\r\n    ");
+                __builder2.AddMarkupContent(2, "<tr><th>ID</th><th>Name</th><th>Module Name</th><th>Module Code</th></tr>");
             }
             ));
-            __builder.AddAttribute(4, "Body", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(5, "\r\n\r\n\r\n");
+            __builder.AddAttribute(3, "Body", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
 #nullable restore
 #line 12 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
          foreach (Lecturer l in Lecturers)
@@ -123,9 +121,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddContent(6, "            ");
-                __builder2.OpenElement(7, "tr");
-                __builder2.AddAttribute(8, "class", 
+                __builder2.OpenElement(4, "tr");
+                __builder2.AddAttribute(5, "class", 
 #nullable restore
 #line 15 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                         GetClass(l.LastName)
@@ -134,9 +131,8 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddMarkupContent(9, "\r\n                ");
-                __builder2.OpenElement(10, "td");
-                __builder2.AddContent(11, 
+                __builder2.OpenElement(6, "td");
+                __builder2.AddContent(7, 
 #nullable restore
 #line 16 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                      l.Id
@@ -146,9 +142,9 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(12, "\r\n                ");
-                __builder2.OpenElement(13, "td");
-                __builder2.AddContent(14, 
+                __builder2.AddMarkupContent(8, "\r\n                ");
+                __builder2.OpenElement(9, "td");
+                __builder2.AddContent(10, 
 #nullable restore
 #line 17 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                      l.LastName
@@ -158,7 +154,6 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(15, "\r\n");
 #nullable restore
 #line 18 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                  foreach (var lm in l.LecturersModules)
@@ -167,9 +162,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddContent(16, "                ");
-                __builder2.OpenElement(17, "td");
-                __builder2.AddContent(18, 
+                __builder2.OpenElement(11, "td");
+                __builder2.AddContent(12, 
 #nullable restore
 #line 20 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                      lm.Module.Title
@@ -179,9 +173,9 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(19, "\r\n                ");
-                __builder2.OpenElement(20, "td");
-                __builder2.AddContent(21, 
+                __builder2.AddMarkupContent(13, "\r\n                ");
+                __builder2.OpenElement(14, "td");
+                __builder2.AddContent(15, 
 #nullable restore
 #line 21 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                      lm.Module.Code
@@ -191,7 +185,6 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(22, "\r\n");
 #nullable restore
 #line 22 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                 }
@@ -199,9 +192,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddContent(23, "            ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(24, "\r\n");
 #nullable restore
 #line 24 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
         }
@@ -209,19 +200,17 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddMarkupContent(25, "\r\n\r\n\r\n    ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(26, "\r\n");
-            __builder.OpenElement(27, "div");
-            __builder.AddAttribute(28, "class", "form-group");
-            __builder.AddMarkupContent(29, "\r\n    ");
-            __builder.AddMarkupContent(30, "<label for\"name\">Name</label>\r\n    ");
-            __builder.OpenElement(31, "select");
-            __builder.AddAttribute(32, "name", "name");
-            __builder.AddAttribute(33, "class", "form-control");
-            __builder.AddAttribute(34, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
+            __builder.AddMarkupContent(16, "\r\n");
+            __builder.OpenElement(17, "div");
+            __builder.AddAttribute(18, "class", "form-group");
+            __builder.AddMarkupContent(19, "<label for\"name\">Name</label>\r\n    ");
+            __builder.OpenElement(20, "select");
+            __builder.AddAttribute(21, "name", "name");
+            __builder.AddAttribute(22, "class", "form-control");
+            __builder.AddAttribute(23, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
 #line 36 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                                                     SelectedName
@@ -230,15 +219,13 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(35, "onchange", Microsoft.AspNetCore.Components.EventCallback.Factory.CreateBinder(this, __value => SelectedName = __value, SelectedName));
+            __builder.AddAttribute(24, "onchange", Microsoft.AspNetCore.Components.EventCallback.Factory.CreateBinder(this, __value => SelectedName = __value, SelectedName));
             __builder.SetUpdatesAttributeName("value");
-            __builder.AddMarkupContent(36, "\r\n        ");
-            __builder.OpenElement(37, "option");
-            __builder.AddAttribute(38, "disabled", true);
-            __builder.AddAttribute(39, "selected", true);
-            __builder.AddContent(40, "Select Name");
+            __builder.OpenElement(25, "option");
+            __builder.AddAttribute(26, "disabled", true);
+            __builder.AddAttribute(27, "selected", true);
+            __builder.AddContent(28, "Select Name");
             __builder.CloseElement();
-            __builder.AddMarkupContent(41, "\r\n\r\n");
 #nullable restore
 #line 39 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
          foreach (string name in Names)
@@ -247,9 +234,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(42, "            ");
-            __builder.OpenElement(43, "option");
-            __builder.AddAttribute(44, "value", 
+            __builder.OpenElement(29, "option");
+            __builder.AddAttribute(30, "value", 
 #nullable restore
 #line 41 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                             name
@@ -258,7 +244,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddAttribute(45, "selected", 
+            __builder.AddAttribute(31, "selected", 
 #nullable restore
 #line 41 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                                               name == SelectedName
@@ -267,8 +253,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(46, "\r\n                ");
-            __builder.AddContent(47, 
+            __builder.AddContent(32, 
 #nullable restore
 #line 42 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
                  name
@@ -277,9 +262,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(48, "\r\n            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(49, "\r\n");
 #nullable restore
 #line 44 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\LecturerView.razor"
         }
@@ -287,9 +270,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(50, "    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(51, "\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

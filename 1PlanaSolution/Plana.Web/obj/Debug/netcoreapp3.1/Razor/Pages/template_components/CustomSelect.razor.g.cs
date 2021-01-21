@@ -120,7 +120,6 @@ using MatBlazor;
             ));
             __builder.AddAttribute(3, "onchange", Microsoft.AspNetCore.Components.EventCallback.Factory.CreateBinder(this, __value => SelectedPlan.Id = __value, SelectedPlan.Id));
             __builder.SetUpdatesAttributeName("value");
-            __builder.AddMarkupContent(4, "\r\n\r\n");
 #nullable restore
 #line 8 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
      foreach (var plan in Plans)
@@ -129,9 +128,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(5, "      ");
-            __builder.OpenElement(6, "option");
-            __builder.AddAttribute(7, "value", 
+            __builder.OpenElement(4, "option");
+            __builder.AddAttribute(5, "value", 
 #nullable restore
 #line 10 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                       plan.Id
@@ -140,8 +138,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(8, "\r\n            ");
-            __builder.AddContent(9, 
+            __builder.AddContent(6, 
 #nullable restore
 #line 11 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
              plan.Year
@@ -150,9 +147,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(10, "\r\n      ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(11, "\r\n");
 #nullable restore
 #line 13 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
     }
@@ -160,11 +155,10 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(12, "   ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(13, "\r\n\r\n\r\n\r\n");
-            __builder.OpenComponent<MatBlazor.MatFAB>(14);
-            __builder.AddAttribute(15, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddMarkupContent(7, "\r\n\r\n\r\n\r\n");
+            __builder.OpenComponent<MatBlazor.MatFAB>(8);
+            __builder.AddAttribute(9, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 18 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                MatIconNames.Add
@@ -173,7 +167,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(16, "Label", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(10, "Label", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 18 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                                          SelectedPlan.Year
@@ -182,10 +176,9 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(17, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(18, "\r\n\r\n    ");
-                __builder2.OpenElement(19, "a");
-                __builder2.AddAttribute(20, "href", 
+            __builder.AddAttribute(11, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.OpenElement(12, "a");
+                __builder2.AddAttribute(13, "href", 
 #nullable restore
 #line 20 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                $"/editplan/{SelectedPlan.Id}"
@@ -194,13 +187,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddContent(21, "show");
+                __builder2.AddContent(14, "show");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(22, "\r\n");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(23, "\r\n\r\n");
 #nullable restore
 #line 23 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
  if (Plans == null)
@@ -209,7 +200,6 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(24, "\r\n");
 #nullable restore
 #line 26 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
  foreach (var plan in Plans)
@@ -218,9 +208,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(25, "    ");
-            __builder.OpenComponent<MatBlazor.MatFAB>(26);
-            __builder.AddAttribute(27, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.OpenComponent<MatBlazor.MatFAB>(15);
+            __builder.AddAttribute(16, "Icon", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 28 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                    MatIconNames.Add
@@ -229,7 +218,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(28, "Label", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(17, "Label", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 28 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                                              plan.Year
@@ -238,10 +227,9 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(29, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(30, "\r\n\r\n        ");
-                __builder2.OpenElement(31, "a");
-                __builder2.AddAttribute(32, "href", 
+            __builder.AddAttribute(18, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.OpenElement(19, "a");
+                __builder2.AddAttribute(20, "href", 
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                    $"/editplan/{plan.Id}"
@@ -250,7 +238,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddContent(33, 
+                __builder2.AddContent(21, 
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
                                              plan.Year
@@ -260,11 +248,9 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(34, "\r\n    ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(35, "\r\n");
 #nullable restore
 #line 32 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\template_components\CustomSelect.razor"
 
@@ -273,8 +259,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(36, "\r\n\r\n\r\n");
-            __builder.AddMarkupContent(37, "<style>\r\n    .customS {\r\n        display: table-cell;\r\n        vertical-align: middle;\r\n        height: 50px;\r\n        border: 1px solid #354496;\r\n    }\r\n</style>");
+            __builder.AddMarkupContent(22, "<style>\r\n    .customS {\r\n        display: table-cell;\r\n        vertical-align: middle;\r\n        height: 50px;\r\n        border: 1px solid #354496;\r\n    }\r\n</style>");
         }
         #pragma warning restore 1998
 #nullable restore

@@ -114,11 +114,10 @@ using Plana.Web.Pages.plan.study_director;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(0, "\r\n\r\n");
-            __builder.AddMarkupContent(1, "<h3>EditPlan</h3>\r\n");
-            __builder.OpenElement(2, "button");
-            __builder.AddAttribute(3, "class", "btn btn-primary");
-            __builder.AddAttribute(4, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(0, "<h3>EditPlan</h3>\r\n");
+            __builder.OpenElement(1, "button");
+            __builder.AddAttribute(2, "class", "btn btn-primary");
+            __builder.AddAttribute(3, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 16 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                           CallJSMethod
@@ -127,11 +126,11 @@ using Plana.Web.Pages.plan.study_director;
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(5, "show");
+            __builder.AddContent(4, "show");
             __builder.CloseElement();
-            __builder.AddMarkupContent(6, "\r\n");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(7);
-            __builder.AddAttribute(8, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddMarkupContent(5, "\r\n");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(6);
+            __builder.AddAttribute(7, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 17 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                   Plan
@@ -140,7 +139,7 @@ using Plana.Web.Pages.plan.study_director;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(9, "OnInvalidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(8, "OnInvalidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 17 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                          HandleValidSubmit
@@ -149,14 +148,12 @@ using Plana.Web.Pages.plan.study_director;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(10, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
-                __builder2.AddMarkupContent(11, "\r\n    ");
-                __builder2.OpenElement(12, "div");
-                __builder2.AddAttribute(13, "class", "form-group row");
-                __builder2.AddMarkupContent(14, "\r\n\r\n        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(15);
-                __builder2.AddAttribute(16, "id", "year");
-                __builder2.AddAttribute(17, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(9, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
+                __builder2.OpenElement(10, "div");
+                __builder2.AddAttribute(11, "class", "form-group row");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(12);
+                __builder2.AddAttribute(13, "id", "year");
+                __builder2.AddAttribute(14, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 20 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                           Plan.Year
@@ -165,16 +162,14 @@ using Plana.Web.Pages.plan.study_director;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(18, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Plan.Year = __value, Plan.Year))));
-                __builder2.AddAttribute(19, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => Plan.Year));
+                __builder2.AddAttribute(15, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => Plan.Year = __value, Plan.Year))));
+                __builder2.AddAttribute(16, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => Plan.Year));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(20, "\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(21, "\r\n\r\n\r\n\r\n\r\n\r\n    table\r\n\r\n");
+                __builder2.AddMarkupContent(17, "\r\n\r\n\r\n\r\n\r\n\r\n    table\r\n");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(22, "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
 #nullable restore
 #line 102 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
  if (Plan == null)
@@ -184,7 +179,7 @@ using Plana.Web.Pages.plan.study_director;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(23, "Loading...");
+            __builder.AddContent(18, "Loading...");
 #nullable restore
 #line 104 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                            
@@ -197,15 +192,9 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(24, "    ");
-            __builder.OpenElement(25, "table");
-            __builder.AddAttribute(26, "class", "table");
-            __builder.AddMarkupContent(27, "\r\n        ");
-            __builder.AddMarkupContent(28, @"<thead>
-            <tr>
-
-
-                <th>Semester</th>
+            __builder.OpenElement(19, "table");
+            __builder.AddAttribute(20, "class", "table");
+            __builder.AddMarkupContent(21, @"<thead><tr><th>Semester</th>
                 <th>Module</th>
                 <th>Module Title</th>
                 <th>Module-Group</th>
@@ -215,13 +204,9 @@ else
                 <th>Lecturers</th>
                 <th>Set Lecturers hours</th>
                 <th>Actions</th>
-                <th>notes</th>
-            </tr>
-
-        </thead>
+                <th>notes</th></tr></thead>
         ");
-            __builder.OpenElement(29, "tbody");
-            __builder.AddMarkupContent(30, "\r\n\r\n");
+            __builder.OpenElement(22, "tbody");
 #nullable restore
 #line 131 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
              if (Semesters != null)
@@ -261,14 +246,10 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(31, "                            ");
-            __builder.OpenElement(32, "tr");
-            __builder.AddMarkupContent(33, "\r\n                                ");
-            __builder.OpenElement(34, "td");
-            __builder.AddMarkupContent(35, "\r\n\r\n                                    ");
-            __builder.OpenElement(36, "button");
-            __builder.AddMarkupContent(37, "\r\n                                        ");
-            __builder.AddContent(38, 
+            __builder.OpenElement(23, "tr");
+            __builder.OpenElement(24, "td");
+            __builder.OpenElement(25, "button");
+            __builder.AddContent(26, 
 #nullable restore
 #line 147 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                          mr.Module.Title
@@ -277,18 +258,12 @@ else
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(39, "\r\n                                    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(40, "\r\n\r\n                                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(41, "\r\n                            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(42, "\r\n");
-            __builder.AddContent(43, "                            ");
-            __builder.OpenElement(44, "tr");
-            __builder.AddMarkupContent(45, "\r\n                                ");
-            __builder.OpenElement(46, "td");
-            __builder.AddContent(47, 
+            __builder.OpenElement(27, "tr");
+            __builder.OpenElement(28, "td");
+            __builder.AddContent(29, 
 #nullable restore
 #line 154 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                      sem.GetAbbreviation()
@@ -298,10 +273,10 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(48, "\r\n\r\n                                ");
-            __builder.OpenElement(49, "td");
-            __builder.AddAttribute(50, "contenteditable", "false");
-            __builder.AddContent(51, 
+            __builder.AddMarkupContent(30, "\r\n\r\n                                ");
+            __builder.OpenElement(31, "td");
+            __builder.AddAttribute(32, "contenteditable", "false");
+            __builder.AddContent(33, 
 #nullable restore
 #line 156 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                                              mr.Module.Code
@@ -311,9 +286,9 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(52, "\r\n                                ");
-            __builder.OpenElement(53, "td");
-            __builder.AddContent(54, 
+            __builder.AddMarkupContent(34, "\r\n                                ");
+            __builder.OpenElement(35, "td");
+            __builder.AddContent(36, 
 #nullable restore
 #line 157 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                      mr.Module.Title
@@ -323,9 +298,9 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(55, "\r\n                                ");
-            __builder.OpenElement(56, "td");
-            __builder.AddContent(57, 
+            __builder.AddMarkupContent(37, "\r\n                                ");
+            __builder.OpenElement(38, "td");
+            __builder.AddContent(39, 
 #nullable restore
 #line 158 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                      mr.ModuleGroup
@@ -335,9 +310,9 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(58, "\r\n                                ");
-            __builder.OpenElement(59, "td");
-            __builder.AddContent(60, 
+            __builder.AddMarkupContent(40, "\r\n                                ");
+            __builder.OpenElement(41, "td");
+            __builder.AddContent(42, 
 #nullable restore
 #line 159 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                      mr.Place
@@ -347,9 +322,9 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(61, "\r\n                                ");
-            __builder.OpenElement(62, "td");
-            __builder.AddContent(63, 
+            __builder.AddMarkupContent(43, "\r\n                                ");
+            __builder.OpenElement(44, "td");
+            __builder.AddContent(45, 
 #nullable restore
 #line 160 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                      mr.Module.TotalHours
@@ -359,9 +334,8 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(64, "\r\n                                ");
-            __builder.OpenElement(65, "td");
-            __builder.AddMarkupContent(66, "\r\n\r\n");
+            __builder.AddMarkupContent(46, "\r\n                                ");
+            __builder.OpenElement(47, "td");
 #nullable restore
 #line 163 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                      if (mr.ModuleRunLecturerGroups != null)
@@ -380,11 +354,9 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(67, "                                            ");
-            __builder.OpenElement(68, "p");
-            __builder.AddAttribute(69, "style", "white-space:nowrap;");
-            __builder.AddMarkupContent(70, "\r\n                                                ");
-            __builder.AddContent(71, 
+            __builder.OpenElement(48, "p");
+            __builder.AddAttribute(49, "style", "white-space:nowrap;");
+            __builder.AddContent(50, 
 #nullable restore
 #line 169 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                                  lg.LecturerGroup.Title
@@ -393,10 +365,9 @@ else
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(72, "\r\n                                                ");
-            __builder.AddMarkupContent(73, "<button class=\"btn\" id=\"del\"><i class=\"fa fa-close\"></i></button>\r\n                                            ");
+            __builder.AddMarkupContent(51, "\r\n                                                ");
+            __builder.AddMarkupContent(52, "<button class=\"btn\" id=\"del\"><i class=\"fa fa-close\"></i></button>");
             __builder.CloseElement();
-            __builder.AddMarkupContent(74, "\r\n");
 #nullable restore
 #line 172 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                         }
@@ -412,10 +383,8 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(75, "                                    ");
-            __builder.AddMarkupContent(76, "<button class=\"btn\" id=\"add\"><i class=\"fa fa-plus\"></i></button>\r\n                                ");
+            __builder.AddMarkupContent(53, "<button class=\"btn\" id=\"add\"><i class=\"fa fa-plus\"></i></button>");
             __builder.CloseElement();
-            __builder.AddMarkupContent(77, "\r\n\r\n");
 #nullable restore
 #line 177 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                  if (mr.LecturersMR != null)
@@ -425,13 +394,10 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(78, "                                    ");
-            __builder.OpenElement(79, "td");
-            __builder.AddAttribute(80, "style", "white-space:nowrap;");
-            __builder.AddMarkupContent(81, "\r\n\r\n                                        ");
-            __builder.OpenElement(82, "div");
-            __builder.AddAttribute(83, "id", "scroll");
-            __builder.AddMarkupContent(84, "\r\n");
+            __builder.OpenElement(54, "td");
+            __builder.AddAttribute(55, "style", "white-space:nowrap;");
+            __builder.OpenElement(56, "div");
+            __builder.AddAttribute(57, "id", "scroll");
 #nullable restore
 #line 183 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                              foreach (var lm in mr.LecturersMR)
@@ -440,11 +406,9 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(85, "                                                ");
-            __builder.OpenElement(86, "p");
-            __builder.AddAttribute(87, "style", "white-space:nowrap;");
-            __builder.AddMarkupContent(88, "\r\n                                                    ");
-            __builder.AddContent(89, 
+            __builder.OpenElement(58, "p");
+            __builder.AddAttribute(59, "style", "white-space:nowrap;");
+            __builder.AddContent(60, 
 #nullable restore
 #line 186 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                                      lm.Lecturer.SetToken()
@@ -453,8 +417,8 @@ else
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(90, " | ");
-            __builder.AddContent(91, 
+            __builder.AddContent(61, " | ");
+            __builder.AddContent(62, 
 #nullable restore
 #line 186 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                                                                lm.Hours
@@ -463,10 +427,9 @@ else
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(92, "\r\n                                                    ");
-            __builder.AddMarkupContent(93, "<button class=\"btn\" id=\"del\"><i class=\"fa fa-close\"></i></button>\r\n                                                ");
+            __builder.AddMarkupContent(63, "\r\n                                                    ");
+            __builder.AddMarkupContent(64, "<button class=\"btn\" id=\"del\"><i class=\"fa fa-close\"></i></button>");
             __builder.CloseElement();
-            __builder.AddMarkupContent(94, "\r\n");
 #nullable restore
 #line 189 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
 
@@ -476,15 +439,12 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(95, "                                            ");
-            __builder.AddMarkupContent(96, "<button class=\"btn\" id=\"add\"><i class=\"fa fa-plus\"></i></button>\r\n                                        ");
+            __builder.AddMarkupContent(65, "<button class=\"btn\" id=\"add\"><i class=\"fa fa-plus\"></i></button>");
             __builder.CloseElement();
-            __builder.AddMarkupContent(97, "\r\n                                    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(98, "\r\n                                    ");
-            __builder.OpenElement(99, "td");
-            __builder.AddAttribute(100, "contenteditable", "true");
-            __builder.AddMarkupContent(101, "\r\n");
+            __builder.AddMarkupContent(66, "\r\n                                    ");
+            __builder.OpenElement(67, "td");
+            __builder.AddAttribute(68, "contenteditable", "true");
 #nullable restore
 #line 196 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                          foreach (var lm in mr.LecturersMR)
@@ -494,11 +454,9 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(102, "                                            ");
-            __builder.OpenElement(103, "p");
-            __builder.AddAttribute(104, "contenteditable", "true");
-            __builder.AddContent(105, " ");
-            __builder.AddContent(106, 
+            __builder.OpenElement(69, "p");
+            __builder.AddAttribute(70, "contenteditable", "true");
+            __builder.AddContent(71, 
 #nullable restore
 #line 199 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                                                         lm.Hours
@@ -508,7 +466,6 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(107, "\r\n");
 #nullable restore
 #line 200 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
 
@@ -517,9 +474,7 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(108, "                                    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(109, "\r\n");
 #nullable restore
 #line 203 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                 }
@@ -527,15 +482,13 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(110, "                                ");
-            __builder.OpenElement(111, "td");
-            __builder.AddAttribute(112, "style", "white-space:nowrap;");
-            __builder.AddMarkupContent(113, "\r\n                                    ");
-            __builder.OpenElement(114, "button");
-            __builder.AddAttribute(115, "class", "btn");
-            __builder.AddAttribute(116, "disabled", true);
-            __builder.AddAttribute(117, "id", "edit-btn");
-            __builder.AddAttribute(118, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.OpenElement(72, "td");
+            __builder.AddAttribute(73, "style", "white-space:nowrap;");
+            __builder.OpenElement(74, "button");
+            __builder.AddAttribute(75, "class", "btn");
+            __builder.AddAttribute(76, "disabled", true);
+            __builder.AddAttribute(77, "id", "edit-btn");
+            __builder.AddAttribute(78, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 205 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                                                                          HandleValidSubmit
@@ -544,14 +497,14 @@ else
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(119, "edit");
+            __builder.AddContent(79, "edit");
             __builder.CloseElement();
-            __builder.AddMarkupContent(120, "\r\n                                    ");
-            __builder.OpenElement(121, "button");
-            __builder.AddAttribute(122, "class", "btn");
-            __builder.AddAttribute(123, "hidden", true);
-            __builder.AddAttribute(124, "id", "save-btn");
-            __builder.AddAttribute(125, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(80, "\r\n                                    ");
+            __builder.OpenElement(81, "button");
+            __builder.AddAttribute(82, "class", "btn");
+            __builder.AddAttribute(83, "hidden", true);
+            __builder.AddAttribute(84, "id", "save-btn");
+            __builder.AddAttribute(85, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 206 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
                                                                                        HandleValidSubmit
@@ -560,14 +513,12 @@ else
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(126, "save");
+            __builder.AddContent(86, "save");
             __builder.CloseElement();
-            __builder.AddMarkupContent(127, "\r\n\r\n                                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(128, "\r\n                                ");
-            __builder.AddMarkupContent(129, "<td><textarea>...</textarea></td>\r\n\r\n\r\n                            ");
+            __builder.AddMarkupContent(87, "\r\n                                ");
+            __builder.AddMarkupContent(88, "<td><textarea>...</textarea></td>");
             __builder.CloseElement();
-            __builder.AddMarkupContent(130, "\r\n");
 #nullable restore
 #line 219 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
 
@@ -605,11 +556,8 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(131, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(132, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(133, "\r\n");
 #nullable restore
 #line 233 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\plan\study_director\EditPlan.razor"
 
@@ -622,31 +570,23 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(134, @"<div id=""accordion"">
-    <h3>Asp.net</h3>
-    <div>
-        <p>
+            __builder.AddMarkupContent(89, @"<div id=""accordion""><h3>Asp.net</h3>
+    <div><p>
             Microsoft ASP.NET is a set of technologies....
-        </p>
-    </div>
+        </p></div>
     <h3>Asp.NET.MVC</h3>
-    <div>
-        <p>
+    <div><p>
             Microsoft ASP.NET is a set of technologies....
-        </p>
-    </div>
+        </p></div>
     <h3>JavaScript</h3>
-    <div>
-        <p>
+    <div><p>
             Microsoft ASP.NET is a set of technologies....
-        </p>
-    </div>
-</div>
+        </p></div></div>
 
 ");
-            __builder.AddMarkupContent(135, "<div class=\"jquery-btn\">\r\n    <button>Click Me</button>\r\n</div>\r\n\r\n<br>\r\n");
-            __builder.AddMarkupContent(136, "<p>Clicked: <span class=\"click-count\">0</span></p>\r\n\r\n<br>\r\n\r\n\r\n\r\n\r\n\r\n");
-            __builder.AddMarkupContent(137, @"<style>
+            __builder.AddMarkupContent(90, "<div class=\"jquery-btn\"><button>Click Me</button></div>\r\n\r\n<br>\r\n");
+            __builder.AddMarkupContent(91, "<p>Clicked: <span class=\"click-count\">0</span></p>\r\n\r\n<br>\r\n\r\n\r\n\r\n\r\n\r\n");
+            __builder.AddMarkupContent(92, @"<style>
     .table {
         font-family: 'ArialMT', 'Arial';
         font-weight: 400;

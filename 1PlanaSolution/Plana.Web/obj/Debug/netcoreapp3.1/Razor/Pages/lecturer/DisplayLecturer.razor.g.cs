@@ -101,12 +101,10 @@ using MatBlazor;
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "card m-3");
             __builder.AddAttribute(2, "style", "min-width: 18rem; max-width: 30.5%;");
-            __builder.AddMarkupContent(3, "\r\n        ");
-            __builder.OpenElement(4, "div");
-            __builder.AddAttribute(5, "class", "card-header");
-            __builder.AddMarkupContent(6, "\r\n            ");
-            __builder.OpenElement(7, "h3");
-            __builder.AddContent(8, 
+            __builder.OpenElement(3, "div");
+            __builder.AddAttribute(4, "class", "card-header");
+            __builder.OpenElement(5, "h3");
+            __builder.AddContent(6, 
 #nullable restore
 #line 6 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
                  Lecturer.FirstName
@@ -115,8 +113,8 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(9, " ");
-            __builder.AddContent(10, 
+            __builder.AddContent(7, " ");
+            __builder.AddContent(8, 
 #nullable restore
 #line 6 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
                                      Lecturer.LastName
@@ -126,12 +124,11 @@ using MatBlazor;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(11, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(12, "\r\n        ");
-            __builder.OpenElement(13, "img");
-            __builder.AddAttribute(14, "class", "card-img-top imageThumbnail");
-            __builder.AddAttribute(15, "src", 
+            __builder.AddMarkupContent(9, "\r\n        ");
+            __builder.OpenElement(10, "img");
+            __builder.AddAttribute(11, "class", "card-img-top imageThumbnail");
+            __builder.AddAttribute(12, "src", 
 #nullable restore
 #line 8 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
                                                        Lecturer.PhotoPath
@@ -141,7 +138,6 @@ using MatBlazor;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(16, "\r\n\r\n");
 #nullable restore
 #line 10 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
          if (ShowFooter)
@@ -150,12 +146,10 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(17, "            ");
-            __builder.OpenElement(18, "div");
-            __builder.AddAttribute(19, "class", "card-footer text-center");
-            __builder.AddMarkupContent(20, "\r\n                ");
-            __builder.OpenElement(21, "a");
-            __builder.AddAttribute(22, "href", 
+            __builder.OpenElement(13, "div");
+            __builder.AddAttribute(14, "class", "card-footer text-center");
+            __builder.OpenElement(15, "a");
+            __builder.AddAttribute(16, "href", 
 #nullable restore
 #line 13 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
                            $"lecturerdetails/{Lecturer.Id}"
@@ -164,12 +158,12 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddAttribute(23, "class", "btn btn-primary m-1");
-            __builder.AddContent(24, "View");
+            __builder.AddAttribute(17, "class", "btn btn-primary m-1");
+            __builder.AddContent(18, "View");
             __builder.CloseElement();
-            __builder.AddMarkupContent(25, "\r\n\r\n                ");
-            __builder.OpenElement(26, "a");
-            __builder.AddAttribute(27, "href", 
+            __builder.AddMarkupContent(19, "\r\n\r\n                ");
+            __builder.OpenElement(20, "a");
+            __builder.AddAttribute(21, "href", 
 #nullable restore
 #line 16 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
                            $"editlecturer/{Lecturer.Id}"
@@ -178,14 +172,14 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddAttribute(28, "class", "btn btn-primary m-1");
-            __builder.AddContent(29, "Edit");
+            __builder.AddAttribute(22, "class", "btn btn-primary m-1");
+            __builder.AddContent(23, "Edit");
             __builder.CloseElement();
-            __builder.AddMarkupContent(30, "\r\n\r\n                ");
-            __builder.OpenElement(31, "button");
-            __builder.AddAttribute(32, "type", "button");
-            __builder.AddAttribute(33, "class", " btn btn-danger ");
-            __builder.AddAttribute(34, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(24, "\r\n\r\n                ");
+            __builder.OpenElement(25, "button");
+            __builder.AddAttribute(26, "type", "button");
+            __builder.AddAttribute(27, "class", " btn btn-danger ");
+            __builder.AddAttribute(28, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 19 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
                                                                          Soft_delete
@@ -194,11 +188,9 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(35, "Delete");
+            __builder.AddContent(29, "Delete");
             __builder.CloseElement();
-            __builder.AddMarkupContent(36, "\r\n            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(37, "\r\n");
 #nullable restore
 #line 21 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\DisplayLecturer.razor"
         }
@@ -206,7 +198,6 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(38, "    ");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

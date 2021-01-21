@@ -131,26 +131,18 @@ using MatBlazor;
             __builder.AddContent(12, "Open Collapsible");
             __builder.CloseElement();
             __builder.AddMarkupContent(13, "\r\n");
-            __builder.AddMarkupContent(14, @"<div class=""content"">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
+            __builder.AddMarkupContent(14, @"<div class=""content""><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
 
 ");
             __builder.AddMarkupContent(15, "<p>Collapsible Set:</p>\r\n");
             __builder.AddMarkupContent(16, "<button type=\"button\" class=\"collapsible\">Open Section 1</button>\r\n");
-            __builder.AddMarkupContent(17, @"<div class=""content"">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
+            __builder.AddMarkupContent(17, @"<div class=""content""><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
 ");
             __builder.AddMarkupContent(18, "<button type=\"button\" class=\"collapsible\">Open Section 2</button>\r\n");
-            __builder.AddMarkupContent(19, @"<div class=""content"">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
+            __builder.AddMarkupContent(19, @"<div class=""content""><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
 ");
             __builder.AddMarkupContent(20, "<button type=\"button\" class=\"collapsible\">Open Section 3</button>\r\n");
-            __builder.AddMarkupContent(21, @"<div class=""content"">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
+            __builder.AddMarkupContent(21, @"<div class=""content""><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
 
 
 

@@ -120,12 +120,11 @@ using MatBlazor;
 #nullable disable
             )));
             __builder.AddAttribute(3, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
-                __builder2.AddMarkupContent(4, "\r\n    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(5);
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(4);
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(6, "\r\n    ");
-                __builder2.OpenElement(7, "h3");
-                __builder2.AddContent(8, 
+                __builder2.AddMarkupContent(5, "\r\n    ");
+                __builder2.OpenElement(6, "h3");
+                __builder2.AddContent(7, 
 #nullable restore
 #line 10 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
          PageHeaderText
@@ -135,22 +134,20 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(9, "\r\n    <hr>\r\n    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.ValidationSummary>(10);
+                __builder2.AddMarkupContent(8, "\r\n    <hr>\r\n    ");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.ValidationSummary>(9);
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(11, "\r\n    ");
-                __builder2.OpenElement(12, "div");
-                __builder2.AddAttribute(13, "class", "form-group row");
-                __builder2.AddMarkupContent(14, "\r\n        ");
-                __builder2.AddMarkupContent(15, "<label for=\"firstname\" class=\"col-sm-2 col-form-label\">\r\n            First Name\r\n        </label>\r\n        ");
-                __builder2.OpenElement(16, "div");
-                __builder2.AddAttribute(17, "class", "col-sm-10");
-                __builder2.AddMarkupContent(18, "\r\n            ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(19);
-                __builder2.AddAttribute(20, "id", "firstName");
-                __builder2.AddAttribute(21, "class", "form-control");
-                __builder2.AddAttribute(22, "placeholder", "First Name");
-                __builder2.AddAttribute(23, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddMarkupContent(10, "\r\n    ");
+                __builder2.OpenElement(11, "div");
+                __builder2.AddAttribute(12, "class", "form-group row");
+                __builder2.AddMarkupContent(13, "<label for=\"firstname\" class=\"col-sm-2 col-form-label\">\r\n            First Name\r\n        </label>\r\n        ");
+                __builder2.OpenElement(14, "div");
+                __builder2.AddAttribute(15, "class", "col-sm-10");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(16);
+                __builder2.AddAttribute(17, "id", "firstName");
+                __builder2.AddAttribute(18, "class", "form-control");
+                __builder2.AddAttribute(19, "placeholder", "First Name");
+                __builder2.AddAttribute(20, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 19 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                     EditLecturerModel.FirstName
@@ -159,11 +156,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(24, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.FirstName = __value, EditLecturerModel.FirstName))));
-                __builder2.AddAttribute(25, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.FirstName));
+                __builder2.AddAttribute(21, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.FirstName = __value, EditLecturerModel.FirstName))));
+                __builder2.AddAttribute(22, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.FirstName));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(26, "\r\n            ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_0(__builder2, 27, 28, 
+                __builder2.AddMarkupContent(23, "\r\n            ");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_0(__builder2, 24, 25, 
 #nullable restore
 #line 20 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                       () => EditLecturerModel.FirstName
@@ -172,23 +169,19 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddMarkupContent(29, "\r\n        ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(30, "\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(31, "\r\n    ");
-                __builder2.OpenElement(32, "div");
-                __builder2.AddAttribute(33, "class", "form-group row");
-                __builder2.AddMarkupContent(34, "\r\n        ");
-                __builder2.AddMarkupContent(35, "<label for=\"lastname\" class=\"col-sm-2 col-form-label\">\r\n            Last Name\r\n        </label>\r\n        ");
-                __builder2.OpenElement(36, "div");
-                __builder2.AddAttribute(37, "class", "col-sm-10");
-                __builder2.AddMarkupContent(38, "\r\n            ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(39);
-                __builder2.AddAttribute(40, "id", "lastName");
-                __builder2.AddAttribute(41, "class", "form-control");
-                __builder2.AddAttribute(42, "placeholder", "Last Name");
-                __builder2.AddAttribute(43, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddMarkupContent(26, "\r\n    ");
+                __builder2.OpenElement(27, "div");
+                __builder2.AddAttribute(28, "class", "form-group row");
+                __builder2.AddMarkupContent(29, "<label for=\"lastname\" class=\"col-sm-2 col-form-label\">\r\n            Last Name\r\n        </label>\r\n        ");
+                __builder2.OpenElement(30, "div");
+                __builder2.AddAttribute(31, "class", "col-sm-10");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(32);
+                __builder2.AddAttribute(33, "id", "lastName");
+                __builder2.AddAttribute(34, "class", "form-control");
+                __builder2.AddAttribute(35, "placeholder", "Last Name");
+                __builder2.AddAttribute(36, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 29 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                     EditLecturerModel.LastName
@@ -197,11 +190,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(44, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.LastName = __value, EditLecturerModel.LastName))));
-                __builder2.AddAttribute(45, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.LastName));
+                __builder2.AddAttribute(37, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.LastName = __value, EditLecturerModel.LastName))));
+                __builder2.AddAttribute(38, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.LastName));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(46, "\r\n            ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_1(__builder2, 47, 48, 
+                __builder2.AddMarkupContent(39, "\r\n            ");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_1(__builder2, 40, 41, 
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                       () => EditLecturerModel.LastName
@@ -210,19 +203,15 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddMarkupContent(49, "\r\n\r\n        ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(50, "\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(51, "\r\n\r\n\r\n    ");
-                __builder2.OpenElement(52, "div");
-                __builder2.AddAttribute(53, "class", "form-group row");
-                __builder2.AddMarkupContent(54, "\r\n        ");
-                __builder2.AddMarkupContent(55, "<label for=\"dateOfBirth\" class=\"col-sm-2 col-form-label\">\r\n            Birthday\r\n        </label>\r\n        ");
-                __builder2.OpenElement(56, "div");
-                __builder2.AddAttribute(57, "class", "col-sm-10");
-                __builder2.AddMarkupContent(58, "\r\n            ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateInputDate_2(__builder2, 59, 60, "birthDate", 61, "form-control", 62, "Birthday", 63, 
+                __builder2.AddMarkupContent(42, "\r\n\r\n\r\n    ");
+                __builder2.OpenElement(43, "div");
+                __builder2.AddAttribute(44, "class", "form-group row");
+                __builder2.AddMarkupContent(45, "<label for=\"dateOfBirth\" class=\"col-sm-2 col-form-label\">\r\n            Birthday\r\n        </label>\r\n        ");
+                __builder2.OpenElement(46, "div");
+                __builder2.AddAttribute(47, "class", "col-sm-10");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateInputDate_2(__builder2, 48, 49, "birthDate", 50, "form-control", 51, "Birthday", 52, 
 #nullable restore
 #line 42 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                     EditLecturerModel.BirthDate
@@ -230,20 +219,17 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 64, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.BirthDate = __value, EditLecturerModel.BirthDate)), 65, () => EditLecturerModel.BirthDate);
-                __builder2.AddMarkupContent(66, "\r\n        ");
+                , 53, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.BirthDate = __value, EditLecturerModel.BirthDate)), 54, () => EditLecturerModel.BirthDate);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(67, "\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(68, "\r\n    ");
-                __builder2.OpenElement(69, "div");
-                __builder2.AddAttribute(70, "class", "col-sm-10");
-                __builder2.AddMarkupContent(71, "\r\n        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(72);
-                __builder2.AddAttribute(73, "id", "token");
-                __builder2.AddAttribute(74, "class", "form-control");
-                __builder2.AddAttribute(75, "placeholder", "Token");
-                __builder2.AddAttribute(76, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddMarkupContent(55, "\r\n    ");
+                __builder2.OpenElement(56, "div");
+                __builder2.AddAttribute(57, "class", "col-sm-10");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(58);
+                __builder2.AddAttribute(59, "id", "token");
+                __builder2.AddAttribute(60, "class", "form-control");
+                __builder2.AddAttribute(61, "placeholder", "Token");
+                __builder2.AddAttribute(62, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 47 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                 EditLecturerModel.Token
@@ -252,11 +238,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(77, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.Token = __value, EditLecturerModel.Token))));
-                __builder2.AddAttribute(78, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.Token));
+                __builder2.AddAttribute(63, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.Token = __value, EditLecturerModel.Token))));
+                __builder2.AddAttribute(64, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.Token));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(79, "\r\n        ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_3(__builder2, 80, 81, 
+                __builder2.AddMarkupContent(65, "\r\n        ");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_3(__builder2, 66, 67, 
 #nullable restore
 #line 48 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                   () => EditLecturerModel.Token
@@ -265,21 +251,18 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddMarkupContent(82, "\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(83, "\r\n\r\n    ");
-                __builder2.OpenElement(84, "div");
-                __builder2.AddAttribute(85, "class", "form-group row");
-                __builder2.AddMarkupContent(86, "\r\n        ");
-                __builder2.AddMarkupContent(87, "<label for=\"email\" class=\"col-sm-2 col-form-label\">\r\n            Email\r\n        </label>\r\n        ");
-                __builder2.OpenElement(88, "div");
-                __builder2.AddAttribute(89, "class", "col-sm-10");
-                __builder2.AddMarkupContent(90, "\r\n            ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(91);
-                __builder2.AddAttribute(92, "id", "email");
-                __builder2.AddAttribute(93, "class", "form-control");
-                __builder2.AddAttribute(94, "placeholder", "Email");
-                __builder2.AddAttribute(95, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddMarkupContent(68, "\r\n\r\n    ");
+                __builder2.OpenElement(69, "div");
+                __builder2.AddAttribute(70, "class", "form-group row");
+                __builder2.AddMarkupContent(71, "<label for=\"email\" class=\"col-sm-2 col-form-label\">\r\n            Email\r\n        </label>\r\n        ");
+                __builder2.OpenElement(72, "div");
+                __builder2.AddAttribute(73, "class", "col-sm-10");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(74);
+                __builder2.AddAttribute(75, "id", "email");
+                __builder2.AddAttribute(76, "class", "form-control");
+                __builder2.AddAttribute(77, "placeholder", "Email");
+                __builder2.AddAttribute(78, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 57 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                     EditLecturerModel.Email
@@ -288,11 +271,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(96, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.Email = __value, EditLecturerModel.Email))));
-                __builder2.AddAttribute(97, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.Email));
+                __builder2.AddAttribute(79, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.Email = __value, EditLecturerModel.Email))));
+                __builder2.AddAttribute(80, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.Email));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(98, "\r\n            ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_4(__builder2, 99, 100, 
+                __builder2.AddMarkupContent(81, "\r\n            ");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_4(__builder2, 82, 83, 
 #nullable restore
 #line 58 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                       () => EditLecturerModel.Email
@@ -301,23 +284,19 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddMarkupContent(101, "\r\n\r\n        ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(102, "\r\n\r\n\r\n\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(103, "\r\n    ");
-                __builder2.OpenElement(104, "div");
-                __builder2.AddAttribute(105, "class", "form-group row");
-                __builder2.AddMarkupContent(106, "\r\n        ");
-                __builder2.AddMarkupContent(107, "<label for=\"email\" class=\"col-sm-2 col-form-label\">\r\n            Email Confirmation\r\n        </label>\r\n\r\n        ");
-                __builder2.OpenElement(108, "div");
-                __builder2.AddAttribute(109, "class", "col-sm-10");
-                __builder2.AddMarkupContent(110, "\r\n            ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(111);
-                __builder2.AddAttribute(112, "id", "email");
-                __builder2.AddAttribute(113, "class", "form-control");
-                __builder2.AddAttribute(114, "placeholder", "ConfirmEmail");
-                __builder2.AddAttribute(115, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddMarkupContent(84, "\r\n    ");
+                __builder2.OpenElement(85, "div");
+                __builder2.AddAttribute(86, "class", "form-group row");
+                __builder2.AddMarkupContent(87, "<label for=\"email\" class=\"col-sm-2 col-form-label\">\r\n            Email Confirmation\r\n        </label>\r\n\r\n        ");
+                __builder2.OpenElement(88, "div");
+                __builder2.AddAttribute(89, "class", "col-sm-10");
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(90);
+                __builder2.AddAttribute(91, "id", "email");
+                __builder2.AddAttribute(92, "class", "form-control");
+                __builder2.AddAttribute(93, "placeholder", "ConfirmEmail");
+                __builder2.AddAttribute(94, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 72 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                     EditLecturerModel.ConfirmEmail
@@ -326,11 +305,11 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(116, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.ConfirmEmail = __value, EditLecturerModel.ConfirmEmail))));
-                __builder2.AddAttribute(117, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.ConfirmEmail));
+                __builder2.AddAttribute(95, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.ConfirmEmail = __value, EditLecturerModel.ConfirmEmail))));
+                __builder2.AddAttribute(96, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => EditLecturerModel.ConfirmEmail));
                 __builder2.CloseComponent();
-                __builder2.AddMarkupContent(118, "\r\n            ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_5(__builder2, 119, 120, 
+                __builder2.AddMarkupContent(97, "\r\n            ");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateValidationMessage_5(__builder2, 98, 99, 
 #nullable restore
 #line 73 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                       () => EditLecturerModel.ConfirmEmail
@@ -339,19 +318,15 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddMarkupContent(121, "\r\n        ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(122, "\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(123, "\r\n\r\n    ");
-                __builder2.OpenElement(124, "div");
-                __builder2.AddAttribute(125, "class", "form-group row");
-                __builder2.AddMarkupContent(126, "\r\n        ");
-                __builder2.AddMarkupContent(127, "<label for=\"activeTill\" class=\"col-sm-2 col-form-label\">\r\n            Last active date\r\n        </label>\r\n\r\n        ");
-                __builder2.OpenElement(128, "div");
-                __builder2.AddAttribute(129, "class", "col-sm-10");
-                __builder2.AddMarkupContent(130, "\r\n            ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateInputDate_6(__builder2, 131, 132, "activeTill", 133, "form-control", 134, "ActiveTill", 135, 
+                __builder2.AddMarkupContent(100, "\r\n\r\n    ");
+                __builder2.OpenElement(101, "div");
+                __builder2.AddAttribute(102, "class", "form-group row");
+                __builder2.AddMarkupContent(103, "<label for=\"activeTill\" class=\"col-sm-2 col-form-label\">\r\n            Last active date\r\n        </label>\r\n\r\n        ");
+                __builder2.OpenElement(104, "div");
+                __builder2.AddAttribute(105, "class", "col-sm-10");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateInputDate_6(__builder2, 106, 107, "activeTill", 108, "form-control", 109, "ActiveTill", 110, 
 #nullable restore
 #line 84 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                     EditLecturerModel.ActiveTill
@@ -359,15 +334,13 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 136, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.ActiveTill = __value, EditLecturerModel.ActiveTill)), 137, () => EditLecturerModel.ActiveTill);
-                __builder2.AddMarkupContent(138, "\r\n        ");
+                , 111, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.ActiveTill = __value, EditLecturerModel.ActiveTill)), 112, () => EditLecturerModel.ActiveTill);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(139, "\r\n    ");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(140, "\r\n    ");
-                __builder2.OpenElement(141, "div");
-                __builder2.AddMarkupContent(142, "\r\n        Active<br>\r\n        ");
-                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateMatCheckbox_7(__builder2, 143, 144, 
+                __builder2.AddMarkupContent(113, "\r\n    ");
+                __builder2.OpenElement(114, "div");
+                __builder2.AddMarkupContent(115, "\r\n        Active<br>\r\n        ");
+                __Blazor.Plana.Web.Pages.lecturer.EditLecturer.TypeInference.CreateMatCheckbox_7(__builder2, 116, 117, 
 #nullable restore
 #line 92 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                                                        ChangeLabel(EditLecturerModel.IsActive)
@@ -375,7 +348,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 145, 
+                , 118, 
 #nullable restore
 #line 92 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                   EditLecturerModel.IsActive
@@ -383,15 +356,14 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                , 146, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.IsActive = __value, EditLecturerModel.IsActive)), 147, () => EditLecturerModel.IsActive);
-                __builder2.AddMarkupContent(148, "\r\n    ");
+                , 119, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => EditLecturerModel.IsActive = __value, EditLecturerModel.IsActive)), 120, () => EditLecturerModel.IsActive);
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(149, "\r\n\r\n\r\n\r\n\r\n    ");
-                __builder2.AddMarkupContent(150, "<button class=\"btn btn-primary\" type=\"submit\">Submit</button>\r\n    ");
-                __builder2.OpenElement(151, "button");
-                __builder2.AddAttribute(152, "class", "btn btn-danger");
-                __builder2.AddAttribute(153, "type", "button");
-                __builder2.AddAttribute(154, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                __builder2.AddMarkupContent(121, "\r\n\r\n\r\n\r\n\r\n    ");
+                __builder2.AddMarkupContent(122, "<button class=\"btn btn-primary\" type=\"submit\">Submit</button>\r\n    ");
+                __builder2.OpenElement(123, "button");
+                __builder2.AddAttribute(124, "class", "btn btn-danger");
+                __builder2.AddAttribute(125, "type", "button");
+                __builder2.AddAttribute(126, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 110 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\lecturer\EditLecturer.razor"
                                                            Delete_Click
@@ -400,9 +372,8 @@ using MatBlazor;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddContent(155, "Delete");
+                __builder2.AddContent(127, "Delete");
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(156, "\r\n\r\n\r\n\r\n");
             }
             ));
             __builder.CloseComponent();

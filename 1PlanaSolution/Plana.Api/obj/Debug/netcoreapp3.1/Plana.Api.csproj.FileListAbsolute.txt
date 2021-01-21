@@ -1,7 +1,6 @@
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\Controllers\Properties\launchSettings.json
-C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\Plana.Api.StaticWebAssets.xml
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\Plana.Api.exe
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\bin\Debug\netcoreapp3.1\Plana.Api.deps.json
@@ -68,3 +67,4 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\obj\Debug\netcoreapp3.1\Plana.Api.dll
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\obj\Debug\netcoreapp3.1\Plana.Api.pdb
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\obj\Debug\netcoreapp3.1\Plana.Api.genruntimeconfig.cache
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Api\obj\Debug\netcoreapp3.1\scopedcss\bundle\Plana.Api.styles.css

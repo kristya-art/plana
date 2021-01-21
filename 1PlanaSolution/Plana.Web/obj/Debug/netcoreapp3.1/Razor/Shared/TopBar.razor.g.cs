@@ -103,18 +103,15 @@ using MatBlazor;
             __builder.AddAttribute(2, "class", "topnav");
             __builder.AddAttribute(3, "id", "topnav");
             __builder.AddAttribute(4, "style", "position: relative;top: 0px;");
-            __builder.AddMarkupContent(5, "\r\n    \r\n    ");
-            __builder.OpenElement(6, "div");
-            __builder.AddAttribute(7, "style", "overflow:auto;");
-            __builder.AddMarkupContent(8, "\r\n        ");
-            __builder.OpenElement(9, "div");
-            __builder.AddAttribute(10, "class", "w3-bar w3-left");
-            __builder.AddAttribute(11, "style", "width:100%;overflow:hidden;height:60px");
-            __builder.AddMarkupContent(12, "\r\n            ");
-            __builder.AddMarkupContent(13, "<div class=\"logo-image  w3-right\">\r\n                <img src=\"/images/logo.png\" class=\"img-fluid\" href=\"/home\">\r\n\r\n            </div>\r\n\r\n            ");
-            __builder.OpenElement(14, "div");
-            __builder.AddAttribute(15, "class", "navbar-toggler w3-left");
-            __builder.AddAttribute(16, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.OpenElement(5, "div");
+            __builder.AddAttribute(6, "style", "overflow:auto;");
+            __builder.OpenElement(7, "div");
+            __builder.AddAttribute(8, "class", "w3-bar w3-left");
+            __builder.AddAttribute(9, "style", "width:100%;overflow:hidden;height:60px");
+            __builder.AddMarkupContent(10, "<div class=\"logo-image  w3-right\"><img src=\"/images/logo.png\" class=\"img-fluid\" href=\"/home\"></div>\r\n\r\n            ");
+            __builder.OpenElement(11, "div");
+            __builder.AddAttribute(12, "class", "navbar-toggler w3-left");
+            __builder.AddAttribute(13, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 12 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\TopBar.razor"
                                                           ToggleNavMenu
@@ -123,25 +120,20 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(17, "\r\n                ");
-            __builder.AddMarkupContent(18, "<span class=\"navbar-toggler-icon\">\r\n                    <img src=\"/images/toggler.JPG\" class=\"img-fluid\">\r\n                </span>\r\n            ");
+            __builder.AddMarkupContent(14, "<span class=\"navbar-toggler-icon\"><img src=\"/images/toggler.JPG\" class=\"img-fluid\"></span>");
             __builder.CloseElement();
-            __builder.AddMarkupContent(19, "\r\n            ");
-            __builder.OpenElement(20, "div");
-            __builder.AddAttribute(21, "class", "search");
-            __builder.AddAttribute(22, "style", "overflow:hidden;height:60px");
-            __builder.AddMarkupContent(23, "\r\n                ");
-            __builder.OpenComponent<Plana.Web.Pages.template_components.Search>(24);
+            __builder.AddMarkupContent(15, "\r\n            ");
+            __builder.OpenElement(16, "div");
+            __builder.AddAttribute(17, "class", "search");
+            __builder.AddAttribute(18, "style", "overflow:hidden;height:60px");
+            __builder.OpenComponent<Plana.Web.Pages.template_components.Search>(19);
             __builder.CloseComponent();
-            __builder.AddMarkupContent(25, "\r\n            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(26, "\r\n\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(27, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(28, "\r\n\r\n\r\n    ");
-            __builder.OpenElement(29, "div");
-            __builder.AddAttribute(30, "class", 
+            __builder.AddMarkupContent(20, "\r\n\r\n\r\n    ");
+            __builder.OpenElement(21, "div");
+            __builder.AddAttribute(22, "class", 
 #nullable restore
 #line 26 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\TopBar.razor"
                  openVerticalMenu
@@ -150,8 +142,8 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddAttribute(31, "style", "width:55%");
-            __builder.AddAttribute(32, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(23, "style", "width:55%");
+            __builder.AddAttribute(24, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 26 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\TopBar.razor"
                                                                ToggleNavMenu
@@ -160,20 +152,16 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(33, "\r\n        ");
-            __builder.OpenElement(34, "div");
-            __builder.AddAttribute(35, "class", "vertical-menu");
-            __builder.AddMarkupContent(36, "\r\n            ");
-            __builder.OpenElement(37, "ul");
-            __builder.AddAttribute(38, "class", "nav flex-column");
-            __builder.AddMarkupContent(39, "\r\n                ");
-            __builder.OpenElement(40, "li");
-            __builder.AddAttribute(41, "class", "nav-item px-3");
-            __builder.AddMarkupContent(42, "\r\n                    ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(43);
-            __builder.AddAttribute(44, "class", "nav-link");
-            __builder.AddAttribute(45, "href", "");
-            __builder.AddAttribute(46, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+            __builder.OpenElement(25, "div");
+            __builder.AddAttribute(26, "class", "vertical-menu");
+            __builder.OpenElement(27, "ul");
+            __builder.AddAttribute(28, "class", "nav flex-column");
+            __builder.OpenElement(29, "li");
+            __builder.AddAttribute(30, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(31);
+            __builder.AddAttribute(32, "class", "nav-link");
+            __builder.AddAttribute(33, "href", "");
+            __builder.AddAttribute(34, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\TopBar.razor"
                                                              NavLinkMatch.All
@@ -182,37 +170,30 @@ using MatBlazor;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(47, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(48, "\r\n                        <span class=\"oi oi-home\" aria-hidden=\"true\"></span> List of Lecturers\r\n                    ");
+            __builder.AddAttribute(35, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(36, "<span class=\"oi oi-home\" aria-hidden=\"true\"></span> List of Lecturers\r\n                    ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(49, "\r\n                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(50, "\r\n                ");
-            __builder.OpenElement(51, "li");
-            __builder.AddAttribute(52, "class", "nav-item px-3");
-            __builder.AddMarkupContent(53, "\r\n                    ");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(54);
-            __builder.AddAttribute(55, "class", "nav-link");
-            __builder.AddAttribute(56, "href", "/home");
-            __builder.AddAttribute(57, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.AddMarkupContent(58, "\r\n                        <span class aria-hidden=\"true\"></span> Home\r\n                    ");
+            __builder.AddMarkupContent(37, "\r\n                ");
+            __builder.OpenElement(38, "li");
+            __builder.AddAttribute(39, "class", "nav-item px-3");
+            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(40);
+            __builder.AddAttribute(41, "class", "nav-link");
+            __builder.AddAttribute(42, "href", "/home");
+            __builder.AddAttribute(43, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.AddMarkupContent(44, "<span class aria-hidden=\"true\"></span> Home\r\n                    ");
             }
             ));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(59, "\r\n                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(60, "\r\n                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(61, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(62, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(63, "\r\n");
             __builder.CloseElement();
-            __builder.AddMarkupContent(64, "\r\n");
-            __builder.AddMarkupContent(65, "<style>\r\n    .topnav {\r\n        position: relative;\r\n        background-color: #f2f2f2;\r\n        /*width: 80%;*/\r\n        \r\n        letter-spacing: 1px;\r\n       \r\n    }\r\n    .w3-bar {\r\n        width:100%;\r\n        height: 120px;\r\n        overflow:hidden;\r\n        \r\n    }\r\n\r\n    .w3-right {\r\n     float: right!important;\r\n    }\r\n    .w3-left {\r\n        float:left!important;\r\n    }\r\n    /*               sider **/\r\n    .vertical-menu {\r\n       /* width: 200px;*/\r\n        float: left;\r\n        position: sticky;\r\n    }\r\n    \r\n\r\n        .vertical-menu a {\r\n          /*  background-color: #eee;*/\r\n            color: black;\r\n            display: block;\r\n            padding: 12px;\r\n            text-decoration: none;\r\n        }\r\n\r\n           /* .vertical-menu a:hover {\r\n                background-color: #ccc;\r\n            }*/\r\n\r\n            .vertical-menu a.active {\r\n                background-color: white;\r\n                color: white;\r\n            }\r\n    .navbar-toggler-icon {\r\n        width: 46px;\r\n        height: 35px;\r\n       \r\n        overflow: hidden;\r\n        margin-left:30px;\r\n      /*  margin-top: -20px;*/\r\n\r\n    }\r\n   .vertical-menu .oi {\r\n        width: 2rem;\r\n        font-size: 1.1rem;\r\n        vertical-align: text-top;\r\n        top: -2px;\r\n    }\r\n\r\n    .vertical-menu .nav-item {\r\n        font-size: 0.9rem;\r\n        padding-bottom: 0.5rem;\r\n    }\r\n\r\n        .vertical-menu .nav-item:first-of-type {\r\n            padding-top: 1rem;\r\n        }\r\n\r\n        .vertical-menu .nav-item:last-of-type {\r\n            padding-bottom: 1rem;\r\n        }\r\n\r\n        .vertical-menu .nav-item a {\r\n            color: #d7d7d7;\r\n            border-radius: 4px;\r\n            height: 3rem;\r\n            display: flex;\r\n            align-items: center;\r\n            line-height: 3rem;\r\n        }\r\n\r\n            .vertical-menu .nav-item a.active {\r\n                /* background-color: rgba(255,255,255,0.25);\r\n                color: white;*/\r\n                color: #FFD700;\r\n            }\r\n\r\n            .vertical-menu .nav-item a:hover {\r\n                background-color: #fff;\r\n                color: #43427d;\r\n            }\r\n    .search {\r\n        border: none;\r\n        color: rgba(0,0,0,.87);\r\n        display: flex;\r\n        font-size:16px;\r\n\r\n    }\r\n    \r\n</style>");
+            __builder.AddMarkupContent(45, "\r\n");
+            __builder.AddMarkupContent(46, "<style>\r\n    .topnav {\r\n        position: relative;\r\n        background-color: #f2f2f2;\r\n        /*width: 80%;*/\r\n        \r\n        letter-spacing: 1px;\r\n       \r\n    }\r\n    .w3-bar {\r\n        width:100%;\r\n        height: 120px;\r\n        overflow:hidden;\r\n        \r\n    }\r\n\r\n    .w3-right {\r\n     float: right!important;\r\n    }\r\n    .w3-left {\r\n        float:left!important;\r\n    }\r\n    /*               sider **/\r\n    .vertical-menu {\r\n       /* width: 200px;*/\r\n        float: left;\r\n        position: sticky;\r\n    }\r\n    \r\n\r\n        .vertical-menu a {\r\n          /*  background-color: #eee;*/\r\n            color: black;\r\n            display: block;\r\n            padding: 12px;\r\n            text-decoration: none;\r\n        }\r\n\r\n           /* .vertical-menu a:hover {\r\n                background-color: #ccc;\r\n            }*/\r\n\r\n            .vertical-menu a.active {\r\n                background-color: white;\r\n                color: white;\r\n            }\r\n    .navbar-toggler-icon {\r\n        width: 46px;\r\n        height: 35px;\r\n       \r\n        overflow: hidden;\r\n        margin-left:30px;\r\n      /*  margin-top: -20px;*/\r\n\r\n    }\r\n   .vertical-menu .oi {\r\n        width: 2rem;\r\n        font-size: 1.1rem;\r\n        vertical-align: text-top;\r\n        top: -2px;\r\n    }\r\n\r\n    .vertical-menu .nav-item {\r\n        font-size: 0.9rem;\r\n        padding-bottom: 0.5rem;\r\n    }\r\n\r\n        .vertical-menu .nav-item:first-of-type {\r\n            padding-top: 1rem;\r\n        }\r\n\r\n        .vertical-menu .nav-item:last-of-type {\r\n            padding-bottom: 1rem;\r\n        }\r\n\r\n        .vertical-menu .nav-item a {\r\n            color: #d7d7d7;\r\n            border-radius: 4px;\r\n            height: 3rem;\r\n            display: flex;\r\n            align-items: center;\r\n            line-height: 3rem;\r\n        }\r\n\r\n            .vertical-menu .nav-item a.active {\r\n                /* background-color: rgba(255,255,255,0.25);\r\n                color: white;*/\r\n                color: #FFD700;\r\n            }\r\n\r\n            .vertical-menu .nav-item a:hover {\r\n                background-color: #fff;\r\n                color: #43427d;\r\n            }\r\n    .search {\r\n        border: none;\r\n        color: rgba(0,0,0,.87);\r\n        display: flex;\r\n        font-size:16px;\r\n\r\n    }\r\n    \r\n</style>");
         }
         #pragma warning restore 1998
 #nullable restore

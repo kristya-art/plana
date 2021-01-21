@@ -98,14 +98,12 @@ using MatBlazor;
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.AddMarkupContent(0, "<div class=\"sidebar\">\r\n</div>\r\n\r\n");
+            __builder.AddMarkupContent(0, "<div class=\"sidebar\"></div>\r\n\r\n");
             __builder.OpenElement(1, "div");
             __builder.AddAttribute(2, "class", "main");
-            __builder.AddMarkupContent(3, "\r\n\r\n    ");
-            __builder.OpenElement(4, "div");
-            __builder.AddAttribute(5, "class", "content px-4 container");
-            __builder.AddMarkupContent(6, "\r\n        ");
-            __builder.AddContent(7, 
+            __builder.OpenElement(3, "div");
+            __builder.AddAttribute(4, "class", "content px-4 container");
+            __builder.AddContent(5, 
 #nullable restore
 #line 15 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Shared\MainLayout.razor"
          Body
@@ -114,9 +112,7 @@ using MatBlazor;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(8, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(9, "\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

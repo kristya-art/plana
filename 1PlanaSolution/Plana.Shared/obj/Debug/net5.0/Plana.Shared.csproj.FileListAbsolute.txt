@@ -1,0 +1,12 @@
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\Plana.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\Plana.Shared.AssemblyInfoInputs.cache
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\Plana.Shared.AssemblyInfo.cs
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\Plana.Shared.csproj.CoreCompileInputs.cache
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\bin\Debug\net5.0\Plana.Shared.deps.json
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\bin\Debug\net5.0\Plana.Shared.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\bin\Debug\net5.0\ref\Plana.Shared.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\bin\Debug\net5.0\Plana.Shared.pdb
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\Plana.Shared.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\ref\Plana.Shared.dll
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\Plana.Shared.pdb
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Shared\obj\Debug\net5.0\Plana.Shared.csprojAssemblyReference.cache

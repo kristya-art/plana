@@ -148,17 +148,15 @@ using MatBlazor;
 #line hidden
 #nullable disable
             , 12, "mat-elevation-z5", 13, "Name", 14, (__builder2) => {
-                __builder2.AddMarkupContent(15, "\r\n        ");
-                __builder2.AddMarkupContent(16, "<th>Id</th>\r\n        ");
-                __builder2.AddMarkupContent(17, "<th>Code</th>\r\n        ");
-                __builder2.AddMarkupContent(18, "<th>Date</th>\r\n        ");
-                __builder2.AddMarkupContent(19, "<th>Module Run Code</th>\r\n        ");
-                __builder2.AddMarkupContent(20, "<th>Name of Lecturers</th>\r\n\r\n    ");
+                __builder2.AddMarkupContent(15, "<th>Id</th>\r\n        ");
+                __builder2.AddMarkupContent(16, "<th>Code</th>\r\n        ");
+                __builder2.AddMarkupContent(17, "<th>Date</th>\r\n        ");
+                __builder2.AddMarkupContent(18, "<th>Module Run Code</th>\r\n        ");
+                __builder2.AddMarkupContent(19, "<th>Name of Lecturers</th>");
             }
-            , 21, (context) => (__builder2) => {
-                __builder2.AddMarkupContent(22, "\r\n\r\n            ");
-                __builder2.OpenElement(23, "td");
-                __builder2.AddContent(24, 
+            , 20, (context) => (__builder2) => {
+                __builder2.OpenElement(21, "td");
+                __builder2.AddContent(22, 
 #nullable restore
 #line 28 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
                  context.SemesterId
@@ -168,9 +166,9 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(25, "\r\n            ");
-                __builder2.OpenElement(26, "td");
-                __builder2.AddContent(27, 
+                __builder2.AddMarkupContent(23, "\r\n            ");
+                __builder2.OpenElement(24, "td");
+                __builder2.AddContent(25, 
 #nullable restore
 #line 29 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
                  context.Code
@@ -180,9 +178,9 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(28, "\r\n            ");
-                __builder2.OpenElement(29, "td");
-                __builder2.AddContent(30, 
+                __builder2.AddMarkupContent(26, "\r\n            ");
+                __builder2.OpenElement(27, "td");
+                __builder2.AddContent(28, 
 #nullable restore
 #line 30 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
                  context.Date
@@ -192,7 +190,6 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(31, "\r\n");
 #nullable restore
 #line 31 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
          foreach (var moduleRun in context.ModuleRuns)
@@ -201,9 +198,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddContent(32, "        ");
-                __builder2.OpenElement(33, "td");
-                __builder2.AddContent(34, 
+                __builder2.OpenElement(29, "td");
+                __builder2.AddContent(30, 
 #nullable restore
 #line 33 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
              moduleRun.Code
@@ -213,7 +209,6 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(35, "\r\n");
 #nullable restore
 #line 34 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
         }
@@ -230,9 +225,8 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddContent(36, "            ");
-                __builder2.OpenElement(37, "td");
-                __builder2.AddContent(38, 
+                __builder2.OpenElement(31, "td");
+                __builder2.AddContent(32, 
 #nullable restore
 #line 38 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
                  lm.Lecturer.LastName
@@ -242,7 +236,6 @@ using MatBlazor;
 #nullable disable
                 );
                 __builder2.CloseElement();
-                __builder2.AddMarkupContent(39, "\r\n");
 #nullable restore
 #line 39 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
         }
@@ -250,16 +243,13 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-                __builder2.AddMarkupContent(40, "\r\n\r\n\r\n    ");
             }
             );
-            __builder.AddMarkupContent(41, "\r\n\r\n");
-            __builder.OpenElement(42, "table");
-            __builder.AddAttribute(43, "class", "table table-sm table-bordered table-striped");
-            __builder.AddMarkupContent(44, "\r\n    ");
-            __builder.AddMarkupContent(45, "<thead>\r\n        <tr>\r\n            <th>Date</th>\r\n            <th>Code</th>\r\n        </tr>\r\n    </thead>\r\n\r\n    ");
-            __builder.OpenElement(46, "tbody");
-            __builder.AddMarkupContent(47, "\r\n");
+            __builder.AddMarkupContent(33, "\r\n\r\n");
+            __builder.OpenElement(34, "table");
+            __builder.AddAttribute(35, "class", "table table-sm table-bordered table-striped");
+            __builder.AddMarkupContent(36, "<thead><tr><th>Date</th>\r\n            <th>Code</th></tr></thead>\r\n\r\n    ");
+            __builder.OpenElement(37, "tbody");
 #nullable restore
 #line 57 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
          foreach (var s in Semesters)
@@ -268,11 +258,9 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(48, "        ");
-            __builder.OpenElement(49, "tr");
-            __builder.AddMarkupContent(50, "\r\n            ");
-            __builder.OpenElement(51, "td");
-            __builder.AddContent(52, 
+            __builder.OpenElement(38, "tr");
+            __builder.OpenElement(39, "td");
+            __builder.AddContent(40, 
 #nullable restore
 #line 60 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
                  s.Date
@@ -282,9 +270,7 @@ using MatBlazor;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(53, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(54, "\r\n");
 #nullable restore
 #line 62 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
                  foreach (var moduleRun in s.ModuleRuns)
@@ -293,11 +279,9 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(55, "        ");
-            __builder.OpenElement(56, "tr");
-            __builder.AddMarkupContent(57, "\r\n\r\n            ");
-            __builder.OpenElement(58, "td");
-            __builder.AddContent(59, 
+            __builder.OpenElement(41, "tr");
+            __builder.OpenElement(42, "td");
+            __builder.AddContent(43, 
 #nullable restore
 #line 66 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
                  moduleRun.Code
@@ -307,9 +291,7 @@ using MatBlazor;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(60, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(61, "\r\n");
 #nullable restore
 #line 68 "C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\Pages\semester\SemesterList.razor"
 
@@ -326,9 +308,7 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(62, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(63, "\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

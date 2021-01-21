@@ -120,7 +120,6 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\PlanaSolution\Plan
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Plana.Web.genruntimeconfig.cache
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\Plana.Web.exe
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\Plana.Web.deps.json
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\bin\Debug\netcoreapp3.1\Plana.Web.runtimeconfig.json
@@ -231,3 +230,5 @@ C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Pla
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\plan\study_director\EditPlan.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\plan\study_director\Test.razor.g.cs
 C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Razor\Pages\plan\study_director\Test.razor.g.cs
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\Plana.Web.RazorComponent.output.cache
+C:\Code\PLANA\planning-of-the-assignments-for-lecturers-plana\1PlanaSolution\Plana.Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\Plana.Web.styles.css
